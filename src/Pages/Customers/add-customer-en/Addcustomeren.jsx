@@ -16,6 +16,8 @@ import CustomModal from "../../../Componant/Common/Modal/CustomeModal";
 import successIcon from "../../../assets/images/success_icon.svg";
 
 
+
+
 const AddCustomer = () => {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -40,7 +42,9 @@ const AddCustomer = () => {
     residentialArea: "",
   });
 
-  const [showModal, setShowModal] = useState(false);
+  
+  const [isFirstModalOpen, setIsFirstModalOpen] = useState(false);
+  const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     if (type === "checkbox") {
@@ -55,8 +59,11 @@ const AddCustomer = () => {
     }
   };
 
-  const handleOpen = () => setShowModal(true);
-  const handleClose = () => setShowModal(false);
+  const openSecondModal = () => {
+    setIsFirstModalOpen(false); // Hide First Modal
+    setIsSecondModalOpen(true); // Show Second Modal
+  };
+
   
   return (
     <main>
@@ -265,7 +272,7 @@ const AddCustomer = () => {
                         <input type="range" className="range-max" min="0" max="10000" value="10000" step="100" />
                         </div>
                     </div>  
-                    </div>
+                    </div>    
                     <div className="col-lg-4">
                   <label className="form-label"> מחיר (ש”ח)  </label>
                   <div id="slider2" className="slider-wrapper">
@@ -315,23 +322,47 @@ const AddCustomer = () => {
                   className="form-control"
                 ></textarea>
               </div> 
-              <button type="button" className="btn_cmn mt-3"  onClick={handleOpen}>
+              <button type="button" className="btn_cmn mt-3"  onClick={() => setIsFirstModalOpen(true)}>
                 הוספה
               </button>
             </div>
           </form>
         </div>
       </div>
-    <CustomModal
-        show={showModal}
-        handleClose={handleClose}
-        footer={
-        <button type="button" class="btn btn_cmn_56" data-bs-dismiss="modal" onClick={handleClose}>לדו”ח התאמות נכסים</button>  
+      {/** Add Customer Successfully */}
+      <div className="modalcontent">
+        {
+          isFirstModalOpen && 
+          <CustomModal
+          show={isFirstModalOpen}
+          handleClose={() => setIsFirstModalOpen(false)}
+          onClick={openSecondModal}
+          footer={"לדו”ח התאמות נכסים"}
+          footer1={'לשליחת הסכם'}
+          >
+          <figure class="succ_pop_icon text-center"><img src={successIcon} alt="Success" /></figure>
+          <h4 className="pop_head color_green text-center">הלקוח נוסף בהצלחה</h4>
+          </CustomModal>
         }
-      >
-        <figure class="succ_pop_icon text-center"><img src={successIcon} alt="Success" /></figure>
-        <h4 className="pop_head color_green text-center">הלקוח נוסף בהצלחה</h4>
-    </CustomModal>
+
+        {
+          isSecondModalOpen && 
+          <CustomModal
+          show={isSecondModalOpen}
+          handleClose={() => setIsSecondModalOpen(false)}
+          footer={"לדו”ח התאמות נכסים"}
+          footer1={'לשליחת הסכם'}
+          >
+            <figure class="succ_pop_icon text-center"><img src={successIcon} alt="Success" /></figure>
+            <h4 className="pop_head  text-center">הלקוח נוסף בהצלחה</h4>
+            <div className="text-center ">
+              <button className=" modalbtn mb-4">  לשליחת הסכם החתמת מתעניין  </button>
+              <button className="modalbtn mb-4">  לשליחת הסכם החתמת בעל נכס  </button>
+              <button className=" modalbtn mb-4">  לשליחת הסכם שת”פ בין מתווכים </button>
+            </div>
+          </CustomModal>
+        }
+      </div>
     </main>
   );
 };

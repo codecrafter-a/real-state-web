@@ -1,0 +1,115 @@
+.table_check {
+    display: flex;
+    align-items: center;
+}
+.table_check .t_checkbox{
+	margin-left: 6px;
+	position: relative;
+}
+.table_check .t_checkbox input{
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 2;
+	opacity: 0;
+}
+.table_check .t_checkbox span{
+	height: 20px;
+	width: 20px;
+	border: 1px solid #9A9A9A;
+	border-radius: 4px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.table_check .t_checkbox span img{
+	opacity: 0;
+}
+.table_check .t_checkbox input:checked ~ span{
+	border-color: #00A481;
+}
+.table_check .t_checkbox input:checked ~ span img{
+	opacity: 1;
+}
+
+table.table tbody > tr > td{
+	padding: 22px 11px;
+	border-bottom: 1px solid #E6E6E6;
+	font-size: 17px;
+	font-weight: 400;
+	line-height: 22.24px;
+	color: #282828;
+}
+table.table tbody > tr > td:first-child{
+	border-right: 1px solid #E6E6E6;
+}
+table.table tbody > tr > td:last-child{
+	border-left: 1px solid #E6E6E6;
+}
+table.table thead th{
+	border-bottom: 1px solid #E6E6E6 !important;
+	padding: 14px 11px;
+	font-weight: 600;
+	color: #686868;
+	font-size: 15px;
+	line-height: 20px;
+}
+
+table.table.table_inr tbody > tr > td{
+	border: 0;
+	padding: 0 10px;
+}
+.table_inr td label{
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 20px;
+	color: #686868;
+	margin-bottom: 0;
+	display: block;
+}
+.table_inr td p{
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 24px;
+	color: #282828;
+}
+
+.table_inr .btn_cmn {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 20px;
+}
+.table_btn_grp a{
+	display: inline-block;
+	vertical-align: middle;
+}
+.table_btn_grp a:hover{
+	transform: scale(1.1);
+}
+
+
+[lang="en"] .table_check .t_checkbox{
+	margin-left: 0;
+	margin-right: 6px;
+}
+[lang="en"] table.table tbody > tr > td:first-child {
+	border-right: 0;
+    border-left: 1px solid #E6E6E6;
+}
+[lang="en"] table.table tbody > tr > td:last-child {
+	border-left: 0;
+    border-right: 1px solid #E6E6E6;
+}
+
+
+[lang="en"] table.table.table_inr > tbody > tr > td,
+[lang="en"] table.table.table_inr tbody > tr > td:first-child,
+[lang="en"] table.table.table_inr tbody > tr > td:last-child{
+	border: 0;
+}
+[lang="en"] table.table tbody > tr.toggle_row > td{
+	border-left: 1px solid #E6E6E6;
+	border-right: 1px solid #E6E6E6;
+}

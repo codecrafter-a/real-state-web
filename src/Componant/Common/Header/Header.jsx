@@ -17,7 +17,7 @@ const Header = () => {
             <ul className="hdt_top_menu d-flex align-items-center">
               <li className="user_dd dropdown">
                 <a href="/" class="dropdown-toggle" type="button" id="dd_user" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img src={userIcon} alt="gfdgdg"/>שירי נקבלי | STARTER  
+                  <div className=' flex justify-center'><img src={userIcon} alt="gfdgdg"/>שירי נקבלי | STARTER </div> 
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="dd_user">
                   <li><a className="dropdown-item" href="/">Profile</a></li>

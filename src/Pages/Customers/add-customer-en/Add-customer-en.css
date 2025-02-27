@@ -244,6 +244,31 @@ input[type="range"]::-moz-range-thumb {
 	justify-content: center;
 	outline: none;
 }
+
+.modalbtn {
+	border:0;
+	border-radius: 100px;
+    box-shadow:0 10px 8px rgba(0,0,0,0.1);
+	padding: 5px 15px;
+	min-width: 146px;
+    font-size: 20px;
+	font-weight: 500;
+	line-height: 26.16px;
+	border: 1px solid #00A481;
+	background: #fff;
+	color: #00A481;
+    display: inline-flex;
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+	outline: none;
+}
+
+.modalbtn:hover {
+	background: #55CD85 !important;
+	color: #fff !important;
+	border-color: #55CD85 !important;
+}
 .btn_cmn_56{
 	padding: 13px 25px;
 	min-width: 214px;
