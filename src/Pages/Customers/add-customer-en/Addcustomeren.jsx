@@ -11,12 +11,10 @@ import searchIcon from "../../../assets/images/search.svg";
 import "../add-customer-en/Add-customer-en.css";
 import CustomInput from "../../../Componant/Common/Input/Custominput";
 import CustomSelect from "../../../Componant/Common/Select/Customeselect";
-import dashLine from "../../../assets/images/dash_line.svg";
 import CustomModal from "../../../Componant/Common/Modal/CustomeModal";
 import successIcon from "../../../assets/images/success_icon.svg";
-
-
-
+import Next from "../../../assets/images/Next.jpg";
+import RangeSlider from "../../../Componant/Common/RangeSlider/RangeSlider";
 
 const AddCustomer = () => {
   const [formData, setFormData] = useState({
@@ -42,7 +40,6 @@ const AddCustomer = () => {
     residentialArea: "",
   });
 
-  
   const [isFirstModalOpen, setIsFirstModalOpen] = useState(false);
   const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
   const handleChange = (e) => {
@@ -60,13 +57,12 @@ const AddCustomer = () => {
   };
 
   const openSecondModal = () => {
-    setIsFirstModalOpen(false); // Hide First Modal
-    setIsSecondModalOpen(true); // Show Second Modal
+    setIsFirstModalOpen(false); 
+    setIsSecondModalOpen(true); 
   };
-
-  
+ 
   return (
-    <main>
+    <div>
       <div className="top_bg_image">
         <figure className="mb-0 top_bg_fig">
           <img src={bodyBg} width="100%" alt="Background" />
@@ -104,7 +100,7 @@ const AddCustomer = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="form_mobile form-control"
+                      className="form-control"
                   />                 
                 </div>
                 <div className="col-md-4">
@@ -227,20 +223,20 @@ const AddCustomer = () => {
                 <div className="col-md-4">
                   <label className="form-label">מצב הנכס</label>
                     <CustomSelect
-                        name="propertyType"
-                        value={formData.propertyType}
-                        onChange={handleChange}
-                        options={[
-                            { value: "", label: "" },
-                            { value: "option1", label: "Option 1" },
-                            { value: "option2", label: "Option 2" },
-                        ]}
-                        className="form-select"
+                      name="propertyType"
+                      value={formData.propertyType}
+                      onChange={handleChange}
+                      options={[
+                          { value: "", label: "" },
+                          { value: "option1", label: "Option 1" },
+                          { value: "option2", label: "Option 2" },
+                      ]}
+                      className="form-select"
                     />
                 </div>
               </div>
                 <div className="row form_group">
-                    <div className="col-md-4">
+                  <div className="col-md-4">
                     <label className="form-label">מספר חדרים {/** Number of room */}</label>
                     <div className="input-group input_grp_cus">
                         <CustomInput 
@@ -251,49 +247,13 @@ const AddCustomer = () => {
                         className="form-control"
                         />     
                     </div>
-                    </div>
-                    <div className="col-lg-4">
-                    <label className="form-label"> גודל  (מ”ר) </label>
-                    <div id="slider1" className="slider-wrapper">
-                        <div className="price-input">
-                        <div className="field">
-                            <input type="number" className="form-control input-min" value="0" />
-                        </div>
-                        <div className="separator"><img src={dashLine} alt="separator" className="mCS_img_loaded" /></div>
-                        <div className="field">
-                            <input type="number" className="form-control input-max" value="10000" />
-                        </div>
-                        </div>
-                        <div className="slider">
-                        <div className="progress"></div>
-                        </div>
-                        <div className="range-input">
-                        <input type="range" className="range-min" min="0" max="10000" value="0" step="100" />
-                        <input type="range" className="range-max" min="0" max="10000" value="10000" step="100" />
-                        </div>
-                    </div>  
-                    </div>    
-                    <div className="col-lg-4">
-                  <label className="form-label"> מחיר (ש”ח)  </label>
-                  <div id="slider2" className="slider-wrapper">
-                    <div className="price-input">
-                      <div className="field">
-                        <input type="number" className="form-control input-min" value="0" />
-                      </div>
-                      <div className="separator"><img src={dashLine} alt="separator" className="mCS_img_loaded" /></div>
-                      <div className="field">
-                        <input type="number" className="form-control input-max" value="10000" />
-                      </div>
-                    </div>
-                    <div className="slider">
-                      <div className="progress"></div>
-                    </div>
-                    <div className="range-input">
-                      <input type="range" className="range-min" min="0" max="10000" value="0" step="100" />
-                      <input type="range" className="range-max" min="0" max="10000" value="10000" step="100" />
-                    </div>
                   </div>
-                    </div>
+                  <div className="col-lg-4">
+                    <RangeSlider label={' גודל  (מ”ר)'}/>
+                  </div>    
+                  <div className="col-lg-4">
+                    <RangeSlider label={'מחיר (ש”ח) '} />
+                  </div>
                 </div>
                 <h4>מאפיינים נוספים</h4>
                 <ul class="services_tags">
@@ -328,45 +288,41 @@ const AddCustomer = () => {
             </div>
           </form>
         </div>
-      </div>
-      {/** Add Customer Successfully */}
-      <div className="modalcontent">
-        {
-          isFirstModalOpen && 
-          <CustomModal
-          show={isFirstModalOpen}
-          handleClose={() => setIsFirstModalOpen(false)}
-          onClick={openSecondModal}
-          footer={"לדו”ח התאמות נכסים"}
-          footer1={'לשליחת הסכם'}
-          >
-          <figure class="succ_pop_icon text-center"><img src={successIcon} alt="Success" /></figure>
-          <h4 className="pop_head color_green text-center">הלקוח נוסף בהצלחה</h4>
-          </CustomModal>
-        }
-
-        {
-          isSecondModalOpen && 
-          <CustomModal
-          show={isSecondModalOpen}
-          handleClose={() => setIsSecondModalOpen(false)}
-          footer={"לדו”ח התאמות נכסים"}
-          footer1={'לשליחת הסכם'}
-          >
-            <figure class="succ_pop_icon text-center"><img src={successIcon} alt="Success" /></figure>
-            <h4 className="pop_head  text-center">הלקוח נוסף בהצלחה</h4>
-            <div className="text-center ">
-              <button className=" modalbtn mb-4">  לשליחת הסכם החתמת מתעניין  </button>
-              <button className="modalbtn mb-4">  לשליחת הסכם החתמת בעל נכס  </button>
-              <button className=" modalbtn mb-4">  לשליחת הסכם שת”פ בין מתווכים </button>
-            </div>
-          </CustomModal>
-        }
-      </div>
-    </main>
+      </div>  
+      {isFirstModalOpen && (
+              <CustomModal
+                show={isFirstModalOpen}
+                handleClose={() => setIsFirstModalOpen(false)}
+                onClick={openSecondModal}
+                footer={"לדו”ח התאמות נכסים"}
+                footer1={'לשליחת הסכם'}
+              >
+                <div className="text-center">
+                  <img src={successIcon} alt="Success" className="mx-auto w-20 h-20 mb-3" />
+                  <h4 className="text-emerald-500 text-2xl font-semibold">הלקוח נוסף בהצלחה</h4>
+                </div>
+              </CustomModal>
+      )}
+      {isSecondModalOpen && (
+              <CustomModal
+                show={isSecondModalOpen}
+                handleClose={() => setIsSecondModalOpen(false)}
+                header={<img src={Next} alt="next btn"/>}
+              >
+                <div className=" text-center">
+                  <img src={successIcon} alt="Success" className="mx-auto w-20 h-20 mb-3"  />
+                  <h4 className=" text-2xl mb-12 font-semibold">הלקוח נוסף בהצלחה</h4>
+                </div>
+                <div className="text-center flex flex-col justify-center">
+                  <button className=" modalbtn py-2 px-3 mb-4">  לשליחת הסכם החתמת מתעניין  </button>
+                  <button className="modalbtn py-2 px-3 mb-4">  לשליחת הסכם החתמת בעל נכס  </button>
+                  <button className=" modalbtn py-2 px-3 mb-4">  לשליחת הסכם שת”פ בין מתווכים </button>
+                </div>
+              </CustomModal>
+      )}
+    </div>
   );
 };
-
 export default AddCustomer;
 
 
