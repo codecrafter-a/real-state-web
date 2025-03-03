@@ -6,7 +6,7 @@ const CustomModal = ({ show, handleClose, title, children, footer, onClick, foot
 
   return (
     <div 
-    className="fixed inset-0 flex w-full items-center justify-center bg-black bg-opacity-50 z-[1000] ">
+    className="fixed top-0 left-0 inset-0 flex w-full items-center justify-center bg-black bg-opacity-50 z-[999] ">
     <motion.div
       initial={{ y: -50, opacity: 0 }} 
       animate={{ y: 0, opacity: 1 }}   

@@ -81,9 +81,10 @@ const AddCustomer = () => {
         <div className="main_wrap_body p-0">
           <form className="form_custom">
             <div className="internal_scroll mCustomScrollbar _mCS_2 mCS_no_scrollbar ">
-              <div className="row form_group">
-                <h4>פרטים אישיים {/* Personal Detail */}</h4>
-                <div className="col-md-4">
+            <h4>פרטים אישיים {/* Personal Detail */}</h4>
+
+              <div className="grid grid-cols-3 gap-6 justify-center form_group">
+                <div className="sm:col-span-12  md:col-span-1">
                   <label className="form-label">שם מלא*</label>
                     <CustomInput
                         type="text"
@@ -93,7 +94,7 @@ const AddCustomer = () => {
                         className="form-control"
                     />
                 </div>
-                <div className="col-md-4">
+                <div className="sm:col-span-12  md:col-span-1">
                   <label className="form-label">טלפון*</label>
                   <CustomInput 
                       type="number"
@@ -103,7 +104,7 @@ const AddCustomer = () => {
                       className="form-control"
                   />                 
                 </div>
-                <div className="col-md-4">
+                <div className="sm:col-span-12  md:col-span-1">
                   <label className="form-label">דוא”ל*</label>
                     <CustomInput 
                       type="email"
@@ -114,8 +115,8 @@ const AddCustomer = () => {
                      />     
                 </div>
               </div>
-              <div className="row form_group">
-                <div className=" col-12 col-md-4">
+              <div className="grid grid-cols-3 gap-6 form_group">
+                <div className="sm:col-span-12  md:col-span-1">
                     <label className="form-label">ת”ז</label>
                     <CustomInput 
                      type="text"
@@ -125,7 +126,7 @@ const AddCustomer = () => {
                      className="form-control"
                     />     
                 </div>
-                <div className=" col-12 col-md-8">
+                <div className=" sm:col-span-12  md:col-span-2">
                     <label className="form-label">כתובת מגורים מלאה</label>
                     <CustomInput 
                     type="text"
@@ -189,8 +190,8 @@ const AddCustomer = () => {
                   </div>
                 ))}
               </div>
-              <div className="row form_group">
-                <div className="col-md-4">
+              <div className="grid grid-cols-3 gap-6 form_group">
+                <div className="col-span-1">
                   <label className="form-label">איזור מגורים מבוקש</label>
                   <div className="input-group input_grp_cus">
                     <CustomInput 
@@ -206,7 +207,7 @@ const AddCustomer = () => {
                     </button>
                   </div>
                 </div>
-                <div className="col-md-4">
+                <div className="col-span-1">
                   <label className="form-label">סוג הנכס</label>
                     <CustomSelect
                         name="propertyType"
@@ -220,7 +221,7 @@ const AddCustomer = () => {
                         className="form-select"
                     />
                 </div>
-                <div className="col-md-4">
+                <div className="col-span-1">
                   <label className="form-label">מצב הנכס</label>
                     <CustomSelect
                       name="propertyType"
@@ -235,8 +236,8 @@ const AddCustomer = () => {
                     />
                 </div>
               </div>
-                <div className="row form_group">
-                  <div className="col-md-4">
+                <div className=" grid grid-cols-3 gap-6 form_group">
+                  <div className="cols-span-1">
                     <label className="form-label">מספר חדרים {/** Number of room */}</label>
                     <div className="input-group input_grp_cus">
                         <CustomInput 
@@ -248,10 +249,10 @@ const AddCustomer = () => {
                         />     
                     </div>
                   </div>
-                  <div className="col-lg-4">
+                  <div className="col-span-1">
                     <RangeSlider label={' גודל  (מ”ר)'}/>
                   </div>    
-                  <div className="col-lg-4">
+                  <div className="col-span-1">
                     <RangeSlider label={'מחיר (ש”ח) '} />
                   </div>
                 </div>

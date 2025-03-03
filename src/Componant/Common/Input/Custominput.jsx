@@ -9,7 +9,7 @@ const CustomInput = ({ type = "text", placeholder, value, onChange, id, name, cl
       value={value}
       name={name}
       onChange={onChange}
-      className={`border rounded-lg px-4 py-2 outline-none ${className}`}
+      className={`border rounded-md px-4 py-2 outline-none ${className}`}
     />
   );
 };

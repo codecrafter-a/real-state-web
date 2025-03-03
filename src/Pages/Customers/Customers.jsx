@@ -9,12 +9,12 @@ import remove_icon from "../../assets/images/remove_icon.svg";
 import action_icon1 from "../../assets/images/action_icon1.svg";
 import action_icon2 from "../../assets/images/action_icon2.svg";
 // import check_tick from '../../assets/images/check_tick.svg';
-
 import table_arrrow from "../../assets/images/table_arrrow.svg";
 import CustomModal from "../../Componant/Common/Modal/CustomeModal";
 import RangeSlider from "../../Componant/Common/RangeSlider/RangeSlider";
-// import edit from '../../assets/images/edit.svg';
-// import deleteIcon  from '../../assets/images/delete.svg';
+import CustomButton from "../../Componant/Common/Button/Button";
+import edit from '../../assets/images/edit.svg';
+import deleteIcon  from '../../assets/images/delete.svg';
 
 const Customer = () => {
   const clients = [
@@ -72,7 +72,7 @@ const Customer = () => {
   };
 
   return (
-    <div>
+    <>
       <div className="absolute w-full top-0 z-0 overflow-hidden">
         <figure className="mb-0 top_bg_fig">
           <img src={body_bg} width="100%" alt="Background" />
@@ -341,27 +341,18 @@ const Customer = () => {
                           </td>
                         </tr>
                         {expandedRows.includes(index) && (
-                          <tr className="bg-gray-50 ">
+                          <tr className="bg-white ">
                             <td colSpan={7} className="px-6 py-4">
-                              <div className="text-right">
-                                <p>
-                                  <strong>סוג הנכס:</strong> דירה בבניין, דירת ג
-                                </p>
-                                <p>
-                                  <strong>מצב הנכס:</strong> חדש, משופץ
-                                </p>
-                                <p>
-                                  <strong>מספר חדרים:</strong> 3,4,5
-                                </p>
-                                <p>
-                                  <strong>גודל דירה:</strong> 100 - 300 מ”ר
-                                </p>
-                                <p>
-                                  <strong>קומה:</strong> 4,5
-                                </p>
-                                <p>
-                                  <strong>מחיר:</strong> 1000 - 3000 ₪
-                                </p>
+                              <div className="text-start">
+                                <p><strong>סוג הנכס:</strong> דירה בבניין, דירת ג</p>
+                                <p><strong>מצב הנכס:</strong> חדש, משופץ</p>
+                              </div>
+                              <div className="flex justify-between">  
+                                <CustomButton children={" לכל ההסכמים"} className={"border-1 border-emerald-500 shadow-lg text-emerald-500 px-3 py-1 rounded-full hover:bg-[#55CD85] hover:border-[#55CD85] hover:text-white"}/>
+                                <div className=" flex gap-4 items-center cursor-pointer">
+                                  <img src={edit}  alt="edit"/>
+                                  <img src={deleteIcon} alt="deleteicon"/> 
+                                </div>
                               </div>
                             </td>
                           </tr>
@@ -420,40 +411,21 @@ const Customer = () => {
                   מאפיינים נוספים
                 </h3>
                 <div class="flex flex-wrap gap-2 mb-6 justify-start">
-                  <button class="bg-gray-200 px-3 py-1 rounded-full text-gray-700">
-                    כניסה מיידית
-                  </button>
-                  <button class="bg-gray-200 px-4 py-1 rounded-full text-gray-700">
-                    כניסה גמישה
-                  </button>
-                  <button class="bg-gray-200 px-4 py-1 rounded-full text-gray-700">
-                    מחסן
-                  </button>
-                  <button class="bg-gray-200 px-4 py-1 rounded-full text-gray-700">
-                    מעלית
-                  </button>
-                  <button class="bg-gray-200 px-4 py-1 rounded-full text-gray-700">
-                    גישה לנכים
-                  </button>
-                  <button class="bg-gray-200 px-4 py-1 rounded-full text-gray-700">
-                    מרפסת
-                  </button>
-                  <button class="bg-gray-200 px-4 py-1 rounded-full text-gray-700">
-                    מזגן
-                  </button>
-                  <button class="bg-gray-200 px-4 py-1 rounded-full text-gray-700">
-                    חניה
-                  </button>
-                  <button class="bg-gray-200 px-4 py-1 rounded-full text-gray-700">
-                    ממד
-                  </button>
+                  <CustomButton className={"bg-gray-200 px-3 py-1 rounded-full text-gray-700"}  children={"כניסה מיידית"}/>
+                  <CustomButton className={"bg-gray-200 px-3 py-1 rounded-full text-gray-700"}  children={"כניסה גמישה "}/>
+                  <CustomButton className={"bg-gray-200 px-3 py-1 rounded-full text-gray-700"}  children={"מחסן"}/>
+                  <CustomButton className={"bg-gray-200 px-3 py-1 rounded-full text-gray-700"}  children={'מעלית'}/>
+                  <CustomButton className={"bg-gray-200 px-3 py-1 rounded-full text-gray-700"}  children={'מרפסת'}/>
+                  <CustomButton className={"bg-gray-200 px-3 py-1 rounded-full text-gray-700"}  children={'מזגן'}/>
+                  <CustomButton className={"bg-gray-200 px-3 py-1 rounded-full text-gray-700"}  children={'חניה'}/>
+                  <CustomButton className={"bg-gray-200 px-3 py-1 rounded-full text-gray-700"}  children={'ממד'}/>
                 </div>
               </div>
             </CustomModal>
           )}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 export default Customer;
