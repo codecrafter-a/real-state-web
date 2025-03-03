@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from 'react-i18next';
 import bodyBg from "../../../assets/images/body_bg.webp";
 import boryGroupLeft from "../../../assets/images/bory_group_left.png";
 import boryGroupRight from "../../../assets/images/bory_group_right.png";
@@ -17,6 +18,8 @@ import Next from "../../../assets/images/Next.jpg";
 import RangeSlider from "../../../Componant/Common/RangeSlider/RangeSlider";
 
 const AddCustomer = () => {
+  const { t } = useTranslation();
+
   const [formData, setFormData] = useState({
     fullName: "",
     phone: "",
@@ -57,10 +60,10 @@ const AddCustomer = () => {
   };
 
   const openSecondModal = () => {
-    setIsFirstModalOpen(false); 
-    setIsSecondModalOpen(true); 
+    setIsFirstModalOpen(false);
+    setIsSecondModalOpen(true);
   };
- 
+
   return (
     <div>
       <div className="top_bg_image">
@@ -76,83 +79,83 @@ const AddCustomer = () => {
       </div>
       <div className="main_wrapper ">
         <div className="main_wrap_hdr">
-          <h1 className="bor_head_cmn text-center">הוספת לקוח חדש</h1>
+          <h1 className="bor_head_cmn text-center">{t("add_cust_form_title")}</h1>
         </div>
         <div className="main_wrap_body p-0">
           <form className="form_custom">
             <div className="internal_scroll mCustomScrollbar _mCS_2 mCS_no_scrollbar ">
               <div className="row form_group">
-                <h4>פרטים אישיים {/* Personal Detail */}</h4>
+                <h4>{t("cust_per_info")} {/* Personal Detail */}</h4>
                 <div className="col-md-4">
-                  <label className="form-label">שם מלא*</label>
-                    <CustomInput
-                        type="text"
-                        name="fullName"
-                        value={formData.fullName}
-                        onChange={handleChange}
-                        className="form-control"
-                    />
+                  <label className="form-label">{t("cust_full_name")}</label>
+                  <CustomInput
+                    type="text"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleChange}
+                    className="form-control"
+                  />
                 </div>
                 <div className="col-md-4">
-                  <label className="form-label">טלפון*</label>
-                  <CustomInput 
-                      type="number"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="form-control"
-                  />                 
+                  <label className="form-label">{t("cust_phone")}</label>
+                  <CustomInput
+                    type="number"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="form-control"
+                  />
                 </div>
                 <div className="col-md-4">
-                  <label className="form-label">דוא”ל*</label>
-                    <CustomInput 
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="form-control"
-                     />     
+                  <label className="form-label">{t("cust_UE")}</label>
+                  <CustomInput
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="form-control"
+                  />
                 </div>
               </div>
               <div className="row form_group">
                 <div className=" col-12 col-md-4">
-                    <label className="form-label">ת”ז</label>
-                    <CustomInput 
-                     type="text"
-                     name="idCard"
-                     value={formData.idCard}
-                     onChange={handleChange}
-                     className="form-control"
-                    />     
+                  <label className="form-label">{t("cust_TA")}</label>
+                  <CustomInput
+                    type="text"
+                    name="idCard"
+                    value={formData.idCard}
+                    onChange={handleChange}
+                    className="form-control"
+                  />
                 </div>
                 <div className=" col-12 col-md-8">
-                    <label className="form-label">כתובת מגורים מלאה</label>
-                    <CustomInput 
+                  <label className="form-label">{t("cust_address")}</label>
+                  <CustomInput
                     type="text"
                     name="residentialArea"
                     value={formData.residentialArea}
                     onChange={handleChange}
                     className="form-control"
-                    />     
+                  />
                 </div>
               </div>
               <div className="row pb-3 mb-4">
-                <p className="form-label mb-2">סוג לקוח</p>
+                <p className="form-label mb-2">{t("cust_type")}</p>
                 {[
-                  { id: "usertype_1", icon: userTypeIcon1, label: "מתעניין" },
-                  { id: "usertype_2", icon: userTypeIcon2, label: "בעל נכס" },
-                  { id: "usertype_3", icon: userTypeIcon3, label: "מתווך" },
+                  { id: "usertype_1", icon: userTypeIcon1, label: t("cust_type_1") },
+                  { id: "usertype_2", icon: userTypeIcon2, label: t("cust_type_2") },
+                  { id: "usertype_3", icon: userTypeIcon3, label: t("cust_type_3") },
                 ].map(({ id, icon, label }) => (
                   <div className="col-auto" key={id}>
                     <div className="check_custom_icon">
-                      <CustomInput 
+                      <CustomInput
                         type="checkbox"
                         id={id}
                         name="userType"
                         value={label}
                         onChange={handleChange}
                         className="btn-check"
-                       />     
+                      />
                       <label htmlFor={id}>
                         <span className="user_type_icon">
                           <img src={icon} alt="icon" />
@@ -162,23 +165,23 @@ const AddCustomer = () => {
                     </div>
                   </div>
                 ))}
-              </div> 
+              </div>
               <div className="row pb-4">
-                <h4>העדפות לקוח</h4>
+                <h4>{t("cust_preferences")}</h4>
                 {[
-                  { id: "user_pra1", icon: keyVertical, label: "מהשכרה" },
-                  { id: "user_pra2", icon: garageDoor, label: "בקנייה" },
+                  { id: "user_pra1", icon: keyVertical, label: t("cust_preferences_1") },
+                  { id: "user_pra2", icon: garageDoor, label: t("cust_preferences_2") },
                 ].map(({ id, icon, label }) => (
                   <div className="col-auto" key={id}>
                     <div className="check_custom_icon">
-                      <CustomInput 
+                      <CustomInput
                         type="checkbox"
                         id={id}
                         name="preferences"
                         value={label}
                         onChange={handleChange}
                         className="btn-check"
-                       />     
+                      />
                       <label htmlFor={id}>
                         <span className="user_type_icon">
                           <img src={icon} alt="icon" />
@@ -191,134 +194,134 @@ const AddCustomer = () => {
               </div>
               <div className="row form_group">
                 <div className="col-md-4">
-                  <label className="form-label">איזור מגורים מבוקש</label>
+                  <label className="form-label">{t("res_area")}</label>
                   <div className="input-group input_grp_cus">
-                    <CustomInput 
-                     type="text"
-                     name="requestedArea"
-                     value={formData.requestedArea}
-                     onChange={handleChange}
-                     className="form-control"
-                     placeholder="התחילו להקליד..."
-                    />     
+                    <CustomInput
+                      type="text"
+                      name="requestedArea"
+                      value={formData.requestedArea}
+                      onChange={handleChange}
+                      className="form-control"
+                      placeholder={t("type")}
+                    />
                     <button className="btn " type="button">
                       <img src={searchIcon} alt="search" />
                     </button>
                   </div>
                 </div>
                 <div className="col-md-4">
-                  <label className="form-label">סוג הנכס</label>
-                    <CustomSelect
-                        name="propertyType"
-                        value={formData.propertyType}
-                        onChange={handleChange}
-                        options={[
-                            { value: "", label: "" },
-                            { value: "option1", label: "Option 1" },
-                            { value: "option2", label: "Option 2" },
-                        ]}
-                        className="form-select"
-                    />
+                  <label className="form-label">{t("pro_type")}</label>
+                  <CustomSelect
+                    name="propertyType"
+                    value={formData.propertyType}
+                    onChange={handleChange}
+                    options={[
+                      { value: "", label: "" },
+                      { value: "option1", label: "Option 1" },
+                      { value: "option2", label: "Option 2" },
+                    ]}
+                    className="form-select"
+                  />
                 </div>
                 <div className="col-md-4">
-                  <label className="form-label">מצב הנכס</label>
-                    <CustomSelect
-                      name="propertyType"
-                      value={formData.propertyType}
-                      onChange={handleChange}
-                      options={[
-                          { value: "", label: "" },
-                          { value: "option1", label: "Option 1" },
-                          { value: "option2", label: "Option 2" },
-                      ]}
-                      className="form-select"
-                    />
+                  <label className="form-label">{t("pro_condition")}</label>
+                  <CustomSelect
+                    name="propertyType"
+                    value={formData.propertyType}
+                    onChange={handleChange}
+                    options={[
+                      { value: "", label: "" },
+                      { value: "option1", label: "Option 1" },
+                      { value: "option2", label: "Option 2" },
+                    ]}
+                    className="form-select"
+                  />
                 </div>
               </div>
-                <div className="row form_group">
-                  <div className="col-md-4">
-                    <label className="form-label">מספר חדרים {/** Number of room */}</label>
-                    <div className="input-group input_grp_cus">
-                        <CustomInput 
-                        type="text"
-                        name="numberOfRooms"
-                        value={formData.numberOfRooms}
-                        onChange={handleChange}
-                        className="form-control"
-                        />     
-                    </div>
-                  </div>
-                  <div className="col-lg-4">
-                    <RangeSlider label={' גודל  (מ”ר)'}/>
-                  </div>    
-                  <div className="col-lg-4">
-                    <RangeSlider label={'מחיר (ש”ח) '} />
+              <div className="row form_group">
+                <div className="col-md-4">
+                  <label className="form-label">{t("no_rooms")}{/** Number of room */}</label>
+                  <div className="input-group input_grp_cus">
+                    <CustomInput
+                      type="text"
+                      name="numberOfRooms"
+                      value={formData.numberOfRooms}
+                      onChange={handleChange}
+                      className="form-control"
+                    />
                   </div>
                 </div>
-                <h4>מאפיינים נוספים</h4>
-                <ul class="services_tags">
-                  <li><span>כניסה מיידית  </span></li>
-                  <li><span>כניסה גמישה  </span></li><br />
-                  {[
-                    {title: "מרפסת"},
-                    {title: "גישה לנכים"},
-                    {title: "מעלית "},
-                    {title: "מחסן"},
-                    {title: "ממ”ד"},
-                    {title: "מזגן"},
-                    {title: "מרוהט "},
-                    {title: "חניה "},
-                    {title: "סורגים "},
-                  ].map((item) => <li><span>{item.title}</span></li>
+                <div className="col-lg-4">
+                  <RangeSlider label={t("size")} />
+                </div>
+                <div className="col-lg-4">
+                  <RangeSlider label={t("price")} />
+                </div>
+              </div>
+              <h4>{t("fetures")}</h4>
+              <ul class="services_tags">
+                <li><span>{t("entry_type_1")}  </span></li>
+                <li><span>{t("entry_type_2")}  </span></li><br />
+                {[
+                  { title: t("feture_1") },
+                  { title: t("feture_2") },
+                  { title: t("feture_3") },
+                  { title: t("feture_4") },
+                  { title: t("feture_5") },
+                  { title: t("feture_6") },
+                  { title: t("feture_7") },
+                  { title: t("feture_8") },
+                  { title: t("feture_9") },
+                ].map((item) => <li><span>{item.title}</span></li>
 
-                  )}
-                </ul>
+                )}
+              </ul>
               <div className="form_group">
-                <label className="form-label">בקשות הלקוח</label>
+                <label className="form-label">{t("reports")}</label>
                 <textarea
                   name="customerRequests"
                   value={formData.customerRequests}
                   onChange={handleChange}
                   className="form-control"
                 ></textarea>
-              </div> 
-              <button type="button" className="btn_cmn mt-3"  onClick={() => setIsFirstModalOpen(true)}>
-                הוספה
+              </div>
+              <button type="button" className="btn_cmn mt-3" onClick={() => setIsFirstModalOpen(true)}>
+                {t("cust_add")}
               </button>
             </div>
           </form>
         </div>
-      </div>  
+      </div>
       {isFirstModalOpen && (
-              <CustomModal
-                show={isFirstModalOpen}
-                handleClose={() => setIsFirstModalOpen(false)}
-                onClick={openSecondModal}
-                footer={"לדו”ח התאמות נכסים"}
-                footer1={'לשליחת הסכם'}
-              >
-                <div className="text-center">
-                  <img src={successIcon} alt="Success" className="mx-auto w-20 h-20 mb-3" />
-                  <h4 className="text-emerald-500 text-2xl font-semibold">הלקוח נוסף בהצלחה</h4>
-                </div>
-              </CustomModal>
+        <CustomModal
+          show={isFirstModalOpen}
+          handleClose={() => setIsFirstModalOpen(false)}
+          onClick={openSecondModal}
+          footer={t("footer")}
+          footer1={t("footer1")}
+        >
+          <div className="text-center">
+            <img src={successIcon} alt="Success" className="mx-auto w-20 h-20 mb-3" />
+            <h4 className="text-emerald-500 text-2xl font-semibold">{t("add_description")}</h4>
+          </div>
+        </CustomModal>
       )}
       {isSecondModalOpen && (
-              <CustomModal
-                show={isSecondModalOpen}
-                handleClose={() => setIsSecondModalOpen(false)}
-                header={<img src={Next} alt="next btn"/>}
-              >
-                <div className=" text-center">
-                  <img src={successIcon} alt="Success" className="mx-auto w-20 h-20 mb-3"  />
-                  <h4 className=" text-2xl mb-12 font-semibold">הלקוח נוסף בהצלחה</h4>
-                </div>
-                <div className="text-center flex flex-col justify-center">
-                  <button className=" modalbtn py-2 px-3 mb-4">  לשליחת הסכם החתמת מתעניין  </button>
-                  <button className="modalbtn py-2 px-3 mb-4">  לשליחת הסכם החתמת בעל נכס  </button>
-                  <button className=" modalbtn py-2 px-3 mb-4">  לשליחת הסכם שת”פ בין מתווכים </button>
-                </div>
-              </CustomModal>
+        <CustomModal
+          show={isSecondModalOpen}
+          handleClose={() => setIsSecondModalOpen(false)}
+          header={<img src={Next} alt="next btn" />}
+        >
+          <div className=" text-center">
+            <img src={successIcon} alt="Success" className="mx-auto w-20 h-20 mb-3" />
+            <h4 className=" text-2xl mb-12 font-semibold">{t("add_cust_model_description")}</h4>
+          </div>
+          <div className="text-center flex flex-col justify-center">
+            <button className=" modalbtn py-2 px-3 mb-4">  {t("add_cust_sign_in")} </button>
+            <button className="modalbtn py-2 px-3 mb-4"> {t("add_proprty_owers_sign_in")} </button>
+            <button className=" modalbtn py-2 px-3 mb-4"> {t("add_cust_broker_sign_in")}</button>
+          </div>
+        </CustomModal>
       )}
     </div>
   );

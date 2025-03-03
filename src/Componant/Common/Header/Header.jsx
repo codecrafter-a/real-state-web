@@ -1,9 +1,11 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import logo from '../../../assets/images/logo.svg';
 import userIcon from '../../../assets/images/user_icon.svg';
 import '../Header/header.css'
 
 const Header = () => {
+  const { t } = useTranslation();
   return (
     <header className="header_main">
       <section className="haeder_top">
@@ -17,7 +19,7 @@ const Header = () => {
             <ul className="hdt_top_menu d-flex align-items-center">
               <li className="user_dd dropdown">
                 <a href="/" class="dropdown-toggle" type="button" id="dd_user" data-bs-toggle="dropdown" aria-expanded="false">
-                  <div className=' flex justify-center'><img src={userIcon} alt="gfdgdg"/>שירי נקבלי | STARTER </div> 
+                  <div className=' flex justify-center'><img src={userIcon} alt="gfdgdg" />{t("starter")} </div>
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="dd_user">
                   <li><a className="dropdown-item" href="/">Profile</a></li>
@@ -26,7 +28,7 @@ const Header = () => {
                 </ul>
               </li>
               <li className="hdr_btn">
-                <a href="/">שידרוג מנוי</a>
+                <a href="/">{t("update")}</a>
               </li>
             </ul>
           </div>
