@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from 'react-i18next';
 import body_bg from "../../assets/images/body_bg.webp";
 import bory_group_right from "../../assets/images/bory_group_right.png";
 import bory_group_left from "../../assets/images/bory_group_right.png";
@@ -17,23 +18,24 @@ import edit from '../../assets/images/edit.svg';
 import deleteIcon  from '../../assets/images/delete.svg';
 
 const Customer = () => {
+  const { t } = useTranslation();
   const clients = [
     {
-      name: "שירי נקבלי",
-      type: "מתעניין בשכירות",
-      phone: "054-4692650",
-      email: "shirims@gmail.com",
-      location: "חיפה, קריות, נשר",
-      status: "טופס נחתם",
+      name: t("cust_name_1"),
+      type: t("type_cust_1"),
+      phone: t("phone_cust_1"),
+      email: t("email_cust_1"),
+      location: t("location_cust_1"),
+      status: t("status_cust_1"),
       statusColor: "bg-blue-200 text-blue-600",
     },
     {
-      name: "שירי נקבלי",
-      type: "מתעניין בשכירות",
-      phone: "054-4692650",
-      email: "shirims@gmail.com",
-      location: "חיפה, קריות, נשר",
-      status: "טופס",
+      name: t("cust_name_2"),
+      type: t("type_cust_2"),
+      phone: t("054-4692650"),
+      email: t("shirims@gmail.com"),
+      location: t("location_cust_2"),
+      status: t("status_cust_2"),
       statusColor: "bg-red-200 text-red-600",
     },
   ];
@@ -87,7 +89,7 @@ const Customer = () => {
       <div className="main_wrapper">
         <div className="main_wrap_hdr">
           <h1 className="text-2xl font-semibold border-b border-gray-300 py-4 mb-7 text-[#00A481] text-center">
-            כל הלקוחות
+              {t("all_cust")}
           </h1>
         </div>
         <div className="main_wrap_body p-0">
@@ -100,7 +102,7 @@ const Customer = () => {
                 >
                   <div className="flex items-center justify-center">
                     <img className="me-1" src={add_reaction} alt="Add Client" />
-                    הוספת לקוח{" "}
+                     {t("add_cust")}{" "}
                   </div>
                 </button>
               </div>
@@ -109,7 +111,7 @@ const Customer = () => {
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="חפשו לקוח לפי שם / טלפון /מייל "
+                    placeholder={t("filter_cust")}
                   />
                   <button className="btn" type="button">
                     <img src={search} alt="Search" />
@@ -119,7 +121,7 @@ const Customer = () => {
               <div className="row form_group row_customers">
                 <div className="col">
                   <label className="form-label">
-                    לקוח מתעניין ב../ סוג לקוח
+                    {t("cust_filter_1")}
                   </label>
                   <select className="form-select">
                     <option />
@@ -128,12 +130,12 @@ const Customer = () => {
                   </select>
                 </div>
                 <div className="col">
-                  <label className="form-label">איזור מגורים מבוקש</label>
+                  <label className="form-label">{t("cust_serch")}</label>
                   <div className="input-group input_grp_cus">
                     <input
                       type="text"
                       className="form-control"
-                      placeholder="התחילו להקליד"
+                      placeholder={t("cust_typing")}
                     />
                     <button className="btn" type="button">
                       <img src={search} alt="Search" />
@@ -141,7 +143,7 @@ const Customer = () => {
                   </div>
                 </div>
                 <div className="col">
-                  <label className="form-label">סוג הנכס</label>
+                  <label className="form-label">{t("cust_Property_type")}</label>
                   <select className="form-select">
                     <option />
                     <option>Option 1</option>
@@ -149,7 +151,7 @@ const Customer = () => {
                   </select>
                 </div>
                 <div className="col">
-                  <label className="form-label">מצב הנכס</label>
+                  <label className="form-label">{t("cust_Property_condition")}</label>
                   <select className="form-select">
                     <option />
                     <option>Option 1</option>
@@ -159,7 +161,7 @@ const Customer = () => {
                 <div className="col-auto">
                   <label className="form-label d-block">&nbsp;</label>
                   <button type="button" className="btn_cmn btn_cmn_40">
-                    חיפוש
+                    {t("cust_search")}
                   </button>
                 </div>
               </div>
@@ -177,42 +179,42 @@ const Customer = () => {
                           src={search_icon2}
                           alt="Add Client"
                         />
-                        חיפוש מתקדם
+                        {t("advance_search")}
                       </button>
 
                       <ul className=" w-full flex m-0 items-center">
                         <li className="mx-2 bg-emerald-500 bg-opacity-10 bordre-[1px] rounded-pill flex px-4 py-1">
-                          מתעניין בשכירות{" "}
+                          {t("cust_opt_1")}{" "}
                           <span className="my-2 px-2 ">
                             <img src={remove_icon} alt="Remove" />
                           </span>
                         </li>
                         <li className=" mx-2 bg-emerald-500 bg-opacity-10 bordre-[1px] rounded-pill flex px-4 py-1">
-                          חיפה{" "}
+                          {t("cust_opt_2")}{" "}
                           <span className="my-2 px-2 ">
                             <img src={remove_icon} alt="Remove" />
                           </span>
                         </li>
                         <li className="mx-2 bg-emerald-500 bg-opacity-10 bordre-[1px] rounded-pill flex px-4 py-1">
-                          נשר{" "}
+                          {t("cust_opt_3")}{" "}
                           <span className="my-2 px-2 ">
                             <img src={remove_icon} alt="Remove" />
                           </span>
                         </li>
                         <li className="mx-2 bg-emerald-500 bg-opacity-10 bordre-[1px] rounded-pill flex px-4 py-1">
-                          קריות{" "}
+                          {t("cust_opt_4")}{" "}
                           <span className="my-2 px-2">
                             <img src={remove_icon} alt="Remove" />
                           </span>
                         </li>
                         <li className="mx-2 bg-emerald-500 bg-opacity-10 bordre-[1px] rounded-pill flex px-4 py-1">
-                          נשר{" "}
+                          {t("cust_opt_5")}{" "}
                           <span className="my-2 px-2 ">
                             <img src={remove_icon} alt="Remove" />
                           </span>
                         </li>
                         <li className="mx-2 bg-emerald-500 bg-opacity-10 bordre-[1px] rounded-pill flex px-4 py-1">
-                          קריות{" "}
+                          {t("cust_opt_6")}{" "}
                           <span className="my-2 px-2">
                             <img src={remove_icon} alt="Remove" />
                           </span>
@@ -225,7 +227,7 @@ const Customer = () => {
                       type="button"
                       className="border-[1px] shadow-lg text-lg border-emerald-500 rounded-3xl text-emerald-500 py-1  hover:bg-[#55CD85] hover:text-white min-w-28 px-4"
                     >
-                      מחיקה
+                      {t("cust_delete")}
                     </button>
                     <button
                       type="button"
@@ -236,7 +238,7 @@ const Customer = () => {
                         src={action_icon1}
                         alt="Sign Client"
                       />
-                      החתמת מתעניין
+                      {t("auth_cust_sigin")}
                     </button>
                     <button
                       type="button"
@@ -247,7 +249,7 @@ const Customer = () => {
                         src={action_icon2}
                         alt="Sign Owner"
                       />
-                      החתמת בעל נכס
+                      {t("auth_pro_Owner_sigin")}
                     </button>
                   </div>
                 </div>
@@ -264,17 +266,17 @@ const Customer = () => {
                             onChange={toggleSelectAll}
                             className="h-4 w-4 accent-blue-500"
                           />
-                          <span>שם העמודה</span>
+                          <span>{t("cust_tbl_column_name")}</span>
                         </div>
                       </th>
-                      <th className="px-4 py-2 text-right w-[16%]">סוג לקוח</th>
-                      <th className="px-4 py-2 text-right w-[16%]">טלפון</th>
-                      <th className="px-4 py-2 text-right w-[16%]">דוא”ל</th>
+                      <th className="px-4 py-2 text-right w-[16%]">{t("cust_tbl_column_client_type")}</th>
+                      <th className="px-4 py-2 text-right w-[16%]">{t("cust_tbl_column_client_phone")}</th>
+                      <th className="px-4 py-2 text-right w-[16%]">{t("cust_tbl_column_client_email")}</th>
                       <th className="px-4 py-2 text-right w-[16%]">
-                        איזור מבוקש
+                        {t("cust_tbl_column_request_area")}
                       </th>
                       <th className="px-4 py-2 text-right w-[16%]">
-                        סטטוס מסמך אחרון
+                        {t("cust_tbl_column_status")}
                       </th>
                       <th className="px-4 py-2 w-[4%]"></th>
                     </tr>
@@ -343,6 +345,7 @@ const Customer = () => {
                         {expandedRows.includes(index) && (
                           <tr className="bg-white ">
                             <td colSpan={7} className="px-6 py-4">
+<<<<<<< HEAD
                               <div className="text-start">
                                 <p><strong>סוג הנכס:</strong> דירה בבניין, דירת ג</p>
                                 <p><strong>מצב הנכס:</strong> חדש, משופץ</p>
@@ -353,6 +356,27 @@ const Customer = () => {
                                   <img src={edit}  alt="edit"/>
                                   <img src={deleteIcon} alt="deleteicon"/> 
                                 </div>
+=======
+                              <div className="text-right">
+                                <p>
+                                  <strong>{t("cust_property_type")}</strong> {t("cust_property_type_value")}
+                                </p>
+                                <p>
+                                  <strong>{t("cust_Property_Condition")}</strong> {t("cust_Property_Condition_value")}
+                                </p>
+                                <p>
+                                  <strong>{t("cust_no_rooms")}</strong> {t("cust_no_rooms_value")}
+                                </p>
+                                <p>
+                                  <strong>{t("cust_apartment_size")}</strong> {t("cust_apartment_size_value")}
+                                </p>
+                                <p>
+                                  <strong>{t("cust_floor")}</strong> 4,5
+                                </p>
+                                <p>
+                                  <strong>{t("cust_price")}</strong> 1000 - 3000 ₪
+                                </p>
+>>>>>>> dd2fd02320a4c2e0949a17813ea356051a62a4a7
                               </div>
                             </td>
                           </tr>
@@ -368,17 +392,17 @@ const Customer = () => {
             <CustomModal
               show={isModalOpen}
               handleClose={() => setIsModalOpen(false)}
-              footer={"ניקוי פילטרים "}
-              footer1={"סינון "}
+              footer={t("cust_model_footer")}
+              footer1={t("cust_model_footer1")}
             >
               <div className="max-w-xl mx-auto px-6 bg-white  rounded-md w-full">
                 <h2 className="text-2xl pb-3 font-semibold text-emerald-600 text-center border-b mb-4">
-                  סנונים נוספים
+                  {t("addtional_filter")}
                 </h2>
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   <div>
                     <label className="block text-gray-600 text-start font-semibold text-md mb-1">
-                      מספר חדרים
+                    {t("cust_modal_no_rooms")}
                     </label>
                     <div className="relative flex items-center border border-gray-300 rounded-md px-1 py-2">
                       <input
@@ -395,7 +419,7 @@ const Customer = () => {
                   </div>
                   <div>
                     <label className="block text-gray-600 text-start font-semibold  text-md mb-1">
-                      קומה
+                    {t("floor")}
                     </label>
                     <select className="w-full border outline-none border-gray-300 rounded-md px-3 py-2 text-gray-700">
                       <option></option>
@@ -404,13 +428,14 @@ const Customer = () => {
                   </div>
                 </div>
                 <div class="grid grid-cols-2 gap-4 mb-4">
-                  <RangeSlider label={'גודל (מ"ר)'} />
-                  <RangeSlider label={"מחיר (ש״ח)"} />
+                  <RangeSlider label={t("cust_slider_label")} />
+                  <RangeSlider label={t("cust_slider_label2")} />
                 </div>
                 <h3 class="text-base text-start font-semibold text-emerald-600 mb-2">
-                  מאפיינים נוספים
+                  {t("addtional_feature")}
                 </h3>
                 <div class="flex flex-wrap gap-2 mb-6 justify-start">
+<<<<<<< HEAD
                   <CustomButton className={"bg-gray-200 px-3 py-1 rounded-full text-gray-700"}  children={"כניסה מיידית"}/>
                   <CustomButton className={"bg-gray-200 px-3 py-1 rounded-full text-gray-700"}  children={"כניסה גמישה "}/>
                   <CustomButton className={"bg-gray-200 px-3 py-1 rounded-full text-gray-700"}  children={"מחסן"}/>
@@ -419,6 +444,35 @@ const Customer = () => {
                   <CustomButton className={"bg-gray-200 px-3 py-1 rounded-full text-gray-700"}  children={'מזגן'}/>
                   <CustomButton className={"bg-gray-200 px-3 py-1 rounded-full text-gray-700"}  children={'חניה'}/>
                   <CustomButton className={"bg-gray-200 px-3 py-1 rounded-full text-gray-700"}  children={'ממד'}/>
+=======
+                  <button class="bg-gray-200 px-3 py-1 rounded-full text-gray-700">
+                    {t("addtional_feature_1")}
+                  </button>
+                  <button class="bg-gray-200 px-4 py-1 rounded-full text-gray-700">
+                    {t("addtional_feature_2")}
+                  </button>
+                  <button class="bg-gray-200 px-4 py-1 rounded-full text-gray-700">
+                    {t("addtional_feature_3")}
+                  </button>
+                  <button class="bg-gray-200 px-4 py-1 rounded-full text-gray-700">
+                    {t("addtional_feature_4")}
+                  </button>
+                  <button class="bg-gray-200 px-4 py-1 rounded-full text-gray-700">
+                    {t("addtional_feature_5")}
+                  </button>
+                  <button class="bg-gray-200 px-4 py-1 rounded-full text-gray-700">
+                    {t("addtional_feature_6")}
+                  </button>
+                  <button class="bg-gray-200 px-4 py-1 rounded-full text-gray-700">
+                    {t("addtional_feature_7")}
+                  </button>
+                  <button class="bg-gray-200 px-4 py-1 rounded-full text-gray-700">
+                    {t("addtional_feature_8")}
+                  </button>
+                  <button class="bg-gray-200 px-4 py-1 rounded-full text-gray-700">
+                    {t("addtional_feature_9")}
+                  </button>
+>>>>>>> dd2fd02320a4c2e0949a17813ea356051a62a4a7
                 </div>
               </div>
             </CustomModal>
