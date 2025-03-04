@@ -345,19 +345,7 @@ const Customer = () => {
                         {expandedRows.includes(index) && (
                           <tr className="bg-white ">
                             <td colSpan={7} className="px-6 py-4">
-<<<<<<< HEAD
                               <div className="text-start">
-                                <p><strong>סוג הנכס:</strong> דירה בבניין, דירת ג</p>
-                                <p><strong>מצב הנכס:</strong> חדש, משופץ</p>
-                              </div>
-                              <div className="flex justify-between">  
-                                <CustomButton children={" לכל ההסכמים"} className={"border-1 border-emerald-500 shadow-lg text-emerald-500 px-3 py-1 rounded-full hover:bg-[#55CD85] hover:border-[#55CD85] hover:text-white"}/>
-                                <div className=" flex gap-4 items-center cursor-pointer">
-                                  <img src={edit}  alt="edit"/>
-                                  <img src={deleteIcon} alt="deleteicon"/> 
-                                </div>
-=======
-                              <div className="text-right">
                                 <p>
                                   <strong>{t("cust_property_type")}</strong> {t("cust_property_type_value")}
                                 </p>
@@ -376,7 +364,17 @@ const Customer = () => {
                                 <p>
                                   <strong>{t("cust_price")}</strong> 1000 - 3000 ₪
                                 </p>
->>>>>>> dd2fd02320a4c2e0949a17813ea356051a62a4a7
+                              </div>
+                              <div className=" flex justify-between">
+                                <CustomButton
+                                  type="button"
+                                  className="border-[1px] shadow-lg text-lg border-emerald-500 rounded-3xl bg-white py-1 text-emerald-500 hover:bg-[#55CD85] min-w-28 px-4 flex items-center justify-center gap-2"
+                                  children={' לכל ההסכמים  '}
+                                />
+                                <div className=" flex items-center">
+                                  <img src={edit} alt={'editbtn'} className="px-1"/>
+                                  <img src={deleteIcon} alt={'deletebtn'} className="px-1"/>
+                                </div>
                               </div>
                             </td>
                           </tr>
@@ -435,16 +433,6 @@ const Customer = () => {
                   {t("addtional_feature")}
                 </h3>
                 <div class="flex flex-wrap gap-2 mb-6 justify-start">
-<<<<<<< HEAD
-                  <CustomButton className={"bg-gray-200 px-3 py-1 rounded-full text-gray-700"}  children={"כניסה מיידית"}/>
-                  <CustomButton className={"bg-gray-200 px-3 py-1 rounded-full text-gray-700"}  children={"כניסה גמישה "}/>
-                  <CustomButton className={"bg-gray-200 px-3 py-1 rounded-full text-gray-700"}  children={"מחסן"}/>
-                  <CustomButton className={"bg-gray-200 px-3 py-1 rounded-full text-gray-700"}  children={'מעלית'}/>
-                  <CustomButton className={"bg-gray-200 px-3 py-1 rounded-full text-gray-700"}  children={'מרפסת'}/>
-                  <CustomButton className={"bg-gray-200 px-3 py-1 rounded-full text-gray-700"}  children={'מזגן'}/>
-                  <CustomButton className={"bg-gray-200 px-3 py-1 rounded-full text-gray-700"}  children={'חניה'}/>
-                  <CustomButton className={"bg-gray-200 px-3 py-1 rounded-full text-gray-700"}  children={'ממד'}/>
-=======
                   <button class="bg-gray-200 px-3 py-1 rounded-full text-gray-700">
                     {t("addtional_feature_1")}
                   </button>
@@ -472,7 +460,6 @@ const Customer = () => {
                   <button class="bg-gray-200 px-4 py-1 rounded-full text-gray-700">
                     {t("addtional_feature_9")}
                   </button>
->>>>>>> dd2fd02320a4c2e0949a17813ea356051a62a4a7
                 </div>
               </div>
             </CustomModal>

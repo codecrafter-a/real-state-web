@@ -27,7 +27,7 @@ const Sidebar = () => {
             {[{ icon: iconHome, text: t("sitem1") },
               { icon: iconPaper, text: t("sitem2") },
               { icon: userIcon, text: t("sitem3") , to: "/customers"},
-              { icon: homeWork, text: t("sitem4") },
+              { icon: homeWork, text: t("sitem4"), to: "/property" },
               { icon: icon5, text: t("sitem5") },
               { icon: attachMoney, text: t("sitem6") },
               { icon: barChart, text: t("sitem7") },

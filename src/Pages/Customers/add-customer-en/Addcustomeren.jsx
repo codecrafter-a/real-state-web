@@ -84,56 +84,6 @@ const AddCustomer = () => {
         <div className="main_wrap_body p-0">
           <form className="form_custom">
             <div className="internal_scroll mCustomScrollbar _mCS_2 mCS_no_scrollbar ">
-<<<<<<< HEAD
-            <h4>פרטים אישיים {/* Personal Detail */}</h4>
-
-              <div className="grid grid-cols-3 gap-6 justify-center form_group">
-                <div className="sm:col-span-12  md:col-span-1">
-                  <label className="form-label">שם מלא*</label>
-                    <CustomInput
-                        type="text"
-                        name="fullName"
-                        value={formData.fullName}
-                        onChange={handleChange}
-                        className="form-control"
-                    />
-                </div>
-                <div className="sm:col-span-12  md:col-span-1">
-                  <label className="form-label">טלפון*</label>
-                  <CustomInput 
-                      type="number"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="form-control"
-                  />                 
-                </div>
-                <div className="sm:col-span-12  md:col-span-1">
-                  <label className="form-label">דוא”ל*</label>
-                    <CustomInput 
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="form-control"
-                     />     
-                </div>
-              </div>
-              <div className="grid grid-cols-3 gap-6 form_group">
-                <div className="sm:col-span-12  md:col-span-1">
-                    <label className="form-label">ת”ז</label>
-                    <CustomInput 
-                     type="text"
-                     name="idCard"
-                     value={formData.idCard}
-                     onChange={handleChange}
-                     className="form-control"
-                    />     
-                </div>
-                <div className=" sm:col-span-12  md:col-span-2">
-                    <label className="form-label">כתובת מגורים מלאה</label>
-                    <CustomInput 
-=======
               <div className="row form_group">
                 <h4>{t("cust_per_info")} {/* Personal Detail */}</h4>
                 <div className="col-md-4">
@@ -181,7 +131,6 @@ const AddCustomer = () => {
                 <div className=" col-12 col-md-8">
                   <label className="form-label">{t("cust_address")}</label>
                   <CustomInput
->>>>>>> dd2fd02320a4c2e0949a17813ea356051a62a4a7
                     type="text"
                     name="residentialArea"
                     value={formData.residentialArea}
@@ -243,15 +192,9 @@ const AddCustomer = () => {
                   </div>
                 ))}
               </div>
-<<<<<<< HEAD
-              <div className="grid grid-cols-3 gap-6 form_group">
-                <div className="col-span-1">
-                  <label className="form-label">איזור מגורים מבוקש</label>
-=======
               <div className="row form_group">
                 <div className="col-md-4">
                   <label className="form-label">{t("res_area")}</label>
->>>>>>> dd2fd02320a4c2e0949a17813ea356051a62a4a7
                   <div className="input-group input_grp_cus">
                     <CustomInput
                       type="text"
@@ -266,55 +209,6 @@ const AddCustomer = () => {
                     </button>
                   </div>
                 </div>
-<<<<<<< HEAD
-                <div className="col-span-1">
-                  <label className="form-label">סוג הנכס</label>
-                    <CustomSelect
-                        name="propertyType"
-                        value={formData.propertyType}
-                        onChange={handleChange}
-                        options={[
-                            { value: "", label: "" },
-                            { value: "option1", label: "Option 1" },
-                            { value: "option2", label: "Option 2" },
-                        ]}
-                        className="form-select"
-                    />
-                </div>
-                <div className="col-span-1">
-                  <label className="form-label">מצב הנכס</label>
-                    <CustomSelect
-                      name="propertyType"
-                      value={formData.propertyType}
-                      onChange={handleChange}
-                      options={[
-                          { value: "", label: "" },
-                          { value: "option1", label: "Option 1" },
-                          { value: "option2", label: "Option 2" },
-                      ]}
-                      className="form-select"
-                    />
-                </div>
-              </div>
-                <div className=" grid grid-cols-3 gap-6 form_group">
-                  <div className="cols-span-1">
-                    <label className="form-label">מספר חדרים {/** Number of room */}</label>
-                    <div className="input-group input_grp_cus">
-                        <CustomInput 
-                        type="text"
-                        name="numberOfRooms"
-                        value={formData.numberOfRooms}
-                        onChange={handleChange}
-                        className="form-control"
-                        />     
-                    </div>
-                  </div>
-                  <div className="col-span-1">
-                    <RangeSlider label={' גודל  (מ”ר)'}/>
-                  </div>    
-                  <div className="col-span-1">
-                    <RangeSlider label={'מחיר (ש”ח) '} />
-=======
                 <div className="col-md-4">
                   <label className="form-label">{t("pro_type")}</label>
                   <CustomSelect
@@ -355,7 +249,6 @@ const AddCustomer = () => {
                       onChange={handleChange}
                       className="form-control"
                     />
->>>>>>> dd2fd02320a4c2e0949a17813ea356051a62a4a7
                   </div>
                 </div>
                 <div className="col-lg-4">
