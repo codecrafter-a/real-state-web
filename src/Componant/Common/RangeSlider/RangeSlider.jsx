@@ -1,6 +1,6 @@
 import { useState } from "react";
 import dashLine from "../../../assets/images/dash_line.svg";
-const RangeSlider = ({label}) => {
+const RangeSlider = ({label,customStyle }) => {
   const [minValue, setMinValue] = useState(0);
   const [maxValue, setMaxValue] = useState(10000);
 
@@ -15,12 +15,12 @@ const RangeSlider = ({label}) => {
   };
 
   return (
-    <div className="col-span-2">
+    <div className="col-span-2" >
       <label className="block text-gray-600 font-semibold text-start text-md mb-1">
         {label}
       </label>
 
-      <div className="flex items-center space-x-2 rtl:space-x-reverse">
+      <div className="flex items-center space-x-2 rtl:space-x-reverse" >
         <input
           type="number"
           value={minValue}
@@ -36,7 +36,7 @@ const RangeSlider = ({label}) => {
         />
       </div>
 
-      <div className="relative mt-4 h-6 flex items-center">
+      <div className="relative mt-4 h-6 flex items-center" style={customStyle}>
         <div className="absolute w-full h-2 bg-gray-300 rounded"></div>
 
         <div

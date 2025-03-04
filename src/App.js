@@ -17,7 +17,7 @@ function App() {
           <Route path="/" element={<Navigate to="/he" />} />
           <Route path="/:lang/customers" element={<Customers />} />
           <Route path="/:lang" element={<AddCustomer />} />
-          <Route path="/property" element={<Property/>}/>
+          <Route path="/:lang/property" element={<Property/>}/>
         </Routes>
       </Layout>
     </div>

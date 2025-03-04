@@ -83,7 +83,7 @@ const AddCustomer = () => {
         </div>
         <div className="main_wrap_body p-0">
           <form className="form_custom">
-            <div className="internal_scroll mCustomScrollbar _mCS_2 mCS_no_scrollbar ">
+            <div className="internal_scroll internal_scroll_custome mCustomScrollbar _mCS_2 mCS_no_scrollbar ">
               <div className="row form_group">
                 <h4>{t("cust_per_info")} {/* Personal Detail */}</h4>
                 <div className="col-md-4">
@@ -217,8 +217,8 @@ const AddCustomer = () => {
                     onChange={handleChange}
                     options={[
                       { value: "", label: "" },
-                      { value: "option1", label: "Option 1" },
-                      { value: "option2", label: "Option 2" },
+                      { value: t("option1"), label: t("option1") },
+                      { value: t("option2"), label: t("option2") },
                     ]}
                     className="form-select"
                   />
@@ -231,8 +231,8 @@ const AddCustomer = () => {
                     onChange={handleChange}
                     options={[
                       { value: "", label: "" },
-                      { value: "option1", label: "Option 1" },
-                      { value: "option2", label: "Option 2" },
+                      { value: t("option1"), label: t("option1") },
+                      { value: t("option1"), label: t("option1") },
                     ]}
                     className="form-select"
                   />
@@ -251,11 +251,11 @@ const AddCustomer = () => {
                     />
                   </div>
                 </div>
-                <div className="col-lg-4">
-                  <RangeSlider label={t("size")} />
+                <div className="col-lg-4" >
+                  <RangeSlider label={t("size")} customStyle={{ marginRight: "10px" }} />
                 </div>
                 <div className="col-lg-4">
-                  <RangeSlider label={t("price")} />
+                  <RangeSlider label={t("price")} customStyle={{marginLeft:"10px"}}/>
                 </div>
               </div>
               <h4>{t("fetures")}</h4>
@@ -272,7 +272,7 @@ const AddCustomer = () => {
                   { title: t("feture_7") },
                   { title: t("feture_8") },
                   { title: t("feture_9") },
-                ].map((item) => <li><span>{item.title}</span></li>
+                ].map((item,index) => <li key={index}><span>{item.title}</span></li>
 
                 )}
               </ul>

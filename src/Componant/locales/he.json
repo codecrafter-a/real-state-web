@@ -36,7 +36,7 @@
   "pro_type":"סוג הנכס",
   "pro_condition":"מצב הנכס",
   "no_rooms":"מספר חדרים",
-  "size:":"גודל (מ”ר",
+  "size":"(גודל (מ”ר",
   "price":"מחיר (ש”ח)",
   "fetures":"מאפיינים נוספים",
   "entry_type_1":"כניסה מיידית",
@@ -59,6 +59,9 @@
   "add_cust_sign_in":"לשליחת הסכם החתמת מתעניין",
   "add_proprty_owers_sign_in":"לשליחת הסכם החתמת בעל נכס",
   "add_cust_broker_sign_in":"לשליחת הסכם שת”פ בין מתווכים",
+  "option1":"1 אפשרות",
+  "option2":"2 אפשרות",
+
 
   "cust_name_1":"שירי נקבלי",
   "type_cust_1":"מתעניין בשכירות",
@@ -97,7 +100,6 @@
    "cust_tbl_column_client_email":"דוא”ל",
    "cust_tbl_column_request_area":" איזור מבוקש",
    "cust_tbl_column_status":"סטטוס מסמך אחרון",
-
    "cust_property_type":"סוג הנכס:",
    "cust_property_type_value":"דירה בבניין, דירת ג",
    "cust_Property_Condition":"מצב הנכס:",
@@ -110,7 +112,6 @@
    "cust_floor_value":"4, 5",
    "cust_price":"מחיר",
    "cust_price_value":"1000 - 3000 ₪",
-
    "cust_model_footer":"ניקוי פילטרים",
     "cust_model_footer1":"סינון",
     "addtional_filter":"סנונים נוספים",
@@ -127,5 +128,59 @@
     "addtional_feature_6":" מרפסת",
     "addtional_feature_7":"מזגן",
     "addtional_feature_8":"חניה",
-    "addtional_feature_9":"ממד"
+    "addtional_feature_9":"ממד",
+
+    "pro_tab_title":"הוספת נכס חדש",
+    "pro_add_set1":"כתובת הנכס",
+    "pro_add_set2":"פרטי הנכס",
+    "pro_add_set3":"פרטי הבעלים",
+    "pro_add_set4":"נספחים",
+    "pro_add_sub_title":"כתובת הנכס",
+    "pro_add_city":"עיר*",
+    "pro_add_str":"רחוב*",
+    "pro_add_building_number":"מס’ בניין*",
+    "pro_add_apartment_number":"מס’ דירה*",
+    "pro_next_step":"הבא",
+    "pro_add_det_type":"סוג הנכס",
+    "pro_add_del_contidation":"מצב הנכס",
+    "pro_add_del_name":"שם מלא*",
+    "pro_add_del_floor":"קומה",
+    "pro_add_del_area":"מ”ר בנוי",
+    "pro_add_del_rent":"השכרה",
+    "pro_add_del_buy":"קנייה",
+    "pro_add_del_req_rent_price":"מחיר שכירות מבוקש",
+    "pro_add_del_req_buy_price":"מחיר קנייה מבוקש",
+    "pro_add_del_select_add_future":"סמנו מאפיינים נוספים",
+    "pro_add_feture_1":"כניסה מיידית",
+    "pro_add_feture_2":"מרפסת",
+    "pro_add_feture_3":"גישה לנכים",
+    "pro_add_feture_4":"מעלית",
+    "pro_add_feture_5":"מחסן",
+    "pro_add_feture_6":"ממ”ד",
+    "pro_add_feture_7":"מזגן",
+    "pro_add_feture_8":"מרוהט",
+    "pro_add_feture_9":"חניה",
+    "pro_add_feture_10":"סורגים",
+    "pro_add_desctiption":"תיאור כללי של הנכס",
+    "pro_add_des_placeholder":"למשל דירה 4 חדרים עם 4 כיווני אוויר, מוארת",
+    "Pro_add_pev_btn":"הקודם",
+    "pro_add_next_btn":"הבא",
+    "pro_add_ower_details":"פרטי הבעלים",
+    "pro_add_ower_name":"שם מלא*",
+    "pro_add_ower_phone":"טלפון*",
+    "pro_add_ower_email":"דוא”ל",
+    "pro_add_attch":"Attachments",
+    "pro_add_attch_doc_note":"באפשרותכם להעלות מסמכים נוספים שקשורים לנכס זה. המסמכים יוצגו לאיש הקשר שלכם לצורך עיון בלבד.",
+    "pro_add_attch_doc_1":"צירוף נסח טאבו",
+    "pro_add_attch_doc_2":"צירוף אישור מהעירייה",
+    "pro_add_attch_doc_3":"צירוף מסמכים נוספים",
+    "pro_add_attch_doc_des_1":"העלאת תמונות בלחיצה או בגרירה",
+    "pro_add_attch_doc_des_2":"פורמטים נתמכים: JPEG, PNG | גודל מקסימלי: 2MB",
+    "pro_add_attch_img_btn":"בחירת תמונות של הנכס"
+    
+
+
+
+
+
   }
