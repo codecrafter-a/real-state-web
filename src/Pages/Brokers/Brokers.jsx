@@ -12,15 +12,23 @@ import CustomModal from "../../Componant/Common/Modal/CustomeModal";
 import Next from "../../assets/images/Next.jpg";
 import CustomInput from "../../Componant/Common/Input/Custominput";
 import successIcon from '../../assets/images/success_icon.svg';
+import Accordion from 'react-bootstrap/Accordion';
+import whatsapp from '../../assets/images/wa, whatsapp, message, communication, chat.svg';
+import { Modal,} from "react-bootstrap";
+import sms from '../../assets/images/sms.svg'
+import email from '../../assets/images/email.jpg';
+import group from '../../assets/images/Group 2538.png';
 
 const Brokers = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isShow, setIsShow] = useState(false);
   const [isView, setIsView] = useState(false);
+  // const [showSuccess, setShowSuccess] = useState(false);
 
   const handleOpen = () => {setIsOpen(true);};
   const handleShow = () => {setIsShow(true);};
   const handleView = () => {setIsView(true)};
+  // const handleIsShow = () => {setShowSuccess(true)};
 
   return (
     <>
@@ -386,27 +394,179 @@ const Brokers = () => {
           </CustomModal>
         </div>
       )}
-      {isView && (
-          <CustomModal
-            show={isView}
-            onClick={handleView}
-            handleClose={() => setIsView(false)}
-            header={<img src={Next} alt="next btn" />}
-          >
-            <div className="text-center">
-              <img src={successIcon} alt="Success" className="mx-auto w-20 h-20 mb-3" />
-              <h4 className="text-embed-500 fs-3  font-semibold">ההמסמך שלכם מוכן</h4>
-              <p className=" fs-2 font-semibold">כיצד תרצו לשלוח אותו ?</p>
+      <Modal show={isView} onHide={() => {setIsView(false)}} centered className="custom-modal">
+      <Modal.Header closeButton className=" border-0">
+        <img src={Next} alt="next btn" className="" />
+      </Modal.Header>
+      <Modal.Body className="p-4">
+        <div className="text-center">
+          <img src={successIcon} alt="Success" className="mx-auto w-20 h-20 mb-3" />
+          <h4 className="text-embed-500 fs-3 font-semibold">ההמסמך שלכם מוכן</h4>
+          <p className="fs-5 font-semibold">כיצד תרצו לשלוח אותו ?</p>
+        </div>
+        {/* Options Section */}
+        <div className="options-container">
+          <div className="option-item rounded-3 my-3">
+            <Accordion defaultActiveKey={null} className="custom-accordion">
+              <Accordion.Item eventKey="0">
+                <Accordion.Header className="custom-header bg-success-subtle">
+                  <div className="d-flex justify-content-between w-100">
+                    <div className=" d-flex align-items-center">
+                       <img src={whatsapp} alt="whatsapp" />
+                       <span className="ps-2 text-embed-500 text-start fs-5">שליחה ל-WhatsApp</span>
+                    </div>
+                    <input className="form-check-input border border-black bg-white" type="checkbox" />
+                  </div>
+                </Accordion.Header>
+                <Accordion.Body className="bg-success-subtle">
+                <ul className="fw-bold ">
+                  <li>שליחת המסמך ללא הצורך להקים אנשי קשר</li>
+                  <li>שליחת המסמך בפעולה אחת</li>
+                  <li>שליחת המסמך כמותעד במערכת</li>
+                </ul>
+                <p className="mt-3 fw-bold ">
+                  השירות כרוך בבחירת חבילה ותשלום נוסף.
+                  במידה ותבחר באפשרות זו, כרטיס האשראי השמור במערכת יחויב בתוספת התשלום.
+                </p>
+              {/* Pricing Cards */}
+              <div className="row justify-content-center text-center mt-4">
+                <div className="col-md-3 mb-3 mb-md-0">
+                  <div className="border rounded p-2 bg-white  shadow-sm">
+                    <h3 className="text-embed-500 fs-2 fw-bold">150</h3>
+                    <p className="mb-0 text-embed-500">הודעות</p>
+                    <p className="text-embed-500">₪ 70-ב</p>
+                  </div>
+                </div>
+
+                <div className="col-md-3 mb-3 mb-md-0">
+                  <div className="border rounded shadow-sm bg-embed-500 text-white">
+                    <h3 className="text-white fs-2 fw-bold">100</h3>
+                    <p className="mb-0 text-white">הכי משתלם</p>
+                    <p className="text-white">הודעות</p>
+                    <p className=" text-white">₪ 50-ב</p>
+                  </div>
+                </div>
+
+                <div className="col-md-3">
+                  <div className="border rounded p-1 bg-white shadow-sm">
+                    <h3 className="text-embed-500 fs-2 fw-bold">50</h3>
+                    <p className="mb-0 text-embed-500">הודעות</p>
+                    <p className="text-embed-500">₪ 30-ב</p>
+                  </div>
+                </div>
+              </div>
+        </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
           </div>
-          <div className="border rounded p-3 d-flex align-items-center bg-light-subtle">
-            <div className="flex-grow-1">
-                <strong>שליחה ל-WhatsApp</strong>
-                <br/>
+          <div className="option-item rounded-3 my-3">
+            <Accordion defaultActiveKey={null} className="custom-accordion ">
+              <Accordion.Item eventKey="0" className="bg-embed-500 ">
+                <Accordion.Header className="custom-header  bg-success-subtle">
+                  <div className="d-flex justify-content-between w-100">
+                    <div className=" d-flex align-items-center">
+                       <img src={sms} alt="whatsapp" />
+                       <span className=" ps-2 text-embed-500 text-start fs-5">שליחה ב-SMs</span>
+                    </div>
+                    <input className="form-check-input border border-black bg-white" type="checkbox" />
+                  </div>
+                </Accordion.Header>
+                <Accordion.Body className="custom-body bg-success-subtle">
+                  <ul className="list-unstyled">
+                    <li>שליחת המסמך ללא הצורך להקים אנשי קשר</li>
+                    <li>שליחת המסמך בפעולה אחת</li>
+                    <li>שליחת המסמך כמותעד במערכת</li>
+                  </ul>
+                  <p className="mt-3">
+                    השירות כרוך בבחירת חבילה ותשלום נוסף. במידה ותבחר באפשרות זו, כרטיס האשראי השמור במערכת יחויב בתוספת התשלום.
+                  </p>
+                </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
+          </div>
+          <div className="option-item rounded-3 my-3">
+            <Accordion defaultActiveKey={null} className="custom-accordion ">
+              <Accordion.Item eventKey="0" className="bg-embed-500 ">
+                <Accordion.Header className="custom-header  bg-success-subtle">
+                  <div className="d-flex justify-content-between w-100">
+                    <div className=" d-flex align-items-center">
+                       <img src={email} alt="whatsapp" />
+                       <span className="ps-2 text-embed-500 text-start fs-5">ליחה בדוא”לש</span>
+                       </div>
+                    <input className="form-check-input border border-black bg-white" type="checkbox" />
+                  </div>
+                </Accordion.Header>
+                <Accordion.Body className="custom-body bg-success-subtle">
+                  <ul className="list-unstyled">
+                    <li>שליחת המסמך ללא הצורך להקים אנשי קשר</li>
+                    <li>שליחת המסמך בפעולה אחת</li>
+                    <li>שליחת המסמך כמותעד במערכת</li>
+                  </ul>
+                  <p className="mt-3">
+                    השירות כרוך בבחירת חבילה ותשלום נוסף. במידה ותבחר באפשרות זו, כרטיס האשראי השמור במערכת יחויב בתוספת התשלום.
+                  </p>
+                </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
+          </div>
+          <div className="option-item rounded-3 my-3">
+            <Accordion defaultActiveKey={null} className="custom-accordion ">
+              <Accordion.Item eventKey="0" className="bg-embed-500 ">
+                <Accordion.Header className="custom-header  bg-success-subtle">
+                  <div className="d-flex justify-content-between w-100">
+                    <div className=" d-flex align-items-center">
+                       <img src={group} alt="whatsapp" />
+                       <span className="ps-2 text-embed-500 text-start fs-5">שליחה ב-WhatsApp בשיתוף דרך ה</span>
+                       </div>
+                    <input className="form-check-input border border-black bg-white" type="checkbox" />
+                  </div>
+                </Accordion.Header>
+                <Accordion.Body className="custom-body bg-success-subtle">
+                  <ul className="list-unstyled">
+                    <li>שליחת המסמך ללא הצורך להקים אנשי קשר</li>
+                    <li>שליחת המסמך בפעולה אחת</li>
+                    <li>שליחת המסמך כמותעד במערכת</li>
+                  </ul>
+                  <p className="mt-3">
+                    השירות כרוך בבחירת חבילה ותשלום נוסף. במידה ותבחר באפשרות זו, כרטיס האשראי השמור במערכת יחויב בתוספת התשלום.
+                  </p>
+                </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
+          </div>
+        </div>
+        {/* Buttons */}
+        <div className="text-center mt-4 d-flex flex-col">
+          <button className="agent-button1  rounded-pill px-5 py-2 fw-bold shadow-sm text-white" >
+              שליחה
+          </button>
+          <button className="btn btn-link text-muted mt-2">הפקה ללא שליחה</button>
+        </div>
+      </Modal.Body>
+    </Modal>
+      {/* {
+        setShowSuccess && (
+          <div className="position-relative">
+            <div>
+              <CustomModal 
+                show={setShowSuccess}
+                handleClose={() => setShowSuccess(false)}
+                footer={" לדו”ח התאמות לקוחות"}
+                footer1={" לשליחת הסכם "}
+              > 
+              <div className=" text-center">
+                <img src={successIcon} alt="Success" className="mx-auto w-20 h-20 mb-3" />
+                <div className=" text-center">
+                  <p className=" fs-3  text-embed-500 font-semibold">מעולה!</p>
+                  <h4 className=" fs-3  text-embed-500 font-semibold">המסמך נשלח בהצלח</h4>
+                </div>
+              </div>
+            </CustomModal>
             </div>
-            <input className="form-check-input ms-2" type="checkbox"/>
           </div>
-          </CustomModal>
-      )}
+          
+        )
+      } */}
     </>
   );
 };

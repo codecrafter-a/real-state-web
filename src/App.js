@@ -7,6 +7,7 @@ import AddCustomer from "../src/Pages/Customers/add-customer-en/Addcustomeren";
 import Property from "./Pages/Property/Property";
 import Brokers from "./Pages/Brokers/Brokers";
 
+
 function App() {
   const { i18n } = useTranslation(); // Listen for language changes
 
@@ -18,8 +19,8 @@ function App() {
           <Route path="/" element={<Navigate to="/he" />} />
           <Route path="/:lang/customers" element={<Customers />} />
           <Route path="/:lang" element={<AddCustomer />} />
-          <Route path="/property" element={<Property/>}/>
-          <Route path="/broker" element={<Brokers/>}/>
+          <Route path="/:lang/property" element={<Property/>}/>
+          <Route path="/broker" element={<Brokers />} />
         </Routes>
       </Layout>
     </div>
