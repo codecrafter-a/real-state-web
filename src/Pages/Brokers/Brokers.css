@@ -1,4 +1,4 @@
-.mainPage{max-width: 1194px; min-height: 550px;}
+.mainPage{max-width: 1194px; min-height: 578px;}
 .bg-embed-500 {background-color: rgb(0, 164, 129);}
 .text-embed-500 {color: rgb(0, 164, 129);}
 * {font-family: "Assistant", serif;}
@@ -32,3 +32,14 @@ h5{ font-size: 20px; line-height: 26px; font-weight: 600;}
 .modal-accordion-body { width: 100%; padding: 15px;}
 .custom-header{ background-color: rgba(0, 164, 128, 0.938); outline-offset: 0cap;}
 .custom-header:hover { border: 2px solid rgb(0, 164, 129) !important;}
+.scrollbar-left {
+    direction: ltr;
+    overflow-y: scroll;
+    height: 300px;
+    border: 1px solid #ccc;
+  }
+  
+  .scrollbar-left .scrollbar-content {
+    direction: ltr;
+    padding: 1rem;
+  }

@@ -18,21 +18,31 @@ import { Modal,} from "react-bootstrap";
 import sms from '../../assets/images/sms.svg'
 import email from '../../assets/images/email.jpg';
 import group from '../../assets/images/Group 2538.png';
+import gyiphy from '../../assets/images/giphy 1.png'
+import { div } from "framer-motion/client";
+
 
 const Brokers = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isShow, setIsShow] = useState(false);
   const [isView, setIsView] = useState(false);
-  // const [showSuccess, setShowSuccess] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [sentSuccess, setSentSuccess] = useState(false);
 
   const handleOpen = () => {setIsOpen(true);};
   const handleShow = () => {setIsShow(true);};
   const handleView = () => {setIsView(true)};
-  // const handleIsShow = () => {setShowSuccess(true)};
+  const handleSentSuccess = () => {
+    setShowSuccess(false);
+    setSentSuccess(true);
+  }
+  const handleIsShow = () => {
+    setIsView(false);
+    setShowSuccess(true)};
 
   return (
     <>
-      <div className="position-absolute w-100 overflow-x-hidden top-0 z-0">
+      <div className="position-absolute w-100 overflow-x-hidden top-0 z-0 ">
         <figure className="mb-0 top_bg_fig">
           <img src={bodyBg} className="w-100" alt="Background" />
           <span className="position-absolute top-0 end-0">
@@ -43,7 +53,7 @@ const Brokers = () => {
           <img src={boryGroupRight} alt="right bg icon" />
         </div>
       </div>
-      <div className="bg-white w-100 mx-auto pb-4 position-relative z-3 rounded-3 shadow-lg mainPage">
+      <div className="bg-white w-100 scrollbar-left mx-auto pb-4 scrollbar-content position-relative z-3 rounded-3 shadow-lg mainPage">
         <div class="px-3 px-md-4">
           <h1 class="fs-4 fw-semibold  py-4 mb-7 border-bottom text-center text-embed-500">
             הוספת נכס חדש
@@ -299,7 +309,7 @@ const Brokers = () => {
               </form>
             </div>
             <div className=" my-4">
-              <button className="modalbtn" onClick={() => setIsOpen(false)}>
+              <button className="agent-button1  rounded-pill px-5 py-2 fw-bold shadow-sm text-white" onClick={() => setIsOpen(false)}>
                 הוספה
               </button>
             </div>
@@ -387,7 +397,7 @@ const Brokers = () => {
               </form>
             </div>
             <div className=" my-4">
-              <button className="modalbtn" onClick={() => setIsOpen(false)}>
+              <button className="agent-button1  rounded-pill px-5 py-2 fw-bold shadow-sm text-white" onClick={() => setIsOpen(false)}>
                 הוספה
               </button>
             </div>
@@ -537,36 +547,89 @@ const Brokers = () => {
         </div>
         {/* Buttons */}
         <div className="text-center mt-4 d-flex flex-col">
-          <button className="agent-button1  rounded-pill px-5 py-2 fw-bold shadow-sm text-white" >
+          <button className="agent-button1 mx-auto rounded-pill px-3 py-2 fw-bold shadow-sm text-white" onClick={ handleIsShow}>
               שליחה
           </button>
           <button className="btn btn-link text-muted mt-2">הפקה ללא שליחה</button>
         </div>
       </Modal.Body>
-    </Modal>
-      {/* {
-        setShowSuccess && (
-          <div className="position-relative">
-            <div>
-              <CustomModal 
-                show={setShowSuccess}
-                handleClose={() => setShowSuccess(false)}
-                footer={" לדו”ח התאמות לקוחות"}
-                footer1={" לשליחת הסכם "}
-              > 
-              <div className=" text-center">
-                <img src={successIcon} alt="Success" className="mx-auto w-20 h-20 mb-3" />
-                <div className=" text-center">
-                  <p className=" fs-3  text-embed-500 font-semibold">מעולה!</p>
-                  <h4 className=" fs-3  text-embed-500 font-semibold">המסמך נשלח בהצלח</h4>
-                </div>
-              </div>
-            </CustomModal>
+      </Modal>
+      {showSuccess && (
+      <div className="position-relative">
+        <CustomModal 
+          show={showSuccess}
+          handleClose={() => setShowSuccess(false)}
+          footer={` לדו”ח התאמות לקוחות`}
+          onClick={handleSentSuccess}
+          footer1={" לשליחת הסכם "}
+        > 
+          <div className="text-center z-3 position-relative">
+            <img src={successIcon} alt="Success" className="mx-auto w-20 h-20 mb-3" />
+            <div className="text-center">
+              <p className="fs-3 text-embed-500 font-semibold">מעולה!</p>
+              <h4 className="fs-3 text-embed-500 font-semibold">המסמך נשלח בהצלחה</h4>
             </div>
           </div>
-          
-        )
-      } */}
+          <div 
+            className="position-absolute bg-transparent top-0 my-5 z-2" 
+            style={{ pointerEvents: 'none' }}
+          >
+            <img src={gyiphy} alt="gyiphy" className="object-fit-cover" />
+          </div>
+        </CustomModal>
+      </div>)
+      }
+      {
+        <div className="position-relative">
+        <Modal 
+          show={sentSuccess} 
+          onHide={() => setSentSuccess(false)} 
+          centered 
+          className="custom-modal"
+        >
+          {/* Background celebration image */}
+          <div 
+            className="position-absolute top-0 start-0 w-100 h-100" 
+            style={{
+              backgroundImage: `url(${gyiphy})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              pointerEvents: 'none',
+              zIndex: 1,
+            }}
+          />
+      
+          {/* Modal Header */}
+          <Modal.Header 
+            closeButton 
+            className="border-0" 
+            style={{ position: 'relative', zIndex: 2 }}
+          />
+      
+          {/* Modal Body */}
+          <Modal.Body className="p-4" style={{ position: 'relative', zIndex: 2 }}>
+            <div className="text-center">
+              <img 
+                src={successIcon} 
+                alt="Success" 
+                className="mx-auto w-20 h-20 mb-3" 
+              />
+              <h4 className="text-embed-500 fs-3 font-semibold">מעולה!</h4>
+              <p className="fs-5 text-embed-500 font-semibold">המסמך נשלח בהצלחה</p>
+            </div>
+            {/* Buttons */}
+            <div className="text-center mt-4 d-flex flex-col">
+              <button 
+                className="agent-button1 mx-auto rounded-pill px-3 py-2 fw-bold shadow-sm text-white"
+              >
+                להחתמת הלקוח במכשיר שלי
+              </button>
+            </div>
+          </Modal.Body>
+        </Modal>
+      </div>
+        
+        }
     </>
   );
 };
