@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from 'react-i18next'
 import bodyBg from "../../assets/images/body_bg.webp";
 import boryGroupLeft from "../../assets/images/bory_group_left.png";
 import boryGroupRight from "../../assets/images/bory_group_right.png";
@@ -7,6 +8,7 @@ import Propertydetails from "./Propertydetails/Propertydetails";
 import Ownerdetails from "./Ownerdetails/Ownerdetails";
 import Attachments from "../Property/Attechment/Attechment";
 const Property = () => {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState(1);
 
   const renderTabContent = () => {
@@ -40,7 +42,7 @@ const Property = () => {
       <div className="min-h-[550px] bg-white max-w-full w-[1194px] my-0 mx-auto pb-6 relative z-50 rounded-2xl shadow-lg">
         <div className="px-6">
           <h1 className="text-2xl font-semibold text-[#00A481] py-4 mb-7 border-b border-solid border-[#EAEAEA] text-center">
-            הוספת נכס חדש
+            {t("pro_tab_title")}
           </h1>
         </div>
         <div className="px-6 py-0">
@@ -58,12 +60,12 @@ const Property = () => {
                       {step}
                       <span className="absolute left-1/2 -translate-x-1/2 top-10 text-xs font-light whitespace-nowrap">
                         {step === 1
-                          ? "כתובת הנכס"
+                          ? t("pro_add_set1")
                           : step === 2
-                          ? "פרטי הנכס"
+                          ? t("pro_add_set2")
                           : step === 3
-                          ? "פרטי הבעלים"
-                          : "נספחים"}
+                          ? t("pro_add_set3")
+                          : t("pro_add_set4")}
                       </span>
                     </div>
 

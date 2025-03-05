@@ -1,59 +1,60 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import CustomButton from '../../../Componant/Common/Button/Button';
 import CustomInput from '../../../Componant/Common/Input/Custominput';
 import user_type_icon2 from '../../../assets/images/user_type_icon2.svg';
 import user_type_icon1 from '../../../assets/images/user_type_icon1.svg';
 
 const Propertydetails = ({setActiveTab}) => {
-
+ const { t } = useTranslation();
     const service = [
-        {list: "כניסה מיידית"},
-        {list: "מרפסת"},
-        {list: "גישה לנכים"},
-        {list: "מעלית"},
-        {list: "מחסן"},
-        {list: "ממ”ד"},
-        {list: "מזגן"},
-        {list: "מרוהט"},
-        {list: "חניה"},
-        {list: "סורגים"}
+        {list: t("pro_add_feture_1")},
+        {list: t("pro_add_feture_2")},
+        {list: t("pro_add_feture_3")},
+        {list: t("pro_add_feture_4")},
+        {list: t("pro_add_feture_5")},
+        {list: t("pro_add_feture_6")},
+        {list: t("pro_add_feture_7")},
+        {list: t("pro_add_feture_8")},
+        {list: t("pro_add_feture_9")},
+        {list: t("pro_add_feture_10")}
     ]
 
   return (
     <div className='px-9'>
         <form className=''>
-            <h4 className='text-2xl font-semibold text-[#00A481] py-3 mt-3 mb-1 text-start'>פרטי הבעלים</h4>
+            <h4 className='text-2xl font-semibold text-[#00A481] py-3 mt-3 mb-1 text-start'>{t("pro_tab_title")}</h4>
             <div className="grid grid-cols-6 gap-6 ">
                 <div className="col-span-2">
-                    <label className="text-base mb-1 font-semibold">סוג הנכס</label>
+                    <label className="text-base mb-1 font-semibold">{t("pro_add_det_type")}</label>
                     <CustomInput
                         className={" w-full h-auto "}
                         type={'text'}
                     />
                 </div>
                 <div className="col-span-2">
-                    <label className="text-base mb-1 font-semibold">מצב הנכס  </label>
+                    <label className="text-base mb-1 font-semibold">{t("pro_add_del_contidation")}  </label>
                     <CustomInput
                         className={" w-full h-auto "}
                         type={'text'}
                     />
                 </div> 
                 <div className="col-span-2">
-                    <label className="text-base mb-1 font-semibold">שם מלא*</label>
+                    <label className="text-base mb-1 font-semibold">{t("pro_add_del_name")}</label>
                     <CustomInput
                         className={" w-full h-auto "}
                         type={'text'}
                     />
                 </div>
                 <div className="col-span-2">
-                    <label className="text-base mb-1 font-semibold">קומה  </label>
+                    <label className="text-base mb-1 font-semibold">{t("pro_add_del_floor")} </label>
                     <CustomInput
                         className={" w-full h-auto "}
                         type={'text'}
                     />
                 </div>
                 <div className="col-span-2">
-                    <label className="text-base mb-1 font-semibold">מ”ר בנוי  </label>
+                    <label className="text-base mb-1 font-semibold">{t("pro_add_del_area")} </label>
                     <CustomInput
                         className={" w-full h-auto "}
                         type={'text'}
@@ -69,11 +70,11 @@ const Propertydetails = ({setActiveTab}) => {
                     <span className="user_type_icon">
                         <img src={user_type_icon1} alt="user icon"/>
                     </span>
-                    השכרה
+                    {t("pro_add_del_rent")}
                     </label>
                 </div>
                 <div className="mt-3" style={{ maxWidth: 142 }}>
-                    <label className="text-sm mb-1 font-semibold">מחיר שכירות מבוקש </label>
+                    <label className="text-sm mb-1 font-semibold">{t("pro_add_del_req_rent_price")}</label>
                     <CustomInput 
                     type={'text'}
                     className={" w-full h-auto "}
@@ -87,11 +88,11 @@ const Propertydetails = ({setActiveTab}) => {
                     <span className="user_type_icon">
                         <img src={user_type_icon2} alt="user icon"/>
                     </span>
-                    קנייה
+                    {t("pro_add_del_buy")}
                     </label>
                 </div>
                 <div className="mt-3" style={{ maxWidth: 142 }}>
-                    <label className="text-sm mb-1 font-semibold">מחיר קנייה מבוקש</label>
+                    <label className="text-sm mb-1 font-semibold">{t("pro_add_del_req_buy_price")}</label>
                     <CustomInput 
                     type={'text'}
                     className={" w-full h-auto "}
@@ -99,7 +100,7 @@ const Propertydetails = ({setActiveTab}) => {
                 </div>
                 </div>
         </div>
-        <h4 className='text-base font-semibold text-[#00A481] py-3 mt-3 mb-1 text-start'>סמנו מאפיינים נוספים</h4>
+        <h4 className='text-base font-semibold text-[#00A481] py-3 mt-3 mb-1 text-start'>{t("pro_add_del_select_add_future")}</h4>
         <ul>
             {service.map((item, index) => {
                 return(<>
@@ -108,16 +109,16 @@ const Propertydetails = ({setActiveTab}) => {
                 })}
         </ul>
         <div className="form_group">
-                <label className="form-label">תיאור כללי של הנכס</label>
+                <label className="form-label">{t("pro_add_desctiption")}</label>
                 <textarea
                 className="form-control"
-                placeholder="למשל דירה 4 חדרים עם 4 כיווני אוויר, מוארת..."
+                placeholder={t("pro_add_des_placeholder")}
                 defaultValue={""}
                 />
         </div>
         <div className="flex justify-between text-end mt-4 pt-5 pb-3">
-            <CustomButton children={"הקודם"}  className={"border-1 border-emerald-500 px-5 shadow-lg text-emerald-500 py-2 rounded-full hover:bg-[#55CD85] hover:border-[#55CD85] hover:text-white"} onClick={() => setActiveTab(1)}/>
-            <CustomButton children={"הבא"}  className={"border-1 border-emerald-500 px-5 bg-emerald-500 shadow-lg text-white py-2 rounded-full hover:bg-[#55CD85] hover:border-[#55CD85] hover:text-white"}  onClick={() => setActiveTab(3)} />
+            <CustomButton children={t("Pro_add_pev_btn")}  className={"border-1 border-emerald-500 px-5 shadow-lg text-emerald-500 py-2 rounded-full hover:bg-[#55CD85] hover:border-[#55CD85] hover:text-white"} onClick={() => setActiveTab(1)}/>
+            <CustomButton children={t("pro_add_next_btn")}  className={"border-1 border-emerald-500 px-5 bg-emerald-500 shadow-lg text-white py-2 rounded-full hover:bg-[#55CD85] hover:border-[#55CD85] hover:text-white"}  onClick={() => setActiveTab(3)} />
         </div>
     </div>
   )

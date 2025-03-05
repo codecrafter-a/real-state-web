@@ -11,7 +11,6 @@ const LanguageHandler = () => {
     if (["en", "he"].includes(lang)) {
       i18n.changeLanguage(lang).then(() => setLanguage(lang));
     } else {
-
       i18n.changeLanguage("en").then(() => setLanguage("en"));
     }
   }, [location]);
@@ -20,4 +19,6 @@ const LanguageHandler = () => {
 };
 
 export default LanguageHandler;
+
+
 
