@@ -16,10 +16,9 @@ import Accordion from 'react-bootstrap/Accordion';
 import whatsapp from '../../assets/images/wa, whatsapp, message, communication, chat.svg';
 import { Modal,} from "react-bootstrap";
 import sms from '../../assets/images/sms.svg'
-import email from '../../assets/images/email.jpg';
+import email from '../../assets/images/email.svg';
 import group from '../../assets/images/Group 2538.png';
 import gyiphy from '../../assets/images/giphy 1.png'
-import { div } from "framer-motion/client";
 
 
 const Brokers = () => {
@@ -322,7 +321,7 @@ const Brokers = () => {
             show={isShow}
             onClick={handleShow}
             handleClose={() => setIsShow(false)}
-            header={<img src={Next} alt="next btn" />}
+            header={<img src={Next} alt="next btn" width="32px" height='32px'/>}
           >
             <h5 className=" text-embed-500 mb-2 fs-3 text-center">
               הוספה מהירה של נכס חדש
@@ -418,12 +417,12 @@ const Brokers = () => {
         <div className="options-container">
           <div className="option-item rounded-3 my-3">
             <Accordion defaultActiveKey={null} className="custom-accordion">
-              <Accordion.Item eventKey="0">
-                <Accordion.Header className="custom-header bg-success-subtle">
+              <Accordion.Item eventKey="0 " className="custom-header">
+                <Accordion.Header className=" bg-success-subtle">
                   <div className="d-flex justify-content-between w-100">
                     <div className=" d-flex align-items-center">
                        <img src={whatsapp} alt="whatsapp" />
-                       <span className="ps-2 text-embed-500 text-start fs-5">שליחה ל-WhatsApp</span>
+                       <span className="ps-2 text-start fs-5">שליחה ל-WhatsApp</span>
                     </div>
                     <input className="form-check-input border border-black bg-white" type="checkbox" />
                   </div>
@@ -440,7 +439,7 @@ const Brokers = () => {
                 </p>
               {/* Pricing Cards */}
               <div className="row justify-content-center text-center mt-4">
-                <div className="col-md-3 mb-3 mb-md-0">
+                <div className="col-md-3 ">
                   <div className="border rounded p-2 bg-white  shadow-sm">
                     <h3 className="text-embed-500 fs-2 fw-bold">150</h3>
                     <p className="mb-0 text-embed-500">הודעות</p>
@@ -448,17 +447,17 @@ const Brokers = () => {
                   </div>
                 </div>
 
-                <div className="col-md-3 mb-3 mb-md-0">
-                  <div className="border rounded shadow-sm bg-embed-500 text-white">
-                    <h3 className="text-white fs-2 fw-bold">100</h3>
-                    <p className="mb-0 text-white">הכי משתלם</p>
-                    <p className="text-white">הודעות</p>
-                    <p className=" text-white">₪ 50-ב</p>
+                <div className="col-md-3 ">
+                  <div className="border rounded shadow-sm p-1 bg-white">
+                    <p className="mb-0 text-embed-500">הכי משתלם</p>
+                    <h3 className="text-embed-500 fs-2 fw-bold">100</h3>
+                    <p className="mb-0 text-embed-500">הודעות</p>
+                    <p className=" text-embed-500">₪ 50-ב</p>
                   </div>
                 </div>
 
                 <div className="col-md-3">
-                  <div className="border rounded p-1 bg-white shadow-sm">
+                  <div className="border rounded p-2 bg-white shadow-sm">
                     <h3 className="text-embed-500 fs-2 fw-bold">50</h3>
                     <p className="mb-0 text-embed-500">הודעות</p>
                     <p className="text-embed-500">₪ 30-ב</p>
@@ -471,12 +470,12 @@ const Brokers = () => {
           </div>
           <div className="option-item rounded-3 my-3">
             <Accordion defaultActiveKey={null} className="custom-accordion ">
-              <Accordion.Item eventKey="0" className="bg-embed-500 ">
-                <Accordion.Header className="custom-header  bg-success-subtle">
+              <Accordion.Item eventKey="0" className="custom-header">
+                <Accordion.Header className=" bg-success-subtle">
                   <div className="d-flex justify-content-between w-100">
                     <div className=" d-flex align-items-center">
                        <img src={sms} alt="whatsapp" />
-                       <span className=" ps-2 text-embed-500 text-start fs-5">שליחה ב-SMs</span>
+                       <span className=" ps-2 text-start fs-5">שליחה ב-SMs</span>
                     </div>
                     <input className="form-check-input border border-black bg-white" type="checkbox" />
                   </div>
@@ -496,12 +495,12 @@ const Brokers = () => {
           </div>
           <div className="option-item rounded-3 my-3">
             <Accordion defaultActiveKey={null} className="custom-accordion ">
-              <Accordion.Item eventKey="0" className="bg-embed-500 ">
-                <Accordion.Header className="custom-header  bg-success-subtle">
+              <Accordion.Item eventKey="0" className="custom-header">
+                <Accordion.Header className=" bg-success-subtle">
                   <div className="d-flex justify-content-between w-100">
                     <div className=" d-flex align-items-center">
                        <img src={email} alt="whatsapp" />
-                       <span className="ps-2 text-embed-500 text-start fs-5">ליחה בדוא”לש</span>
+                       <span className="ps-2 text-start fs-5">ליחה בדוא”לש</span>
                        </div>
                     <input className="form-check-input border border-black bg-white" type="checkbox" />
                   </div>
@@ -521,17 +520,17 @@ const Brokers = () => {
           </div>
           <div className="option-item rounded-3 my-3">
             <Accordion defaultActiveKey={null} className="custom-accordion ">
-              <Accordion.Item eventKey="0" className="bg-embed-500 ">
-                <Accordion.Header className="custom-header  bg-success-subtle">
+              <Accordion.Item eventKey="0" className=" custom-header">
+                <Accordion.Header className=" bg-success-subtle">
                   <div className="d-flex justify-content-between w-100">
                     <div className=" d-flex align-items-center">
                        <img src={group} alt="whatsapp" />
-                       <span className="ps-2 text-embed-500 text-start fs-5">שליחה ב-WhatsApp בשיתוף דרך ה</span>
+                       <span className="ps-2 text-start fs-5">שליחה ב-WhatsApp בשיתוף דרך ה</span>
                        </div>
                     <input className="form-check-input border border-black bg-white" type="checkbox" />
                   </div>
                 </Accordion.Header>
-                <Accordion.Body className="custom-body bg-success-subtle">
+                <Accordion.Body className="bg-success-subtle">
                   <ul className="list-unstyled">
                     <li>שליחת המסמך ללא הצורך להקים אנשי קשר</li>
                     <li>שליחת המסמך בפעולה אחת</li>
@@ -580,55 +579,39 @@ const Brokers = () => {
       </div>)
       }
       {
-        <div className="position-relative">
-        <Modal 
-          show={sentSuccess} 
-          onHide={() => setSentSuccess(false)} 
-          centered 
+        <Modal
+          show={sentSuccess}
+          onHide={() => setSentSuccess(false)}
+          centered
           className="custom-modal"
         >
-          {/* Background celebration image */}
-          <div 
-            className="position-absolute top-0 start-0 w-100 h-100" 
-            style={{
-              backgroundImage: `url(${gyiphy})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              pointerEvents: 'none',
-              zIndex: 1,
-            }}
-          />
-      
-          {/* Modal Header */}
-          <Modal.Header 
-            closeButton 
-            className="border-0" 
+          <div className="position-absolute bg-transparent top-0 my-5 z-2" >
+            <img src={gyiphy} alt="gyiphy" className="object-fit-cover mt-[-180px] " />
+          </div>
+          <Modal.Header
+            closeButton
+            className="border-0"
             style={{ position: 'relative', zIndex: 2 }}
           />
-      
-          {/* Modal Body */}
           <Modal.Body className="p-4" style={{ position: 'relative', zIndex: 2 }}>
             <div className="text-center">
-              <img 
-                src={successIcon} 
-                alt="Success" 
-                className="mx-auto w-20 h-20 mb-3" 
+              <img
+                src={successIcon}
+                alt="Success"
+                className="mx-auto w-20 h-20 mb-3"
               />
-              <h4 className="text-embed-500 fs-3 font-semibold">מעולה!</h4>
-              <p className="fs-5 text-embed-500 font-semibold">המסמך נשלח בהצלחה</p>
+              <h4 className="fs-3 text-embed-500 fw-semibold">מעולה!</h4>
+              <p className="fs-5 text-embed-500 fw-semibold">המסמך נשלח בהצלחה</p>
             </div>
-            {/* Buttons */}
-            <div className="text-center mt-4 d-flex flex-col">
-              <button 
-                className="agent-button1 mx-auto rounded-pill px-3 py-2 fw-bold shadow-sm text-white"
+            <div className="text-center mt-4">
+              <button
+                className="agent-button1 mx-auto rounded-pill px-4 py-2 fw-bold shadow-sm text-white"
               >
                 להחתמת הלקוח במכשיר שלי
               </button>
             </div>
           </Modal.Body>
         </Modal>
-      </div>
-        
         }
     </>
   );
