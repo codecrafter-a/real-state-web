@@ -4,21 +4,36 @@ import add_img from '../../../assets/images/add_img.svg';
 import CustomButton from '../../../Componant/Common/Button/Button';
 import deleteIcon from '../../../assets/images/delete.svg';
 const Attechment = ({setActiveTab}) => {
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [preview, setPreview] = useState(null);
+  const [files, setFiles] = useState({
+    tabo: null,
+    cityApproval: null,
+    additionalDocs: null,
+  });
 
-  const handleFileChange = (event) => {
+  const [previews, setPreviews] = useState({
+    tabo: null,
+    cityApproval: null,
+    additionalDocs: null,
+  });
+
+  const handleFileChange = (event, type) => {
     const file = event.target.files[0];
     if (file) {
-      setSelectedFile(file);
-      setPreview(URL.createObjectURL(file)); 
+      setFiles((prev) => ({ ...prev, [type]: file }));
+      setPreviews((prev) => ({ ...prev, [type]: URL.createObjectURL(file) }));
     }
   };
 
-  const handleRemoveFile = () => {
-    setSelectedFile(null);
-    setPreview(null);
+  const handleRemoveFile = (type) => {
+    setFiles((prev) => ({ ...prev, [type]: null }));
+    setPreviews((prev) => ({ ...prev, [type]: null }));
   };
+
+  const fileInputs = [
+    { key: "tabo", label: "צירוף נסח טאבו" },
+    { key: "cityApproval", label: "צירוף אישור מהעירייה" },
+    { key: "additionalDocs", label: "צירוף מסמכים נוספים" },
+  ];
 
   return (
     <>
@@ -26,78 +41,36 @@ const Attechment = ({setActiveTab}) => {
         <h4 className='text-2xl font-semibold text-[#00A481] py-1 mt-3 mb-1 text-start'>נספחים</h4>
         <p className=' text-base font-normal'>באפשרותכם להעלות מסמכים נוספים שקשורים לנכס זה. המסמכים יוצגו לאיש הקשר שלכם לצורך עיון בלבד.</p>
         <div className="row">
-          <div className="col-md-4 mydropzone">
+        {fileInputs.map(({ key, label }) => (
+          <div key={key} className="col-md-4 mydropzone">
             <div className="dropzone needsclick demo-upload" action="/upload">
-              <div className=" border-[1px] border-dashed border-[#00A481] rounded-md p-2 px-4">
-                <div className=" flex items-center font-semibold text-[#00A481] cursor-pointer">
-                <div className="relative cursor-pointer">
-                  <input type="file" className="border-0 bg-transparent opacity-0 absolute w-full h-full cursor-pointer" onChange={handleFileChange} />
+              <div className="border-[1px] border-dashed border-[#00A481] rounded-md p-2 px-4">
+                <label className="flex items-center font-semibold text-[#00A481] cursor-pointer relative">
+                  <input
+                    type="file"
+                    className="border-0 bg-transparent opacity-0 absolute w-full h-full cursor-pointer"
+                    onChange={(e) => handleFileChange(e, key)}
+                  />
                   <img src={add_file} alt="Upload Icon" className="cursor-pointer" />
-                </div>
-                  צירוף נסח טאבו
-                </div>
+                  {label}
+                </label>
               </div>
             </div>
-            {selectedFile && (
+
+            {/* Selected File Preview */}
+            {files[key] && (
               <div className="mt-4 flex items-center border-[1px] border-dashed border-[#00A481] rounded-md p-2">
-                <button className="text-red-500 mr-2" onClick={handleRemoveFile}>
-                  <img src={deleteIcon} alt={'deletebtn'} className="px-1 cursor-pointer"/>
+                <button className="text-red-500 mr-2" onClick={() => handleRemoveFile(key)}>
+                  <img src={deleteIcon} alt="deletebtn" className="px-1 cursor-pointer" />
                 </button>
-                <span className="flex-grow">{selectedFile.name}</span>
-                {preview && (
-                  <img src={preview} alt="Preview" className="w-10 h-10 rounded-lg object-cover" />
+                <span className="flex-grow">{files[key]?.name}</span>
+                {previews[key] && (
+                  <img src={previews[key]} alt="Preview" className="w-10 h-10 rounded-lg object-cover" />
                 )}
               </div>
             )}
           </div>
-          <div className='col-md-4 mydropzone'>
-            <div className="dropzone needsclick demo-upload" action="/upload">
-              <div className=" border-[1px] border-dashed border-[#00A481] rounded-md p-2 px-4">
-                <div className=" flex items-center font-semibold text-[#00A481] cursor-pointer">
-                <div className="relative cursor-pointer">
-                  <input type="file" className="border-0 bg-transparent opacity-0 absolute w-full h-full cursor-pointer" onChange={handleFileChange} />
-                  <img src={add_file} alt="Upload Icon" className="cursor-pointer" />
-                </div>
-                  צירוף אישור מהעירייה
-                </div>
-              </div>
-            </div>
-            {selectedFile && (
-              <div className="mt-4 flex items-center border-[1px] border-dashed border-[#00A481] rounded-md p-2">
-                <button className="text-red-500 mr-2" onClick={handleRemoveFile}>
-                  <img src={deleteIcon} alt={'deletebtn'} className="px-1 cursor-pointer"/>
-                </button>
-                <span className="flex-grow">{selectedFile.name}</span>
-                {preview && (
-                  <img src={preview} alt="Preview" className="w-10 h-10 rounded-lg object-cover" />
-                )}
-              </div>
-            )}
-          </div>
-          <div className='col-md-4 mydropzone'>
-            <div className="dropzone needsclick demo-upload" action="/upload">
-              <div className=" border-[1px] border-dashed border-[#00A481] rounded-md p-2 px-4">
-                <div className=" flex items-center font-semibold text-[#00A481] cursor-pointer">
-                <div className="relative cursor-pointer">
-                  <input type="file" className="border-0 bg-transparent opacity-0 absolute w-full h-full cursor-pointer" onChange={handleFileChange} />
-                  <img src={add_file} alt="Upload Icon" className="cursor-pointer" />
-                </div>
-                  צירוף מסמכים נוספים
-                </div>
-              </div>
-            </div>
-            {selectedFile && (
-              <div className="mt-4 flex items-center border-[1px] border-dashed border-[#00A481] rounded-md p-2">
-                <button className="text-red-500 mr-2" onClick={handleRemoveFile}>
-                  <img src={deleteIcon} alt={'deletebtn'} className="px-1 cursor-pointer"/>
-                </button>
-                <span className="flex-grow">{selectedFile.name}</span>
-                {preview && (
-                  <img src={preview} alt="Preview" className="w-10 h-10 rounded-lg object-cover" />
-                )}
-              </div>
-            )}
-          </div>
+        ))}
         </div>  
         <div className='row my-4'>
           <div className='col-md-12  mydropzone'>
