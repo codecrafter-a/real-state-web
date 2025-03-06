@@ -6,6 +6,7 @@ import LanguageHandler from "./Componant/language-selector";
 import Property from "./Pages/Property/Property";
 import Brokers from "./Pages/Brokers/Brokers";
 import Signin from "./Pages/Signin/Signin";
+import Agreements from "./Pages/Agreements/Agreements";
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/:lang" element={<Signin />} />
           <Route path="/:lang/property" element={<Property/>}/>
           <Route path="/:lang/broker" element={<Brokers />} />
+          <Route path="/:lang/agrrement" element={<Agreements />} />
         </Routes>
       </Layout>
     </div>

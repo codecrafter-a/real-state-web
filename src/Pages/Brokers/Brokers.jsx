@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from 'react-i18next'
 import bodyBg from "../../assets/images/body_bg.webp";
 import boryGroupLeft from "../../assets/images/bory_group_left.png";
 import boryGroupRight from "../../assets/images/bory_group_right.png";
@@ -14,7 +15,7 @@ import CustomInput from "../../Componant/Common/Input/Custominput";
 import successIcon from '../../assets/images/success_icon.svg';
 import Accordion from 'react-bootstrap/Accordion';
 import whatsapp from '../../assets/images/wa, whatsapp, message, communication, chat.svg';
-import { Modal,} from "react-bootstrap";
+import { Modal, } from "react-bootstrap";
 import sms from '../../assets/images/sms.svg'
 import email from '../../assets/images/email.svg';
 import group from '../../assets/images/Group 2538.png';
@@ -22,22 +23,24 @@ import gyiphy from '../../assets/images/giphy 1.png'
 
 
 const Brokers = () => {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [isShow, setIsShow] = useState(false);
   const [isView, setIsView] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [sentSuccess, setSentSuccess] = useState(false);
 
-  const handleOpen = () => {setIsOpen(true);};
-  const handleShow = () => {setIsShow(true);};
-  const handleView = () => {setIsView(true)};
+  const handleOpen = () => { setIsOpen(true); };
+  const handleShow = () => { setIsShow(true); };
+  const handleView = () => { setIsView(true) };
   const handleSentSuccess = () => {
     setShowSuccess(false);
     setSentSuccess(true);
   }
   const handleIsShow = () => {
     setIsView(false);
-    setShowSuccess(true)};
+    setShowSuccess(true)
+  };
 
   return (
     <>
@@ -55,13 +58,13 @@ const Brokers = () => {
       <div className="bg-white w-100 scrollbar-left mx-auto pb-4 scrollbar-content position-relative z-3 rounded-3 shadow-lg mainPage">
         <div class="px-3 px-md-4">
           <h1 class="fs-4 fw-semibold  py-4 mb-7 border-bottom text-center text-embed-500">
-            הוספת נכס חדש
+            {t("age_main_title")}
           </h1>
         </div>
         <div className=" px-md-5">
           <div className="card p-3 border rounded-3 mb-4">
             <h5 className=" text-embed-500 mb-4">
-              סוג שיתוף הפעולה וחלוקת העמלה
+              {t("age_type_com_distribution")}
             </h5>
             <form>
               <div className="mb-3 form-check">
@@ -76,8 +79,7 @@ const Brokers = () => {
                   className="form-check-label fw-bold"
                   htmlFor="sharedPool"
                 >
-                  קופה משותפת - מחברים יחד את עמלת המוכר, ואת עמלת הקונה, וכל
-                  מתווך מקבל חצי
+                  {t("age_comm_type_1")}
                 </label>
               </div>
 
@@ -89,7 +91,7 @@ const Brokers = () => {
                   id="eachGetsOwn"
                 />
                 <label className="form-check-label" htmlFor="eachGetsOwn">
-                  כל אחד מהלקוח שלו
+                  {t("age_comm_type_2")}
                 </label>
               </div>
 
@@ -101,7 +103,7 @@ const Brokers = () => {
                   id="buyerPaysSeller"
                 />
                 <label className="form-check-label" htmlFor="buyerPaysSeller">
-                  מתווך הקונה מעביר למתווך המוכר
+                  {t("age_comm_type_3")}
                 </label>
               </div>
 
@@ -113,31 +115,31 @@ const Brokers = () => {
                   id="other"
                 />
                 <label className="form-check-label" htmlFor="other">
-                  סיכום אחר
+                  {t("age_comm_type_4")}
                 </label>
               </div>
             </form>
           </div>
           <div className="card p-3 border  rounded-3 mb-4">
-            <h5 className=" text-embed-500 mb-4">סוג העסקה</h5>
+            <h5 className=" text-embed-500 mb-4">{t("age_tran_type")}</h5>
             <div className=" d-flex justify-content-start align-items-center gap-3">
               <div className="border-2 rounded-2 p-2 iconbox iconbox ">
                 <img src={key_vertical} alt="" className="ms-3" />
                 <span className="fs-5 fw-normal lh-base text-center px-1">
-                  השכרה
+                  {t("age_tran_type_1")}
                 </span>
               </div>
               <div className="border-2 rounded-2 p-2 iconbox iconbox">
                 <img src={garage_door} alt="" className="ms-3" />
                 <span className="fs-5 fw-normal lh-base text-center px-2">
-                  קנייה
+                  {t("age_tran_type_2")}
                 </span>
               </div>
             </div>
           </div>
           <div className="card p-3 border  rounded-3 mb-4">
             <div className="form_group mb-2 mb-xl-0 d-flex justify-content-between">
-              <h5 className=" text-embed-500 mb-4">פרטי המתווכים/ות</h5>
+              <h5 className=" text-embed-500 mb-4">{t("age_details")}</h5>
               <button
                 type="button"
                 className="border text-xl mt-2 d-flex align-items-center justify-content-center shadow-lg rounded-pill py-1 px-4 search-button"
@@ -151,14 +153,14 @@ const Brokers = () => {
             </div>
             <div className="mb-3">
               <label for="searchInput" className="form-label fw-semibold">
-                חפשו לקוחות או הוסיפו לקוחות חדשים, ניתן להוסיף יותר מלקוח אחד
+                {t("age_details_title")}
               </label>
               <div className="input-group w-75">
                 <input
                   type="text"
                   className="form-control border-end-0"
                   id="searchInput"
-                  placeholder="התחילו להקליד את שם המתווך."
+                  placeholder={t("age_title_placeholder")}
                 />
                 <span className="input-group-text text-success bg-transparent border-1 border-start-0">
                   <img src={search} alt="search" />
@@ -168,7 +170,7 @@ const Brokers = () => {
           </div>
           <div className="card p-3 border  rounded-3 mb-4">
             <div className="form_group mb-2 mb-xl-0 d-flex justify-content-between">
-              <h5 className=" text-embed-500 mb-4">בחירת נכסים</h5>
+              <h5 className=" text-embed-500 mb-4">{t("age_pro_section")}</h5>
               <button
                 type="button"
                 onClick={handleShow}
@@ -182,14 +184,14 @@ const Brokers = () => {
             </div>
             <div className="mb-3">
               <label for="searchInput" className="form-label fw-semibold">
-                חפשו נכסים קיימים או הוסיפו נכס חדש, ניתן להוסיף יותר מנכס אחד
+                {t("age_pro_section_title")}
               </label>
               <div className="input-group w-75">
                 <input
                   type="text"
                   className="form-control border-end-0"
                   id="searchInput"
-                  placeholder="התחילו להקליד את כתובת הנכס  s"
+                  placeholder={t("age_pro_asset_address")}
                 />
                 <span className="input-group-text text-success bg-transparent border-1 border-start-0">
                   <img src={search} alt="search" />
@@ -198,11 +200,11 @@ const Brokers = () => {
             </div>
           </div>
           <div className="card p-3 border  rounded-3 mb-4">
-            <h5 className=" text-embed-500 mb-4">הערות</h5>
+            <h5 className=" text-embed-500 mb-4">{t("age_note")}</h5>
             <div className=" px-2 pb-2">
               <textarea
                 className="form-control"
-                placeholder="תוכלו לכתוב כאן הערות"
+                placeholder={t("age_note_placeholder")}
                 rows="4"
               ></textarea>
             </div>
@@ -216,7 +218,7 @@ const Brokers = () => {
                 defaultChecked
               />
               <label className="fs-5 fw-normal lh-1" htmlFor="">
-                שליחת תמונות
+                {t("age_photos")}
               </label>
             </div>
             <div className="form-check form-switch">
@@ -226,19 +228,19 @@ const Brokers = () => {
                 id="toggleDocs"
               />
               <label className="fs-5 fw-normal lh-1" htmlFor="">
-                שליחת נספחי נכס
+                {t("age_pro_attech")}
               </label>
             </div>
           </div>
           <div className="d-flex gap-3 ">
-           <button className="agent-button1  rounded-pill px-5 py-2 fw-bold shadow-sm text-white" onClick={handleView}>
-              שליחה
+            <button className="agent-button1  rounded-pill px-5 py-2 fw-bold shadow-sm text-white" onClick={handleView}>
+              {t("age_btn_send")}
             </button>
             <button className=" agent-button2 rounded-pill px-4 py-2 fw-bold">
-              הפקה ללא שליחה
+              {t("age_btn_send_without")}
             </button>
             <button className=" agent-button2 rounded-pill px-5 py-1 fw-bold">
-              צפייה
+              {t("age_btn_view")}
             </button>
           </div>
         </div>
@@ -252,10 +254,10 @@ const Brokers = () => {
             header={<img src={Next} alt="next btn" />}
           >
             <h5 className=" text-embed-500 mb-2 fs-3 text-center">
-              הוספה מהירה של לקוח חדש
+              {t("age_quick_add_model_title")}
             </h5>
             <p className="fs-5S font-normal text-center">
-              תוכלו לחזור מאוחר יותר למסך לקוחות ולמלא את שאר פרטי הלקוח
+              {t("age_quick_add_model_description")}
             </p>
             <div className="d-flex flex-row justify-center">
               <form className=" w-100">
@@ -265,14 +267,14 @@ const Brokers = () => {
                       htmlFor="email"
                       className="form-label fw-bold text-start d-block mb-1"
                     >
-                      דוא״ל *
+                      {t("age_quick_add_email")}
                     </label>
                     <CustomInput
                       type="email"
                       className="form-control w-100"
                       id="email"
                       required
-                    />  
+                    />
                   </div>
 
                   <div className="mb-3 w-100">
@@ -280,7 +282,7 @@ const Brokers = () => {
                       htmlFor="phone"
                       className="form-label fw-bold text-start d-block mb-1"
                     >
-                      טלפון *
+                      {t("age_quick_add_phone")}
                     </label>
                     <CustomInput
                       type="tel"
@@ -295,7 +297,7 @@ const Brokers = () => {
                       htmlFor="fullname"
                       className="form-label fw-bold text-start d-block mb-1"
                     >
-                      שם מלא *
+                      {t("age_quick_add_name")}
                     </label>
                     <CustomInput
                       type="text"
@@ -309,7 +311,7 @@ const Brokers = () => {
             </div>
             <div className=" my-4">
               <button className="agent-button1  rounded-pill px-5 py-2 fw-bold shadow-sm text-white" onClick={() => setIsOpen(false)}>
-                הוספה
+                {t("age_btn_add")}
               </button>
             </div>
           </CustomModal>
@@ -321,13 +323,13 @@ const Brokers = () => {
             show={isShow}
             onClick={handleShow}
             handleClose={() => setIsShow(false)}
-            header={<img src={Next} alt="next btn" width="32px" height='32px'/>}
+            header={<img src={Next} alt="next btn" width="32px" height='32px' />}
           >
             <h5 className=" text-embed-500 mb-2 fs-3 text-center">
-              הוספה מהירה של נכס חדש
+              {t("age_quick_add_new_property")}
             </h5>
             <p className="fs-5S font-normal text-center">
-              תוכלו לחזור מאוחר יותר למסך לקוחות ולמלא את שאר פרטי הלקוח
+              {t("age_quick_add_new_property_subtitle")}
             </p>
             <div className="d-flex flex-row justify-center">
               <form>
@@ -336,7 +338,7 @@ const Brokers = () => {
                     for="email"
                     className="form-label fw-bold text-start d-block mb-1"
                   >
-                    עיר
+                    {t("age_new_property_city")}
                   </label>
                   <CustomInput
                     type={"email"}
@@ -351,7 +353,7 @@ const Brokers = () => {
                     for="phone"
                     className="form-label fw-bold text-start d-block mb-1"
                   >
-                    רחוב*
+                    {t("age_new_property_street")}
                   </label>
                   <CustomInput
                     type={"tel"}
@@ -367,7 +369,7 @@ const Brokers = () => {
                         for="apartmentNumber"
                         className="form-label text-start fw-bold  d-block"
                       >
-                        מס׳ דירה *
+                        {t("age_new_property_apartment_number")}
                       </label>
                       <input
                         type="text"
@@ -382,7 +384,7 @@ const Brokers = () => {
                         for="buildingNumber"
                         className="form-label fw-bold text-start d-block"
                       >
-                        מס׳ בניין *
+                        {t("age_new_property_building_number")}
                       </label>
                       <input
                         type="text"
@@ -397,186 +399,185 @@ const Brokers = () => {
             </div>
             <div className=" my-4">
               <button className="agent-button1  rounded-pill px-5 py-2 fw-bold shadow-sm text-white" onClick={() => setIsOpen(false)}>
-                הוספה
+                {t("age_btn_add")}
               </button>
             </div>
           </CustomModal>
         </div>
       )}
-      <Modal show={isView} onHide={() => {setIsView(false)}} centered className="custom-modal">
-      <Modal.Header closeButton className=" border-0">
-        <img src={Next} alt="next btn" className="" />
-      </Modal.Header>
-      <Modal.Body className="p-4">
-        <div className="text-center">
-          <img src={successIcon} alt="Success" className="mx-auto w-20 h-20 mb-3" />
-          <h4 className="text-embed-500 fs-3 font-semibold">ההמסמך שלכם מוכן</h4>
-          <p className="fs-5 font-semibold">כיצד תרצו לשלוח אותו ?</p>
-        </div>
-        {/* Options Section */}
-        <div className="options-container">
-          <div className="option-item rounded-3 my-3">
-            <Accordion defaultActiveKey={null} className="custom-accordion">
-              <Accordion.Item eventKey="0 " className="custom-header">
-                <Accordion.Header className=" bg-success-subtle">
-                  <div className="d-flex justify-content-between w-100">
-                    <div className=" d-flex align-items-center">
-                       <img src={whatsapp} alt="whatsapp" />
-                       <span className="ps-2 text-start fs-5">שליחה ל-WhatsApp</span>
-                    </div>
-                    <input className="form-check-input border border-black bg-white" type="checkbox" />
-                  </div>
-                </Accordion.Header>
-                <Accordion.Body className="bg-success-subtle">
-                <ul className="fw-bold ">
-                  <li>שליחת המסמך ללא הצורך להקים אנשי קשר</li>
-                  <li>שליחת המסמך בפעולה אחת</li>
-                  <li>שליחת המסמך כמותעד במערכת</li>
-                </ul>
-                <p className="mt-3 fw-bold ">
-                  השירות כרוך בבחירת חבילה ותשלום נוסף.
-                  במידה ותבחר באפשרות זו, כרטיס האשראי השמור במערכת יחויב בתוספת התשלום.
-                </p>
-              {/* Pricing Cards */}
-              <div className="row justify-content-center text-center mt-4">
-                <div className="col-md-3 ">
-                  <div className="border rounded p-2 bg-white  shadow-sm">
-                    <h3 className="text-embed-500 fs-2 fw-bold">150</h3>
-                    <p className="mb-0 text-embed-500">הודעות</p>
-                    <p className="text-embed-500">₪ 70-ב</p>
-                  </div>
-                </div>
-
-                <div className="col-md-3 ">
-                  <div className="border rounded shadow-sm p-1 bg-white">
-                    <p className="mb-0 text-embed-500">הכי משתלם</p>
-                    <h3 className="text-embed-500 fs-2 fw-bold">100</h3>
-                    <p className="mb-0 text-embed-500">הודעות</p>
-                    <p className=" text-embed-500">₪ 50-ב</p>
-                  </div>
-                </div>
-
-                <div className="col-md-3">
-                  <div className="border rounded p-2 bg-white shadow-sm">
-                    <h3 className="text-embed-500 fs-2 fw-bold">50</h3>
-                    <p className="mb-0 text-embed-500">הודעות</p>
-                    <p className="text-embed-500">₪ 30-ב</p>
-                  </div>
-                </div>
-              </div>
-        </Accordion.Body>
-              </Accordion.Item>
-            </Accordion>
-          </div>
-          <div className="option-item rounded-3 my-3">
-            <Accordion defaultActiveKey={null} className="custom-accordion ">
-              <Accordion.Item eventKey="0" className="custom-header">
-                <Accordion.Header className=" bg-success-subtle">
-                  <div className="d-flex justify-content-between w-100">
-                    <div className=" d-flex align-items-center">
-                       <img src={sms} alt="whatsapp" />
-                       <span className=" ps-2 text-start fs-5">שליחה ב-SMs</span>
-                    </div>
-                    <input className="form-check-input border border-black bg-white" type="checkbox" />
-                  </div>
-                </Accordion.Header>
-                <Accordion.Body className="custom-body bg-success-subtle">
-                  <ul className="list-unstyled">
-                    <li>שליחת המסמך ללא הצורך להקים אנשי קשר</li>
-                    <li>שליחת המסמך בפעולה אחת</li>
-                    <li>שליחת המסמך כמותעד במערכת</li>
-                  </ul>
-                  <p className="mt-3">
-                    השירות כרוך בבחירת חבילה ותשלום נוסף. במידה ותבחר באפשרות זו, כרטיס האשראי השמור במערכת יחויב בתוספת התשלום.
-                  </p>
-                </Accordion.Body>
-              </Accordion.Item>
-            </Accordion>
-          </div>
-          <div className="option-item rounded-3 my-3">
-            <Accordion defaultActiveKey={null} className="custom-accordion ">
-              <Accordion.Item eventKey="0" className="custom-header">
-                <Accordion.Header className=" bg-success-subtle">
-                  <div className="d-flex justify-content-between w-100">
-                    <div className=" d-flex align-items-center">
-                       <img src={email} alt="whatsapp" />
-                       <span className="ps-2 text-start fs-5">ליחה בדוא”לש</span>
-                       </div>
-                    <input className="form-check-input border border-black bg-white" type="checkbox" />
-                  </div>
-                </Accordion.Header>
-                <Accordion.Body className="custom-body bg-success-subtle">
-                  <ul className="list-unstyled">
-                    <li>שליחת המסמך ללא הצורך להקים אנשי קשר</li>
-                    <li>שליחת המסמך בפעולה אחת</li>
-                    <li>שליחת המסמך כמותעד במערכת</li>
-                  </ul>
-                  <p className="mt-3">
-                    השירות כרוך בבחירת חבילה ותשלום נוסף. במידה ותבחר באפשרות זו, כרטיס האשראי השמור במערכת יחויב בתוספת התשלום.
-                  </p>
-                </Accordion.Body>
-              </Accordion.Item>
-            </Accordion>
-          </div>
-          <div className="option-item rounded-3 my-3">
-            <Accordion defaultActiveKey={null} className="custom-accordion ">
-              <Accordion.Item eventKey="0" className=" custom-header">
-                <Accordion.Header className=" bg-success-subtle">
-                  <div className="d-flex justify-content-between w-100">
-                    <div className=" d-flex align-items-center">
-                       <img src={group} alt="whatsapp" />
-                       <span className="ps-2 text-start fs-5">שליחה ב-WhatsApp בשיתוף דרך ה</span>
-                       </div>
-                    <input className="form-check-input border border-black bg-white" type="checkbox" />
-                  </div>
-                </Accordion.Header>
-                <Accordion.Body className="bg-success-subtle">
-                  <ul className="list-unstyled">
-                    <li>שליחת המסמך ללא הצורך להקים אנשי קשר</li>
-                    <li>שליחת המסמך בפעולה אחת</li>
-                    <li>שליחת המסמך כמותעד במערכת</li>
-                  </ul>
-                  <p className="mt-3">
-                    השירות כרוך בבחירת חבילה ותשלום נוסף. במידה ותבחר באפשרות זו, כרטיס האשראי השמור במערכת יחויב בתוספת התשלום.
-                  </p>
-                </Accordion.Body>
-              </Accordion.Item>
-            </Accordion>
-          </div>
-        </div>
-        {/* Buttons */}
-        <div className="text-center mt-4 d-flex flex-col">
-          <button className="agent-button1 mx-auto rounded-pill px-3 py-2 fw-bold shadow-sm text-white" onClick={ handleIsShow}>
-              שליחה
-          </button>
-          <button className="btn btn-link text-muted mt-2">הפקה ללא שליחה</button>
-        </div>
-      </Modal.Body>
-      </Modal>
-      {showSuccess && (
-      <div className="position-relative">
-        <CustomModal 
-          show={showSuccess}
-          handleClose={() => setShowSuccess(false)}
-          footer={` לדו”ח התאמות לקוחות`}
-          onClick={handleSentSuccess}
-          footer1={" לשליחת הסכם "}
-        > 
-          <div className="text-center z-3 position-relative">
+      <Modal show={isView} onHide={() => { setIsView(false) }} centered className="custom-modal">
+        <Modal.Header closeButton className=" border-0">
+          <img src={Next} alt="next btn" className="" />
+        </Modal.Header>
+        <Modal.Body className="p-4">
+          <div className="text-center">
             <img src={successIcon} alt="Success" className="mx-auto w-20 h-20 mb-3" />
-            <div className="text-center">
-              <p className="fs-3 text-embed-500 font-semibold">מעולה!</p>
-              <h4 className="fs-3 text-embed-500 font-semibold">המסמך נשלח בהצלחה</h4>
+            <h4 className="text-embed-500 fs-3 font-semibold">{t("age_report_title")}</h4>
+            <p className="fs-5 font-semibold">{t("age_report_question")}</p>
+          </div>
+          {/* Options Section */}
+          <div className="options-container">
+            <div className="option-item rounded-3 my-3">
+              <Accordion defaultActiveKey={null} className="custom-accordion">
+                <Accordion.Item eventKey="0 " className="custom-header">
+                  <Accordion.Header className=" bg-success-subtle">
+                    <div className="d-flex justify-content-between w-100">
+                      <div className=" d-flex align-items-center">
+                        <img src={whatsapp} alt="whatsapp" />
+                        <span className="ps-2 text-start fs-5">{t("age_send_whatsapp")}</span>
+                      </div>
+                      <input className="form-check-input border border-black bg-white" type="checkbox" />
+                    </div>
+                  </Accordion.Header>
+                  <Accordion.Body className="bg-success-subtle">
+                    <ul className="fw-bold ">
+                      <li>{t("age_send_whatsapp_point_1")}</li>
+                      <li>{t("age_send_whatsapp_point_2")}</li>
+                      <li>{t("age_send_whatsapp_point_3")}</li>
+                    </ul>
+                    <p className="mt-3 fw-bold ">
+                      {t("age_send_whatsapp_description")}
+                    </p>
+                    {/* Pricing Cards */}
+                    <div className="row justify-content-center text-center mt-4">
+                      <div className="col-md-3 ">
+                        <div className="border rounded p-2 bg-white  shadow-sm">
+                          <h3 className="text-embed-500 fs-2 fw-bold">150</h3>
+                          <p className="mb-0 text-embed-500">{t("age_send_whatsapp_message")}</p>
+                          <p className="text-embed-500">{t("age_send_whatsapp_message_info")}</p>
+                        </div>
+                      </div>
+
+                      <div className="col-md-3 ">
+                        <div className="border rounded shadow-sm p-1 bg-white">
+                          <p className="mb-0 text-embed-500">{t("age_send_whatsapp_cost")}</p>
+                          <h3 className="text-embed-500 fs-2 fw-bold">100</h3>
+                          <p className="mb-0 text-embed-500">{t("age_send_whatsapp_message")}</p>
+                          <p className=" text-embed-500">{t("age_send_whatsapp_message_info2")}</p>
+                        </div>
+                      </div>
+
+                      <div className="col-md-3">
+                        <div className="border rounded p-2 bg-white shadow-sm">
+                          <h3 className="text-embed-500 fs-2 fw-bold">50</h3>
+                          <p className="mb-0 text-embed-500">{t("age_send_whatsapp_message")}</p>
+                          <p className="text-embed-500">{t("age_send_whatsapp_message_info3")}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </Accordion.Body>
+                </Accordion.Item>
+              </Accordion>
+            </div>
+            <div className="option-item rounded-3 my-3">
+              <Accordion defaultActiveKey={null} className="custom-accordion ">
+                <Accordion.Item eventKey="0" className="custom-header">
+                  <Accordion.Header className=" bg-success-subtle">
+                    <div className="d-flex justify-content-between w-100">
+                      <div className=" d-flex align-items-center">
+                        <img src={sms} alt="whatsapp" />
+                        <span className=" ps-2 text-start fs-5">{t("age_send_text_message")}</span>
+                      </div>
+                      <input className="form-check-input border border-black bg-white" type="checkbox" />
+                    </div>
+                  </Accordion.Header>
+                  <Accordion.Body className="custom-body bg-success-subtle">
+                    <ul className="list-unstyled">
+                      <li>{t("age_send_text_message_point_1")}</li>
+                      <li>{t("age_send_text_message_point_2")}</li>
+                      <li>{t("age_send_text_message_point_3")}</li>
+                    </ul>
+                    <p className="mt-3">
+                      {t("age_send_text_message_description")}
+                    </p>
+                  </Accordion.Body>
+                </Accordion.Item>
+              </Accordion>
+            </div>
+            <div className="option-item rounded-3 my-3">
+              <Accordion defaultActiveKey={null} className="custom-accordion ">
+                <Accordion.Item eventKey="0" className="custom-header">
+                  <Accordion.Header className=" bg-success-subtle">
+                    <div className="d-flex justify-content-between w-100">
+                      <div className=" d-flex align-items-center">
+                        <img src={email} alt="whatsapp" />
+                        <span className="ps-2 text-start fs-5">{t("age_send_message_email")}</span>
+                      </div>
+                      <input className="form-check-input border border-black bg-white" type="checkbox" />
+                    </div>
+                  </Accordion.Header>
+                  <Accordion.Body className="custom-body bg-success-subtle">
+                    <ul className="list-unstyled">
+                      <li>{t("age_send_email_message_point_1")}</li>
+                      <li>{t("age_send_email_message_point_2")}</li>
+                      <li>{t("age_send_email_message_point_3")}</li>
+                    </ul>
+                    <p className="mt-3">
+                      {t("age_send_email_message_description")}
+                    </p>
+                  </Accordion.Body>
+                </Accordion.Item>
+              </Accordion>
+            </div>
+            <div className="option-item rounded-3 my-3">
+              <Accordion defaultActiveKey={null} className="custom-accordion ">
+                <Accordion.Item eventKey="0" className=" custom-header">
+                  <Accordion.Header className=" bg-success-subtle">
+                    <div className="d-flex justify-content-between w-100">
+                      <div className=" d-flex align-items-center">
+                        <img src={group} alt="whatsapp" />
+                        <span className="ps-2 text-start fs-5">{t("age_send_message_whatsapp_share")}</span>
+                      </div>
+                      <input className="form-check-input border border-black bg-white" type="checkbox" />
+                    </div>
+                  </Accordion.Header>
+                  <Accordion.Body className="bg-success-subtle">
+                    <ul className="list-unstyled">
+                      <li>{t("age_send_message_whatsapp_share_pont_1")}</li>
+                      <li>{t("age_send_message_whatsapp_share_pont_2")}</li>
+                      <li>{t("age_send_message_whatsapp_share_pont_3")}</li>
+                    </ul>
+                    <p className="mt-3">
+                      {t("age_send_message_whatsapp_share_description")}
+                    </p>
+                  </Accordion.Body>
+                </Accordion.Item>
+              </Accordion>
             </div>
           </div>
-          <div 
-            className="position-absolute bg-transparent top-0 my-5 z-2" 
-            style={{ pointerEvents: 'none' }}
-          >
-            <img src={gyiphy} alt="gyiphy" className="object-fit-cover" />
+          {/* Buttons */}
+          <div className="text-center mt-4 d-flex flex-col">
+            <button className="agent-button1 mx-auto rounded-pill px-3 py-2 fw-bold shadow-sm text-white" onClick={handleIsShow}>
+              {t("age_btn_send")}
+            </button>
+            <button className="btn btn-link text-muted mt-2">{t("age_btn_link")}</button>
           </div>
-        </CustomModal>
-      </div>)
+        </Modal.Body>
+      </Modal>
+      {showSuccess && (
+        <div className="position-relative">
+          <CustomModal
+            show={showSuccess}
+            handleClose={() => setShowSuccess(false)}
+            footer={t("age_cust_reconciliation_report")}
+            onClick={handleSentSuccess}
+            footer1={t("age_cust_agreement")}
+          >
+            <div className="text-center z-3 position-relative">
+              <img src={successIcon} alt="Success" className="mx-auto w-20 h-20 mb-3" />
+              <div className="text-center">
+                <p className="fs-3 text-embed-500 font-semibold">{t("age_cust_review")}</p>
+                <h4 className="fs-3 text-embed-500 font-semibold">{t("age_cust_status")}</h4>
+              </div>
+            </div>
+            <div
+              className="position-absolute bg-transparent top-0 my-5 z-2"
+              style={{ pointerEvents: 'none' }}
+            >
+              <img src={gyiphy} alt="gyiphy" className="object-fit-cover" />
+            </div>
+          </CustomModal>
+        </div>)
       }
       {
         <Modal
@@ -600,19 +601,19 @@ const Brokers = () => {
                 alt="Success"
                 className="mx-auto w-20 h-20 mb-3"
               />
-              <h4 className="fs-3 text-embed-500 fw-semibold">מעולה!</h4>
-              <p className="fs-5 text-embed-500 fw-semibold">המסמך נשלח בהצלחה</p>
+              <h4 className="fs-3 text-embed-500 fw-semibold">{t("age_cust_agreement_status")}</h4>
+              <p className="fs-5 text-embed-500 fw-semibold">{t("age_cust_status")}</p>
             </div>
             <div className="text-center mt-4">
               <button
                 className="agent-button1 mx-auto rounded-pill px-4 py-2 fw-bold shadow-sm text-white"
               >
-                להחתמת הלקוח במכשיר שלי
+                {t("age_btn_description")}
               </button>
             </div>
           </Modal.Body>
         </Modal>
-        }
+      }
     </>
   );
 };
