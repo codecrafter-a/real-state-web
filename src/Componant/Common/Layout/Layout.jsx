@@ -4,12 +4,13 @@ import Sidebar from "../Sidebar/Sidebar";
 
  
 const Layout = ({ children }) => {
+  
   return (
     <div className="bg-white text-black text-base">
     <Header />
     <div className="layout_content">
       <Sidebar />
-      <main className="main_content">
+      <main className="main_content " >
         {children}
       </main>
     </div>

@@ -3,8 +3,11 @@ import { useTranslation } from "react-i18next"; // Import useTranslation
 import Layout from "./Componant/Common/Layout/Layout";
 import Customers from "./Pages/Customers/Customers";
 import LanguageHandler from "./Componant/language-selector";
-import AddCustomer from "../src/Pages/Customers/add-customer-en/Addcustomeren";
 import Property from "./Pages/Property/Property";
+import Brokers from "./Pages/Brokers/Brokers";
+import Signin from "./Pages/Signin/Signin";
+import Agreements from "./Pages/Agreements/Agreements";
+
 
 function App() {
   const { i18n } = useTranslation(); // Listen for language changes
@@ -16,8 +19,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/he" />} />
           <Route path="/:lang/customers" element={<Customers />} />
-          <Route path="/:lang" element={<AddCustomer />} />
+          <Route path="/:lang" element={<Signin />} />
           <Route path="/:lang/property" element={<Property/>}/>
+          <Route path="/:lang/broker" element={<Brokers />} />
+          <Route path="/:lang/agrrement" element={<Agreements />} />
         </Routes>
       </Layout>
     </div>

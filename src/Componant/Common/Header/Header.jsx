@@ -7,7 +7,7 @@ import '../Header/header.css'
 const Header = () => {
   const { t } = useTranslation();
   return (
-    <header className="header_main">
+    <header className="header_main z-[1000]">
       <section className="haeder_top">
         <div className="row align-items-center justify-content-between">
           <div className="col-auto">
