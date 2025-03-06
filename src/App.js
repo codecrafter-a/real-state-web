@@ -6,6 +6,7 @@ import LanguageHandler from "./Componant/language-selector";
 import AddCustomer from "../src/Pages/Customers/add-customer-en/Addcustomeren";
 import Property from "./Pages/Property/Property";
 import Brokers from "./Pages/Brokers/Brokers";
+import Agreements from "./Pages/Agreements/Agreements";
 
 
 function App() {
@@ -20,7 +21,8 @@ function App() {
           <Route path="/:lang/customers" element={<Customers />} />
           <Route path="/:lang" element={<AddCustomer />} />
           <Route path="/:lang/property" element={<Property/>}/>
-          <Route path="/broker" element={<Brokers />} />
+          <Route path="/:lang/broker" element={<Brokers />} />
+          <Route path="/:lang/agrrement" element={<Agreements />} />
         </Routes>
       </Layout>
     </div>
