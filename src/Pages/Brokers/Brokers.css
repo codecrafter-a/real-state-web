@@ -118,8 +118,7 @@ h5 {
 .scrollbar-left {
   direction: ltr;
   overflow-y: scroll;
-  height: 300px;
-  border: 1px solid #ccc;
+  height: 550px;
 }
 .scrollbar-left .scrollbar-content {
   direction: ltr;

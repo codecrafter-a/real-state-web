@@ -3,10 +3,10 @@ import { useTranslation } from 'react-i18next'
 import bodyBg from "../../assets/images/body_bg.webp";
 import boryGroupLeft from "../../assets/images/bory_group_left.png";
 import boryGroupRight from "../../assets/images/bory_group_right.png";
-import Propertyaddress from "./Propertyaddress/Propertyaddress";
-import Propertydetails from "./Propertydetails/Propertydetails";
-import Ownerdetails from "./Ownerdetails/Ownerdetails";
-import Attachments from "../Property/Attechment/Attechment";
+import Propertyaddress from "../../Componant/property/propertyaddress/Propertyaddress";
+import Propertydetails from "../../Componant/property/propertydetails/Propertydetails";
+import Ownerdetails from "../../Componant/property/ownerdetail/Ownerdetails";
+import Attachments from "../../Componant/property/attechment/Attechment";
 const Property = () => {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState(1);

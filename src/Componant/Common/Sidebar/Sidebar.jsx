@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { useTranslation } from 'react-i18next';
 import iconHome from '../../../assets/images/icon_home.svg';
 import iconPaper from '../../../assets/images/icon_paper.svg';
@@ -18,17 +18,25 @@ import userIcon from '../../../assets/images/user_icon.svg';
 import "../Sidebar/Sidebar.css";
 import { Link } from 'react-router-dom';
 const Sidebar = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   const { i18n, t } = useTranslation(); 
+  useEffect(() => {
+    const savedAuthStatus = localStorage.getItem("isAuthenticated");
+    if (savedAuthStatus === "true") {
+      setIsAuthenticated(true);
+    }
+  }, []);
   return (
     <>
-    <section className="haeder_right_block">
+    <section className={`haeder_right_block  ${isAuthenticated ? "active" : "disabled"}`}>
         <div className="haeder_right mCustomScrollbar">
           <ul className="hdr_right_menu">
             {[{ icon: iconHome, text: t("sitem1") , to: `/${i18n.language}/`},
               { icon: iconPaper, text: t("sitem2") },
               { icon: userIcon, text: t("sitem3") , to: `/${i18n.language}/customers`},
               { icon: homeWork, text: t("sitem4"), to: `/${i18n.language}/property` },
-              { icon: icon5, text: t("sitem5") },
+              { icon: icon5, text: t("sitem5"), to: `/${i18n.language}/broker` },
               { icon: attachMoney, text: t("sitem6") },
               { icon: barChart, text: t("sitem7") },
               { icon: familyHome, text: t("sitem8") },

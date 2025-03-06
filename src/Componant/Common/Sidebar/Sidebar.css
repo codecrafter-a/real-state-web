@@ -10,6 +10,7 @@
 	/* z-index: 99; */
 	padding: 26px 0 48px;
 	background: #fff;
+	transition: 0.3s;
 }
 .haeder_right{
 	height: 80vh;
@@ -136,6 +137,17 @@
 	}
 }
 
+@media (max-width: 448px) {
+	.haeder_right_block {
+	  display: none;		
+	}
+
+	[lang="en"] body{
+		padding-right: 0px;
+		padding-left: 0px;
+	}
+  }
+
 [lang="en"] .hdr_btn > a{
 	margin-right: 0;
 	margin-left: 36px;
@@ -150,10 +162,6 @@
 [lang="en"]  .user_dd > a.dropdown-toggle{
 	padding: 7px 30px 7px 0px;
 }
-[lang="en"] body{
-	padding-right: 0px;
-	padding-left: 344px;
-}
 [lang="en"] .haeder_right_block{
 	left: 0;
 } 
@@ -164,4 +172,14 @@
 [lang="en"] .bgupper_icons{
 	left: auto;
 	right: 0;
+}
+.haeder_right_block.disabled {
+	opacity: 0.5;
+	pointer-events: none;
+	filter: blur(2px);
+}
+.haeder_right_block.active {
+	opacity: 1;
+	pointer-events: auto;
+	filter: blur(0);
 }

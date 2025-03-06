@@ -4,6 +4,7 @@ import Sidebar from "../Sidebar/Sidebar";
 
  
 const Layout = ({ children }) => {
+  
   return (
     <div className="bg-white text-black text-base">
     <Header />
