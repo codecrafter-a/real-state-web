@@ -8,6 +8,7 @@ import Brokers from "./Pages/Brokers/Brokers";
 import Signin from "./Pages/Signin/Signin.jsx";
 import Home from "./Pages/Home/Home.jsx";
 // import Agreements from "./Pages/Agreements/Agreements";
+import Agreements from "./Pages/Agreementes/Agreementes";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path="/:lang/broker" element={<Brokers />} />
           <Route path="/:lang/home" element={<Home/>}/>
           {/* <Route path="/:lang/agrrement" element={<Agreements />} /> */}
+          <Route path="/:lang/agreements" element={<Agreements />} />
         </Routes>
       </Layout>
     </div>
