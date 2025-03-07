@@ -3,10 +3,11 @@ import { useTranslation } from "react-i18next"; // Import useTranslation
 import Layout from "./Componant/Common/Layout/Layout";
 import Customers from "./Pages/Customers/Customers";
 import LanguageHandler from "./Componant/language-selector";
-import Property from "./Pages/Property/Property";
+import Property from "./Pages/property/Property";
 import Brokers from "./Pages/Brokers/Brokers";
-import Signin from "./Pages/Signin/Signin";
-import Agreements from "./Pages/Agreements/Agreements";
+import Signin from "./Pages/Signin/Signin.jsx";
+import Home from "./Pages/Home/Home.jsx";
+// import Agreements from "./Pages/Agreements/Agreements";
 
 
 function App() {
@@ -22,7 +23,8 @@ function App() {
           <Route path="/:lang" element={<Signin />} />
           <Route path="/:lang/property" element={<Property/>}/>
           <Route path="/:lang/broker" element={<Brokers />} />
-          <Route path="/:lang/agrrement" element={<Agreements />} />
+          <Route path="/:lang/home" element={<Home/>}/>
+          {/* <Route path="/:lang/agrrement" element={<Agreements />} /> */}
         </Routes>
       </Layout>
     </div>

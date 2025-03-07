@@ -4,6 +4,7 @@ import left from "../../assets/images/left-1.png";
 import boryGroupRight from "../../assets/images/bory_group_right.png";
 import '../Signin/Signin.css';
 import g10 from '../../assets/images/g10.png';
+import { Container, Row, Col } from 'react-bootstrap';
 
 const Signin = () => {
 
@@ -44,9 +45,9 @@ const Signin = () => {
       </div>
     </div>
 
-    <div className="container contain-sm mx-auto justify-content-center position-relative bg-white shadow-lg rounded-3 p-4">
-      <div className="row d-flex w-100   scrollbar-content scrollbar-left flex-wrap px-md-5 px-3 z-3">
-        <div className="col-12">
+    <Container className="container contain-sm mx-auto justify-content-center position-relative bg-white shadow-lg rounded-3 p-4">
+      <Row className="row d-flex w-100   scrollbar-content scrollbar-left flex-wrap px-md-5 px-3 z-3">
+        <Col className="col-12">
           <div>
             <p className="py-4 my-4 text-center screen-1 fw-bold">
               ברוכים הבאים לממשק למתווך של חתימה ירוקה!
@@ -76,9 +77,9 @@ const Signin = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+        </Col>
+      </Row>
+    </Container>
   </>
 ) : null}
     </> 

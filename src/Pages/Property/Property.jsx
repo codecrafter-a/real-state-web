@@ -35,7 +35,7 @@ const Property = () => {
             <img src={boryGroupLeft} alt="left bg icon" />
           </span>
         </figure>
-        <div className="bgbelow_icons">
+        <div className="w-25">
           <img src={boryGroupRight} alt="right bg icon" />
         </div>
       </div>
