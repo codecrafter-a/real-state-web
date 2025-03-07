@@ -6,7 +6,7 @@ import LanguageHandler from "./Componant/language-selector";
 import Property from "./Pages/Property/Property";
 import Brokers from "./Pages/Brokers/Brokers";
 import Signin from "./Pages/Signin/Signin";
-import Agreements from "./Pages/Agreements/Agreements";
+import Agreements from "./Pages/Agreementes/Agreementes";
 
 
 function App() {
