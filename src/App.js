@@ -22,7 +22,7 @@ function App() {
           <Route path="/:lang" element={<Signin />} />
           <Route path="/:lang/property" element={<Property/>}/>
           <Route path="/:lang/broker" element={<Brokers />} />
-          <Route path="/:lang/agrrement" element={<Agreements />} />
+          <Route path="/:lang/agreements" element={<Agreements />} />
         </Routes>
       </Layout>
     </div>
