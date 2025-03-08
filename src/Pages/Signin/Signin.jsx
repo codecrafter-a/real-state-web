@@ -5,12 +5,12 @@ import boryGroupRight from "../../assets/images/bory_group_right.png";
 import '../Signin/Signin.css';
 import g10 from '../../assets/images/g10.png';
 import { Container, Row, Col } from 'react-bootstrap';
-
+import { useNavigate } from "react-router-dom";
 const Signin = () => {
 
     const [licenseNumber, setLicenseNumber] = useState("");
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-
+    const navigate = useNavigate(); 
 
     useEffect(() => {
         const savedAuthStatus = localStorage.getItem("isAuthenticated");
@@ -25,7 +25,7 @@ const Signin = () => {
         if (licenseNumber.trim() !== "") {
           localStorage.setItem("isAuthenticated", "true");
           setIsAuthenticated(true);
-          window.location.href = "he/property";
+          navigate("he/home");
         }
       };
 

@@ -9,6 +9,7 @@ i18n
   .use(LanguageDetector) // Detect language from URL
   .use(initReactI18next)
   .init({
+    debug: true,
     resources: {
       en: { translation: en },
       he: { translation: he }
