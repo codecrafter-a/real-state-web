@@ -305,5 +305,17 @@
     "home_tab_r5_h3_l3": "שליחת העתק ללקוחות",
     "home_tab_r6_h2": "נחתם ונרשם",
     "home_tab_r6_h2_l2": "מחיקה",
-    "home_tab_r6_h3_l2": "שליחת העתק ללקוחות"
+    "home_tab_r6_h3_l2": "שליחת העתק ללקוחות",
+
+    "all_agreements": "כל ההסכמים",
+    "recent_agreements": "הסכמים אחרונים",
+    "search_placeholder": "חפשו הסכם לפי כתובת / שם לקוח",
+    "show_button": "הצגה",
+    "invoice_label": "הפקת חשבונית",
+    "agreement_status": "סטטוס הסכם",
+    "until_date": "עד תאריך",
+    "from_date": "מתאריך",
+    "status_agreement": "סטטוס הסכם",
+    "no_recent_agreements": "אין הסכמים אחרונים להצגה",
+    "generated": "הופק"
   }

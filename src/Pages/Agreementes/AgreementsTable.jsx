@@ -163,10 +163,10 @@ const TableRow = ({ data }) => {
             <div className="self-stretch my-auto text-center w-[71px]">
                 {commission}
             </div>
-            <div className="flex-1 shrink self-stretch text-nowrap my-auto basis-8">
+            <div className="flex-1 shrink self-stretch text-sm text-nowrap my-auto basis-8">
             {t(clients)}
             </div>
-            <div className="gap-1 self-stretch my-auto whitespace-nowrap w-[55px]">
+            <div className="gap-1 self-stretch my-auto text-base whitespace-nowrap w-[55px]">
                 {t(agreementType)}
             </div>
             <div className="self-stretch my-auto">{date}</div>

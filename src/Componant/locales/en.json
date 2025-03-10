@@ -304,5 +304,17 @@
     "home_tab_r5_h3_l3": "Sending a copy to clients",
     "home_tab_r6_h2": "Signed and registered",
     "home_tab_r6_h2_l2": "Delete",
-"home_tab_r6_h3_l2": "Send a copy to clients"
+"home_tab_r6_h3_l2": "Send a copy to clients",
+
+  "all_agreements": "All Agreements",
+  "recent_agreements": "Recent Agreements",
+  "search_placeholder": "Search agreement by address / client name",
+  "show_button": "Show",
+  "invoice_label": "Generate Invoice",
+  "agreement_status": "Agreement Status",
+  "until_date": "Until Date",
+  "from_date": "From Date",
+  "status_agreement": "Status Agreement",
+  "no_recent_agreements": "No recent agreements to show",
+  "generated": "Generated"
   }

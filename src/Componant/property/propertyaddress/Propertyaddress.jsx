@@ -7,7 +7,7 @@ const Propertyaddress = ({setActiveTab}) => {
   return (
     <>
       <form className='px-9' >
-              <h4 className='text-2xl font-semibold text-[#00A481] py-3 mt-3 mb-1 text-start'> {t("pro_add_sub_title")}</h4>
+              <h4 className='text-2xl font-semibold text-[#00A481] py-3 mt-3 mb-1'> {t("pro_add_sub_title")}</h4>
                 <div className="grid grid-cols-6 gap-6 form_group">
                   <div className="col-span-2">
                     <label className="text-base font-semibold">{t("pro_add_city")}</label>
@@ -40,7 +40,7 @@ const Propertyaddress = ({setActiveTab}) => {
                       />
                     </div>
                 </div> 
-                <div className="step_btn_group text-end mt-4 pt-5 pb-3">
+                <div className="step_btn_group flex justify-end mt-4 pt-5 pb-3">
                   <CustomButton children={t("pro_next_step")}  onClick={() => setActiveTab(2)}  className={"border-1 border-emerald-500 px-5 bg-emerald-500 shadow-lg text-white  py-2 rounded-full hover:bg-[#55CD85] hover:border-[#55CD85] hover:text-white"}/>
                 </div>
             </form>
