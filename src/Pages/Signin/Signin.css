@@ -16,6 +16,7 @@
 @media (min-width: 1024px) {p{font-size: 20px;}}
 
 img{ max-width: 100%; width: auto; height: auto;};
+.right-bg-icon > img{width: 200px !important; height: 200px !important;}
 
 .hdr_btn > a{
 	font-size: 17px;
