@@ -76,99 +76,102 @@ const Customer = () => {
   return (
     <>
       <div className="absolute w-full top-0 z-0 overflow-hidden">
-        <figure className="mb-0 top_bg_fig">
+        <figure className="mb-0">
           <img src={body_bg} width="100%" alt="Background" />
-          <span className="bgupper_icons">
+          <span className="position-absolute top-0 start-0 mt-2">
             <img src={bory_group_left} alt="Left Icon" />
           </span>
         </figure>
-        <div className="bgbelow_icons">
+        <div>
           <img src={bory_group_right} alt="Right Icon" />
         </div>
       </div>
-      <div className="main_wrapper">
-        <div className="main_wrap_hdr">
+      
+      <div className="min-h-[550px] bg-white max-w-full w-[1194px] my-0 mx-auto pb-6 relative z-50 rounded-2xl shadow-lg">
+        <div className="px-6">
           <h1 className="text-2xl font-semibold border-b border-gray-300 py-4 mb-7 text-[#00A481] text-center">
-              {t("all_cust")}
+            {t("all_cust")}
           </h1>
         </div>
-        <div className="main_wrap_body p-0">
-          <form className="form_custom">
+
+        <div className="px-6 py-0">
+          <form>
             <div className="internal_scroll mCustomScrollbar">
-              <div className="form_group mb-2 mb-xl-0 flex justify-end">
+              <div className="mb-2 mb-xl-0 flex justify-end">
                 <button
                   type="button"
                   className="border-[1px] text-xl flex items-center justify-center shadow-lg border-emerald-500 rounded-3xl text-emerald-500 py-2 hover:bg-[#55CD85] hover:text-white min-w-44 px-4"
                 >
                   <div className="flex items-center justify-center">
                     <img className="me-1" src={add_reaction} alt="Add Client" />
-                     {t("add_cust")}{" "}
+                    {t("add_cust")}{" "}
                   </div>
                 </button>
               </div>
               <div className="mb-6 relative w-[66%]">
-                <div className="input-group input_grp_cus">
+                <div>
                   <input
                     type="text"
-                    className="form-control"
+                    className="focus:shadow-none focus:border-[#ccc] focus:outline-none"
                     placeholder={t("filter_cust")}
                   />
-                  <button className="btn" type="button">
+                  <button className="border border-secondary rounded-3" type="button">
                     <img src={search} alt="Search" />
                   </button>
                 </div>
               </div>
-              <div className="row form_group row_customers">
+              <div className="row mb-6">
                 <div className="col">
-                  <label className="form-label">
+                  <label className="fs-6 fw-semibold lh-sm mb-1 d-block">
                     {t("cust_filter_1")}
                   </label>
-                  <select className="form-select">
+                  <select className="border border-[#D6D6D6] rounded px-2 py-1 shadow-none">
                     <option />
                     <option>Option 1</option>
                     <option>Option 2</option>
                   </select>
                 </div>
                 <div className="col">
-                  <label className="form-label">{t("cust_serch")}</label>
-                  <div className="input-group input_grp_cus">
+                  <label className="fs-6 fw-semibold lh-sm mb-1 d-block">{t("cust_serch")}</label>
+                  <div>
                     <input
                       type="text"
-                      className="form-control"
+                      className="border border-[#D6D6D6] rounded px-2 py-1 shadow-none focus:shadow-none focus:border-[#ccc] focus:outline-none"
                       placeholder={t("cust_typing")}
                     />
-                    <button className="btn" type="button">
+                    {/* <button className="border border-secondary rounded-3" type="button">
                       <img src={search} alt="Search" />
-                    </button>
+                    </button> */}
                   </div>
                 </div>
                 <div className="col">
-                  <label className="form-label">{t("cust_Property_type")}</label>
-                  <select className="form-select">
+                  <label className="fs-6 fw-semibold lh-sm mb-1 d-block">{t("cust_Property_type")}</label>
+                  <select className="border border-[#D6D6D6] rounded px-2 py-1 shadow-none">
                     <option />
                     <option>Option 1</option>
                     <option>Option 2</option>
                   </select>
                 </div>
                 <div className="col">
-                  <label className="form-label">{t("cust_Property_condition")}</label>
-                  <select className="form-select">
+                  <label className="fs-6 fw-semibold lh-sm mb-1 d-block">{t("cust_Property_condition")}</label>
+                  <select className="border border-[#D6D6D6] rounded px-2 py-1 shadow-none">
                     <option />
                     <option>Option 1</option>
                     <option>Option 2</option>
                   </select>
                 </div>
                 <div className="col-auto">
-                  <label className="form-label d-block">&nbsp;</label>
-                  <button type="button" className="btn_cmn btn_cmn_40">
+                  <label className="fs-6 fw-semibold lh-sm mb-1 d-block">&nbsp;</label>
+                  <button type="button" class="btn d-inline-flex align-items-center justify-content-center fw-medium text-white border-0 rounded-pill"
+                    style={{ background: "#00A481", fontSize: "20px", lineHeight: "26.16px", boxShadow: "0 10px 8px rgba(0, 0, 0, 0.1)", padding: "5px 15px", minWidth: "146px", outline: "none" }}>
                     {t("cust_search")}
                   </button>
                 </div>
               </div>
-              <div className="form_group group_ad_search">
-                <div className="adv_search_row">
+              <div className="mb-6">
+                <div>
                   <div className="flex">
-                    <div className="form_group flex items-center mb-6  text-end">
+                    <div className="mb-6 flex items-centertext-end">
                       <button
                         type="button"
                         onClick={handleOpen}
@@ -254,7 +257,7 @@ const Customer = () => {
                   </div>
                 </div>
               </div>
-              <div className="table-responsive">
+              <div>
                 <table className="w-full border border-gray-300 rounded-md">
                   <thead className="bg-gray-100">
                     <tr>
@@ -333,11 +336,10 @@ const Customer = () => {
                               <img
                                 src={table_arrrow}
                                 alt="table_arrow"
-                                className={`w-4 h-4 transition-transform duration-300 ${
-                                  expandedRows.includes(index)
-                                    ? "rotate-180"
-                                    : "rotate-0"
-                                }`}
+                                className={`w-4 h-4 transition-transform duration-300 ${expandedRows.includes(index)
+                                  ? "rotate-180"
+                                  : "rotate-0"
+                                  }`}
                               />
                             </button>
                           </td>
@@ -372,8 +374,8 @@ const Customer = () => {
                                   children={' לכל ההסכמים  '}
                                 />
                                 <div className=" flex items-center">
-                                  <img src={edit} alt={'editbtn'} className="px-1"/>
-                                  <img src={deleteIcon} alt={'deletebtn'} className="px-1"/>
+                                  <img src={edit} alt={'editbtn'} className="px-1" />
+                                  <img src={deleteIcon} alt={'deletebtn'} className="px-1" />
                                 </div>
                               </div>
                             </td>
@@ -386,6 +388,10 @@ const Customer = () => {
               </div>
             </div>
           </form>
+
+
+
+
           {isModalOpen && (
             <CustomModal
               show={isModalOpen}
@@ -400,7 +406,7 @@ const Customer = () => {
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   <div>
                     <label className="block text-gray-600 text-start font-semibold text-md mb-1">
-                    {t("cust_modal_no_rooms")}
+                      {t("cust_modal_no_rooms")}
                     </label>
                     <div className="relative flex items-center border border-gray-300 rounded-md px-1 py-2">
                       <input
@@ -417,7 +423,7 @@ const Customer = () => {
                   </div>
                   <div>
                     <label className="block text-gray-600 text-start font-semibold  text-md mb-1">
-                    {t("floor")}
+                      {t("floor")}
                     </label>
                     <select className="w-full border outline-none border-gray-300 rounded-md px-3 py-2 text-gray-700">
                       <option></option>

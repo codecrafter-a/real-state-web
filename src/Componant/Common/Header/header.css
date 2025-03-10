@@ -59,7 +59,7 @@ a, a:hover{
 .user_dd .dropdown-toggle::after{
 	display: none;
 }
-.hdr_btn > a{
+.hdr_btn{
 	
 	font-size: 17px;
 	font-weight: 600;
@@ -77,7 +77,7 @@ a, a:hover{
 	margin-right: 36px;
 	color: #fff;
 }
-.hdr_btn > a:hover{
+.hdr_btn:hover{
 	background: linear-gradient(90deg, #55CD85 0%, #00A6A4 100%);
 }
 .hdr_right_menu{

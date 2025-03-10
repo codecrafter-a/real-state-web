@@ -22,5 +22,15 @@ i18n
     }
   });
 
+const updateDirection = (lng) => {
+  const isRTL = lng === 'he';
+  document.documentElement.lang = lng;
+  document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
+};
+
+i18n.on('languageChanged', (lng) => updateDirection(lng));
+
+updateDirection(i18n.language);
+
 export default i18n;
 

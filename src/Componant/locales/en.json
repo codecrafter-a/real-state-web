@@ -294,8 +294,8 @@
     "home_tab_r1_h5": "Rental",
     "home_tab_r1_h7": "Florentin 7, Tel Aviv",
     "home_tab_r2_h1_l2": "Closing the deal",
-"home_tab_r2_h1_l3": "Sending a copy to clients",
-"home_tab_r2_h1_l4": "Opening the agreement",
+    "home_tab_r2_h1_l3": "Sending a copy to clients",
+    "home_tab_r2_h1_l4": "Opening the agreement",
     "home_tab_r2_h2": "Sent",
     "home_tab_r3_h2": "Viewed",
     "home_tab_r4_h2": "Signed",
@@ -304,5 +304,28 @@
     "home_tab_r5_h3_l3": "Sending a copy to clients",
     "home_tab_r6_h2": "Signed and registered",
     "home_tab_r6_h2_l2": "Delete",
-"home_tab_r6_h3_l2": "Send a copy to clients"
+    "home_tab_r6_h3_l2": "Send a copy to clients",
+
+
+    "sign_in_title": "Welcome to the Green Signature Broker Interface!",
+    "sign_in_h5_0": "Here you can manage all your business agreements easily and efficiently.",
+    "sign_in_h5_1": "The system allows you to send various agreements, create properties, clients, and agents,",
+    "sign_in_h5_2": "generate invoices, track commissions, match properties to clients, send update",
+    "sign_in_h5_3": "messages to potential customers, and more.",
+    "sign_in_subtitle": "All in one place!",
+    "sign_in_in_label": "Before you begin, please enter your brokerage license number.",
+    "sign_in_in_placeholder": "Numbers only",
+    "sign_in_btn": "Continue",
+
+  "all_agreements": "All Agreements",
+  "recent_agreements": "Recent Agreements",
+  "search_placeholder": "Search agreement by address / client name",
+  "show_button": "Show",
+  "invoice_label": "Generate Invoice",
+  "agreement_status": "Agreement Status",
+  "until_date": "Until Date",
+  "from_date": "From Date",
+  "status_agreement": "Status Agreement",
+  "no_recent_agreements": "No recent agreements to show",
+  "generated": "Generated"
   }

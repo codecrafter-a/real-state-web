@@ -17,8 +17,8 @@
 
 img{ max-width: 100%; width: auto; height: auto;};
 .right-bg-icon > img{width: 200px !important; height: 200px !important;}
-
-.hdr_btn > a{
+.custom-container{max-width: 1140px !important;width: 1140px !important;}
+.hdr_btn{
 	font-size: 17px;
 	font-weight: 600;
 	line-height: 22.24px;
@@ -35,7 +35,7 @@ img{ max-width: 100%; width: auto; height: auto;};
 	margin-right: 36px;
 	color: #fff;
 }
-.hdr_btn > a:hover{background: linear-gradient(90deg, #55CD85 0%, #00A6A4 100%);}
+.hdr_btn:hover{background: linear-gradient(90deg, #55CD85 0%, #00A6A4 100%);}
 
 input:focus {outline: none !important; box-shadow: none !important;}
 input[type="number"]::-webkit-outer-spin-button,
