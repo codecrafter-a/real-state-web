@@ -75,7 +75,7 @@ const Attechment = ({ setActiveTab }) => {
                     onClick={() => handleRemoveFile(key)}
                     type="button"
                   >
-                    <img src={deleteIcon} alt="Delete" className="px-1 cursor-pointer" />
+                    <img src={deleteIcon} alt="Delete" className="cursor-pointer" />
                   </button>
                   <span className="flex-grow">{files[key]?.name}</span>
                   {previews[key] && (

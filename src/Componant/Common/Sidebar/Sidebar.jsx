@@ -33,12 +33,12 @@ const Sidebar = () => {
         <div className="haeder_right mCustomScrollbar">
           <ul className="hdr_right_menu">
             {[{ icon: iconHome, text: t("sitem1") , to: `/${i18n.language}/home`},
-              { icon: iconPaper, text: t("sitem2") },
+              { icon: iconPaper, text: t("sitem2"), to: `/${i18n.language}/agreements` },
               { icon: userIcon, text: t("sitem3") , to: `/${i18n.language}/customers`},
               { icon: homeWork, text: t("sitem4"), to: `/${i18n.language}/property` },
               { icon: icon5, text: t("sitem5") , to: `/${i18n.language}/broker` },
               { icon: attachMoney, text: t("sitem6") },
-              { icon: barChart, text: t("sitem7") },
+              { icon: barChart, text: t("sitem7"), to: `/${i18n.language}/data` },
               { icon: familyHome, text: t("sitem8") },
               { icon: book2, text: t("sitem9") },
               { icon: menuIcon7, text: t("sitem10") },
