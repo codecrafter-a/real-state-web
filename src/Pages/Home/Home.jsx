@@ -9,8 +9,9 @@ import group from "../../assets/images/group-2.png";
 import indication from "../../assets/images/Indication-Arrow.png";
 import Datacard from "../../Componant/Homedatacard/Datacard/Datacard";
 import Homechart from "../../Componant/Homedatacard/Homechart/Homechart";
-import AgreementsTable from "../Agreementes/AgreementsTable";
+
 import { motion } from "framer-motion";
+import HomeTable from "../Home/HomeTable";
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
@@ -65,7 +66,7 @@ const Home = () => {
                         {t("home1_btn1_title")}
                         </span>
                         <div className="ps-2 justify-content-end">
-                          <img src={group} alt="group" />
+                          <img src={group} alt="group" className="w-full h-auto" />
                         </div>
                       </button>
                     </Col>
@@ -75,7 +76,7 @@ const Home = () => {
                       md={4}
                       className="px-1 py-2 py-md-0 px-sm-2"
                     >
-                      <button className="custom_btn px-2 py-3 w-100  d-flex h-auto justify-content-between shadow-lg align-items-center">
+                      <button className="custom_btn px-3 py-2 w-100  d-flex h-auto justify-content-between shadow-lg align-items-center">
                         <span className="text-start pe-2">
                           {t("home1_btn2_title")}
                         </span>
@@ -176,7 +177,7 @@ const Home = () => {
             <Row>
               <Col className="col-12 col-md-12 d-flex px-md-3 align-items-center box1_color">
                 <div className="my-3 px-1 ">
-                  <AgreementsTable />
+                  <HomeTable />
                 </div>
               </Col>
             </Row>

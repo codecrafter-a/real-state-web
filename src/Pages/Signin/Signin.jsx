@@ -6,17 +6,22 @@ import '../Signin/Signin.css';
 import g10 from '../../assets/images/g10.png';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
+import i18n from "i18next";
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 const Signin = () => {
 
     const [licenseNumber, setLicenseNumber] = useState("");
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const navigate = useNavigate(); 
 
+     const { t } = useTranslation();
     useEffect(() => {
+        const lang = i18n.language || "he"; 
         const savedAuthStatus = localStorage.getItem("isAuthenticated");
         if (savedAuthStatus === "true") {
           setIsAuthenticated(true);
-          navigate("home");
+          navigate(`/${lang}/home`);
         }
       }, []);
 
@@ -26,7 +31,8 @@ const Signin = () => {
         if (licenseNumber.trim() !== "") {
           localStorage.setItem("isAuthenticated", "true");
           setIsAuthenticated(true);
-          navigate("home");
+          const lang = i18n.language ; 
+          navigate(`/${lang}/home`);
         }
       };
 
@@ -51,28 +57,28 @@ const Signin = () => {
         <Col className="col-12">
           <div>
             <p className="py-4 my-4 text-center screen-1 fw-bold">
-              ברוכים הבאים לממשק למתווך של חתימה ירוקה!
+               {t("sign_in_title")}
             </p>
             <h5 className="screen-2 text-center">
-              כאן תוכלו לנהל את כל הסכמי העסק שלכם בקלות וביעילות
-              <br /> המערכת מאפשרת לכם לשלוח הסכמים שונים, להקים נכסים, לקוחות, סוכנים, להפיק
-              <br /> חשבוניות, לעקוב אחר עמלות, לבצע התאמות בין נכס ללקוח, לשלוח הודעות עדכון
-              <br /> ללקוחות פוטנציאליים ועוד.
+              {t("sign_in_h5_0")}
+              <br /> {t("sign_in_h5_1")}
+              <br /> {t("sign_in_h5_2")}
+              <br /> {t("sign_in_h5_3")}
             </h5>
-            <p className="screen-2 text-center py-3 fw-bold">והכל במקום אחד!</p>
+            <p className="screen-2 text-center py-3 fw-bold">{t("sign_in_subtitle")}</p>
             <div className="d-flex justify-content-center">
               <div className="d-flex flex-column gap-3 w-100" style={{ maxWidth: "400px" }}>
                <img src={g10} alt="" className="w-100 d-block d-sm-none" />
-                <p className="screen-5 text-start text-md-center">רגע לפני שמתחילים נא הקלידו מספר רישיון תיווך</p>
+                <p className="screen-5 text-start text-md-center">{t("sign_in_in_label")}</p>
                 <input
                   type="number"
-                  placeholder="ספרות בלבד"
+                  placeholder= {t("sign_in_in_placeholder")}
                   className="py-2 px-3 border border-secondary border-opacity-25 rounded-1 w-100"
                   value={licenseNumber}
                   onChange={(e) => setLicenseNumber(e.target.value)}
                 />
                 <button className="mx-auto hdr_btn w-50 text-white" onClick={handleLogin}>
-                  <a href="/" className="text-decoration-none text-white ">המשיכו</a>
+                  <Link to="/he/home" className="text-decoration-none text-white ">{t("sign_in_btn")}</Link>
                 </button>
                 <img src={g10} alt="" className="w-100 d-none d-sm-block" />
               </div>
