@@ -5,17 +5,18 @@ import boryGroupRight from "../../assets/images/bory_group_right.png";
 import '../Signin/Signin.css';
 import g10 from '../../assets/images/g10.png';
 import { Container, Row, Col } from 'react-bootstrap';
-
+import { useNavigate } from "react-router-dom";
 const Signin = () => {
 
     const [licenseNumber, setLicenseNumber] = useState("");
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-
+    const navigate = useNavigate(); 
 
     useEffect(() => {
         const savedAuthStatus = localStorage.getItem("isAuthenticated");
         if (savedAuthStatus === "true") {
           setIsAuthenticated(true);
+          navigate("home");
         }
       }, []);
 
@@ -25,7 +26,7 @@ const Signin = () => {
         if (licenseNumber.trim() !== "") {
           localStorage.setItem("isAuthenticated", "true");
           setIsAuthenticated(true);
-          window.location.href = "he/property";
+          navigate("home");
         }
       };
 
@@ -40,8 +41,8 @@ const Signin = () => {
           <img src={left} alt="left bg icon" className=''/>
         </span>
       </figure>
-      <div className="bgbelow_icons">
-        <img src={boryGroupRight} alt="right bg icon" className=' d-none d-sm-block' />
+      <div className="right-bg-icon ">
+        <img src={boryGroupRight} alt="right bg icon" className="position-fixed"/>
       </div>
     </div>
 

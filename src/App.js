@@ -7,15 +7,14 @@ import Property from "./Pages/property/Property";
 import Brokers from "./Pages/Brokers/Brokers";
 import Signin from "./Pages/Signin/Signin.jsx";
 import Home from "./Pages/Home/Home.jsx";
-// import Agreements from "./Pages/Agreements/Agreements";
-import Agreements from "./Pages/Agreementes/Agreementes";
+import Agreementes from "./Pages/Agreementes/Agreementes.jsx";
 
 
 function App() {
-  const { i18n } = useTranslation(); // Listen for language changes
+  const { i18n } = useTranslation(); 
 
   return (
-    <div className="App" key={i18n.language}> {/* Force re-render on language change */}
+    <div className="App" key={i18n.language}>
       <LanguageHandler />
       <Layout>
         <Routes>
@@ -25,8 +24,7 @@ function App() {
           <Route path="/:lang/property" element={<Property/>}/>
           <Route path="/:lang/broker" element={<Brokers />} />
           <Route path="/:lang/home" element={<Home/>}/>
-          {/* <Route path="/:lang/agrrement" element={<Agreements />} /> */}
-          <Route path="/:lang/agreements" element={<Agreements />} />
+          <Route path="/:lang/agreements" element={<Agreementes/>} />
         </Routes>
       </Layout>
     </div>

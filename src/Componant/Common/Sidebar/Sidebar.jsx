@@ -32,7 +32,7 @@ const Sidebar = () => {
     <section className={`haeder_right_block  ${isAuthenticated ? "active" : "disabled"}`}>
         <div className="haeder_right mCustomScrollbar">
           <ul className="hdr_right_menu">
-            {[{ icon: iconHome, text: t("sitem1") , to: `/${i18n.language}/`},
+            {[{ icon: iconHome, text: t("sitem1") , to: `/${i18n.language}/home`},
               { icon: iconPaper, text: t("sitem2") },
               { icon: userIcon, text: t("sitem3") , to: `/${i18n.language}/customers`},
               { icon: homeWork, text: t("sitem4"), to: `/${i18n.language}/property` },
