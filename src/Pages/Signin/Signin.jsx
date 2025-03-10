@@ -8,7 +8,6 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
 import i18n from "i18next";
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 const Signin = () => {
 
     const [licenseNumber, setLicenseNumber] = useState("");
@@ -16,6 +15,19 @@ const Signin = () => {
     const navigate = useNavigate(); 
 
      const { t } = useTranslation();
+
+    
+     const handleLogin = () => {
+      if (licenseNumber.trim() !== "") {
+        localStorage.setItem("isAuthenticated", "true");
+        window.dispatchEvent(new Event("storage")); 
+        setIsAuthenticated(true);
+        setTimeout(() => {
+          navigate(`/${i18n.language}/home`);
+        }, 1000); 
+      }
+    };
+
     useEffect(() => {
         const lang = i18n.language || "he"; 
         const savedAuthStatus = localStorage.getItem("isAuthenticated");
@@ -23,37 +35,32 @@ const Signin = () => {
           setIsAuthenticated(true);
           navigate(`/${lang}/home`);
         }
-      }, []);
+      }, [navigate]);
 
       console.log("lincecc number", licenseNumber);
 
-      const handleLogin = () => {
-        if (licenseNumber.trim() !== "") {
-          localStorage.setItem("isAuthenticated", "true");
-          setIsAuthenticated(true);
-          const lang = i18n.language ; 
-          navigate(`/${lang}/home`);
-        }
-      };
-
+      
   return (
     <>
      {!isAuthenticated ? (
   <>
-    <div className="position-absolute w-100 overflow-x-hidden top-0 z-0">
-      <figure className="mb-0  ">
-        <img src={bodyBg} className=" responsive-img" alt="Background" />
-        <span className="position-absolute top-0 end-0">
-          <img src={left} alt="left bg icon" className=''/>
-        </span>
-      </figure>
-      <div className="right-bg-icon ">
-        <img src={boryGroupRight} alt="right bg icon" className="position-fixed"/>
-      </div>
-    </div>
-
-    <Container className="container contain-sm mx-auto justify-content-center position-relative bg-white shadow-lg rounded-3 p-4">
-      <Row className="row d-flex w-100   scrollbar-content scrollbar-left flex-wrap px-md-5 px-3 z-3">
+    <Container className="custom-container">
+        <div className="position-absolute w-100 h-50 overflow-hidden top-0 start-0 z-0">
+          <figure className="mb-0 h-100 w-100 position-relative">
+            <img
+              src={bodyBg}
+              className="w-100 h-100 object-fit-cover position-absolute top-0 start-0"
+              alt="Background"
+            />
+            <span className="position-absolute top-0 end-0">
+              <img src={left} alt="Left BG Icon" className="img-fluid" />
+            </span>
+          </figure>
+            <div className="right-bg-icon ">
+                <img src={boryGroupRight} alt="right bg icon" className="position-fixed"/>
+            </div>
+        </div>
+      <Row className="d-flex w-auto mx-auto  position-relative bg-white shadow-lg rounded-3  scrollbar-content scrollbar-left flex-wrap px-md-5 z-3">
         <Col className="col-12">
           <div>
             <p className="py-4 my-4 text-center screen-1 fw-bold">
@@ -76,9 +83,10 @@ const Signin = () => {
                   className="py-2 px-3 border border-secondary border-opacity-25 rounded-1 w-100"
                   value={licenseNumber}
                   onChange={(e) => setLicenseNumber(e.target.value)}
+                  required
                 />
                 <button className="mx-auto hdr_btn w-50 text-white" onClick={handleLogin}>
-                  <Link to="/he/home" className="text-decoration-none text-white ">{t("sign_in_btn")}</Link>
+                  <span className="text-decoration-none text-white ">{t("sign_in_btn")}</span>
                 </button>
                 <img src={g10} alt="" className="w-100 d-none d-sm-block" />
               </div>

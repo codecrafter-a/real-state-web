@@ -28,7 +28,7 @@ const Header = () => {
                 </ul>
               </li>
               <li className="hdr_btn">
-                <a href="/">{t("update")}</a>
+                {t("update")}
               </li>
             </ul>
           </div>
