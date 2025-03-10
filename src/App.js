@@ -3,12 +3,12 @@ import { useTranslation } from "react-i18next"; // Import useTranslation
 import Layout from "./Componant/Common/Layout/Layout";
 import Customers from "./Pages/Customers/Customers";
 import LanguageHandler from "./Componant/language-selector";
-import Property from "./Pages/property/Property.jsx";
 import Brokers from "./Pages/Brokers/Brokers";
 import Signin from "./Pages/Signin/Signin.jsx";
 import Home from "./Pages/Home/Home.jsx";
 import Data from "./Pages/Data/Data.jsx";
 import Agreementes from "./Pages/Agreementes/Agreementes.jsx";
+import Property from "./Pages/property/Property";
 
 
 function App() {
