@@ -315,5 +315,17 @@
     "sign_in_subtitle": "All in one place!",
     "sign_in_in_label": "Before you begin, please enter your brokerage license number.",
     "sign_in_in_placeholder": "Numbers only",
-    "sign_in_btn": "Continue"
+    "sign_in_btn": "Continue",
+
+  "all_agreements": "All Agreements",
+  "recent_agreements": "Recent Agreements",
+  "search_placeholder": "Search agreement by address / client name",
+  "show_button": "Show",
+  "invoice_label": "Generate Invoice",
+  "agreement_status": "Agreement Status",
+  "until_date": "Until Date",
+  "from_date": "From Date",
+  "status_agreement": "Status Agreement",
+  "no_recent_agreements": "No recent agreements to show",
+  "generated": "Generated"
   }

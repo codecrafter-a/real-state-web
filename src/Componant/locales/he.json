@@ -316,5 +316,16 @@
     "sign_in_subtitle": "והכל במקום אחד!",
     "sign_in_in_label": "רגע לפני שמתחילים נא הקלידו מספר רישיון תיווך",
     "sign_in_in_placeholder": "ספרות בלבד",
-    "sign_in_btn": "המשיכו"
+    "sign_in_btn": "המשיכו",
+    "all_agreements": "כל ההסכמים",
+    "recent_agreements": "הסכמים אחרונים",
+    "search_placeholder": "חפשו הסכם לפי כתובת / שם לקוח",
+    "show_button": "הצגה",
+    "invoice_label": "הפקת חשבונית",
+    "agreement_status": "סטטוס הסכם",
+    "until_date": "עד תאריך",
+    "from_date": "מתאריך",
+    "status_agreement": "סטטוס הסכם",
+    "no_recent_agreements": "אין הסכמים אחרונים להצגה",
+    "generated": "הופק"
   }
