@@ -16,17 +16,30 @@ import actionIcon2 from '../../../assets/images/action_icon2.svg';
 import actionIcon3 from '../../../assets/images/action_icon3.svg';
 import userIcon from '../../../assets/images/user_icon.svg';
 import "../Sidebar/Sidebar.css";
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 const Sidebar = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const { i18n, t } = useTranslation();
+  const navigate = useNavigate();
 
-  const { i18n, t } = useTranslation(); 
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    localStorage.getItem("isAuthenticated") === "true"
+  );
   useEffect(() => {
-    const savedAuthStatus = localStorage.getItem("isAuthenticated");
-    if (savedAuthStatus === "true") {
-      setIsAuthenticated(true);
-    }
-  }, []);
+    const handleStorageChange = () => {
+      const authStatus = localStorage.getItem("isAuthenticated") === "true";
+      setIsAuthenticated(authStatus);
+      if (authStatus) {
+        navigate(`/${i18n.language}/home`);
+      }
+    };
+    window.addEventListener("storage", handleStorageChange);
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, [navigate]);
+
+
   return (
     <>
     <section className={`haeder_right_block  ${isAuthenticated ? "active" : "disabled"}`}>

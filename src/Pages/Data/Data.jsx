@@ -25,7 +25,7 @@ const Data = () => {
                 <img src={boryGroupRight} alt="right bg icon" className="position-fixed"/>
             </div>
         </div>
-        <Row className=" d-flex w-auto mx-autod  position-relative bg-white shadow-lg rounded-3  scrollbar-content scrollbar-left flex-wrap px-md-5 z-3">
+        <Row className=" d-flex w-auto mx-auto  position-relative bg-white shadow-lg rounded-3  scrollbar-content scrollbar-left flex-wrap px-md-5 z-3">
           <Col className="py-2">
             <p className="py-2 my-4 text-center container-fluid screen-1 border-b-2">
             נתונים
@@ -68,7 +68,8 @@ const Data = () => {
             </Row>
             <Row className='my-2 align-items-center d-flex px-md-0 px-2 '>
               <Col className=' col-12 col-sm-12 col-md-6 col-lg-8'>
-                <Row className=' bg-secondary' >                 
+                <Row className='' >  
+                  
                 </Row>
               </Col>
               <Col className='col-12 col-sm-12 col-md-6 col-lg-4'></Col>

@@ -9,12 +9,13 @@ import group from "../../assets/images/group-2.png";
 import indication from "../../assets/images/Indication-Arrow.png";
 import Datacard from "../../Componant/Homedatacard/Datacard/Datacard";
 import Homechart from "../../Componant/Homedatacard/Homechart/Homechart";
-
+import i18n from "i18next";
 import { motion } from "framer-motion";
 import HomeTable from "../Home/HomeTable";
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
+  const fontSize = i18n.language === "he" ? "15px" : "10px";
 
   const dataList = [
     { amount: "₪10,000", text: "home_accro_in1", icon: indication },
@@ -61,7 +62,7 @@ const Home = () => {
                       md={4}
                       className="px-1 py-2 py-md-0 px-sm-2"
                     >
-                      <button className="custom_btn px-3 w-100 d-flex h-auto justify-content-between shadow-lg align-items-center">
+                      <button className="custom_btn px-3 w-100 d-flex h-auto justify-content-between shadow-lg align-items-center" style={{fontSize: fontSize }}>
                         <span className="text-start pe-2">
                         {t("home1_btn1_title")}
                         </span>
@@ -76,7 +77,7 @@ const Home = () => {
                       md={4}
                       className="px-1 py-2 py-md-0 px-sm-2"
                     >
-                      <button className="custom_btn px-3 py-2 w-100  d-flex h-auto justify-content-between shadow-lg align-items-center">
+                      <button className="custom_btn px-3 py-2 w-100  d-flex h-auto justify-content-between shadow-lg align-items-center" style={{fontSize: fontSize }}>
                         <span className="text-start pe-2">
                           {t("home1_btn2_title")}
                         </span>
@@ -91,7 +92,7 @@ const Home = () => {
                       md={4}
                       className="px-1 py-2 py-md-0 px-sm-2"
                     >
-                      <button className="custom_btn px-3 w-100 d-flex h-auto justify-content-between shadow-lg align-items-center">
+                      <button className="custom_btn px-3 w-100 d-flex h-auto justify-content-between shadow-lg align-items-center" style={{fontSize: fontSize }}>
                         <span className="text-start pe-2">
                           {t("home1_btn3_title")}
                         </span>
@@ -111,19 +112,19 @@ const Home = () => {
                   <Row className="d-flex justify-content-center">
                     <Col xs={12} sm={12} md={4} className="px-1 py-2 py-md-0 ">
                       <div className="px-2 w-100 h-auto shadow-md-lg text-end bg-white">
-                        <span className="screen-5">{t("home2_btn1_title")}</span>
+                        <span className="screen-5" style={{fontSize: fontSize }}>{t("home2_btn1_title")}</span>
                         <div className="screen-4">10/50</div>
                       </div>
                     </Col>
                     <Col xs={12} sm={12} md={4} className="px-1 py-2 py-md-0 ">
                       <div className="px-2 w-100 h-auto shadow-md-lg text-end bg-white">
-                        <span className="screen-5">{t("home2_btn2_title")}</span>
+                        <span className="screen-5" style={{fontSize: fontSize }}>{t("home2_btn2_title")}</span>
                         <div className="screen-4">17.07.2023</div>
                       </div>
                     </Col>
                     <Col xs={12} sm={12} md={4} className="px-1 py-2 py-md-0">
                       <div className="px-2 w-100 h-auto shadow-md-lg text-end bg-white">
-                        <span className="screen-5">{t("home2_btn3_title")}</span>
+                        <span className="screen-5" style={{fontSize: fontSize }}>{t("home2_btn3_title")}</span>
                         <div className="screen-4">STARTER</div>
                       </div>
                     </Col>
