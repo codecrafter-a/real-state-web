@@ -3,11 +3,8 @@ import bodyBg from "../../assets/images/body_bg.webp";
 import boryGroupRight from "../../assets/images/bory_group_right.png";
 import boryGroupLeft from "../../assets/images/bory_group_left.png";
 import search from "../../assets/images/search.png";
-import calender from "../../assets/images/calendar_month.png";
 import remove_icon from "../../assets/images/remove_icon.svg";
 import { Nav } from "react-bootstrap";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import AgreementsTable from "./AgreementsTable";
 
 const Agreements = () => {
@@ -102,30 +99,22 @@ const Agreements = () => {
                                         <div className="col fw-semibold">
                                             <label className="d-flex justify-content-end w-100">עד תאריך</label>
                                             <div className="form-control d-flex align-items-center">
-                                                <span className="me-2">
-                                                    <img src={calender} alt="calendar icon" />
-                                                </span>
-                                                <DatePicker
-                                                    selected={toDate}
-                                                    onChange={(date) => setToDate(date)}
+                                                <input
+                                                    type="date"
                                                     className="border-0 w-100"
-                                                    placeholderText="בחר תאריך"
-                                                    dateFormat="dd/MM/yyyy"
+                                                    value={toDate}
+                                                    onChange={(e) => setToDate(e.target.value)}
                                                 />
                                             </div>
                                         </div>
                                         <div className="col fw-semibold">
                                             <label className="d-flex justify-content-end w-100">מתאריך</label>
                                             <div className="form-control d-flex align-items-center">
-                                                <span className="me-2">
-                                                    <img src={calender} alt="calendar icon" />
-                                                </span>
-                                                <DatePicker
-                                                    selected={fromDate}
-                                                    onChange={(date) => setFromDate(date)}
+                                                <input
+                                                    type="date"
                                                     className="border-0 w-100"
-                                                    placeholderText="בחר תאריך"
-                                                    dateFormat="dd/MM/yyyy"
+                                                    value={fromDate}
+                                                    onChange={(e) => setFromDate(e.target.value)}
                                                 />
                                             </div>
                                         </div>
