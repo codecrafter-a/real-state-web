@@ -1,6 +1,6 @@
 import { useState } from "react";
 import dashLine from "../../../assets/images/dash_line.svg";
-const RangeSlider = ({label,customStyle }) => {
+const RangeSlider = ({ label, customStyle }) => {
   const [minValue, setMinValue] = useState(0);
   const [maxValue, setMaxValue] = useState(10000);
 
@@ -15,47 +15,50 @@ const RangeSlider = ({label,customStyle }) => {
   };
 
   return (
-    <div className="col-span-2" >
-      <label className="block text-gray-600 font-semibold text-start text-md mb-1">
+    <div className="col-12">
+      <label className="d-block text-secondary fw-semibold text-start mb-1">
         {label}
       </label>
 
-      <div className="flex items-center space-x-2 rtl:space-x-reverse" >
+      <div className="d-flex align-items-center gap-2">
         <input
           type="number"
           value={minValue}
           onChange={handleMinChange}
-          className="w-1/2 border outline-none border-gray-300 rounded-md px-3 py-2 text-gray-700 text-center"
+          className="w-50 border border-gray-300 focus-ring-0 rounded px-3 py-2 text-secondary text-center"
         />
-        <span className=" border-gray-300"><img src={dashLine} alt="dashLine" /></span>
+        <span className="border-gray-300">
+          <img src={dashLine} alt="dashLine" />
+        </span>
         <input
           type="number"
           value={maxValue}
           onChange={handleMaxChange}
-          className="w-1/2 border outline-none border-gray-300 rounded-md px-3 py-2 text-gray-700 text-center"
+          className="w-50 border border-gray-300 focus-ring-0 rounded px-3 py-2 text-secondary text-center"
         />
       </div>
 
-      <div className="relative mt-4 h-6 flex items-center" style={customStyle}>
-        <div className="absolute w-full h-2 bg-gray-300 rounded"></div>
+      <div className="position-relative mt-4 d-flex align-items-center" style={{ height: "24px" }}>
+        <div className="position-absolute w-100 rounded" style={{ background: "#e7e7e7", height: "8px" }}></div>
 
         <div
-          className="absolute h-2 bg-teal-500 rounded"
+          className="position-absolute rounded"
           style={{
+            height: "8px",
             left: `${(minValue / 10000) * 100}%`,
             width: `${((maxValue - minValue) / 10000) * 100}%`,
+            backgroundColor: "#20c997"
           }}
         ></div>
 
- 
         <input
           type="range"
           min="0"
           max="10000"
           value={minValue}
           onChange={(e) => setMinValue(Math.min(Number(e.target.value), maxValue - 1))}
-          className="absolute w-full h-2 bg-transparent appearance-none cursor-pointer"
-          style={{ zIndex: 2, opacity: 0 }}
+          className="position-absolute w-100 cursor-pointer"
+          style={{ zIndex: 2, opacity: 0, appearance: "none" }}
         />
 
         <input
@@ -64,22 +67,38 @@ const RangeSlider = ({label,customStyle }) => {
           max="10000"
           value={maxValue}
           onChange={(e) => setMaxValue(Math.max(Number(e.target.value), minValue + 1))}
-          className="absolute w-full h-2 bg-transparent appearance-none cursor-pointer"
-          style={{ zIndex: 2, opacity: 0 }}
+          className="position-absolute w-100 cursor-pointer"
+          style={{ zIndex: 2, opacity: 0, appearance: "none" }}
         />
 
         <div
-          className="absolute w-6 h-6 bg-teal-500 rounded-full cursor-pointer flex items-center justify-center shadow-md"
-          style={{ left: `${(minValue / 10000) * 100}%`, transform: "translateX(-50%)", zIndex: 3 }}
+          className="position-absolute d-flex align-items-center justify-content-center rounded-circle shadow"
+          style={{
+            width: "24px",
+            height: "24px",
+            backgroundColor: "#20c997",
+            color: "white",
+            left: `${(minValue / 10000) * 100}%`,
+            transform: "translateX(-50%)",
+            zIndex: 3,
+          }}
         >
-          <span className="text-white text-sm">||</span>
+          ||
         </div>
 
         <div
-          className="absolute w-6 h-6 bg-teal-500 rounded-full cursor-pointer flex items-center justify-center shadow-md"
-          style={{ left: `${(maxValue / 10000) * 100}%`, transform: "translateX(-50%)", zIndex: 3 }}
+          className="position-absolute d-flex align-items-center justify-content-center rounded-circle shadow"
+          style={{
+            width: "24px",
+            height: "24px",
+            backgroundColor: "#20c997",
+            color: "white",
+            left: `${(maxValue / 10000) * 100}%`,
+            transform: "translateX(-50%)",
+            zIndex: 3,
+          }}
         >
-          <span className="text-white text-sm">||</span>
+          ||
         </div>
       </div>
     </div>
