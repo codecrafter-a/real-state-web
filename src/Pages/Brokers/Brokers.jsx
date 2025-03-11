@@ -317,8 +317,7 @@ const Brokers = () => {
           </CustomModal>
         </div>
       )}
-      {isShow && (
-        <div className="w-100">
+      <div className="w-100">
           <CustomModal
             show={isShow}
             onClick={handleShow}
@@ -403,8 +402,7 @@ const Brokers = () => {
               </button>
             </div>
           </CustomModal>
-        </div>
-      )}
+      </div>
       <Modal show={isView} onHide={() => { setIsView(false) }} centered className="custom-modal">
         <Modal.Header closeButton className=" border-0">
           <img src={Next} alt="next btn" className="" />
@@ -545,7 +543,6 @@ const Brokers = () => {
               </Accordion>
             </div>
           </div>
-          {/* Buttons */}
           <div className="text-center mt-4 d-flex flex-col">
             <button className="agent-button1 mx-auto rounded-pill px-3 py-2 fw-bold shadow-sm text-white" onClick={handleIsShow}>
               {t("age_btn_send")}
@@ -554,66 +551,97 @@ const Brokers = () => {
           </div>
         </Modal.Body>
       </Modal>
-      {showSuccess && (
-        <div className="position-relative">
-          <CustomModal
-            show={showSuccess}
-            handleClose={() => setShowSuccess(false)}
-            footer={t("age_cust_reconciliation_report")}
-            onClick={handleSentSuccess}
-            footer1={t("age_cust_agreement")}
+      <Modal
+          show={showSuccess}
+          onHide={() => setShowSuccess(false)}
+          centered
+          className="custom-modal"
+        >
+      
+          <div
+            className="position-absolute top-0 start-50 translate-middle-x mt-5 z-2"
+            style={{ pointerEvents: 'none' }}
           >
-            <div className="text-center z-3 position-relative">
-              <img src={successIcon} alt="Success" className="mx-auto w-20 h-20 mb-3" />
-              <div className="text-center">
-                <p className="fs-3 text-embed-500 font-semibold">{t("age_cust_review")}</p>
-                <h4 className="fs-3 text-embed-500 font-semibold">{t("age_cust_status")}</h4>
-              </div>
+            <img 
+              src={gyiphy} 
+              alt="gyiphy" 
+              className="img-fluid object-fit-cover" 
+              style={{ width: '150px', marginTop: '-120px' }}
+            />
+          </div>
+          <Modal.Header closeButton className="border-0" />
+          <Modal.Body className="p-4 text-center position-relative z-3">
+            <img 
+              src={successIcon} 
+              alt="Success" 
+              className="mx-auto mb-3" 
+              style={{ width: '80px', height: '80px' }} 
+            />
+            <div>
+              <p className="fs-3 text-success fw-semibold">
+                {t("age_cust_review")}
+              </p>
+              <h4 className="fs-3 text-success fw-semibold">
+                {t("age_cust_status")}
+              </h4>
             </div>
-            <div
-              className="position-absolute bg-transparent top-0 my-5 z-2"
-              style={{ pointerEvents: 'none' }}
+          </Modal.Body>
+
+          <Modal.Footer className="justify-content-center">
+            <button
+              className="btn btn-outline-success rounded-pill px-4 py-2 fw-bold shadow-sm"
+              onClick={handleSentSuccess}
             >
-              <img src={gyiphy} alt="gyiphy" className="object-fit-cover" />
-            </div>
-          </CustomModal>
-        </div>)
-      }
-      {
-        <Modal
+              {t("age_cust_reconciliation_report")}
+            </button>
+            <button
+              className="btn btn-success rounded-pill px-4 py-2 fw-bold shadow-sm"
+              onClick={() => setShowSuccess(false)}
+            >
+              {t("age_cust_agreement")}
+            </button>
+          </Modal.Footer>
+      </Modal>
+       <Modal
           show={sentSuccess}
           onHide={() => setSentSuccess(false)}
           centered
           className="custom-modal"
         >
-          <div className="position-absolute bg-transparent top-0 my-5 z-2" >
-            <img src={gyiphy} alt="gyiphy" className="object-fit-cover mt-[-180px] " />
+          <div className="position-absolute top-0 start-50 translate-middle-x mt-5 z-2">
+            <img 
+              src={gyiphy} 
+              alt="gyiphy" 
+              className="img-fluid object-fit-cover" 
+              style={{ marginTop: '-120px', width: '150px' }} 
+            />
           </div>
-          <Modal.Header
-            closeButton
-            className="border-0"
-            style={{ position: 'relative', zIndex: 2 }}
-          />
-          <Modal.Body className="p-4" style={{ position: 'relative', zIndex: 2 }}>
+          <Modal.Header closeButton className="border-0 position-relative z-2" />
+          <Modal.Body className="p-4 position-relative z-2">
             <div className="text-center">
-              <img
-                src={successIcon}
-                alt="Success"
-                className="mx-auto w-20 h-20 mb-3"
+              <img 
+                src={successIcon} 
+                alt="Success" 
+                className="img-fluid mb-3" 
+                style={{ width: '80px', height: '80px' }} 
               />
-              <h4 className="fs-3 text-embed-500 fw-semibold">{t("age_cust_agreement_status")}</h4>
-              <p className="fs-5 text-embed-500 fw-semibold">{t("age_cust_status")}</p>
+              <h4 className="fs-3 text-success fw-semibold">
+                {t("age_cust_agreement_status")}
+              </h4>
+              <p className="fs-5 text-secondary fw-semibold">
+                {t("age_cust_status")}
+              </p>
             </div>
             <div className="text-center mt-4">
               <button
-                className="agent-button1 mx-auto rounded-pill px-4 py-2 fw-bold shadow-sm text-white"
+                className="btn btn-success rounded-pill px-4 py-2 fw-bold shadow-sm"
+                onClick={() => setSentSuccess(false)}
               >
                 {t("age_btn_description")}
               </button>
             </div>
           </Modal.Body>
-        </Modal>
-      }
+      </Modal>
     </>
   );
 };

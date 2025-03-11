@@ -1,12 +1,6 @@
-*{
-    font-family: "Assistant", serif;
-    box-sizing: border-box;
-}
-
-.custom-container{max-width: 1140px !important;
-width: 1140px !important;}
-
-
+*{font-family: "Assistant", serif;box-sizing: border-box; padding: 0; margin: 0;}
+.custom-container{max-width: 1140px !important; width: 1140px !important;}
+.bg-sec-100{background-color: #fafafa;}
 
 .hr_btn{
 	font-size: 15px;
@@ -25,12 +19,13 @@ width: 1140px !important;}
 
 }
 .hr_btn:hover, .le_btn:hover{background-color: #55CD85;color: white !important;border: 1px solid #55CD85;}
-
+.text-end{text-align: end;}
 .le_btn{
     font-size: 15px;
 	font-weight: 600;
 	line-height: 100%;
-	background: #00A6A4;
+	border: 1px solid #00A6A4;
+	background: #00A481;
     color: white !important;
     padding: 7px 5px;
 	box-shadow: 0px 1px 3px 0px #0000001A;
@@ -39,4 +34,20 @@ width: 1140px !important;}
 	border-radius: 100px;
 	margin-right: 5px;
     transition: all 0.3s ease-in-out;
+}
+small {font-size: 66%;}
+.vrline{border: solid #00A481, }
+.card_title{font-size: 45.4px; font-weight: 600; line-height: 100%; color: #00A481}
+.screen-2{font-size: 15px; font-weight: 700; line-height: 100%; color: #00A481}
+.screen-3{font-size: 16px; font-weight: 600; line-height: 100%; color: #00A481}
+.screen-4{font-size: 20px; font-weight: 600; line-height: 40%;}
+.screen-5{ font-weight: 600; line-height: 24%; color: #686868}
+.nav-tabs .nav-link {
+	color: #848484;
+	border-bottom: 2px solid transparent;
+	cursor: pointer;
+}
+.nav-tabs .nav-link.active-tab {
+	color: #00A6A4 !important;
+	border-bottom: 2px solid #00A6A4 !important;
 }

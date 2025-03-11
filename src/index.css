@@ -1,11 +1,11 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700&display=swap');
 
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
-
+.screen-1{font-size: 25px; font-weight: 600; line-height: 100%; color: #00A481;}
 
 body{
 	background-color: #fff;
@@ -41,10 +41,6 @@ a, a:hover{
 	top: 10px;
 }
 
-code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-		monospace;
-}
 
 .custom-scrollbar::-webkit-scrollbar {
 	width: 6px;

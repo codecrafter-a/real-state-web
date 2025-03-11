@@ -43,7 +43,7 @@ const Sidebar = () => {
   return (
     <>
     <section className={`haeder_right_block  ${isAuthenticated ? "active" : "disabled"}`}>
-        <div className="haeder_right mCustomScrollbar">
+      <div className="haeder_right mCustomScrollbar">
           <ul className="hdr_right_menu">
             {[{ icon: iconHome, text: t("sitem1") , to: `/${i18n.language}/home`},
               { icon: iconPaper, text: t("sitem2"), to: `/${i18n.language}/agreements` },

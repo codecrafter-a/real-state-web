@@ -46,7 +46,7 @@ const Home = () => {
         </div>
         <Row className=" d-flex w-auto mx-autod  position-relative bg-white shadow-lg rounded-3  scrollbar-content scrollbar-left flex-wrap px-md-5 z-3">
           <Col className="py-2">
-            <p className="py-1 my-4 text-center container-fluid screen-1 border-b-2">
+            <p className="py-1 my-4 text-center container-fluid screen-1  border-bottom">
                 {t("home_title")}
             </p>
             <Row className="my-2 align-items-center d-flex px-md-0 px-2 ">
