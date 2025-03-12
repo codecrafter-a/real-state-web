@@ -373,6 +373,19 @@
     "invoice_title": "כל החשבוניות",
     "invoice_tab_title1": "כל החשבוניות",
     "invoice_tab_title2": "חשבוניות אחרונות",
-    "invoice_placeholder": "חפשו חשבונית לפי כתובת / שם לקוח"
+    "invoice_placeholder": "חפשו חשבונית לפי כתובת / שם לקוח",
+    "invoice_number": "מס' חשבונית",
+    "date": "תאריך",
+    "client_names": "שמות הלקוחות",
+    "subject": "נושא",
+    "amount": "סכום",
+    "actions": "פעולות",
+    "view": "צפייה",
+    "send_to_client": "שליחה ללקוח",
+    "download": "הורדה",
+    "share": "שיתוף",
+    "client_1": "שירי נקבלי, רומי שפן",
+    "client_2": "ליאור כהן, דנה לוי",
+    "service_payment": "תשלום על שירות"
    
   }
