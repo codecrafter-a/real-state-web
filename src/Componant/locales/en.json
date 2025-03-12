@@ -360,6 +360,15 @@
     "data_gra_subTitle1": "Purchase",
     "data_gra_subTitle2": "Rent",
     "data_tab1": "My Data",
-    "data_tab2": "Agent Data"
+    "data_tab2": "Agent Data",
+
+    "status": {
+      "הופק": "Generated",
+      "נשלח": "Sent",
+      "נצפה": "Viewed",
+      "נחתם": "Signed",
+      "נחתם ויצא לפועל": "Signed and Executed",
+      "נחתם ונרשם": "Signed and Registered"
+    }
   
   }
