@@ -27,142 +27,143 @@ const Home = () => {
 
   return (
     <>
-          <Col>
-            <p className="py-1 my-4 text-center screen-1 border-bottom">  {t("home_title")} </p>
-            <div className="custom-scrollbar overflow-y-auto overflow-x-hidden px-3"  style={{ maxHeight: "594px" }}>
-              <Row className="my-2 px-2 align-items-center d-flex overflow-hidden">
-                <Col xs={12} md={6} className="mb-3 pe-2">
-                  <div className="rounded-1 p-4">
-                    <div className="pb-4">
-                      <p className="screen-2 text-end">{t("home_block1_title")}</p>
+      <Col>
+        <p className="py-1 my-4 text-center screen-1 border-bottom">  {t("home_title")} </p>
+        <div className="custom-scrollbar overflow-y-auto overflow-x-hidden px-3" style={{ maxHeight: "594px" }}>
+          <Row className="my-2 px-2 align-items-center d-flex overflow-hidden">
+            <Col xs={12} md={6} className="mb-3 ps-2">
+              <div className="rounded-1 p-4 box1_color">
+                <div className="pb-4">
+                  <p className="screen-2 text-end">{t("home_block2_title")}</p>
+                </div>
+                <Row className="d-flex justify-content-center">
+                  <Col xs={12} sm={12} md={4} className="px-1 ">
+                    <div className="px-2 w-100 h-auto shadow-md-lg text-end py-2">
+                      <span className="screen-5" style={{ fontSize: fontSize }}>{t("home2_btn1_title")}</span>
+                      <div className="screen-4">10/50</div>
                     </div>
-                    <Row className="d-flex justify-content-center">
-                      <Col
-                        xs={12}
-                        sm={12}
-                        md={4}
-                        className="px-1 py-2 py-md-0 px-sm-2"
-                      >
-                        <button className="custom_btn px-3 w-100 d-flex h-auto justify-content-between shadow-lg align-items-center" style={{fontSize: fontSize }}>
-                          <span className="text-start pe-2">
-                          {t("home1_btn1_title")}
-                          </span>
-                          <div className="ps-2 justify-content-end">
-                            <img src={group} alt="group" className="w-full h-auto" />
-                          </div>
-                        </button>
-                      </Col>
-                      <Col
-                        xs={12}
-                        sm={12}
-                        md={4}
-                        className="px-1 py-2 py-md-0 px-sm-2"
-                      >
-                        <button className="custom_btn px-3 py-2 w-100  d-flex h-auto justify-content-between shadow-lg align-items-center" style={{fontSize: fontSize }}>
-                          <span className="text-start pe-2">
-                            {t("home1_btn2_title")}
-                          </span>
-                          <div className="ps-2 justify-content-end">
-                            <img src={group} alt="group" />
-                          </div>
-                        </button>
-                      </Col>
-                      <Col
-                        xs={12}
-                        sm={12}
-                        md={4}
-                        className="px-1 py-2 py-md-0 px-sm-2"
-                      >
-                        <button className="custom_btn px-3 w-100 d-flex h-auto justify-content-between shadow-lg align-items-center" style={{fontSize: fontSize }}>
-                          <span className="text-start pe-2">
-                            {t("home1_btn3_title")}
-                          </span>
-                          <div className="ps-2 justify-content-end">
-                            <img src={group} alt="group" />
-                          </div>
-                        </button>
-                      </Col>
-                    </Row>
-                  </div>
-                </Col>
-                <Col xs={12} md={6} className="mb-3 ps-2">
-                  <div className="rounded-1 p-4 box1_color">
-                    <div className="pb-4">
-                      <p className="screen-2 text-end">{t("home_block2_title")}</p>
+                  </Col>
+                  <Col xs={12} sm={12} md={4} className="px-1  ">
+                    <div className="px-2 w-100 h-auto shadow-md-lg text-end py-2">
+                      <span className="screen-5" style={{ fontSize: fontSize }}>{t("home2_btn2_title")}</span>
+                      <div className="screen-4">17.07.2023</div>
                     </div>
-                    <Row className="d-flex justify-content-center">
-                      <Col xs={12} sm={12} md={4} className="px-1 ">
-                        <div className="px-2 w-100 h-auto shadow-md-lg text-end bg-white py-2">
-                          <span className="screen-5" style={{fontSize: fontSize }}>{t("home2_btn1_title")}</span>
-                          <div className="screen-4">10/50</div>
-                        </div>
-                      </Col>
-                      <Col xs={12} sm={12} md={4} className="px-1  ">
-                        <div className="px-2 w-100 h-auto shadow-md-lg text-end bg-white py-2">
-                          <span className="screen-5" style={{fontSize: fontSize }}>{t("home2_btn2_title")}</span>
-                          <div className="screen-4">17.07.2023</div>
-                        </div>
-                      </Col>
-                      <Col xs={12} sm={12} md={4} className="px-1">
-                        <div className="px-2 w-100 h-auto shadow-md-lg text-end bg-white py-2">
-                          <span className="screen-5" style={{fontSize: fontSize }}>{t("home2_btn3_title")}</span>
-                          <div className="screen-4">STARTER</div>
-                        </div>
-                      </Col>
-                    </Row>
-                  </div>
-                </Col>
-              </Row>
-              <Row className="my-3 px-2">
-                <Col className="col-12 box1_color">
-                  <div className="d-flex justify-content-between py-3">
-                    <button
-                      className=" hr_btn"
-                      onClick={() => setIsOpen(!isOpen)}
-                    >
-                      {t("home_accro_l_btn")}
+                  </Col>
+                  <Col xs={12} sm={12} md={4} className="px-1">
+                    <div className="px-2 w-100 h-auto shadow-md-lg text-end py-2">
+                      <span className="screen-5" style={{ fontSize: fontSize }}>{t("home2_btn3_title")}</span>
+                      <div className="screen-4">STARTER</div>
+                    </div>
+                  </Col>
+                </Row>
+              </div>
+            </Col>
+            <Col xs={12} md={6} className="mb-3 pe-2">
+              <div className="rounded-1 p-4 box1_color">
+                <div className="pb-4">
+                  <p className="screen-2 text-end">{t("home_block1_title")}</p>
+                </div>
+                <Row className="d-flex justify-content-center">
+                  <Col
+                    xs={12}
+                    sm={12}
+                    md={4}
+                    className="px-1 py-2 py-md-0 px-sm-2"
+                  >
+                    <button className="custom_btn px-3 w-100 d-flex h-auto justify-content-between shadow-sm align-items-center bg-white" style={{ fontSize: fontSize }}>
+                      <span className="text-start pe-2">
+                        {t("home1_btn1_title")}
+                      </span>
+                      <div className="ps-2 justify-content-end">
+                        <img src={group} alt="group" className="w-full h-auto" />
+                      </div>
                     </button>
-                    <span className="text-start pe-2 screen-2 pt-1">{t("home_accro_r_btn")}</span>
-                  </div>
+                  </Col>
+                  <Col
+                    xs={12}
+                    sm={12}
+                    md={4}
+                    className="px-1 py-2 py-md-0 px-sm-2"
+                  >
+                    <button className="custom_btn px-3 py-2 w-100  d-flex h-auto justify-content-between shadow-sm align-items-center bg-white" style={{ fontSize: fontSize }}>
+                      <span className="text-start pe-2">
+                        {t("home1_btn2_title")}
+                      </span>
+                      <div className="ps-2 justify-content-end">
+                        <img src={group} alt="group" />
+                      </div>
+                    </button>
+                  </Col>
+                  <Col
+                    xs={12}
+                    sm={12}
+                    md={4}
+                    className="px-1 py-2 py-md-0 px-sm-2"
+                  >
+                    <button className="custom_btn px-3 w-100 d-flex h-auto justify-content-between shadow-sm align-items-center bg-white" style={{ fontSize: fontSize }}>
+                      <span className="text-start pe-2">
+                        {t("home1_btn3_title")}
+                      </span>
+                      <div className="ps-2 justify-content-end">
+                        <img src={group} alt="group" />
+                      </div>
+                    </button>
+                  </Col>
+                </Row>
+              </div>
+            </Col>
 
-                  {isOpen && ( 
-                    <div>
-                      <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={isOpen ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.4, ease: "easeInOut" }}
-                          style={{ overflow: "hidden" }}
-                      >
-                          <Row>
+          </Row>
+          <Row className="px-2">
+            <Col className="col-12 box1_color">
+              <div className="d-flex justify-content-between py-3">
+                <span className="text-start pe-2 screen-2 pt-1">{t("home_accro_r_btn")}</span>
+                <button
+                  className=" hr_btn"
+                  onClick={() => setIsOpen(!isOpen)}
+                >
+                  {t("home_accro_l_btn")}
+                </button>
+              </div>
 
-                          </Row>
-                          <Row className="py-3">
-                              {dataList.map((item, index) => (
-                                  <Datacard
-                                  key={index}
-                                  amount={t(item.amount)}
-                                  text={t(item.text)}
-                                  icon={item.icon}
-                                  />
-                              ))}
-                          </Row>
-                          <div className="px-md-3">
-                          <p className="screen-2 pb-3 text-end">{t("home_accro_gra_title")}</p>
-                          <Homechart />
-                          </div>
-                      </motion.div>
+              {isOpen && (
+                <div>
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={isOpen ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                    style={{ overflow: "hidden" }}
+                  >
+                    <Row>
+
+                    </Row>
+                    <Row className="py-3">
+                      {dataList.map((item, index) => (
+                        <Datacard
+                          key={index}
+                          amount={t(item.amount)}
+                          text={t(item.text)}
+                          icon={item.icon}
+                        />
+                      ))}
+                    </Row>
+                    <div className="px-md-3">
+                      <p className="screen-2 pb-3 text-end">{t("home_accro_gra_title")}</p>
+                      <Homechart />
                     </div>
-                  )}
-                </Col>
-              </Row>
-              <Row className="my-2 px-2">
-                <Col className="col-12 col-md-12 d-flex align-items-center box1_color">
-                   <div className="my-3 px-1 "><HomeTable /></div> 
-                </Col>
-              </Row>  
-            </div>
-          </Col>
+                  </motion.div>
+                </div>
+              )}
+            </Col>
+          </Row>
+          <Row className="px-2">
+            <Col className="col-12 col-md-12 box1_color">
+              <div className="my-3 px-1 "><HomeTable /></div>
+            </Col>
+          </Row>
+        </div>
+      </Col>
     </>
   );
 };

@@ -15,7 +15,7 @@ const Agreements = () => {
     const { t } = useTranslation();
 
     return (
-        <div>
+        <div className="px-4"> 
             <h1 className="text-center text-success py-3 mb-4 border-bottom border-[#EAEAEA]">
                 {t("all_agreements")}
             </h1>

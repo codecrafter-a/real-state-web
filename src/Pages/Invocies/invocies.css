@@ -4,7 +4,7 @@
     outline: none; /* Removes default outline */
 }
 
-input:focus-within {border: 0px solid transparent !important; outline: none;}
+input:focus-within {outline: none;}
   .custom-table {
     border-collapse: separate;
     border-spacing: 0;
