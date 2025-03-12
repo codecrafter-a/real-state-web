@@ -6,7 +6,7 @@ import userTypeIcon3 from "../../../assets/images/user_type_icon3.svg";
 import keyVertical from "../../../assets/images/key_vertical.svg";
 import garageDoor from "../../../assets/images/garage_door.svg";
 import searchIcon from "../../../assets/images/search.svg";
-import "../add-customer-en/Add-customer-en.css";
+import "../../Customers/Customer.css";
 import CustomInput from "../../../Componant/Common/Input/Custominput";
 import CustomSelect from "../../../Componant/Common/Select/Customeselect";
 import CustomModal from "../../../Componant/Common/Modal/CustomeModal";
