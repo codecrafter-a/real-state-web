@@ -41,12 +41,3 @@ small {font-size: 66%;}
 .screen-3{font-size: 16px; font-weight: 600; line-height: 100%; color: #00A481}
 .screen-4{font-size: 20px; font-weight: 600; line-height: 40%;}
 .screen-5{ font-weight: 600; line-height: 24%; color: #686868}
-.nav-tabs .nav-link {
-	color: #848484;
-	border-bottom: 2px solid transparent;
-	cursor: pointer;
-}
-.nav-tabs .nav-link.active-tab {
-	color: #00A6A4 !important;
-	border-bottom: 2px solid #00A6A4 !important;
-}
