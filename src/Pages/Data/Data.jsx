@@ -42,9 +42,9 @@ const Data = () => {
 
   const COLORS = ["#166D64", "#3AC2A3"];
   return (
-          <Col className="py-2">
-            <p className="py-3 my-4 text-center container-fluid screen-1 border-bottom">{t("data_title")}</p>
-            <Nav variant="tabs" className="d-flex px-3 pt-2 px-md-4 border-bottom">
+          <Col>
+            <p className="py-1 my-4 text-center screen-1 border-bottom">{t("data_title")}</p>
+            <Nav variant="tabs" className="d-flex mx-3 pt-2 px-md-4 border-bottom">
               <Nav.Item>
                   <Nav.Link
                       className={`px-3 focus:!border-transparent hover:!border-transparent ${activeTab === "all" ? "active-tab" : ""}`}
@@ -62,7 +62,7 @@ const Data = () => {
                   </Nav.Link>
               </Nav.Item>
             </Nav>
-            <div className='tab-content mt-4'>
+            <div className="custom-scrollbar overflow-y-auto overflow-x-hidden px-3 mt-4" style={{ maxHeight: "400px" }}>
             {activeTab === "all" && (
               <>
                  <Row className="py-3 align-items-center d-flex px-md-0 ">

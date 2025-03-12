@@ -11,8 +11,8 @@ const Invocies = () => {
   return (
     <>
       <Col>
-        <p className="py-3 my-4 text-center container-fluid screen-1 border-bottom">{t("invoice_title")}</p>
-        <Nav variant="tabs" className="d-flex px-3 pt-2 px-md-4 border-bottom">
+        <p className="py-1 my-4 text-center screen-1 border-bottom">{t("invoice_title")}</p>
+        <Nav variant="tabs" className="d-flex mx-3 pt-2 border-bottom">
           <Tab 
             className={`px-3 focus:!border-transparent hover:!border-transparent ${activeTab === "all" ? "active-tab" : ""}`}
             onClick={() => setActiveTab("all")}
@@ -24,7 +24,7 @@ const Invocies = () => {
             children={t("invoice_tab_title2")}
           />
         </Nav>
-        <div className=' tab-content mt-4'>
+        <div className="custom-scrollbar overflow-y-auto overflow-x-hidden px-3 mt-4" style={{ maxHeight: "594px" }}>
           {activeTab === "all" && (
             <>
               <div className=' d-flex justify-content-end '>

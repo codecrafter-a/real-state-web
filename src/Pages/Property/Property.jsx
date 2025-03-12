@@ -29,7 +29,7 @@ const Property = () => {
       <Col className=" py-2">
         <p className="py-3 my-4 text-center container-fluid screen-1 border-bottom">{t("pro_tab_title")}</p>
             <div className="px-3 py-2">
-              <div className="position-relative pt-5 pr-4">
+              <div className="position-relative  pr-4">
                 <div className="mx-auto" style={{ width: '304px' }}>
                   <div className="d-flex justify-content-around text-center">
                     {[1,2,3,4].map((step, index) => (
@@ -66,7 +66,7 @@ const Property = () => {
                         >
                           {step}
                           <span
-                            className="position-absolute top-100 start-50 translate-middle text-white btn-success "
+                            className="position-absolute top-100 pt-1  start-50 translate-middle btn-success "
                             style={{
                               fontSize: '12px',
                               whiteSpace: 'nowrap',

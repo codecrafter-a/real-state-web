@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import { useTranslation } from 'react-i18next';
-import bodyBg from "../../../assets/images/body_bg.webp";
-import boryGroupLeft from "../../../assets/images/bory_group_left.png";
-import boryGroupRight from "../../../assets/images/bory_group_right.png";
 import userTypeIcon1 from "../../../assets/images/user_type_icon1.svg";
 import userTypeIcon2 from "../../../assets/images/user_type_icon2.svg";
 import userTypeIcon3 from "../../../assets/images/user_type_icon3.svg";
@@ -66,17 +63,6 @@ const AddCustomer = () => {
 
   return (
     <div>
-      <div className="top_bg_image">
-        <figure className="mb-0 top_bg_fig">
-          <img src={bodyBg} width="100%" alt="Background" />
-          <span className="bgupper_icons">
-            <img src={boryGroupLeft} alt="left bg icon" />
-          </span>
-        </figure>
-        <div className="bgbelow_icons">
-          <img src={boryGroupRight} alt="right bg icon" />
-        </div>
-      </div>
       <div className="main_wrapper ">
         <div className="main_wrap_hdr">
           <h1 className="bor_head_cmn text-center">{t("add_cust_form_title")}</h1>

@@ -1,9 +1,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700&display=swap');
 
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
 .screen-1{font-size: 25px; font-weight: 600; line-height: 100%; color: #00A481;}
 

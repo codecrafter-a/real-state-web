@@ -41,12 +41,9 @@ const Brokers = () => {
 
   return (
     <>
-        <div class="px-3 px-md-4">
-          <h1 class="fs-4 fw-semibold  py-4 mb-7 border-bottom text-center text-embed-500">
-            {t("age_main_title")}
-          </h1>
-        </div>
-        <div className=" px-md-5">
+      <div class="px-3">
+          <p className="py-1 my-4 text-center screen-1 border-bottom">{t("age_main_title")}</p>
+        <div className="custom-scrollbar overflow-y-auto overflow-x-hidden px-4" style={{ maxHeight: "594px" }}>
           <div className="card p-3 border rounded-3 mb-4">
             <h5 className=" text-embed-500 mb-4">
               {t("age_type_com_distribution")}
@@ -217,7 +214,7 @@ const Brokers = () => {
               </label>
             </div>
           </div>
-          <div className="d-flex gap-3 ">
+          <div className="d-flex gap-3 pb-3 ">
             <button className="agent-button1  rounded-pill px-5 py-2 fw-bold shadow-sm text-white" onClick={handleView}>
               {t("age_btn_send")}
             </button>
@@ -229,6 +226,7 @@ const Brokers = () => {
             </button>
           </div>
         </div>
+      </div>
       {isOpen && (
         <div className="w-100">
           <CustomModal

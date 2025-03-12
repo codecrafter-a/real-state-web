@@ -44,12 +44,10 @@ const Attechment = ({ setActiveTab }) => {
   return (
     <>
     <Form className="px-4">
-      <h4 className="fs-4 fw-semibold text-success py-1 mt-3 mb-1 text-start">
+      <h4 className="screen-1 fw-semibold py-1 mt-3 mb-1 text-start">
         {t('pro_add_attch')}
       </h4>
       <p className="fs-6 fw-normal">{t('pro_add_attch_doc_note')}</p>
-
-      {/* File Upload Section */}
       <Row>
         {fileInputs.map(({ key, label }) => (
           <Col key={key} md={4} className=" py-2">
@@ -128,7 +126,7 @@ const Attechment = ({ setActiveTab }) => {
       </Row>
 
       {/* Buttons */}
-      <div className="d-flex justify-content-between mt-4 pt-5 pb-3">
+      <div className="d-flex justify-content-between mt-4 pb-3">
         <Button
           onClick={() => setActiveTab(3)}
           className="px-5 py-2 rounded-pill shadow-lg"

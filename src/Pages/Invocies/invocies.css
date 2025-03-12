@@ -13,7 +13,6 @@ input:focus-within {border: 0px solid transparent !important; outline: none;}
   }
   
   .custom-table th {
-
     font-size:15;
     line-height: 20%;
     font-weight: 400;
@@ -54,20 +53,20 @@ input:focus-within {border: 0px solid transparent !important; outline: none;}
     text-decoration: none !important;
   }
  
+  .table-bordered>:not(caption)>*>* {
+    border-width: 0px;
+   }
 
-  .custom-table tbody tr:hover{
-    background-color: white !important;
-  }
+ 
   
   .custom-table th:first-child,
   .custom-table td:first-child {
     border-right: 0;
   }
 
-  .custom-table tbody tr:first-child td {
-    border-top: 1px solid #e1e1e1;
-  }
+
   
+
   .custom-table th:last-child,
   .custom-table td:last-child {
     border-left: 0;

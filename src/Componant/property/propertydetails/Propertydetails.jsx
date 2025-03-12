@@ -21,13 +21,11 @@ const Propertydetails = ({setActiveTab}) => {
     ]
 
   return (
-    <div className="px-4">
+  <div className="px-4 custom-scrollbar overflow-y-scroll overflow-x-hidden" style={{ maxHeight: "550px" }}>
     <Form>
-      <h4 className="text-2xl screen-1 font-semibold text-[#00A481] py-3 mt-3 mb-1 text-start">
+      <h4 className="screen-1 font-semibold py-3 mt-3 mb-1 text-start">
         {t('pro_tab_title')}
       </h4>
-
-      {/* First Row */}
       <Row className="mb-3">
         <Col md={4}>
           <Form.Label className="text-base font-semibold">
@@ -49,7 +47,6 @@ const Propertydetails = ({setActiveTab}) => {
         </Col>
       </Row>
 
-      {/* Second Row */}
       <Row>
         <Col md={4}>
           <Form.Label className="text-base font-semibold">
@@ -65,8 +62,6 @@ const Propertydetails = ({setActiveTab}) => {
         </Col>
       </Row>
     </Form>
-
-    {/* Checkboxes with Inputs */}
     <Row className="mt-4">
       <Col xs="auto" className="my-3">
         <div className="relative">
@@ -126,8 +121,6 @@ const Propertydetails = ({setActiveTab}) => {
         </div>
       </Col>
     </Row>
-
-    {/* Service Selection */}
     <h4 className="text-base font-semibold text-[#00A481] py-3 mt-3 mb-1 text-start">
       {t('pro_add_del_select_add_future')}
     </h4>
@@ -143,7 +136,6 @@ const Propertydetails = ({setActiveTab}) => {
         </li>
       ))}
     </ul>
-
     <Form.Group className="mt-3">
       <Form.Label>{t('pro_add_desctiption')}</Form.Label>
       <Form.Control
@@ -152,9 +144,7 @@ const Propertydetails = ({setActiveTab}) => {
         rows={3}
       />
     </Form.Group>
-
-
-    <div className="d-flex justify-content-between mt-4 pt-5 pb-3">
+    <div className="d-flex justify-content-between mt-4  pb-3">
       <Button
         onClick={() => setActiveTab(1)}
         className="px-5 py-2 rounded-pill shadow-lg"
