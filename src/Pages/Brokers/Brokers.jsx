@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import { useTranslation } from 'react-i18next'
-import bodyBg from "../../assets/images/body_bg.webp";
-import boryGroupLeft from "../../assets/images/bory_group_left.png";
-import boryGroupRight from "../../assets/images/bory_group_right.png";
 import "../Brokers/Brokers.css";
 import key_vertical from "../../assets/images/key_vertical.svg";
 import garage_door from "../../assets/images/garage_door.svg";
@@ -44,18 +41,6 @@ const Brokers = () => {
 
   return (
     <>
-      <div className="position-absolute w-100 overflow-x-hidden top-0 z-0 ">
-        <figure className="mb-0 top_bg_fig">
-          <img src={bodyBg} className="w-100" alt="Background" />
-          <span className="position-absolute top-0 end-0">
-            <img src={boryGroupLeft} alt="left bg icon" />
-          </span>
-        </figure>
-        <div className="bgbelow_icons">
-          <img src={boryGroupRight} alt="right bg icon" />
-        </div>
-      </div>
-      <div className="bg-white w-100 scrollbar-left mx-auto pb-4 scrollbar-content position-relative z-3 rounded-3 shadow-lg mainPage">
         <div class="px-3 px-md-4">
           <h1 class="fs-4 fw-semibold  py-4 mb-7 border-bottom text-center text-embed-500">
             {t("age_main_title")}
@@ -244,7 +229,6 @@ const Brokers = () => {
             </button>
           </div>
         </div>
-      </div>
       {isOpen && (
         <div className="w-100">
           <CustomModal

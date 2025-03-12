@@ -95,7 +95,7 @@ const Customer = () => {
         </div>
 
         <div className="px-4 h-100">
-          <form className="overflow-auto custom-scrollbar" style={{ height: "677px" }}>
+          <form className="overflow-auto custom-scrollbar" style={{ height: "594px" }}>
             <div className="me-4">
               <div className="mb-3 d-flex justify-content-end">
                 <button

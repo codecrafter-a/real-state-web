@@ -18,7 +18,7 @@ const Ownerdetails = ({setActiveTab}) => {
               {t('pro_add_ower_name')}
             </Form.Label>
             <CustomInput
-              className="w-100 h-auto"
+              className="w-100 h-auto rounded"
               type="text"
             />
           </Col>
@@ -27,7 +27,7 @@ const Ownerdetails = ({setActiveTab}) => {
               {t('pro_add_ower_phone')}
             </Form.Label>
             <CustomInput
-              className="w-100 h-auto"
+              className="w-100 h-auto rounded"
               type="text"
             />
           </Col>
@@ -40,14 +40,13 @@ const Ownerdetails = ({setActiveTab}) => {
               {t('pro_add_ower_email')}
             </Form.Label>
             <CustomInput
-              className="w-100 h-auto"
+              className="w-100 h-auto rounded"
               type="text"
             />
           </Col>
         </Row>
       </Form>
       <div className="d-flex justify-content-between mt-4 pt-5 pb-3">
-        {/* Previous Button */}
         <Button
           onClick={() => setActiveTab(2)}
           className="px-5 py-2 rounded-pill shadow-lg"
@@ -70,7 +69,6 @@ const Ownerdetails = ({setActiveTab}) => {
           {t('Pro_add_pev_btn')}
         </Button>
 
-        {/* Next Button */}
         <Button
           onClick={() => setActiveTab(4)}
           className="px-5 py-2 rounded-pill shadow-lg text-white"

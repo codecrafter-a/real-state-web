@@ -50,7 +50,7 @@ const Sidebar = () => {
               { icon: userIcon, text: t("sitem3") , to: `/${i18n.language}/customers`},
               { icon: homeWork, text: t("sitem4"), to: `/${i18n.language}/property` },
               { icon: icon5, text: t("sitem5") , to: `/${i18n.language}/broker` },
-              { icon: attachMoney, text: t("sitem6") },
+              { icon: attachMoney, text: t("sitem6"), to: `/${i18n.language}/invoices`},
               { icon: barChart, text: t("sitem7"), to: `/${i18n.language}/data` },
               { icon: familyHome, text: t("sitem8") },
               { icon: book2, text: t("sitem9") },

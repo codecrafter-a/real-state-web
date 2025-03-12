@@ -16,23 +16,10 @@ const Agreements = () => {
 
     return (
         <div>
-            <div className="position-absolute top-0 w-100 overflow-hidden z-0">
-                <figure className="mb-0">
-                    <img src={bodyBg} className="w-100" alt="Background" />
-                    <span className="position-absolute end-0 top-2">
-                        <img src={boryGroupLeft} alt="left bg icon" />
-                    </span>
-                </figure>
-                <div className="w-25">
-                    <img src={boryGroupRight} alt="right bg icon" />
-                </div>
-            </div>
-
-            <div className="container bg-white my-5 p-4 shadow-lg rounded-3 position-relative z-1">
                 <h1 className="text-center text-success py-3 mb-4 border-bottom border-[#EAEAEA]">
                     {t("all_agreements")}
                 </h1>
-                <div className="overflow-auto custom-scrollbar" style={{ maxHeight: "646px" }}>
+                <div className="overflow-auto custom-scrollbar" style={{ maxHeight: "594px" }}>
                     <div className="me-4">
                         <Nav variant="tabs" className="mb-3 border-bottom border-[#EAEAEA]">
                             <Nav.Item>
@@ -112,7 +99,6 @@ const Agreements = () => {
                         </div>
                     </div>
                 </div>
-            </div>
             <style>
                 {`
                     .nav-tabs .nav-link {

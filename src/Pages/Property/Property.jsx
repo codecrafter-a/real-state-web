@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import { useTranslation } from 'react-i18next'
-import bodyBg from "../../assets/images/body_bg.webp";
-import { Container, Row, Col } from "react-bootstrap";
-import boryGroupLeft from "../../assets/images/bory_group_left.png";
-import boryGroupRight from "../../assets/images/bory_group_right.png";
 import Propertyaddress from "../../Componant/property/propertyaddress/Propertyaddress";
 import Propertydetails from "../../Componant/property/propertydetails/Propertydetails";
 import Ownerdetails from "../../Componant/property/ownerdetail/Ownerdetails";
 import Attachments from "../../Componant/property/attechment/Attechment";
+import { Col } from "react-bootstrap";
 const Property = () => {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState(1);
@@ -29,25 +26,8 @@ const Property = () => {
 
   return (
     <>
-      <Container  className="custom-container" >
-        <div className="position-absolute w-100 h-50 overflow-hidden top-0 start-0 z-0">
-          <figure className="mb-0 h-100 w-100 position-relative">
-            <img
-              src={bodyBg}
-              className="w-100 h-100 object-fit-cover position-absolute top-0 start-0"
-              alt="Background"
-            />
-            <span className="position-absolute top-0 end-0">
-              <img src={boryGroupLeft} alt="Left BG Icon" className="img-fluid" />
-            </span>
-          </figure>
-            <div className="right-bg-icon ">
-              <img src={boryGroupRight} alt="right bg icon" className="position-fixed"/>
-            </div>
-        </div>
-        <Row className=" d-flex w-auto mx-auto  position-relative bg-white shadow-lg rounded-3  scrollbar-content scrollbar-left flex-wrap px-md-5 z-3">
-          <Col className=" py-2">
-            <p className="py-3 my-4 text-center container-fluid screen-1 border-bottom">{t("pro_tab_title")}</p>
+      <Col className=" py-2">
+        <p className="py-3 my-4 text-center container-fluid screen-1 border-bottom">{t("pro_tab_title")}</p>
             <div className="px-3 py-2">
               <div className="position-relative pt-5 pr-4">
                 <div className="mx-auto" style={{ width: '304px' }}>
@@ -122,8 +102,6 @@ const Property = () => {
               </div>
             </div>
           </Col>
-        </Row>
-      </Container>
     </>
   );
 }; 

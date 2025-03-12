@@ -369,6 +369,12 @@
       "נחתם": "Signed",
       "נחתם ויצא לפועל": "Signed and Executed",
       "נחתם ונרשם": "Signed and Registered"
-    }
+    },
+    
+    "invoice_title": "All Invoices",
+    "invoice_tab_title1": "All Invoices",
+    "invoice_tab_title2": "Recent Invoices",
+    "invoice_placeholder": "Search invoice by address / client name"
+
   
   }

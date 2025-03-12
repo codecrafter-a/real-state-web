@@ -18,7 +18,7 @@ const Propertyaddress = ({setActiveTab}) => {
               {t('pro_add_city')}
             </Form.Label>
             <CustomInput
-              className="w-100 h-auto"
+              className="w-100 h-auto rounded"
               type="text"
             />
           </Col>
@@ -27,7 +27,7 @@ const Propertyaddress = ({setActiveTab}) => {
               {t('pro_add_str')}
             </Form.Label>
             <CustomInput
-              className="w-100 h-auto"
+              className="w-100 h-auto rounded"
               type="text"
             />
           </Col>
@@ -38,7 +38,7 @@ const Propertyaddress = ({setActiveTab}) => {
               {t('pro_add_building_number')}
             </Form.Label>
             <CustomInput
-              className="w-100 h-auto"
+              className="w-100 h-auto rounded"
               type="text"
             />
           </Col>
@@ -47,7 +47,7 @@ const Propertyaddress = ({setActiveTab}) => {
               {t('pro_add_apartment_number')}
             </Form.Label>
             <CustomInput
-              className="w-100 h-auto"
+              className="w-100 h-auto rounded"
               type="text"
             />
           </Col>

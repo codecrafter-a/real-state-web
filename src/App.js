@@ -9,6 +9,7 @@ import Home from "./Pages/Home/Home.jsx";
 import Data from "./Pages/Data/Data.jsx";
 import Agreementes from "./Pages/Agreementes/Agreementes.jsx";
 import Property from "./Pages/Property/Property.jsx";
+import Invocies from "./Pages/Invocies/Invocies.jsx";
 
 
 function App() {
@@ -25,8 +26,9 @@ function App() {
           <Route path="/:lang/property" element={<Property/>}/>
           <Route path="/:lang/broker" element={<Brokers />} />
           <Route path="/:lang/home" element={<Home/>}/>
+          <Route path="/:lang/invoices" element={<Invocies/>} /> 
           <Route path="/:lang/agreements" element={<Agreementes/>} />
-          <Route path="/:lang/data" element={<Data/>} />  
+          <Route path="/:lang/data" element={<Data/>} /> 
           <Route path="*" element={<Navigate to="/he/signin" />} />
         </Routes>
       </Layout>

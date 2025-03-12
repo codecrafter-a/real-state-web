@@ -33,19 +33,19 @@ const Propertydetails = ({setActiveTab}) => {
           <Form.Label className="text-base font-semibold">
             {t('pro_add_det_type')}
           </Form.Label>
-          <CustomInput className="w-100 h-auto" type="text" />
+          <CustomInput className="w-100 h-auto rounded" type="text" />
         </Col>
         <Col md={4}>
           <Form.Label className="text-base font-semibold">
             {t('pro_add_del_contidation')}
           </Form.Label>
-          <CustomInput className="w-100 h-auto" type="text" />
+          <CustomInput className="w-100 h-auto rounded" type="text" />
         </Col>
         <Col md={4}>
           <Form.Label className="text-base font-semibold">
             {t('pro_add_del_name')}
           </Form.Label>
-          <CustomInput className="w-100 h-auto" type="text" />
+          <CustomInput className="w-100 h-auto rounded" type="text" />
         </Col>
       </Row>
 
@@ -55,13 +55,13 @@ const Propertydetails = ({setActiveTab}) => {
           <Form.Label className="text-base font-semibold">
             {t('pro_add_del_floor')}
           </Form.Label>
-          <CustomInput className="w-100 h-auto" type="text" />
+          <CustomInput className="w-100 h-auto rounded" type="text" />
         </Col>
         <Col md={4}>
           <Form.Label className="text-base font-semibold">
             {t('pro_add_del_area')}
           </Form.Label>
-          <CustomInput className="w-100 h-auto" type="text" />
+          <CustomInput className="w-100 h-auto rounded" type="text" />
         </Col>
       </Row>
     </Form>
@@ -93,7 +93,7 @@ const Propertydetails = ({setActiveTab}) => {
           <Form.Label className="text-sm mb-1 font-semibold">
             {t('pro_add_del_req_rent_price')}
           </Form.Label>
-          <CustomInput type="text" className="w-100 h-auto" />
+          <CustomInput type="text" className="w-100 h-auto rounded" />
         </div>
       </Col>
 
@@ -122,7 +122,7 @@ const Propertydetails = ({setActiveTab}) => {
           <Form.Label className="text-sm mb-1 font-semibold">
             {t('pro_add_del_req_buy_price')}
           </Form.Label>
-          <CustomInput type="text" className="w-100 h-auto" />
+          <CustomInput type="text" className="w-100 h-auto rounded" />
         </div>
       </Col>
     </Row>
