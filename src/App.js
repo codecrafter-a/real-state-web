@@ -8,7 +8,7 @@ import Signin from "./Pages/Signin/Signin.jsx";
 import Home from "./Pages/Home/Home.jsx";
 import Data from "./Pages/Data/Data.jsx";
 import Agreementes from "./Pages/Agreementes/Agreementes.jsx";
-import Property from "./Pages/property/Property.jsx";
+import Property from "./Pages/Property/Property.jsx";
 import Invocies from "./Pages/Invocies/Invocies.jsx";
 
 
