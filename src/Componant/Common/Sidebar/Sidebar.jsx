@@ -55,7 +55,7 @@ const Sidebar = () => {
               { icon: familyHome, text: t("sitem8") },
               { icon: book2, text: t("sitem9") },
               { icon: menuIcon7, text: t("sitem10"), to: `/${i18n.language}/setting`},
-              { icon: lock, text: t("sitem11") },
+              { icon: lock, text: t("sitem11"), to: `/${i18n.language}/personal-area` },
               { icon: doorOpen, text: t("sitem12") }].map((item, index) => (
                 <li key={index}>
                   <Link to={item.to}>

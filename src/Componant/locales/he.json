@@ -386,6 +386,32 @@
     "share": "שיתוף",
     "client_1": "שירי נקבלי, רומי שפן",
     "client_2": "ליאור כהן, דנה לוי",
-    "service_payment": "תשלום על שירות"
+    "service_payment": "תשלום על שירות",
+
+    "personalArea": {
+    "title": "איזור אישי",
+    "logo": "לוגו חברה",
+    "name": "שירי נקבלי",
+    "role": "סוכנ.ת",
+    "area_type": "סוג",
+    "endDate": "תאריך סיום",
+    "agreementsSentThisMonth": "הסכמים שנשלחו החודש",
+    "agreementsSentThisMonthCount": "{{sent}}/{{total}}",
+    "upgradeSubscription": "שידרוג מנוי",
+    "invoicesReceived": "החשבוניות שקיבלתי מחתימה ירוקה",
+    "personalDetails": "פרטים אישיים",
+    "fullName": "שם מלא*",
+    "licenseNumber": "מספר רשיון*",
+    "phone": "טלפון*",
+    "email": "דוא”ל*",
+    "changeEmail": "שינוי דוא”ל",
+    "password": "סיסמה*",
+    "changePassword": "שינוי סיסמה",
+    "secondaryEmail": "דוא”ל משני",
+    "updateButton": "עדכון",
+    "modalTitle": "הוספת לוגו",
+    "galleryOption": "בחירה מגלריית התמונות",
+    "cameraOption": "פתיחת מצלמה"
+  }
    
   }

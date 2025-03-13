@@ -387,5 +387,31 @@
     "share": "Share",
     "client_1": "Shiri Nakbeli, Romi Shafan",
     "client_2": "Lior Cohen, Dana Levi",
-    "service_payment": "Payment for Service"
+    "service_payment": "Payment for Service",
+
+    "personalArea": {
+    "title": "Personal Area",
+    "logo": "Company Logo",
+    "name": "Shiri Nakibli",
+    "role": "Agent",
+    "area_type": "Type",
+    "endDate": "End Date",
+    "agreementsSentThisMonth": "Agreements Sent This Month",
+    "agreementsSentThisMonthCount": "{{sent}}/{{total}}",
+    "upgradeSubscription": "Upgrade Subscription",
+    "invoicesReceived": "Invoices Received from Green Signature",
+    "personalDetails": "Personal Details",
+    "fullName": "Full Name*",
+    "licenseNumber": "License Number*",
+    "phone": "Phone*",
+    "email": "Email*",
+    "changeEmail": "Change Email",
+    "password": "Password*",
+    "changePassword": "Change Password",
+    "secondaryEmail": "Secondary Email",
+    "updateButton": "Update",
+    "modalTitle": "Add Logo",
+    "galleryOption": "Choose from Gallery",
+    "cameraOption": "Open Camera"
+  }
   }

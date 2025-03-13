@@ -11,6 +11,7 @@ import Agreementes from "./Pages/Agreementes/Agreementes.jsx";
 import Property from "./Pages/Property/Property.jsx";
 import Invocies from "./Pages/Invocies/Invocies.jsx";
 import Setting from "./Pages/Setting/Setting.jsx";
+import PersonalArea from "./Pages/PersonalArea/PersonalArea.jsx";
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           <Route path="/:lang/invoices" element={<Invocies/>} /> 
           <Route path="/:lang/agreements" element={<Agreementes/>} />
           <Route path="/:lang/data" element={<Data/>} /> 
+          <Route path="/:lang/personal-area" element={<PersonalArea/>} /> 
           <Route path="*" element={<Navigate to="/he/signin" />} />
         </Routes>
       </Layout>
