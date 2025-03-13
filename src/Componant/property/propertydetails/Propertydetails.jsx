@@ -101,7 +101,7 @@ const Propertydetails = ({setActiveTab}) => {
           />
           <Form.Label
             htmlFor="check2"
-            className="d-flex flex-column align-items-center justify-content-center border border-solid border-[#D6D6D6] rounded-lg cursor-pointer"
+            className="d-flex flex-column align-items-center justify-content-center border border-solid  rounded-lg cursor-pointer"
             style={{
               width: '83px',
               height: '73px',
