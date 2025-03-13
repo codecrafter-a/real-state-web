@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-import bodyBg from "../../assets/images/body_bg.webp";
-import boryGroupRight from "../../assets/images/bory_group_right.png";
-import boryGroupLeft from "../../assets/images/bory_group_left.png";
 import search from "../../assets/images/search.png";
 import remove_icon from "../../assets/images/remove_icon.svg";
 import { Nav } from "react-bootstrap";

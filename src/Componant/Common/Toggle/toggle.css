@@ -1,0 +1,16 @@
+.custom-toggle {
+    width: 50px;
+    height: 24px;
+  }
+
+  .custom-toggle .form-check-input {
+    width: 42px;
+    height: 22px;
+    background-color: #d1f1ea;
+    border-color: #d1f1ea;
+  }
+
+  .custom-toggle .form-check-input:checked {
+    background-color: #00A481;
+    border-color: #00A481;
+  }

@@ -6,6 +6,7 @@
 @tailwind utilities;
 
 .screen-1{font-size: 25px; font-weight: 600; line-height: 100%; color: #00A481;}
+.text-teal{color: #00A481;}
 
 body{
 	background-color: #fff;

@@ -12,7 +12,7 @@ import CustomInput from "../../Componant/Common/Input/Custominput";
 import successIcon from '../../assets/images/success_icon.svg';
 import Accordion from 'react-bootstrap/Accordion';
 import whatsapp from '../../assets/images/wa, whatsapp, message, communication, chat.svg';
-import { Modal, } from "react-bootstrap";
+import { Modal} from "react-bootstrap";
 import sms from '../../assets/images/sms.svg'
 import email from '../../assets/images/email.svg';
 import group from '../../assets/images/Group 2538.png';
@@ -41,7 +41,7 @@ const Brokers = () => {
 
   return (
     <>
-      <div class="px-3">
+      <div className="px-3">
           <p className="py-1 my-4 text-center screen-1 border-bottom">{t("age_main_title")}</p>
         <div className="custom-scrollbar overflow-y-auto overflow-x-hidden px-4" style={{ maxHeight: "594px" }}>
           <div className="card p-3 border rounded-3 mb-4">
@@ -547,8 +547,8 @@ const Brokers = () => {
             <img 
               src={gyiphy} 
               alt="gyiphy" 
-              className="img-fluid object-fit-cover" 
-              style={{ width: '150px', marginTop: '-120px' }}
+              className="img-fluid w-full object-fit-cover" 
+              style={{ marginTop: '-100px' }}
             />
           </div>
           <Modal.Header closeButton className="border-0" />
@@ -594,8 +594,8 @@ const Brokers = () => {
             <img 
               src={gyiphy} 
               alt="gyiphy" 
-              className="img-fluid object-fit-cover" 
-              style={{ marginTop: '-120px', width: '150px' }} 
+              className="img-fluid object-fit-cover w-full h-auto" 
+              style={{ marginTop: '-100px'}} 
             />
           </div>
           <Modal.Header closeButton className="border-0 position-relative z-2" />
