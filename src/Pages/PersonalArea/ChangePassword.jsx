@@ -29,7 +29,7 @@ const ChangePassword = () => {
                                     name="password"
                                     placeholder="***********"
                                 />
-                                <span className="position-absolute top-0 end-0 mt-1 me-2 cursor-pointer"
+                                <span className="position-absolute top-0 end-0 mt-2 me-2 cursor-pointer"
                                     onClick={() => setShowPassword(!showPassword)}>
                                     {showPassword ? <FaEyeSlash /> : <FaEye />}
                                 </span>
@@ -46,7 +46,7 @@ const ChangePassword = () => {
                                     name="new-password"
                                     placeholder="***********"
                                 />
-                                <span className="position-absolute top-0 end-0 mt-1 me-2 cursor-pointer"
+                                <span className="position-absolute top-0 end-0 mt-2 me-2 cursor-pointer"
                                     onClick={() => setShowNewPassword(!showNewPassword)}
                                 >
                                     {showNewPassword ? <FaEyeSlash /> : <FaEye />}
@@ -65,7 +65,7 @@ const ChangePassword = () => {
                                     name="confirm-password"
                                     placeholder="***********"
                                 />
-                                <span className="position-absolute top-0 end-0 mt-1 me-2 cursor-pointer"
+                                <span className="position-absolute top-0 end-0 mt-2 me-2 cursor-pointer"
                                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                                 >
                                     {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}

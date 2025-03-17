@@ -359,8 +359,10 @@ const Customer = () => {
               ></button>
             </Modal.Header>
 
-            <Modal.Body className="text-center pb-4">
-              <img src={ErrorIcon} alt="ErrorIcon" />
+            <Modal.Body className="text-center justify-center pb-4">
+              <div className="flex items-center justify-center">
+                <img src={ErrorIcon} alt="ErrorIcon" />
+              </div>
               <div>
                 <p className="mt-4 mb-0 text-black fw-semibold fs-5">
                   אתם עומדים למחוק לקוח/ות

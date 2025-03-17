@@ -159,7 +159,7 @@ const PersonalArea = () => {
                                         value={formData.password}
                                         onChange={handleChange}
                                     />
-                                    <span className="position-absolute top-0 end-0 mt-1 me-2 cursor-pointer"
+                                    <span className="position-absolute top-0 end-0 mt-2 me-2 cursor-pointer"
                                         onClick={() => setShowPassword(!showPassword)}>
                                         {showPassword ? <FaEyeSlash /> : <FaEye />}
                                     </span>
