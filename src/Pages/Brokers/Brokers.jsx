@@ -16,7 +16,8 @@ import { Modal} from "react-bootstrap";
 import sms from '../../assets/images/sms.svg'
 import email from '../../assets/images/email.svg';
 import group from '../../assets/images/Group 2538.png';
-import gyiphy from '../../assets/images/giphy 1.png'
+import gyiphy from '../../assets/images/giphy 1.png';
+import Toggle from "../../Componant/Common/Toggle/Toggle";
 
 
 const Brokers = () => {
@@ -49,56 +50,29 @@ const Brokers = () => {
               {t("age_type_com_distribution")}
             </h5>
             <form>
-              <div className="mb-3 form-check">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  name="commission"
-                  id="sharedPool"
-                  defaultChecked
-                />
-                <label
-                  className="form-check-label fw-bold"
-                  htmlFor="sharedPool"
-                >
-                  {t("age_comm_type_1")}
-                </label>
-              </div>
-
-              <div className="mb-3 form-check">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  name="commission"
-                  id="eachGetsOwn"
-                />
-                <label className="form-check-label" htmlFor="eachGetsOwn">
-                  {t("age_comm_type_2")}
-                </label>
-              </div>
-
-              <div className="mb-3 form-check">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  name="commission"
-                  id="buyerPaysSeller"
-                />
-                <label className="form-check-label" htmlFor="buyerPaysSeller">
+                <div className='d-flex '>
+                  <Toggle defaultChecked type={"radio"} name="commission" id="toggleImages"/>
+                  <label className="form-check-label fw-bold" htmlFor="">
+                    {t('age_comm_type_1')}                  
+                  </label>
+                </div>
+               <div className='d-flex '>
+                  <Toggle defaultChecked type={"radio"} name="commission" id="toggleImages"/>
+                  <label className="form-check-label" htmlFor="eachGetsOwn">
+                    {t('age_comm_type_2')}                  
+                  </label>
+                </div>
+              <div className='d-flex '>
+                  <Toggle defaultChecked type={"radio"} name="commission" id="toggleImages"/>
+                  <label className="form-check-label" htmlFor="buyerPaysSeller">
                   {t("age_comm_type_3")}
                 </label>
               </div>
-
-              <div className="mb-3 form-check">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  name="commission"
-                  id="other"
-                />
-                <label className="form-check-label" htmlFor="other">
+              <div className='d-flex '>
+                  <Toggle defaultChecked type={"radio"}  name="commission" id="toggleImages"/>
+                  <label className="form-check-label" htmlFor="other">
                   {t("age_comm_type_4")}
-                </label>
+                  </label>
               </div>
             </form>
           </div>
@@ -192,26 +166,17 @@ const Brokers = () => {
             </div>
           </div>
           <div className="d-flex align-items-center gap-3 mb-4">
-            <div className="form-check form-switch">
-              <input
-                className="form-check-input bg-embed-500 border-0"
-                type="checkbox"
-                id="toggleImages"
-                defaultChecked
-              />
-              <label className="fs-5 fw-normal lh-1" htmlFor="">
+            <div className='d-flex '>
+                  <Toggle defaultChecked type={"checkbox"}  name="commission" id="toggleImages"/>
+                  <label className="fs-5 fw-normal lh-1" htmlFor="">
                 {t("age_photos")}
               </label>
             </div>
-            <div className="form-check form-switch">
-              <input
-                className="form-check-input bg-embed-500"
-                type="checkbox"
-                id="toggleDocs"
-              />
-              <label className="fs-5 fw-normal lh-1" htmlFor="">
-                {t("age_pro_attech")}
-              </label>
+            <div className='d-flex '>
+                  <Toggle defaultChecked type={"checkbox"}  name="commission" id="toggleImages"/>
+                  <label className="fs-5 fw-normal lh-1" htmlFor="">
+                    {t("age_pro_attech")}
+                  </label>
             </div>
           </div>
           <div className="d-flex gap-3 pb-3 ">

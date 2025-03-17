@@ -42,6 +42,8 @@ a, a:hover{
 	top: 10px;
 }
 
+.fs-17{font-size: 17px;}
+.fs-12{font-size: 12px;}
 
 .custom-scrollbar::-webkit-scrollbar {
 	width: 6px;

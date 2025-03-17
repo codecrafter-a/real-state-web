@@ -52,7 +52,7 @@ const Sidebar = () => {
               { icon: icon5, text: t("sitem5") , to: `/${i18n.language}/broker`},
               { icon: attachMoney, text: t("sitem6"), to: `/${i18n.language}/invoices`},
               { icon: barChart, text: t("sitem7"), to: `/${i18n.language}/data`},
-              { icon: familyHome, text: t("sitem8") },
+              { icon: familyHome, text: t("sitem8"), to: `/${i18n.language}/report`},
               { icon: book2, text: t("sitem9") },
               { icon: menuIcon7, text: t("sitem10"), to: `/${i18n.language}/setting`},
               { icon: lock, text: t("sitem11"), to: `/${i18n.language}/personal-area` },

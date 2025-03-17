@@ -38,7 +38,7 @@ const Setting = () => {
                   <Card className='border-custom-gray' style={{width: "94px"}}>
                     <Card.Body>
                       <Card.Text className='d-flex flex-column align-items-center'>
-                        <img src={email} alt='sms' className=' w-full h-auto' />
+                        <img src={email} alt='sms' />
                         <p className='fw-semibold fs-17 text-teal m-0'>{t('email')}</p>  
                       </Card.Text>
                     </Card.Body>
@@ -46,7 +46,7 @@ const Setting = () => {
                   <Card className='border-custom-gray mx-4' style={{width: "94px"}}>
                     <Card.Body>
                       <Card.Text className='d-flex flex-column align-items-center'>
-                        <img src={whatsapp} alt='sms' className=' w-full h-auto' />
+                        <img src={whatsapp} alt='sms'/>
                         <p className='fw-semibold fs-17 text-teal m-0'>{t('whatsapp')}</p>  
                       </Card.Text>
                     </Card.Body>
@@ -54,7 +54,7 @@ const Setting = () => {
                   <Card className='border-custom-gray' style={{width: "94px"}}>
                     <Card.Body>
                       <Card.Text className='d-flex flex-column align-items-center'>
-                        <img src={sms} alt='sms' className=' w-full h-auto' />
+                        <img src={sms} alt='sms' />
                         <p className='fw-semibold fs-17 text-teal m-0'>SMS</p>  
                       </Card.Text>
                     </Card.Body>
@@ -64,7 +64,7 @@ const Setting = () => {
             </div>
           </Row>
           <Row>
-            <Col  xs={12} sm={12} md={6}>
+            <Col>
               <div >
                 <h4 className='text-teal fs-5 pb-2 fw-sibold lh-1'>{t('report')}</h4>
                 <div className='d-flex py-2'>
