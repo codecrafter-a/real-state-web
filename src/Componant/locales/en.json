@@ -440,5 +440,24 @@
   "sendMessage": "Send a message{{spanText}} in the property when its price drops",
   "toClientsWhoShowedInterest": "to clients who showed interest",
   "toAllClientsFoundSuitable": "to all clients who were found suitable",
-  "sendMessageTags": "(according to tags) when the property price drops"
+  "sendMessageTags": "(according to tags) when the property price drops",
+
+  "changePassword": "Change Password",
+  "personalDetails": "Personal Details",
+  "previousPassword": "Previous Password*",
+  "newPassword": "New Password*",
+  "confirmNewPassword": "Confirm New Password*",
+  "generatePassword": "Generate Automatic Password",
+  "password_email_update": "Update",
+  "changeEmail": "Change Email",
+  "previousEmail": "Previous Email*",
+  "newEmail": "New Email*",
+  "confirmNewEmail": "Confirm New Email*",
+  "signature_invoice": "Green Signature Invoices",
+  "to_date": "To Date",
+  "invoiceNumber": "Invoice Number",
+  "clients": "Customer Names",
+  "invoice_clients_Name": "Naqbli Poems, Romi Shafan",
+  "invoice_subject": "Invoice Subject",
+  "paymentForService": "Payment for Service"
   }

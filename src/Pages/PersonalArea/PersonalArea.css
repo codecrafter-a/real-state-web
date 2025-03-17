@@ -1,0 +1,54 @@
+.w-345 {
+    width: 345px;
+}
+
+.update-btn {
+    width: 146px;
+}
+
+.scroll-height {
+    height: 660px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.w-103 {
+    width: 103px;
+}
+
+.table-head {
+    color: #686868 !important;
+    font-weight: 600;
+}
+
+.company-logo-container {
+    width: 104px;
+    height: 104px;
+    border: 1px solid #D6D6D6;
+}
+
+.plus-icon-container {
+    background-color: #00A481;
+    width: 35px;
+    height: 35px;
+    top: 34px;
+    right: -15px;
+}
+
+.logo-text {
+    color: #ADADAD;
+    font-size: 12px;
+}
+
+.close-btn {
+    left: 14px;
+    top: 6px;
+}
+
+.gallery-option-circle {
+    background: #F3F5FF;
+    width: 100px;
+    height: 100px;
+}

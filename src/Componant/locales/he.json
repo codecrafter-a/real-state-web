@@ -439,6 +439,24 @@
   "sendMessage": "שליחת הודעה{{spanText}} בנכס כאשר מחירו יורד",
   "toClientsWhoShowedInterest": "ללקוחות שהתעניינו",
   "toAllClientsFoundSuitable": "לכל הלקחות שנמצאו מתאימים",
-  "sendMessageTags": "(ע”פ התגיות) כאשר מחיר הנכס יורד"
-   
+  "sendMessageTags": "(ע”פ התגיות) כאשר מחיר הנכס יורד",
+
+  "changePassword": "שינוי סיסמה",
+  "personalDetails": "פרטים אישיים",
+  "previousPassword": "סיסמה קודמת*",
+  "newPassword": "סיסמה חדשה*",
+  "confirmNewPassword": "אישור סיסמה חדשה*",
+  "generatePassword": "יצירת סיסמה אוטומטית",
+  "password_email_update": "עדכון",
+  "changeEmail": "שינוי דוא”ל",
+  "previousEmail": "דוא”ל קודם*",
+  "newEmail": "דוא”ל חדש*",
+  "confirmNewEmail": "אישור דוא”ל חדש*",
+  "signature_invoice": "חשבוניות מחתימה ירוקה",
+  "to_date": "עד תאריך",
+  "invoiceNumber": "מס’ חשבונית",
+  "clients": "שמות הלקוחות",
+  "invoice_clients_Name": "שירי נקבלי, רומי שפן",
+  "invoice_subject": "נושא החשבונית",
+  "paymentForService": "תשלום על שירות"
   }

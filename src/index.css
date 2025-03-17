@@ -44,7 +44,7 @@ a, a:hover{
 
 
 .custom-scrollbar::-webkit-scrollbar {
-	width: 6px;
+	width: 9px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
