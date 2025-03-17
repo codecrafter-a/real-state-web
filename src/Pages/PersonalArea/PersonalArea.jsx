@@ -1,15 +1,19 @@
 import React, { useState } from "react";
-import { FaEye } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FiPlus } from "react-icons/fi";
 import companyLogo from "../../assets/images/company-logo.svg";
 import { useTranslation } from "react-i18next";
-import { Modal, Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import { FiCamera } from "react-icons/fi";
 import { MdOutlineAddPhotoAlternate } from "react-icons/md";
+import { useNavigate, useParams } from "react-router-dom";
 
 const PersonalArea = () => {
     const { t } = useTranslation();
+    const navigate = useNavigate();
+    const { lang } = useParams();
     const [showModal, setShowModal] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
@@ -35,27 +39,27 @@ const PersonalArea = () => {
             <p className="w-100 text-center screen-1 border-bottom py-3 mb-4">
                 {t("personalArea.title")}
             </p>
-            <div className="overflow-y-auto overflow-x-hidden custom-scrollbar" style={{ height: "660px" }}>
+            <div className="overflow-y-auto overflow-x-hidden custom-scrollbar scroll-height">
                 <div className="pe-3">
                     <div className="d-flex flex-wrap gap-3 align-items-start">
                         <div className="d-flex flex-column flex-grow-1">
                             <div className="d-flex flex-wrap justify-content-between w-100 gap-4 align-items-center">
                                 <div className="d-flex gap-5">
                                     <div className="d-flex align-items-center gap-5">
-                                        <div className="position-relative">
-                                            <div className="bg-white rounded-pill shadow-md d-flex justify-content-center align-items-center" style={{ width: '104px', height: '104px', border: '1px solid #D6D6D6' }}>
+                                        <div className="position-relative cursor-pointer" onClick={handleShowModal}>
+                                            <div className="bg-white rounded-pill shadow-md d-flex justify-content-center align-items-center company-logo-container">
                                                 <div className="d-flex flex-column align-items-center">
                                                     <div><img alt="icon" src={companyLogo} /></div>
-                                                    <span style={{ color: "#ADADAD", fontSize: "12px" }}>{t("personalArea.logo")}</span>
+                                                    <span className="logo-text">{t("personalArea.logo")}</span>
                                                 </div>
                                             </div>
-                                            <div className="position-absolute rounded-pill d-flex justify-content-center align-items-center" onClick={handleShowModal} style={{ background: "#00A481", width: '35px', height: '35px', top: "34px", right: "-15px" }}>
+                                            <div className="position-absolute rounded-pill d-flex justify-content-center align-items-center plus-icon-container">
                                                 <FiPlus color="white" size={22} />
                                             </div>
                                         </div>
                                         <div className="d-flex flex-column my-auto text-nowrap">
-                                            <span className="fs-5 d-flex fw-semibold" style={{ color: "#00A481" }}>{t("personalArea.name")}</span>
-                                            <span className="fs-5 fw-semibold" style={{ color: "#00A481" }}>{t("personalArea.role")}</span>
+                                            <span className="fs-5 d-flex fw-semibold text-teal">{t("personalArea.name")}</span>
+                                            <span className="fs-5 fw-semibold text-teal">{t("personalArea.role")}</span>
                                         </div>
                                     </div>
                                     <div className="d-flex flex-wrap gap-4 align-items-center">
@@ -83,13 +87,14 @@ const PersonalArea = () => {
                                 </div>
                             </div>
 
-                            <button className="d-flex mt-5 text-primary fw-semibold text-decoration-underline border-0 bg-transparent">
+                            <button className="d-flex mt-5 text-primary fw-semibold text-decoration-underline border-0 bg-transparent"
+                                onClick={() => navigate(`/${lang}/personal-area/signature-invoice`)}>
                                 {t("personalArea.invoicesReceived")}
                             </button>
                         </div>
                     </div>
                     <div>
-                        <p className="d-flex mt-5 fs-5 fw-semibold border-0 bg-transparent" style={{ color: "#00A481" }}>
+                        <p className="d-flex mt-5 fs-5 fw-semibold border-0 bg-transparent text-teal">
                             {t("personalArea.personalDetails")}
                         </p>
                         <div className="row">
@@ -136,24 +141,36 @@ const PersonalArea = () => {
                                     value={formData.email}
                                     onChange={handleChange}
                                 />
-                                <a href="#" className="text-primary d-block mt-1 fw-semibold">{t("personalArea.changeEmail")}</a>
+                                <span
+                                    className="text-primary d-block mt-1 fw-semibold text-decoration-underline cursor-pointer"
+                                    onClick={() => navigate(`/${lang}/personal-area/change-email`)}
+                                >
+                                    {t("personalArea.changeEmail")}
+                                </span>
                             </div>
                             <div className="col-md-4">
                                 <label className="fw-semibold">{t("personalArea.password")}</label>
                                 <div className="position-relative">
                                     <input
-                                        type="password"
+                                        type={showPassword ? "text" : "password"}
                                         className="form-control"
                                         name="password"
                                         placeholder="***********"
                                         value={formData.password}
                                         onChange={handleChange}
                                     />
-                                    <span className="position-absolute top-0 end-0 mt-1 me-2">
-                                        <FaEye />
+                                    <span className="position-absolute top-0 end-0 mt-1 me-2 cursor-pointer"
+                                        onClick={() => setShowPassword(!showPassword)}>
+                                        {showPassword ? <FaEyeSlash /> : <FaEye />}
                                     </span>
                                 </div>
-                                <a href="#" className="text-primary d-block mt-1 fw-semibold">{t("personalArea.changePassword")}</a>
+                                <span
+                                    className="text-primary d-block mt-1 fw-semibold text-decoration-underline cursor-pointer"
+                                    onClick={() => navigate(`/${lang}/personal-area/change-password`)}
+                                >
+                                    {t("personalArea.changePassword")}
+                                </span>
+
                             </div>
                             <div className="col-md-4">
                                 <label className="fw-semibold">{t("personalArea.secondaryEmail")}</label>
@@ -168,7 +185,7 @@ const PersonalArea = () => {
                             </div>
                         </div>
                         <div className="mt-5">
-                            <button className="btn btn-success px-4 fw-bold rounded-pill" style={{ width: '146px' }}>{t("personalArea.updateButton")}</button>
+                            <button className="btn btn-success px-4 fw-bold rounded-pill update-btn">{t("personalArea.updateButton")}</button>
                         </div>
                     </div>
                 </div>
@@ -178,8 +195,7 @@ const PersonalArea = () => {
                 <Modal.Header className="border-0 p-3 position-relative mt-4">
                     <button
                         type="button"
-                        className="btn-close position-absolute"
-                        style={{ left: "14px", top: "6px" }}
+                        className="btn-close position-absolute close-btn"
                         onClick={handleCloseModal}
                     ></button>
                 </Modal.Header>
@@ -188,16 +204,14 @@ const PersonalArea = () => {
                     <h4 className="text-embed-500 fw-bold">{t("personalArea.modalTitle")}</h4>
                     <div className="d-flex justify-content-center gap-5 mt-4 mb-5">
                         <div className="text-center d-flex align-items-center justify-content-center flex-column">
-                            <div className="rounded-circle p-4 d-flex align-items-center justify-content-center"
-                                style={{ background: "#F3F5FF", width: "100px", height: "100px" }}>
+                            <div className="rounded-circle p-4 d-flex align-items-center justify-content-center gallery-option-circle">
                                 <FiCamera size={48} className="text-embed-500" />
                             </div>
                             <p className="mt-2 text-black fw-semibold fs-5">{t("personalArea.galleryOption")}</p>
                         </div>
 
                         <div className="text-center">
-                            <div className="rounded-circle p-4 d-flex align-items-center justify-content-center"
-                                style={{ background: "#F3F5FF", width: "100px", height: "100px" }}>
+                            <div className="rounded-circle p-4 d-flex align-items-center justify-content-center gallery-option-circle">
                                 <MdOutlineAddPhotoAlternate size={48} className="text-embed-500" />
                             </div>
                             <p className="mt-2 text-black fw-semibold fs-5">{t("personalArea.cameraOption")}</p>

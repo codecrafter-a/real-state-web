@@ -9,6 +9,7 @@ import search_icon2 from "../../assets/images/search_icon2.svg";
 import remove_icon from "../../assets/images/remove_icon.svg";
 import action_icon1 from "../../assets/images/action_icon1.svg";
 import action_icon2 from "../../assets/images/action_icon2.svg";
+import ErrorIcon from "../../assets/images/ErrorIcon.svg";
 // import check_tick from '../../assets/images/check_tick.svg';
 import table_arrrow from "../../assets/images/table_arrrow.svg";
 import CustomModal from "../../Componant/Common/Modal/CustomeModal";
@@ -16,6 +17,7 @@ import RangeSlider from "../../Componant/Common/RangeSlider/RangeSlider";
 import CustomButton from "../../Componant/Common/Button/Button";
 import edit from '../../assets/images/edit.svg';
 import deleteIcon from '../../assets/images/delete.svg';
+import { Modal } from "react-bootstrap";
 
 const Customer = () => {
   const { t } = useTranslation();
@@ -44,6 +46,10 @@ const Customer = () => {
   const [selectedRows, setSelectedRows] = useState({});
   const [selectAll, setSelectAll] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleShowModal = () => setShowModal(true);
+  const handleCloseModal = () => setShowModal(false);
 
   const toggleRow = (index) => {
     setExpandedRows((prev) =>
@@ -113,7 +119,7 @@ const Customer = () => {
                     className="form-control border-0 p-0"
                     placeholder={t("filter_cust")}
                   />
-                  <button className="btn" type="button">
+                  <button className="btn p-0" type="button">
                     <img src={search} alt="Search" />
                   </button>
                 </div>
@@ -330,7 +336,7 @@ const Customer = () => {
                                 />
                                 <div className="d-flex align-items-center">
                                   <img src={edit} alt={'editbtn'} className="px-1" />
-                                  <img src={deleteIcon} alt={'deletebtn'} className="px-1" />
+                                  <img src={deleteIcon} alt={'deletebtn'} className="px-1" style={{ cursor: 'pointer' }} onClick={handleShowModal} />
                                 </div>
                               </div>
                             </td>
@@ -344,6 +350,32 @@ const Customer = () => {
             </div>
           </form>
 
+          <Modal show={showModal} onHide={handleCloseModal} centered>
+            <Modal.Header className="border-0 p-3 position-relative mt-4">
+              <button
+                type="button"
+                className="btn-close position-absolute close-btn"
+                onClick={handleCloseModal}
+              ></button>
+            </Modal.Header>
+
+            <Modal.Body className="text-center pb-4">
+              <img src={ErrorIcon} alt="ErrorIcon" />
+              <div>
+                <p className="mt-4 mb-0 text-black fw-semibold fs-5">
+                  אתם עומדים למחוק לקוח/ות
+                </p>
+                <p className="m-0 text-black fw-semibold fs-5">
+                  האם לבצע מחיקה?
+                </p>
+              </div>
+            </Modal.Body>
+            <Modal.Footer className="border-top-0 justify-content-center flex gap-3">
+              <button className="btn btn-outline-success rounded-pill px-4" style={{ width: '153px', padding: '13px 0' }} onClick={handleCloseModal}>לא</button>
+              <button className="btn btn-success rounded-pill px-4" style={{ width: '153px', padding: '13px 0' }}>כן</button>
+            </Modal.Footer>
+          </Modal>
+
           {isModalOpen && (
             <CustomModal
               show={isModalOpen}
@@ -351,7 +383,7 @@ const Customer = () => {
               footer={t("cust_model_footer")}
               footer1={t("cust_model_footer1")}
             >
-              <div className="max-w-xl mx-auto px-4 bg-white rounded-md w-100" style={{maxWidth: "36rem"}}>
+              <div className="max-w-xl mx-auto px-4 bg-white rounded-md w-100" style={{ maxWidth: "36rem" }}>
                 <h2 className="text-2xl pb-3 font-semibold text-success text-center border-bottom mb-4">
                   {t("addtional_filter")}
                 </h2>
