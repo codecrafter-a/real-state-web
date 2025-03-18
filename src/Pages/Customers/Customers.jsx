@@ -350,7 +350,7 @@ const Customer = () => {
             </div>
           </form>
 
-          <Modal show={showModal} onHide={handleCloseModal} centered>
+          <Modal show={showModal} onHide={handleCloseModal} centered className="modal-container">
             <Modal.Header className="border-0 p-3 position-relative mt-4">
               <button
                 type="button"

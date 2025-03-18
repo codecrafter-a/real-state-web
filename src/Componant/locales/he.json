@@ -490,5 +490,53 @@
   "clients": "שמות הלקוחות",
   "invoice_clients_Name": "שירי נקבלי, רומי שפן",
   "invoice_subject": "נושא החשבונית",
-  "paymentForService": "תשלום על שירות"
+  "paymentForService": "תשלום על שירות",
+
+  "welcome_message": "ברוכים הבאים לעמוד ניהול הסוכנים!",
+  "instructions_1": "כאן תוכלו להקים סוכנים חדשים ולהפוך לבעלי משרד.",
+  "instructions_2": "תוכלו לנהל ולעקוב אחר ביצועי הסוכנים שלכם.",
+  "free_plan": "במנוי FREE אתם יכולים להוסיף סוכן אחד בלבד.",
+  "upgrade_plan": "אם תרצו להוסיף יותר סוכנים, תוכלו לשדרג את המנוי שלכם.",
+  "upgrade_button": "לשידרוג המנוי",
+  "add_agent_button": "הוספת סוכן חדש",
+
+  "addAgent": {
+    "title": "הוספת סוכן",
+    "personalDetails": "פרטים אישיים",
+    "fullName": "שם מלא*",
+    "phone": "טלפון*",
+    "email": "דוא”ל*",
+    "licenseNo": "מספר רישיון*",
+    "password": "סיסמה *",
+    "confirmPassword": "אימות סיסמה *",
+    "generatePassword": "צור סיסמה אוטומטית",
+    "passwordNote": "*אם תשכח לתת את הסיסמה לסוכן, הוא יוכל להיכנס למנוי שלו באמצעות קוד חד-פעמי שישלח לטלפון הנייד שלו.",
+    "addButton": "הוספה",
+    "agent_added_successfully": "הסוכן הוסף בהצלחה",
+    "subscription_limit_reached": "כמות הסוכנים שניתן היה להוסיף במסגרת המנוי נוצלה.",
+    "upgrade_subscription": "תוכלו להוסיף סוכנים נוספים על ידי שדרוג המנוי.",
+    "upgrade_now": "לשדרוג המנוי",
+    "updateButton": "עדכון",
+    "editAgent": "עריכת סוכן"
+  },
+
+  "agentManagement": "ניהול סוכנים",
+  "addNewAgent": "הוספת סוכן חדש",
+  "searchPlaceholder": "חפשו סוכן לפי שם / טלפון / מייל",
+  "remainingSlots": "נותרו לכם 5 מקומות פנויים להוספת סוכנים",
+  "upgradeNow": "צריכים עוד? שדרגו עכשיו",
+  "tableHeaders": {
+    "agentNumber": "מס’ סוכן",
+    "agentName": "שם הסוכן",
+    "commission": "עמלות החודש",
+    "agreementsSent": "הסכמים שנשלחו החודש",
+    "phone": "טלפון",
+    "email": "דוא”ל",
+    "actions": "פעולות"
+  },
+  "loginAsAgent": "כניסה כסוכנ.ת",
+  "warningMessage": "שימו לב אתם עוברים למנוי של הסוכן רומי שפן.",
+  "continuePrompt": "האם להמשיך?",
+  "yes": "כן",
+  "no": "לא"
   }

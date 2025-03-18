@@ -17,6 +17,10 @@ import Report from "./Pages/Report/Report.jsx";
 import ChangePassword from "./Pages/PersonalArea/ChangePassword.jsx";
 import ChangeEmail from "./Pages/PersonalArea/ChangeEmail.jsx";
 import SignatureInvoice from "./Pages/PersonalArea/SignatureInvoice.jsx";
+import Agents from "./Pages/Agents/Agents.jsx";
+import AddAgents from "./Pages/Agents/AddAgents.jsx";
+import AgentManagement from "./Pages/Agents/AgentManagement.jsx";
+import EditAgents from "./Pages/Agents/EditAgents.jsx";
 
 function App() {
   const { i18n } = useTranslation();
@@ -30,7 +34,10 @@ function App() {
           <Route path="/:lang/customers" element={<Customers />} />
           <Route path="/:lang/signin" element={<Signin />} />
           <Route path="/:lang/property" element={<Property/>}/>
-          <Route path="/:lang/broker" element={<Brokers />} />
+          <Route path="/:lang/agents" element={<Agents />} />
+          <Route path="/:lang/agent-management" element={<AgentManagement />} />
+          <Route path="/:lang/agents/add-agents" element={<AddAgents />} />
+          <Route path="/:lang/agents/edit-agents" element={<EditAgents />} />
           <Route path="/:lang/home" element={<Home/>}/>
           <Route path="/:lang/setting" element={<Setting/>} />
           <Route path="/:lang/invoices" element={<Invocies/>} />
