@@ -245,6 +245,7 @@
     "age_cust_status":"document was sent successfully.",
     "age_cust_agreement_status":"Great! ",
     "age_btn_description":"To sign the client on my device",
+    "age_delet": "Delete",
 
     "home_title": "Home Page",
     "home_block1_title": "What would you like to do?", 
@@ -441,6 +442,10 @@
   "toClientsWhoShowedInterest": "to clients who showed interest",
   "toAllClientsFoundSuitable": "to all clients who were found suitable",
   "sendMessageTags": "(according to tags) when the property price drops",
+  "ownertitle": "Display Commissions on the Home Page",
+  "lable1": "Show only my brokerage commission amounts",
+  "lable2": "Show brokerage commission amounts for all office agents",
+  "lable3": "Do not display brokerage commissions",
 
   "report_title": "Broker Matching Report",
   "tab_all": "Property Match",

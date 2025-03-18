@@ -119,6 +119,10 @@
 
 @media (max-width: 448px) {
 
+	.haeder_right_block {
+		display: none;
+	}
+	
 	[lang="en"] body{
 		padding-right: 0px;
 		padding-left: 0px;

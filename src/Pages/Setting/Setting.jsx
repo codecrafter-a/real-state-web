@@ -15,6 +15,12 @@ import Next from "../../assets/images/Next.jpg";
 const Setting = () => {
   const { t } = useTranslation();
   const [isView, setIsView] = useState(false);
+  const [ownerData, setOwnerData] = useState(false);
+
+  const handleOwnerData = () => {
+    setOwnerData(!ownerData);
+    setIsView(false);
+  }
   return (
     <Col>
         <h3 className="py-1 my-4 text-center screen-1 border-bottom">{t('settings')} </h3> 
@@ -22,15 +28,43 @@ const Setting = () => {
           <Row>
             <div>
               <p className='fw-normal fs-17 lh-1'>{t('subscriptionSettings')}</p>
-              <div className='py-5'>
-                <h4 className='text-teal fs-5 fw-sibold lh-1'> {t('showCommissionAmounts')}</h4>
-                <div className='d-flex '>
-                  <Toggle defaultChecked type={"checkbox"} id="toggleImages"/>
-                  <label className="fs-5 fw-normal lh-1" htmlFor="">
-                    {t('showCommissionAmounts')}                  
-                  </label>
-                </div>
-              </div>
+              {ownerData ? (
+                <>
+                  <div className='py-5'>
+                    <h4 className='text-teal fs-5 fw-sibold lh-1'>{t('ownertitle')}</h4>
+                    <div className='d-flex flex-column'>
+                      <div className='d-flex'> 
+                        <Toggle defaultChecked={false} type={"checkbox"} id="toggleImages"/>
+                        <label className="fs-5 fw-normal lh-1" htmlFor="">{t('lable1')}</label>
+                      </div>
+                      <div className='d-flex'> 
+                        <Toggle defaultChecked={false} type={"checkbox"} id="toggleImages"/>
+                        <label className="fs-5 fw-normal lh-1" htmlFor="">
+                        {t('lable2')}   
+                        </label>
+                      </div>
+                      <div className='d-flex'> 
+                        <Toggle defaultChecked={false} type={"checkbox"} id="toggleImages"/>
+                        <label className="fs-5 fw-normal lh-1" htmlFor="">
+                         {t('lable3')} 
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className='py-5'>
+                    <h4 className='text-teal fs-5 fw-sibold lh-1'> {t('showCommissionAmounts')}</h4>
+                    <div className='d-flex '>
+                      <Toggle defaultChecked type={"checkbox"} id="toggleImages"/>
+                      <label className="fs-5 fw-normal lh-1" htmlFor="">
+                        {t('showCommissionAmounts')}                  
+                      </label>
+                    </div>
+                  </div>
+                </>
+              )}
               <div>
                 <p className=' fw-normal lh-1 fs-17'>{t('notificationsSettings')}</p>
                 <span className='fw-bold lh-1 fs-17'>{t('selectChannels')}</span>
@@ -113,13 +147,13 @@ const Setting = () => {
                 </div>
                 <div className="d-flex">
                   <div className=' d-flex align-items-center me-2'>
-                    <Toggle defaultChecked type='radio' name="optionGroup" id="toggleImages"/>
+                    <Toggle defaultChecked={false} type='radio' name="optionGroup1" id="toggleImages"/>
                     <label className="fs-5 fw-normal lh-1" htmlFor="">
                     {t('onceAMonth')}
                     </label>
                   </div>
                   <div className=' d-flex align-items-center mx-2'>
-                    <Toggle defaultChecked type='radio' name="optionGroup" id="toggleImages"/>
+                    <Toggle defaultChecked={false} type='radio' name="optionGroup1" id="toggleImages"/>
                     <label className="fs-5 fw-normal lh-1" htmlFor="">
                     {t('onceEveryTwoWeeks')}                    
                     </label>
@@ -151,7 +185,7 @@ const Setting = () => {
                   {t('changeReminderSettings')}                
                 </Link>
               </div>
-              <Modal show={isView} onHide={() => { setIsView(false) }}  centered className="custom-modal custom-shadow">
+              <Modal show={isView} onHide={() => { setIsView(false) }}  centered className=" custom-shadow">
                 <Modal.Header closeButton className=" border-0">
                   <img src={Next} alt="next btn" className=" w-full h-auto " />
                 </Modal.Header>
@@ -190,7 +224,7 @@ const Setting = () => {
                     </div>
                   </div>
                   <div className="d-flex">
-                    <button className="agent-button1 mx-auto rounded-pill px-3 py-2 fw-bold shadow-sm text-white" onClick={() => setIsView(true)} >
+                    <button className="agent-button1 mx-auto rounded-pill px-3 py-2 fw-bold shadow-sm text-white" onClick={handleOwnerData} >
                        עדכון  
                     </button>
                   </div>

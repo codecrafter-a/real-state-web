@@ -12,7 +12,7 @@ const Toggle = ({type, name, id}) => {
     <div className={`form-check  ${type === 'checkbox' ? 'custom-checkbox form-switch custom-toggle' : ''}`}>
         {(type === 'checkbox' || type === 'radio') && (
         <input 
-          className="form-check-input" 
+          className="form-check-input bg-secondary bg-opacity-25" 
           type={type} 
           id={id} 
           name={name} 

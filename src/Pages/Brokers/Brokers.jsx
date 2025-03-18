@@ -350,7 +350,7 @@ const Brokers = () => {
             </div>
           </CustomModal>
       </div>
-      <Modal show={isView} onHide={() => { setIsView(false) }} centered className="custom-modal">
+      <Modal show={isView} onHide={() => { setIsView(false) }} centered>
         <Modal.Header closeButton className=" border-0">
           <img src={Next} alt="next btn" className="" />
         </Modal.Header>
@@ -502,7 +502,6 @@ const Brokers = () => {
           show={showSuccess}
           onHide={() => setShowSuccess(false)}
           centered
-          className="custom-modal"
         >
       
           <div
@@ -553,7 +552,6 @@ const Brokers = () => {
           show={sentSuccess}
           onHide={() => setSentSuccess(false)}
           centered
-          className="custom-modal"
         >
           <div className="position-absolute top-0 start-50 translate-middle-x mt-5 z-2">
             <img 

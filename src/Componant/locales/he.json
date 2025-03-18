@@ -246,6 +246,7 @@
     "age_cust_status":"המסמך נשלח בהצלחה",
     "age_cust_agreement_status":"מעולה!",
     "age_btn_description":"להחתמת הלקוח במכשיר שלי",
+    "age_delet": "מחיקה",
 
     "home_title": "עמוד הבית",
     "home_block1_title": "מה תרצו לעשות?", 
@@ -440,6 +441,10 @@
   "toClientsWhoShowedInterest": "ללקוחות שהתעניינו",
   "toAllClientsFoundSuitable": "לכל הלקחות שנמצאו מתאימים",
   "sendMessageTags": "(ע”פ התגיות) כאשר מחיר הנכס יורד",
+  "ownertitle": "הצגת עמלות בעמוד הבית",
+  "lable1": "הציגו את סכומי עמלות התיווך שלי בלבד",
+  "lable2": "הציגו את סכומי עמלות התיווך של כל סוכני המשרד ",
+  "lable3": "אל תציגו את עמלות התיווך ",
 
   "report_title": "דו\"ח התאמות למתווך",
   "tab_all": "התאמה לנכס",

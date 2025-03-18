@@ -191,7 +191,7 @@ const PersonalArea = () => {
                 </div>
 
             </div>
-            <Modal show={showModal} onHide={handleCloseModal} centered className="custom-modal">
+            <Modal show={showModal} onHide={handleCloseModal} centered>
                 <Modal.Header className="border-0 p-3 position-relative mt-4">
                     <button
                         type="button"
