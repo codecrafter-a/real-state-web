@@ -7,6 +7,8 @@
 
 .screen-1{font-size: 25px; font-weight: 600; line-height: 100%; color: #00A481;}
 .text-teal{color: #00A481;}
+.bg-teal{background-color: #00A481;}
+.border-teal{border: 1px solid #00A481 !important;}
 
 body{
 	background-color: #fff;
@@ -71,3 +73,22 @@ a, a:hover{
 .agreement-container .modal-dialog {
 	max-width: 1003px;
 }
+.scroll-height {
+    height: 660px;
+}
+
+.modal-container .modal-dialog {
+	max-width: 581px;
+}
+.agent-modal-container .modal-dialog {
+	max-width: 702px;
+}
+.modal-container .modal-content, .agent-modal-container .modal-content {
+	border-radius: 24px;
+	box-shadow: 0px 8px 16px 0px #00A48154;
+}
+.table-head {
+    color: #686868 !important;
+    font-weight: 600;
+}
+.cursor-pointer {cursor: pointer;}

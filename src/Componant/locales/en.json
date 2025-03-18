@@ -496,5 +496,53 @@
   "clients": "Customer Names",
   "invoice_clients_Name": "Naqbli Poems, Romi Shafan",
   "invoice_subject": "Invoice Subject",
-  "paymentForService": "Payment for Service"
+  "paymentForService": "Payment for Service",
+
+  "welcome_message": "Welcome to the agent management page!",
+  "instructions_1": "Here you can create new agents and become an office owner.",
+  "instructions_2": "You can manage and track your agents' performance.",
+  "free_plan": "With the FREE plan, you can add only one agent.",
+  "upgrade_plan": "If you want to add more agents, you can upgrade your plan.",
+  "upgrade_button": "Upgrade Plan",
+  "add_agent_button": "Add New Agent",
+
+  "addAgent": {
+    "title": "Add Agent",
+    "personalDetails": "Personal Details",
+    "fullName": "Full Name*",
+    "phone": "Phone*",
+    "email": "Email*",
+    "licenseNo": "License Number*",
+    "password": "Password*",
+    "confirmPassword": "Confirm Password*",
+    "generatePassword": "Generate Automatic Password",
+    "passwordNote": "*If you forget to provide the password to the agent, they can log in using a one-time code sent to their mobile phone.",
+    "addButton": "Add",
+    "agent_added_successfully": "The agent has been successfully added",
+    "subscription_limit_reached": "The number of agents that could be added under the subscription has been reached.",
+    "upgrade_subscription": "You can add more agents by upgrading your subscription.",
+    "upgrade_now": "Upgrade Now",
+    "updateButton": "Update",
+    "editAgent": "Edit Agent"
+  },
+
+  "agentManagement": "Agent Management",
+  "addNewAgent": "Add New Agent",
+  "searchPlaceholder": "Search for an agent by name / phone / email",
+  "remainingSlots": "You have 5 available slots to add agents",
+  "upgradeNow": "Need more? Upgrade now",
+  "tableHeaders": {
+    "agentNumber": "Agent No.",
+    "agentName": "Agent Name",
+    "commission": "Monthly Commission",
+    "agreementsSent": "Agreements Sent This Month",
+    "phone": "Phone",
+    "email": "Email",
+    "actions": "Actions"
+  },
+  "loginAsAgent": "Login as Agent",
+  "warningMessage": "Please note, you are switching to agent subscription for Romi Shefan.",
+  "continuePrompt": "Do you want to continue?",
+  "yes": "Yes",
+  "no": "No"
   }
