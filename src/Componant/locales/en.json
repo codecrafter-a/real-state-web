@@ -544,5 +544,16 @@
   "warningMessage": "Please note, you are switching to agent subscription for Romi Shefan.",
   "continuePrompt": "Do you want to continue?",
   "yes": "Yes",
-  "no": "No"
+  "no": "No",
+
+  "dashboard_title": "Romi Shefan's Dashboard",
+  "commissions_and_deals": "Commissions and Closed Deals",
+  "commission": "Commission",
+  "deals": "Deals",
+  "buy_sell_transactions": "Buying and Selling Transactions",
+  "buy_transactions": "Buy Transactions:",
+  "rental_transactions": "Rental Transactions:",
+  "total_agreements_by_status": "Total Agreements by Status",
+  "full_dashboard": "Go to Full Dashboard"
+  
   }

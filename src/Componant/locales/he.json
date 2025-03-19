@@ -543,5 +543,15 @@
   "warningMessage": "שימו לב אתם עוברים למנוי של הסוכן רומי שפן.",
   "continuePrompt": "האם להמשיך?",
   "yes": "כן",
-  "no": "לא"
+  "no": "לא",
+
+  "dashboard_title": "הדאשבור של רומי שפן",
+  "commissions_and_deals": "עמלות ועסקאות שיצאו לפועל",
+  "commission": "עמלות",
+  "deals": "עסקאות",
+  "buy_sell_transactions": "עסקאות קניה ומכירה",
+  "buy_transactions": "עסקאות קנייה:",
+  "rental_transactions": "עסקאות השכרה:",
+  "total_agreements_by_status": "סה”כ הסכמים לפי סטטוסים",
+  "full_dashboard": "לדאשבורד המלא של רומי"
   }
