@@ -15,16 +15,34 @@ import actionIcon1 from '../../../assets/images/action_icon1.svg';
 import actionIcon2 from '../../../assets/images/action_icon2.svg';
 import actionIcon3 from '../../../assets/images/action_icon3.svg';
 import userIcon from '../../../assets/images/user_icon.svg';
+import userkey from '../../../assets/images/user-key.png';
+import usercontact from '../../../assets/images/user-contect.png';
+import userhouse from '../../../assets/images/user-house.png';
 import "../Sidebar/Sidebar.css";
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-const Sidebar = () => {
+const Sidebar = ({isToggle}) => {
+  console.log(isToggle, "toggletoggle");
+
+  
   const { i18n, t } = useTranslation();
   const navigate = useNavigate();
 
-  const [isAuthenticated, setIsAuthenticated] = useState(
-    localStorage.getItem("isAuthenticated") === "true"
-  );
+
+  const [isOpen, setIsOpen] = useState(false);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsOpen(window.innerWidth < 768);
+    };
+  
+    handleResize(); 
+    window.addEventListener('resize', handleResize);
+  
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  console.log(isOpen, "isopenoeem");
+
+  const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem("isAuthenticated") === "true");
   useEffect(() => {
     const handleStorageChange = () => {
       const authStatus = localStorage.getItem("isAuthenticated") === "true";
@@ -37,12 +55,12 @@ const Sidebar = () => {
     return () => {
       window.removeEventListener("storage", handleStorageChange);
     };
-  }, [navigate]);
+  }, [navigate, i18n.language]);
 
 
   return (
     <>
-    <section className={`haeder_right_block  ${isAuthenticated ? "active" : "disabled"}`}>
+    <section className={`haeder_right_block mt-5 mt-md-0 ${!isToggle ? 'd-none d-md-block ' : ''}  ${isAuthenticated ? "active" : "disabled"}`}>
       <div className="haeder_right mCustomScrollbar">
           <ul className="hdr_right_menu">
             {[{ icon: iconHome, text: t("sitem1") , to: `/${i18n.language}/home`},
@@ -66,11 +84,11 @@ const Sidebar = () => {
                     </Link>
                 </li>
               ))}
-          </ul>
-        </div>
+              <li>
+              {!isOpen ? (<>
         <div className="cmn_actions">
           <h4> {t("action")}</h4>
-          <ul className="cmn_actions_list">
+          <ul className="cmn_actions_list d-none d-md-flex ">
             {[{ icon: actionIcon1, text: t("action1") },
               { icon: actionIcon2, text: t("action2") },
               { icon: actionIcon3, text: t("action3") }].map((action, index) => (
@@ -85,7 +103,30 @@ const Sidebar = () => {
               ))}
           </ul>
         </div>
-      </section>
+       </>) : (<>
+        <div className='cmn_actions'>
+          <h4 className=' text-success fw-bold'>Actions</h4>
+          <ul className='cmn_actions_list d-block'>
+            <div className='d-flex align-items-center '>
+              <img src={userkey} alt="action icon "/>
+              <p className='fs-6 fw-semibold px-2 pt-2 lh-1'>{t("action1")}</p>
+            </div>
+            <div className='d-flex align-items-center'>
+              <img src={userhouse} alt="action icon "/>
+              <p className='fs-6 fw-semibold px-2 pt-3 lh-1'>{t("action2")}</p>
+            </div>
+            <div className='d-flex align-items-center'>
+              <img src={usercontact} alt="action icon "/>
+              <p className='fs-6 fw-semibold px-2 pt-3 lh-1'>{t("action3")}</p>
+            </div>
+          </ul>
+        </div>
+       </>)}
+              </li>
+          </ul>
+          
+      </div>      
+    </section>
     
     </>
   )

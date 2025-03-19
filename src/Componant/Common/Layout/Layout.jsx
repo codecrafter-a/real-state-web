@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
     <div className="layout_content">
       <Sidebar />
       <main className="main_content " >
-        <Container  className="custom-container" fluid="sm" >
+        <Container  className="" fluid="sm" >
           <div className="position-absolute w-100 h-50 overflow-hidden top-0 start-0 z-0">
             <figure className="mb-0 h-100 w-100 position-relative">
               <img

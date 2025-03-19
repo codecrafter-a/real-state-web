@@ -22,11 +22,11 @@ a, a:hover{
 }
 
 
-.haeder_right{
+/* .haeder_right{
 	height: 80vh;
 	height: calc(100vh - 260px);
 	overflow: auto;
-}
+} */
 .hdt_top_menu{
 	list-style: none;
 	padding: 0;
@@ -143,10 +143,10 @@ a, a:hover{
 	.cmn_actions{
 		bottom: 15px;
 	}
-	.haeder_right {
+	/* .haeder_right {
 	    height: calc(100vh - 230px);
 	    overflow: auto;
-	}
+	} */
 }
 
 [lang="en"] .hdr_btn > a{

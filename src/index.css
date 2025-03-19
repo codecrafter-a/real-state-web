@@ -92,3 +92,47 @@ a, a:hover{
     font-weight: 600;
 }
 .cursor-pointer {cursor: pointer;}
+
+.agent-button2 {
+	min-width: 11rem;
+	border: 2px solid #00a481;
+	color: #00a481;
+	background-color: white;
+	transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+	box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1); /* Subtle Shadow */
+  }
+  .agent-button2:hover {
+	background-color: #55cd85 !important;
+	color: white !important;
+	border-color: #55cd85 !important;
+  }
+  .agent-button1 {
+	min-width: 11rem;
+	background-color: white;
+	transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+	box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+	border: 2px solid #00a481;
+	background-color: #00a481;
+  }
+  .agent-button1:hover {
+	background-color: #55cd85 !important;
+	color: white !important;
+	border-color: #55cd85 !important;
+  }
+
+  .top-20{
+	top: 7%;
+  }
+
+  .down-10{
+	bottom: 10% !important;
+  }
+
+  .w-344{
+	width: 345px !important;
+  }
+
+  .min-vh-100 {
+	min-height: 100vh !important;
+	height: calc(100vh - 64px)
+  }

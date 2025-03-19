@@ -10,6 +10,7 @@ import AddinvoicesIcon from "../../assets/images/addinvoices.png";
 import sadicon from "../../assets/images/sad.png";
 import businessicon from "../../assets/images/book_2.png";
 import pdfinstall from "../../assets/images/pdf.png";
+import { useNavigate } from "react-router-dom";
 const Agreements = () => {
   const [activeTab, setActiveTab] = useState("all");
   const [fromDate, setFromDate] = useState(null);
@@ -25,6 +26,13 @@ const Agreements = () => {
   const handleOpen = () => {
     setRemoveData(true);
   };
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/:lang/invoices');
+  }
+
   const handleClose = () => {
     setRemoveData(false);
   };
@@ -180,11 +188,13 @@ const Agreements = () => {
             <Modal.Header className="border-0 p-3 position-relative mt-4">
               <button
                 type="button"
-                className="btn-close position-absolute close-btn"
+                className="btn-close"
               ></button>
             </Modal.Header>
             <Modal.Body className="text-center p-4">
-              <img src={successIcon} alt="success icon open" className="" />
+              <div className="d-flex justify-content-center align-items-center mb-3">
+                <img src={successIcon} alt="success icon open" className="" />
+              </div>
               <h4 className="text-embed-500 fs-3 font-semibold">
                 העסקה נסגרה בהצלחה!
               </h4>
@@ -210,8 +220,10 @@ const Agreements = () => {
                 className="btn-close position-absolute close-btn"
               ></button>
             </Modal.Header>
-            <Modal.Body className="text-center p-4">
-              <img src={AddinvoicesIcon} alt="success icon open" className="" />
+            <Modal.Body className="text-center p-4">             
+              <div className="d-flex justify-content-center align-items-center mb-3">
+                <img src={AddinvoicesIcon} alt="success icon open" className="" />
+              </div>
               <h4 className="text-embed-500 fs-3 font-semibold pb-3">
                 החשבונית הופקה בהצלחה
               </h4>
@@ -240,7 +252,9 @@ const Agreements = () => {
               ></button>
             </Modal.Header>
             <Modal.Body className="text-center p-4">
-              <img src={sadicon} alt="success icon open" className="" />
+              <div className="d-flex justify-content-center align-items-center mb-3">
+                 <img src={sadicon} alt="success icon open" className="" />
+              </div>            
               <p className="text-danger fs-4 fw-semibold ">
                 ראינו שאינכם רשומים <br />
                 לשירות הפקת החשבוניות שלנו
@@ -277,7 +291,9 @@ const Agreements = () => {
               ></button>
             </Modal.Header>
             <Modal.Body className="text-center p-4">
-              <img src={businessicon} alt="success icon open" className="" />
+              <div className="d-flex justify-content-center align-items-center mb-3">
+                <img src={businessicon} alt="success icon open" className="" />
+              </div>              
               <h4 className="text-embed-500 fs-3 font-semibold pb-3">
                 האם תרצו לרשום את העסקה בספר המקרקעין?
               </h4>
@@ -306,7 +322,9 @@ const Agreements = () => {
               ></button>
             </Modal.Header>
             <Modal.Body className="text-center p-4">
-              <img src={AddinvoicesIcon} alt="success icon open" className="" />
+              <div className="d-flex justify-content-center align-items-center mb-3">
+                <img src={AddinvoicesIcon} alt="success icon open" className="" />
+              </div>          
               <p className="text-embed-500 fs-4 font-semibold">
                 מצויין! רשמנו אותך לשירות שלנו
               </p>
@@ -341,11 +359,15 @@ const Agreements = () => {
               ></button>
             </Modal.Header>
             <Modal.Body className="text-center p-4">
-              <img src={AddinvoicesIcon} alt="success icon open" />
+              <div className="d-flex justify-content-center align-items-center mb-3">
+                <img src={AddinvoicesIcon} alt="success icon open" className="" />
+              </div>
               <h4 className="fs-3 font-semibold pb-3">חשבונית מספר 234568</h4>
-              <img src={pdfinstall} alt="install pdf" />
+              <div className="d-flex justify-content-center align-items-center mb-3">
+                <img src={pdfinstall} alt="install pdf" />
+              </div> 
               <div className="d-flex justify-content-center flex-wrap gap-2 my-3">
-                <button className="agent-button1 rounded-pill px-3 py-2 fs-6 fw-semibold shadow-sm text-white">
+                <button className="agent-button1 rounded-pill px-3 py-2 fs-6 fw-semibold shadow-sm text-white" onClick={handleClick}>
                   רישום עסקה בספר המקרקעין
                 </button>
                 <button className="agent-button2 rounded-pill px-3 py-2 fs-6 fw-semibold shadow-sm">
