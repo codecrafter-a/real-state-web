@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
 import body_bg from "../../assets/images/body_bg.webp";
 import bory_group_right from "../../assets/images/bory_group_right.png";
 import bory_group_left from "../../assets/images/bory_group_right.png";
@@ -12,12 +13,12 @@ import action_icon2 from "../../assets/images/action_icon2.svg";
 import ErrorIcon from "../../assets/images/ErrorIcon.svg";
 // import check_tick from '../../assets/images/check_tick.svg';
 import table_arrrow from "../../assets/images/table_arrrow.svg";
-import CustomModal from "../../Componant/Common/Modal/CustomeModal";
 import RangeSlider from "../../Componant/Common/RangeSlider/RangeSlider";
 import CustomButton from "../../Componant/Common/Button/Button";
 import edit from '../../assets/images/edit.svg';
 import deleteIcon from '../../assets/images/delete.svg';
 import { Modal } from "react-bootstrap";
+import Close from "../../assets/images/Close.jpg";
 
 const Customer = () => {
   const { t } = useTranslation();
@@ -119,7 +120,7 @@ const Customer = () => {
                     className="form-control border-0 p-0"
                     placeholder={t("filter_cust")}
                   />
-                  <button className="btn p-0" type="button">
+                  <button className="btn p-0" type="button" aria-label="Search">
                     <img src={search} alt="Search" />
                   </button>
                 </div>
@@ -178,42 +179,14 @@ const Customer = () => {
                       </button>
 
                       <ul className="list-unstyled d-flex m-0 align-items-center">
-                        <li className="mx-2 bg-success bg-opacity-10  rounded-pill d-flex px-3 py-2 align-items-center gap-3">
-                          {t("cust_opt_1")}
-                          <span>
-                            <img src={remove_icon} alt="Remove" />
-                          </span>
-                        </li>
-                        <li className="mx-2 bg-success bg-opacity-10  rounded-pill d-flex px-3 py-2 align-items-center gap-3">
-                          {t("cust_opt_2")}
-                          <span>
-                            <img src={remove_icon} alt="Remove" />
-                          </span>
-                        </li>
-                        <li className="mx-2 bg-success bg-opacity-10  rounded-pill d-flex px-3 py-2 align-items-center gap-3">
-                          {t("cust_opt_3")}
-                          <span>
-                            <img src={remove_icon} alt="Remove" />
-                          </span>
-                        </li>
-                        <li className="mx-2 bg-success bg-opacity-10  rounded-pill d-flex px-3 py-2 align-items-center gap-3">
-                          {t("cust_opt_4")}
-                          <span>
-                            <img src={remove_icon} alt="Remove" />
-                          </span>
-                        </li>
-                        <li className="mx-2 bg-success bg-opacity-10  rounded-pill d-flex px-3 py-2 align-items-center gap-3">
-                          {t("cust_opt_5")}
-                          <span>
-                            <img src={remove_icon} alt="Remove" />
-                          </span>
-                        </li>
-                        <li className="mx-2 bg-success bg-opacity-10  rounded-pill d-flex px-3 py-2 align-items-center gap-3">
-                          {t("cust_opt_6")}
-                          <span>
-                            <img src={remove_icon} alt="Remove" />
-                          </span>
-                        </li>
+                        {Array.from({ length: 6 }, (_, i) => (
+                          <li key={i} className="mx-2 bg-success bg-opacity-10 rounded-pill d-flex px-3 py-2 align-items-center gap-3">
+                            {t(`cust_opt_${i + 1}`)}
+                            <span>
+                              <img src={remove_icon} alt="Remove" />
+                            </span>
+                          </li>
+                        ))}
                       </ul>
                     </div>
                   </div>
@@ -242,7 +215,7 @@ const Customer = () => {
                 </div>
               </div>
               <div>
-                <table className="table ">
+                <table className="table">
                   <thead>
                     <tr>
                       <th className="px-4 py-3">
@@ -379,76 +352,72 @@ const Customer = () => {
           </Modal>
 
           {isModalOpen && (
-            <CustomModal
-              show={isModalOpen}
-              handleClose={() => setIsModalOpen(false)}
-              footer={t("cust_model_footer")}
-              footer1={t("cust_model_footer1")}
-            >
-              <div className="max-w-xl mx-auto px-4 bg-white rounded-md w-100" style={{ maxWidth: "36rem" }}>
-                <h2 className="text-2xl pb-3 font-semibold text-success text-center border-bottom mb-4">
-                  {t("addtional_filter")}
-                </h2>
-                <div className="row row-cols-1 row-cols-md-2 g-4 mb-4">
-                  <div className="col">
-                    <label className="d-block text-secondary text-start fw-semibold fs-6 mb-1">{t("cust_modal_no_rooms")}</label>
-                    <div className="position-relative d-flex align-items-center border rounded px-2 py-1">
-                      <input
-                        type="text"
-                        placeholder="התחילו להקליד..."
-                        className="w-100 border-0 text-secondary"
-                      />
-                      <button className="btn btn-outline-none py-0" type="button">
-                        <img src={search_icon2} alt="Search" />
-                      </button>
+            <div className="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-50" style={{ zIndex: 999 }}>
+              <motion.div
+                initial={{ y: -50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="bg-white rounded-3 p-4"
+                style={{ maxWidth: "auto", boxShadow: "0 0 10px rgba(85, 205, 133, 0.8)" }}
+              >
+                <div>
+                  <div className="d-flex justify-content-between align-items-center pb-3">
+                    <button onClick={handleCloseModal} className="btn p-0" aria-label="Close Modal">
+                      <img src={Close} alt="Close Button" />
+                    </button>
+                  </div>
+                </div>
+                <div className="max-w-xl mx-auto px-4 bg-white rounded-md w-100" style={{ maxWidth: "36rem" }}>
+                  <h2 className="text-2xl pb-3 font-semibold text-success text-center border-bottom mb-4">
+                    {t("addtional_filter")}
+                  </h2>
+                  <div className="row row-cols-1 row-cols-md-2 g-4 mb-4">
+                    <div className="col">
+                      <label className="d-block text-secondary text-start fw-semibold fs-6 mb-1">{t("cust_modal_no_rooms")}</label>
+                      <div className="position-relative d-flex align-items-center border rounded px-2 py-1">
+                        <input
+                          type="text"
+                          placeholder="התחילו להקליד..."
+                          className="w-100 border-0 text-secondary"
+                        />
+                        <button className="btn btn-outline-none py-0" type="button" aria-label="Search" onClick={() => setIsModalOpen(false)}>
+                          <img src={search_icon2} alt="Search" />
+                        </button>
+                      </div>
+                    </div>
+                    <div className="col">
+                      <label className="d-block text-secondary text-start fw-semibold fs-6 mb-1">{t("floor")}</label>
+                      <select className="form-select">
+                        <option></option>
+                        <option>בחר</option>
+                      </select>
                     </div>
                   </div>
-                  <div className="col">
-                    <label className="d-block text-secondary text-start fw-semibold fs-6 mb-1">{t("floor")}</label>
-                    <select className="form-select">
-                      <option></option>
-                      <option>בחר</option>
-                    </select>
+                  <div className="d-flex flex-column gap-4 mb-4">
+                    <RangeSlider label={t("cust_slider_label")} />
+                    <RangeSlider label={t("cust_slider_label2")} />
+                  </div>
+                  <h3 className="text-base text-start font-semibold text-success mb-2">
+                    {t("addtional_feature")}
+                  </h3>
+                  <div className="d-flex flex-wrap gap-2 mb-4 justify-content-start">
+                    {Array.from({ length: 9 }, (_, i) => (
+                      <button key={i} className="bg-gray-200 px-3 py-1 rounded-pill text-secondary border-0">
+                        {t(`addtional_feature_${i + 1}`)}
+                      </button>
+                    ))}
+                  </div>
+                  <div className="d-flex justify-content-between gap-3 mt-4">
+                    <button className="btn btn-success text-white px-4 py-2 rounded-pill" onClick={() => setIsModalOpen(false)}>
+                      {t("cust_model_footer")}
+                    </button>
+                    <button className="btn btn-outline-success px-4 py-2 rounded-pill">
+                      {t("cust_model_footer1")}
+                    </button>
                   </div>
                 </div>
-                <div className="d-flex flex-column gap-4 mb-4">
-                  <RangeSlider label={t("cust_slider_label")} />
-                  <RangeSlider label={t("cust_slider_label2")} />
-                </div>
-                <h3 className="text-base text-start font-semibold text-success mb-2">
-                  {t("addtional_feature")}
-                </h3>
-                <div className="d-flex flex-wrap gap-2 mb-4 justify-content-start">
-                  <button className="bg-gray-200 px-3 py-1 rounded-pill text-secondary border-0">
-                    {t("addtional_feature_1")}
-                  </button>
-                  <button className="bg-gray-200 px-3 py-1 rounded-pill text-secondary border-0">
-                    {t("addtional_feature_2")}
-                  </button>
-                  <button className="bg-gray-200 px-3 py-1 rounded-pill text-secondary border-0">
-                    {t("addtional_feature_3")}
-                  </button>
-                  <button className="bg-gray-200 px-3 py-1 rounded-pill text-secondary border-0">
-                    {t("addtional_feature_4")}
-                  </button>
-                  <button className="bg-gray-200 px-3 py-1 rounded-pill text-secondary border-0">
-                    {t("addtional_feature_5")}
-                  </button>
-                  <button className="bg-gray-200 px-3 py-1 rounded-pill text-secondary border-0">
-                    {t("addtional_feature_6")}
-                  </button>
-                  <button className="bg-gray-200 px-3 py-1 rounded-pill text-secondary border-0">
-                    {t("addtional_feature_7")}
-                  </button>
-                  <button className="bg-gray-200 px-3 py-1 rounded-pill text-secondary border-0">
-                    {t("addtional_feature_8")}
-                  </button>
-                  <button className="bg-gray-200 px-3 py-1 rounded-pill text-secondary border-0">
-                    {t("addtional_feature_9")}
-                  </button>
-                </div>
-              </div>
-            </CustomModal>
+              </motion.div>
+            </div>
           )}
         </div>
       </div>
