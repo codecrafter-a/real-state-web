@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import add_reaction from "../../assets/images/add_reaction.svg";
@@ -16,31 +16,20 @@ import edit from '../../assets/images/edit.svg';
 import deleteIcon from '../../assets/images/delete.svg';
 import { Modal } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
+import { useClientService } from "../../Services/ClientService";
 
 const Customer = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { lang } = useParams();
-  const clients = [
-    {
-      name: t("cust_name_1"),
-      type: t("type_cust_1"),
-      phone: t("phone_cust_1"),
-      email: t("email_cust_1"),
-      location: t("location_cust_1"),
-      status: t("status_cust_1"),
-      statusColor: "bg-blue-200 text-blue-600",
-    },
-    {
-      name: t("cust_name_2"),
-      type: t("type_cust_2"),
-      phone: t("054-4692650"),
-      email: t("shirims@gmail.com"),
-      location: t("location_cust_2"),
-      status: t("status_cust_2"),
-      statusColor: "bg-red-200 text-red-600",
-    },
-  ];
+  const [clients, setClients] = useState([]);
+
+  const { getClients } = useClientService(); 
+
+  useEffect(() => {
+   const data = getClients();
+    setClients(data);
+  }, [getClients]);
 
   const [expandedRows, setExpandedRows] = useState([]);
   const [selectedRows, setSelectedRows] = useState({});
@@ -206,7 +195,7 @@ const Customer = () => {
                 <table className="table">
                   <thead>
                     <tr>
-                      <th className="px-4 py-3">
+                      <th className="table-head">
                         <div className="d-flex align-items-center gap-2">
                           <input
                             type="checkbox"
@@ -217,12 +206,12 @@ const Customer = () => {
                           <span>{t("cust_tbl_column_name")}</span>
                         </div>
                       </th>
-                      <th className="px-4 py-3">{t("cust_tbl_column_client_type")}</th>
-                      <th className="px-4 py-3">{t("cust_tbl_column_client_phone")}</th>
-                      <th className="px-4 py-3">{t("cust_tbl_column_client_email")}</th>
-                      <th className="px-4 py-3">{t("cust_tbl_column_request_area")}</th>
-                      <th className="px-4 py-3">{t("cust_tbl_column_status")}</th>
-                      <th className="px-4 py-3"></th>
+                      <th className="table-head">{t("cust_tbl_column_client_type")}</th>
+                      <th className="table-head">{t("cust_tbl_column_client_phone")}</th>
+                      <th className="table-head">{t("cust_tbl_column_client_email")}</th>
+                      <th className="table-head">{t("cust_tbl_column_request_area")}</th>
+                      <th className="table-head">{t("cust_tbl_column_status")}</th>
+                      <th className="table-head"></th>
                     </tr>
                   </thead>
                   <tbody className="border border-[#E6E6E6] rounded-3">

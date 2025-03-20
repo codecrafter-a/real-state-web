@@ -154,10 +154,6 @@
 	margin-left: 0;
 	margin-right: 14px;
 }
-[lang="en"] .bgupper_icons{
-	left: auto;
-	right: 0;
-}
 .haeder_right_block.disabled {
 	opacity: 0.5;
 	pointer-events: none;

@@ -1,6 +1,5 @@
 import { Nav } from "react-bootstrap";
 import React from 'react'
-import "../Tab/tab.css";
 const Tab = ({children , onClick, className}) => {
   return (
    <>
