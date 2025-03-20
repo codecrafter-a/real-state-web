@@ -55,7 +55,7 @@
   "footer":"To the Property Mistakes",
   "footer1":"To Send Agreement",
   "add_description":"The customer has been added successfully",
-  "add_cust_model_description":"The customer has been added successfully",
+  "add_cust_model_description":"Which agreement would you like to send?",
   "add_cust_sign_in":"Send Agreement for Signing an Interested Party",
   "add_proprty_owers_sign_in":"Send Agreement for Signing a Property Owner",
   "add_cust_broker_sign_in":"Send Agreement for Broker Collaboration",
