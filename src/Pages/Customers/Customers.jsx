@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import add_reaction from "../../assets/images/add_reaction.svg";
@@ -15,30 +15,21 @@ import CustomButton from "../../Componant/Common/Button/Button";
 import edit from '../../assets/images/edit.svg';
 import deleteIcon from '../../assets/images/delete.svg';
 import { Modal } from "react-bootstrap";
-import Close from "../../assets/images/Close.jpg";
+import { useNavigate, useParams } from "react-router-dom";
+import { useClientService } from "../../Services/ClientService";
 
 const Customer = () => {
   const { t } = useTranslation();
-  const clients = [
-    {
-      name: t("cust_name_1"),
-      type: t("type_cust_1"),
-      phone: t("phone_cust_1"),
-      email: t("email_cust_1"),
-      location: t("location_cust_1"),
-      status: t("status_cust_1"),
-      statusColor: "bg-blue-200 text-blue-600",
-    },
-    {
-      name: t("cust_name_2"),
-      type: t("type_cust_2"),
-      phone: t("054-4692650"),
-      email: t("shirims@gmail.com"),
-      location: t("location_cust_2"),
-      status: t("status_cust_2"),
-      statusColor: "bg-red-200 text-red-600",
-    },
-  ];
+  const navigate = useNavigate();
+  const { lang } = useParams();
+  const [clients, setClients] = useState([]);
+
+  const { getClients } = useClientService(); 
+
+  useEffect(() => {
+   const data = getClients();
+    setClients(data);
+  }, [getClients]);
 
   const [expandedRows, setExpandedRows] = useState([]);
   const [selectedRows, setSelectedRows] = useState({});
@@ -93,6 +84,7 @@ const Customer = () => {
                 <button
                   type="button"
                   className="btn btn-outline-success d-flex align-items-center justify-content-center rounded-pill py-2 px-4 gap-2"
+                  onClick={() => navigate(`/${lang}/customers/add-customers`)}
                 >
                   <img src={add_reaction} alt="Add Client" />
                   {t("add_cust")}
@@ -203,7 +195,7 @@ const Customer = () => {
                 <table className="table">
                   <thead>
                     <tr>
-                      <th className="px-4 py-3">
+                      <th className="table-head">
                         <div className="d-flex align-items-center gap-2">
                           <input
                             type="checkbox"
@@ -214,12 +206,12 @@ const Customer = () => {
                           <span>{t("cust_tbl_column_name")}</span>
                         </div>
                       </th>
-                      <th className="px-4 py-3">{t("cust_tbl_column_client_type")}</th>
-                      <th className="px-4 py-3">{t("cust_tbl_column_client_phone")}</th>
-                      <th className="px-4 py-3">{t("cust_tbl_column_client_email")}</th>
-                      <th className="px-4 py-3">{t("cust_tbl_column_request_area")}</th>
-                      <th className="px-4 py-3">{t("cust_tbl_column_status")}</th>
-                      <th className="px-4 py-3"></th>
+                      <th className="table-head">{t("cust_tbl_column_client_type")}</th>
+                      <th className="table-head">{t("cust_tbl_column_client_phone")}</th>
+                      <th className="table-head">{t("cust_tbl_column_client_email")}</th>
+                      <th className="table-head">{t("cust_tbl_column_request_area")}</th>
+                      <th className="table-head">{t("cust_tbl_column_status")}</th>
+                      <th className="table-head"></th>
                     </tr>
                   </thead>
                   <tbody className="border border-[#E6E6E6] rounded-3">
@@ -336,74 +328,74 @@ const Customer = () => {
             </Modal.Footer>
           </Modal>
 
-          {isModalOpen && (
-            <div className="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-50" style={{ zIndex: 999 }}>
-              <motion.div
-                initial={{ y: -50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-                className="bg-white rounded-3 p-4"
-                style={{ maxWidth: "auto", boxShadow: "0 0 10px rgba(85, 205, 133, 0.8)" }}
-              >
-                <div>
-                  <div className="d-flex justify-content-between align-items-center pb-3">
-                    <button onClick={handleCloseModal} className="btn p-0" aria-label="Close Modal">
-                      <img src={Close} alt="Close Button" />
+          <Modal show={isModalOpen} onHide={() => setIsModalOpen(false)} centered className="modal-container">
+            <Modal.Header className="border-0 p-3 position-relative mt-4">
+              <button
+                type="button"
+                className="btn-close position-absolute close-btn"
+                onClick={() => setIsModalOpen(false)}
+              ></button>
+            </Modal.Header>
+
+            <Modal.Body className="text-center justify-center px-5 p-4">
+              <h2 className="text-2xl pb-3 font-semibold text-success text-center border-bottom mb-4">
+                {t("addtional_filter")}
+              </h2>
+              <div className="row row-cols-1 row-cols-md-2 g-4 mb-4">
+                <div className="col">
+                  <label className="d-block text-secondary text-start fw-semibold fs-6 mb-1">
+                    {t("cust_modal_no_rooms")}
+                  </label>
+                  <div className="position-relative d-flex align-items-center border rounded px-2 py-1">
+                    <input
+                      type="text"
+                      placeholder="התחילו להקליד..."
+                      className="w-100 border-0 text-secondary"
+                    />
+                    <button
+                      className="btn btn-outline-none py-0"
+                      type="button"
+                      aria-label="Search"
+                    >
+                      <img src={search_icon2} alt="Search" />
                     </button>
                   </div>
                 </div>
-                <div className="max-w-xl mx-auto px-4 bg-white rounded-md w-100" style={{ maxWidth: "36rem" }}>
-                  <h2 className="text-2xl pb-3 font-semibold text-success text-center border-bottom mb-4">
-                    {t("addtional_filter")}
-                  </h2>
-                  <div className="row row-cols-1 row-cols-md-2 g-4 mb-4">
-                    <div className="col">
-                      <label className="d-block text-secondary text-start fw-semibold fs-6 mb-1">{t("cust_modal_no_rooms")}</label>
-                      <div className="position-relative d-flex align-items-center border rounded px-2 py-1">
-                        <input
-                          type="text"
-                          placeholder="התחילו להקליד..."
-                          className="w-100 border-0 text-secondary"
-                        />
-                        <button className="btn btn-outline-none py-0" type="button" aria-label="Search" onClick={() => setIsModalOpen(false)}>
-                          <img src={search_icon2} alt="Search" />
-                        </button>
-                      </div>
-                    </div>
-                    <div className="col">
-                      <label className="d-block text-secondary text-start fw-semibold fs-6 mb-1">{t("floor")}</label>
-                      <select className="form-select">
-                        <option></option>
-                        <option>בחר</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div className="d-flex flex-column gap-4 mb-4">
-                    <RangeSlider label={t("cust_slider_label")} />
-                    <RangeSlider label={t("cust_slider_label2")} />
-                  </div>
-                  <h3 className="text-base text-start font-semibold text-success mb-2">
-                    {t("addtional_feature")}
-                  </h3>
-                  <div className="d-flex flex-wrap gap-2 mb-4 justify-content-start">
-                    {Array.from({ length: 9 }, (_, i) => (
-                      <button key={i} className="bg-gray-200 px-3 py-1 rounded-pill text-secondary border-0">
-                        {t(`addtional_feature_${i + 1}`)}
-                      </button>
-                    ))}
-                  </div>
-                  <div className="d-flex justify-content-between gap-3 mt-4">
-                    <button className="btn btn-success text-white px-4 py-2 rounded-pill" onClick={() => setIsModalOpen(false)}>
-                      {t("cust_model_footer")}
-                    </button>
-                    <button className="btn btn-outline-success px-4 py-2 rounded-pill">
-                      {t("cust_model_footer1")}
-                    </button>
-                  </div>
+                <div className="col">
+                  <label className="d-block text-secondary text-start fw-semibold fs-6 mb-1">
+                    {t("floor")}
+                  </label>
+                  <select className="form-select">
+                    <option></option>
+                    <option>בחר</option>
+                  </select>
                 </div>
-              </motion.div>
-            </div>
-          )}
+              </div>
+              <div className="d-flex flex-column gap-4 mb-4">
+                <RangeSlider label={t("cust_slider_label")} />
+                <RangeSlider label={t("cust_slider_label2")} />
+              </div>
+              <h3 className="text-base text-start font-semibold text-success mb-2">
+                {t("addtional_feature")}
+              </h3>
+              <div className="d-flex flex-wrap gap-2 justify-content-start">
+                {Array.from({ length: 9 }, (_, i) => (
+                  <button key={i} className="bg-gray-200 px-3 py-1 rounded-pill text-secondary border-0">
+                    {t(`addtional_feature_${i + 1}`)}
+                  </button>
+                ))}
+              </div>
+            </Modal.Body>
+
+            <Modal.Footer className="border-top-0 justify-content-between gap-3 mb-3 px-4">
+              <button className="btn btn-success text-white px-4 py-2 rounded-pill" onClick={() => setIsModalOpen(false)}>
+                {t("cust_model_footer")}
+              </button>
+              <button className="btn btn-outline-success px-4 py-2 rounded-pill">
+                {t("cust_model_footer1")}
+              </button>
+            </Modal.Footer>
+          </Modal>
         </div>
       </div>
     </>

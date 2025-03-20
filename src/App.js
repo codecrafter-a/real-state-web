@@ -21,6 +21,7 @@ import Agents from "./Pages/Agents/Agents.jsx";
 import AddAgents from "./Pages/Agents/AddAgents.jsx";
 import AgentManagement from "./Pages/Agents/AgentManagement.jsx";
 import EditAgents from "./Pages/Agents/EditAgents.jsx";
+import AddCustomer from "./Pages/Customers/add-customer-en/Addcustomeren.jsx";
 
 function App() {
   const { i18n } = useTranslation();
@@ -32,6 +33,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to={'/he/signin'} />} />
           <Route path="/:lang/customers" element={<Customers />} />
+          <Route path="/:lang/customers/add-customers" element={<AddCustomer />} />
           <Route path="/:lang/signin" element={<Signin />} />
           <Route path="/:lang/property" element={<Property/>}/>
           <Route path="/:lang/agents" element={<Agents />} />

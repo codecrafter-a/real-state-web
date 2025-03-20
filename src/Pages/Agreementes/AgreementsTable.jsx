@@ -1,82 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { TbMailForward } from "react-icons/tb";
-import { FaWhatsapp } from "react-icons/fa";
 import { useTranslation } from 'react-i18next';
 import { MdOutlineDeleteForever } from "react-icons/md";
-const tableData = [
-    {
-        status: "home_tab_r1_h2",
-        commission: "20%",
-        clients: "home_tab_r1_h4",
-        agreementType: "home_tab_r1_h5",
-        date: "06.06.24",
-        agreementName: 'home_tab_r1_h7',
-        actionType: "default",
-        icon: <FaWhatsapp />,
-        deletes: "age_delet",
-    },
-    {
-        status: "home_tab_r2_h2",
-        commission: "20%",
-        clients: "home_tab_r1_h4",
-        agreementType: "home_tab_r1_h5",
-        date: "06.06.24",
-        agreementName: 'home_tab_r1_h7',
-        actionType: "default",
-        icon: <FaWhatsapp />,
-        deletes: "age_delet",
-    },
-    {
-        status: "home_tab_r3_h2",
-        commission: "20%",
-        clients: "home_tab_r1_h4",
-        agreementType: "home_tab_r1_h5",
-        date: "06.06.24",
-        agreementName: 'home_tab_r1_h7',
-        actionType: "default",
-        icon: <FaWhatsapp />,
-        deletes: "age_delet",
-    },
-    {
-        status: "home_tab_r4_h2",
-        commission: "20%",
-        clients: "home_tab_r1_h4",
-        agreementType: "home_tab_r1_h5",
-        date: "06.06.24",
-        agreementName: 'home_tab_r1_h7',
-        actionType: "signed",
-        icon: <FaWhatsapp />,
-        deletes: "age_delet",
-    },
-    {
-        status: "home_tab_r5_h2",
-        commission: "20%",
-        clients: "home_tab_r1_h4",
-        agreementType: "home_tab_r1_h5",
-        date: "06.06.24",
-        agreementName: 'home_tab_r1_h7',
-        actionType: "executed",
-        icon: <FaWhatsapp />,
-        deletes: "age_delet",
-    },
-    {
-        status: "home_tab_r6_h2",
-        commission: "20%",
-        clients: "home_tab_r1_h4",
-        agreementType: "home_tab_r1_h5",
-        date: "06.06.24",
-        agreementName: 'home_tab_r1_h7',
-        actionType: "registered",
-        icon: <FaWhatsapp />,
-        deletes: "age_delet",
-    },
-];
+import { useAgreementServices } from "../../Services/AgreementServices";
 
-const AgreementsTable = ({handleOpen}) => {
-    console.log(handleOpen,"handleOpenhandleOpenhandleOpenhandleOpen");
+const AgreementsTable = ({ handleOpen }) => {
+    const { t } = useTranslation();
+    const [tableData, setTableData] = useState([]);
+    const { getAgreementData } = useAgreementServices();
+
+    useEffect(() => {
+        const data = getAgreementData();
+        setTableData(data);
+    }, [getAgreementData]);
+
     
-    const { t } = useTranslation(); 
     return (
         <div className="mt-4">
             <table className="table text-center">
@@ -102,7 +41,7 @@ const AgreementsTable = ({handleOpen}) => {
 };
 const ActionButtons = ({ type, icon, onDelete }) => {
     console.log(onDelete, "onDeleteonDeleteonDelete");
-    
+
     const { t } = useTranslation();
     return (
         <div className="d-flex align-items-center gap-3 p-2 bg-white">
@@ -168,7 +107,7 @@ const StatusBadge = ({ status }) => {
 
 const TableRow = ({ data,  handleOpen }) => {
     console.log(handleOpen, "onDeleteonDelete");
-    
+
     const { t } = useTranslation();
     const { status, commission, clients, agreementType, date, agreementName, actionType, icon } = data;
     return (
@@ -177,7 +116,7 @@ const TableRow = ({ data,  handleOpen }) => {
             <td className="d-table-cell align-middle py-3">{date}</td>
             <td className="d-table-cell align-middle py-3">{t(agreementType)}</td>
             <td className="d-table-cell align-middle py-3">{t(clients)}</td>
-            <td className="d-table-cell align-middle py-3">{commission}</td>    
+            <td className="d-table-cell align-middle py-3">{commission}</td>
             <td className="d-table-cell align-middle py-3"><StatusBadge status={t(status)} /></td>
             <td className="d-table-cell align-middle py-3"><ActionButtons type={t(actionType)} icon={icon} onDelete={handleOpen} /></td>
         </tr>
