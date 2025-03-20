@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import body_bg from "../../assets/images/body_bg.webp";
-import bory_group_right from "../../assets/images/bory_group_right.png";
-import bory_group_left from "../../assets/images/bory_group_right.png";
 import add_reaction from "../../assets/images/add_reaction.svg";
 import search from "../../assets/images/search.svg";
 import search_icon2 from "../../assets/images/search_icon2.svg";
@@ -82,19 +79,7 @@ const Customer = () => {
 
   return (
     <>
-      <div className="position-absolute w-100 top-0 z-0 overflow-hidden">
-        <figure className="mb-0">
-          <img src={body_bg} width="100%" alt="Background" />
-          <span className="position-absolute top-0 start-0 mt-2">
-            <img src={bory_group_left} alt="Left Icon" />
-          </span>
-        </figure>
-        <div>
-          <img src={bory_group_right} alt="Right Icon" />
-        </div>
-      </div>
-
-      <div className="bg-white w-100 mx-auto pb-3 position-relative z-50 rounded-3 shadow-lg" style={{ maxWidth: '1194px' }}>
+      <div className="bg-white w-100 mx-auto pb-3 position-relative z-50 rounded-3 shadow-lg" >
         <div className="px-4">
           <h1 className="fs-4 font-semibold border-bottom border-[#EAEAEA] py-3 mb-4 text-success text-center">
             {t("all_cust")}
