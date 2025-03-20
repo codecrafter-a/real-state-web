@@ -119,20 +119,6 @@ a, a:hover{
 	color: white !important;
 	border-color: #55cd85 !important;
   }
-
-  .top-20{
-	top: 7%;
-  }
-
-  .down-10{
-	bottom: 10% !important;
-  }
-
   .w-344{
-	width: 345px !important;
-  }
-
-  .min-vh-100 {
-	min-height: 100vh !important;
-	height: calc(100vh - 64px)
+	width: 344px !important;
   }

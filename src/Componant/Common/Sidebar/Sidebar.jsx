@@ -18,7 +18,9 @@ import userIcon from '../../../assets/images/user_icon.svg';
 import userkey from '../../../assets/images/user-key.png';
 import usercontact from '../../../assets/images/user-contect.png';
 import userhouse from '../../../assets/images/user-house.png';
+import document from '../../../assets/images/menu_icon2.png';
 import "../Sidebar/Sidebar.css";
+import { Button, Card, Row, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 const Sidebar = ({isToggle}) => {
@@ -60,7 +62,7 @@ const Sidebar = ({isToggle}) => {
 
   return (
     <>
-    <section className={`haeder_right_block mt-5 mt-md-0 ${!isToggle ? 'd-none d-md-block ' : ''}  ${isAuthenticated ? "active" : "disabled"}`}>
+    <section className={`haeder_right_block w-344  mt-5 mt-md-0 ${!isToggle ? 'd-none d-md-block ' : ''}  ${isAuthenticated ? "active" : "disabled"}`}>
       <div className="haeder_right mCustomScrollbar">
           <ul className="hdr_right_menu">
             {[{ icon: iconHome, text: t("sitem1") , to: `/${i18n.language}/home`},
@@ -86,48 +88,83 @@ const Sidebar = ({isToggle}) => {
               ))}
               <li>
               {!isOpen ? (<>
-        <div className="cmn_actions">
-          <h4> {t("action")}</h4>
-          <ul className="cmn_actions_list d-none d-md-flex ">
-            {[{ icon: actionIcon1, text: t("action1") },
-              { icon: actionIcon2, text: t("action2") },
-              { icon: actionIcon3, text: t("action3") }].map((action, index) => (
-                <li key={index}>
-                  <Link to={action.to}>
-                    <span className="action_icon">
-                      <img src={action.icon} alt="icon" />
-                    </span> 
-                    {action.text}
-                  </Link>
-                </li>
-              ))}
-          </ul>
-        </div>
-       </>) : (<>
-        <div className='cmn_actions'>
-          <h4 className=' text-success fw-bold'>Actions</h4>
-          <ul className='cmn_actions_list d-block'>
-            <div className='d-flex align-items-center '>
-              <img src={userkey} alt="action icon "/>
-              <p className='fs-6 fw-semibold px-2 pt-2 lh-1'>{t("action1")}</p>
-            </div>
-            <div className='d-flex align-items-center'>
-              <img src={userhouse} alt="action icon "/>
-              <p className='fs-6 fw-semibold px-2 pt-3 lh-1'>{t("action2")}</p>
-            </div>
-            <div className='d-flex align-items-center'>
-              <img src={usercontact} alt="action icon "/>
-              <p className='fs-6 fw-semibold px-2 pt-3 lh-1'>{t("action3")}</p>
-            </div>
-          </ul>
-        </div>
-       </>)}
+                      <div className="cmn_actions">
+                        <h4> {t("action")}</h4>
+                        <ul className="cmn_actions_list d-none d-md-flex ">
+                          {[{ icon: actionIcon1, text: t("action1") },
+                            { icon: actionIcon2, text: t("action2") },
+                            { icon: actionIcon3, text: t("action3") }].map((action, index) => (
+                              <li key={index}>
+                                <Link to={action.to}>
+                                  <span className="action_icon">
+                                    <img src={action.icon} alt="icon" />
+                                  </span> 
+                                  {action.text}
+                                </Link>
+                              </li>
+                            ))}
+                        </ul>
+                      </div>
+               </>) : (<>
+                  <div className='cmn_actions'>
+                    <h4 className=' text-success fw-bold'>Actions</h4>
+                    <ul className='cmn_actions_list d-block'>
+                      <div className='d-flex align-items-center '>
+                        <img src={userkey} alt="action icon "/>
+                        <p className='fs-5 fw-normal px-2 pt-2 lh-1'>{t("action1")}</p>
+                      </div>
+                      <div className='d-flex align-items-center'>
+                        <img src={userhouse} alt="action icon "/>
+                        <p className='fs-5 fw-normal px-2 pt-3 lh-1'>{t("action2")}</p>
+                      </div>
+                      <div className='d-flex align-items-center'>
+                        <img src={usercontact} alt="action icon "/>
+                        <p className='fs-5 fw-normal px-2 pt-3 lh-1'>{t("action3")}</p>
+                      </div>
+                    </ul>
+                    <div className="d-flex justify-content-center align-items-center my-3">
+                      <Card className="custom-card text-center bg-success bg-opacity-10" >
+                        <Card.Body>
+                          <Card.Title className="custom-title">
+                            רוצים לנהל הכל במקום אחד?
+                          </Card.Title>
+                          <Card.Text>
+                            רוצים להוסיף עוד סוכנים? לשלוח מסמכים ושהכל יופיע לכם במקום אחד?
+                          </Card.Text>
+                          <Button className="hdr_btn py-2 px-5 border-0 me-0 rounded-pill">שדרגו את המנוי שלכם</Button>
+                        </Card.Body>
+                      </Card>
+                    </div>
+                  </div>  
+                </>)}
               </li>
           </ul>
-          
       </div>      
     </section>
-    
+    <div className='d-block d-md-none'>
+      <Row className="d-flex justify-content-between text-center py-2 bg-light fixed-bottom">
+        <Col xs={2}>
+          <img src={iconHome} alt="home icon" className="text-teal" />
+          <div className="fs-6 fw-semibold">עמוד הבית</div>
+        </Col>
+        <Col xs={2}>
+          <img src={userkey} alt="home icon" className="text-teal" />
+          <div className="fs-6 fw-semibold">החתמת מתעניין</div>
+        </Col>
+        <Col xs={2}>
+          <img src={userhouse} alt="action icon "/>
+          <div className="fs-6 fw-semibold">החתמת בעל נכס</div>
+        </Col>
+        <Col xs={2}>
+          <img src={usercontact} alt="action icon "/>
+          <div className="fs-6 fw-semibold">שית"פ בין מתווכים</div>
+        </Col>
+        <Col xs={2}>
+          <img src={document} alt="action icon "/>
+          <div className="fs-6 fw-semibold">כל ההסכמים</div>
+        </Col>
+      </Row>
+    </div>
     </>
   )
 }
