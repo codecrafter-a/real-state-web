@@ -15,18 +15,11 @@
 	display: inline-block;
 }
 
-a, a:hover{
-	text-decoration: none;
-	color: #000000;
-	transition: all .2s linear;
-}
-
-
-.haeder_right{
+/* .haeder_right{
 	height: 80vh;
 	height: calc(100vh - 260px);
 	overflow: auto;
-}
+} */
 .hdt_top_menu{
 	list-style: none;
 	padding: 0;
@@ -143,10 +136,10 @@ a, a:hover{
 	.cmn_actions{
 		bottom: 15px;
 	}
-	.haeder_right {
+	/* .haeder_right {
 	    height: calc(100vh - 230px);
 	    overflow: auto;
-	}
+	} */
 }
 
 [lang="en"] .hdr_btn > a{
@@ -173,9 +166,5 @@ a, a:hover{
 [lang="en"] .hdr_right_menu > li > a .menu_icon{
 	margin-left: 0;
 	margin-right: 14px;
-}
-[lang="en"] .bgupper_icons{
-	left: auto;
-	right: 0;
 }
 

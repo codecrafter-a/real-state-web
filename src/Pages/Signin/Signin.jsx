@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import bodyBg from "../../assets/images/body_bg.webp";
-import left from "../../assets/images/left-1.png";
-import boryGroupRight from "../../assets/images/bory_group_right.png";
 import '../Signin/Signin.css';
 import g10 from '../../assets/images/g10.png';
-import { Container, Row, Col } from 'react-bootstrap';
+import {Col } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
 import i18n from "i18next";
 import { useTranslation } from 'react-i18next';
@@ -44,24 +41,7 @@ const Signin = () => {
     <>
      {!isAuthenticated ? (
   <>
-    <Container className="custom-container">
-        <div className="position-absolute w-100 h-50 overflow-hidden top-0 start-0 z-0">
-          <figure className="mb-0 h-100 w-100 position-relative">
-            <img
-              src={bodyBg}
-              className="w-100 h-100 object-fit-cover position-absolute top-0 start-0"
-              alt="Background"
-            />
-            <span className="position-absolute top-0 end-0">
-              <img src={left} alt="Left BG Icon" className="img-fluid" />
-            </span>
-          </figure>
-            <div className="right-bg-icon ">
-                <img src={boryGroupRight} alt="right bg icon" className="position-fixed"/>
-            </div>
-        </div>
-      <Row className="d-flex w-auto mx-auto  position-relative bg-white shadow-lg rounded-3  scrollbar-content scrollbar-left flex-wrap px-md-5 z-3">
-        <Col className="col-12">
+      <Col className="col-12">
           <div>
             <p className="py-4 my-4 text-center screen-1 fw-bold">
                {t("sign_in_title")}
@@ -92,9 +72,7 @@ const Signin = () => {
               </div>
             </div>
           </div>
-        </Col>
-      </Row>
-    </Container>
+      </Col>
   </>
 ) : null}
     </> 

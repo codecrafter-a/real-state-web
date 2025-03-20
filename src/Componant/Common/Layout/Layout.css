@@ -9,6 +9,8 @@
 	font-family: "Assistant", serif;
   }
   
+  .custom-container{max-width: 1140px !important; width: 1140px !important;}
+
   .layout_content {
     display: flex;
     flex: 1;
@@ -21,11 +23,4 @@
     height: 100vh;
     padding: 20px;
   }
-  
-  .main_content {
-    position: relative;
-    padding-top: 70px;
-    font-family: "Assistant", serif
-  }
-
-  
+    

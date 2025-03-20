@@ -1,0 +1,74 @@
+.input-group:focus-within {
+    border: 1px solid rgb(0, 164, 129) !important;
+    border-radius: 8px; /* Optional: for rounded corners */
+    outline: none; /* Removes default outline */
+}
+
+input:focus-within {outline: none;}
+  .custom-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 0px;
+    width: 100%;
+  }
+  
+  .custom-table th {
+    font-size:15;
+    line-height: 20%;
+    font-weight: 400;
+    padding: 12px;
+    text-align: right;
+    border-bottom: none;
+  }
+  
+  .custom-table td {
+    padding: 12px;
+    text-align: right;
+    vertical-align: middle;
+    border: 1px solid #e1e1e1;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+  }
+  
+  .icon-btn {
+    color: #000;
+    font-size: 14px;
+    padding: 10px;
+    text-decoration: none;
+    border: none;
+  }
+  
+
+  .icon-btn:focus {
+    color: rgb(0, 164, 129);
+    text-decoration: none;
+  }
+  
+  .icon-btn:hover{
+    color: rgb(0, 164, 129) !important;
+    text-decoration: none !important;
+  }
+ 
+  .table-bordered>:not(caption)>*>* {
+    border-width: 0px;
+   }
+
+ 
+  
+  .custom-table th:first-child,
+  .custom-table td:first-child {
+    border-right: 0;
+  }
+
+
+  
+
+  .custom-table th:last-child,
+  .custom-table td:last-child {
+    border-left: 0;
+  }
+  

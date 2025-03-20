@@ -17,8 +17,8 @@ i18n
     fallbackLng: "en",
     interpolation: { escapeValue: false },
     detection: {
-      order: ['path', 'navigator'], // Detect language from URL path
-      lookupFromPathIndex: 0 // "/fr/page" → "fr"
+      order: ['path', 'navigator'], 
+      lookupFromPathIndex: 0 
     }
   });
 

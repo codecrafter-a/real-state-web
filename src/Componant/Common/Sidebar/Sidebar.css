@@ -7,7 +7,7 @@
 	height: calc(100vh - 64px);
 	border-left: 1px solid #3838381A;
 	box-shadow: 0px 1px 3px 0px #3838381A;
-	/* z-index: 99; */
+	z-index: 99;
 	padding: 26px 0 48px;
 	background: #fff;
 	transition: 0.3s;
@@ -15,7 +15,6 @@
 .haeder_right{
 	height: 80vh;
 	height: calc(100vh - 260px);
-	overflow: auto;
 }
 
 .user_dd > a.dropdown-toggle img{
@@ -57,9 +56,10 @@
 }
 .cmn_actions{
 	padding: 0 30px;
-	position: absolute;
-	left: 0;
-	bottom: 48px;
+	position: relative;
+	top: 50px;
+	/* left: 0;
+	bottom: 48px; */
 	width: 100%;
 }
 .cmn_actions_list{
@@ -112,21 +112,26 @@
 		bottom: 15px;
 	}
 	.haeder_right {
-	    height: calc(100vh - 230px);
+	    height: calc(100vh - 130px);
 	    overflow: auto;
 	}
 }
 
-@media (max-width: 448px) {
-	.haeder_right_block {
-	  display: none;		
-	}
-
+@media (max-width: 768px) {
 	[lang="en"] body{
 		padding-right: 0px;
 		padding-left: 0px;
-	}
+	};
+	.haeder_right {
+		overflow: auto !important;
+	  }
   }
+
+@media (max-width: 448px) {
+	.haeder_right_block{
+		width: 250px;
+	}
+}
 
 [lang="en"] .hdr_btn > a{
 	margin-right: 0;
@@ -148,10 +153,6 @@
 [lang="en"] .hdr_right_menu > li > a .menu_icon{
 	margin-left: 0;
 	margin-right: 14px;
-}
-[lang="en"] .bgupper_icons{
-	left: auto;
-	right: 0;
 }
 .haeder_right_block.disabled {
 	opacity: 0.5;

@@ -8,9 +8,6 @@
 .text-embed-500 {
   color: rgb(0, 164, 129);
 }
-* {
-  font-family: "Assistant", serif;
-}
 /* Dekstop screeen */
 h5 {
   font-size: 20px;
@@ -42,32 +39,6 @@ h5 {
 }
 .form-check-input:focus {
   box-shadow: 0 0 0 0.2rem rgba(0, 164, 129, 0.25) !important;
-}
-.agent-button2 {
-  min-width: 11rem;
-  border: 2px solid #00a481;
-  color: #00a481;
-  background-color: white;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1); /* Subtle Shadow */
-}
-.agent-button2:hover {
-  background-color: #55cd85 !important;
-  color: white !important;
-  border-color: #55cd85 !important;
-}
-.agent-button1 {
-  min-width: 11rem;
-  background-color: white;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
-  border: 2px solid #00a481;
-  background-color: #00a481;
-}
-.agent-button1:hover {
-  background-color: #55cd85 !important;
-  color: white !important;
-  border-color: #55cd85 !important;
 }
 .accordion-button:focus {
   outline: none !important;
@@ -116,12 +87,10 @@ h5 {
   border: 1px solid rgb(0, 164, 129) !important;
 }
 .scrollbar-left {
-  direction: ltr;
   overflow-y: scroll;
   height: 550px;
 }
 .scrollbar-left .scrollbar-content {
-  direction: ltr;
   padding: 1rem;
 }
 

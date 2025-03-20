@@ -1,49 +1,78 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import CustomButton from '../../../Componant/Common/Button/Button';
 import CustomInput from '../../../Componant/Common/Input/Custominput';
+import { Row, Col, Form, Button } from 'react-bootstrap';
+
 const Propertyaddress = ({setActiveTab}) => {
   const { t } = useTranslation();
   return (
     <>
-      <form className='px-9' >
-              <h4 className='text-2xl font-semibold text-[#00A481] py-3 mt-3 mb-1'> {t("pro_add_sub_title")}</h4>
-                <div className="grid grid-cols-6 gap-6 form_group">
-                  <div className="col-span-2">
-                    <label className="text-base font-semibold">{t("pro_add_city")}</label>
-                    <CustomInput
-                      className={" w-full h-auto "}
-                      type={'text'}
-                    />
-                  </div>
-                  <div className="col-span-2">
-                    <label className="text-base font-semibold">{t("pro_add_str")}</label>
-                    <CustomInput
-                      className={" w-full h-auto "}
-                      type={'text'}
-                    />
-                  </div>
-                </div>
-                  <div className="grid grid-cols-6 gap-6 form_group mt-6">
-                    <div className="col-span-2">
-                      <label className="text-base font-semibold">{t("pro_add_building_number")}</label>
-                      <CustomInput
-                        className={" w-full h-auto "}
-                        type={'text'}
-                      />
-                    </div>
-                    <div className="col-span-2">
-                      <label className="text-base font-semibold">{t("pro_add_apartment_number")}</label>
-                      <CustomInput
-                        className={" w-full h-auto "}
-                        type={'text'}
-                      />
-                    </div>
-                </div> 
-                <div className="step_btn_group flex justify-end mt-4 pt-5 pb-3">
-                  <CustomButton children={t("pro_next_step")}  onClick={() => setActiveTab(2)}  className={"border-1 border-emerald-500 px-5 bg-emerald-500 shadow-lg text-white  py-2 rounded-full hover:bg-[#55CD85] hover:border-[#55CD85] hover:text-white"}/>
-                </div>
-            </form>
+      <Form className="px-4">
+        <h4 className="screen-1 py-3 mt-3 mb-1">
+          {t('pro_add_sub_title')}
+        </h4>
+
+        <Row className="form_group mb-3">
+          <Col md={4}>
+            <Form.Label className="text-base font-semibold">
+              {t('pro_add_city')}
+            </Form.Label>
+            <CustomInput
+              className="w-100 h-auto rounded"
+              type="text"
+            />
+          </Col>
+          <Col md={4}>
+            <Form.Label className="text-base font-semibold">
+              {t('pro_add_str')}
+            </Form.Label>
+            <CustomInput
+              className="w-100 h-auto rounded"
+              type="text"
+            />
+          </Col>
+        </Row>
+        <Row className="form_group mb-3">
+          <Col md={4}>
+            <Form.Label className="text-base font-semibold">
+              {t('pro_add_building_number')}
+            </Form.Label>
+            <CustomInput
+              className="w-100 h-auto rounded"
+              type="text"
+            />
+          </Col>
+          <Col md={4}>
+            <Form.Label className="text-base font-semibold">
+              {t('pro_add_apartment_number')}
+            </Form.Label>
+            <CustomInput
+              className="w-100 h-auto rounded"
+              type="text"
+            />
+          </Col>
+        </Row>
+        <div className="step_btn_group d-flex justify-content-end mt-4 pt-5 pb-3">
+        <Button
+          onClick={() => setActiveTab(2)}
+          className="px-5 py-2 rounded-pill shadow-lg text-white"
+          style={{
+            backgroundColor: '#00A481',
+            borderColor: '#00A481',
+          }}
+          onMouseOver={(e) => {
+            e.target.style.backgroundColor = '#55CD85';
+            e.target.style.borderColor = '#55CD85';
+          }}
+          onMouseOut={(e) => {
+            e.target.style.backgroundColor = '#00A481';
+            e.target.style.borderColor = '#00A481';
+          }}
+        >
+          {t('pro_add_next_btn')}
+        </Button>
+        </div>
+      </Form>
     </>
   )
 }

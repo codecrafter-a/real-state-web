@@ -5,7 +5,7 @@ import add_file from "../../../assets/images/add_file.svg";
 import add_img from "../../../assets/images/add_img.svg";
 import CustomButton from "../../../Componant/Common/Button/Button";
 import deleteIcon from "../../../assets/images/delete.svg";
-
+import {Form, Row, Col, Button } from 'react-bootstrap';
 
 const Attechment = ({ setActiveTab }) => {
   const { t } = useTranslation();
@@ -43,94 +43,131 @@ const Attechment = ({ setActiveTab }) => {
 
   return (
     <>
-      <form className="px-9">
-        <h4 className="text-2xl font-semibold text-[#00A481] py-1 mt-3 mb-1 text-start">
-          {t("pro_add_attch")}
-        </h4>
-        <p className="text-base font-normal">{t("pro_add_attch_doc_note")}</p>
-
-        <div className="row">
-          {fileInputs.map(({ key, label }) => (
-            <div key={key} className="col-md-4 mydropzone">
-              <div className="dropzone needsclick demo-upload">
-                <div className="border-[1px] border-dashed border-[#00A481] rounded-md p-2 px-4">
-                  <label className="flex items-center font-semibold text-[#00A481] cursor-pointer relative">
-                    <input
-                      type="file"
-                      className="border-0 bg-transparent opacity-0 absolute w-full h-full cursor-pointer"
-                      onChange={(e) => handleFileChange(e, key)}
-                    />
-                    <div className=" flex justify-start ">
-                      <img src={add_file} alt="Upload Icon" className="cursor-pointer" />
-                      <span className="ml-2 pt-1">{label}</span>
-                    </div>  
-                  </label>           
-                </div>
-              </div>
-
-              {files[key] && (
-                <div className="mt-4 flex items-center border-[1px] border-dashed border-[#00A481] rounded-md p-2">
-                  <button
-                    className="text-red-500 mr-2"
-                    onClick={() => handleRemoveFile(key)}
-                    type="button"
-                  >
-                    <img src={deleteIcon} alt="Delete" className="cursor-pointer" />
-                  </button>
-                  <span className="flex-grow">{files[key]?.name}</span>
-                  {previews[key] && (
-                    <img src={previews[key]} alt="Preview" className="w-10 h-10 rounded-lg object-cover" />
-                  )}
-                </div>
-              )}
+    <Form className="px-4">
+      <h4 className="screen-1 fw-semibold py-1 mt-3 mb-1 text-start">
+        {t('pro_add_attch')}
+      </h4>
+      <p className="fs-6 fw-normal">{t('pro_add_attch_doc_note')}</p>
+      <Row>
+        {fileInputs.map(({ key, label }) => (
+          <Col key={key} md={4} className=" py-2">
+            <div className="border border-success border-dashed rounded p-3">
+              <Form.Label className="d-flex align-items-center fw-semibold text-success cursor-pointer position-relative">
+                <Form.Control
+                  type="file"
+                  className="position-absolute w-100 h-100 opacity-0"
+                  onChange={(e) => handleFileChange(e, key)}
+                />
+                <img
+                  src={add_file}
+                  alt="Upload Icon"
+                  className="me-2 cursor-pointer"
+                />
+                <span>{label}</span>
+              </Form.Label>
             </div>
-          ))}
-        </div>
 
-        <div className="row my-4">
-          <div className="col-md-12 mydropzone">
-            <div className="border-[1px] border-dashed border-[#00A481] rounded-md p-2 px-4">
-              <div className="flex justify-center text-center items-center">
-                <div className="img-circle py-3">
-                  <div className="relative cursor-pointer">
-                    <input
-                      type="file"
-                      className="border-0 bg-transparent opacity-0 absolute w-full h-full cursor-pointer"
-                    />
-                    <img src={add_img} alt="Upload Icon" className="cursor-pointer ml-36" />
-                  </div>
-                  <p className="text-emerald-500">
-                    {t("pro_add_attch_doc_des_1")} <br />
-                    <span>{t("pro_add_attch_doc_des_2")}</span>
-                  </p>
-                  <CustomButton
-                    children={t("pro_add_attch_img_btn")}
-                    className={
-                      "border-1 border-emerald-500 px-5 shadow-lg text-emerald-500 py-2 rounded-full hover:bg-[#55CD85] hover:border-[#55CD85] hover:text-white"
-                    }
+            {files[key] && (
+              <div className="mt-3 d-flex align-items-center border border-success border-dashed rounded p-2">
+                <Button
+                  variant="link"
+                  className="text-danger me-2 p-0"
+                  onClick={() => handleRemoveFile(key)}
+                >
+                  <img src={deleteIcon} alt="Delete" />
+                </Button>
+                <span className="flex-grow-1">{files[key]?.name}</span>
+                {previews[key] && (
+                  <img
+                    src={previews[key]}
+                    alt="Preview"
+                    className="rounded-circle object-fit-cover"
+                    style={{ width: '40px', height: '40px' }}
+                  />
+                )}
+              </div>
+            )}
+          </Col>
+        ))}
+      </Row>
+
+      {/* Image Upload Section */}
+      <Row className="my-4">
+        <Col md={12}>
+          <div className="border border-success border-dashed rounded p-3">
+            <div className="d-flex justify-content-center text-center">
+              <div>
+                <div className="position-relative">
+                  <Form.Control
+                    type="file"
+                    className="position-absolute w-100 h-100 opacity-0"
+                  />
+                  <img
+                    src={add_img}
+                    alt="Upload Icon"
+                    className="cursor-pointer"
+                    style={{ width: '50px' }}
                   />
                 </div>
+                <p className="text-success mt-2">
+                  {t('pro_add_attch_doc_des_1')}
+                  <br />
+                  <span>{t('pro_add_attch_doc_des_2')}</span>
+                </p>
+                <CustomButton
+                  className="btn btn-outline-success px-4 py-2 rounded-pill shadow-sm"
+                >
+                  {t('pro_add_attch_img_btn')}
+                </CustomButton>
               </div>
             </div>
           </div>
-        </div>
-      </form>
+        </Col>
+      </Row>
 
-      <div className="flex justify-between text-end mt-4 pt-5 pb-3">
-        <CustomButton
-          children={t("Pro_add_pev_btn")}
-          className={
-            "border-1 border-emerald-500 px-5 shadow-lg text-emerald-500 py-2 rounded-full hover:bg-[#55CD85] hover:border-[#55CD85] hover:text-white"
-          }
+      {/* Buttons */}
+      <div className="d-flex justify-content-between mt-4 pb-3">
+        <Button
           onClick={() => setActiveTab(3)}
-        />
-        <CustomButton
-          children={t("pro_add_next_btn")}
-          className={
-            "border-1 border-emerald-500 px-5 bg-emerald-500 shadow-lg text-white py-2 rounded-full hover:bg-[#55CD85] hover:border-[#55CD85] hover:text-white"
-          }
-        />
+          className="px-5 py-2 rounded-pill shadow-lg"
+          style={{
+            backgroundColor: '#ffffff',
+            color: '#00A481',
+            border: '1px solid #00A481',
+          }}
+          onMouseOver={(e) => {
+            e.target.style.backgroundColor = '#55CD85';
+            e.target.style.color = '#ffffff';
+            e.target.style.borderColor = '#55CD85';
+          }}
+          onMouseOut={(e) => {
+            e.target.style.backgroundColor = '#ffffff';
+            e.target.style.color = '#00A481';
+            e.target.style.borderColor = '#00A481';
+          }}
+        >
+          {t('Pro_add_pev_btn')}
+        </Button>
+
+        <Button
+          className="px-5 py-2 rounded-pill shadow-lg text-white"
+          style={{
+            backgroundColor: '#00A481',
+            borderColor: '#00A481',
+          }}
+          onMouseOver={(e) => {
+            e.target.style.backgroundColor = '#55CD85';
+            e.target.style.borderColor = '#55CD85';
+          }}
+          onMouseOut={(e) => {
+            e.target.style.backgroundColor = '#00A481';
+            e.target.style.borderColor = '#00A481';
+          }}
+        >
+          {t('pro_add_next_btn')}
+        </Button>
       </div>
+    </Form>
     </>
   );
 };
