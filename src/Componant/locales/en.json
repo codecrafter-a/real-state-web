@@ -61,6 +61,13 @@
   "add_cust_broker_sign_in":"Send Agreement for Broker Collaboration",
   "option1":"Option 1",
   "option2":"Option 1",
+  "mobile_home": "Home Page",
+  "mobile_interested": "Interested Signing",
+  "mobile_owner": "Property Owner Signing",
+  "mobile_collaboration": "Broker Collaboration",
+  "mobile_agreements": "All Agreements",
+  "user_email": "email",
+  "user_password": "password",
 
   "cust_name_1":"Shiri Nakbeli",
   "type_cust_1":"Interested in Renting",

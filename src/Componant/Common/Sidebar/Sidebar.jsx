@@ -47,17 +47,26 @@ const Sidebar = ({isToggle}) => {
   const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem("isAuthenticated") === "true");
   useEffect(() => {
     const handleStorageChange = () => {
-      const authStatus = localStorage.getItem("isAuthenticated") === "true";
-      setIsAuthenticated(authStatus);
-      if (authStatus) {
-        navigate(`/${i18n.language}/home`);
-      }
+      const authToken = localStorage.getItem("authtoken");
+      setIsAuthenticated(!!authToken);
+      if (!authToken) {
+        navigate(`/${i18n.language}/signin`);
+      } 
     };
+    handleStorageChange(); 
     window.addEventListener("storage", handleStorageChange);
     return () => {
       window.removeEventListener("storage", handleStorageChange);
     };
-  }, [navigate, i18n.language]);
+  }, [i18n.language, navigate]);
+
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("authtoken");
+    navigate(`/${i18n.language}/signin`);
+  }
+
 
 
   return (
@@ -78,12 +87,21 @@ const Sidebar = ({isToggle}) => {
               { icon: lock, text: t("sitem11"), to: `/${i18n.language}/personal-area` },
               { icon: doorOpen, text: t("sitem12") }].map((item, index) => (
                 <li key={index}>
-                  <Link to={item.to}>
-                    <span className="menu_icon">
-                      <img src={item.icon} alt="icon" />
-                    </span>
-                    {item.text}
+                  {item.to ? (
+                    <Link to={item.to}>
+                      <span className="menu_icon">
+                        <img src={item.icon} alt="icon" />
+                      </span>
+                      {item.text}
                     </Link>
+                  ) : item.text === t("sitem12") ? ( 
+                    <Link onClick={handleLogout}>
+                      <span className="menu_icon">
+                        <img src={item.icon} alt="icon" />
+                      </span>
+                      {item.text}
+                    </Link>
+                  ) : null}
                 </li>
               ))}
               <li>
@@ -142,26 +160,26 @@ const Sidebar = ({isToggle}) => {
       </div>      
     </section>
     <div className='d-block d-md-none'>
-      <Row className="d-flex justify-content-between text-center py-2 bg-light fixed-bottom">
-        <Col xs={2}>
-          <img src={iconHome} alt="home icon" className="text-teal" />
-          <div className="fs-6 fw-semibold">עמוד הבית</div>
+      <Row className="d-flex justify-content-between px-4 text-center py-2 bg-light fixed-bottom">
+        <Col xs={2} className="d-flex flex-column align-items-center">
+          <img src={iconHome} alt="home icon" className="mb-1" />
+          <div className="fs-6 fw-semibold">{t('mobile_home')}</div>
         </Col>
-        <Col xs={2}>
-          <img src={userkey} alt="home icon" className="text-teal" />
-          <div className="fs-6 fw-semibold">החתמת מתעניין</div>
+        <Col xs={2} className="d-flex flex-column align-items-center">
+          <img src={userkey} alt="home icon" className="mb-1" />
+          <div className="fs-6 fw-semibold">{t('mobile_interested')}</div>
         </Col>
-        <Col xs={2}>
-          <img src={userhouse} alt="action icon "/>
-          <div className="fs-6 fw-semibold">החתמת בעל נכס</div>
+        <Col xs={2} className="d-flex flex-column align-items-center">
+          <img src={userhouse} alt="action icon" className="mb-1" />
+          <div className="fs-6 fw-semibold">{t('mobile_owner')}</div>
         </Col>
-        <Col xs={2}>
-          <img src={usercontact} alt="action icon "/>
-          <div className="fs-6 fw-semibold">שית"פ בין מתווכים</div>
+        <Col xs={2} className="d-flex flex-column align-items-center">
+          <img src={usercontact} alt="action icon" className="mb-1" />
+          <div className="fs-6 fw-semibold">{t('mobile_collaboration')}</div>
         </Col>
-        <Col xs={2}>
-          <img src={document} alt="action icon "/>
-          <div className="fs-6 fw-semibold">כל ההסכמים</div>
+        <Col xs={2} className="d-flex flex-column align-items-center">
+          <img src={document} alt="action icon" className="mb-1" />
+          <div className="fs-6 fw-semibold">{t('mobile_agreements')}</div>
         </Col>
       </Row>
     </div>

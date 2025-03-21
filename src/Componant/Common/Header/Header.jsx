@@ -6,11 +6,14 @@ import '../Header/header.css'
 import { FiAlignJustify } from "react-icons/fi";
 import OffCanvas from '../OffCanvas/OffCanvas';
 import Sidebar from '../Sidebar/Sidebar';
+import { useNavigate } from 'react-router-dom';
+import i18n from "i18next";
 
 const Header = () => {
   const { t } = useTranslation();
   const [toggle, setToggle] = useState(false);
   const [isOpen, setIsOpen ] = useState(window.innerWidth < 768);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleResize = () => {
@@ -21,6 +24,11 @@ const Header = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const handleLogout = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("authtoken");
+    navigate(`/${i18n.language}/signin`);
+  }
   return (
     <header className="header_main z-[1000] ">
       <section className="haeder_top">
@@ -46,7 +54,7 @@ const Header = () => {
                       <ul className="dropdown-menu" aria-labelledby="dd_user">
                         <li><a className="dropdown-item" href="/">Profile</a></li>
                         <li><a className="dropdown-item" href="/">Settings</a></li>
-                        <li><a className="dropdown-item" href="/">Log Out</a></li>
+                        <li><button  className="dropdown-item" onClick={handleLogout}>Log Out</button></li>
                       </ul>
                     </li>
                     <li className="hdr_btn">
@@ -68,7 +76,7 @@ const Header = () => {
                       <ul className="dropdown-menu" aria-labelledby="dd_user">
                         <li><a className="dropdown-item" href="/">Profile</a></li>
                         <li><a className="dropdown-item" href="/">Settings</a></li>
-                        <li><a className="dropdown-item" href="/">Log Out</a></li>
+                        <li ><button  className="dropdown-item" onClick={handleLogout}>Log Out</button></li>
                       </ul>
                     </li>
                     <li className="hdr_btn">

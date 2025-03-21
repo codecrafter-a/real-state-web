@@ -61,6 +61,13 @@
   "add_cust_broker_sign_in":"לשליחת הסכם שת”פ בין מתווכים",
   "option1":"1 אפשרות",
   "option2":"2 אפשרות",
+  "mobile_home": "עמוד הבית",
+  "mobile_interested": "החתמת מתעניין",
+  "mobile_owner": "החתמת בעל נכס",
+  "mobile_collaboration": "שית\"פ בין מתווכים",
+  "mobile_agreements": "כל ההסכמים",
+  "user_email": "אֶלֶקטרוֹנִי",
+  "user_password": "סִיסמָה",
 
 
   "cust_name_1":"שירי נקבלי",
