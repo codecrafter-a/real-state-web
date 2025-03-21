@@ -27,7 +27,6 @@ img{ max-width: 100%; width: auto; height: auto;};
 	align-items: center;
 	justify-content: center;
 	border-radius: 100px;
-	margin-right: 36px;
 	color: #fff;
 }
 .hdr_btn:hover{background: linear-gradient(90deg, #55CD85 0%, #00A6A4 100%);}

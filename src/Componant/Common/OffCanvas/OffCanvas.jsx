@@ -17,8 +17,8 @@ const OffCanvas = ({buttonVariant = 'primary' , buttonText, placement, title, bo
         {buttonText}
       </Button>
 
-      <Offcanvas show={show} onHide={handleClose} style={{width: '345px'}} placement={placement} className='bg-white '>
-        <Offcanvas.Header closeButton >
+      <Offcanvas show={show} onHide={handleClose} style={{width: '345px'}} placement={placement} className='bg-white'>
+        <Offcanvas.Header closeButton className='justify-content-between'>
         {titleContent ? titleContent : <Offcanvas.Title>{title}</Offcanvas.Title>}
         </Offcanvas.Header>
         <Offcanvas.Body className=''>
