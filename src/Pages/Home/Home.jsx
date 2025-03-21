@@ -15,7 +15,7 @@ const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
   const fontSize = i18n.language === "he" ? "15px" : "14px";
-  const maxHeight = window.innerWidth > 768 ? "594px" : "70vh";
+  const maxHeight = window.innerWidth > 768 ? "594px" : "72vh";
 
   const dataList = [
     { amount: "₪10,000", text: "home_accro_in1", icon: indication },
