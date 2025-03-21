@@ -17,6 +17,7 @@ const Data = () => {
 
   const { t } = useTranslation();
   const largeFont = i18n.language === "he" ? "16px" : "13px";
+  const fontSize = i18n.language === "he" ? "17px" : "10px";
  const [activeTab, setActiveTab] = useState("all");
 
   const data = [
@@ -65,17 +66,17 @@ const Data = () => {
             <div className="custom-scrollbar overflow-y-auto overflow-x-hidden px-3 mt-4" style={{ maxHeight: "400px" }}>
             {activeTab === "all" && (
               <>
-                 <Row className="py-3 align-items-center d-flex px-md-0 ">
-              <Col className=' col-12 col-md-6 px-0'>
-                <div className='d-flex justify-content-start'>
-                  <button className="text-center hr_btn">{t("data_btn_1")}</button>
-                  <button className=" hr_btn">{t("data_btn_2")}</button>
-                  <button className='le_btn'>{t("data_btn_3")}</button>
+            <Row className="py-3 align-items-center d-flex ">
+              <Col className=' col-12 col-md-6 '>
+                <div className="d-flex  justify-content-center fs-6 align-items-center gap-2" >
+                  <button className="text-center hr_btn ">{t("data_btn_1")}</button>
+                  <button className="hr_btn ">{t("data_btn_2")}</button>
+                  <button className="le_btn ">{t("data_btn_3")}</button>
                 </div>
               </Col>
               <Col className=' col-12 col-md-6 px-0'>
                 <div className='d-flex justify-content-start align-items-center'>
-                  <div className=''><button className="text-center hr_btn">{t("data_btn_4")}</button></div>
+                  <div className='d-none d-md-block '><button className="text-center hr_btn">{t("data_btn_4")}</button></div>
                   <div className="text-end mb-4" dir="ltr"> 
                     <Form.Label htmlFor="basic-url">{t("data_in_title")} </Form.Label>
                     <InputGroup className="border border-gray-200  rounded">
@@ -101,9 +102,9 @@ const Data = () => {
                 </div>
               </Col>
             </Row>
-            <Row className='py-3 align-items-center justify-content-center d-flex px-md-0'>
-              <Col className=' col-12 col-md-6 col-lg-8'>
-                <Row className=' bg-sec-100  rounded-2 shadow py-3 px-2 me-3'>
+            <Row className='py-3 align-items-center mx-3 d-flex px-md-0'>
+              <Col className=' col-12 col-md-6 col-lg-7'>
+                <Row className=' bg-sec-100  rounded-2 shadow py-3 px-2 me-1'>
                   <p className='screen-2 text-end'>{t("data_hero_title1")}</p>
                   <Col className='col-12 col-md-3 col-lg-4'>
                     <div className='bg-white boredr shadow-sm rounded-3 py-2 px-3 my-3 cursor-pointer'>
@@ -146,8 +147,8 @@ const Data = () => {
                   </Col>
                 </Row>
               </Col>
-              <Col className='col-12 col-md-6 col-lg-4'>
-                <Row className=' bg-sec-100  rounded-2 shadow px-3 '>
+              <Col className='col-12 col-md-6 col-lg-5'>
+                <Row className=' bg-sec-100  rounded-2 shadow px-3 ms-1'>
                   <p className='screen-2 text-end my-3'>{t("data_hero_title_2")}</p>
                   <div className='d-flex align-items-center justify-content-end py-5'>
                     <div className='px-2'>
@@ -163,7 +164,7 @@ const Data = () => {
                 </Row>
               </Col>
             </Row>
-            <Row className='py-3 align-items-center justify-content-between d-flex px-md-0'>
+            <Row className='py-3 align-items-center mx-3 justify-content-between d-flex px-md-0'>
               <Col className='col-12 col-md-6 col-lg-5'>
                 <Row className=' bg-sec-100  rounded-2 shadow px-3 me-1'>
                   <p className='screen-2 text-end my-3'>{t("data_main_title1")}</p>
