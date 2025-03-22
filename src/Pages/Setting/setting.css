@@ -1,3 +1,58 @@
 
 .border-custom-gray {border-color: #D6D6D6 !important;}
 .custom-shadow {box-shadow: 0 4px 8px rgba(0, 255, 170, 0.945); }
+.contact-cards{
+    width: 94px;
+}
+[lang="en"] .setting-right-sec{
+    border-left: 1px solid #D6D6D6 !important;
+    padding-left: 32px;
+}
+[lang="he"] .setting-left-sec {
+    border-left: 1px solid #D6D6D6 !important;
+    padding-left: 32px;
+}
+
+[lang="en"] .setting-left-sec{
+    padding-right: 32px;
+}
+[lang="he"] .setting-right-sec {
+    border-left: 1px solid #D6D6D6 !important;
+    padding-right: 32px;
+}
+
+@media(max-width:767px){
+    [lang="en"] .setting-right-sec{
+        border-left: none !important;
+        padding:0 12px !important;
+    }
+    [lang="he"] .setting-left-sec {
+        border-left: none !important;
+        padding:0 12px !important;
+    }
+    
+    [lang="en"] .setting-left-sec{
+        padding-right: 12px;
+    }
+    [lang="he"] .setting-right-sec {
+        border-left: 1px solid #D6D6D6 !important;
+        padding-right: 12px;
+    }
+    .owner-section{
+        padding: 12px 0px 0px !important;
+    }
+    .subscription-sec-toggle{
+        padding-bottom: 40px !important;
+        border-bottom: 1px solid #D6D6D6 !important;
+
+    }
+}
+.form-check-input[type=radio]{
+    width: 20px !important;
+    height: 20px !important;
+    border: 1px solid #1C1B1F;
+    background-color: transparent !important;
+}
+.form-check  { 
+    display: flex !important;
+}
