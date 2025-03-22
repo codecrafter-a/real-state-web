@@ -29,7 +29,7 @@ const Customer = () => {
   useEffect(() => {
    const data = getClients();
     setClients(data);
-  }, [getClients]);
+  }, []);
 
   const [expandedRows, setExpandedRows] = useState([]);
   const [selectedRows, setSelectedRows] = useState({});

@@ -10,15 +10,17 @@ import userkey from '../../../assets/images/user-key.png';
 import usercontact from '../../../assets/images/user-contect.png';
 import userhouse from '../../../assets/images/user-house.png';
 import document from '../../../assets/images/menu_icon2.png';
+import { useTranslation } from 'react-i18next';
 
 const Layout = ({ children }) => {
+  const { t } = useTranslation();
 
   return (
     <div className="bg-white text-black text-base">
       <Header />
       <div className="d-flex w-100">
         <Sidebar />
-        <main className="main_content flex-grow-1 position-relative" >
+        <main className="main_content flex-grow-1 position-relative " >
           <Container fluid="sm" >
             <div className="position-absolute w-100 h-50 overflow-hidden top-0 start-0 z-0">
               <figure className="mb-0 h-100 w-100 position-relative">
@@ -42,26 +44,26 @@ const Layout = ({ children }) => {
         </main>
       </div>
       <div className='d-block d-lg-none'>
-        <Row className="d-flex justify-content-between text-center py-2 bg-light fixed-bottom">
-          <Col xs={2}>
+        <Row xs={10} className="d-flex justify-content-between text-center p-2 bg-white fixed-bottom gx-1 border-top border-secondary-subtle">
+          <Col xs={2} className='d-flex flex-column align-items-center justify-content-center'>
             <img src={iconHome} alt="home icon" className="text-teal" />
-            <div className="fs-6 fw-semibold">עמוד הבית</div>
+            <div className="fs-6 fw-semibold">{t("mobile_home")}</div>
           </Col>
-          <Col xs={2}>
+          <Col xs={2} className='d-flex flex-column align-items-center justify-content-center'>
             <img src={userkey} alt="home icon" className="text-teal" />
-            <div className="fs-6 fw-semibold">החתמת מתעניין</div>
+            <div className="fs-6 fw-semibold">{t("interested_signing")}</div>
           </Col>
-          <Col xs={2}>
+          <Col xs={2} className='d-flex flex-column align-items-center justify-content-center'>
             <img src={userhouse} alt="action icon " />
-            <div className="fs-6 fw-semibold">החתמת בעל נכס</div>
+            <div className="fs-6 fw-semibold">{t("owner_signing")}</div>
           </Col>
-          <Col xs={2}>
+          <Col xs={2} className='d-flex flex-column align-items-center justify-content-center'>
             <img src={usercontact} alt="action icon " />
-            <div className="fs-6 fw-semibold">שית"פ בין מתווכים</div>
+            <div className="fs-6 fw-semibold">{t("broker_collaboration")}</div>
           </Col>
-          <Col xs={2}>
+          <Col xs={2} className='d-flex flex-column align-items-center justify-content-center'>
             <img src={document} alt="action icon " />
-            <div className="fs-6 fw-semibold">כל ההסכמים</div>
+            <div className="fs-6 fw-semibold">{t("mobile_agreements")}</div>
           </Col>
         </Row>
       </div>

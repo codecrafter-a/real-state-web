@@ -265,6 +265,7 @@
     "home2_btn3_title": "Type",
     "home_accro_title": "data",
     "home_accro_l_btn": "All agreements",
+    "home_accro_btn": "all data",
     "home_accro_r_btn": "Recent agreements",
     "home_accro_te": "NIS",
     "home_accro_in1": "Commissions from rental deals",
@@ -562,6 +563,10 @@
   "buy_transactions": "Buy Transactions:",
   "rental_transactions": "Rental Transactions:",
   "total_agreements_by_status": "Total Agreements by Status",
-  "full_dashboard": "Go to Full Dashboard"
+  "full_dashboard": "Go to Full Dashboard",
+
+  "interested_signing": "Interested Signing",
+  "owner_signing": "Owner Signing",
+  "broker_collaboration": "Broker Collaboration"
   
   }

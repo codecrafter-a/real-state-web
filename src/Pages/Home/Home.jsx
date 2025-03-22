@@ -29,28 +29,28 @@ const Home = () => {
   return (
     <>
       <Col>
-        <p className="py-1 my-4 text-center screen-1 border-bottom">  {t("home_title")} </p>
-        <div className="custom-scrollbar overflow-y-auto overflow-x-hidden px-3" style={{ maxHeight: maxHeight}}>
+        <p className="py-1 my-4 text-center screen-1 border-bottom pb-3"> {t("home_title")} </p>
+        <div className={`custom-scrollbar overflow-y-auto overflow-x-hidden px-3 ${window.innerWidth > 567 ? 'scroll-height' : ''}`}>
           <Row className=" align-items-center justify-content-between d-flex overflow-hidden">
             <Col xs={12} md={6} className=" my-2">
-              <div className="rounded-1 p-4 bg-white shadow my-3 box1_color">
-                <div className="mb-4">
-                  <p className="screen-2 text-end">{t("home_block2_title")}</p>
+              <div className="rounded-1 p-4 shadow my-3 box1_color">
+                <div>
+                  <p className="screen-2 text-end mb-0">{t("home_block2_title")}</p>
                 </div>
                 <Row className="d-flex justify-content-center align-items-center">
-                  <Col xs={4} sm={4} md={4} className="px-1 mb-3">
+                  <Col xs={4} sm={4} md={4} className="px-1">
                     <div className="p-3 w-100 h-auto shadow-md-lg text-end">
                       <span className="screen-5" style={{ fontSize: fontSize }}>{t("home2_btn1_title")}</span>
                       <div className="screen-4">10/50</div>
                     </div>
                   </Col>
-                  <Col xs={4} sm={4} md={4} className="px-1 mb-3">
+                  <Col xs={4} sm={4} md={4} className="px-1">
                     <div className="p-3 w-100 h-auto shadow-md-lg text-end">
                       <span className="screen-5" style={{ fontSize: fontSize }}>{t("home2_btn2_title")}</span>
                       <div className="screen-4">17.07.2023</div>
                     </div>
                   </Col>
-                  <Col xs={4} sm={4} md={4} className="px-1 mb-3">
+                  <Col xs={4} sm={4} md={4} className="px-1">
                     <div className="p-3 w-100 h-auto shadow-md-lg text-end">
                       <span className="screen-5" style={{ fontSize: fontSize }}>{t("home2_btn3_title")}</span>
                       <div className="screen-4">STARTER</div>
@@ -58,15 +58,15 @@ const Home = () => {
                   </Col>
                 </Row>
               </div>
-            </Col>  
+            </Col>
             <Col xs={12} md={6} className="d-none d-md-block  my-3">
-              <div className="rounded-1 p-4 bg-white shadow my-3 box1_color">
-                <div className="pb-4">
+              <div className="rounded-1 p-4 shadow my-3 box1_color">
+                <div>
                   <p className="screen-2 text-end">{t("home_block1_title")}</p>
                 </div>
                 <Row className="d-flex justify-content-center">
-                  <Col xs={12} sm={12} md={4} className="px-1 py-2 py-md-0 px-sm-2 mb-3">
-                    <button className="custom_btn p-3 w-100 d-flex h-auto justify-content-between shadow-sm align-items-center bg-white" style={{ fontSize: fontSize }}>
+                  <Col xs={12} sm={12} md={4} className="px-1 py-2 py-md-0 px-sm-2">
+                    <button className="custom_btn p-3 w-100 d-flex h-auto gap-2 align-items-center bg-white" style={{ fontSize: fontSize }}>
                       <span className="text-start pe-2">
                         {t("home1_btn1_title")}
                       </span>
@@ -75,8 +75,8 @@ const Home = () => {
                       </div>
                     </button>
                   </Col>
-                  <Col xs={12} sm={12} md={4} className="px-1 py-2 py-md-0 px-sm-2 mb-3">
-                    <button className="custom_btn p-3 w-100 d-flex h-auto justify-content-between shadow-sm align-items-center bg-white" style={{ fontSize: fontSize }}>
+                  <Col xs={12} sm={12} md={4} className="px-1 py-2 py-md-0 px-sm-2">
+                    <button className="custom_btn p-3 w-100 d-flex h-auto gap-2 align-items-center bg-white" style={{ fontSize: fontSize }}>
                       <span className="text-start pe-2">
                         {t("home1_btn2_title")}
                       </span>
@@ -85,8 +85,8 @@ const Home = () => {
                       </div>
                     </button>
                   </Col>
-                  <Col xs={12} sm={12} md={4} className="px-1 py-2 py-md-0 px-sm-2 mb-3">
-                    <button className="custom_btn p-3 w-100 d-flex h-auto justify-content-between shadow-sm align-items-center bg-white" style={{ fontSize: fontSize }}>
+                  <Col xs={12} sm={12} md={4} className="px-1 py-2 py-md-0 px-sm-2">
+                    <button className="custom_btn p-3 w-100 d-flex h-auto gap-2 align-items-center bg-white" style={{ fontSize: fontSize }}>
                       <span className="text-start pe-2">
                         {t("home1_btn3_title")}
                       </span>
@@ -99,15 +99,16 @@ const Home = () => {
               </div>
             </Col>
           </Row>
-          <Row className="px-2 my-3">
-            <Col className="col-12 box1_color">
+          <Row className="px-2 mt-3">
+            <Col className="col-12 box1_color mb-4">
               <div className="d-flex justify-content-between py-3">
                 <span className="text-start pe-2 screen-2 pt-1">{t("home_accro_title")}</span>
                 <button
-                  className=" hr_btn"
+                  type="button"
+                  className="hr_btn rounded-pill fw-semibold px-sm-5 px-3 py-2"
                   onClick={() => setIsOpen(!isOpen)}
                 >
-                  {t("home_accro_l_btn")}
+                  {t("home_accro_btn")}
                 </button>
               </div>
 
@@ -130,7 +131,7 @@ const Home = () => {
                         />
                       ))}
                     </Row>
-                    <div className="px-md-3">
+                    <div className="px-md-3 pb-3">
                       <p className="screen-2 pb-3 text-end">{t("home_accro_gra_title")}</p>
                       <Homechart />
                     </div>
@@ -141,17 +142,17 @@ const Home = () => {
           </Row>
           <Row className="px-2">
             <Col className="col-12 box1_color">
-              <div className="d-flex justify-content-between py-3">
-                <span className="text-start pe-2 screen-2 pt-1">{t("home_accro_r_btn")}</span>
+              <div className="d-flex justify-content-between py-3 align-items-center">
+                <span className="text-start screen-2">{t("home_accro_r_btn")}</span>
                 <button
-                  className=" hr_btn"
+                  className=" hr_btn rounded-pill fw-semibold px-sm-5 px-3 py-2"
                 >
                   {t("home_accro_l_btn")}
                 </button>
               </div>
             </Col>
             <Col className="col-12 col-md-12 box1_color">
-              <div className="my-3 px-1 "><HomeTable /></div>
+              <div className="my-3"><HomeTable /></div>
             </Col>
           </Row>
         </div>

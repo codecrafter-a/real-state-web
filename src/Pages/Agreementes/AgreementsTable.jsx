@@ -13,7 +13,7 @@ const AgreementsTable = ({ handleOpen }) => {
     useEffect(() => {
         const data = getAgreementData();
         setTableData(data);
-    }, [getAgreementData]);
+    }, []);
 
     
     return (
