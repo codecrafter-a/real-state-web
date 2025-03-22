@@ -148,24 +148,26 @@ const HomeTable = () => {
     const { t } = useTranslation();
     return (
         <div className="mt-4">
-            <table className="table text-center d-none d-md-table">
-                <thead className=" border rounded-2">
-                    <tr>
-                        <th style={{ color: "#686868", fontWeight: "600" }}>{t("home_tab_h7")}</th>
-                        <th style={{ color: "#686868", fontWeight: "600" }}>{t("home_tab_h6")}</th>
-                        <th style={{ color: "#686868", fontWeight: "600" }}>{t("home_tab_h5")}</th>
-                        <th style={{ color: "#686868", fontWeight: "600" }}>{t("home_tab_h4")}</th>
-                        <th style={{ color: "#686868", fontWeight: "600" }}>{t("home_tab_h3")}</th>
-                        <th style={{ color: "#686868", fontWeight: "600" }}>{t("home_tab_h2")}</th>
-                        <th style={{ color: "#686868", fontWeight: "600" }}>{t("home_tab_h1")}</th>
-                    </tr>
-                </thead>
-                <tbody className="border">
-                    {tableData.map((row, index) => (
-                        <TableRow key={index} data={row} />
-                    ))}
-                </tbody>
-            </table>
+            <div className="table-responsive">
+                <table className="table text-center d-none d-md-table">
+                    <thead>
+                        <tr>
+                            <th className="table-head px-4 py-3">{t("home_tab_h7")}</th>
+                            <th className="table-head px-4 py-3">{t("home_tab_h6")}</th>
+                            <th className="table-head px-4 py-3">{t("home_tab_h5")}</th>
+                            <th className="table-head px-4 py-3">{t("home_tab_h4")}</th>
+                            <th className="table-head px-4 py-3">{t("home_tab_h3")}</th>
+                            <th className="table-head px-4 py-3">{t("home_tab_h2")}</th>
+                            <th className="table-head px-4 py-3">{t("home_tab_h1")}</th>
+                        </tr>
+                    </thead>
+                    <tbody className="border">
+                        {tableData.map((row, index) => (
+                            <TableRow key={index} data={row} />
+                        ))}
+                    </tbody>
+                </table>
+            </div>
             <div className="d-md-none">
                 {tableData.map((row, index) => (
                     <div key={index} className="card mb-2 shadow-sm" style={{borderLeft: 
@@ -187,7 +189,7 @@ const HomeTable = () => {
                     </div>
                 ))}
                 <div className="p-3 bg-white rounded shadow-sm my-2 d-flex align-items-center justify-content-between">
-                    <button className=" hr_btn"> For all clients</button>
+                    <button className="hr_btn rounded-pill fw-semibold px-sm-5 px-3 py-2"> For all clients</button>
                     <div className="d-flex align-items-center flex-column">
                         <div className=" d-flex align-items-center">
                             <span className="fs-3 fw-bold text-teal">325</span>
@@ -197,7 +199,7 @@ const HomeTable = () => {
                     </div>
                 </div>
                 <div className="p-3 bg-white  rounded shadow-sm my-2 d-flex align-items-center justify-content-between">
-                    <button className=" hr_btn"> For all clients</button>
+                    <button className="hr_btn rounded-pill fw-semibold px-sm-5 px-3 py-2"> For all clients</button>
                     <div className="d-flex align-items-center flex-column">
                         <div className=" d-flex align-items-center">
                             <span className="fs-3 fw-bold text-teal" >123</span>

@@ -62,7 +62,7 @@ const Header = () => {
                     </li>
                   </ul>
                 </div>}
-                bodyContent={<div className="custom-scrollbar overflow-y-auto overflow-x-hidden px-3" style={{ maxHeight: "594px" }}>
+                bodyContent={<div className="custom-scrollbar overflow-y-auto overflow-x-hidden">
                   <Sidebar isToggle={toggle} />
                 </div>}
              />
