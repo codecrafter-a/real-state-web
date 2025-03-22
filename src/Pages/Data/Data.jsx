@@ -17,7 +17,6 @@ const Data = () => {
 
   const { t } = useTranslation();
   const largeFont = i18n.language === "he" ? "16px" : "13px";
-  const fontSize = i18n.language === "he" ? "17px" : "10px";
  const [activeTab, setActiveTab] = useState("all");
 
   const data = [
