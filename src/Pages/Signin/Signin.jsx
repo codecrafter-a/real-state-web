@@ -57,21 +57,22 @@ const Signin = () => {
      { (
   <>
       <Col className="col-12">
-          <div className='custom-scrollbar overflow-y-auto overflow-x-hidden px-3'  style={{ maxHeight: "594px" }}>
+          <div className='custom-scrollbar overflow-y-auto overflow-x-hidden px-3 scroll-height'>
             <p className="py-4 my-4 text-center screen-1 fw-bold">
                {t("sign_in_title")}
             </p>
-            <h5 className="screen-2 text-center">
+            <h5 className="text-center">
               {t("sign_in_h5_0")}
-              <br /> {t("sign_in_h5_1")}
-              <br /> {t("sign_in_h5_2")}
-              <br /> {t("sign_in_h5_3")}
+              
             </h5>
-            <p className="screen-2 text-center py-3 fw-bold">{t("sign_in_subtitle")}</p>
-            <div className="d-flex justify-content-center">
+            <h5 className='text-center mx-auto sign-para'>{t("sign_in_h5_1")}
+              {t("sign_in_h5_2")}
+              {t("sign_in_h5_3")}</h5>
+            <h5 className="text-center py-3 fw-bold">{t("sign_in_subtitle")}</h5>
+            <div className="d-flex justify-content-center pb-md-0 pb-5">
               <div className="d-flex flex-column gap-3 w-100" style={{ maxWidth: "400px" }}>
                <img src={g10} alt="" className="w-100 d-block d-sm-none" />
-                <p className="screen-5 text-start text-md-center">{t("sign_in_in_label")}</p>
+                <p className="table-head text-md-center mb-0">{t("sign_in_in_label")}</p>
                 <Form.Group controlId="formEmail">
                   <Form.Control
                     type="email"
@@ -98,7 +99,7 @@ const Signin = () => {
 
                 {error && <p className="text-danger">{error}</p>}
 
-                <Button className="mx-auto hdr_btn w-50 rounded-pill text-white" onClick={handleLogin}>
+                <Button className="mx-auto hdr_btn w-50 rounded-pill text-white border-0" onClick={handleLogin}>
                   <span className="text-decoration-none text-white">{t("sign_in_btn")}</span>
                 </Button>
                 <img src={g10} alt="" className="w-100 d-none d-sm-block" />

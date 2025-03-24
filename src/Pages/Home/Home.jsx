@@ -15,7 +15,6 @@ const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
   const fontSize = i18n.language === "he" ? "15px" : "14px";
-  const maxHeight = window.innerWidth > 768 ? "700px" : "72vh";
 
   const dataList = [
     { amount: "₪10,000", text: "home_accro_in1", icon: indication },
@@ -30,68 +29,70 @@ const Home = () => {
     <>
       <Col>
         <p className="py-1 my-4 text-center screen-1 border-bottom pb-3"> {t("home_title")} </p>
-        <div className={`custom-scrollbar overflow-y-auto overflow-x-hidden px-3 ${window.innerWidth > 567 ? 'scroll-height' : ''}`}>
+        <div className={`custom-scrollbar overflow-y-auto overflow-x-hidden px-3 scroll-height`}>
           <Row className=" align-items-center justify-content-between d-flex overflow-hidden">
-            <Col xs={12} md={6} className=" my-2">
-              <div className="rounded-1 p-4 shadow my-3 box1_color">
+            <Col xs={12} xl={6} className=" my-2">
+              <div className="rounded-1 p-md-4 p-3 shadow my-3 box1_color">
                 <div>
-                  <p className="screen-2 text-end mb-0">{t("home_block2_title")}</p>
+                  <p className="screen-2 mb-0">{t("home_block2_title")}</p>
                 </div>
-                <Row className="d-flex justify-content-center align-items-center">
-                  <Col xs={4} sm={4} md={4} className="px-1">
-                    <div className="p-3 w-100 h-auto shadow-md-lg text-end">
-                      <span className="screen-5" style={{ fontSize: fontSize }}>{t("home2_btn1_title")}</span>
-                      <div className="screen-4">10/50</div>
+                <div className="d-flex align-items-center gap-md-5 gap-3">
+                  <div>
+                    <div className="py-3 w-100 h-auto shadow-md-lg">
+                      <span className="table-head home-card-title">{t("home2_btn3_title")}</span>
+                      <div className="fw-semibold home-card-subtitle">STARTER</div>
                     </div>
-                  </Col>
-                  <Col xs={4} sm={4} md={4} className="px-1">
-                    <div className="p-3 w-100 h-auto shadow-md-lg text-end">
-                      <span className="screen-5" style={{ fontSize: fontSize }}>{t("home2_btn2_title")}</span>
-                      <div className="screen-4">17.07.2023</div>
+                  </div>
+
+                  <div>
+                    <div className="py-3 w-100 h-auto shadow-md-lg">
+                      <span className="table-head home-card-title">{t("home2_btn2_title")}</span>
+                      <div className="fw-semibold home-card-subtitle">17.07.2023</div>
                     </div>
-                  </Col>
-                  <Col xs={4} sm={4} md={4} className="px-1">
-                    <div className="p-3 w-100 h-auto shadow-md-lg text-end">
-                      <span className="screen-5" style={{ fontSize: fontSize }}>{t("home2_btn3_title")}</span>
-                      <div className="screen-4">STARTER</div>
+                  </div>
+                  <div>
+                    <div className="py-3 w-100 h-auto shadow-md-lg">
+                      <span className="table-head home-card-title">{t("home2_btn1_title")}</span>
+                      <div className="fw-semibold home-card-subtitle">10/50</div>
                     </div>
-                  </Col>
-                </Row>
+                  </div>
+
+                </div>
               </div>
             </Col>
-            <Col xs={12} md={6} className="d-none d-md-block  my-3">
+            <Col xs={12} xl={6} className="d-none d-md-block  my-3">
               <div className="rounded-1 p-4 shadow my-3 box1_color">
                 <div>
-                  <p className="screen-2 text-end">{t("home_block1_title")}</p>
+                  <p className="screen-2">{t("home_block1_title")}</p>
                 </div>
                 <Row className="d-flex justify-content-center">
-                  <Col xs={12} sm={12} md={4} className="px-1 py-2 py-md-0 px-sm-2">
-                    <button className="custom_btn p-3 w-100 d-flex h-auto gap-2 align-items-center bg-white" style={{ fontSize: fontSize }}>
-                      <span className="text-start pe-2">
-                        {t("home1_btn1_title")}
-                      </span>
-                      <div className="ps-2 justify-content-end">
-                        <img src={group} alt="group" className="w-full h-auto" />
-                      </div>
-                    </button>
-                  </Col>
-                  <Col xs={12} sm={12} md={4} className="px-1 py-2 py-md-0 px-sm-2">
-                    <button className="custom_btn p-3 w-100 d-flex h-auto gap-2 align-items-center bg-white" style={{ fontSize: fontSize }}>
-                      <span className="text-start pe-2">
-                        {t("home1_btn2_title")}
-                      </span>
-                      <div className="ps-2 justify-content-end">
-                        <img src={group} alt="group" />
-                      </div>
-                    </button>
-                  </Col>
-                  <Col xs={12} sm={12} md={4} className="px-1 py-2 py-md-0 px-sm-2">
-                    <button className="custom_btn p-3 w-100 d-flex h-auto gap-2 align-items-center bg-white" style={{ fontSize: fontSize }}>
-                      <span className="text-start pe-2">
+                  <Col xs={12} sm={12} md={4} className="py-2 py-md-0 px-sm-2">
+                    <button className="custom_btn py-3 px-2 w-100 d-flex h-auto gap-2 align-items-center bg-white" style={{ fontSize: fontSize }}>
+                      <span className="text-start">
                         {t("home1_btn3_title")}
                       </span>
-                      <div className="ps-2 justify-content-end">
-                        <img src={group} alt="group" />
+                      <div className="justify-content-end w-100">
+                        <img src={group} alt="group" width={27} height={27}/>
+                      </div>
+                    </button>
+                  </Col>
+                  <Col xs={12} sm={12} md={4} className="py-2 py-md-0 px-sm-2">
+                    <button className="custom_btn py-3 px-2 w-100 d-flex h-auto gap-2 align-items-center bg-white" style={{ fontSize: fontSize }}>
+                      <span className="text-start">
+                        {t("home1_btn2_title")}
+                      </span>
+                      <div className="justify-content-end w-100">
+                        <img src={group} alt="group" width={27} height={27}/>
+                      </div>
+                    </button>
+                  </Col>
+                  <Col xs={12} sm={12} md={4} className="py-2 py-md-0 px-sm-2">
+                    <button className="custom_btn py-3 px-2 w-100 d-flex h-auto gap-2 align-items-center bg-white" style={{ fontSize: fontSize }}>
+                      <span className="text-start">
+                        {t("home1_btn1_title")}
+                      </span>
+                      <div className="justify-content-end w-100">
+                        <img src={group} alt="group" width={27} height={27}/>
                       </div>
                     </button>
                   </Col>
