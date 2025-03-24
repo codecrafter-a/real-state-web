@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+// import { motion } from 'framer-motion';
 import add_reaction from "../../assets/images/add_reaction.svg";
 import search from "../../assets/images/search.svg";
 import search_icon2 from "../../assets/images/search_icon2.svg";

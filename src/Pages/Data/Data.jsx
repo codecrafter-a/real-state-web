@@ -69,7 +69,7 @@ const Data = () => {
             <Row className="d-flex flex-md-nowrap flex-wrap align-items-center py-3 justify-content-center">
               <Col className=' col-12 col-md-6'>
                 <div className='d-flex justify-content-center  align-items-center gap-2 gap-md-4'>
-                <div className="mb-md-4">
+                  <div className="mb-md-4">
                     <Form.Label htmlFor="basic-url">{t("data_in_title")}</Form.Label>
                     <InputGroup className="border rounded overflow-hidden">
                       <InputGroup.Text id="basic-addon1" className="bg-white rounded-0 border-start-0">
@@ -95,14 +95,14 @@ const Data = () => {
                       />
                     </InputGroup>
                   </div>
-                  <div className='d-none d-md-block '><button className="text-center hr_btn px-2 w-auto mx-0">{t("data_btn_4")}</button></div>
+                  <div className='d-none d-md-block '><button className="text-center rounded-pill hr_btn px-2 w-auto mx-0">{t("data_btn_4")}</button></div>
                 </div>
               </Col>
               <Col className=' col-12 col-md-6 '>
                 <div className="d-flex my-2 my-md-0  fs-6 align-items-center mx-auto justify-content-md-end justify-content-center gap-2 gap-md-3" >
                   <button className="le_btn ">{t("data_btn_3")}</button>
-                  <button className="hr_btn px-2 w-auto m-0">{t("data_btn_2")}</button>
-                  <button className="text-center hr_btn px-2 w-auto m-0">{t("data_btn_1")}</button>
+                  <button className="hr_btn px-2 rounded-pill w-auto m-0">{t("data_btn_2")}</button>
+                  <button className="text-center hr_btn px-2 rounded-pill w-auto m-0">{t("data_btn_1")}</button>
                 </div>
               </Col>           
             </Row>
@@ -132,15 +132,15 @@ const Data = () => {
                   <Col className="col-6 col-md-4">
                     <div className="bg-white shadow-sm border rounded-3 py-2 px-3 my-3 cursor-pointer text-center text-md-start">
                       <div className="d-flex flex-column-reverse flex-md-row justify-content-md-between align-items-center ">
-                        <p className="screen-3">{t("data_garage_title")}</p>
+                        <p className="screen-3" style={{fontsize: largeFont}}>{t("data_garage_title")}</p>
                         <img src={garage_door} alt="garage_door" className="mb-2" />
                       </div>
                       <div className="d-flex flex-column flex-md-row justify-content-md-start align-items-center  gap-md-3">
-                        <div className='d-md-block d-flex gap-2'>
+                        <div className='d-md-block d-flex justify-content-center align-items-center'>
                           <p className="screen-4">₪25,378</p>
                           <p className="screen-5">{t("data_garage_Subtitle2")}</p>
                         </div>
-                        <div className='d-md-block d-flex gap-2'>
+                        <div className='d-md-block d-flex justify-content-center align-items-center'>
                           <p className="screen-4">08</p>
                           <p className="screen-5">{t("data_garage_Subtitle1")}</p>
                         </div>     
@@ -148,18 +148,18 @@ const Data = () => {
                     </div>
                   </Col>
                   <Col className='col-6 col-md-4'>
-                    <div className='bg-white boredr shadow-sm rounded-3 py-2 px-3 my-3 cursor-pointer'>
+                    <div className='bg-white boredr shadow-sm rounded-3 py-2 px-3 my-3 cursor-pointer text-center text-md-start'>
                       <div className='d-flex flex-column-reverse flex-md-row justify-content-md-between align-items-center'>                     
                         <p className='screen-3' style={{fontsize: largeFont}}>{t("data_key_title")}</p>
                         <img src={ key_vertical} alt="key card" className="mb-2" />
                       </div>
                       <div className='d-flex flex-column flex-md-row justify-content-md-start align-items-center  gap-md-3'>
-                        <div className='d-md-block d-flex gap-2'>
-                          <p  className='screen-4'>₪10,378</p>
+                        <div className='d-md-block d-flex justify-content-center align-items-center'>
+                          <p  className='screen-4 '>₪10,378</p>
                           <p  className='screen-5' style={{fontsize: largeFont}}>{t("data_key_subTitle2")}</p>
                         </div>
-                        <div className='d-md-block d-flex gap-2' >
-                          <p className='screen-4'>15</p>
+                        <div className='d-md-block d-flex justify-content-center align-items-center' >
+                          <p className='screen-4 '>15</p>
                           <p  className='screen-5' style={{fontsize: largeFont}}>{t("data_key_subTitle1")}</p>
                         </div>
                       </div>
@@ -185,7 +185,7 @@ const Data = () => {
                         <Col xs={12} md={6} className="mb-3">
                           <Card className="border rounded-3 shadow-sm  cursor-pointer p-3">
                             <div className="d-flex align-items-center justify-content-between">
-                              <div className='d-flex justify-content-center  flex-column'>
+                              <div className='d-flex justify-content-center flex-column'>
                                 <h5 className="mb-0">{item.title}</h5>
                                 <small className="text-muted" >{t(item.sub_title)}</small>
                               </div><img src={item.name} alt="garage_door"/>
