@@ -61,6 +61,13 @@
   "add_cust_broker_sign_in":"Send Agreement for Broker Collaboration",
   "option1":"Option 1",
   "option2":"Option 1",
+  "mobile_home": "Home Page",
+  "mobile_interested": "Interested Signing",
+  "mobile_owner": "Property Owner Signing",
+  "mobile_collaboration": "Broker Collaboration",
+  "mobile_agreements": "All Agreements",
+  "user_email": "email",
+  "user_password": "password",
 
   "cust_name_1":"Shiri Nakbeli",
   "type_cust_1":"Interested in Renting",
@@ -258,6 +265,7 @@
     "home2_btn3_title": "Type",
     "home_accro_title": "data",
     "home_accro_l_btn": "All agreements",
+    "home_accro_btn": "all data",
     "home_accro_r_btn": "Recent agreements",
     "home_accro_te": "NIS",
     "home_accro_in1": "Commissions from rental deals",
@@ -555,6 +563,10 @@
   "buy_transactions": "Buy Transactions:",
   "rental_transactions": "Rental Transactions:",
   "total_agreements_by_status": "Total Agreements by Status",
-  "full_dashboard": "Go to Full Dashboard"
+  "full_dashboard": "Go to Full Dashboard",
+
+  "interested_signing": "Interested Signing",
+  "owner_signing": "Owner Signing",
+  "broker_collaboration": "Broker Collaboration"
   
   }

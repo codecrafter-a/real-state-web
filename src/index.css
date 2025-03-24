@@ -17,7 +17,6 @@ body{
 	line-height: 24px;
 	font-weight: 400;
 	padding-top: 64px;
-	padding-right: 344px;
 	font-family: "Assistant", serif;
 }
 
@@ -29,6 +28,7 @@ a, a:hover{
 .main_content{
 	position: relative;
 	padding-top: 70px;
+	width: calc(100% - 360px);
 }
 
 .fs-17{font-size: 17px;}
@@ -62,6 +62,11 @@ a, a:hover{
 }
 .scroll-height {
     height: 660px;
+}
+@media (max-width: 1024px) {
+    .scroll-height {
+        height: 594px;
+    }
 }
 
 .modal-container .modal-dialog {
@@ -111,16 +116,60 @@ a, a:hover{
   }
   .hr_btn{
 	font-size: 17px;
-	font-weight: 600;
 	line-height: 22.24px;
 	background: transparent;
     color: #00A6A4 !important;
-    padding: 8px 50px;
 	box-shadow: 0px 1px 3px 0px #0000001A;
 	min-width: 139px;
+	width: auto;
 	height: 37px;
     border: 1px solid #00A6A4;
-	border-radius: 100px;
-	margin-right: 36px;
     transition: all 0.3s ease-in-out;
+}
+
+.active-sidebar-tab {
+	background-color: #FAFAFA;
+	border-radius: 8px;
+}
+
+.offcanvas-header .btn-close {
+	margin-left: 0 !important;
+}
+
+.p-2_5{
+	padding: 10px !important;
+}
+.py-2_5{
+	padding-top: 10px !important;
+	padding-bottom: 10px !important;
+}
+.py-3_5{
+	padding-top: 20px !important;
+	padding-bottom: 20px !important;
+}
+.py-4_5{
+	padding-top: 32px !important;
+	padding-bottom: 32px !important;
+}
+
+.mx-3_5{
+	margin-left: 20px !important;
+	margin-right: 20px !important;
+}
+
+.gap-2_5{
+	gap: 10px !important;
+}
+.form-check-input:checked , .form-check-input:checked[type=radio]{
+	background-color: #00A481 !important;
+	border-color: #00A481 !important;
+}
+.form-check-input:focus{
+	border-color: #00A481 !important;
+}
+.hr_btn:hover, .le_btn:hover{background-color: #55CD85;color: white !important;border: 1px solid #55CD85;}
+
+.offcanvas-backdrop.show {
+	width: 100%;
+	height: 100%;
 }

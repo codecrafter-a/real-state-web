@@ -1,48 +1,63 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import '../Signin/Signin.css';
 import g10 from '../../assets/images/g10.png';
 import {Col } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
 import i18n from "i18next";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 import { useTranslation } from 'react-i18next';
+
 const Signin = () => {
 
-    const [licenseNumber, setLicenseNumber] = useState("");
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const navigate = useNavigate(); 
+    const [userData, setUserData] = useState({
+      email: "",
+      password: ""
+    });
 
-     const { t } = useTranslation();
+    const navigate = useNavigate();
+    const [error, setError] = useState('')
+    const { t } = useTranslation();
 
-    
-     const handleLogin = () => {
-      if (licenseNumber.trim() !== "") {
-        localStorage.setItem("isAuthenticated", "true");
-        window.dispatchEvent(new Event("storage")); 
-        setIsAuthenticated(true);
-        setTimeout(() => {
-          navigate(`/${i18n.language}/home`);
-        }, 1000); 
-      }
+    const handleChange = (e) => {
+      setUserData({ ...userData, [e.target.name]: e.target.value });
+      setError(""); 
     };
 
-    useEffect(() => {
-        const lang = i18n.language || "he"; 
-        const savedAuthStatus = localStorage.getItem("isAuthenticated");
-        if (savedAuthStatus === "true") {
-          setIsAuthenticated(true);
-          navigate(`/${lang}/home`);
-        }
-      }, [navigate]);
+    const validateEmail = (email) => {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    };
+    const handleLogin = () => {
+      const { email, password } = userData;
+      if (!email || !password) {
+        setError("Email and Password are required.");
+        return;
+      }
+  
+      if (!validateEmail(email)) {
+        setError("Please enter a valid email address.");
+        return;
+      }
+  
+      if (password.length < 6) {
+        setError("Password must be at least 6 characters.");
+        return;
+      }
 
-      console.log("lincecc number", licenseNumber);
-
-      
+      const fakeToken =  `Bearer ${btoa(userData.email + ':' + userData.password)}`;
+      localStorage.setItem ('authtoken', fakeToken);
+      setTimeout(() => {
+               navigate(`/${i18n.language}/home`);
+             }, 1000); 
+      console.log("tocken genraed tocken tocken", fakeToken);
+     }
+       
   return (
     <>
-     {!isAuthenticated ? (
+     { (
   <>
       <Col className="col-12">
-          <div>
+          <div className='custom-scrollbar overflow-y-auto overflow-x-hidden px-3'  style={{ maxHeight: "594px" }}>
             <p className="py-4 my-4 text-center screen-1 fw-bold">
                {t("sign_in_title")}
             </p>
@@ -57,24 +72,42 @@ const Signin = () => {
               <div className="d-flex flex-column gap-3 w-100" style={{ maxWidth: "400px" }}>
                <img src={g10} alt="" className="w-100 d-block d-sm-none" />
                 <p className="screen-5 text-start text-md-center">{t("sign_in_in_label")}</p>
-                <input
-                  type="number"
-                  placeholder= {t("sign_in_in_placeholder")}
-                  className="py-2 px-3 border border-secondary border-opacity-25 rounded-1 w-100"
-                  value={licenseNumber}
-                  onChange={(e) => setLicenseNumber(e.target.value)}
-                  required
-                />
-                <button className="mx-auto hdr_btn w-50 text-white" onClick={handleLogin}>
-                  <span className="text-decoration-none text-white ">{t("sign_in_btn")}</span>
-                </button>
+                <Form.Group controlId="formEmail">
+                  <Form.Control
+                    type="email"
+                    placeholder={t("user_email")}
+                    name="email"
+                    value={userData.email}
+                    onChange={handleChange}
+                    className="py-2 px-3 border border-secondary border-opacity-25 rounded-1 w-100"
+                    required
+                  />
+                </Form.Group>
+
+                <Form.Group controlId="formPassword">
+                  <Form.Control
+                    type="password"
+                    placeholder={t("user_password")}
+                    name="password"
+                    value={userData.password}
+                    onChange={handleChange}
+                    className="py-2 px-3 border border-secondary border-opacity-25 rounded-1 w-100"
+                    required
+                  />
+                </Form.Group>
+
+                {error && <p className="text-danger">{error}</p>}
+
+                <Button className="mx-auto hdr_btn w-50 rounded-pill text-white" onClick={handleLogin}>
+                  <span className="text-decoration-none text-white">{t("sign_in_btn")}</span>
+                </Button>
                 <img src={g10} alt="" className="w-100 d-none d-sm-block" />
               </div>
             </div>
           </div>
       </Col>
   </>
-) : null}
+)}
     </> 
   )
 }

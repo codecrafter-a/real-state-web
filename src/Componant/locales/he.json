@@ -61,6 +61,13 @@
   "add_cust_broker_sign_in":"לשליחת הסכם שת”פ בין מתווכים",
   "option1":"1 אפשרות",
   "option2":"2 אפשרות",
+  "mobile_home": "עמוד הבית",
+  "mobile_interested": "החתמת מתעניין",
+  "mobile_owner": "החתמת בעל נכס",
+  "mobile_collaboration": "שית\"פ בין מתווכים",
+  "mobile_agreements": "כל ההסכמים",
+  "user_email": "אֶלֶקטרוֹנִי",
+  "user_password": "סִיסמָה",
 
 
   "cust_name_1":"שירי נקבלי",
@@ -258,6 +265,7 @@
     "home2_btn2_title": "תאריך סיום",
     "home2_btn3_title": "סוג",
     "home_accro_l_btn": "לכל ההסכמים",
+    "home_accro_btn": "לכל הנתונים",
     "home_accro_title": "נתונים",
     "home_accro_te": "₪",
     "home_accro_r_btn": "הסכמים אחרונים",
@@ -554,5 +562,9 @@
   "buy_transactions": "עסקאות קנייה:",
   "rental_transactions": "עסקאות השכרה:",
   "total_agreements_by_status": "סה”כ הסכמים לפי סטטוסים",
-  "full_dashboard": "לדאשבורד המלא של רומי"
+  "full_dashboard": "לדאשבורד המלא של רומי",
+
+  "interested_signing": "החתמת מתעניין",
+  "owner_signing": "החתמת בעל נכס",
+  "broker_collaboration": "שית\"פ בין מתווכים"
   }

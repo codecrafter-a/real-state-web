@@ -1,7 +1,7 @@
 *{font-family: "Assistant", serif;box-sizing: border-box; padding: 0; margin: 0;}
 .bg-sec-100{background-color: #fafafa;}
 
-.hr_btn:hover, .le_btn:hover{background-color: #55CD85;color: white !important;border: 1px solid #55CD85;}
+
 .text-end{text-align: end;}
 .le_btn{
     font-size: 15px;
@@ -21,7 +21,7 @@
 small {font-size: 66%;}
 .vrline{border: solid #00A481, }
 .card_title{font-size: 45.4px; font-weight: 600; line-height: 100%; color: #00A481}
-.screen-2{font-size: 15px; font-weight: 700; line-height: 100%; color: #00A481}
+.screen-2{font-size: 20px; font-weight: 700; line-height: 100%; color: #00A481}
 .screen-3{font-size: 16px; font-weight: 600; line-height: 100%; color: #00A481}
-.screen-4{font-size: 20px; font-weight: 600; line-height: 40%;}
+.screen-4{font-size: 20px; font-weight: 600}
 .screen-5{ font-weight: 600; line-height: 24%; color: #686868}

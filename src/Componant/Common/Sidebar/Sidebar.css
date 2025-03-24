@@ -1,20 +1,14 @@
 .haeder_right_block{
-	position: fixed;
+	position: sticky;
 	top: 64px;
-	right: 0;
-	width: 344px;
-	height: 100vh;
 	height: calc(100vh - 64px);
-	border-left: 1px solid #3838381A;
 	box-shadow: 0px 1px 3px 0px #3838381A;
-	z-index: 99;
-	padding: 26px 0 48px;
 	background: #fff;
 	transition: 0.3s;
 }
 .haeder_right{
 	height: 80vh;
-	height: calc(100vh - 260px);
+	height: calc(100vh - 226px);
 }
 
 .user_dd > a.dropdown-toggle img{
@@ -30,19 +24,20 @@
 	margin: 0;
 }
 .hdr_right_menu > li + li{
-	margin-top: 24px;
+	margin-top: 8px;
 }
 .hdr_right_menu > li > a{
-    font-family: "Assistant", serif;
-	font-size: 20px;
-	font-weight: 400;
-	line-height: 27px;
-	display: flex;
-	align-items: center;
-	padding: 0 30px;
+	font-family: "Assistant", serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 27px;
+    display: flex;
+    align-items: center;
+    /* margin: 0 30px; */
     text-decoration: none;
-	color: #000000;
-	transition: all .2s linear;
+    color: #000000;
+    transition: all .2s linear;
+    padding: 10px;
 }
 .hdr_right_menu > li > a .menu_icon{
 	width: 26px;
@@ -55,9 +50,7 @@
 	color: #00a481;
 }
 .cmn_actions{
-	padding: 0 30px;
 	position: relative;
-	top: 50px;
 	/* left: 0;
 	bottom: 48px; */
 	width: 100%;
@@ -65,14 +58,14 @@
 .cmn_actions_list{
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	gap: 25px;
 	list-style: none;
 	padding: 0 ;
 	margin: 0;
 }
 .cmn_actions_list li a{
 	width: 78px;
-	height: 77px;
+	padding: 4px;
 	box-shadow: 0px 1px 3px 0px #3838381A;
 	background: #00A481;
 	border-radius: 5px;
@@ -104,38 +97,6 @@
 	width: 13px;
 	background: #C5C5C5 !important;
 }
-@media (max-height:940px){
-	.haeder_right_block{
-		padding-bottom: 15px;
-	}
-	.cmn_actions{
-		bottom: 15px;
-	}
-	.haeder_right {
-	    height: calc(100vh - 160px);
-	    /* overflow: auto; */
-	}
-}
-
-@media (max-width: 768px) {
-	[lang="en"] body{
-		padding-right: 0px;
-		padding-left: 0px;
-	}
-	.haeder_right {
-		overflow: auto !important;
-	}
-	.haeder_right_block{
-		height: 100vh - 48px !important;
-	
-	}
-  }
-
-@media (max-width: 448px) {
-	.haeder_right_block{
-		width: 250px;
-	}
-}
 
 [lang="en"] .hdr_btn > a{
 	margin-right: 0;
@@ -151,9 +112,6 @@
 [lang="en"]  .user_dd > a.dropdown-toggle{
 	padding: 7px 30px 7px 0px;
 }
-[lang="en"] .haeder_right_block{
-	left: 0;
-} 
 [lang="en"] .hdr_right_menu > li > a .menu_icon{
 	margin-left: 0;
 	margin-right: 14px;
@@ -162,11 +120,6 @@
 	opacity: 0.5;
 	pointer-events: none;
 	filter: blur(2px);
-}
-.haeder_right_block.active {
-	opacity: 1;
-	pointer-events: auto;
-	filter: blur(0);
 }
 
 .custom-card {

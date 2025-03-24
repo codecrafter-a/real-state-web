@@ -13,7 +13,7 @@ const AgreementsTable = ({ handleOpen }) => {
     useEffect(() => {
         const data = getAgreementData();
         setTableData(data);
-    }, [getAgreementData]);
+    }, []);
 
     
     return (
@@ -70,7 +70,7 @@ const ActionButtons = ({ type, icon, onDelete }) => {
 
 
 const StatusBadge = ({ status }) => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
 
     const statusMap = {
         "Generated": "הופק",
