@@ -78,6 +78,12 @@ const PersonalArea = () => {
                                                     <strong>10</strong>/50
                                                 </span>
                                             </div>
+                                            <div className="d-flex flex-column my-auto">
+                                                <span className="fs-6 d-flex fw-semibold text-secondary">{t("personalArea.agreementsSentThisMonth")}</span>
+                                                <span className="fs-5 text-dark d-flex">
+                                                    <strong>10</strong>/50
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -87,7 +93,7 @@ const PersonalArea = () => {
                                 </div>
                             </div>
 
-                            <button className="d-flex mt-5 text-primary fw-semibold text-decoration-underline border-0 bg-transparent"
+                            <button className="d-flex mt-5 link-text fw-semibold text-decoration-underline border-0 bg-transparent"
                                 onClick={() => navigate(`/${lang}/personal-area/signature-invoice`)}>
                                 {t("personalArea.invoicesReceived")}
                             </button>
@@ -142,7 +148,7 @@ const PersonalArea = () => {
                                     onChange={handleChange}
                                 />
                                 <span
-                                    className="text-primary d-block mt-1 fw-semibold text-decoration-underline cursor-pointer"
+                                    className="link-text d-block mt-1 fw-semibold text-decoration-underline cursor-pointer"
                                     onClick={() => navigate(`/${lang}/personal-area/change-email`)}
                                 >
                                     {t("personalArea.changeEmail")}
@@ -165,7 +171,7 @@ const PersonalArea = () => {
                                     </span>
                                 </div>
                                 <span
-                                    className="text-primary d-block mt-1 fw-semibold text-decoration-underline cursor-pointer"
+                                    className="link-text d-block mt-1 fw-semibold text-decoration-underline cursor-pointer"
                                     onClick={() => navigate(`/${lang}/personal-area/change-password`)}
                                 >
                                     {t("personalArea.changePassword")}

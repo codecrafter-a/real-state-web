@@ -4,16 +4,17 @@ import { TbMailForward } from "react-icons/tb";
 import { FaWhatsapp } from "react-icons/fa";
 import { useTranslation } from 'react-i18next';
 import garagedoor from '../../assets/images/small door.png';
-import { GoChevronRight } from "react-icons/go";
+import { GoChevronRight, GoChevronLeft } from "react-icons/go";
 import house from '../../assets/images/garage_door.svg';
 import { GoPerson } from "react-icons/go";
+import iconHome from '../../assets/images/icon_home.svg';
 
 const tableData = [
     {
         status: "home_tab_r1_h2",
         commission: "20%",
         clients: "home_tab_r1_h4",
-        agreementType: "home_tab_r1_h5",    
+        agreementType: "home_tab_r1_h5",
         date: "06.06.24",
         agreementName: 'home_tab_r1_h7',
         actionType: "genrated",
@@ -36,7 +37,7 @@ const tableData = [
         agreementType: "home_tab_r1_h5",
         date: "06.06.24",
         agreementName: 'home_tab_r1_h7',
-        actionType: "viewd",      
+        actionType: "viewd",
         icon: <FaWhatsapp />
     },
     {
@@ -73,13 +74,13 @@ const ActionButtons = ({ type, icon }) => {
     const { t } = useTranslation();
     return (
         <div className="d-flex align-items-center gap-3 p-2 bg-white">
-            {(type === "genrated"  || "sent" || "viewd") && (
+            {(type === "genrated" || "sent" || "viewd") && (
                 <>
                     <div className="d-flex align-items-center gap-1">
                         <TbMailForward />
                         <span>{t('home_tab_r1_h1_l4')}</span>
                     </div>
-                    {icon && ( 
+                    {icon && (
                         <div className="d-flex align-items-center gap-1">
                             {icon}
                             <span>{t("home_tab_r1_h1_l3")}</span>
@@ -94,7 +95,7 @@ const ActionButtons = ({ type, icon }) => {
 };
 
 const StatusBadge = ({ status }) => {
-    const { t} = useTranslation();
+    const { t } = useTranslation();
 
     const statusMap = {
         "Generated": "הופק",
@@ -120,8 +121,8 @@ const StatusBadge = ({ status }) => {
 
     return (
         <span
-            className="px-4 my-auto text-center fw-semibold rounded-pill d-flex align-items-center justify-content-center"
-            style={{ ...statusStyles[statusKey], minHeight: "28px", width: "123px" }}
+            className="px-3 text-center fw-semibold rounded-pill d-flex align-items-center justify-content-center"
+            style={{ ...statusStyles[statusKey], minHeight: "28px" }}
         >
             {translatedStatus}
         </span>
@@ -133,7 +134,12 @@ const TableRow = ({ data }) => {
     const { status, commission, clients, agreementType, date, agreementName, actionType, icon } = data;
     return (
         <tr>
-            <td className="d-table-cell align-middle py-3">{t(agreementName)}</td>
+            <td className="d-table-cell align-middle py-3">
+                <div className="d-flex align-items-center gap-1">
+                    <img src={iconHome} alt="home icon" className="text-teal h-auto" style={{ width: '18px' }} />
+                    {t(agreementName)}
+                </div>
+            </td>
             <td className="d-table-cell align-middle py-3">{date}</td>
             <td className="d-table-cell align-middle py-3">{t(agreementType)}</td>
             <td className="d-table-cell align-middle py-3">{t(clients)}</td>
@@ -146,6 +152,8 @@ const TableRow = ({ data }) => {
 
 const HomeTable = () => {
     const { t } = useTranslation();
+    const { i18n } = useTranslation();
+    const isRTL = i18n.dir() === "rtl";
     return (
         <div className="mt-4">
             <div className="table-responsive">
@@ -169,27 +177,60 @@ const HomeTable = () => {
                 </table>
             </div>
             <div className="d-md-none">
-                {tableData.map((row, index) => (
-                    <div key={index} className="card mb-2 shadow-sm" style={{borderLeft: 
-                        row.actionType === 'genrated' ? "6px solid #9ca3af" 
-                      : row.actionType === 'viewd' ? "6px solid #dc2626" 
-                      : row.actionType === "signed" ? "6px solid #10b981" 
-                      : row.actionType === "sent" ? "6px solid #facc15"
-                      : row.actionType === "Signed and Executed" ? "6px solid #fdba74"
-                      : "none",}}>
-                        <div className="p-3 d-flex align-items-center justify-content-between">
-                            <img src={garagedoor} alt="garagedoor" className="me-3" />
-                            <div className="flex-grow-1">
-                                <p className="mb-1 text-muted">{row.date}</p>
-                                <h4 className="fs-6 fw-bold mb-0">נורית 22 חיפה | קנייה</h4>
+
+                {tableData.map((row, index) => {
+                    const collapseId = `collapse-${index}`;
+
+                    return (
+                        <div
+                            key={index}
+                            className="card mb-2 shadow-sm"
+                            style={{
+                                borderInlineStart:
+                                    row.actionType === "genrated"
+                                        ? "6px solid #9ca3af"
+                                        : row.actionType === "viewd"
+                                            ? "6px solid #dc2626"
+                                            : row.actionType === "signed"
+                                                ? "6px solid #10b981"
+                                                : row.actionType === "sent"
+                                                    ? "6px solid #facc15"
+                                                    : row.actionType === "Signed and Executed"
+                                                        ? "6px solid #fdba74"
+                                                        : "none",
+                            }}
+                        >
+                            <div className="py-3 px-2 d-flex align-items-end justify-content-between">
+                                <div className="d-flex align-items-end gap-2_5">
+                                    <img src={garagedoor} alt="garagedoor" />
+                                    <div className="flex-grow-1">
+                                        <p className="mb-1 text-muted">{row.date}</p>
+                                        <h4 className="fs-6 fw-bold mb-0">{t("home_tab_card")}</h4>
+                                    </div>
+                                </div>
+                                <StatusBadge status={row.status} />
+
+                                <div
+                                    data-bs-toggle="collapse"
+                                    data-bs-target={`#${collapseId}`}
+                                    style={{ cursor: "pointer" }}
+                                >
+                                    {isRTL ? (
+                                        <GoChevronLeft style={{ width: "24px", height: "24px" }} />
+                                    ) : (
+                                        <GoChevronRight style={{ width: "24px", height: "24px" }} />
+                                    )}
+                                </div>
                             </div>
-                            <StatusBadge status={row.status} />
-                            <GoChevronRight style={{ width: "40px", height: "40px" }} />
+
+                            <div id={collapseId} className="collapse px-2 pb-3">
+                                <p className="mb-0"><strong>Action Type:</strong> {row.actionType}</p>
+                                <p className="mb-0"><strong>Additional Info:</strong> {row.additionalInfo || "No extra details"}</p>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    );
+                })}
                 <div className="p-3 bg-white rounded shadow-sm my-2 d-flex align-items-center justify-content-between">
-                    <button className="hr_btn rounded-pill fw-semibold px-sm-5 px-3 py-2"> For all clients</button>
                     <div className="d-flex align-items-center flex-column">
                         <div className=" d-flex align-items-center">
                             <span className="fs-3 fw-bold text-teal">325</span>
@@ -197,9 +238,9 @@ const HomeTable = () => {
                         </div>
                         <span className="text-success">לקוחות</span>
                     </div>
+                    <button className="hr_btn rounded-pill fw-semibold px-sm-5 px-3 py-2"> {t("all_clients")}</button>
                 </div>
                 <div className="p-3 bg-white  rounded shadow-sm my-2 d-flex align-items-center justify-content-between">
-                    <button className="hr_btn rounded-pill fw-semibold px-sm-5 px-3 py-2"> For all clients</button>
                     <div className="d-flex align-items-center flex-column">
                         <div className=" d-flex align-items-center">
                             <span className="fs-3 fw-bold text-teal" >123</span>
@@ -207,6 +248,7 @@ const HomeTable = () => {
                         </div>
                         <span className="text-success">נכסים</span>
                     </div>
+                    <button className="hr_btn rounded-pill fw-semibold px-sm-5 px-3 py-2">{t("all_properties")}</button>
                 </div>
             </div>
         </div>

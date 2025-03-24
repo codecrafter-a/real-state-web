@@ -37,7 +37,7 @@ const Layout = ({ children }) => {
                 <img src={boryGroupRight} alt="right bg icon" className="position-fixed" />
               </div>
             </div>
-            <Row className="d-flex w-auto mx-auto  position-relative bg-white shadow-lg rounded-3 flex-wrap z-3">
+            <Row className="d-flex w-auto mx-auto  position-relative bg-white shadow-lg rounded-3 flex-wrap z-3 mb-lg-8">
               {children}
             </Row>
           </Container>
