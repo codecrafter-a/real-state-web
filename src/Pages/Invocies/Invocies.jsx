@@ -11,9 +11,9 @@ const Invocies = () => {
   const [activeTab, setActiveTab] = useState("all");
   return (
     <>
-      <Col>
-        <p className="py-1 my-4 text-center screen-1 border-bottom">{t("invoice_title")}</p>
-        <Nav variant="tabs" className=" px-md-4 mx-md-3 pt-2 border-bottom " >
+      <Col className='bg-white shadow-lg rounded-3'>
+        <p className="py-1 my-4 text-center screen-1 border-bottom d-none d-md-block">{t("invoice_title")}</p>
+        <Nav variant="tabs" className="w-full row mx-md-3 pt-2 border-bottom">
           <Tab 
             className={`focus:!border-transparent px-3 hover:!border-transparent border-0 text-center text-md-start ${activeTab === "recent" ? "active-tab" : ""}`}
             onClick={() => setActiveTab("recent")}

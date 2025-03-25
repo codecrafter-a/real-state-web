@@ -30,34 +30,35 @@ function App() {
     <div className="App" key={i18n.language}>
       <LanguageHandler />
       <Layout>
-        <Routes>
-          <Route path="/" element={<Navigate to={'/he/signin'} />} />
-          <Route path="/:lang/customers" element={<Customers />} />
-          <Route path="/:lang/customers/add-customers" element={<AddCustomer />} />
-          <Route path="/:lang/signin" element={<Signin />} />
-          <Route path="/:lang/property" element={<Property/>}/>
-          <Route path="/:lang/agents" element={<Agents />} />
-          <Route path="/:lang/agent-management" element={<AgentManagement />} />
-          <Route path="/:lang/agents/add-agents" element={<AddAgents />} />
-          <Route path="/:lang/agents/edit-agents" element={<EditAgents />} />
-          <Route path="/:lang/home" element={<Home/>}/>
-          <Route path="/:lang/setting" element={<Setting/>} />
-          <Route path="/:lang/invoices" element={<Invocies/>} />
-          <Route path="/:lang/agreements" element={<Agreementes/>} />
-          <Route path="/:lang/data" element={<Data/>} /> 
-          <Route path="/:lang/personal-area" element={<PersonalArea/>} /> 
-          <Route path="/:lang/report" element={<Report/>}/>
-          <Route path="/:lang/data" element={<Data/>} />
-          <Route path="/:lang/personal-area" element={<PersonalArea/>} />
-          <Route path="/:lang/personal-area/change-password" element={<ChangePassword />} />
-          <Route path="/:lang/personal-area/change-email" element={<ChangeEmail />} />
-          <Route path="/:lang/personal-area/signature-invoice" element={<SignatureInvoice />} />
-          <Route path="*" element={<Navigate to="/he/signin" />} />
-        </Routes>
+      <Routes>
+        <Route path="/" element={<Navigate to={'/he/signin'} />} />
+        <Route path="/:lang/*" element={
+          <Routes>
+            <Route path="customers" element={<Customers />} />
+            <Route path="customers/add-customers" element={<AddCustomer />} />
+            <Route path="signin" element={<Signin />} />
+            <Route path="property" element={<Property />} />
+            <Route path="agents" element={<Agents />} />
+            <Route path="agent-management" element={<AgentManagement />} />
+            <Route path="agents/add-agents" element={<AddAgents />} />
+            <Route path="agents/edit-agents" element={<EditAgents />} />
+            <Route path="home" element={<Home />} />
+            <Route path="setting" element={<Setting />} />
+            <Route path="invoices" element={<Invocies/>} />
+            <Route path="agreements" element={<Agreementes/>} />
+            <Route path="data" element={<Data />} />
+            <Route path="personal-area" element={<PersonalArea />} />
+            <Route path="report" element={<Report />} />
+            <Route path="personal-area/change-password" element={<ChangePassword />} />
+            <Route path="personal-area/change-email" element={<ChangeEmail />} />
+            <Route path="personal-area/signature-invoice" element={<SignatureInvoice />} />
+            <Route path="*" element={<Navigate to={`/${i18n.language}/signin`} />} />
+          </Routes>
+        } />
+      </Routes>
       </Layout>
     </div>
   );
 }
-
 export default App;
 

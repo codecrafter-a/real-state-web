@@ -11,36 +11,80 @@ import usercontact from '../../../assets/images/user-contect.png';
 import userhouse from '../../../assets/images/user-house.png';
 import document from '../../../assets/images/menu_icon2.png';
 import { useTranslation } from 'react-i18next';
+import { IoChevronBackOutline } from "react-icons/io5";
+import { useLocation } from 'react-router-dom';
 
 const Layout = ({ children }) => {
   const { t } = useTranslation();
+  const location = useLocation();
+
+  const getPageTitle = (pathname) => {
+    const path = pathname.split('/').pop();
+    switch (path) {
+      case 'home': return t('');
+      case 'personal-area': return t('personal_area_title');
+      case 'customers': return t('all_cust');
+      case 'property': return t('pro_tab_title');
+      case 'agents': return t('');
+      case 'setting': return t('settings');
+      case 'invoices': return t('invoice_title');
+      case 'agreements': return t('mobile_agreements');
+      case 'data': return t('data_title');
+      case 'report': return t('report_head');
+      case 'signin': return t('');
+      case 'add-customers': return t('add_cust_form_title');
+      case 'agent-management': return t('agentManagement');
+      case 'add-agents': return t('addNewAgent');
+      case 'edit-agents': return t('addAgent.editAgent');
+      case 'change-password': return t('changePassword');
+      case 'change-email': return t('changeEmail');
+      case 'signature-invoice': return t('signature_invoice');
+      default: return '';
+    }
+  };
+
+  const title = getPageTitle(location.pathname);
 
   return (
     <div className="bg-white text-black text-base">
       <Header />
       <div className="d-flex w-100">
         <Sidebar />
-        <main className="main_content flex-grow-1 position-relative" >
-          <Container fluid="sm" >
-            <div className="position-absolute w-100 h-50 overflow-hidden top-0 start-0 z-0">
-              <figure className="mb-0 h-100 w-100 position-relative">
-                <img
-                  src={bodyBg}
-                  className="w-100 h-100 object-fit-cover position-absolute top-0 start-0"
-                  alt="Background"
-                />
-                <span className="position-absolute top-0 end-0">
-                  <img src={left} alt="Left BG Icon" className="img-fluid" />
-                </span>
-              </figure>
-              <div className="right-bg-icon ">
-                <img src={boryGroupRight} alt="right bg icon" className="position-fixed" />
-              </div>
+        <main className="main_content flex-grow-1 position-relative pt-0" >
+          <div className="position-relative w-100 overflow-hidden top-0 start-0 z-0">
+            <figure className="mb-0 h-100 w-100 position-relative">
+              <img
+                src={bodyBg}
+                className="w-100 object-fit-cover position-relative top-0 start-0"
+                alt="Background"
+                style={{ height: "271px" }}
+              />
+              <span className="position-absolute top-0 end-0">
+                <img src={left} alt="Left BG Icon" className="img-fluid" />
+              </span>
+            </figure>
+            <div className="right-bg-icon">
+              <img src={boryGroupRight} alt="right bg icon" className="position-fixed" />
             </div>
-            <Row className="d-flex w-auto mx-auto  position-relative bg-white shadow-lg rounded-3 flex-wrap z-3 mb-lg-8">
-              {children}
-            </Row>
-          </Container>
+          </div>
+          <div className='position-absolute w-100 top-responsive'>
+            <Container fluid="sm" >
+
+              {title === '' ? (
+                ""
+              ) : (<div className='py-3 d-block d-md-none'>
+                <div className='d-flex gap-4 align-items-center text-white position-relative justify-end'>
+                  <span className='fs-2 w-100 d-flex justify-content-center dynamic-margin'>{title}</span>
+                  <span><IoChevronBackOutline size={20} /></span>
+                </div>
+                <div></div>
+              </div>)}
+
+              <Row className="d-flex w-auto mx-auto position-relative flex-wrap z-3 mb-lg-8">
+                {children}
+              </Row>
+            </Container>
+          </div>
         </main>
       </div>
       <div className='d-block d-lg-none'>

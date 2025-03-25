@@ -39,3 +39,9 @@
     width: 100px;
     height: 100px;
 }
+
+@media (max-width: 768px) { 
+	.w-345 {
+	  width: 100%;
+	}
+}
