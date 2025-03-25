@@ -5,6 +5,11 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
 .screen-1{font-size: 25px; font-weight: 600; line-height: 100%; color: #00A481;}
 .text-teal{color: #00A481;}
 .bg-teal{background-color: #00A481;}
@@ -212,10 +217,92 @@ a, a:hover{
   }
 
 .password-scroll{
-	height: 594px;
+	height: 555px;
 }
 @media (max-width: 576px) {
     .scroll-height .password-scroll {
-        height: 594px !important;
+        height: 555px !important;
     }
+}
+
+.border-dashed {border: 2px dashed #00A481 !important; border-radius: 10px; }
+
+.step-circle {
+	width: 32px;
+	height: 32px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 600;
+	border: 2px solid transparent;
+	border-radius: 50%;
+	position: relative;
+	cursor: pointer;
+	transition: all 0.3s;
+  }
+  
+  .step-circle.completed {
+	background-color: #00A481;
+	color: white;
+	border-color: #00A481;
+  }
+  
+  .step-circle.active {
+	background-color: white;
+	color: #00A481;
+	border-color: #00A481;
+  }
+  
+  .step-circle.pending {
+	background-color: #E3E3E3;
+	color: black;
+	border-color: transparent;
+  }
+  
+  .step-label {
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: 10px;
+	margin-top: 5px;
+	white-space: nowrap;
+  }
+  
+  .step-line {
+	width: 48px;
+	height: 2px;
+	background-color: #E3E3E3;
+	transition: all 0.3s;
+  }
+  
+  .step-line.line-active {
+	background-color: #00A481;
+  }
+  
+.custom-col {
+	background-color: white;
+	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+.top-responsive {
+	top: 60px;
+}
+  
+@media (max-width: 576px) {
+	.custom-col {
+	  background-color: transparent;
+	  box-shadow: none;
+	}
+	.main_content {
+		padding-top: 16px;
+	}
+	.top-responsive {
+		top: 10px;
+	  }
+}
+[lang="he"] .dynamic-margin {
+	margin-right: 3rem;
+}
+[lang="en"] .dynamic-margin {
+	margin-left: 3rem;
 }

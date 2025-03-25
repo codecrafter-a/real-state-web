@@ -1,74 +1,74 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { TbMailForward } from "react-icons/tb";
-import { FaWhatsapp } from "react-icons/fa";
+// import { FaWhatsapp } from "react-icons/fa";
 import { useTranslation } from 'react-i18next';
 import garagedoor from '../../assets/images/small door.png';
 import { GoChevronRight, GoChevronLeft } from "react-icons/go";
 import house from '../../assets/images/garage_door.svg';
 import { GoPerson } from "react-icons/go";
-import iconHome from '../../assets/images/icon_home.svg';
-
-const tableData = [
-    {
-        status: "home_tab_r1_h2",
-        commission: "20%",
-        clients: "home_tab_r1_h4",
-        agreementType: "home_tab_r1_h5",
-        date: "06.06.24",
-        agreementName: 'home_tab_r1_h7',
-        actionType: "genrated",
-        icon: <FaWhatsapp />
-    },
-    {
-        status: "home_tab_r2_h2",
-        commission: "20%",
-        clients: "home_tab_r1_h4",
-        agreementType: "home_tab_r1_h5",
-        date: "06.06.24",
-        agreementName: 'home_tab_r1_h7',
-        actionType: "sent",
-        icon: <FaWhatsapp />
-    },
-    {
-        status: "home_tab_r3_h2",
-        commission: "20%",
-        clients: "home_tab_r1_h4",
-        agreementType: "home_tab_r1_h5",
-        date: "06.06.24",
-        agreementName: 'home_tab_r1_h7',
-        actionType: "viewd",
-        icon: <FaWhatsapp />
-    },
-    {
-        status: "home_tab_r4_h2",
-        commission: "20%",
-        clients: "home_tab_r1_h4",
-        agreementType: "home_tab_r1_h5",
-        date: "06.06.24",
-        agreementName: 'home_tab_r1_h7',
-        actionType: "signed",
-        icon: <FaWhatsapp />
-    },
-    {
-        status: "home_tab_r5_h2",
-        commission: "20%",
-        clients: "home_tab_r1_h4",
-        agreementType: "home_tab_r1_h5",
-        date: "06.06.24",
-        agreementName: 'home_tab_r1_h7',
-        actionType: "Signed and Executed",
-    },
-    {
-        status: "home_tab_r6_h2",
-        commission: "20%",
-        clients: "home_tab_r1_h4",
-        agreementType: "home_tab_r1_h5",
-        date: "06.06.24",
-        agreementName: 'home_tab_r1_h7',
-        actionType: "sent",
-    },
-];
+import { useAgreementServices } from "../../Services/AgreementServices";
+import iconHome from '../../assets/images/icon_home.svg'
+// const tableData = [
+//     {
+//         status: "home_tab_r1_h2",
+//         commission: "20%",
+//         clients: "home_tab_r1_h4",
+//         agreementType: "home_tab_r1_h5",    
+//         date: "06.06.24",
+//         agreementName: 'home_tab_r1_h7',
+//         actionType: "genrated",
+//         icon: <FaWhatsapp />
+//     },
+//     {
+//         status: "home_tab_r2_h2",
+//         commission: "20%",
+//         clients: "home_tab_r1_h4",
+//         agreementType: "home_tab_r1_h5",
+//         date: "06.06.24",
+//         agreementName: 'home_tab_r1_h7',
+//         actionType: "sent",
+//         icon: <FaWhatsapp />
+//     },
+//     {
+//         status: "home_tab_r3_h2",
+//         commission: "20%",
+//         clients: "home_tab_r1_h4",
+//         agreementType: "home_tab_r1_h5",
+//         date: "06.06.24",
+//         agreementName: 'home_tab_r1_h7',
+//         actionType: "viewd",      
+//         icon: <FaWhatsapp />
+//     },
+//     {
+//         status: "home_tab_r4_h2",
+//         commission: "20%",
+//         clients: "home_tab_r1_h4",
+//         agreementType: "home_tab_r1_h5",
+//         date: "06.06.24",
+//         agreementName: 'home_tab_r1_h7',
+//         actionType: "signed",
+//         icon: <FaWhatsapp />
+//     },
+//     {
+//         status: "home_tab_r5_h2",
+//         commission: "20%",
+//         clients: "home_tab_r1_h4",
+//         agreementType: "home_tab_r1_h5",
+//         date: "06.06.24",
+//         agreementName: 'home_tab_r1_h7',
+//         actionType: "Signed and Executed",
+//     },
+//     {
+//         status: "home_tab_r6_h2",
+//         commission: "20%",
+//         clients: "home_tab_r1_h4",
+//         agreementType: "home_tab_r1_h5",
+//         date: "06.06.24",
+//         agreementName: 'home_tab_r1_h7',
+//         actionType: "sent",
+//     },
+// ];
 
 const ActionButtons = ({ type, icon }) => {
     const { t } = useTranslation();
@@ -154,6 +154,14 @@ const HomeTable = () => {
     const { t } = useTranslation();
     const { i18n } = useTranslation();
     const isRTL = i18n.dir() === "rtl";
+    const [tableData, setTableData] = useState([]);
+    const { getAgreementData } = useAgreementServices();
+
+    useEffect(() => {
+        const data = getAgreementData();
+        setTableData(data);
+    }, []);
+
     return (
         <div className="mt-4">
             <div className="table-responsive">

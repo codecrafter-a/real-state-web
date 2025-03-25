@@ -4,6 +4,10 @@
     outline: none; /* Removes default outline */
 }
 
+.fs-14{
+  font-size: 14px;
+}
+
 input:focus-within {outline: none;}
   .custom-table {
     border-collapse: separate;
@@ -11,7 +15,6 @@ input:focus-within {outline: none;}
     border: 0px;
     width: 100%;
   }
-  
   .custom-table th {
     font-size:15;
     line-height: 20%;
@@ -57,18 +60,26 @@ input:focus-within {outline: none;}
     border-width: 0px;
    }
 
- 
-  
   .custom-table th:first-child,
   .custom-table td:first-child {
     border-right: 0;
   }
-
-
-  
-
   .custom-table th:last-child,
   .custom-table td:last-child {
     border-left: 0;
   }
+  .accordion-button:not(.collapsed) {background-color: transparent;}
+  .accordion-button:focus{box-shadow: none;}
+  .accordion-button {justify-content: space-between; padding: 0px,; text-align: start;}
+  .accordion-button::after{margin: 0px;}
+  @media (max-width: 767px) { 
+    .responsive-width {
+      width: 100% !important; 
+    }
+  }
   
+  @media (min-width: 768px) { 
+    .responsive-width {
+      width: 75% !important; 
+    }
+  }

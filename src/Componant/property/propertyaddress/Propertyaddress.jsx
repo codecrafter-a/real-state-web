@@ -8,13 +8,13 @@ const Propertyaddress = ({setActiveTab}) => {
   return (
     <>
       <Form className="px-4">
-        <h4 className="screen-1 py-3 mt-3 mb-1">
+        <h6 className="text-teal fs-5 fw-semibold lh-1 my-3 py-3 ">
           {t('pro_add_sub_title')}
-        </h4>
+        </h6>
 
         <Row className="form_group mb-3">
           <Col md={4}>
-            <Form.Label className="text-base font-semibold">
+            <Form.Label className="fs-15 lh-1  fw-semibold" >
               {t('pro_add_city')}
             </Form.Label>
             <CustomInput
@@ -23,7 +23,7 @@ const Propertyaddress = ({setActiveTab}) => {
             />
           </Col>
           <Col md={4}>
-            <Form.Label className="text-base font-semibold">
+            <Form.Label className="fs-15 lh-1  fw-semibold">
               {t('pro_add_str')}
             </Form.Label>
             <CustomInput
@@ -33,8 +33,8 @@ const Propertyaddress = ({setActiveTab}) => {
           </Col>
         </Row>
         <Row className="form_group mb-3">
-          <Col md={4}>
-            <Form.Label className="text-base font-semibold">
+          <Col xs={6} md={4}>
+            <Form.Label className="fs-15 lh-1  fw-semibold">
               {t('pro_add_building_number')}
             </Form.Label>
             <CustomInput
@@ -42,8 +42,8 @@ const Propertyaddress = ({setActiveTab}) => {
               type="text"
             />
           </Col>
-          <Col md={4}>
-            <Form.Label className="text-base font-semibold">
+          <Col xs={6} md={4}>
+            <Form.Label className="fs-15 lh-1  fw-semibold">
               {t('pro_add_apartment_number')}
             </Form.Label>
             <CustomInput
@@ -52,25 +52,13 @@ const Propertyaddress = ({setActiveTab}) => {
             />
           </Col>
         </Row>
-        <div className="step_btn_group d-flex justify-content-end mt-4 pt-5 pb-3">
-        <Button
-          onClick={() => setActiveTab(2)}
-          className="px-5 py-2 rounded-pill shadow-lg text-white"
-          style={{
-            backgroundColor: '#00A481',
-            borderColor: '#00A481',
-          }}
-          onMouseOver={(e) => {
-            e.target.style.backgroundColor = '#55CD85';
-            e.target.style.borderColor = '#55CD85';
-          }}
-          onMouseOut={(e) => {
-            e.target.style.backgroundColor = '#00A481';
-            e.target.style.borderColor = '#00A481';
-          }}
-        >
-          {t('pro_add_next_btn')}
-        </Button>
+        <div className="d-flex  justify-content-center  justify-content-md-end w-100 my-4">
+          <Button
+            onClick={() => setActiveTab(2)}
+            className="agent-btn-responsive1 responsive-btn rounded-pill shadow-lg "
+          >
+            {t('pro_add_next_btn')}
+          </Button>
         </div>
       </Form>
     </>

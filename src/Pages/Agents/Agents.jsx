@@ -14,7 +14,7 @@ const Agents = () => {
                 {t("welcome_message")}
             </p>
             <div className="overflow-y-auto overflow-x-hidden custom-scrollbar scroll-height">
-                <div className="pe-3">
+                <div className="pe-md-3">
                     <div className="d-flex flex-column text-center">
                         <p className="mb-0 fs-4">{t("instructions_1")}</p>
                         <p className="mb-0 fs-4">{t("instructions_2")}</p>

@@ -1,27 +1,90 @@
-*{font-family: "Assistant", serif;box-sizing: border-box; padding: 0; margin: 0;}
-.bg-sec-100{background-color: #fafafa;}
 
-
-.text-end{text-align: end;}
-.le_btn{
-    font-size: 15px;
-	font-weight: 600;
-	line-height: 100%;
-	border: 1px solid #00A6A4;
-	background: #00A481;
-    color: white !important;
-    padding: 7px 5px;
-	box-shadow: 0px 1px 3px 0px #0000001A;
-	min-width: 139px;
-	height: 37px;
-	border-radius: 100px;
-	margin-right: 5px;
-    transition: all 0.3s ease-in-out;
+.bg-sec-100 {
+  background-color: #fafafa;
 }
-small {font-size: 66%;}
-.vrline{border: solid #00A481, }
-.card_title{font-size: 45.4px; font-weight: 600; line-height: 100%; color: #00A481}
-.screen-2{font-size: 20px; font-weight: 700; line-height: 100%; color: #00A481}
-.screen-3{font-size: 16px; font-weight: 600; line-height: 100%; color: #00A481}
-.screen-4{font-size: 20px; font-weight: 600}
-.screen-5{ font-weight: 600; line-height: 24%; color: #686868}
+
+.w-40{
+  width: 40%;
+}
+.text-end {
+  text-align: end;
+}
+small {
+  font-size: 66%;
+}
+.vrline {
+  border: solid #00a481;
+}
+.card_title {
+  font-size: 43.4px;
+  font-weight: 600;
+  line-height: 100%;
+  color: #00a481;
+}
+.screen-2 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 100%;
+  color: #00a481;
+}
+.screen-3 {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 100%;
+  color: #00a481;
+}
+.screen-4 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 100%;
+}
+.screen-5 {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: #686868;
+}
+
+@media (max-width: 448px) {
+  .screen-4 {
+    font-size: 17px;
+    line-height: 100%;
+  }
+  .screen-5 {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 100%;
+  }
+.agent-btn-responsive1 {font-size: 11.50px;}
+.agent-btn-responsive2 {font-size: 11.50px;}
+}
+
+.rounded-xs-2 {
+  border-radius: 12px !important;
+}
+.agent-btn-responsive2 {
+  max-width: 100% !important;
+  border: 2px solid #00a481;
+  color: #00a481;
+  background-color: white;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+}
+.agent-btn-responsive2:hover {
+  background-color: #55cd85 !important;
+  color: white !important;
+  border-color: #55cd85 !important;
+}
+.agent-btn-responsive1 {
+  background-color: white;
+  max-width: 100% !important;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+  border: 2px solid #00a481;
+  background-color: #00a481;	
+}
+.agent-btn-responsive1:hover {
+  background-color: #55cd85 !important;
+  color: white !important;
+  border-color: #55cd85 !important;
+}

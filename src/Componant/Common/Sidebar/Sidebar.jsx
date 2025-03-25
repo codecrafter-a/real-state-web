@@ -23,8 +23,6 @@ import { Button, Card } from 'react-bootstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 const Sidebar = ({ isToggle }) => {
-  console.log(isToggle, "toggletoggle");
-
 
   const { i18n, t } = useTranslation();
   const navigate = useNavigate();
@@ -41,7 +39,6 @@ const Sidebar = ({ isToggle }) => {
 
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-  console.log(isOpen, "isopenoeem");
 
   const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem("isAuthenticated") === "true");
   useEffect(() => {

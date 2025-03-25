@@ -22,8 +22,8 @@ const Setting = () => {
     setIsView(false);
   }
   return (
-    <Col className='py-2 px-4'>
-        <h3 className=" text-center screen-1 border-bottom mb-0 p-2_5 ">{t('settings')} </h3> 
+    <Col className='py-2 px-4 bg-white shadow-lg rounded-3'>
+        <h3 className=" text-center screen-1 border-bottom mb-0 p-2_5 d-none d-md-block">{t('settings')} </h3> 
         <div className='custom-scrollbar overflow-y-auto overflow-x-hidden py-3_5'  style={{ maxHeight: "594px" }}>
           <Row>
             <div>

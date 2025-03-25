@@ -36,11 +36,11 @@ const PersonalArea = () => {
 
     return (
         <div className="p-4 bg-white rounded-3 shadow-sm">
-            <p className="w-100 text-center screen-1 border-bottom py-3 mb-4">
+            <p className="w-100 text-center screen-1 border-bottom py-3 mb-4 d-none d-md-block">
                 {t("personalArea.title")}
             </p>
             <div className="overflow-y-auto overflow-x-hidden custom-scrollbar scroll-height">
-                <div className="pe-3">
+                <div className="pe-md-3">
                     <div className="d-flex flex-wrap gap-3 align-items-start">
                         <div className="d-flex flex-column flex-grow-1">
                             <div className="d-flex flex-wrap justify-content-between w-100 gap-4 align-items-center">
