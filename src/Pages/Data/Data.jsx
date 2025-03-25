@@ -47,7 +47,7 @@ const Data = () => {
             <Nav variant="tabs" className="d-flex justify-content-center justify-content-md-start mx-md-3 pt-2 px-md-4 border-bottom">
               <Nav.Item>
                   <Nav.Link
-                      className={`px-3 focus:!border-transparent hover:!border-transparent ${activeTab === "recent" ? "active-tab" : ""}`}
+                      className={`px-3 border-0 focus:!border-transparent hover:!border-transparent ${activeTab === "recent" ? "active-tab" : ""}`}
                       onClick={() => setActiveTab("recent")}
                   >
                       {t("data_tab2")}
@@ -55,7 +55,7 @@ const Data = () => {
               </Nav.Item>
               <Nav.Item>
                   <Nav.Link
-                      className={`px-3 focus:!border-transparent hover:!border-transparent ${activeTab === "all" ? "active-tab" : ""}`}
+                      className={`px-3 border-0 focus:!border-transparent hover:!border-transparent ${activeTab === "all" ? "active-tab" : ""}`}
                       onClick={() => setActiveTab("all")}
                   >
                       {t("data_tab1")}
@@ -94,14 +94,14 @@ const Data = () => {
                       />
                     </InputGroup>
                   </div>
-                  <div className='d-none d-md-block '><button className="text-center rounded-pill agent-button2 py-1">{t("data_btn_4")}</button></div>
+                  <div className='d-none d-md-block '><button className="text-center rounded-pill agent-button2 w-40 py-1">{t("data_btn_4")}</button></div>
                 </div>
               </Col>
               <Col className=' col-12 col-md-6'>
                 <div className="d-flex my-2 my-md-0 gap-1 align-items-center  justify-content-end gap-md-3" >
-                  <button className=" agent-btn-responsive1 py-1 rounded-pill text-white">{t("data_btn_3")}</button>
-                  <button className=" agent-btn-responsive2 py-1 rounded-pill">{t("data_btn_2")}</button>
-                  <button className=" agent-btn-responsive2 py-1 rounded-pill">{t("data_btn_1")}</button>
+                  <button className=" agent-btn-responsive1 w-40 py-1 rounded-pill text-white">{t("data_btn_3")}</button>
+                  <button className=" agent-btn-responsive2 w-40 py-1 rounded-pill">{t("data_btn_2")}</button>
+                  <button className=" agent-btn-responsive2 w-40 py-1 rounded-pill">{t("data_btn_1")}</button>
                 </div>
               </Col>           
             </Row>

@@ -8,7 +8,7 @@ import { GoChevronRight, GoChevronLeft } from "react-icons/go";
 import house from '../../assets/images/garage_door.svg';
 import { GoPerson } from "react-icons/go";
 import { useAgreementServices } from "../../Services/AgreementServices";
-
+import iconHome from '../../assets/images/icon_home.svg'
 // const tableData = [
 //     {
 //         status: "home_tab_r1_h2",

@@ -13,17 +13,17 @@ const Invocies = () => {
     <>
       <Col>
         <p className="py-1 my-4 text-center screen-1 border-bottom">{t("invoice_title")}</p>
-        <Nav variant="tabs" className="w-full row mx-md-3 pt-2 border-bottom">
+        <Nav variant="tabs" className=" px-md-4 mx-md-3 pt-2 border-bottom " >
           <Tab 
-            className={`focus:!border-transparent hover:!border-transparent border-0 text-center text-md-start ${activeTab === "all" ? "active-tab" : ""}`}
-            onClick={() => setActiveTab("all")}
-            children={t("invoice_tab_title1")}
+            className={`focus:!border-transparent px-3 hover:!border-transparent border-0 text-center text-md-start ${activeTab === "recent" ? "active-tab" : ""}`}
+            onClick={() => setActiveTab("recent")}
+            children={t("invoice_tab_title2")}
             tab={true}
           />
           <Tab 
-            className={`focus:!border-transparent hover:!border-transparent border-0 text-center text-md-start ${activeTab === "recent" ? "active-tab" : ""}`}
-            onClick={() => setActiveTab("recent")}
-            children={t("invoice_tab_title2")}
+            className={`focus:!border-transparent px-3 hover:!border-transparent border-0 text-center text-md-start ${activeTab === "all" ? "active-tab" : ""}`}
+            onClick={() => setActiveTab("all")}
+            children={t("invoice_tab_title1")}
             tab={true}    
           />
         </Nav>

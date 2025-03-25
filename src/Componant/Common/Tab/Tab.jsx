@@ -4,11 +4,11 @@ const Tab = ({children , onClick, className, tab}) => {
     console.log('tabtab', tab)
   return (
    <>
-    <Nav variant="" className={`${tab ? "pt-2 border-bottom col d-block px-0" : "d-flex px-3 pt-2 px-md-4 border-bottom"}`}>
+    <Nav variant="" className={`border-bottom ${tab ? "pt-2 col px-0" : "px-3 pt-2 px-md-4"} d-flex d-md-block`}>
         <Nav.Item>
             <Nav.Link className={className} onClick={onClick} >
                 {children}
-            </Nav.Link>
+            </Nav.Link> 
         </Nav.Item>
     </Nav>
    </>
