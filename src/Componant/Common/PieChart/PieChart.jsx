@@ -24,41 +24,45 @@ const CommonPieChart = ({ data, colors}) => {
           <Tooltip />
         </PieChart>
       </div>
-      <div className="ms-3">
-        <div className="d-flex justify-content-center mt-3 gap-4">
-          <div className="d-flex flex-column">
-            {data.slice(0, 3).map((entry, index) => (
-              <div key={index} className="d-flex align-items-center mb-1">
-                <span
-                  className="me-2"
-                  style={{
-                    display: "inline-block",
-                    width: 10,
-                    height: 10,
-                    backgroundColor: colors[index],
-                    borderRadius: "50%",
-                  }}
-                ></span>
-                {entry.name}
-              </div>
-            ))}
+      <div className="container">
+        <div className="row justify-content-center mt-3">  
+          <div className="col-12 col-md-6 d-flex flex-column align-items-center">
+            <div className="d-flex flex-column">
+              {data.slice(0, 3).map((entry, index) => (
+                <div key={index} className="d-flex align-items-center mb-1">
+                  <span
+                    className="me-2"
+                    style={{
+                      display: "inline-block",
+                      width: 10,
+                      height: 10,
+                      backgroundColor: colors[index],
+                      borderRadius: "50%",
+                    }}
+                  ></span>
+                  <span className="fs-6 fs-md-5">{entry.name}</span>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="d-flex flex-column">
-            {data.slice(3, 5).map((entry, index) => (
-              <div key={index} className="d-flex align-items-center mb-1">
-                <span
-                  className="me-2"
-                  style={{
-                    display: "inline-block",
-                    width: 10,
-                    height: 10,
-                    backgroundColor: colors[index + 3],
-                    borderRadius: "50%",
-                  }}
-                ></span>
-                {entry.name}
-              </div>
-            ))}
+          <div className="col-12 col-md-6 d-flex flex-column align-items-center mt-3 mt-md-0">
+            <div className="d-flex flex-column">
+              {data.slice(3, 5).map((entry, index) => (
+                <div key={index} className="d-flex align-items-center mb-1">
+                  <span
+                    className="me-2"
+                    style={{
+                      display: "inline-block",
+                      width: 10,
+                      height: 10,
+                      backgroundColor: colors[index + 3],
+                      borderRadius: "50%",
+                    }}
+                  ></span>
+                  <span className="fs-6 fs-md-5">{entry.name}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
