@@ -14,11 +14,11 @@ const ChangePassword = () => {
             <p className="w-100 text-center screen-1 border-bottom pb-3 mb-4 d-none d-md-block">
                 {t("changePassword")}
             </p>
-            <div className="">
+            <div>
                 <div className={`d-flex flex-column justify-content-md-start justify-content-between pe-md-3 overflow-y-auto overflow-x-hidden custom-scrollbar ${window.innerWidth >= 768 ? 'scroll-height' : 'password-scroll'}`}>
                     <div>
                         <div>
-                            <p className="d-flex mt-1 fs-5 fw-semibold border-0 bg-transparent text-teal">
+                            <p className="d-flex mt-1 fs-5 fw-semibold border-0 bg-transparent text-teal d-none d-md-block">
                                 {t("personalDetails")}
                             </p>
                             <div className="w-345">

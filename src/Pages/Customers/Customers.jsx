@@ -72,7 +72,7 @@ const Customer = () => {
     <>
       <div className="bg-white w-100 mx-auto pb-3 position-relative z-50 rounded-3 shadow-lg" >
         <div className="px-4">
-          <h1 className="fs-4 font-semibold border-bottom border-[#EAEAEA] py-3 mb-4 text-success text-center">
+          <h1 className="fs-4 font-semibold border-bottom border-[#EAEAEA] py-3 mb-4 text-success text-center d-none d-md-block">
             {t("all_cust")}
           </h1>
         </div>

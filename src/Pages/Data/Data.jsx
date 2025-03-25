@@ -42,8 +42,8 @@ const Data = () => {
 
   const COLORS = ["#166D64", "#3AC2A3"];
   return (
-          <Col>
-            <p className="py-1 my-4 text-center screen-1 border-bottom">{t("data_title")}</p>
+          <Col className='bg-white shadow-lg rounded-3'>
+            <p className="py-1 my-4 text-center screen-1 border-bottom d-none d-md-block">{t("data_title")}</p>
             <Nav variant="tabs" className="d-flex justify-content-center justify-content-md-start mx-md-3 pt-2 px-md-4 border-bottom">
               <Nav.Item>
                   <Nav.Link

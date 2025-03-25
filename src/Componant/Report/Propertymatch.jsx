@@ -4,7 +4,6 @@ import { AiOutlineClose } from 'react-icons/ai';
 import { useTranslation } from 'react-i18next';
 import house from '../../assets/images/property-house.png';
 const Propertymatch = ({types}) => {
-  console.log(types, "typestypestypes");
   const { t } = useTranslation();
   
   return (

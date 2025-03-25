@@ -63,8 +63,8 @@ const AddCustomer = () => {
   };
 
   return (
-    <div>
-      <div className="main_wrap_hdr">
+    <div className="bg-white shadow-lg rounded-3">
+      <div className="main_wrap_hdr d-none d-md-block">
         <h1 className="bor_head_cmn text-center">{t("add_cust_form_title")}</h1>
       </div>
       <div className="main_wrap_body p-0">

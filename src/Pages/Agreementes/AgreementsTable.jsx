@@ -40,7 +40,6 @@ const AgreementsTable = ({ handleOpen }) => {
     );
 };
 const ActionButtons = ({ type, icon, onDelete }) => {
-    console.log(onDelete, "onDeleteonDeleteonDelete");
 
     const { t } = useTranslation();
     return (
@@ -106,7 +105,6 @@ const StatusBadge = ({ status }) => {
 
 
 const TableRow = ({ data,  handleOpen }) => {
-    console.log(handleOpen, "onDeleteonDelete");
 
     const { t } = useTranslation();
     const { status, commission, clients, agreementType, date, agreementName, actionType, icon } = data;

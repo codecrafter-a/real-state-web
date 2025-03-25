@@ -6,11 +6,11 @@ const EditAgents = () => {
 
     return (
         <div className="p-4 bg-white rounded-3 shadow-sm">
-            <p className="w-100 text-center screen-1 border-bottom pb-3 mb-4">
+            <p className="w-100 text-center screen-1 border-bottom pb-3 mb-4 d-none d-md-block">
                 {t("addAgent.editAgent")}
             </p>
             <div className="overflow-y-auto overflow-x-hidden custom-scrollbar scroll-height">
-                <div className="pe-3">
+                <div className="pe-md-3">
                     <div className="text-teal fs-4 fw-semibold mb-4">
                         {t("personalDetails")}
                     </div>

@@ -9,11 +9,11 @@ const SignatureInvoice = () => {
 
     return (
         <div className="p-4 bg-white rounded-3 shadow-sm">
-            <p className="w-100 text-center screen-1 border-bottom pb-3 mb-4">
+            <p className="w-100 text-center screen-1 border-bottom pb-3 mb-4 d-none d-md-block">
                 {t("signature_invoice")}
             </p>
             <div className="overflow-y-auto overflow-x-hidden custom-scrollbar scroll-height">
-                <div className="pe-3">
+                <div className="pe-md-3">
                     <div className="mb-4 position-relative w-75 border border-[#D6D6D6] rounded py-2 px-3">
                         <div className="d-flex">
                             <input

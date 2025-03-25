@@ -61,7 +61,7 @@ const Agreements = () => {
   };
 
   return (
-    <div className="px-4">
+    <div className="px-4 bg-white shadow-lg rounded-3">
       <h1 className="text-center text-success py-3 mb-4 border-bottom border-[#EAEAEA] d-lg-block d-md-block d-none">
         {t("all_agreements")}
       </h1>

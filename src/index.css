@@ -212,10 +212,36 @@ a, a:hover{
   }
 
 .password-scroll{
-	height: 594px;
+	height: 555px;
 }
 @media (max-width: 576px) {
     .scroll-height .password-scroll {
-        height: 594px !important;
+        height: 555px !important;
     }
+}
+.custom-col {
+	background-color: white;
+	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+.top-responsive {
+	top: 60px;
+}
+  
+@media (max-width: 576px) {
+	.custom-col {
+	  background-color: transparent;
+	  box-shadow: none;
+	}
+	.main_content {
+		padding-top: 16px;
+	}
+	.top-responsive {
+		top: 10px;
+	  }
+}
+[lang="he"] .dynamic-margin {
+	margin-right: 3rem;
+}
+[lang="en"] .dynamic-margin {
+	margin-left: 3rem;
 }

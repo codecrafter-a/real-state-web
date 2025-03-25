@@ -49,14 +49,13 @@ const Signin = () => {
       setTimeout(() => {
                navigate(`/${i18n.language}/home`);
              }, 1000); 
-      console.log("tocken genraed tocken tocken", fakeToken);
      }
        
   return (
     <>
      { (
   <>
-      <Col className="col-12">
+      <Col className="col-12 bg-white shadow-lg rounded-3 ">
           <div className='custom-scrollbar overflow-y-auto overflow-x-hidden px-3 scroll-height'>
             <p className="py-4 my-4 text-center screen-1 fw-bold">
                {t("sign_in_title")}

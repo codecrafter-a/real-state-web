@@ -26,8 +26,8 @@ const Property = () => {
 
   return (
     <>
-      <Col className=" py-2">
-        <p className="py-3 my-4 text-center container-fluid screen-1 border-bottom">{t("pro_tab_title")}</p>
+      <Col className=" py-2 bg-white shadow-lg rounded-3">
+        <p className="py-3 my-4 text-center container-fluid screen-1 border-bottom d-none d-md-block">{t("pro_tab_title")}</p>
             <div className="px-3 py-2">
               <div className="position-relative  pr-4">
                 <div className="mx-auto" style={{ width: '304px' }}>

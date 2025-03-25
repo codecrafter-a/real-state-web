@@ -40,8 +40,8 @@ const Report = () => {
         }
     };
   return (
-    <Col>
-       <h3 className="py-1 my-4 text-center screen-1 border-bottom"> {t("report_title")}</h3> 
+    <Col className='bg-white shadow-lg rounded-3'>
+       <h3 className="py-1 my-4 text-center screen-1 border-bottom d-none d-md-block"> {t("report_title")}</h3> 
         <Nav variant="tabs" className="d-flex mx-3 pt-2 border-bottom">
           <Tab 
             className={`px-3 focus:!border-transparent hover:!border-transparent ${activeTab === "all" ? "active-tab" : ""}`}
