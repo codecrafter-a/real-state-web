@@ -1,46 +1,56 @@
-import React from "react";
-import { Table, Form, Button, Accordion } from "react-bootstrap";
-import { FaEye, FaDownload } from "react-icons/fa";
-import { BsWhatsapp } from "react-icons/bs";
-import { MdEmail } from "react-icons/md";
-import { useTranslation } from "react-i18next";
+import React, { useEffect, useState } from 'react'
+import { Table, Form, Button } from 'react-bootstrap';
+import { FaEye, FaDownload } from 'react-icons/fa';
+import { BsWhatsapp } from 'react-icons/bs';
+import { MdEmail } from 'react-icons/md';
+import { useTranslation } from 'react-i18next';
+import { useInvoiceServices } from '../../Services/InvoicesServices';
 
 const InvoicesTable = () => {
   const { t } = useTranslation();
-  const data = [
-    {
-      id: 1,
-      accountNumber: "224567",
-      date: "06.06.24",
-      clientNames: "client_1",
-      subject: "service_payment",
-      amount: "₪ 3348",
-    },
-    {
-      id: 2,
-      accountNumber: "224567",
-      date: "06.06.24",
-      clientNames: "client_2",
-      subject: "service_payment",
-      amount: "₪ 3348",
-    },
-    {
-      id: 3,
-      accountNumber: "224567",
-      date: "06.06.24",
-      clientNames: "client_1",
-      subject: "service_payment",
-      amount: "₪ 3348",
-    },
-    {
-      id: 4,
-      accountNumber: "224567",
-      date: "06.06.24",
-      clientNames: "client_2",
-      subject: "service_payment",
-      amount: "₪ 3348",
-    },
-  ];
+  const [invoiceData, setInvoiceData] = useState([])
+  const { getInvoiceService } = useInvoiceServices()
+  // const data = [
+  //   {
+  //     id: 1,
+  //     accountNumber: '224567',
+  //     date: '06.06.24',
+  //     clientNames: 'client_1',
+  //     subject: 'service_payment',
+  //     amount: '₪ 3348',
+  //   },
+  //   {
+  //     id: 2,
+  //     accountNumber: '224567',
+  //     date: '06.06.24',
+  //     clientNames: 'client_2',
+  //     subject: 'service_payment',
+  //     amount: '₪ 3348',
+  //   },
+  //   {
+  //     id: 3,
+  //     accountNumber: '224567',
+  //     date: '06.06.24',
+  //     clientNames: 'client_1',
+  //     subject: 'service_payment',
+  //     amount: '₪ 3348',
+  //   },
+  //   {
+  //     id: 4,
+  //     accountNumber: '224567',
+  //     date: '06.06.24',
+  //     clientNames: 'client_2',
+  //     subject: 'service_payment',
+  //     amount: '₪ 3348',
+  //   },
+  // ];
+
+  useEffect(() => {
+    const data = getInvoiceService()
+    setInvoiceData(data)
+  }, [getInvoiceService])
+
+
 
   return (
     <div className="custom-table-container">
@@ -67,7 +77,7 @@ const InvoicesTable = () => {
           </tr>
         </thead>
         <tbody>
-          {data.map((row) => (
+          {invoiceData.map((row) => (
             <tr key={row.id}>
               <td>
                 <div className="d-flex align-items-center">
