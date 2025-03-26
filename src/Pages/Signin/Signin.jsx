@@ -5,7 +5,7 @@ import {Col } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
 import i18n from "i18next";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+
 import { useTranslation } from 'react-i18next';
 
 const Signin = () => {
@@ -98,9 +98,9 @@ const Signin = () => {
 
                 {error && <p className="text-danger">{error}</p>}
 
-                <Button className="mx-auto hdr_btn w-50 rounded-pill text-white border-0" onClick={handleLogin}>
+                <button className="mx-auto hdr_btn w-50 rounded-pill text-white border-0" onClick={handleLogin}>
                   <span className="text-decoration-none text-white">{t("sign_in_btn")}</span>
-                </Button>
+                </button>
                 <img src={g10} alt="" className="w-100 d-none d-sm-block" />
               </div>
             </div>
