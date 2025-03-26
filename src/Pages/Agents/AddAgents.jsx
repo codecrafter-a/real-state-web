@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Modal } from "react-bootstrap";
 import { useTranslation } from 'react-i18next';
@@ -12,9 +12,12 @@ const AddAgents = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [passwordVerify, setPasswordVerify] = useState(false);
     const [showModal, setShowModal] = useState(false);
-
     const handleShowModal = () => setShowModal(true);
     const handleCloseModal = () => setShowModal(false);
+    const [direction, setDirection] = useState("ltr");
+    useEffect(() => {
+        setDirection(document.documentElement.dir || "ltr");
+    }, []);
 
     return (
         <div className="p-4 bg-white rounded-3 shadow-sm">
@@ -54,10 +57,15 @@ const AddAgents = () => {
                                     type={showPassword ? "text" : "password"}
                                     className="form-control"
                                     name="password"
+                                    style={{ direction }}
                                 />
-                                <span
-                                    className="position-absolute top-0 end-0 mt-2 me-2 cursor-pointer"
+                                <span className="position-absolute top-50 translate-middle-y"
                                     onClick={() => setShowPassword(!showPassword)}
+                                    style={{
+                                        cursor: "pointer",
+                                        right: direction === "ltr" ? "10px" : "auto",
+                                        left: direction === "rtl" ? "10px" : "auto",
+                                    }}
                                 >
                                     {showPassword ? <FaEyeSlash /> : <FaEye />}
                                 </span>
@@ -73,10 +81,15 @@ const AddAgents = () => {
                                     type={passwordVerify ? "text" : "password"}
                                     className="form-control"
                                     name="password"
+                                    style={{ direction }}
                                 />
-                                <span
-                                    className="position-absolute top-0 end-0 mt-2 me-2 cursor-pointer"
+                                <span className="position-absolute top-50 translate-middle-y"
                                     onClick={() => setPasswordVerify(!passwordVerify)}
+                                    style={{
+                                        cursor: "pointer",
+                                        right: direction === "ltr" ? "10px" : "auto",
+                                        left: direction === "rtl" ? "10px" : "auto",
+                                    }}
                                 >
                                     {passwordVerify ? <FaEyeSlash /> : <FaEye />}
                                 </span>
