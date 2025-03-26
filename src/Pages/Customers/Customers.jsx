@@ -24,10 +24,10 @@ const Customer = () => {
   const { lang } = useParams();
   const [clients, setClients] = useState([]);
 
-  const { getClients } = useClientService(); 
+  const { getClients } = useClientService();
 
   useEffect(() => {
-   const data = getClients();
+    const data = getClients();
     setClients(data);
   }, []);
 
@@ -106,7 +106,7 @@ const Customer = () => {
                 <div className="w-100">
                   <label className="mb-1 fw-semibold">{t("cust_filter_1")}</label>
                   <select className="form-select">
-                    <option />
+                    <option disabled selected>Select Option</option>
                     <option>Option 1</option>
                     <option>Option 2</option>
                   </select>
@@ -122,7 +122,7 @@ const Customer = () => {
                 <div className="w-100">
                   <label className="mb-1 fw-semibold">{t("cust_Property_type")}</label>
                   <select className="form-select">
-                    <option />
+                    <option disabled selected>Select Option</option>
                     <option>Option 1</option>
                     <option>Option 2</option>
                   </select>
@@ -130,7 +130,7 @@ const Customer = () => {
                 <div className="w-100">
                   <label className="mb-1 fw-semibold">{t("cust_Property_condition")}</label>
                   <select className="form-select">
-                    <option />
+                    <option disabled selected>Select Option</option>
                     <option>Option 1</option>
                     <option>Option 2</option>
                   </select>

@@ -38,7 +38,7 @@ const RangeSlider = ({ label, customStyle }) => {
         />
       </div>
 
-      <div className="position-relative mt-4 d-flex align-items-center" style={{ height: "24px" }}>
+      <div className="position-relative my-3 d-flex align-items-center" style={{ height: "24px" }}>
         <div className="position-absolute w-100 rounded" style={{ background: "#e7e7e7", height: "8px" }}></div>
 
         <div
