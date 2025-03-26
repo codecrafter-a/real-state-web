@@ -54,23 +54,23 @@
 }
 .hdr_btn{
 	
-	font-size: 17px;
-	font-weight: 600;
-	line-height: 22.24px;
-	text-align: center;
-	background: linear-gradient(90deg, #00A6A4 0%, #55CD85 100%);
-	box-shadow: 0px 1px 3px 0px #0000001A;
-	padding: 7px 12px;
-	min-width: 139px;
-	height: 37px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border-radius: 100px;
-	color: #fff;
+	font-size: 17px !important;
+	font-weight: 600 !important;
+	line-height: 22.24px !important;
+	text-align: center !important;
+	background: linear-gradient(90deg, #00A6A4 0%, #55CD85 100%) !important;
+	box-shadow: 0px 1px 3px 0px #0000001A !important;
+	padding: 7px 12px !important;
+	min-width: 139px !important;
+	height: 37px !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	border-radius: 100px !important;
+	color: #fff !important;
 }
 .hdr_btn:hover{
-	background: linear-gradient(90deg, #55CD85 0%, #00A6A4 100%);
+	background: linear-gradient(90deg, #55CD85 0%, #00A6A4 100%) !important;
 }
 .hdr_right_menu{
 	list-style: none;

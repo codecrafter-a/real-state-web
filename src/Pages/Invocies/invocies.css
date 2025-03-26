@@ -68,6 +68,8 @@ input:focus-within {outline: none;}
   .custom-table td:last-child {
     border-left: 0;
   }
+  
+.collapse{ visibility: visible;}
   .accordion-button:not(.collapsed) {background-color: transparent;}
   .accordion-button:focus{box-shadow: none;}
   .accordion-button {justify-content: space-between; padding: 0px,; text-align: start;}

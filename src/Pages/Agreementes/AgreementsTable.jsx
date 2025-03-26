@@ -5,7 +5,9 @@ import { useTranslation } from 'react-i18next';
 import { MdOutlineDeleteForever } from "react-icons/md";
 import { useAgreementServices } from "../../Services/AgreementServices";
 
-const AgreementsTable = ({ handleOpen }) => {
+const AgreementsTable = ({ handleOpen,searchQuery,selectedStatus  }) => {
+    console.log("🚀 ~ AgreementsTable ~ selectedStatus:", selectedStatus)
+
     const { t } = useTranslation();
     const [tableData, setTableData] = useState([]);
     const { getAgreementData } = useAgreementServices();
@@ -14,6 +16,31 @@ const AgreementsTable = ({ handleOpen }) => {
         const data = getAgreementData();
         setTableData(data);
     }, []);
+    
+    const statusKeyToEnglish = {
+        "home_tab_r1_h2": "Generated",
+        "home_tab_r2_h2": "Sent",
+        "home_tab_r3_h2": "Viewed",
+        "home_tab_r4_h2": "Signed",
+        "home_tab_r5_h2": "Signed and Executed",
+        "home_tab_r6_h2": "Signed and Registered"
+    };
+
+    // Filter data based on search query and selected status
+    const filteredData = tableData.filter(row => {
+        // Search filter
+        const matchesSearchQuery = t(row.agreementName).toLowerCase().includes(searchQuery.toLowerCase());
+        
+        // Status filter
+        let matchesStatus = true;
+        if (selectedStatus) {
+            const rowStatusEnglish = statusKeyToEnglish[row.status] || row.status;
+            matchesStatus = rowStatusEnglish.toLowerCase() === selectedStatus.toLowerCase();
+        }
+        
+        return matchesSearchQuery && matchesStatus;
+    });
+
 
     
     return (
@@ -31,7 +58,7 @@ const AgreementsTable = ({ handleOpen }) => {
                     </tr>
                 </thead>
                 <tbody className="border">
-                    {tableData.map((row, index) => (
+                {filteredData.map((row, index) => (
                         <TableRow key={index} data={row} handleOpen={handleOpen} />
                     ))}
                 </tbody>

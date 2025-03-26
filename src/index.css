@@ -35,7 +35,7 @@ a, a:hover{
 	padding-top: 70px;
 	width: calc(100% - 360px);
 }
-
+.fs-15{font-size: 15px};
 .fs-17{font-size: 17px;}
 .fs-12{font-size: 12px;}
 
@@ -191,6 +191,19 @@ a, a:hover{
 }
 
 @media (max-width: 767px) {
+	.mobile-form {
+		border-radius: 12px;
+		box-shadow: 0px 0px 12px 0px #09368A0A;
+		padding: 1rem;
+		background-color: #FAFAFA;
+	}
+	.company-logo {
+		position: absolute;
+		top: -46px;
+		transform: translateY(-50%);
+		left: 50%;
+		transform: translateX(-50%);
+    }
     .mb-lg-8 {
 		margin-bottom: 8rem ;
 	}
@@ -300,9 +313,35 @@ a, a:hover{
 		top: 10px;
 	  }
 }
+
+@media (max-width: 767px) {
+	.custom-col {
+		background-color: transparent;
+		box-shadow: none;
+	}
+}
 [lang="he"] .dynamic-margin {
 	margin-right: 3rem;
 }
 [lang="en"] .dynamic-margin {
 	margin-left: 3rem;
+}
+.company-logo {
+	position: relative;
+}
+@media (max-width: 576px) {
+
+	.company-logo {
+		position: absolute;
+		top: -46px;
+		transform: translateY(-50%);
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
+.text_start {
+	text-align: start !important;
+}
+.accordion-button:not(.collapsed){
+	box-shadow: none !important;
 }

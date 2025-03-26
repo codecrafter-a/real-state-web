@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FiPlus } from "react-icons/fi";
 import companyLogo from "../../assets/images/company-logo.svg";
@@ -14,6 +14,7 @@ const PersonalArea = () => {
     const { lang } = useParams();
     const [showModal, setShowModal] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
+    const [direction, setDirection] = useState("ltr");
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
@@ -22,6 +23,11 @@ const PersonalArea = () => {
         secondaryEmail: '',
         password: ''
     });
+
+    useEffect(() => {
+        setDirection(document.documentElement.dir || "ltr");
+    }, []);
+
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -35,18 +41,18 @@ const PersonalArea = () => {
     const handleShowModal = () => setShowModal(true);
 
     return (
-        <div className="p-4 bg-white rounded-3 shadow-sm">
+        <div className="p-md-4 p-2 custom-col rounded-3">
             <p className="w-100 text-center screen-1 border-bottom py-3 mb-4 d-none d-md-block">
                 {t("personalArea.title")}
             </p>
             <div className="overflow-y-auto overflow-x-hidden custom-scrollbar scroll-height">
                 <div className="pe-md-3">
-                    <div className="d-flex flex-wrap gap-3 align-items-start">
-                        <div className="d-flex flex-column flex-grow-1">
-                            <div className="d-flex flex-wrap justify-content-between w-100 gap-4 align-items-center">
-                                <div className="d-flex gap-5">
-                                    <div className="d-flex align-items-center gap-5">
-                                        <div className="position-relative cursor-pointer" onClick={handleShowModal}>
+                    <div className="d-flex flex-wrap gap-3 align-items-start mobile-form my-md-0 my-5 position-relative">
+                        <div className="d-flex flex-column flex-grow-1 pt-sm-0 pt-5">
+                            <div className="d-md-flex flex-wrap justify-content-between w-100 gap-4 align-items-center">
+                                <div className="d-md-flex gap-5">
+                                    <div className="d-md-flex align-items-center gap-5">
+                                        <div className="cursor-pointer d-inline-block company-logo" onClick={handleShowModal}>
                                             <div className="bg-white rounded-pill shadow-md d-flex justify-content-center align-items-center company-logo-container">
                                                 <div className="d-flex flex-column align-items-center">
                                                     <div><img alt="icon" src={companyLogo} /></div>
@@ -57,30 +63,35 @@ const PersonalArea = () => {
                                                 <FiPlus color="white" size={22} />
                                             </div>
                                         </div>
-                                        <div className="d-flex flex-column my-auto text-nowrap">
-                                            <span className="fs-5 d-flex fw-semibold text-teal">{t("personalArea.name")}</span>
-                                            <span className="fs-5 fw-semibold text-teal">{t("personalArea.role")}</span>
+                                        <div className="d-md-block d-flex mb-md-0 mb-3 justify-content-between">
+                                            <div className="d-flex flex-column my-auto text-nowrap">
+                                                <span className="fs-5 d-flex fw-semibold text-teal">{t("personalArea.name")}</span>
+                                                <span className="fs-5 fw-semibold text-teal">{t("personalArea.role")}</span>
+                                            </div>
+                                            <div className="d-md-none">
+                                                <button className="hdr_btn border border-transparent">{t("personalArea.upgradeSubscription")}</button>
+                                            </div>
                                         </div>
                                     </div>
                                     <div className="d-flex flex-wrap gap-4 align-items-center">
-                                        <div className="d-flex flex-wrap gap-4 align-items-center text-end">
+                                        <div className="d-flex flex-md-wrap gap-md-4 gap-3 align-items-center text-end">
                                             <div className="d-flex flex-column my-auto text-nowrap">
-                                                <span className="fs-6 d-flex fw-semibold text-secondary">{t("personalArea.area_type")}</span>
-                                                <span className="fs-5 text-dark">STARTER</span>
+                                                <span className="home-card-title d-flex fw-semibold text-secondary text_start">{t("personalArea.area_type")}</span>
+                                                <span className="home-card-subtitle text-dark">STARTER</span>
                                             </div>
                                             <div className="d-flex flex-column my-auto">
-                                                <span className="fs-6 d-flex fw-semibold text-secondary">{t("personalArea.endDate")}</span>
-                                                <span className="fs-5 text-dark">17.07.2023</span>
+                                                <span className="home-card-title d-flex fw-semibold text-secondary text_start">{t("personalArea.endDate")}</span>
+                                                <span className="home-card-subtitle text-dark">17.07.2023</span>
                                             </div>
                                             <div className="d-flex flex-column my-auto">
-                                                <span className="fs-6 d-flex fw-semibold text-secondary">{t("personalArea.agreementsSentThisMonth")}</span>
-                                                <span className="fs-5 text-dark d-flex">
+                                                <span className="home-card-title d-flex fw-semibold text-secondary text_start">{t("personalArea.agreementsSentThisMonth")}</span>
+                                                <span className="home-card-subtitle text-dark d-flex">
                                                     <strong>10</strong>/50
                                                 </span>
                                             </div>
-                                            <div className="d-flex flex-column my-auto">
-                                                <span className="fs-6 d-flex fw-semibold text-secondary">{t("personalArea.agreementsSentThisMonth")}</span>
-                                                <span className="fs-5 text-dark d-flex">
+                                            <div className="d-none d-md-block flex-column my-auto">
+                                                <span className="home-card-title d-flex fw-semibold text-secondary text_start">{t("personalArea.agreementsSentThisMonth")}</span>
+                                                <span className="home-card-subtitle text-dark d-flex">
                                                     <strong>10</strong>/50
                                                 </span>
                                             </div>
@@ -88,19 +99,19 @@ const PersonalArea = () => {
                                     </div>
                                 </div>
 
-                                <div>
+                                <div className="d-md-block d-none">
                                     <button className="hdr_btn border border-transparent">{t("personalArea.upgradeSubscription")}</button>
                                 </div>
                             </div>
 
-                            <button className="d-flex mt-5 link-text fw-semibold text-decoration-underline border-0 bg-transparent"
+                            <button className="d-flex mt-md-5 mt-4 link-text fw-semibold text-decoration-underline border-0 bg-transparent"
                                 onClick={() => navigate(`/${lang}/personal-area/signature-invoice`)}>
                                 {t("personalArea.invoicesReceived")}
                             </button>
                         </div>
                     </div>
-                    <div>
-                        <p className="d-flex mt-5 fs-5 fw-semibold border-0 bg-transparent text-teal">
+                    <div className="mobile-form">
+                        <p className="d-flex mt-md-5 mt-1 fs-5 fw-semibold border-0 bg-transparent text-teal">
                             {t("personalArea.personalDetails")}
                         </p>
                         <div className="row">
@@ -137,7 +148,7 @@ const PersonalArea = () => {
                                     onChange={handleChange}
                                 />
                             </div>
-                            <div className="col-md-4">
+                            <div className="col-md-4 mb-md-0 mb-3">
                                 <label className="fw-semibold">{t("personalArea.email")}</label>
                                 <input
                                     type="email"
@@ -154,7 +165,7 @@ const PersonalArea = () => {
                                     {t("personalArea.changeEmail")}
                                 </span>
                             </div>
-                            <div className="col-md-4">
+                            <div className="col-md-4 mb-md-0 mb-3">
                                 <label className="fw-semibold">{t("personalArea.password")}</label>
                                 <div className="position-relative">
                                     <input
@@ -164,8 +175,14 @@ const PersonalArea = () => {
                                         placeholder="***********"
                                         value={formData.password}
                                         onChange={handleChange}
+                                        style={{ direction }}
                                     />
-                                    <span className="position-absolute top-0 end-0 mt-2 me-2 cursor-pointer"
+                                    <span className="position-absolute top-50 translate-middle-y"
+                                        style={{
+                                            cursor: "pointer",
+                                            right: direction === "ltr" ? "10px" : "auto",
+                                            left: direction === "rtl" ? "10px" : "auto",
+                                        }}
                                         onClick={() => setShowPassword(!showPassword)}>
                                         {showPassword ? <FaEyeSlash /> : <FaEye />}
                                     </span>
@@ -176,9 +193,8 @@ const PersonalArea = () => {
                                 >
                                     {t("personalArea.changePassword")}
                                 </span>
-
                             </div>
-                            <div className="col-md-4">
+                            <div className="col-md-4 mb-md-0 mb-3">
                                 <label className="fw-semibold">{t("personalArea.secondaryEmail")}</label>
                                 <input
                                     type="email"

@@ -51,6 +51,7 @@
   "feture_8":"חניה",
   "feture_9":"סורגים",
   "reports":"בקשות הלקוח",
+  "request_placeholder":"למשל אני רוצה דירה מוארת מפנקת ...",
   "cust_add":"הוספה",
   "footer":"לדו”ח התאמות נכסים",
   "footer1":"לשליחת הסכם",
@@ -571,5 +572,6 @@
   "all_clients": "לכל הלקוחות",
   "all_properties": "לכל הנכסים",
   "personal_area_title": "איזור אישי",
-  "report_head": "דו”ח התאמות"
+  "report_head": "דו”ח התאמות",
+  "for": "עבור"
   }

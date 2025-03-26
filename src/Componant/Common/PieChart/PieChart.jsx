@@ -3,6 +3,7 @@
 import { PieChart, Pie, Cell, Tooltip } from "recharts";
 
 const CommonPieChart = ({ data, colors}) => {
+  console.log("🚀 ~ CommonPieChart ~ data:", data)
   return (
     <>
       <div className=" d-flex justify-content-center">

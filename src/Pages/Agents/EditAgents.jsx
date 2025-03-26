@@ -11,34 +11,39 @@ const EditAgents = () => {
             </p>
             <div className="overflow-y-auto overflow-x-hidden custom-scrollbar scroll-height">
                 <div className="pe-md-3">
-                    <div className="text-teal fs-4 fw-semibold mb-4">
+                    <div className="text-teal fs-5 lh-1 fw-semibold mb-4">
                         {t("personalDetails")}
                     </div>
                     <div className="row">
                         <div className="col-md-4 mb-4">
-                            <label className="fw-semibold">{t("addAgent.fullName")}</label>
+                            <label className="fs-15 lh-1 fw-semibold">{t("addAgent.fullName")}</label>
                             <input type="text" className="form-control" name="fullName" />
                         </div>
                         <div className="col-md-4 mb-4">
-                            <label className="fw-semibold">{t("addAgent.phone")}</label>
+                            <label className="fs-15 lh-1 fw-semibold">{t("addAgent.phone")}</label>
                             <input type="number" className="form-control" name="number" />
                         </div>
                         <div className="col-md-4 mb-4">
-                            <label className="fw-semibold">{t("addAgent.email")}</label>
+                            <label className="fs-15 lh-1 fw-semibold">{t("addAgent.email")}</label>
                             <input type="email" className="form-control" name="email" />
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-md-4 mb-4">
-                            <label className="fw-semibold">{t("addAgent.licenseNo")}</label>
+                            <label className="fs-15 lh-1 fw-semibold">{t("addAgent.licenseNo")}</label>
                             <input type="text" className="form-control" name="licenseNo" />
                         </div>
                     </div>
-                    <div className="mt-5">
+                    <div className="justify-content-center justify-content-md-start d-flex">
+                        <button className="px-5 py-2 rounded-pill text-white bg-teal border-0">
+                           {t("addAgent.updateButton")}
+                        </button>
+                    </div>
+                    {/* <div className="mt-5">
                         <button className="px-5 py-2 rounded-pill text-white bg-teal border-0">
                             {t("addAgent.updateButton")}
                         </button>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

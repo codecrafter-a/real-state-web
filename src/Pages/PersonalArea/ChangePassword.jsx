@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import "./PersonalArea.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -8,6 +8,10 @@ const ChangePassword = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [showNewPassword, setShowNewPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const [direction, setDirection] = useState("ltr");
+    useEffect(() => {
+        setDirection(document.documentElement.dir || "ltr");
+    }, []);
 
     return (
         <div className="p-4 bg-white rounded-3 shadow-sm">
@@ -29,9 +33,15 @@ const ChangePassword = () => {
                                         className="form-control"
                                         name="password"
                                         placeholder="***********"
+                                        style={{ direction }}
                                     />
-                                    <span className="position-absolute top-0 end-0 mt-2 me-2 cursor-pointer"
-                                        onClick={() => setShowPassword(!showPassword)}>
+                                    <span className="position-absolute top-50 translate-middle-y"
+                                        onClick={() => setShowPassword(!showPassword)}
+                                        style={{
+                                            cursor: "pointer",
+                                            right: direction === "ltr" ? "10px" : "auto",
+                                            left: direction === "rtl" ? "10px" : "auto",
+                                        }}>
                                         {showPassword ? <FaEyeSlash /> : <FaEye />}
                                     </span>
                                 </div>
@@ -46,9 +56,15 @@ const ChangePassword = () => {
                                         className="form-control"
                                         name="new-password"
                                         placeholder="***********"
+                                        style={{ direction }}
                                     />
-                                    <span className="position-absolute top-0 end-0 mt-2 me-2 cursor-pointer"
+                                    <span className="position-absolute top-50 translate-middle-y"
                                         onClick={() => setShowNewPassword(!showNewPassword)}
+                                        style={{
+                                            cursor: "pointer",
+                                            right: direction === "ltr" ? "10px" : "auto",
+                                            left: direction === "rtl" ? "10px" : "auto",
+                                        }}
                                     >
                                         {showNewPassword ? <FaEyeSlash /> : <FaEye />}
                                     </span>
@@ -65,9 +81,15 @@ const ChangePassword = () => {
                                         className="form-control"
                                         name="confirm-password"
                                         placeholder="***********"
+                                        style={{ direction }}
                                     />
-                                    <span className="position-absolute top-0 end-0 mt-2 me-2 cursor-pointer"
+                                    <span className="position-absolute top-50 translate-middle-y"
                                         onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                        style={{
+                                            cursor: "pointer",
+                                            right: direction === "ltr" ? "10px" : "auto",
+                                            left: direction === "rtl" ? "10px" : "auto",
+                                        }}
                                     >
                                         {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
                                     </span>

@@ -11,26 +11,36 @@ const Clientmatch = ({address}) => {
 
   return (
     <div>
-      <Card className="p-3 mb-3 shadow-sm border my-2 rounded-4">
+      <Card className=" mb-3 shadow-sm border my-2 rounded-4">
         <Row>
-            <Col md={4}> 
-              <img src={house} alt='home'/>
+            <Col md={3}> 
+              <div className="p-3">
+                  <Card.Img
+                    variant="top"
+                    src={house}
+                    alt="Property"
+                    className="img-fluid border rounded-2 object-fit-cover"
+                    style={{ height: "200px" }}
+                  />
+                </div>
             </Col>
-            <Col md={8}>
-                <div className='d-flex '>
+            <Col md={7}>          
+                <div className='row my-3'>
+                  <div className="col-3">
                     <div className='px-2'>
-                        <h3 className=' lh-1 fs-17 fw-semibold'> {t('property_address')} </h3>
-                        <p className=' lh-1  fw-normal'>{t('property_type')}</p>
-                        <p  className=' lh-1  fw-normal'>{t('property_details')}</p>
+                      <p className='lh-1 fs-17 fw-semibold mb-0'> {t('property_address')} </p>
+                      <p className='lh-1 fs-15 fw-normal mb-0'>{t('property_type')}</p>
+                      <p className='lh-1 fs-15 fw-normal mb-0'>{t('property_details')}</p>
                     </div>
+                  </div>
+                  <div className="col-9">
                     <div className='fw-normal lh-1 fs-12'>
                         <p>
                         {t('property_description')}
-                            <span>
-                            {t('furniture_details')}
-                            </span>
+                          <span>{t('furniture_details')}</span>
                         </p>
                     </div>
+                  </div>
                 </div>
                 <div className='d-flex justify-content-between'>
                     <div className='d-flex gap-2'>
