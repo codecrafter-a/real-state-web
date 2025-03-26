@@ -9,9 +9,7 @@ import searchIcon from "../../../assets/images/search.svg";
 import "../../Customers/Customer.css";
 import CustomInput from "../../../Componant/Common/Input/Custominput";
 import CustomSelect from "../../../Componant/Common/Select/Customeselect";
-import CustomModal from "../../../Componant/Common/Modal/CustomeModal";
 import successIcon from "../../../assets/images/success_icon.svg";
-import Next from "../../../assets/images/Next.jpg";
 import RangeSlider from "../../../Componant/Common/RangeSlider/RangeSlider";
 import { Modal } from "react-bootstrap";
 
@@ -166,7 +164,7 @@ const AddCustomer = () => {
       {isMobileView && (
         <div className="d-flex justify-content-center mt-3">
           <button type="button" className="btn_cmn mt-3" onClick={nextScreen}>
-            {t("next")}
+            {t("pro_next_step")}
           </button>
         </div>
       )}

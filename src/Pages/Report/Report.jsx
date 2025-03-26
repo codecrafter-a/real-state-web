@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Col, Nav, Row } from 'react-bootstrap';
+import { Col, Nav} from 'react-bootstrap';
 import search from '../../assets/images/search.png';
 import Tab from '../../Componant/Common/Tab/Tab';
 import report from "../../assets/images/Report1.jpg";
@@ -42,68 +42,79 @@ const Report = () => {
   return (
     <Col className='bg-white shadow-lg rounded-3'>
        <h3 className="py-1 my-4 text-center screen-1 border-bottom d-none d-md-block"> {t("report_title")}</h3> 
-        <Nav variant="tabs" className="d-flex mx-3 pt-2 border-bottom">
+       <div className='w-100 border-bottom'>
+          <Nav variant="tabs" className="mx-md-3 pt-2">
           <Tab 
-            className={`px-3 focus:!border-transparent hover:!border-transparent ${activeTab === "all" ? "active-tab" : ""}`}
-            onClick={() => setActiveTab("all")}
-            children={t("tab_all")}
-          />
-          <Tab 
-            className={`px-3 focus:!border-transparent hover:!border-transparent  ${activeTab === "recent" ? "active-tab" : ""} `}
-             onClick={() => setActiveTab("recent")}
-            children= {t("tab_recent")}
-          />
-        </Nav>
+              className={` border-0 text-center text-md-start ${activeTab === "all" ? "active-tab" : ""}`}
+              onClick={() => setActiveTab("all")}
+              children= {t("tab_all")}
+              tab={true}    
+            />
+            <Tab 
+              className={`border-0 text-center text-md-start ${activeTab === "recent" ? "active-tab" : ""}`}
+              onClick={() => setActiveTab("recent")}
+              children={t("tab_recent")}
+              tab={true}
+            /> 
+          </Nav>
+        </div>
         <div className="custom-scrollbar overflow-y-auto overflow-x-hidden px-3 mt-4" style={{ maxHeight: "594px" }}>
             {activeTab === "all" && (
                 <>
-                    <Row>
-                        <div className="mb-4 position-relative w-75 mx-3 border border-[#D6D6D6] rounded py-2 px-3">
+                    <div className="row px-1">
+                        <div className="col-12 col-md-8">
+                            <div className="mb-4 position-relative border border-[#D6D6D6] rounded py-2 px-3">
                             <div className="d-flex">
                                 <input
-                                    type="text"
-                                    className="form-control border-0 p-0"
-                                    placeholder={t("search_placeholder_all")}
-                                    value={searchTerm}
-                                    onChange={(e) => setSearchTerm(e.target.value)}
+                                type="text"
+                                className="form-control border-0 p-0"
+                                placeholder={t("search_placeholder_all")}
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
                                 />
                                 <button className="btn" type="button" onClick={handleSearch}>
-                                    <img src={search} alt="Search" />     
+                                   <img src={search} alt="Search" />
                                 </button>
                             </div>
+                            </div>
                         </div>
-                    </Row>
+                    </div>
                     { propertyData ?
-                        <Propertymatch types={types}/> : <> 
-                               <div>
-                            <p className='fs-17 fw-normal lh-1'>{t("description_1")}</p>
-                            <p className='fs-17 fw-normal lh-1'>{t("description_2")}</p>
-                            <p className='fs-17 fw-normal lh-1'>{t("description_3")}</p>
-                        </div>
-                        <div className={`mt-5 mb-2 d-flex justify-content-${justifyContent}` }>
-                            <img src={report} alt="report1" className='img-fluid h-75'/>
-                        </div></>
+                        <Propertymatch types={types}/> 
+                        : 
+                        <>  
+                            <div>
+                                <p className='fs-17 fw-normal lh-1'>{t("description_1")}</p>
+                                <p className='fs-17 fw-normal lh-1'>{t("description_2")}</p>
+                                <p className='fs-17 fw-normal lh-1'>{t("description_3")}</p>
+                            </div>
+                            <div className={`mt-5 mb-2 d-flex justify-content-${justifyContent}` }>
+                               <img src={report} alt="report1" className='img-fluid h-75'/>
+                            </div>
+                        </>
                     }
                 </>
             )}
             {activeTab === "recent" && (
                 <>
-                <Row>
-                    <div className="mb-4 position-relative w-75 border border-[#D6D6D6] rounded mx-3 py-2 px-3">
-                        <div className="d-flex">
-                            <input
+                    <div className="row px-1">
+                        <div className="col-12 col-md-8">
+                            <div className="mb-4 position-relative border border-[#D6D6D6] rounded py-2 px-3">
+                            <div className="d-flex">
+                                <input
                                 type="text"
                                 className="form-control border-0 p-0"
                                 placeholder={t("search_placeholder_recent")}
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
-                            />
-                            <button className="btn" type="button"  onClick={handleSearch}>
-                                <img src={search} alt="Search" />
-                            </button>
+                                />
+                                <button className="btn" type="button" onClick={handleSearch}>
+                                   <img src={search} alt="Search" />
+                                </button>
+                            </div>
+                            </div>
                         </div>
                     </div>
-                </Row>
                 {clientData ? 
                    <Clientmatch address={clientData}/> : <>
                      <div>

@@ -16,17 +16,19 @@ const Agents = () => {
             <div className="overflow-y-auto overflow-x-hidden custom-scrollbar scroll-height">
                 <div className="pe-md-3">
                     <div className="d-flex flex-column text-center">
-                        <p className="mb-0 fs-4">{t("instructions_1")}</p>
-                        <p className="mb-0 fs-4">{t("instructions_2")}</p>
-
-                        <p className="mb-0 fs-4 mt-4">{t("free_plan")}</p>
-                        <p className="mb-0 fs-4">{t("upgrade_plan")}</p>
+                        <p className="mb-0 fw-normal fs-md-4">{t("instructions_1")}</p>
+                        <p className="mb-0 fw-normal fs-md-4">{t("instructions_2")}</p>
+                        <p className="mb-0 fw-normal fs-md-4 mt-4">{t("free_plan")}</p>
+                        <p className="mb-0 fw-normal fs-md-4">{t("upgrade_plan")}</p>
                     </div>
-                    <div className="d-flex justify-content-center gap-4" style={{ marginTop: "60px" }}>
-                        <button className="hdr_btn py-2 px-5 border-0 me-0" onClick={() => navigate(`/${lang}/agents/add-agents`)}>{t("add_agent_button")}</button>
+                    <div className="justify-content-center d-flex d-sm-none" style={{ marginTop: "70px" }}>
+                        <img src={agentImage} alt="agentImage" />
+                    </div>
+                    <div className="d-flex justify-content-center flex-wrap gap-4" style={{ marginTop: "60px" }}>
+                        <button className="hdr_btn py-2 rounded-pill px-5 border-0 me-0" onClick={() => navigate(`/${lang}/agents/add-agents`)}>{t("add_agent_button")}</button>
                         <button className="px-5 py-2 rounded-pill text-white bg-teal border-0">{t("upgrade_button")}</button>
                     </div>
-                    <div className="d-flex justify-content-center" style={{ marginTop: "70px" }}>
+                    <div className="justify-content-center d-none d-sm-flex" style={{ marginTop: "70px" }}>
                         <img src={agentImage} alt="agentImage" />
                     </div>
                 </div>

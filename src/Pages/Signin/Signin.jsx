@@ -5,7 +5,6 @@ import {Col } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
 import i18n from "i18next";
 import Form from "react-bootstrap/Form";
-
 import { useTranslation } from 'react-i18next';
 
 const Signin = () => {
@@ -52,10 +51,10 @@ const Signin = () => {
      }
        
   return (
-    <>
-     { (
   <>
-      <Col className="col-12 bg-white shadow-lg rounded-3 ">
+    {(
+      <>
+        <Col className="col-12 bg-white shadow-lg rounded-3 ">
           <div className='custom-scrollbar overflow-y-auto overflow-x-hidden px-3 scroll-height'>
             <p className="py-4 my-4 text-center screen-1 fw-bold">
                {t("sign_in_title")}
@@ -105,10 +104,10 @@ const Signin = () => {
               </div>
             </div>
           </div>
-      </Col>
-  </>
-)}
-    </> 
+        </Col>
+      </>
+    )}
+  </> 
   )
 }
 

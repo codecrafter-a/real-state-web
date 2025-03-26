@@ -20,38 +20,38 @@ const AddAgents = () => {
     }, []);
 
     return (
-        <div className="p-4 bg-white rounded-3 shadow-sm">
+        <div className="p-4 bg-white bg-lite-gray rounded-3 shadow-sm">
             <p className="w-100 text-center screen-1 border-bottom pb-3 mb-4 d-none d-md-block">
                 {t("addAgent.title")}
             </p>
             <div className="overflow-y-auto overflow-x-hidden custom-scrollbar scroll-height">
                 <div className="pe-md-3">
-                    <div className="text-teal fs-4 fw-semibold mb-4">
+                    <div className="text-teal fs-5 lh-1 fw-semibold mb-4">
                         {t("addAgent.personalDetails")}
                     </div>
                     <div className="row">
                         <div className="col-md-4 mb-4">
-                            <label className="fw-semibold">{t("addAgent.fullName")}</label>
+                            <label className="fs-15 lh-1  fw-semibold">{t("addAgent.fullName")}</label>
                             <input type="text" className="form-control" name="fullName" />
                         </div>
                         <div className="col-md-4 mb-4">
-                            <label className="fw-semibold">{t("addAgent.phone")}</label>
+                            <label className="fs-15 lh-1  fw-semibold">{t("addAgent.phone")}</label>
                             <input type="number" className="form-control" name="number" />
                         </div>
                         <div className="col-md-4 mb-4">
-                            <label className="fw-semibold">{t("addAgent.email")}</label>
+                            <label className="fs-15 lh-1  fw-semibold">{t("addAgent.email")}</label>
                             <input type="email" className="form-control" name="email" />
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-md-4 mb-4">
-                            <label className="fw-semibold">{t("addAgent.licenseNo")}</label>
+                            <label className="fs-15 lh-1  fw-semibold">{t("addAgent.licenseNo")}</label>
                             <input type="text" className="form-control" name="licenseNo" />
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-md-4">
-                            <label className="fw-semibold">{t("addAgent.password")}</label>
+                            <label className="fs-15 lh-1  fw-semibold">{t("addAgent.password")}</label>
                             <div className="position-relative">
                                 <input
                                     type={showPassword ? "text" : "password"}
@@ -70,12 +70,12 @@ const AddAgents = () => {
                                     {showPassword ? <FaEyeSlash /> : <FaEye />}
                                 </span>
                             </div>
-                            <span className="text-primary d-block mt-1 fw-semibold text-decoration-underline cursor-pointer">
+                            <span className="text-primary d-block mt-1 fs-15 lh-1  fw-semibold text-decoration-underline cursor-pointer">
                                 {t("addAgent.generatePassword")}
                             </span>
                         </div>
                         <div className="col-md-4">
-                            <label className="fw-semibold">{t("addAgent.confirmPassword")}</label>
+                            <label className="fs-15 lh-1  fw-semibold">{t("addAgent.confirmPassword")}</label>
                             <div className="position-relative">
                                 <input
                                     type={passwordVerify ? "text" : "password"}
@@ -94,15 +94,17 @@ const AddAgents = () => {
                                     {passwordVerify ? <FaEyeSlash /> : <FaEye />}
                                 </span>
                             </div>
-                            <span className="d-block mt-1 fw-medium" style={{ fontSize: "14px" }}>
+                            <span className="d-block mt-1 fs-12 lh-1 fw-semibold" style={{ fontSize: "14px" }}>
                                 {t("addAgent.passwordNote")}
                             </span>
                         </div>
                     </div>
-                    <div className="mt-5">
-                        <button className="px-5 py-2 rounded-pill text-white bg-teal border-0" onClick={handleShowModal}>
-                            {t("addAgent.addButton")}
-                        </button>
+                    <div className="mt-5 row  ">
+                        <div className="justify-content-center justify-content-md-start d-flex">
+                            <button className="px-5 py-2 rounded-pill text-white bg-teal border-0" onClick={handleShowModal}>
+                                {t("addAgent.addButton")}
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

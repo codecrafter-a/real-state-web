@@ -8,13 +8,14 @@ import calendarMonth from "../../assets/images/mobile_calendar.png";
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import CommonPieChart from '../../Componant/Common/PieChart/PieChart';
-import user from '../../assets/images/user_icon.svg';
-import home_work from '../../assets/images/home_work.svg';
+// import user from '../../assets/images/user_icon.svg';
+// import home_work from '../../assets/images/home_work.svg';
 import { useTranslation } from 'react-i18next';
 import i18n from "i18next";
 import { Nav } from "react-bootstrap";
 import { useDataService } from "../../Services/Data";
 
+import Tab from '../../Componant/Common/Tab/Tab';
 const Data = () => {
 
   const { t } = useTranslation();
@@ -42,29 +43,27 @@ const Data = () => {
     setColorData(colors)
   }, []);
   return (
-    <Col className='bg-white shadow-lg rounded-3'>
-      <p className="py-1 my-4 text-center screen-1 border-bottom d-none d-md-block">{t("data_title")}</p>
-      <Nav variant="tabs" className="d-flex justify-content-center justify-content-md-start mx-md-3 pt-2 px-md-4 border-bottom">
-        <Nav.Item>
-          <Nav.Link
-            className={`px-3 border-0 focus:!border-transparent hover:!border-transparent ${activeTab === "recent" ? "active-tab" : ""}`}
-            onClick={() => setActiveTab("recent")}
-          >
-            {t("data_tab2")}
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link
-            className={`px-3 border-0 focus:!border-transparent hover:!border-transparent ${activeTab === "all" ? "active-tab" : ""}`}
-            onClick={() => setActiveTab("all")}
-          >
-            {t("data_tab1")}
-          </Nav.Link>
-        </Nav.Item>
-      </Nav>
-      <div className="custom-scrollbar overflow-y-auto overflow-x-hidden px-3 mt-4" >
-        {activeTab === "all" && (
-          <>
+          <Col className='bg-white shadow-lg rounded-3'>
+            <p className="py-1 my-4 text-center screen-1 border-bottom d-none d-md-block">{t("data_title")}</p>
+            <div className='w-100 border-bottom'>
+              <Nav variant="tabs" className="mx-md-3 pt-2">
+                <Tab 
+                  className={`border-0 text-center text-md-start ${activeTab === "recent" ? "active-tab" : ""}`}
+                  onClick={() => setActiveTab("recent")}
+                  children={t("data_tab2")}
+                  tab={true}
+                />
+                <Tab 
+                  className={` border-0 text-center text-md-start ${activeTab === "all" ? "active-tab" : ""}`}
+                  onClick={() => setActiveTab("all")}
+                  children={t("data_tab1")}
+                  tab={true}    
+                />
+              </Nav>
+            </div>
+            <div className="custom-scrollbar overflow-y-auto overflow-x-hidden px-3 mt-4" >
+            {activeTab === "all" && (
+              <>
             <Row className=" align-items-center py-3 justify-content-center">
               <Col className=' col-12 col-md-6 d-flex flex-md-nowrap flex-wrap'>
                 <div className='d-flex justify-content-center  align-items-center gap-2 gap-md-4'>

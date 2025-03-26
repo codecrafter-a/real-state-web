@@ -43,7 +43,7 @@ const AgentGraphModal = ({ show, handleClose }) => {
                                 </div>
                                 <div className="d-flex align-items-center">
                                     <div
-                                        className="border border-2 border-success"
+                                        className=" border-2 border-success"
                                         style={{ height: "87px", width: "2px" }}
                                     ></div>
                                 </div>
