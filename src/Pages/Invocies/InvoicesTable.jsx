@@ -10,92 +10,48 @@ const InvoicesTable = () => {
   const { t } = useTranslation();
   const [invoiceData, setInvoiceData] = useState([])
   const { getInvoiceService } = useInvoiceServices()
-  // const data = [
-  //   {
-  //     id: 1,
-  //     accountNumber: '224567',
-  //     date: '06.06.24',
-  //     clientNames: 'client_1',
-  //     subject: 'service_payment',
-  //     amount: '₪ 3348',
-  //   },
-  //   {
-  //     id: 2,
-  //     accountNumber: '224567',
-  //     date: '06.06.24',
-  //     clientNames: 'client_2',
-  //     subject: 'service_payment',
-  //     amount: '₪ 3348',
-  //   },
-  //   {
-  //     id: 3,
-  //     accountNumber: '224567',
-  //     date: '06.06.24',
-  //     clientNames: 'client_1',
-  //     subject: 'service_payment',
-  //     amount: '₪ 3348',
-  //   },
-  //   {
-  //     id: 4,
-  //     accountNumber: '224567',
-  //     date: '06.06.24',
-  //     clientNames: 'client_2',
-  //     subject: 'service_payment',
-  //     amount: '₪ 3348',
-  //   },
-  // ];
 
   useEffect(() => {
     const data = getInvoiceService();
     setInvoiceData(data)
   }, [])
 
-
-
   return (
     <div className="custom-table-container">
-      <Table responsive hover className="custom-table d-md-table  d-none">
+      <Table hover className="custom-table d-md-table  d-none">
         <thead className="border-0">
-          <tr>
-            <th>
-              <div className="d-flex align-items-center">
-                <Form.Check type="checkbox" className="px-2" />
+          <tr className="text-center my-2">
+            <th className="p-2">
+              <div className="d-flex align-items-center justify-content-center">
+                <Form.Check type="checkbox" className="me-2" />
                 {t("invoice_number")}
               </div>
             </th>
-            <th>{t("date")}</th>
-            <th>{t("client_names")}</th>
-            <th>{t("subject")}</th>
-            <th>{t("amount")}</th>
-            <th>{t("actions")}</th>
+            <th className="p-2">{t("date")}</th>
+            <th className="p-2">{t("client_names")}</th>
+            <th className="p-2">{t("subject")}</th>
+            <th className="p-2">{t("amount")}</th>
+            <th className="p-2">{t("actions")}</th>
           </tr>
         </thead>
-        <tbody className="border border-1 rounded-3 border-secondary ">
+        <tbody className="border border-1 rounded-3 border-secondary">
           {invoiceData.map((row) => (
-            <tr key={row.id}>
-              <td className="border">
-                <div className="d-flex align-items-center">
-                  <Form.Check type="checkbox" className="px-2" />
+            <tr key={row.id} className="text-center">
+              <td className="border p-2">
+                <div className="d-flex align-items-center justify-content-center">
+                  <Form.Check type="checkbox" className="me-2" />
                   {row.accountNumber}
                 </div>
               </td>
-              <td className="border">{row.date}</td>
-              <td className="border">{t(row.clientNames)}</td>
-              <td className="border">{t(row.subject)}</td>
-              <td className="border">{row.amount}</td>
-              <td className="actions">
-                <Button variant="link" className="icon-btn">
-                  <FaEye /> {t("view")}
-                </Button>
-                <Button variant="link" className="icon-btn">
-                  <MdEmail /> {t("send_to_client")}
-                </Button>
-                <Button variant="link" className="icon-btn">
-                  <FaDownload /> {t("download")}
-                </Button>
-                <Button variant="link" className="icon-btn">
-                  <BsWhatsapp /> {t("share")}
-                </Button>
+              <td className="border p-2">{row.date}</td>
+              <td className="border p-2">{t(row.clientNames)}</td>
+              <td className="border p-2">{t(row.subject)}</td>
+              <td className="border p-2">{row.amount}</td>
+              <td className="actions border">
+                <Button variant="link" className="icon-btn"><FaEye /> {t("view")}</Button>
+                <Button variant="link" className="icon-btn"><MdEmail /> {t("send_to_client")}</Button>
+                <Button variant="link" className="icon-btn"><FaDownload /> {t("download")}</Button>
+                <Button variant="link" className="icon-btn"><BsWhatsapp /> {t("share")} </Button>
               </td>
             </tr>
           ))}
@@ -118,7 +74,6 @@ const InvoicesTable = () => {
                 </p>
               </div>
             </Accordion.Header>
-
             <Accordion.Body className="p-0">
               <div className="px-3 border-bottom">
                 <p className="m-0">
@@ -128,21 +83,27 @@ const InvoicesTable = () => {
                   <strong>{t("amount")}:</strong> {row?.amount || "N/A"}
                 </p>
               </div>
-              <div className="d-flex justify-content-cener gap-3 py-3 w-100">
-                <Button className="btn btn-light text-dark p-0">
-                  <FaEye /> {t("view")}
-                </Button>
-                <Button className="btn btn-light text-dark p-0">
-                  <MdEmail /> {t("send_to_client")}
-                </Button>
-                <Button className="btn btn-light bg-opacity-10 text-dark p-0">
-                  <FaDownload /> {t("download")}
-                </Button>
-                <Button className="btn btn-light text-dark p-0">
-                  <BsWhatsapp /> {t("share")}
-                </Button>
+              <div className="border-top p-2 bg-light">
+                <div className="d-flex justify-content-around gap-2 w-100">
+                  <Button className="btn btn-light d-flex align-items-center p-1">
+                    <FaEye size={16} />
+                    <span className="fs-14 fw-normal lh-1">{t("view")}</span>
+                  </Button>
+                  <Button className="btn btn-light d-flex align-items-center p-1">
+                    <MdEmail size={18} />
+                    <span className="fs-14 fw-normal lh-1">{t("send_to_client")}</span>
+                  </Button>
+                  <Button className="btn btn-light d-flex align-items-center p-1">
+                    <FaDownload size={16} />
+                    <span className="fs-14 fw-normal lh-1">{t("download")}</span>
+                  </Button>
+                  <Button className="btn btn-light d-flex align-items-center p-1">
+                    <BsWhatsapp size={16} />
+                    <span className="fs-14 fw-normal lh-1">{t("share")}</span>
+                  </Button>
+                </div>
               </div>
-            </Accordion.Body>
+          </Accordion.Body>
           </Accordion.Item>
         ))}
       </Accordion>
