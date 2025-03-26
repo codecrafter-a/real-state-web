@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col } from "react-bootstrap";
 
 import { useTranslation } from 'react-i18next';
@@ -11,20 +11,20 @@ import Homechart from "../../Componant/Homedatacard/Homechart/Homechart";
 import i18n from "i18next";
 import { motion } from "framer-motion";
 import HomeTable from "../Home/HomeTable";
+import { useHomeService } from "../../Services/Home";
+
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
   const fontSize = i18n.language === "he" ? "15px" : "14px";
 
-  const dataList = [
-    { amount: "₪10,000", text: "home_accro_in1", icon: indication },
-    { amount: "₪15,000", text: "home_accro_in2", icon: indication },
-    { amount: "₪20,000", text: "home_accro_in3", icon: indication },
-    { amount: "₪8,000", text: "home_accro_in4", icon: indication },
-    { amount: "₪12,500", text: "home_accro_in5", icon: indication },
-    { amount: "₪18,000", text: "home_accro_in6", icon: indication },
-  ];
-
+ const [homedatapage, sethomedatapage] = useState([]);
+    const { getHomes } = useHomeService();
+  
+      useEffect(() => {
+          const Homedata = getHomes();
+          sethomedatapage(Homedata);
+      }, []);
   return (
     <>
       <Col className="p-0 custom-col rounded-3">
@@ -123,7 +123,7 @@ const Home = () => {
                     style={{ overflow: "hidden" }}
                   >
                     <Row className="py-3">
-                      {dataList.map((item, index) => (
+                      {homedatapage.map((item, index) => (
                         <Datacard
                           key={index}
                           amount={t(item.amount)}

@@ -115,7 +115,7 @@ const Sidebar = ({ isToggle }) => {
                       <span className="action_icon">
                         <img src={action.icon} alt="icon" />
                       </span>
-                      {action.text}
+                      <span className='font'>{action.text}</span>
                     </Link>
                   </li>
                 ))}
@@ -128,7 +128,7 @@ const Sidebar = ({ isToggle }) => {
                 <ul className='cmn_actions_list d-block'>
                   <div className='d-flex align-items-center '>
                     <img src={userkey} alt="action icon " />
-                    <p className='fs-5 fw-normal px-2 pt-2 lh-1'>{t("action1")}</p>
+                    {/* <p className='fs-5 fw-normal px-2 pt-2 lh-1'>{t("action1")}</p> */}
                   </div>
                   <div className='d-flex align-items-center'>
                     <img src={userhouse} alt="action icon " />

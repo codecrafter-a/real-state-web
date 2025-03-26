@@ -60,6 +60,13 @@ const Agreements = () => {
     setIsDocument(true);
   };
 
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedStatus, setSelectedStatus] = useState('');
+  const handleStatusChange = (e) => setSelectedStatus(e.target.value);
+  const handleRemoveStatus = () => setSelectedStatus(''); // Remove selected status
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
   return (
     <div className="px-4 bg-white shadow-lg rounded-3">
       <h1 className="text-center text-success py-3 mb-4 border-bottom border-[#EAEAEA] d-lg-block d-md-block d-none">
@@ -73,9 +80,8 @@ const Agreements = () => {
           <Nav variant="tabs" className="mb-3 border-bottom border-[#EAEAEA]">
             <Nav.Item>
               <Nav.Link
-                className={`px-3 border-0 focus-ring-transparent hover-border-transparent ${
-                  activeTab === "all" ? "active-tab" : ""
-                }`}
+                className={`px-3 border-0 focus-ring-transparent hover-border-transparent ${activeTab === "all" ? "active-tab" : ""
+                  }`}
                 onClick={() => setActiveTab("all")}
               >
                 {t("all_agreements")}
@@ -83,9 +89,8 @@ const Agreements = () => {
             </Nav.Item>
             <Nav.Item>
               <Nav.Link
-                className={`px-3 border-0 focus-ring-transparent hover-border-transparent ${
-                  activeTab === "recent" ? "active-tab" : ""
-                }`}
+                className={`px-3 border-0 focus-ring-transparent hover-border-transparent ${activeTab === "recent" ? "active-tab" : ""
+                  }`}
                 onClick={() => setActiveTab("recent")}
               >
                 {t("recent_agreements")}
@@ -101,7 +106,9 @@ const Agreements = () => {
                     <input
                       type="text"
                       className="form-control border-0 p-0"
-                      placeholder={t("search_placeholder")}
+                      placeholder="Search agreements..."
+                      value={searchQuery}
+                      onChange={handleSearchChange}
                     />
                     <button className="btn p-0" type="button">
                       <img src={search} alt="Search" />
@@ -132,11 +139,14 @@ const Agreements = () => {
                     <label className="form-label">
                       {t("agreement_status")}
                     </label>
-                    <select className="form-select">
+                    <select className="form-select" value={selectedStatus}
+                      onChange={handleStatusChange}>
                       <option>{t("status_agreement")}</option>
-                      <option value="1">Option 1</option>
-                      <option value="2">Option 2</option>
-                      <option value="3">Option 3</option>
+                      <option value="Generated">Generated</option>
+                      <option value="Sent">Sent</option>
+                      <option value="Viewed">Viewed</option>
+                      <option value="Signed">Signed</option>
+
                     </select>
                   </div>
                   <div className="w-100 d-flex align-items-center">
@@ -157,22 +167,25 @@ const Agreements = () => {
                   </div>
                 </div>
 
-                <div className="d-flex mb-5">
-                  <span
-                    className="d-flex align-items-center gap-3 py-2 px-3 rounded-pill"
-                    style={{ background: "#E9FAF4" }}
-                  >
-                    <span>{t("generated")}</span>
-                    <img
-                      src={remove_icon}
-                      alt=""
-                      className="img-fluid"
-                      style={{ width: "12px" }}
-                    />
-                  </span>
-                </div>
+                {selectedStatus && (
+                  <div className="d-flex mb-5">
+                    <span
+                      className="d-flex align-items-center gap-3 py-2 px-3 rounded-pill"
+                      style={{ background: "#E9FAF4" }}
+                    >
+                      <span>{selectedStatus === '1' ? 'Generated' : selectedStatus === '2' ? 'Sent' : selectedStatus === '3' ? 'Viewed' : 'Signed'}</span>
+                      <img
+                        src={remove_icon}
+                        alt="Remove"
+                        className="img-fluid"
+                        style={{ width: "12px", cursor: "pointer" }}
+                        onClick={handleRemoveStatus}
+                      />
+                    </span>
+                  </div>
+                )}
                 <div>
-                  <AgreementsTable handleOpen={handleOpen} />
+                  <AgreementsTable handleOpen={handleOpen} searchQuery={searchQuery} selectedStatus={selectedStatus} />
                 </div>
               </div>
             )}
@@ -350,7 +363,7 @@ const Agreements = () => {
                 מצויין! רשמנו אותך לשירות שלנו
               </p>
               <p className="py-2 fs-4 font-semibold ">
-                 בחיוב הקרוב תחוייבו בX ₪
+                בחיוב הקרוב תחוייבו בX ₪
               </p>
               <h4 className="text-embed-500 fs-3 font-semibold pb-3">
                 החשבונית הופקה בהצלחה
