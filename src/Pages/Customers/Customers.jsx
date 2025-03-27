@@ -14,7 +14,7 @@ import RangeSlider from "../../Componant/Common/RangeSlider/RangeSlider";
 import CustomButton from "../../Componant/Common/Button/Button";
 import edit from '../../assets/images/edit.svg';
 import deleteIcon from '../../assets/images/delete.svg';
-import { Modal } from "react-bootstrap";
+import { Accordion, Modal } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import { useClientService } from "../../Services/ClientService";
 
@@ -80,30 +80,30 @@ const Customer = () => {
         <div className="px-4">
           <form className="custom-scrollbar overflow-y-auto overflow-x-hidden " style={{ height: "594px" }}>
             <div className="me-4">
-              <div className="mb-3 d-flex justify-content-end">
+              <div className="mb-3 d-flex justify-content-end flex-wrap gap-3">
                 <button
                   type="button"
-                  className="btn btn-outline-success d-flex align-items-center justify-content-center rounded-pill py-2 px-4 gap-2"
+                  className="btn btn-outline-success d-flex align-items-center justify-content-center rounded-pill py-2 px-4 mt-2 gap-2"
                   onClick={() => navigate(`/${lang}/customers/add-customers`)}
                 >
                   <img src={add_reaction} alt="Add Client" />
                   {t("add_cust")}
                 </button>
               </div>
-              <div className="mb-4 position-relative w-75 border border-[#D6D6D6] rounded py-2 px-3">
-                <div className="d-flex">
-                  <input
-                    type="text"
-                    className="form-control border-0 p-0"
-                    placeholder={t("filter_cust")}
-                  />
-                  <button className="btn p-0" type="button" aria-label="Search">
-                    <img src={search} alt="Search" />
-                  </button>
-                </div>
+
+              <div className="mb-4 position-relative border border-[#D6D6D6] rounded py-2 px-3 d-flex flex-wrap w-100 w-md-75 mx-auto">
+              <input
+                  type="text"
+                  className="form-control border-0 p-0 flex-grow-1"
+                  placeholder={t("filter_cust")}
+                />
+                <button className="btn p-0 ms-2" type="button" aria-label="Search">
+                  <img src={search} alt="Search" />
+                </button>
               </div>
-              <div className="mb-4 d-flex align-items-end gap-4">
-                <div className="w-100">
+
+              <div className="mb-4 d-flex flex-wrap align-items-end gap-3">
+                <div className="flex-grow-1">
                   <label className="mb-1 fw-semibold">{t("cust_filter_1")}</label>
                   <select className="form-select">
                     <option disabled selected>Select Option</option>
@@ -111,7 +111,8 @@ const Customer = () => {
                     <option>Option 2</option>
                   </select>
                 </div>
-                <div className="w-100">
+
+                <div className="flex-grow-1">
                   <label className="form-label fw-semibold">{t("cust_serch")}</label>
                   <input
                     type="text"
@@ -119,7 +120,8 @@ const Customer = () => {
                     placeholder={t("cust_typing")}
                   />
                 </div>
-                <div className="w-100">
+
+                <div className="flex-grow-1">
                   <label className="mb-1 fw-semibold">{t("cust_Property_type")}</label>
                   <select className="form-select">
                     <option disabled selected>Select Option</option>
@@ -127,7 +129,8 @@ const Customer = () => {
                     <option>Option 2</option>
                   </select>
                 </div>
-                <div className="w-100">
+
+                <div className="flex-grow-1">
                   <label className="mb-1 fw-semibold">{t("cust_Property_condition")}</label>
                   <select className="form-select">
                     <option disabled selected>Select Option</option>
@@ -135,17 +138,24 @@ const Customer = () => {
                     <option>Option 2</option>
                   </select>
                 </div>
-                <div>
-                  <label className="form-label fw-semibold">&nbsp;</label>
-                  <button type="button" className="btn btn-success d-inline-flex align-items-center justify-content-center fw-medium text-white border-0 rounded-pill" style={{ boxShadow: '0 10px 8px rgba(0, 0, 0, 0.1)', padding: '5px 15px', minWidth: '146px', outline: 'none' }}>
+
+                <div className="d-flex flex-grow-1 align-items-end">
+                  <button
+                    type="button"
+                    className="btn btn-success d-inline-flex align-items-center justify-content-center fw-medium text-white border-0 rounded-pill w-100"
+                    style={{ boxShadow: '0 10px 8px rgba(0, 0, 0, 0.1)', padding: '8px 15px', minWidth: '146px' }}
+                  >
                     {t("cust_search")}
                   </button>
                 </div>
               </div>
+
               <div className="mb-4">
                 <div>
-                  <div className="d-flex">
-                    <div className="mb-4 d-flex align-items-center">
+                <div className="d-flex flex-wrap flex-lg-nowrap align-items-center gap-3">
+
+                    {/* Button Container */}
+                    <div className="mb-3">
                       <button
                         type="button"
                         onClick={handleOpen}
@@ -154,45 +164,60 @@ const Customer = () => {
                         <img className="me-2" src={search_icon2} alt="Add Client" />
                         {t("advance_search")}
                       </button>
-
-                      <ul className="list-unstyled d-flex m-0 align-items-center">
-                        {Array.from({ length: 6 }, (_, i) => (
-                          <li key={i} className="mx-2 bg-success bg-opacity-10 rounded-pill d-flex px-3 py-2 align-items-center gap-3">
-                            {t(`cust_opt_${i + 1}`)}
-                            <span>
-                              <img src={remove_icon} alt="Remove" />
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
                     </div>
+
+                    {/* List Container */}
+                    <ul className="list-unstyled d-flex flex-wrap justify-content-center m-0 align-items-center p-0 w-100">
+  {Array.from({ length: 6 }, (_, i) => (
+    <li
+      key={i}
+      className="bg-success bg-opacity-10 rounded-pill d-flex px-3 py-2 align-items-center gap-2 text-center"
+      style={{
+        flex: "1 1 auto",
+        minWidth: "120px",
+        maxWidth: "200px",
+        margin: "5px",
+      }}
+    >
+      <div className="custom-text">{t(`cust_opt_${i + 1}`)}</div>
+      <span>
+        <img src={remove_icon} alt="Remove" />
+      </span>
+    </li>
+  ))}
+</ul>
+
                   </div>
-                  <div className="d-flex justify-content-end gap-2">
+
+                  <div className="d-flex flex-wrap justify-content-end gap-2 mt-4">
                     <button
                       type="button"
                       className="btn btn-outline-success rounded-pill py-1 px-4"
                     >
                       {t("cust_delete")}
                     </button>
+
                     <button
                       type="button"
                       className="btn btn-success rounded-pill py-1 px-4 d-flex align-items-center justify-content-center gap-2"
                     >
                       <img src={action_icon1} alt="Sign Client" />
-                      {t("auth_cust_sigin")}
+                     <span className="custom-text-green"> {t("auth_cust_sigin")}</span>
                     </button>
+
                     <button
                       type="button"
                       className="btn btn-success rounded-pill py-1 px-4 d-flex align-items-center justify-content-center gap-2"
                     >
                       <img src={action_icon2} alt="Sign Owner" />
-                      {t("auth_pro_Owner_sigin")}
+                     <span className="custom-text-green"> {t("auth_pro_Owner_sigin")}</span>
                     </button>
                   </div>
+
                 </div>
               </div>
               <div>
-                <table className="table">
+                <table className="table text-center d-none d-md-table">
                   <thead>
                     <tr>
                       <th className="table-head">
@@ -258,27 +283,49 @@ const Customer = () => {
                         {expandedRows.includes(index) && (
                           <tr>
                             <td colSpan={7} className="px-4 py-3">
-                              <div className="text-start">
-                                <p>
-                                  <strong>{t("cust_property_type")}</strong> {t("cust_property_type_value")}
-                                </p>
-                                <p>
-                                  <strong>{t("cust_Property_Condition")}</strong> {t("cust_Property_Condition_value")}
-                                </p>
-                                <p>
-                                  <strong>{t("cust_no_rooms")}</strong> {t("cust_no_rooms_value")}
-                                </p>
-                                <p>
-                                  <strong>{t("cust_apartment_size")}</strong> {t("cust_apartment_size_value")}
-                                </p>
-                                <p>
-                                  <strong>{t("cust_floor")}</strong> 4,5
-                                </p>
-                                <p>
-                                  <strong>{t("cust_price")}</strong> 1000 - 3000 ₪
-                                </p>
+                              <div className="text-start d-flex align-items-center justify-content-between">
+                                <div>
+                                  <strong>{t("cust_property_type")}</strong> <p>{t("cust_property_type_value")}</p>
+                                </div>
+                                <div>
+                                  <strong>{t("cust_Property_Condition")}</strong> <p>{t("cust_Property_Condition_value")}</p>
+                                </div>
+                                <div>
+                                  <strong>{t("cust_no_rooms")}</strong> <p>{t("cust_no_rooms_value")}</p>
+                                </div>
+                                <div>
+                                  <strong>{t("cust_apartment_size")}</strong> <p>{t("cust_apartment_size_value")}</p>
+                                </div>
+                                <div>
+                                  <strong>{t("cust_floor")}</strong> <p>4,5</p>
+                                </div>
+                                <div>
+                                  <strong>{t("cust_price")}</strong> <p>1000 - 3000 ₪</p>
+                                </div>
                               </div>
-                              <div className="d-flex justify-content-between">
+                              <div className="text-start d-flex justify-content-between gap-4 mt-3">
+                                <div>
+                                  <strong>{t("cust_additional_comments")}</strong> <p className="text-wrap">{t("cust_additional_comments_value")}</p>
+                                </div>
+                                <div>
+                                  <strong>{t("cust_additional_features")}</strong>
+                                  <div className="d-flex flex-wrap gap-2 mt-2">
+                                    {t("cust_additional_features_value")
+                                      .split(',')
+                                      .map((feature, index) => (
+                                        <span key={index} className="custom-badge">
+                                          {feature.trim()}
+                                        </span>
+                                      ))}
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="text-start mt-3">
+                                <strong>{t("recent_agreements")}</strong>
+                                <p className="mb-1">{t("recent_agreements_value_1")}</p>
+                                <p className="mb-1">{t("recent_agreements_value_2")}</p>
+                              </div>
+                              <div className="d-flex justify-content-between mt-3">
                                 <CustomButton
                                   type="button"
                                   className="btn btn-outline-success rounded-pill py-1 px-4 d-flex align-items-center justify-content-center gap-2"
@@ -396,6 +443,84 @@ const Customer = () => {
               </button>
             </Modal.Footer>
           </Modal>
+
+          <Accordion className="d-block p-0 d-md-none d-flex flex-column gap-3">
+            {clients.map((row, index) => (
+              <Accordion.Item
+                eventKey={index.toString()}
+                key={row.id}
+                className="border-top-2 border-top rounded-3 border-start-4" style={{ borderLeft: "6px solid #2CAC74" }}
+              >
+                <Accordion.Header >
+                  <div className="d-flex justify-content-between w-full">
+                    <div className="d-flex">
+                      <input
+                        type="checkbox"
+                        checked={!!selectedRows[index]}
+                        onChange={() => toggleCheckbox(index)}
+                        className="form-check-input"
+                      />
+                      <div className="ml-3">
+                        <p className="mb-1">{row?.name}</p>
+                        <p className="mb-1">{row?.type}</p>
+                        <p className="mb-1">{row?.phone}</p>
+                      </div>
+                    </div>
+
+                    <div className="mr-2">
+                      <span className="badge bg-warning">
+                        {row?.status}
+                      </span>
+                    </div>
+                  </div>
+                </Accordion.Header>
+                <Accordion.Body className="">
+                  <div className="text-start">
+                    <div>
+                      <strong>{t("cust_property_type")}</strong> <p>{t("cust_property_type_value")}</p>
+                    </div>
+                    <div>
+                      <strong>{t("cust_Property_Condition")}</strong> <p>{t("cust_Property_Condition_value")}</p>
+                    </div>
+                    <div>
+                      <strong>{t("cust_no_rooms")}</strong> <p>{t("cust_no_rooms_value")}</p>
+                    </div>
+                    <div>
+                      <strong>{t("cust_apartment_size")}</strong> <p>{t("cust_apartment_size_value")}</p>
+                    </div>
+                    <div>
+                      <strong>{t("cust_floor")}</strong> <p>4,5</p>
+                    </div>
+                    <div>
+                      <strong>{t("cust_price")}</strong> <p>1000 - 3000 ₪</p>
+                    </div>
+                  </div>
+                  <div className="text-start">
+                    <div>
+                      <strong>{t("cust_additional_comments")}</strong> <p className="text-wrap">{t("cust_additional_comments_value")}</p>
+                    </div>
+
+                  </div>
+                  <div className="text-start mt-3">
+                    <strong>{t("recent_agreements")}</strong>
+                    <p className="mb-1">{t("recent_agreements_value_1")}</p>
+                    <p className="mb-1">{t("recent_agreements_value_2")}</p>
+                  </div>
+                  <div className="d-flex justify-content-between mt-3">
+                    <CustomButton
+                      type="button"
+                      className="btn btn-outline-success rounded-pill py-1 px-4 d-flex align-items-center justify-content-center gap-2"
+                      children={' לכל ההסכמים  '}
+                    />
+                    <div className="d-flex align-items-center">
+                      <img src={edit} alt={'editbtn'} className="px-1" />
+                      <img src={deleteIcon} alt={'deletebtn'} className="px-1" style={{ cursor: 'pointer' }} onClick={handleShowModal} />
+                    </div>
+                  </div>
+                </Accordion.Body>
+              </Accordion.Item>
+            ))}
+          </Accordion>
         </div>
       </div>
     </>

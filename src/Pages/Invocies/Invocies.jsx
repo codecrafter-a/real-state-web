@@ -99,7 +99,7 @@ const Invocies = () => {
                 </p>
               </div>
               <div className="border-top p-2 bg-light">
-                <div className="d-flex justify-content-around gap-2 w-100">
+                <div className="d-flex justify-content-around  w-100">
                   <Button className="btn btn-light d-flex align-items-center p-1">
                     <FaEye size={16} />
                     <span className="fs-14 fw-normal lh-1">{t("view")}</span>

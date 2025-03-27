@@ -46,10 +46,10 @@ const Attechment = ({ setActiveTab }) => {
           {t("pro_add_set4")}
         </h4>
         <p className="fs-15 lh-1 fw-semibold">{t("pro_add_attch_doc_note")}</p>
-        <Row>
+        <div className="carddashed gap-2">
           {fileInputs.map(({ key, label }) => (
-            <Col key={key} md={4} className="py-2">
-              <div className="border-dashed p-3">
+            <div key={key} className="grid g-col-4" >
+              <div className="border-dashed p-2">
                 <Form.Label className="d-flex align-items-center cursor-pointer position-relative">
                   <Form.Control
                     type="file"
@@ -61,7 +61,7 @@ const Attechment = ({ setActiveTab }) => {
                     alt="Upload Icon"
                     className="me-2 cursor-pointer px-1"
                   />
-                  <span className="fs-6 fw-medium lh-1  text-teal">{label}</span>
+                  <span className=" fw-medium lh-1  text-teal">{label}</span>
                 </Form.Label>
               </div>
               {files[key] && (
@@ -84,9 +84,9 @@ const Attechment = ({ setActiveTab }) => {
                   )}
                 </div>
               )}
-            </Col>
+            </div>
           ))}
-        </Row>
+        </div>
         <Row className="my-4">
           <Col md={12}>
             <div className=" border-dashed rounded p-3">
