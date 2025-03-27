@@ -14,7 +14,7 @@ import RangeSlider from "../../Componant/Common/RangeSlider/RangeSlider";
 import CustomButton from "../../Componant/Common/Button/Button";
 import edit from '../../assets/images/edit.svg';
 import deleteIcon from '../../assets/images/delete.svg';
-import { Modal } from "react-bootstrap";
+import { Accordion, Modal } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import { useClientService } from "../../Services/ClientService";
 
@@ -192,7 +192,7 @@ const Customer = () => {
                 </div>
               </div>
               <div>
-                <table className="table">
+                <table className="table text-center d-none d-md-table">
                   <thead>
                     <tr>
                       <th className="table-head">
@@ -258,27 +258,49 @@ const Customer = () => {
                         {expandedRows.includes(index) && (
                           <tr>
                             <td colSpan={7} className="px-4 py-3">
-                              <div className="text-start">
-                                <p>
-                                  <strong>{t("cust_property_type")}</strong> {t("cust_property_type_value")}
-                                </p>
-                                <p>
-                                  <strong>{t("cust_Property_Condition")}</strong> {t("cust_Property_Condition_value")}
-                                </p>
-                                <p>
-                                  <strong>{t("cust_no_rooms")}</strong> {t("cust_no_rooms_value")}
-                                </p>
-                                <p>
-                                  <strong>{t("cust_apartment_size")}</strong> {t("cust_apartment_size_value")}
-                                </p>
-                                <p>
-                                  <strong>{t("cust_floor")}</strong> 4,5
-                                </p>
-                                <p>
-                                  <strong>{t("cust_price")}</strong> 1000 - 3000 ₪
-                                </p>
+                              <div className="text-start d-flex align-items-center justify-content-between">
+                                <div>
+                                  <strong>{t("cust_property_type")}</strong> <p>{t("cust_property_type_value")}</p>
+                                </div>
+                                <div>
+                                  <strong>{t("cust_Property_Condition")}</strong> <p>{t("cust_Property_Condition_value")}</p>
+                                </div>
+                                <div>
+                                  <strong>{t("cust_no_rooms")}</strong> <p>{t("cust_no_rooms_value")}</p>
+                                </div>
+                                <div>
+                                  <strong>{t("cust_apartment_size")}</strong> <p>{t("cust_apartment_size_value")}</p>
+                                </div>
+                                <div>
+                                  <strong>{t("cust_floor")}</strong> <p>4,5</p>
+                                </div>
+                                <div>
+                                  <strong>{t("cust_price")}</strong> <p>1000 - 3000 ₪</p>
+                                </div>
                               </div>
-                              <div className="d-flex justify-content-between">
+                              <div className="text-start d-flex justify-content-between gap-4 mt-3">
+                                <div>
+                                  <strong>{t("cust_additional_comments")}</strong> <p className="text-wrap">{t("cust_additional_comments_value")}</p>
+                                </div>
+                                <div>
+                                  <strong>{t("cust_additional_features")}</strong>
+                                  <div className="d-flex flex-wrap gap-2 mt-2">
+                                    {t("cust_additional_features_value")
+                                      .split(',')
+                                      .map((feature, index) => (
+                                        <span key={index} className="custom-badge">
+                                          {feature.trim()}
+                                        </span>
+                                      ))}
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="text-start mt-3">
+                                <strong>{t("recent_agreements")}</strong>
+                                <p className="mb-1">{t("recent_agreements_value_1")}</p>
+                                <p className="mb-1">{t("recent_agreements_value_2")}</p>
+                              </div>
+                              <div className="d-flex justify-content-between mt-3">
                                 <CustomButton
                                   type="button"
                                   className="btn btn-outline-success rounded-pill py-1 px-4 d-flex align-items-center justify-content-center gap-2"
@@ -396,6 +418,84 @@ const Customer = () => {
               </button>
             </Modal.Footer>
           </Modal>
+
+          <Accordion className="d-block p-0 d-md-none d-flex flex-column gap-3">
+            {clients.map((row, index) => (
+              <Accordion.Item
+                eventKey={index.toString()}
+                key={row.id}
+                className="border-top-2 border-top rounded-3 border-start-4" style={{ borderLeft: "6px solid #2CAC74" }}
+              >
+                <Accordion.Header >
+                  <div className="d-flex justify-content-between w-full">
+                    <div className="d-flex">
+                      <input
+                        type="checkbox"
+                        checked={!!selectedRows[index]}
+                        onChange={() => toggleCheckbox(index)}
+                        className="form-check-input"
+                      />
+                      <div className="ml-3">
+                        <p className="mb-1">{row?.name}</p>
+                        <p className="mb-1">{row?.type}</p>
+                        <p className="mb-1">{row?.phone}</p>
+                      </div>
+                    </div>
+
+                    <div className="mr-2">
+                      <span className="badge bg-warning">
+                        {row?.status}
+                      </span>
+                    </div>
+                  </div>
+                </Accordion.Header>
+                <Accordion.Body className="">
+                  <div className="text-start">
+                    <div>
+                      <strong>{t("cust_property_type")}</strong> <p>{t("cust_property_type_value")}</p>
+                    </div>
+                    <div>
+                      <strong>{t("cust_Property_Condition")}</strong> <p>{t("cust_Property_Condition_value")}</p>
+                    </div>
+                    <div>
+                      <strong>{t("cust_no_rooms")}</strong> <p>{t("cust_no_rooms_value")}</p>
+                    </div>
+                    <div>
+                      <strong>{t("cust_apartment_size")}</strong> <p>{t("cust_apartment_size_value")}</p>
+                    </div>
+                    <div>
+                      <strong>{t("cust_floor")}</strong> <p>4,5</p>
+                    </div>
+                    <div>
+                      <strong>{t("cust_price")}</strong> <p>1000 - 3000 ₪</p>
+                    </div>
+                  </div>
+                  <div className="text-start">
+                    <div>
+                      <strong>{t("cust_additional_comments")}</strong> <p className="text-wrap">{t("cust_additional_comments_value")}</p>
+                    </div>
+
+                  </div>
+                  <div className="text-start mt-3">
+                    <strong>{t("recent_agreements")}</strong>
+                    <p className="mb-1">{t("recent_agreements_value_1")}</p>
+                    <p className="mb-1">{t("recent_agreements_value_2")}</p>
+                  </div>
+                  <div className="d-flex justify-content-between mt-3">
+                    <CustomButton
+                      type="button"
+                      className="btn btn-outline-success rounded-pill py-1 px-4 d-flex align-items-center justify-content-center gap-2"
+                      children={' לכל ההסכמים  '}
+                    />
+                    <div className="d-flex align-items-center">
+                      <img src={edit} alt={'editbtn'} className="px-1" />
+                      <img src={deleteIcon} alt={'deletebtn'} className="px-1" style={{ cursor: 'pointer' }} onClick={handleShowModal} />
+                    </div>
+                  </div>
+                </Accordion.Body>
+              </Accordion.Item>
+            ))}
+          </Accordion>
         </div>
       </div>
     </>
