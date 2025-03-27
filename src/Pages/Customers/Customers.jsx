@@ -80,30 +80,30 @@ const Customer = () => {
         <div className="px-4">
           <form className="custom-scrollbar overflow-y-auto overflow-x-hidden " style={{ height: "594px" }}>
             <div className="me-4">
-              <div className="mb-3 d-flex justify-content-end">
+              <div className="mb-3 d-flex justify-content-end flex-wrap gap-3">
                 <button
                   type="button"
-                  className="btn btn-outline-success d-flex align-items-center justify-content-center rounded-pill py-2 px-4 gap-2"
+                  className="btn btn-outline-success d-flex align-items-center justify-content-center rounded-pill py-2 px-4 mt-2 gap-2"
                   onClick={() => navigate(`/${lang}/customers/add-customers`)}
                 >
                   <img src={add_reaction} alt="Add Client" />
                   {t("add_cust")}
                 </button>
               </div>
-              <div className="mb-4 position-relative w-75 border border-[#D6D6D6] rounded py-2 px-3">
-                <div className="d-flex">
-                  <input
-                    type="text"
-                    className="form-control border-0 p-0"
-                    placeholder={t("filter_cust")}
-                  />
-                  <button className="btn p-0" type="button" aria-label="Search">
-                    <img src={search} alt="Search" />
-                  </button>
-                </div>
+
+              <div className="mb-4 position-relative border border-[#D6D6D6] rounded py-2 px-3 d-flex flex-wrap w-100 w-md-75 mx-auto">
+              <input
+                  type="text"
+                  className="form-control border-0 p-0 flex-grow-1"
+                  placeholder={t("filter_cust")}
+                />
+                <button className="btn p-0 ms-2" type="button" aria-label="Search">
+                  <img src={search} alt="Search" />
+                </button>
               </div>
-              <div className="mb-4 d-flex align-items-end gap-4">
-                <div className="w-100">
+
+              <div className="mb-4 d-flex flex-wrap align-items-end gap-3">
+                <div className="flex-grow-1">
                   <label className="mb-1 fw-semibold">{t("cust_filter_1")}</label>
                   <select className="form-select">
                     <option disabled selected>Select Option</option>
@@ -111,7 +111,8 @@ const Customer = () => {
                     <option>Option 2</option>
                   </select>
                 </div>
-                <div className="w-100">
+
+                <div className="flex-grow-1">
                   <label className="form-label fw-semibold">{t("cust_serch")}</label>
                   <input
                     type="text"
@@ -119,7 +120,8 @@ const Customer = () => {
                     placeholder={t("cust_typing")}
                   />
                 </div>
-                <div className="w-100">
+
+                <div className="flex-grow-1">
                   <label className="mb-1 fw-semibold">{t("cust_Property_type")}</label>
                   <select className="form-select">
                     <option disabled selected>Select Option</option>
@@ -127,7 +129,8 @@ const Customer = () => {
                     <option>Option 2</option>
                   </select>
                 </div>
-                <div className="w-100">
+
+                <div className="flex-grow-1">
                   <label className="mb-1 fw-semibold">{t("cust_Property_condition")}</label>
                   <select className="form-select">
                     <option disabled selected>Select Option</option>
@@ -135,17 +138,24 @@ const Customer = () => {
                     <option>Option 2</option>
                   </select>
                 </div>
-                <div>
-                  <label className="form-label fw-semibold">&nbsp;</label>
-                  <button type="button" className="btn btn-success d-inline-flex align-items-center justify-content-center fw-medium text-white border-0 rounded-pill" style={{ boxShadow: '0 10px 8px rgba(0, 0, 0, 0.1)', padding: '5px 15px', minWidth: '146px', outline: 'none' }}>
+
+                <div className="d-flex flex-grow-1 align-items-end">
+                  <button
+                    type="button"
+                    className="btn btn-success d-inline-flex align-items-center justify-content-center fw-medium text-white border-0 rounded-pill w-100"
+                    style={{ boxShadow: '0 10px 8px rgba(0, 0, 0, 0.1)', padding: '8px 15px', minWidth: '146px' }}
+                  >
                     {t("cust_search")}
                   </button>
                 </div>
               </div>
+
               <div className="mb-4">
                 <div>
-                  <div className="d-flex">
-                    <div className="mb-4 d-flex align-items-center">
+                <div className="d-flex flex-wrap flex-lg-nowrap align-items-center gap-3">
+
+                    {/* Button Container */}
+                    <div className="mb-3">
                       <button
                         type="button"
                         onClick={handleOpen}
@@ -154,41 +164,56 @@ const Customer = () => {
                         <img className="me-2" src={search_icon2} alt="Add Client" />
                         {t("advance_search")}
                       </button>
-
-                      <ul className="list-unstyled d-flex m-0 align-items-center">
-                        {Array.from({ length: 6 }, (_, i) => (
-                          <li key={i} className="mx-2 bg-success bg-opacity-10 rounded-pill d-flex px-3 py-2 align-items-center gap-3">
-                            {t(`cust_opt_${i + 1}`)}
-                            <span>
-                              <img src={remove_icon} alt="Remove" />
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
                     </div>
+
+                    {/* List Container */}
+                    <ul className="list-unstyled d-flex flex-wrap justify-content-center m-0 align-items-center p-0 w-100">
+  {Array.from({ length: 6 }, (_, i) => (
+    <li
+      key={i}
+      className="bg-success bg-opacity-10 rounded-pill d-flex px-3 py-2 align-items-center gap-2 text-center"
+      style={{
+        flex: "1 1 auto",
+        minWidth: "120px",
+        maxWidth: "200px",
+        margin: "5px",
+      }}
+    >
+      <div className="custom-text">{t(`cust_opt_${i + 1}`)}</div>
+      <span>
+        <img src={remove_icon} alt="Remove" />
+      </span>
+    </li>
+  ))}
+</ul>
+
                   </div>
-                  <div className="d-flex justify-content-end gap-2">
+
+                  <div className="d-flex flex-wrap justify-content-end gap-2 mt-4">
                     <button
                       type="button"
                       className="btn btn-outline-success rounded-pill py-1 px-4"
                     >
                       {t("cust_delete")}
                     </button>
+
                     <button
                       type="button"
                       className="btn btn-success rounded-pill py-1 px-4 d-flex align-items-center justify-content-center gap-2"
                     >
                       <img src={action_icon1} alt="Sign Client" />
-                      {t("auth_cust_sigin")}
+                     <span className="custom-text-green"> {t("auth_cust_sigin")}</span>
                     </button>
+
                     <button
                       type="button"
                       className="btn btn-success rounded-pill py-1 px-4 d-flex align-items-center justify-content-center gap-2"
                     >
                       <img src={action_icon2} alt="Sign Owner" />
-                      {t("auth_pro_Owner_sigin")}
+                     <span className="custom-text-green"> {t("auth_pro_Owner_sigin")}</span>
                     </button>
                   </div>
+
                 </div>
               </div>
               <div>

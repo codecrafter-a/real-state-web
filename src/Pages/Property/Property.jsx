@@ -4,8 +4,9 @@ import Propertyaddress from "../../Componant/property/propertyaddress/Propertyad
 import Propertydetails from "../../Componant/property/propertydetails/Propertydetails";
 import Ownerdetails from "../../Componant/property/ownerdetail/Ownerdetails";
 import Attachments from "../../Componant/property/attechment/Attechment";
-import { Col } from "react-bootstrap";
+import { Col, Row, Container } from "react-bootstrap";
 import "./Prooerty.css";
+
 const Property = () => {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState(1);
@@ -26,53 +27,40 @@ const Property = () => {
   };
 
   return (
-    <>
-      <Col className=" py-2 bg-white shadow-lg rounded-3">
-        <p className="py-3 my-4 text-center container-fluid screen-1 border-bottom d-none d-md-block">{t("pro_tab_title")}</p>
-        <div className="px-3 py-2">
-          <div className="position-relative  pr-4">
-            <div className="mx-auto" style={{ width: "304px" }}>
-              <div className="d-flex justify-content-around text-center">
-                {[1, 2, 3, 4].map((step, index) => (
-                  <div key={step} className="d-flex align-items-center">
-                    <div
-                      className={`step-circle ${
-                        activeTab > step
-                          ? "completed"
-                          : activeTab === step
-                          ? "active"
-                          : "pending"
-                      }`}
-                      onClick={() => setActiveTab(step)}
-                    >
-                      {step}
-                      <span className="step-label">
-                        {step === 1
-                          ? t("pro_add_set1")
-                          : step === 2
-                          ? t("pro_add_set2")
-                          : step === 3
-                          ? t("pro_add_set3")
-                          : t("pro_add_set4")}
-                      </span>
-                    </div>
-
-                    {index < 3 && (
-                      <div
-                        className={`step-line ${
-                          activeTab > step ? "line-active" : ""
-                        }`}
-                      ></div>
-                    )}
+    <Container fluid className="py-4">
+      <Row className="justify-content-center">
+        <Col lg={8} md={10} sm={12} className="bg-white shadow-lg rounded-3 p-3">
+          <p className="py-3 my-4 text-center border-bottom d-none d-md-block">
+            {t("pro_tab_title")}
+          </p>
+          <div className="px-2 py-2">
+            <div className="stepper-container text-center d-flex flex-wrap justify-content-center">
+              {[1, 2, 3, 4].map((step, index) => (
+                <div key={step} className="d-flex align-items-center">
+                  <div
+                    className={`step-circle ${
+                      activeTab > step
+                        ? "completed"
+                        : activeTab === step
+                        ? "active"
+                        : "pending"
+                    }`}
+                    onClick={() => setActiveTab(step)}
+                  >
+                    {step}
+                    <span className="step-label d-none d-sm-block">
+                      {t(`pro_add_set${step}`)}
+                    </span>
                   </div>
-                ))}
-              </div>
+                  {index < 3 && <div className={`step-line ${activeTab > step ? "line-active" : ""}`}></div>}
+                </div>
+              ))}
             </div>
-            {renderTabContent()}
+            <div className="mt-4">{renderTabContent()}</div>
           </div>
-        </div>
-      </Col>
-    </>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
