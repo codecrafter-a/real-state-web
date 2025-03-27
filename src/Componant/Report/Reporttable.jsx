@@ -1,47 +1,19 @@
-import { useState } from 'react';
-import { Table, Form, Accordion, Card, Button } from 'react-bootstrap';
+import { useEffect, useState } from 'react';
+import { Table, Form, Accordion, Card, Button,} from 'react-bootstrap';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
-
+import { useTranslation } from "react-i18next"
+import { useReportServices } from '../../Services/ReportServices';
 const DataTable = () => {
   const [selectedRows, setSelectedRows] = useState({});
   const [expandedRows, setExpandedRows] = useState({});
-
-  const data = [
-    {
-      id: 1,
-      name: 'שירי נקבלי',
-      type: 'מתעניין בשכירות',
-      phone: '054-4692650',
-      email: 'shirims@gmail.com',
-      details: {
-        type: 'דירה בבניין, דירת גן, פנטהאוז / גג',
-        status: 'חדש, משופץ',
-        rooms: '3,4,5',
-        size: '100 - 300 מ"ר',
-        floor: '4,5',
-        price: '1000 - 3000 ₪',
-        features: ['חניה', 'מחסן', 'מרחב', 'מעלית', 'מיזוג', 'מרפסת'],
-        comments: 'מעוניין בדירה מרווחת בקומה שניה של וילה. כניסה פרטית נפרדת. מאוד מיוחדת יפה ושקטה עם נוף מקסים לגינה ירוקה. אוירה פסטורלית.'
-      }
-    },
-    {
-      id: 2,
-      name: 'שירי נקבלי',
-      type: 'מתעניין בשכירות',
-      phone: '054-4692650',
-      email: 'shirims@gmail.com',
-      details: {
-        type: 'דירה בבניין, דירת גן, פנטהאוז / גג',
-        status: 'חדש, משופץ',
-        rooms: '3,4,5',
-        size: '100 - 300 מ"ר',
-        floor: '4,5',
-        price: '1000 - 3000 ₪',
-        features: ['חניה', 'מחסן', 'מרחב', 'מעלית', 'מיזוג', 'מרפסת'],
-        comments: 'מעוניין בדירה מרווחת בקומה שניה של וילה. כניסה פרטית נפרדת. מאוד מיוחדת יפה ושקטה עם נוף מקסים לגינה ירוקה. אוירה פסטורלית.'
-      }
-    }
-  ];
+  const { t } = useTranslation();
+  const [reportData, setReportData] = useState([]);
+  const { getReportServices } = useReportServices();
+  
+  useEffect( () => {
+    const data = getReportServices();
+    setReportData(data);
+  }, []);
 
   const handleSelect = (id) => {
     setSelectedRows((prev) => ({
@@ -59,23 +31,23 @@ const DataTable = () => {
 
   return (
     <div style={styles.tableContainer}>
-      <Table responsive hover style={styles.customTable} className='border rounded-pill'>
+      <Table responsive hover style={styles.customTable} className='border  rounded-pill'>
         <thead>
           <tr className=''>
             <th></th>
             
-            <th className='fw-semibold lh-1 fs-6'>שם הלקוח</th>
-            <th className='fw-semibold lh-1 fs-6'>סוג לקוח</th>
-            <th className='fw-semibold lh-1 fs-6'>טלפון</th>
-            <th className='fw-semibold lh-1 fs-6'>דוא"ל</th>
-            <th className='fw-semibold lh-1 fs-6'>אזור מבוקש</th>
+            <th className='fw-semibold lh-1 fs-6'>{t("customer_name")} </th>
+            <th className='fw-semibold lh-1 fs-6'>{t("customer_type")} </th>
+            <th className='fw-semibold lh-1 fs-6'>{t("phone")}</th>
+            <th className='fw-semibold lh-1 fs-6'>{t("client_email")}</th>
+            <th className='fw-semibold lh-1 fs-6'> {t("client_property_type")}</th>
             <th>
               <Form.Check type="checkbox" />
             </th>
           </tr>
         </thead>
         <tbody>
-          {data.map((row) => (
+          {reportData.map((row) => (
             <>
               <tr key={row.id}>
                 <td>
@@ -114,38 +86,44 @@ const DataTable = () => {
                         <Card.Body>
                           <div style={styles.detailsContainer} className=' d-flex gap-5 justify-content-around'>
                             <div className='d-flex flex-column'>
-                              <strong>סוג הנכס:</strong> {row.details.type}
+                              <strong>{t("client_property_type")}:</strong> {row.details.type}
                             </div>
                             <div className='d-flex flex-column'>
-                              <strong>מצב הנכס:</strong> {row.details.status}
+                              <strong>{t("property_status")}:</strong> {row.details.status}
                             </div>
                             <div className='d-flex flex-column'>
-                              <strong>מספר חדרים:</strong> {row.details.rooms}
+                              <strong>{t("client_rooms")}:</strong> {row.details.rooms}
                             </div>
                             <div className='d-flex flex-column'>
-                              <strong>גודל דירה:</strong> {row.details.size}
+                              <strong>{t("client_size")}:</strong> {row.details.size}
                             </div>
                             <div className='d-flex flex-column'>
-                              <strong>קומה:</strong> {row.details.floor}
+                              <strong>{t("client_floor")}:</strong> {row.details.floor}
                             </div>
                             <div className='d-flex flex-column'>
-                              <strong>מחיר:</strong> {row.details.price}
+                              <strong>{t("client_price")}:</strong> {row.details.price}
                             </div>
                           </div>
-                          <div className='d-flex' >
-                            <div style={styles.featuresContainer}>
-                                {row.details.features.map((feature, index) => (
-                                <Button
-                                    key={index}
-                                    style={styles.featureButton}
-                                    className='bg-success bg-opacity-10 fw-bold border-success text-success'
-                                >
-                                    {feature}
-                                </Button>
-                                ))}
+                          <div className='row' >
+                            <div className=' col-6'>
+                              <p className='mb-1'>{t("title_feature")}</p>
+                              <div style={styles.featuresContainer}>
+                                  {row.details.features.map((feature, index) => (
+                                  <Button
+                                      key={index}
+                                      style={styles.featureButton}
+                                      className='bg-success bg-opacity-10 fw-bold border-success text-success'
+                                  >
+                                      {feature}
+                                  </Button>
+                                  ))}
+                              </div> 
                             </div>
+                            <div className='col-6'>
+                              <p className='mb-1'>{t("title_comments")}</p>
                             <div style={styles.comments}>
                                 {row.details.comments}
+                            </div>
                             </div>
                           </div>                      
                         </Card.Body>
@@ -158,6 +136,7 @@ const DataTable = () => {
           ))}
         </tbody>
       </Table>
+     
     </div>
   );
 };

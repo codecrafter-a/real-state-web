@@ -4,10 +4,6 @@ import {
   Row,
   Col,
   Badge,
-  Accordion,
-  AccordionItem,
-  AccordionHeader,
-  AccordionBody,
 } from "react-bootstrap";
 import { AiOutlineClose } from "react-icons/ai";
 import { useTranslation } from "react-i18next";
@@ -17,7 +13,7 @@ const Propertymatch = ({ types }) => {
 
   return (
     <div>
-      <Card className="p-3 shadow-sm border rounded">
+      <Card className="p-3 shadow-sm border mb-3 mb-md-0 rounded">
         <div className="align-items-center row">
           <div className="d-flex justify-content-between align-item-center">
             <div className="d-flex flex-column">
@@ -34,14 +30,14 @@ const Propertymatch = ({ types }) => {
           </div>
         </div>
       </Card>
-      <p className=" my-2 text-center text-teal fw-semibold fs-5 lh-1">
+      <p className=" my-2 text-center d-none d-md-block text-teal fw-semibold fs-5 lh-1">
         {t("potential_properties")}
       </p>
       <Row>
         {types &&
           types?.map((type, index) => (
             <Col key={index} className="col-12 col-md-6 col-lg-4">
-              <Card className="shadow-sm border overflow-hidden my-3">
+              <Card className="shadow-sm border d-none d-md-block overflow-hidden my-3">
                 <div className="p-3">
                   <Card.Img
                     variant="top"
@@ -81,43 +77,6 @@ const Propertymatch = ({ types }) => {
                       </button>
                     </div>
                   </div>
-                  <Accordion className="border-0 d-block d-md-none">
-                    <AccordionItem className="border-0">
-                      <div className="d-flex justify-content-between py-2 px-3 gap-3 align-items-center">
-                        <h5 className="mb-1 fw-bold text-success fs-6">
-                          {t("address")}
-                        </h5>
-                        <h5 className="fw-bold fs-5 lh-1">{t("price1")}</h5>
-                      </div>
-                      <AccordionHeader className="border-0 ">
-                        <div className="d-flex flex-column">
-                          <p className=" fs-15 fw-normal lh-1 mb-1">{type}</p>
-                          <p className="fs-15 fw-normal lh-1 mb-2">
-                            {t("rooms")}{" "}
-                          </p>
-                        </div>
-                      </AccordionHeader>
-                      <AccordionBody>
-                        <div className="mb-2">
-                          <Badge bg="light" text="dark" className="me-2">
-                            {t("garage")}
-                          </Badge>
-                          <Badge bg="light" text="dark" className="me-2">
-                            {t("balcony")}
-                          </Badge>
-                          <Badge bg="light" text="dark">
-                            {t("secure_room")}
-                          </Badge>
-                        </div>
-                        <p className="small text-muted">{t("description")}</p>
-                        <div className="justify-content-center d-flex">
-                          <button className=" agent-btn-responsive1 w-75 py-1 rounded-pill text-white">
-                            {t("send1_to_client")}
-                          </button>
-                        </div>
-                      </AccordionBody>
-                    </AccordionItem>
-                  </Accordion>
                 </Card.Body>
               </Card>
             </Col>

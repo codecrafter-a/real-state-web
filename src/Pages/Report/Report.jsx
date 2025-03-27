@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Col, Nav} from 'react-bootstrap';
+import {  Col, Nav} from 'react-bootstrap';
 import search from '../../assets/images/search.png';
 import Tab from '../../Componant/Common/Tab/Tab';
 import report from "../../assets/images/Report1.jpg";
@@ -7,19 +7,20 @@ import visa from "../../assets/images/Get a new visa.jpg";
 import { useTranslation } from "react-i18next";
 import Propertymatch from '../../Componant/Report/Propertymatch';
 import Clientmatch from '../../Componant/Report/Clientmatch';
-
+import './Report.css'
+import Clientmatch_mobile from '../../Componant/Report/Clientmatch_mobile';
+import Propertymatch_mobile from '../../Componant/Report/Propertymatch_mobile';
 const Report = () => {
     const { t, i18n } = useTranslation();
     const justifyContent = i18n.language === "he" ? "start" : "end";
     const [activeTab, setActiveTab] = useState("all");
-    const [propertyData, setPropertyData] = useState(false);
+    const [propertyData, setPropertyData] = useState(false);  
     const [searchTerm, setSearchTerm] = useState("");
     const [types] = useState([
        'בית פרטי למכירה, ממ"ר',
        'בית פרטי למכירה, ממ"ר',
        'בית פרטי למכירה, ממ"ר'
       ]);
-
     const [clientData, setClientData] = useState(false);
     const [address] = useState([
         'Haifa, Kiryat, Nesher',
@@ -40,7 +41,8 @@ const Report = () => {
         }
     };
   return (
-    <Col className='bg-white shadow-lg rounded-3'>
+    <>
+    <Col className=' bg-white shadow-lg rounded-3'>
        <h3 className="py-1 my-4 text-center screen-1 border-bottom d-none d-md-block"> {t("report_title")}</h3> 
        <div className='w-100 border-bottom'>
           <Nav variant="tabs" className="mx-md-3 pt-2">
@@ -58,7 +60,7 @@ const Report = () => {
             /> 
           </Nav>
         </div>
-        <div className="custom-scrollbar overflow-y-auto overflow-x-hidden px-3 mt-4" style={{ maxHeight: "594px" }}>
+        <div className="custom-scrollbar overflow-y-auto overflow-x-hidden px-3 mt-4" style={{ maxHeight: "500px" }}>
             {activeTab === "all" && (
                 <>
                     <div className="row px-1">
@@ -88,9 +90,9 @@ const Report = () => {
                                 <p className='fs-17 fw-normal lh-1'>{t("description_2")}</p>
                                 <p className='fs-17 fw-normal lh-1'>{t("description_3")}</p>
                             </div>
-                            <div className={`mt-5 mb-2 d-flex justify-content-${justifyContent}` }>
-                               <img src={report} alt="report1" className='img-fluid h-75'/>
-                            </div>
+                            <div className={`mt-5 mb-2 d-none d-md-flex justify-content-${justifyContent}` }>
+                                < img src={report} alt="visa" className='img-fluid h-75'/>
+                            </div>  
                         </>
                     }
                 </>
@@ -116,22 +118,57 @@ const Report = () => {
                         </div>
                     </div>
                 {clientData ? 
-                   <Clientmatch address={clientData}/> : <>
-                     <div>
+                    <>
+                     <Clientmatch address={clientData}/>
+                    </>
+                    : <>
+                    <div>
                         <p className='fs-17 fw-normal lh-1'>{t("description_1")}</p>
                         <p className='fs-17 fw-normal lh-1'>{t("description_4")}</p>
                         <p className='fs-17 fw-normal lh-1'>{t("description_5")}</p>
                     </div>
-                    <div className={`mt-5 mb-2 d-flex justify-content-${justifyContent}` }>
+                    <div className={`mt-5 mb-2 d-none d-md-flex justify-content-${justifyContent}` }>
                         <img src={visa} alt="visa" className='img-fluid h-75'/>
                     </div>
                    </>
                 }
             </>
-          )}
-        
+          )} 
         </div>
     </Col>
+    {activeTab === "recent" && ( 
+        clientData ? (
+            <>
+            <div className=' d-block d-md-none'>
+                <Clientmatch_mobile/>
+            </div>      
+            </>
+        ) : (
+            <>
+                <div className={`mt-5 mb-2 d-block d-md-none justify-content-${justifyContent}` }>
+                   <img src={visa} alt="report" className='img-fluid h-75'/>
+                </div>
+            </>
+        )
+    )}
+
+    {activeTab === "all" && ( 
+        clientData ? (
+            <>
+            <div className=' d-block d-md-none'>
+                <Propertymatch_mobile types={types}/>
+            </div>      
+            </>
+        ) : (
+            <>
+                <div className={`mt-5 mb-2 d-block d-md-none justify-content-${justifyContent}` }>
+                   <img src={report} alt="visa" className='img-fluid h-75'/>
+                </div>
+            </>
+        )
+    )}
+
+ </>
   )
 }
 
