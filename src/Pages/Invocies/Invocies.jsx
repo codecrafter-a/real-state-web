@@ -61,7 +61,7 @@ const Invocies = () => {
               <div className="d-md-none d-block">
                    <p className=' fs-16 fw-semibold lh-1 my-2 text-center text-teal'>פילטרים נוספים</p>
                    <div className='justify-content-center d-flex'><IoIosArrowDown/></div>
-                </div>
+              </div>
               <div className=' py-4'><InvoicesTable /></div>
             </>   
           )}
@@ -99,7 +99,7 @@ const Invocies = () => {
                 </p>
               </div>
               <div className="border-top p-2 bg-light">
-                <div className="d-flex justify-content-around gap-2 w-100">
+                <div className="d-flex justify-content-around  w-100">
                   <Button className="btn btn-light d-flex align-items-center p-1">
                     <FaEye size={16} />
                     <span className="fs-14 fw-normal lh-1">{t("view")}</span>

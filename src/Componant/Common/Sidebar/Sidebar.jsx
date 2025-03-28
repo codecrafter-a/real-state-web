@@ -22,7 +22,7 @@ import "../Sidebar/Sidebar.css";
 import { Button, Card } from 'react-bootstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-const Sidebar = ({ isToggle }) => {
+const Sidebar = ({ isToggle,setShow }) => {
 
   const { i18n, t } = useTranslation();
   const navigate = useNavigate();
@@ -63,7 +63,11 @@ const Sidebar = ({ isToggle }) => {
     navigate(`/${i18n.language}/signin`);
   }
 
-
+  const handleMenuClick = () => {
+    if (window.innerWidth < 768) {
+      setShow(false); 
+    }
+  };
 
   return (
     <>
@@ -84,7 +88,7 @@ const Sidebar = ({ isToggle }) => {
             { icon: doorOpen, text: t("sitem12") }].map((item, index) => (
               <li key={index} >
                 {item.to ? (
-                  <Link to={item.to} className={location.pathname === item.to ? 'active-sidebar-tab' : ''}>
+                  <Link to={item.to} className={location.pathname === item.to ? 'active-sidebar-tab' : ''} onClick={handleMenuClick}>
                     <span className="menu_icon">
                       <img src={item.icon} alt="icon" />
                     </span>

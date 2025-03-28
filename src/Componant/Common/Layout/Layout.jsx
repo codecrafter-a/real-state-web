@@ -46,7 +46,7 @@ const Layout = ({ children }) => {
   const title = getPageTitle(location.pathname);
 
   return (
-    <div className="bg-white text-black text-base">
+    <div className="agreement-container text-black text-base">
       <Header />
       <div className="d-flex w-100">
         <Sidebar />
@@ -68,7 +68,7 @@ const Layout = ({ children }) => {
             </div>
           </div>
           <div className='position-absolute w-100 top-responsive'>
-            <Container fluid="sm" >
+            <Container fluid="sm" className='p-0'>
 
               {title === '' ? (
                 ""
@@ -91,23 +91,23 @@ const Layout = ({ children }) => {
         <Row xs={10} className="d-flex justify-content-between text-center p-2 bg-white fixed-bottom gx-1 border-top border-secondary-subtle">
           <Col xs={2} className='d-flex flex-column align-items-center justify-content-center'>
             <img src={iconHome} alt="home icon" className="text-teal" />
-            <div className="fs-6 fw-semibold">{t("mobile_home")}</div>
+            <div className=" fw-semibold lowerside">{t("mobile_home")}</div>
           </Col>
           <Col xs={2} className='d-flex flex-column align-items-center justify-content-center'>
             <img src={userkey} alt="home icon" className="text-teal" />
-            <div className="fs-6 fw-semibold">{t("interested_signing")}</div>
+            <div className=" fw-semibold lowerside">{t("interested_signing")}</div>
           </Col>
           <Col xs={2} className='d-flex flex-column align-items-center justify-content-center'>
             <img src={userhouse} alt="action icon " />
-            <div className="fs-6 fw-semibold">{t("owner_signing")}</div>
+            <div className=" fw-semibold lowerside">{t("owner_signing")}</div>
           </Col>
           <Col xs={2} className='d-flex flex-column align-items-center justify-content-center'>
             <img src={usercontact} alt="action icon " />
-            <div className="fs-6 fw-semibold">{t("broker_collaboration")}</div>
+            <div className=" fw-semibold lowerside">{t("broker_collaboration")}</div>
           </Col>
           <Col xs={2} className='d-flex flex-column align-items-center justify-content-center'>
             <img src={document} alt="action icon " />
-            <div className="fs-6 fw-semibold">{t("mobile_agreements")}</div>
+            <div className=" fw-semibold lowerside">{t("mobile_agreements")}</div>
           </Col>
         </Row>
       </div>

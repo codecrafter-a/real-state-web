@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import add_reaction from "../../assets/images/add_reaction.svg";
 import search from "../../assets/images/search.svg";
 import search_icon2 from "../../assets/images/search_icon2.svg";
+import white_search_icon from "../../assets/images/white-search-icon.svg";
 import remove_icon from "../../assets/images/remove_icon.svg";
 import action_icon1 from "../../assets/images/action_icon1.svg";
 import action_icon2 from "../../assets/images/action_icon2.svg";
@@ -14,7 +15,7 @@ import RangeSlider from "../../Componant/Common/RangeSlider/RangeSlider";
 import CustomButton from "../../Componant/Common/Button/Button";
 import edit from '../../assets/images/edit.svg';
 import deleteIcon from '../../assets/images/delete.svg';
-import { Modal } from "react-bootstrap";
+import { Accordion, Modal } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import { useClientService } from "../../Services/ClientService";
 
@@ -70,40 +71,38 @@ const Customer = () => {
 
   return (
     <>
-      <div className="bg-white w-100 mx-auto pb-3 position-relative z-50 rounded-3 shadow-lg" >
-        <div className="px-4">
-          <h1 className="fs-4 font-semibold border-bottom border-[#EAEAEA] py-3 mb-4 text-success text-center d-none d-md-block">
-            {t("all_cust")}
-          </h1>
-        </div>
+      <div className="customer-container d-none d-md-block w-100 mx-auto pb-3 position-relative z-50 rounded-3 shadow-lg" >
+        <h1 className="fs-4 font-semibold border-bottom border-[#EAEAEA] py-3 px-4 mb-4 text-success text-center d-none d-md-block">
+          {t("all_cust")}
+        </h1>
 
         <div className="px-4">
           <form className="custom-scrollbar overflow-y-auto overflow-x-hidden " style={{ height: "594px" }}>
             <div className="me-4">
-              <div className="mb-3 d-flex justify-content-end">
+              <div className="mb-3 d-flex justify-content-end flex-wrap gap-3">
                 <button
                   type="button"
-                  className="btn btn-outline-success d-flex align-items-center justify-content-center rounded-pill py-2 px-4 gap-2"
+                  className="btn btn-outline-success d-flex align-items-center justify-content-center rounded-pill py-2 px-4 mt-2 gap-2"
                   onClick={() => navigate(`/${lang}/customers/add-customers`)}
                 >
                   <img src={add_reaction} alt="Add Client" />
                   {t("add_cust")}
                 </button>
               </div>
-              <div className="mb-4 position-relative w-75 border border-[#D6D6D6] rounded py-2 px-3">
-                <div className="d-flex">
-                  <input
-                    type="text"
-                    className="form-control border-0 p-0"
-                    placeholder={t("filter_cust")}
-                  />
-                  <button className="btn p-0" type="button" aria-label="Search">
-                    <img src={search} alt="Search" />
-                  </button>
-                </div>
+
+              <div className="mb-4 position-relative border border-[#D6D6D6] rounded py-2 px-3 d-flex w-100 w-md-75 mx-auto">
+                <input
+                  type="text"
+                  className="form-control border-0 p-0 flex-grow-1"
+                  placeholder={t("filter_cust")}
+                />
+                <button className="btn p-0 ms-2" type="button" aria-label="Search">
+                  <img src={search} alt="Search" />
+                </button>
               </div>
-              <div className="mb-4 d-flex align-items-end gap-4">
-                <div className="w-100">
+
+              <div className="mb-4 d-flex flex-wrap align-items-end gap-3">
+                <div className="flex-grow-1">
                   <label className="mb-1 fw-semibold">{t("cust_filter_1")}</label>
                   <select className="form-select">
                     <option disabled selected>Select Option</option>
@@ -111,7 +110,20 @@ const Customer = () => {
                     <option>Option 2</option>
                   </select>
                 </div>
-                <div className="w-100">
+                <div className="flex-grow-1">
+                  <label className="mb-1 fw-semibold">{t("cust_filter_2")}</label>
+                  <div className="position-relative border border-[#D6D6D6] rounded py-2 px-3 d-flex mx-auto">
+                    <input
+                      type="text"
+                      className="form-control border-0 p-0 flex-grow-1"
+                      placeholder={t("cust_filter_place_2")}
+                    />
+                    <button className="btn p-0 ms-2" type="button" aria-label="Search">
+                      <img src={search} alt="Search" />
+                    </button>
+                  </div>
+                </div>
+                <div className="flex-grow-1">
                   <label className="form-label fw-semibold">{t("cust_serch")}</label>
                   <input
                     type="text"
@@ -119,7 +131,8 @@ const Customer = () => {
                     placeholder={t("cust_typing")}
                   />
                 </div>
-                <div className="w-100">
+
+                <div className="flex-grow-1">
                   <label className="mb-1 fw-semibold">{t("cust_Property_type")}</label>
                   <select className="form-select">
                     <option disabled selected>Select Option</option>
@@ -127,7 +140,8 @@ const Customer = () => {
                     <option>Option 2</option>
                   </select>
                 </div>
-                <div className="w-100">
+
+                <div className="flex-grow-1">
                   <label className="mb-1 fw-semibold">{t("cust_Property_condition")}</label>
                   <select className="form-select">
                     <option disabled selected>Select Option</option>
@@ -135,64 +149,78 @@ const Customer = () => {
                     <option>Option 2</option>
                   </select>
                 </div>
-                <div>
-                  <label className="form-label fw-semibold">&nbsp;</label>
-                  <button type="button" className="btn btn-success d-inline-flex align-items-center justify-content-center fw-medium text-white border-0 rounded-pill" style={{ boxShadow: '0 10px 8px rgba(0, 0, 0, 0.1)', padding: '5px 15px', minWidth: '146px', outline: 'none' }}>
+
+                <div className="d-flex flex-grow-1 align-items-end">
+                  <button
+                    type="button"
+                    className="btn btn-success d-inline-flex align-items-center justify-content-center fw-medium text-white border-0 rounded-pill"
+                    style={{ boxShadow: '0 10px 8px rgba(0, 0, 0, 0.1)', padding: '8px 15px', minWidth: '146px' }}
+                  >
                     {t("cust_search")}
                   </button>
                 </div>
               </div>
+
               <div className="mb-4">
                 <div>
-                  <div className="d-flex">
-                    <div className="mb-4 d-flex align-items-center">
-                      <button
-                        type="button"
-                        onClick={handleOpen}
-                        className="btn btn-outline-success d-flex align-items-center justify-content-center rounded-pill py-2 px-3"
-                      >
-                        <img className="me-2" src={search_icon2} alt="Add Client" />
-                        {t("advance_search")}
-                      </button>
+                  <div className="d-flex align-items-center gap-3">
+                    {/* List Container */}
+                    <ul className="list-unstyled d-flex flex-wrap justify-content-start m-0 align-items-center p-0 w-100">
+                      <li>
+                        <button
+                          type="button"
+                          onClick={handleOpen}
+                          className="btn btn-outline-success d-flex align-items-center w-auto rounded-pill py-2 px-3"
+                        >
+                          <img className="me-2" src={search_icon2} alt="Add Client" />
+                          {t("advance_search")}
+                        </button>
+                      </li>
+                      {Array.from({ length: 6 }, (_, i) => (
+                        <li
+                          key={i}
+                          className="bg-success w-max bg-opacity-10 rounded-pill d-flex px-3 py-2 align-items-center gap-2 text-center"
+                          style={{
+                            margin: "5px",
+                          }}
+                        >
+                          <div className="custom-text">{t(`cust_opt_${i + 1}`)}</div>
+                          <span>
+                            <img src={remove_icon} alt="Remove" />
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
 
-                      <ul className="list-unstyled d-flex m-0 align-items-center">
-                        {Array.from({ length: 6 }, (_, i) => (
-                          <li key={i} className="mx-2 bg-success bg-opacity-10 rounded-pill d-flex px-3 py-2 align-items-center gap-3">
-                            {t(`cust_opt_${i + 1}`)}
-                            <span>
-                              <img src={remove_icon} alt="Remove" />
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
                   </div>
-                  <div className="d-flex justify-content-end gap-2">
+                  <div className="d-flex flex-wrap justify-content-end gap-2 mt-4">
                     <button
                       type="button"
                       className="btn btn-outline-success rounded-pill py-1 px-4"
                     >
                       {t("cust_delete")}
                     </button>
+
                     <button
                       type="button"
                       className="btn btn-success rounded-pill py-1 px-4 d-flex align-items-center justify-content-center gap-2"
                     >
                       <img src={action_icon1} alt="Sign Client" />
-                      {t("auth_cust_sigin")}
+                      <span className="custom-text-green"> {t("auth_cust_sigin")}</span>
                     </button>
+
                     <button
                       type="button"
                       className="btn btn-success rounded-pill py-1 px-4 d-flex align-items-center justify-content-center gap-2"
                     >
                       <img src={action_icon2} alt="Sign Owner" />
-                      {t("auth_pro_Owner_sigin")}
+                      <span className="custom-text-green"> {t("auth_pro_Owner_sigin")}</span>
                     </button>
                   </div>
                 </div>
               </div>
               <div>
-                <table className="table">
+                <table className="table text-center d-none d-md-table">
                   <thead>
                     <tr>
                       <th className="table-head">
@@ -258,27 +286,49 @@ const Customer = () => {
                         {expandedRows.includes(index) && (
                           <tr>
                             <td colSpan={7} className="px-4 py-3">
-                              <div className="text-start">
-                                <p>
-                                  <strong>{t("cust_property_type")}</strong> {t("cust_property_type_value")}
-                                </p>
-                                <p>
-                                  <strong>{t("cust_Property_Condition")}</strong> {t("cust_Property_Condition_value")}
-                                </p>
-                                <p>
-                                  <strong>{t("cust_no_rooms")}</strong> {t("cust_no_rooms_value")}
-                                </p>
-                                <p>
-                                  <strong>{t("cust_apartment_size")}</strong> {t("cust_apartment_size_value")}
-                                </p>
-                                <p>
-                                  <strong>{t("cust_floor")}</strong> 4,5
-                                </p>
-                                <p>
-                                  <strong>{t("cust_price")}</strong> 1000 - 3000 ₪
-                                </p>
+                              <div className="text-start d-flex align-items-center justify-content-between">
+                                <div>
+                                  <strong>{t("cust_property_type")}</strong> <p>{t("cust_property_type_value")}</p>
+                                </div>
+                                <div>
+                                  <strong>{t("cust_Property_Condition")}</strong> <p>{t("cust_Property_Condition_value")}</p>
+                                </div>
+                                <div>
+                                  <strong>{t("cust_no_rooms")}</strong> <p>{t("cust_no_rooms_value")}</p>
+                                </div>
+                                <div>
+                                  <strong>{t("cust_apartment_size")}</strong> <p>{t("cust_apartment_size_value")}</p>
+                                </div>
+                                <div>
+                                  <strong>{t("cust_floor")}</strong> <p>4,5</p>
+                                </div>
+                                <div>
+                                  <strong>{t("cust_price")}</strong> <p>1000 - 3000 ₪</p>
+                                </div>
                               </div>
-                              <div className="d-flex justify-content-between">
+                              <div className="text-start d-flex justify-content-between gap-4 mt-3">
+                                <div>
+                                  <strong>{t("cust_additional_comments")}</strong> <p className="text-wrap">{t("cust_additional_comments_value")}</p>
+                                </div>
+                                <div>
+                                  <strong>{t("cust_additional_features")}</strong>
+                                  <div className="d-flex flex-wrap gap-2 mt-2">
+                                    {t("cust_additional_features_value")
+                                      .split(',')
+                                      .map((feature, index) => (
+                                        <span key={index} className="custom-badge">
+                                          {feature.trim()}
+                                        </span>
+                                      ))}
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="text-start mt-3">
+                                <strong>{t("recent_agreements")}</strong>
+                                <p className="mb-1">{t("recent_agreements_value_1")}</p>
+                                <p className="mb-1">{t("recent_agreements_value_2")}</p>
+                              </div>
+                              <div className="d-flex justify-content-between mt-3">
                                 <CustomButton
                                   type="button"
                                   className="btn btn-outline-success rounded-pill py-1 px-4 d-flex align-items-center justify-content-center gap-2"
@@ -300,8 +350,8 @@ const Customer = () => {
             </div>
           </form>
 
-          <Modal show={showModal} onHide={handleCloseModal} centered className="modal-container">
-            <Modal.Header className="border-0 p-3 position-relative mt-4">
+          <Modal show={showModal} onHide={handleCloseModal} centered className="modal-container top-modal-dialog">
+            <Modal.Header className="border-0 p-3 position-relative mt-4 d-">
               <button
                 type="button"
                 className="btn-close position-absolute close-btn"
@@ -328,8 +378,8 @@ const Customer = () => {
             </Modal.Footer>
           </Modal>
 
-          <Modal show={isModalOpen} onHide={() => setIsModalOpen(false)} centered className="modal-container">
-            <Modal.Header className="border-0 p-3 position-relative mt-4">
+          <Modal show={isModalOpen} onHide={() => setIsModalOpen(false)} centered className="modal-container" dialogClassName="modal-dialog-bottom">
+            <Modal.Header className="border-0 p-3 position-relative mt-3">
               <button
                 type="button"
                 className="btn-close position-absolute close-btn"
@@ -337,10 +387,59 @@ const Customer = () => {
               ></button>
             </Modal.Header>
 
-            <Modal.Body className="text-center justify-center px-5 p-4">
-              <h2 className="text-2xl pb-3 font-semibold text-success text-center border-bottom mb-4">
+            <Modal.Body className="text-center justify-center px-5 modal-body-scrollable">
+              <h2 className="text-2xl pb-3 font-semibold text-success text-center border-bottom mb-4 d-none d-md-block">
                 {t("addtional_filter")}
               </h2>
+              <div className="d-block d-md-none">
+                <div className="flex-grow-1 text-start">
+                  <label className="mb-1 fw-semibold">{t("cust_filter_1")}</label>
+                  <select className="form-select">
+                    <option disabled selected>Select Option</option>
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                  </select>
+                </div>
+                <div className="flex-grow-1 text-start">
+                  <label className="mb-1 fw-semibold">{t("cust_filter_2")}</label>
+                  <div className="position-relative border border-[#D6D6D6] rounded py-2 px-3 d-flex mx-auto">
+                    <input
+                      type="text"
+                      className="form-control border-0 p-0 mb-0"
+                      placeholder={t("cust_filter_place_2")}
+                    />
+                    <button className="btn p-0 ms-2" type="button" aria-label="Search">
+                      <img src={search} alt="Search" />
+                    </button>
+                  </div>
+                </div>
+                <div className="flex-grow-1 text-start">
+                  <label className="form-label fw-semibold">{t("cust_serch")}</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder={t("cust_typing")}
+                  />
+                </div>
+
+                <div className="flex-grow-1 text-start">
+                  <label className="mb-1 fw-semibold">{t("cust_Property_type")}</label>
+                  <select className="form-select">
+                    <option disabled selected>Select Option</option>
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                  </select>
+                </div>
+
+                <div className="flex-grow-1 text-start">
+                  <label className="mb-1 fw-semibold">{t("cust_Property_condition")}</label>
+                  <select className="form-select">
+                    <option disabled selected>Select Option</option>
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                  </select>
+                </div>
+              </div>
               <div className="row row-cols-1 row-cols-md-2 g-4 mb-4">
                 <div className="col">
                   <label className="d-block text-secondary text-start fw-semibold fs-6 mb-1">
@@ -396,6 +495,131 @@ const Customer = () => {
               </button>
             </Modal.Footer>
           </Modal>
+        </div>
+
+      </div>
+      {/* Mobile size */}
+      <div className="d-block d-lg-none ">
+        <div className="bg-white p-3 rounded-3">
+          <div className="d-flex justify-content-between align-items-center pt-3">
+            <button
+              type="button"
+              className="btn btn-outline-success d-flex align-items-center fs-15 justify-content-center rounded-pill py-1  gap-2"
+              onClick={() => navigate(`/${lang}/customers/add-customers`)}
+            >
+              <img src={add_reaction} alt="Add Client" />
+              {t("add_cust")}
+            </button>
+            <button
+              type="button"
+              className="btn btn-outline-success rounded-pill py-1 px-4 d-flex align-items-center"
+            >
+              <img src={deleteIcon} alt={'deletebtn'} className="pr-1" style={{ cursor: 'pointer' }} />
+              {t("cust_delete")}
+            </button>
+
+
+          </div>
+          <div className="my-4 position-relative border border-[#D6D6D6] rounded py-2 px-3 d-flex w-100 w-md-75 mx-auto">
+            <input
+              type="text"
+              className="form-control border-0 p-0 flex-grow-1 mb-0"
+              placeholder={t("filter_cust")}
+            />
+            <button className="btn p-0 ms-2" type="button" aria-label="Search">
+              <img src={search} alt="Search" />
+            </button>
+          </div>
+          <div>
+            <button
+              type="button"
+              onClick={handleOpen}
+              className="btn btn_cmn d-flex align-items-center justify-content-center rounded-pill py-2 px-3"
+            >
+              <img className="me-2" src={white_search_icon} alt="Add Client" />
+              {t("advance_search")}
+            </button>
+          </div>
+        </div>
+
+        <div className="mt-4 bg-white p-3 rounded-3">
+          <Accordion className="d-flex flex-column gap-3">
+            {clients.map((row, index) => (
+              <Accordion.Item
+                eventKey={index.toString()}
+                key={row.id}
+                className="border-top-2 border-top rounded-3 border-start-4" style={{ borderLeft: "6px solid #2CAC74" }}
+              >
+                <Accordion.Header >
+                  <div className="d-flex justify-content-between w-full">
+                    <div className="d-flex">
+                      <input
+                        type="checkbox"
+                        checked={!!selectedRows[index]}
+                        onChange={() => toggleCheckbox(index)}
+                        className="form-check-input"
+                      />
+                      <div className="ml-3">
+                        <p className="mb-1">{row?.name}</p>
+                        <p className="mb-1">{row?.type}</p>
+                        <p className="mb-1">{row?.phone}</p>
+                      </div>
+                    </div>
+
+                    <div className="mr-2">
+                      <span className="badge bg-warning">
+                        {row?.status}
+                      </span>
+                    </div>
+                  </div>
+                </Accordion.Header>
+                <Accordion.Body className="">
+                  <div className="text-start">
+                    <div>
+                      <strong>{t("cust_property_type")}</strong> <p>{t("cust_property_type_value")}</p>
+                    </div>
+                    <div>
+                      <strong>{t("cust_Property_Condition")}</strong> <p>{t("cust_Property_Condition_value")}</p>
+                    </div>
+                    <div>
+                      <strong>{t("cust_no_rooms")}</strong> <p>{t("cust_no_rooms_value")}</p>
+                    </div>
+                    <div>
+                      <strong>{t("cust_apartment_size")}</strong> <p>{t("cust_apartment_size_value")}</p>
+                    </div>
+                    <div>
+                      <strong>{t("cust_floor")}</strong> <p>4,5</p>
+                    </div>
+                    <div>
+                      <strong>{t("cust_price")}</strong> <p>1000 - 3000 ₪</p>
+                    </div>
+                  </div>
+                  <div className="text-start">
+                    <div>
+                      <strong>{t("cust_additional_comments")}</strong> <p className="text-wrap">{t("cust_additional_comments_value")}</p>
+                    </div>
+
+                  </div>
+                  <div className="text-start mt-3">
+                    <strong>{t("recent_agreements")}</strong>
+                    <p className="mb-1">{t("recent_agreements_value_1")}</p>
+                    <p className="mb-1">{t("recent_agreements_value_2")}</p>
+                  </div>
+                  <div className="d-flex justify-content-between mt-3">
+                    <CustomButton
+                      type="button"
+                      className="btn btn-outline-success rounded-pill py-1 px-4 d-flex align-items-center justify-content-center gap-2"
+                      children={' לכל ההסכמים  '}
+                    />
+                    <div className="d-flex align-items-center">
+                      <img src={edit} alt={'editbtn'} className="px-1" />
+                      <img src={deleteIcon} alt={'deletebtn'} className="px-1" style={{ cursor: 'pointer' }} onClick={handleShowModal} />
+                    </div>
+                  </div>
+                </Accordion.Body>
+              </Accordion.Item>
+            ))}
+          </Accordion>
         </div>
       </div>
     </>
