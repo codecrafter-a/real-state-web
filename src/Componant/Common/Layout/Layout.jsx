@@ -68,7 +68,7 @@ const Layout = ({ children }) => {
             </div>
           </div>
           <div className='position-absolute w-100 top-responsive'>
-            <Container fluid="sm" >
+            <Container fluid="sm" className='p-0'>
 
               {title === '' ? (
                 ""
