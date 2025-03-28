@@ -504,7 +504,7 @@ const Customer = () => {
           <div className="d-flex justify-content-between align-items-center pt-3">
             <button
               type="button"
-              className="btn btn-outline-success d-flex align-items-center justify-content-center rounded-pill py-1 px-4 gap-2"
+              className="btn btn-outline-success d-flex align-items-center fs-15 justify-content-center rounded-pill py-1  gap-2"
               onClick={() => navigate(`/${lang}/customers/add-customers`)}
             >
               <img src={add_reaction} alt="Add Client" />

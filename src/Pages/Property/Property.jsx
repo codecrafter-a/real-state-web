@@ -29,7 +29,7 @@ const Property = () => {
   return (
     <Container fluid className="py-4">
       <Row className="justify-content-center">
-        <Col lg={8} md={10} sm={12} className="bg-white shadow-lg rounded-3 p-3">
+        <Col lg={10}  sm={12} className="bg-white shadow-lg rounded-3 p-3">
           <p className="py-3 my-4 text-center border-bottom d-none d-md-block">
             {t("pro_tab_title")}
           </p>

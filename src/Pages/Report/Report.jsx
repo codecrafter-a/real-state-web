@@ -22,6 +22,7 @@ const Report = () => {
        'בית פרטי למכירה, ממ"ר'
       ]);
     const [clientData, setClientData] = useState(false);
+    console.log(clientData, "clientData");
     const [address] = useState([
         'Haifa, Kiryat, Nesher',
         'חיפה, קריות, נשר'
@@ -153,7 +154,7 @@ const Report = () => {
     )}
 
     {activeTab === "all" && ( 
-        clientData ? (
+        propertyData ? (
             <>
             <div className=' d-block d-md-none'>
                 <Propertymatch_mobile types={types}/>

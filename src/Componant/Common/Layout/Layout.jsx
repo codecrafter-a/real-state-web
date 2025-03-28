@@ -46,7 +46,7 @@ const Layout = ({ children }) => {
   const title = getPageTitle(location.pathname);
 
   return (
-    <div className="bg-white text-black text-base">
+    <div className="agreement-container text-black text-base">
       <Header />
       <div className="d-flex w-100">
         <Sidebar />

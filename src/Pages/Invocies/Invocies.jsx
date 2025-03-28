@@ -61,7 +61,7 @@ const Invocies = () => {
               <div className="d-md-none d-block">
                    <p className=' fs-16 fw-semibold lh-1 my-2 text-center text-teal'>פילטרים נוספים</p>
                    <div className='justify-content-center d-flex'><IoIosArrowDown/></div>
-                </div>
+              </div>
               <div className=' py-4'><InvoicesTable /></div>
             </>   
           )}

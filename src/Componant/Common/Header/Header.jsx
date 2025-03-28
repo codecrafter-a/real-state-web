@@ -13,6 +13,7 @@ const Header = () => {
   const { t } = useTranslation();
   const [toggle, setToggle] = useState(false);
   const [isOpen, setIsOpen ] = useState(window.innerWidth < 768);
+  const [show, setShow] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -43,6 +44,8 @@ const Header = () => {
              isOpen ? (<>
              <OffCanvas 
                 setToggle={setToggle}
+                show={show}
+                setShow={setShow}
                 buttonText={<FiAlignJustify className='text-teal' style={{ width: '34px', height: '34px'}} />}
                 titleContent={
                 <div className="col-auto">
@@ -63,7 +66,7 @@ const Header = () => {
                   </ul>
                 </div>}
                 bodyContent={<div className="custom-scrollbar overflow-y-auto overflow-x-hidden">
-                  <Sidebar isToggle={toggle} />
+                  <Sidebar isToggle={toggle} setShow={setShow} />
                 </div>}
              />
              </>) : (<>

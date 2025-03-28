@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next';
 
 import "../Home/Home.css";
 import group from "../../assets/images/group-2.png";
-import indication from "../../assets/images/Indication-Arrow.png";
 import Datacard from "../../Componant/Homedatacard/Datacard/Datacard";
 import Homechart from "../../Componant/Homedatacard/Homechart/Homechart";
 import i18n from "i18next";
