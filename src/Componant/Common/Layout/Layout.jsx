@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Header from "../Header/Header";
 import Sidebar from "../Sidebar/Sidebar";
 import { Container, Row, Col } from "react-bootstrap";
@@ -13,10 +13,31 @@ import document from '../../../assets/images/menu_icon2.png';
 import { useTranslation } from 'react-i18next';
 import { IoChevronBackOutline } from "react-icons/io5";
 import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import i18n from "i18next";
+import AuthenticationService from '../../../Services/AuthenticationService';
+
 
 const Layout = ({ children }) => {
   const { t } = useTranslation();
   const location = useLocation();
+  const [isAuthenticated, setIsAuthenticated] = useState();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleStoreChange = () => {
+      const authToken =  AuthenticationService.getAuthenticated();
+      setIsAuthenticated(!!authToken);
+      if (!authToken) {
+        navigate(`/${i18n.language}/signin`);
+      }
+    };
+    handleStoreChange();
+    window.addEventListener("storage", handleStoreChange);
+    return () => {
+      window.removeEventListener("storage", handleStoreChange);
+    };
+  }, [i18n.language, navigate]);
 
   const getPageTitle = (pathname) => {
     const path = pathname.split('/').pop();
@@ -87,30 +108,35 @@ const Layout = ({ children }) => {
           </div>
         </main>
       </div>
-      <div className='d-block d-lg-none'>
-        <Row xs={10} className="d-flex justify-content-between text-center p-2 bg-white fixed-bottom gx-1 border-top border-secondary-subtle">
-          <Col xs={2} className='d-flex flex-column align-items-center justify-content-center'>
-            <img src={iconHome} alt="home icon" className="text-teal" />
-            <div className=" fw-semibold lowerside">{t("mobile_home")}</div>
-          </Col>
-          <Col xs={2} className='d-flex flex-column align-items-center justify-content-center'>
-            <img src={userkey} alt="home icon" className="text-teal" />
-            <div className=" fw-semibold lowerside">{t("interested_signing")}</div>
-          </Col>
-          <Col xs={2} className='d-flex flex-column align-items-center justify-content-center'>
-            <img src={userhouse} alt="action icon " />
-            <div className=" fw-semibold lowerside">{t("owner_signing")}</div>
-          </Col>
-          <Col xs={2} className='d-flex flex-column align-items-center justify-content-center'>
-            <img src={usercontact} alt="action icon " />
-            <div className=" fw-semibold lowerside">{t("broker_collaboration")}</div>
-          </Col>
-          <Col xs={2} className='d-flex flex-column align-items-center justify-content-center'>
-            <img src={document} alt="action icon " />
-            <div className=" fw-semibold lowerside">{t("mobile_agreements")}</div>
-          </Col>
-        </Row>
-      </div>
+      {
+        isAuthenticated && (
+          <div className='d-block d-lg-none'>
+            <Row xs={10} className="d-flex justify-content-between text-center p-2 bg-white fixed-bottom gx-1 border-top border-secondary-subtle">
+              <Col xs={2} className='d-flex flex-column align-items-center justify-content-center'>
+                <img src={iconHome} alt="home icon" className="text-teal" />
+                <div className=" fw-semibold lowerside">{t("mobile_home")}</div>
+              </Col>
+              <Col xs={2} className='d-flex flex-column align-items-center justify-content-center'>
+                <img src={userkey} alt="home icon" className="text-teal" />
+                <div className=" fw-semibold lowerside">{t("interested_signing")}</div>
+              </Col>
+              <Col xs={2} className='d-flex flex-column align-items-center justify-content-center'>
+                <img src={userhouse} alt="action icon " />
+                <div className=" fw-semibold lowerside">{t("owner_signing")}</div>
+              </Col>
+              <Col xs={2} className='d-flex flex-column align-items-center justify-content-center'>
+                <img src={usercontact} alt="action icon " />
+                <div className=" fw-semibold lowerside">{t("broker_collaboration")}</div>
+              </Col>
+              <Col xs={2} className='d-flex flex-column align-items-center justify-content-center'>
+                <img src={document} alt="action icon " />
+                <div className=" fw-semibold lowerside">{t("mobile_agreements")}</div>
+              </Col>
+            </Row>
+          </div>
+        )
+      }
+      
     </div>
   )
 }

@@ -22,6 +22,8 @@ import "../Sidebar/Sidebar.css";
 import { Button, Card } from 'react-bootstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import AuthenticationService from "../../../Services/AuthenticationService";
+
 const Sidebar = ({ isToggle,setShow }) => {
 
   const { i18n, t } = useTranslation();
@@ -40,7 +42,7 @@ const Sidebar = ({ isToggle,setShow }) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem("isAuthenticated") === "true");
+  const [isAuthenticated, setIsAuthenticated] = useState();
   useEffect(() => {
     const handleStorageChange = () => {
       const authToken = localStorage.getItem("authtoken");
@@ -57,10 +59,12 @@ const Sidebar = ({ isToggle,setShow }) => {
   }, [i18n.language, navigate]);
 
 
-  const handleLogout = (e) => {
-    e.preventDefault();
-    localStorage.removeItem("authtoken");
-    navigate(`/${i18n.language}/signin`);
+  const handleLogout = () => {
+    AuthenticationService.logout();
+    setTimeout(() => {
+      navigate(`/${i18n.language}/signin`);
+    }, 100);
+   
   }
 
   const handleMenuClick = () => {
@@ -71,7 +75,9 @@ const Sidebar = ({ isToggle,setShow }) => {
 
   return (
     <>
-      <section className={`haeder_right_block w-lg-344 d-flex flex-column justify-content-between ${!isToggle ? 'd-none d-lg-flex ' : ''}  ${isAuthenticated ? "active" : "disabled"}`}>
+    {
+      isAuthenticated &&
+      <section className={`haeder_right_block w-lg-344 d-flex flex-column justify-content-between ${!isToggle ? "d-none d-lg-flex" : ""}`}>
         <div className="haeder_right px-lg-3 pt-md-4 overflow-auto custom-scrollbar">
           <ul className="hdr_right_menu">
             {[{ icon: iconHome, text: t("sitem1"), to: `/${i18n.language}/home` },
@@ -81,7 +87,7 @@ const Sidebar = ({ isToggle,setShow }) => {
             { icon: icon5, text: t("sitem5"), to: `/${i18n.language}/agents` },
             { icon: attachMoney, text: t("sitem6"), to: `/${i18n.language}/invoices` },
             { icon: barChart, text: t("sitem7"), to: `/${i18n.language}/data` },
-            { icon: familyHome, text: t("sitem8"), to: `/${i18n.language}/report` },
+            { icon: familyHome, text:t(('sitem8')), to: `/${i18n.language}/report` },
             { icon: book2, text: t("sitem9") },
             { icon: menuIcon7, text: t("sitem10"), to: `/${i18n.language}/setting` },
             { icon: lock, text: t("sitem11"), to: `/${i18n.language}/personal-area` },
@@ -132,7 +138,7 @@ const Sidebar = ({ isToggle,setShow }) => {
                 <ul className='cmn_actions_list d-block'>
                   <div className='d-flex align-items-center '>
                     <img src={userkey} alt="action icon " />
-                    {/* <p className='fs-5 fw-normal px-2 pt-2 lh-1'>{t("action1")}</p> */}
+                    <p className='fs-5 fw-normal px-2 pt-2 lh-1'>{t("action1")}</p> 
                   </div>
                   <div className='d-flex align-items-center'>
                     <img src={userhouse} alt="action icon " />
@@ -161,6 +167,8 @@ const Sidebar = ({ isToggle,setShow }) => {
           </>)}
         </div>
       </section>
+    }
+      
     </>
   )
 }
