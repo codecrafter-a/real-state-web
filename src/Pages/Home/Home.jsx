@@ -11,10 +11,13 @@ import i18n from "i18next";
 import { motion } from "framer-motion";
 import HomeTable from "../Home/HomeTable";
 import { useHomeService } from "../../Services/Home";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const { lang } = useParams();
   const fontSize = i18n.language === "he" ? "15px" : "14px";
 
  const [homedatapage, sethomedatapage] = useState([]);
@@ -67,32 +70,32 @@ const Home = () => {
                 <Row className="d-flex justify-content-center">
                   <Col xs={12} sm={12} md={4} className="py-2 py-md-0 px-sm-2">
                     <button className="custom_btn py-3 px-2 w-100 d-flex h-auto gap-2 align-items-center bg-white" style={{ fontSize: fontSize }}>
-                      <span className="text-start">
+                      <div className="justify-content-end">
+                        <img src={group} alt="group" width={27} height={27}/>
+                      </div>
+                      <span className="w-1/2">
                         {t("home1_btn3_title")}
                       </span>
-                      <div className="justify-content-end w-100">
-                        <img src={group} alt="group" width={27} height={27}/>
-                      </div>
                     </button>
                   </Col>
                   <Col xs={12} sm={12} md={4} className="py-2 py-md-0 px-sm-2">
                     <button className="custom_btn py-3 px-2 w-100 d-flex h-auto gap-2 align-items-center bg-white" style={{ fontSize: fontSize }}>
-                      <span className="text-start">
+                      <div className="justify-content-end">
+                        <img src={group} alt="group" width={27} height={27}/>
+                      </div>
+                      <span className="w-1/2">
                         {t("home1_btn2_title")}
                       </span>
-                      <div className="justify-content-end w-100">
-                        <img src={group} alt="group" width={27} height={27}/>
-                      </div>
                     </button>
                   </Col>
                   <Col xs={12} sm={12} md={4} className="py-2 py-md-0 px-sm-2">
                     <button className="custom_btn py-3 px-2 w-100 d-flex h-auto gap-2 align-items-center bg-white" style={{ fontSize: fontSize }}>
-                      <span className="text-start">
-                        {t("home1_btn1_title")}
-                      </span>
-                      <div className="justify-content-end w-100">
+                      <div className="justify-content-end">
                         <img src={group} alt="group" width={27} height={27}/>
                       </div>
+                      <span className="w-1/2">
+                        {t("home1_btn1_title")}
+                      </span>
                     </button>
                   </Col>
                 </Row>
@@ -146,6 +149,7 @@ const Home = () => {
                 <span className="text-start screen-2">{t("home_accro_r_btn")}</span>
                 <button
                   className=" hr_btn rounded-pill fw-semibold px-sm-5 px-3 py-2"
+                  onClick={() => navigate(`/${lang}/agreements`)}
                 >
                   {t("home_accro_l_btn")}
                 </button>

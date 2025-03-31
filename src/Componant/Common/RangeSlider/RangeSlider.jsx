@@ -1,8 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import dashLine from "../../../assets/images/dash_line.svg";
-const RangeSlider = ({ label, customStyle }) => {
+
+const RangeSlider = ({ label }) => {
   const [minValue, setMinValue] = useState(0);
   const [maxValue, setMaxValue] = useState(10000);
+  const [isRTL, setIsRTL] = useState(false);
+
+  useEffect(() => {
+    setIsRTL(document.dir === "rtl");
+  }, []);
 
   const handleMinChange = (e) => {
     const value = Math.min(Number(e.target.value), maxValue - 1);
@@ -38,16 +44,24 @@ const RangeSlider = ({ label, customStyle }) => {
         />
       </div>
 
-      <div className="position-relative my-3 d-flex align-items-center" style={{ height: "24px" }}>
-        <div className="position-absolute w-100 rounded" style={{ background: "#e7e7e7", height: "8px" }}></div>
+      <div
+        className="position-relative my-3 d-flex align-items-center"
+        style={{ height: "24px" }}
+      >
+        <div
+          className="position-absolute w-100 rounded"
+          style={{ background: "#e7e7e7", height: "8px" }}
+        ></div>
 
         <div
           className="position-absolute rounded"
           style={{
             height: "8px",
-            left: `${(minValue / 10000) * 100}%`,
+            left: isRTL
+              ? `${(10000 - maxValue) / 100}%`
+              : `${(minValue / 10000) * 100}%`,
             width: `${((maxValue - minValue) / 10000) * 100}%`,
-            backgroundColor: "#20c997"
+            backgroundColor: "#20c997",
           }}
         ></div>
 
@@ -56,9 +70,17 @@ const RangeSlider = ({ label, customStyle }) => {
           min="0"
           max="10000"
           value={minValue}
-          onChange={(e) => setMinValue(Math.min(Number(e.target.value), maxValue - 1))}
+          onChange={(e) =>
+            setMinValue(Math.min(Number(e.target.value), maxValue - 1))
+          }
           className="position-absolute w-100 cursor-pointer"
-          style={{ zIndex: 2, opacity: 0, appearance: "none" }}
+          style={{
+            zIndex: 2,
+            opacity: 0,
+            appearance: "none",
+            direction: isRTL ? "rtl" : "ltr",
+            height: "24px",
+          }}
         />
 
         <input
@@ -66,9 +88,17 @@ const RangeSlider = ({ label, customStyle }) => {
           min="0"
           max="10000"
           value={maxValue}
-          onChange={(e) => setMaxValue(Math.max(Number(e.target.value), minValue + 1))}
+          onChange={(e) =>
+            setMaxValue(Math.max(Number(e.target.value), minValue + 1))
+          }
           className="position-absolute w-100 cursor-pointer"
-          style={{ zIndex: 2, opacity: 0, appearance: "none" }}
+          style={{
+            zIndex: 2,
+            opacity: 0,
+            appearance: "none",
+            direction: isRTL ? "rtl" : "ltr",
+            height: "24px", 
+          }}
         />
 
         <div
@@ -78,9 +108,12 @@ const RangeSlider = ({ label, customStyle }) => {
             height: "24px",
             backgroundColor: "#20c997",
             color: "white",
-            left: `${(minValue / 10000) * 100}%`,
+            left: isRTL
+              ? `${(10000 - minValue) / 100}%`
+              : `${(minValue / 10000) * 100}%`,
             transform: "translateX(-50%)",
             zIndex: 3,
+            pointerEvents: "none", 
           }}
         >
           ||
@@ -93,9 +126,12 @@ const RangeSlider = ({ label, customStyle }) => {
             height: "24px",
             backgroundColor: "#20c997",
             color: "white",
-            left: `${(maxValue / 10000) * 100}%`,
+            left: isRTL
+              ? `${(10000 - maxValue) / 100}%`
+              : `${(maxValue / 10000) * 100}%`,
             transform: "translateX(-50%)",
             zIndex: 3,
+            pointerEvents: "none",
           }}
         >
           ||

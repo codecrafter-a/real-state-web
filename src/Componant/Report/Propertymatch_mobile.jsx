@@ -2,7 +2,7 @@ import React from 'react';
 import {Accordion, AccordionItem, AccordionHeader, AccordionBody, Badge} from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import house from "../../assets/images/property-house.png";
-const Propertymatch_mobile = ({ types }) => {
+const Propertymatch_mobile = ({ properties }) => {
       const { t } = useTranslation();
   return (
     <div>
@@ -10,8 +10,8 @@ const Propertymatch_mobile = ({ types }) => {
         {t("potential_properties")}
       </p>
       <div className='row'>
-         {types &&
-          types?.map((types, index) => {
+         {properties &&
+          properties?.map((property, index) => {
             return(<>
                 <div className="p-3 bg-white border shadow my-3 rounded-3" key={index}>
                   <img
@@ -31,7 +31,7 @@ const Propertymatch_mobile = ({ types }) => {
                       </div>
                       <AccordionHeader className="border-0 ">
                         <div className="d-flex flex-column">
-                          <p className=" fs-15 fw-normal lh-1 mb-1">{types}</p>
+                          <p className=" fs-15 fw-normal lh-1 mb-1">{t(property.address)}</p>
                           <p className="fs-15 fw-normal lh-1 mb-2">
                             {t("rooms")}{" "}
                           </p>
