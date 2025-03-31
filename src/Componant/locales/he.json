@@ -6,7 +6,7 @@
   "sitem5": "סוכנים",
   "sitem6": "חשבוניות",
   "sitem7": "נתונים",
-  "sitem8": "דו",
+  "sitem8": "דו\"ח התאמות",
   "sitem9": "רישום בספר המקרקעין",
   "sitem10": "הגדרות",
   "sitem11": "איזור אישי",
@@ -587,5 +587,12 @@
   "invoice1_number": "חשבונית מספר 234568",
   "register_transaction": "רישום עסקה בספר המקרקעין",
   "all1_invoices": "לכל החשבוניות",
-  "download_invoice": "להורדת חשבונית מקור"
+  "download_invoice": "להורדת חשבונית מקור",
+
+  "client_name2": "אמילי סמית",
+  "client_name3": "דוד בראון",
+  "property_type2": "פנטהאוז",
+  "property_type3": "וילה",
+  "email_phone2": "emily.smith@example.com",
+  "email_phone3": "david.brown@example.com"
 }

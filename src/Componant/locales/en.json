@@ -6,7 +6,7 @@
   "sitem5":"Agents",
   "sitem6":"Invoices",
   "sitem7":"Data",
-  "sitem8":"Reports",
+  "sitem8":"Reconciliation Report",
   "sitem9":"Land Registry",
   "sitem10":"Settings",
   "sitem11":"Personal Area",
@@ -606,5 +606,12 @@
   "all_properties": "All properties",
   "personal_area_title": "Personal area",
   "report_head": "Adjustment Report",
-  "for": "For"
+  "for": "For",
+
+  "client_name2": "Emily Smith",
+  "client_name3": "David Brown",
+  "property_type2": "Penthouse",
+  "property_type3": "Villa",
+  "email_phone2": "emily.smith@example.com",
+  "email_phone3": "david.brown@example.com"
   }

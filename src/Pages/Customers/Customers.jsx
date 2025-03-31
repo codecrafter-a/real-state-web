@@ -24,8 +24,35 @@ const Customer = () => {
   const navigate = useNavigate();
   const { lang } = useParams();
   const [clients, setClients] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const { getClients } = useClientService();
+  const [filters, setFilters] = useState({
+    searchTerm: "",
+    selectedClient: "",
+    selectedPropertyType: "",
+    selectedPropertyCondition: ""
+  });
+
+  const { getClients } = useClientService({
+      cutomer_type: "",
+      sought_area: "",
+      desired_area: "",
+      property_type: "",
+      property_condition: ""
+  });
+
+  const handleFilterChange = (key, value) => {
+    setFilters(prevFilters => ({
+      ...prevFilters,
+      [key]: value
+    }));
+  };
+
+  const clientFiltered = getClients();
+      
+  const filterdClients = clients.filter((client) => client.name.toLowerCase().includes(searchTerm.toLowerCase()));
+
+
 
   useEffect(() => {
     const data = getClients();
@@ -54,7 +81,7 @@ const Customer = () => {
   const toggleCheckbox = (index) => {
     setSelectedRows((prev) => {
       const updated = { ...prev, [index]: !prev[index] };
-      setSelectAll(Object.values(updated).every(Boolean)); // Check if all selected
+      setSelectAll(Object.values(updated).every(Boolean)); 
       return updated;
     });
   };
@@ -95,6 +122,8 @@ const Customer = () => {
                   type="text"
                   className="form-control border-0 p-0 flex-grow-1"
                   placeholder={t("filter_cust")}
+                  onChange  ={(e) => setSearchTerm(e.target.value)}
+                  value={searchTerm}
                 />
                 <button className="btn p-0 ms-2" type="button" aria-label="Search">
                   <img src={search} alt="Search" />
@@ -104,10 +133,14 @@ const Customer = () => {
               <div className="mb-4 d-flex flex-wrap align-items-end gap-3">
                 <div className="flex-grow-1">
                   <label className="mb-1 fw-semibold">{t("cust_filter_1")}</label>
-                  <select className="form-select">
-                    <option disabled selected>Select Option</option>
-                    <option>Option 1</option>
-                    <option>Option 2</option>
+                  <select className="form-select"
+                    value={filters.selectedClient}
+                    onChange={(e) => handleFilterChange("selectedClient", e.target.value)}
+                  >
+                    <option disabled value="">Select Option</option>
+                      {clientFiltered.map((client) => (
+                        <option key={client.id} value={client.id}>{client.name}</option>
+                      ))}
                   </select>
                 </div>
                 <div className="flex-grow-1">
@@ -117,6 +150,7 @@ const Customer = () => {
                       type="text"
                       className="form-control border-0 p-0 flex-grow-1"
                       placeholder={t("cust_filter_place_2")}
+                                     
                     />
                     <button className="btn p-0 ms-2" type="button" aria-label="Search">
                       <img src={search} alt="Search" />
@@ -129,23 +163,32 @@ const Customer = () => {
                     type="text"
                     className="form-control"
                     placeholder={t("cust_typing")}
+                    value={filters.searchTerm}
+                    onChange={(e) => handleFilterChange("searchTerm", e.target.value)}
                   />
                 </div>
 
                 <div className="flex-grow-1">
                   <label className="mb-1 fw-semibold">{t("cust_Property_type")}</label>
-                  <select className="form-select">
-                    <option disabled selected>Select Option</option>
-                    <option>Option 1</option>
-                    <option>Option 2</option>
+                  <select className="form-select"
+                   value={filters.selectedPropertyType}
+                   onChange={(e) => handleFilterChange("selectedPropertyType", e.target.value)}
+                  >
+                  <option disabled selected>Select Option</option>
+                    {filterdClients.map((index) => (
+                      <option key={index}>{t("cust_property_type_value")}</option>
+                    ))}
                   </select>
                 </div>
 
                 <div className="flex-grow-1">
                   <label className="mb-1 fw-semibold">{t("cust_Property_condition")}</label>
-                  <select className="form-select">
+                  <select className="form-select"
+                   value={filters.selectedPropertyCondition}
+                   onChange={(e) => handleFilterChange("selectedPropertyCondition", e.target.value)}
+                  >
                     <option disabled selected>Select Option</option>
-                    <option>Option 1</option>
+                    <option>{t("cust_Property_Condition_value")}</option>
                     <option>Option 2</option>
                   </select>
                 </div>
@@ -155,6 +198,7 @@ const Customer = () => {
                     type="button"
                     className="btn btn-success d-inline-flex align-items-center justify-content-center fw-medium text-white border-0 rounded-pill"
                     style={{ boxShadow: '0 10px 8px rgba(0, 0, 0, 0.1)', padding: '8px 15px', minWidth: '146px' }}
+                    onClick={() => console.log(filters)}
                   >
                     {t("cust_search")}
                   </button>
@@ -243,7 +287,7 @@ const Customer = () => {
                     </tr>
                   </thead>
                   <tbody className="border border-[#E6E6E6] rounded-3">
-                    {clients.map((client, index) => (
+                    {filterdClients.map((client, index) => (
                       <React.Fragment key={index}>
                         <tr>
                           <td className="px-4 py-3">

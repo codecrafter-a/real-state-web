@@ -7,6 +7,7 @@ import i18n from "i18next";
 import Form from "react-bootstrap/Form";
 import { useTranslation } from "react-i18next";
 import signin from "../../assets/images/Signin.png";
+import AuthenticationService from "../../Services/AuthenticationService";
 
 const Signin = () => {
   const [userData, setUserData] = useState({
@@ -16,7 +17,8 @@ const Signin = () => {
 
   const navigate = useNavigate();
   const [error, setError] = useState("");
-  const { t } = useTranslation();
+  const { t, i18n  } = useTranslation();
+  const [isClicked, setIsClicked] = useState(true)
 
   const handleChange = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
@@ -28,6 +30,8 @@ const Signin = () => {
   };
   const handleLogin = () => {
     const { email, password } = userData;
+    setIsClicked(true);
+   
     if (!email || !password) {
       setError("Email and Password are required.");
       return;
@@ -42,14 +46,14 @@ const Signin = () => {
       setError("Password must be at least 6 characters.");
       return;
     }
-
-    const fakeToken = `Bearer ${btoa(
-      userData.email + ":" + userData.password
-    )}`;
-    localStorage.setItem("authtoken", fakeToken);
-    setTimeout(() => {
-      navigate(`/${i18n.language}/home`);
-    }, 1000);
+    AuthenticationService.login(email, password, isClicked);
+    if (AuthenticationService.isAuthenticated()) {
+      setTimeout(() => {
+        navigate(`/${i18n.language}/home`);
+      }, 1000);
+    } else {
+      setError("Login failed. Please try again.");
+    }
   };
 
   return (
@@ -59,7 +63,7 @@ const Signin = () => {
           <Col className="col-12 bg-white shadow-lg rounded-3 d-none d-sm-block scroll-height ">
             <div
               className="custom-scrollbar overflow-y-auto overflow-x-hidden px-3 "
-              style={{ maxHeight: "500px" }}
+              style={{ maxHeight: "594px" }}
             >
               <p className="py-4 my-4 text-center screen-1 fw-bold">
                 {t("sign_in_title")}
@@ -137,7 +141,7 @@ const Signin = () => {
             />
             <div
               className="position-absolute start-50 translate-middle w-75  shadow-lg my-3 bg-white rounded-4 text-center overflow-y-auto overflow-x-hidden custom-scrollbar"
-              style={{ height: "600px", top: "40%" }}
+              style={{ height: "594px", top: "40%" }}
             >
               <div className="col-12 bg-white shadow-lg rounded-3">
                 <div className="p-3">
@@ -205,7 +209,7 @@ const Signin = () => {
         </>
       }
     </>
-  );
+  );  
 };
 
 export default Signin;
