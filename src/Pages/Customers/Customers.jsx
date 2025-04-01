@@ -130,9 +130,9 @@ const Customer = () => {
                 </button>
               </div>
 
-              <div className="mb-4 d-flex flex-wrap align-items-end gap-3">
-                <div className="flex-grow-1">
-                  <label className="mb-1 fw-semibold">{t("cust_filter_1")}</label>
+              <div className="mb-4 d-flex flex-nowrap align-items-center gap-3">
+                <div>
+                  <label className="mb-1 fs-15 lh-1 fw-semibold">{t("cust_filter_1")}</label>
                   <select className="form-select"
                     value={filters.selectedClient}
                     onChange={(e) => handleFilterChange("selectedClient", e.target.value)}
@@ -143,8 +143,8 @@ const Customer = () => {
                       ))}
                   </select>
                 </div>
-                <div className="flex-grow-1">
-                  <label className="mb-1 fw-semibold">{t("cust_filter_2")}</label>
+                <div>
+                  <label className="mb-1 fs-15 lh-1 fw-semibold">{t("cust_filter_2")}</label>
                   <div className="position-relative border border-[#D6D6D6] rounded py-2 px-3 d-flex mx-auto">
                     <input
                       type="text"
@@ -157,8 +157,8 @@ const Customer = () => {
                     </button>
                   </div>
                 </div>
-                <div className="flex-grow-1">
-                  <label className="form-label fw-semibold">{t("cust_serch")}</label>
+                <div>
+                  <label className="mb-1 fs-15 lh-1 fw-semibold">{t("cust_serch")}</label>
                   <input
                     type="text"
                     className="form-control"
@@ -168,8 +168,8 @@ const Customer = () => {
                   />
                 </div>
 
-                <div className="flex-grow-1">
-                  <label className="mb-1 fw-semibold">{t("cust_Property_type")}</label>
+                <div>
+                  <label className="mb-1 fs-15 lh-1 fw-semibold">{t("cust_Property_type")}</label>
                   <select className="form-select"
                    value={filters.selectedPropertyType}
                    onChange={(e) => handleFilterChange("selectedPropertyType", e.target.value)}
@@ -181,8 +181,8 @@ const Customer = () => {
                   </select>
                 </div>
 
-                <div className="flex-grow-1">
-                  <label className="mb-1 fw-semibold">{t("cust_Property_condition")}</label>
+                <div>
+                  <label className="mb-1 fs-15 lh-1 fw-semibold">{t("cust_Property_condition")}</label>
                   <select className="form-select"
                    value={filters.selectedPropertyCondition}
                    onChange={(e) => handleFilterChange("selectedPropertyCondition", e.target.value)}
@@ -193,10 +193,10 @@ const Customer = () => {
                   </select>
                 </div>
 
-                <div className="d-flex flex-grow-1 align-items-end">
+                <div className="d-flex mt-3">
                   <button
                     type="button"
-                    className="btn btn-success d-inline-flex align-items-center justify-content-center fw-medium text-white border-0 rounded-pill"
+                    className="btn btn-success  d-flex align-items-center justify-content-center fw-medium text-white border-0 rounded-pill"
                     style={{ boxShadow: '0 10px 8px rgba(0, 0, 0, 0.1)', padding: '8px 15px', minWidth: '146px' }}
                     onClick={() => console.log(filters)}
                   >

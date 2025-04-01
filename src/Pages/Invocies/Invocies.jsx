@@ -11,17 +11,20 @@ import { Button, Accordion } from 'react-bootstrap';
 import { FaEye, FaDownload } from 'react-icons/fa';
 import { BsWhatsapp } from 'react-icons/bs';
 import { MdEmail } from 'react-icons/md';
+
 const Invocies = () => {
   const {t} = useTranslation();
   const [activeTab, setActiveTab] = useState("all");
-  const [invoiceData, setInvoiceData] = useState([])
-  const { getInvoiceService } = useInvoiceServices();
+  const [invoiceData, setInvoiceData] = useState([]);
+  const [clientName, setClientName] = useState("");
+  
+  const { getInvoiceService } = useInvoiceServices(clientName);
 
   useEffect(() => {
-      const data = getInvoiceService();
-      setInvoiceData(data)
-    }, []);
-  
+    setInvoiceData(getInvoiceService());
+    }, [clientName]);
+    
+   console.log(getInvoiceService , "getInvoiceService ")
   return (
     <>
       <Col className='bg-white shadow-lg rounded-3 my-3'>
@@ -52,6 +55,8 @@ const Invocies = () => {
                     className="form-control border-0 "
                     id="searchInput"
                     placeholder={t("invoice_placeholder")}
+                    value={clientName}
+                    onChange={(e) => setClientName(e.target.value)}
                   />
                   <span className="input-group-text bg-transparent  border-0">
                     <img src={search} alt="search" />
@@ -62,7 +67,7 @@ const Invocies = () => {
                    <p className=' fs-16 fw-semibold lh-1 my-2 text-center text-teal'>פילטרים נוספים</p>
                    <div className='justify-content-center d-flex'><IoIosArrowDown/></div>
               </div>
-              <div className=' py-4'><InvoicesTable /></div>
+              <div className=' py-4'><InvoicesTable data={invoiceData}/></div>
             </>   
           )}
           {activeTab === "recent" && (

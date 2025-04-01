@@ -6,7 +6,7 @@ export const useReportServices = () => {
     return [
       {
         id: 1,
-        name: t("customer_name"),
+        name: t("customer1_name"),
         type: t("customer_type"),
         phone: "054-4692650",
         email: "shirims@gmail.com",

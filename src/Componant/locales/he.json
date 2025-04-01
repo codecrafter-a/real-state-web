@@ -594,5 +594,8 @@
   "property_type2": "פנטהאוז",
   "property_type3": "וילה",
   "email_phone2": "emily.smith@example.com",
-  "email_phone3": "david.brown@example.com"
+  "email_phone3": "david.brown@example.com",
+  "Property_own_title": "החתמת בעל נכס",
+  "Property_own_detail": "הוספת בלעדיות על הנכס / הנכסים",
+  "Brock_between": "שת”פ בין מתווכים"
 }

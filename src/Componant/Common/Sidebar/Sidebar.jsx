@@ -20,7 +20,7 @@ import usercontact from '../../../assets/images/user-contect.png';
 import userhouse from '../../../assets/images/user-house.png';
 import "../Sidebar/Sidebar.css";
 import { Button, Card } from 'react-bootstrap';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate,  useParams  } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import AuthenticationService from "../../../Services/AuthenticationService";
 
@@ -29,6 +29,7 @@ const Sidebar = ({ isToggle,setShow }) => {
   const { i18n, t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
+  const { lang } = useParams();
 
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
@@ -117,9 +118,9 @@ const Sidebar = ({ isToggle,setShow }) => {
             <div className="cmn_actions px-3 w-100 bg-white">
               <h4> {t("action")}</h4>
               <ul className="cmn_actions_list d-none d-md-flex ">
-                {[{ icon: actionIcon1, text: t("action1") },
-                { icon: actionIcon2, text: t("action2") },
-                { icon: actionIcon3, text: t("action3") }].map((action, index) => (
+                {[{ icon: actionIcon1, text: t("action1"), to: `/${i18n.language}/broker`},
+                { icon: actionIcon2, text: t("action2"), to: `/${i18n.language}/property_owner` },
+                { icon: actionIcon3, text: t("action3"), to: `/${i18n.language}/broker_between` }].map((action, index) => (
                   <li key={index}>
                     <Link to={action.to}>
                       <span className="action_icon">
@@ -136,18 +137,18 @@ const Sidebar = ({ isToggle,setShow }) => {
               <div className='cmn_actions'>
                 <h4 className=' text-success fw-bold'>Actions</h4>
                 <ul className='cmn_actions_list d-block'>
-                  <div className='d-flex align-items-center '>
+                  <button className='d-flex align-items-center 'onClick={() => navigate(`/${lang}/broker`)} >
                     <img src={userkey} alt="action icon " />
                     <p className='fs-5 fw-normal px-2 pt-2 lh-1'>{t("action1")}</p> 
-                  </div>
-                  <div className='d-flex align-items-center'>
+                  </button>
+                  <button className='d-flex align-items-center' onClick={() => navigate(`/${lang}/property_owner`)}>
                     <img src={userhouse} alt="action icon " />
                     <p className='fs-5 fw-normal px-2 pt-3 lh-1'>{t("action2")}</p>
-                  </div>
-                  <div className='d-flex align-items-center'>
+                  </button>
+                  <button className='d-flex align-items-center' onClick={() => navigate(`/${lang}/broker_between`)}>
                     <img src={usercontact} alt="action icon " />
                     <p className='fs-5 fw-normal px-2 pt-3 lh-1'>{t("action3")}</p>
-                  </div>
+                  </button>
                 </ul>
                 <div className="d-flex justify-content-center align-items-center mt-3 mb-5">
                   <Card className="custom-card text-center bg-success bg-opacity-10" >

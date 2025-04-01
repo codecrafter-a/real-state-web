@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Row, Col } from "react-bootstrap";
-
 import { useTranslation } from 'react-i18next';
-
 import "../Home/Home.css";
-import group from "../../assets/images/group-2.png";
+import userkey from '../../assets/images/user-key.png';
+import usercontact from '../../assets/images/user-contect.png';
+import userhouse from '../../assets/images/user-house.png';
 import Datacard from "../../Componant/Homedatacard/Datacard/Datacard";
 import Homechart from "../../Componant/Homedatacard/Homechart/Homechart";
 import i18n from "i18next";
@@ -19,7 +19,7 @@ const Home = () => {
   const navigate = useNavigate();
   const { lang } = useParams();
   const fontSize = i18n.language === "he" ? "15px" : "14px";
-
+  
  const [homedatapage, sethomedatapage] = useState([]);
     const { getHomes } = useHomeService();
   
@@ -69,9 +69,9 @@ const Home = () => {
                 </div>
                 <Row className="d-flex justify-content-center">
                   <Col xs={12} sm={12} md={4} className="py-2 py-md-0 px-sm-2">
-                    <button className="custom_btn py-3 px-2 w-100 d-flex h-auto gap-2 align-items-center bg-white" style={{ fontSize: fontSize }}>
+                    <button className="custom_btn py-3 px-2 w-100 d-flex h-auto gap-2 align-items-center bg-white" onClick={() => navigate(`/${lang}/broker`)} style={{ fontSize: fontSize }}>
                       <div className="justify-content-end">
-                        <img src={group} alt="group" width={27} height={27}/>
+                        <img src={userkey} alt="group" width={27} height={27}/>
                       </div>
                       <span className="w-1/2">
                         {t("home1_btn3_title")}
@@ -79,9 +79,9 @@ const Home = () => {
                     </button>
                   </Col>
                   <Col xs={12} sm={12} md={4} className="py-2 py-md-0 px-sm-2">
-                    <button className="custom_btn py-3 px-2 w-100 d-flex h-auto gap-2 align-items-center bg-white" style={{ fontSize: fontSize }}>
+                    <button className="custom_btn py-3 px-2 w-100 d-flex h-auto gap-2 align-items-center bg-white" onClick={() => navigate(`/${lang}/property_owner`)} style={{ fontSize: fontSize }}>
                       <div className="justify-content-end">
-                        <img src={group} alt="group" width={27} height={27}/>
+                        <img src={userhouse} alt="group" width={27} height={27}/>
                       </div>
                       <span className="w-1/2">
                         {t("home1_btn2_title")}
@@ -89,9 +89,9 @@ const Home = () => {
                     </button>
                   </Col>
                   <Col xs={12} sm={12} md={4} className="py-2 py-md-0 px-sm-2">
-                    <button className="custom_btn py-3 px-2 w-100 d-flex h-auto gap-2 align-items-center bg-white" style={{ fontSize: fontSize }}>
+                    <button className="custom_btn py-3 px-2 w-100 d-flex h-auto gap-2 align-items-center bg-white" onClick={() => navigate(`/${lang}/broker_between`)} style={{ fontSize: fontSize }}>
                       <div className="justify-content-end">
-                        <img src={group} alt="group" width={27} height={27}/>
+                        <img src={usercontact} alt="group" width={27} height={27}/>
                       </div>
                       <span className="w-1/2">
                         {t("home1_btn1_title")}

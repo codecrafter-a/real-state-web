@@ -1,20 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Table, Form, Button} from 'react-bootstrap';
 import { FaEye, FaDownload } from 'react-icons/fa';
 import { BsWhatsapp } from 'react-icons/bs';
 import { MdEmail } from 'react-icons/md';
 import { useTranslation } from 'react-i18next';
-import { useInvoiceServices } from '../../Services/InvoicesServices';
 
-const InvoicesTable = () => {
+
+const InvoicesTable = ({data}) => {
   const { t } = useTranslation();
-  const [invoiceData, setInvoiceData] = useState([])
-  const { getInvoiceService } = useInvoiceServices()
-
-  useEffect(() => {
-    const data = getInvoiceService();
-    setInvoiceData(data)
-  }, []);
+  
 
   return (
     <div className="custom-table-container">
@@ -35,7 +29,7 @@ const InvoicesTable = () => {
           </tr>
         </thead>
         <tbody className="border border-1 rounded-3 border-secondary">
-          {invoiceData.map((row) => (
+          {data.map((row) => (
             <tr key={row.id} className="text-center">
               <td className="border p-2">
                 <div className="d-flex align-items-center justify-content-center">
