@@ -40,7 +40,7 @@ const DataTable = () => {
             <th className='fw-semibold lh-1 fs-6'>{t("customer_type")} </th>
             <th className='fw-semibold lh-1 fs-6'>{t("phone")}</th>
             <th className='fw-semibold lh-1 fs-6'>{t("client_email")}</th>
-            <th className='fw-semibold lh-1 fs-6'> {t("client_property_type")}</th>
+            <th className='fw-semibold lh-1 fs-6'> {t("desired_area")}</th>
             <th>
               <Form.Check type="checkbox" />
             </th>
@@ -105,6 +105,12 @@ const DataTable = () => {
                             </div>
                           </div>
                           <div className='row' >
+                            <div className='col-6'>
+                              <p className='mb-1'>{t("title_comments")}</p>
+                            <div style={styles.comments}>
+                                {row.details.comments}
+                            </div>
+                            </div>
                             <div className=' col-6'>
                               <p className='mb-1'>{t("title_feature")}</p>
                               <div style={styles.featuresContainer}>
@@ -118,12 +124,6 @@ const DataTable = () => {
                                   </Button>
                                   ))}
                               </div> 
-                            </div>
-                            <div className='col-6'>
-                              <p className='mb-1'>{t("title_comments")}</p>
-                            <div style={styles.comments}>
-                                {row.details.comments}
-                            </div>
                             </div>
                           </div>                      
                         </Card.Body>
