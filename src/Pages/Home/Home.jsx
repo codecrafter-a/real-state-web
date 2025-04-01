@@ -73,7 +73,7 @@ const Home = () => {
                       <div className="justify-content-end">
                         <img src={userkey} alt="group" width={27} height={27}/>
                       </div>
-                      <span className="w-1/2">
+                      <span>
                         {t("home1_btn3_title")}
                       </span>
                     </button>
@@ -83,7 +83,7 @@ const Home = () => {
                       <div className="justify-content-end">
                         <img src={userhouse} alt="group" width={27} height={27}/>
                       </div>
-                      <span className="w-1/2">
+                      <span>
                         {t("home1_btn2_title")}
                       </span>
                     </button>
@@ -93,7 +93,7 @@ const Home = () => {
                       <div className="justify-content-end">
                         <img src={usercontact} alt="group" width={27} height={27}/>
                       </div>
-                      <span className="w-1/2">
+                      <span>
                         {t("home1_btn1_title")}
                       </span>
                     </button>
