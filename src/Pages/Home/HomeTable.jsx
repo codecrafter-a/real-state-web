@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { TbMailForward } from "react-icons/tb";
-// import { FaWhatsapp } from "react-icons/fa";
 import { useTranslation } from 'react-i18next';
 import garagedoor from '../../assets/images/small door.png';
 import { GoChevronRight, GoChevronLeft } from "react-icons/go";
@@ -9,90 +8,13 @@ import house from '../../assets/images/garage_door.svg';
 import { GoPerson } from "react-icons/go";
 import { useAgreementServices } from "../../Services/AgreementServices";
 import iconHome from '../../assets/images/icon_home.svg'
-// const tableData = [
-//     {
-//         status: "home_tab_r1_h2",
-//         commission: "20%",
-//         clients: "home_tab_r1_h4",
-//         agreementType: "home_tab_r1_h5",    
-//         date: "06.06.24",
-//         agreementName: 'home_tab_r1_h7',
-//         actionType: "genrated",
-//         icon: <FaWhatsapp />
-//     },
-//     {
-//         status: "home_tab_r2_h2",
-//         commission: "20%",
-//         clients: "home_tab_r1_h4",
-//         agreementType: "home_tab_r1_h5",
-//         date: "06.06.24",
-//         agreementName: 'home_tab_r1_h7',
-//         actionType: "sent",
-//         icon: <FaWhatsapp />
-//     },
-//     {
-//         status: "home_tab_r3_h2",
-//         commission: "20%",
-//         clients: "home_tab_r1_h4",
-//         agreementType: "home_tab_r1_h5",
-//         date: "06.06.24",
-//         agreementName: 'home_tab_r1_h7',
-//         actionType: "viewd",      
-//         icon: <FaWhatsapp />
-//     },
-//     {
-//         status: "home_tab_r4_h2",
-//         commission: "20%",
-//         clients: "home_tab_r1_h4",
-//         agreementType: "home_tab_r1_h5",
-//         date: "06.06.24",
-//         agreementName: 'home_tab_r1_h7',
-//         actionType: "signed",
-//         icon: <FaWhatsapp />
-//     },
-//     {
-//         status: "home_tab_r5_h2",
-//         commission: "20%",
-//         clients: "home_tab_r1_h4",
-//         agreementType: "home_tab_r1_h5",
-//         date: "06.06.24",
-//         agreementName: 'home_tab_r1_h7',
-//         actionType: "Signed and Executed",
-//     },
-//     {
-//         status: "home_tab_r6_h2",
-//         commission: "20%",
-//         clients: "home_tab_r1_h4",
-//         agreementType: "home_tab_r1_h5",
-//         date: "06.06.24",
-//         agreementName: 'home_tab_r1_h7',
-//         actionType: "sent",
-//     },
-// ];
-
-const ActionButtons = ({ type, icon }) => {
-    const { t } = useTranslation();
-    return (
-        <div className="d-flex align-items-center gap-3 p-2 bg-white">
-            {(type === "genrated" || "sent" || "viewd") && (
-                <>
-                    <div className="d-flex align-items-center gap-1">
-                        <TbMailForward />
-                        <span>{t('home_tab_r1_h1_l4')}</span>
-                    </div>
-                    {icon && (
-                        <div className="d-flex align-items-center gap-1">
-                            {icon}
-                            <span>{t("home_tab_r1_h1_l3")}</span>
-                        </div>
-                    )}
-                    <span>{t("home_tab_r1_h1_l2")}</span>
-                    <span>{t("home_tab_r1_h1_l1")}</span>
-                </>
-            )}
-        </div>
-    );
-};
+import { HiOutlineDotsVertical } from "react-icons/hi";
+import { FaWhatsapp } from "react-icons/fa";
+import { IoMdAttach } from "react-icons/io";
+import { FaRegFile } from "react-icons/fa6";
+import { MdOutlineCheckCircleOutline } from "react-icons/md";
+import { RiDeleteBin2Line } from "react-icons/ri";
+import { LuBookMinus } from "react-icons/lu";
 
 const StatusBadge = ({ status }) => {
     const { t } = useTranslation();
@@ -129,27 +51,6 @@ const StatusBadge = ({ status }) => {
     );
 };
 
-const TableRow = ({ data }) => {
-    const { t } = useTranslation();
-    const { status, commission, clients, agreementType, date, agreementName, actionType, icon } = data;
-    return (
-        <tr>
-            <td className="d-table-cell align-middle py-3">
-                <div className="d-flex align-items-center gap-1">
-                    <img src={iconHome} alt="home icon" className="text-teal h-auto" style={{ width: '18px' }} />
-                    {t(agreementName)}
-                </div>
-            </td>
-            <td className="d-table-cell align-middle py-3">{date}</td>
-            <td className="d-table-cell align-middle py-3">{t(agreementType)}</td>
-            <td className="d-table-cell align-middle py-3">{t(clients)}</td>
-            <td className="d-table-cell align-middle py-3">{commission}</td>
-            <td className="d-table-cell align-middle py-3"><StatusBadge status={t(status)} /></td>
-            <td className="d-table-cell align-middle py-3"><ActionButtons type={t(actionType)} icon={icon} /></td>
-        </tr>
-    );
-};
-
 const HomeTable = () => {
     const { t } = useTranslation();
     const { i18n } = useTranslation();
@@ -179,9 +80,102 @@ const HomeTable = () => {
                     </thead>
                     <tbody className="border">
                         {tableData.map((row, index) => (
-                            <TableRow key={index} data={row} />
+
+                            <tr key={index}>
+                                <td className="d-table-cell align-middle py-3">
+                                    <div className="d-flex align-items-center gap-1">
+                                        <img src={iconHome} alt="home icon" className="text-teal h-auto" style={{ width: '18px' }} />
+                                        {t(row.agreementName)}
+                                    </div>
+                                </td>
+                                <td className="d-table-cell align-middle py-3">{row.date}</td>
+                                <td className="d-table-cell align-middle py-3">{t(row.agreementType)}</td>
+                                <td className="d-table-cell align-middle py-3">{t(row.clients)}</td>
+                                <td className="d-table-cell align-middle py-3">{row.commission}</td>
+                                <td className="d-table-cell align-middle py-3">
+                                    <StatusBadge status={t(row.status)} />
+                                </td>
+
+                                {(row.status == "home_tab_r3_h2" || row.status == "home_tab_r2_h2" || row.status == "home_tab_r1_h2") && (
+                                    <td className="d-table-cell align-middle py-3">
+                                        <div className="d-flex align-items-center gap-3 p-2 bg-white">
+                                            <div className="d-flex align-items-center gap-1">
+                                                <TbMailForward size={18} />
+                                                <span>{t("home_tab_r1_h1_l4")}</span>
+                                            </div>
+                                            <div className="d-flex align-items-center gap-1">
+                                                <FaWhatsapp />
+                                                <span>{t("home_tab_r1_h1_l3")}</span>
+                                            </div>
+                                            <span className="d-flex align-items-center gap-1">
+                                                <IoMdAttach />
+                                                {t("home_tab_r1_h1_l2")}
+                                            </span>
+                                            <div className="d-flex align-items-center gap-1">
+                                                <HiOutlineDotsVertical />
+                                                {t("home_tab_r1_h1_l1")}
+                                            </div>
+                                        </div>
+                                    </td>
+                                )}
+                                {row.status == "home_tab_r4_h2" && (
+                                    <td className="d-table-cell align-middle py-3">
+                                        <div className="d-flex align-items-center gap-3 p-2 bg-white">
+                                            <div className="d-flex align-items-center gap-1">
+                                                <FaRegFile />
+                                                <span>{t("open_agreement")}</span>
+                                            </div>
+                                            <div className="d-flex align-items-center gap-1">
+                                                <TbMailForward size={18} />
+                                                <span>{t("send_copy")}</span>
+                                            </div>
+                                            <span className="d-flex align-items-center gap-1">
+                                                <MdOutlineCheckCircleOutline />
+                                                {t("close_deal")}
+                                            </span>
+                                            <div className="d-flex align-items-center gap-1">
+                                                <RiDeleteBin2Line />
+                                                {t("delete")}
+                                            </div>
+                                        </div>
+                                    </td>
+                                )}
+                                {row.status == "home_tab_r5_h2" && (
+                                    <td className="d-table-cell align-middle py-3">
+                                        <div className="d-flex align-items-center gap-3 p-2 bg-white">
+                                            <div className="d-flex align-items-center gap-1">
+                                                <TbMailForward size={18} />
+                                                <span>{t("send_copy")}</span>
+                                            </div>
+                                            <div className="d-flex align-items-center gap-1">
+                                                <LuBookMinus />
+                                                <span>{t("register_land")}</span>
+                                            </div>
+                                            <div className="d-flex align-items-center gap-1">
+                                                <RiDeleteBin2Line />
+                                                {t("delete")}
+                                            </div>
+                                        </div>
+                                    </td>
+                                )}
+                                {row.status == "home_tab_r6_h2" && (
+                                    <td className="d-table-cell align-middle py-3">
+                                        <div className="d-flex align-items-center gap-3 p-2 bg-white">
+                                            <div className="d-flex align-items-center gap-1">
+                                                <TbMailForward size={18} />
+                                                <span>{t("send_copy")}</span>
+                                            </div>
+                                            <div className="d-flex align-items-center gap-1">
+                                                <RiDeleteBin2Line />
+                                                {t("delete")}
+                                            </div>
+                                        </div>
+                                    </td>
+                                )}
+                            </tr>
                         ))}
                     </tbody>
+
                 </table>
             </div>
             <div className="d-md-none">
@@ -264,8 +258,3 @@ const HomeTable = () => {
 };
 
 export default HomeTable;
-
-
-
-
-

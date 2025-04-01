@@ -60,6 +60,9 @@ const Layout = ({ children }) => {
       case 'change-password': return t('changePassword');
       case 'change-email': return t('changeEmail');
       case 'signature-invoice': return t('signature_invoice');
+      case 'broker': return t("age_main_title");
+      case 'property_owner' : return t("Property_own_title");
+      case 'broker_between' : return t("Brock_between");
       default: return '';
     }
   };

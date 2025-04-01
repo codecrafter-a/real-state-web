@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../Signin/Signin.css";
 import g10 from "../../assets/images/g10.png";
 import { Col } from "react-bootstrap";
@@ -8,17 +8,33 @@ import Form from "react-bootstrap/Form";
 import { useTranslation } from "react-i18next";
 import signin from "../../assets/images/Signin.png";
 import AuthenticationService from "../../Services/AuthenticationService";
-
-const Signin = () => {
+import { useLocation } from "react-router-dom";
+const Signin = ({setIsPadding, isPadding}) => {
   const [userData, setUserData] = useState({
     email: "",
     password: "",
   });
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const lastPath = location.pathname.split("/").filter(Boolean).pop();
+  console.log(lastPath, "aaaaaaaaaaaaaaaaaaaa")
   const [error, setError] = useState("");
   const { t, i18n  } = useTranslation();
   const [isClicked, setIsClicked] = useState(true)
+  console.log(isPadding, "isPadding");
+  
+  useEffect(() => {
+    // Remove both classes first to avoid conflicts
+    document.body.classList.remove("pt-0", "pt-5");
+
+    // Add the appropriate class
+    document.body.classList.add(isPadding ? "pt-0" : "pt-5");
+
+    return () => {
+      document.body.classList.remove("pt-0", "pt-5"); // Correct cleanup
+    };
+  }, [isPadding]);
 
   const handleChange = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });

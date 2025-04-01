@@ -48,7 +48,7 @@ const Attechment = ({ setActiveTab }) => {
         <p className="fs-15 lh-1 fw-semibold">{t("pro_add_attch_doc_note")}</p>
         <div className="carddashed gap-2">
           {fileInputs.map(({ key, label }) => (
-            <div key={key} className="grid g-col-4" >
+            <div key={key} className="grid col-12 col-md-4" >
               <div className="border-dashed p-2">
                 <Form.Label className="d-flex align-items-center cursor-pointer position-relative">
                   <Form.Control

@@ -8,8 +8,6 @@ import calendarMonth from "../../assets/images/mobile_calendar.png";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import CommonPieChart from "../../Componant/Common/PieChart/PieChart";
-// import user from '../../assets/images/user_icon.svg';
-// import home_work from '../../assets/images/home_work.svg';
 import { useTranslation } from "react-i18next";
 import i18n from "i18next";
 import { Nav } from "react-bootstrap";
@@ -22,7 +20,10 @@ const Data = () => {
   const [activeTab, setActiveTab] = useState("all");
 
   const { getData, getAgreementData, getUserData, getAgreementColors } =
-    useDataService();
+    useDataService({
+      until_data: "",
+      form_data: "",
+    });
 
   const COLORS = ["#166D64", "#3AC2A3"];
   const [pieData, setPieData] = useState([]);
