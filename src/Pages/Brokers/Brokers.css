@@ -51,7 +51,7 @@ h5 {
   background-color: transparent !important;
 }
 .accordion-item:last-of-type > .accordion-header .accordion-button.collapsed {
-  background-color: #d1e7dd !important;
+  background-color: transparent !important;
 }
 .accordion-button::after {
   display: none !important;

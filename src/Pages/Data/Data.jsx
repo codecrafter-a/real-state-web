@@ -235,7 +235,7 @@ const Data = () => {
               </Col>
             </Row>
             <Row className="d-flex flex-md-nowrap flex-wrap align-items-center px-2 px-md-3 my-md-3 gap-4 justify-content-between">
-              <Col className="col-12 col-md-6 col-lg-8 flex-shrink-1">
+              <Col className="col-12 col-md-6 col-lg-9 flex-shrink-1">
                 <Row className="bg-sec-100 rounded-3 shadow px-3  ">
                   <p className="screen-2  px-2 py-3 text-center text-md-start">
                     {t("data_main_title2")}
@@ -245,7 +245,7 @@ const Data = () => {
                   </div>
                 </Row>
               </Col>
-              <Col className="">
+              <Col className="col-12 col-lg-3">
                 <Row className=" bg-sec-100  rounded-2 shadow d-md-flex d-none">
                   <p className="screen-2 text-center text-md-start my-2">
                     {t("data_main_title1")}

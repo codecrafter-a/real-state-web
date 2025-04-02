@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Row, Col } from "react-bootstrap";
-import { useTranslation } from 'react-i18next';
+import { Row, Col, Card } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 import "../Home/Home.css";
-import userkey from '../../assets/images/user-key.png';
-import usercontact from '../../assets/images/user-contect.png';
-import userhouse from '../../assets/images/user-house.png';
+import userkey from "../../assets/images/user-key.png";
+import usercontact from "../../assets/images/user-contect.png";
+import userhouse from "../../assets/images/user-house.png";
 import Datacard from "../../Componant/Homedatacard/Datacard/Datacard";
 import Homechart from "../../Componant/Homedatacard/Homechart/Homechart";
 import i18n from "i18next";
@@ -12,26 +12,41 @@ import { motion } from "framer-motion";
 import HomeTable from "../Home/HomeTable";
 import { useHomeService } from "../../Services/Home";
 import { useNavigate, useParams } from "react-router-dom";
-
+import CommonPieChart from "../../Componant/Common/PieChart/PieChart";
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { lang } = useParams();
   const fontSize = i18n.language === "he" ? "15px" : "14px";
-  
- const [homedatapage, sethomedatapage] = useState([]);
-    const { getHomes } = useHomeService();
-  
-      useEffect(() => {
-          const Homedata = getHomes();
-          sethomedatapage(Homedata);
-      }, []);
+
+  const [homedatapage, sethomedatapage] = useState([]);
+  const [userdata, setUserdata] = useState([]);
+  const [agrreedata, setAgreedata] = useState([]);
+  const [agreecolor, setAgreecolor] = useState([]);
+  const { getHomes, getUserData, getAgreementData, getAgreementColors } =
+    useHomeService();
+
+  useEffect(() => {
+    const Homedata = getHomes();
+    sethomedatapage(Homedata);
+    const Userdata = getUserData();
+    setUserdata(Userdata);
+    const Agreedata = getAgreementData();
+    setAgreedata(Agreedata);
+    const AgreeColor = getAgreementColors();
+    setAgreecolor(AgreeColor);
+  }, []);
   return (
     <>
       <Col className="p-0 custom-col rounded-3">
-        <p className="py-1 my-4 text-center screen-1 border-bottom pb-3 d-none d-md-block"> {t("home_title")} </p>
-        <div className={`custom-scrollbar overflow-y-auto overflow-x-hidden px-3 scroll-height`}>
+        <p className="py-1 my-4 text-center screen-1 border-bottom pb-3 d-none d-md-block">
+          {" "}
+          {t("home_title")}{" "}
+        </p>
+        <div
+          className={`custom-scrollbar overflow-y-auto overflow-x-hidden px-3 scroll-height`}
+        >
           <Row className=" align-items-center justify-content-between d-flex overflow-hidden">
             <Col xs={12} xl={6} className=" my-2">
               <div className="rounded-1 p-md-4 p-3 shadow my-3 box1_color">
@@ -41,24 +56,35 @@ const Home = () => {
                 <div className="d-flex align-items-center gap-md-5 gap-3">
                   <div>
                     <div className="py-3 w-100 h-auto shadow-md-lg">
-                      <span className="table-head home-card-title">{t("home2_btn3_title")}</span>
-                      <div className="fw-semibold home-card-subtitle">STARTER</div>
+                      <span className="table-head home-card-title">
+                        {t("home2_btn3_title")}
+                      </span>
+                      <div className="fw-semibold home-card-subtitle">
+                        STARTER
+                      </div>
                     </div>
                   </div>
 
                   <div>
                     <div className="py-3 w-100 h-auto shadow-md-lg">
-                      <span className="table-head home-card-title">{t("home2_btn2_title")}</span>
-                      <div className="fw-semibold home-card-subtitle">17.07.2023</div>
+                      <span className="table-head home-card-title">
+                        {t("home2_btn2_title")}
+                      </span>
+                      <div className="fw-semibold home-card-subtitle">
+                        17.07.2023
+                      </div>
                     </div>
                   </div>
                   <div>
                     <div className="py-3 w-100 h-auto shadow-md-lg">
-                      <span className="table-head home-card-title">{t("home2_btn1_title")}</span>
-                      <div className="fw-semibold home-card-subtitle">10/50</div>
+                      <span className="table-head home-card-title">
+                        {t("home2_btn1_title")}
+                      </span>
+                      <div className="fw-semibold home-card-subtitle">
+                        10/50
+                      </div>
                     </div>
                   </div>
-
                 </div>
               </div>
             </Col>
@@ -69,33 +95,33 @@ const Home = () => {
                 </div>
                 <Row className="d-flex justify-content-center">
                   <Col xs={12} sm={12} md={4} className="py-2 py-md-0 px-sm-2">
-                    <button className="custom_btn py-3 px-2 w-100 d-flex h-auto gap-2 align-items-center bg-white" onClick={() => navigate(`/${lang}/broker`)} style={{ fontSize: fontSize }}>
-                      <div className="justify-content-end">
-                        <img src={userkey} alt="group" width={27} height={27}/>
-                      </div>
-                      <span>
-                        {t("home1_btn3_title")}
-                      </span>
+                    <button
+                      className="agent-button2 rounded-2 p-2 gap-3 py-3 d-flex justify-content-between fs-14 lh-1 fw-semibold"
+                      onClick={() => navigate(`/${lang}/broker`)}
+                      style={{ fontSize: fontSize }}
+                    >
+                      <img src={userkey} alt="group" />
+                      <span>{t("home1_btn3_title")}</span>
                     </button>
                   </Col>
                   <Col xs={12} sm={12} md={4} className="py-2 py-md-0 px-sm-2">
-                    <button className="custom_btn py-3 px-2 w-100 d-flex h-auto gap-2 align-items-center bg-white" onClick={() => navigate(`/${lang}/property_owner`)} style={{ fontSize: fontSize }}>
-                      <div className="justify-content-end">
-                        <img src={userhouse} alt="group" width={27} height={27}/>
-                      </div>
-                      <span>
-                        {t("home1_btn2_title")}
-                      </span>
+                    <button
+                      className="agent-button2 rounded-2 p-2 gap-3 py-3 d-flex justify-content-between fs-14 lh-1 fw-semibold"
+                      onClick={() => navigate(`/${lang}/property_owner`)}
+                      style={{ fontSize: fontSize }}
+                    >
+                      <img src={userhouse} alt="group" />
+                      <span>{t("home1_btn2_title")}</span>
                     </button>
                   </Col>
                   <Col xs={12} sm={12} md={4} className="py-2 py-md-0 px-sm-2">
-                    <button className="custom_btn py-3 px-2 w-100 d-flex h-auto gap-2 align-items-center bg-white" onClick={() => navigate(`/${lang}/broker_between`)} style={{ fontSize: fontSize }}>
-                      <div className="justify-content-end">
-                        <img src={usercontact} alt="group" width={27} height={27}/>
-                      </div>
-                      <span>
-                        {t("home1_btn1_title")}
-                      </span>
+                    <button
+                      className="agent-button2 rounded-2 p-2 gap-3 py-3 d-flex justify-content-between fs-14 lh-1 fw-semibold"
+                      onClick={() => navigate(`/${lang}/broker_between`)}
+                      style={{ fontSize: fontSize }}
+                    >
+                      <img src={usercontact} alt="group" />
+                      <span>{t("home1_btn1_title")}</span>
                     </button>
                   </Col>
                 </Row>
@@ -105,7 +131,9 @@ const Home = () => {
           <Row className="px-2 mt-3">
             <Col className="col-12 box1_color mb-4">
               <div className="d-flex justify-content-between py-3">
-                <span className="text-start pe-2 screen-2 pt-1">{t("home_accro_title")}</span>
+                <span className="text-start pe-2 screen-2 pt-1">
+                  {t("home_accro_title")}
+                </span>
                 <button
                   type="button"
                   className="hr_btn rounded-pill fw-semibold px-sm-5 px-3 py-2"
@@ -119,11 +147,62 @@ const Home = () => {
                 <div>
                   <motion.div
                     initial={{ height: 0, opacity: 0 }}
-                    animate={isOpen ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }}
+                    animate={
+                      isOpen
+                        ? { height: "auto", opacity: 1 }
+                        : { height: 0, opacity: 0 }
+                    }
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.4, ease: "easeInOut" }}
                     style={{ overflow: "hidden" }}
                   >
+                    <div className=" row">
+                      <div className="col-12 col-md-6 col-lg-8">
+                        <div className="border bg-white rounded-2 my-4 my-md-0 p-4">
+                          <p className="fs-5 fw-bold lh-1 text-embed-500">
+                            {t("data_main_title2")}
+                          </p>
+                          <div className="d-flex justify-content-center align-items-center mt-5 mx-md-auto">
+                            <CommonPieChart
+                              data={agrreedata}
+                              colors={agreecolor}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-12 col-md-6 col-lg-4">
+                        <div className=" border bg-white rounded-2 p-4">
+                          <h5 className="fs-5 fw-bold lh-1 text-embed-500">
+                              {t("Additional_data")}
+                          </h5>
+                          <Row className="g-3">
+                            {userdata.map((item, index) => (
+                              <Col key={index} xs={12} sm={6}>
+                                <Card className="border-md border-0 bg-light rounded-3 shadow-sm cursor-pointer py-2 px-2">
+                                  <div className="d-flex align-items-center justify-content-between gap-2">
+                                    <div className="d-flex flex-column">
+                                      <h5 className="mb-0 fw-bold">
+                                        {item.title}
+                                      </h5>
+                                      <small className="text-muted">
+                                        {t("data_homework")}
+                                      </small>
+                                    </div>
+                                    <img
+                                      src={item.name}
+                                      alt="garage_door"
+                                      className="img-fluid"
+                                      style={{ maxWidth: "50px" }}
+                                    />
+                                  </div>
+                                </Card>
+                              </Col>
+                            ))}
+                          </Row>
+                        </div>
+                      </div>
+                    </div>
+
                     <Row className="py-3">
                       {homedatapage.map((item, index) => (
                         <Datacard
@@ -135,7 +214,9 @@ const Home = () => {
                       ))}
                     </Row>
                     <div className="px-md-3 pb-3">
-                      <p className="screen-2 pb-3 text-end">{t("home_accro_gra_title")}</p>
+                      <p className="screen-2 pb-3 text-end">
+                        {t("home_accro_gra_title")}
+                      </p>
                       <Homechart />
                     </div>
                   </motion.div>
@@ -146,7 +227,9 @@ const Home = () => {
           <Row className="px-2">
             <Col className="col-12 box1_color">
               <div className="d-flex justify-content-between py-3 align-items-center">
-                <span className="text-start screen-2">{t("home_accro_r_btn")}</span>
+                <span className="text-start screen-2">
+                  {t("home_accro_r_btn")}
+                </span>
                 <button
                   className=" hr_btn rounded-pill fw-semibold px-sm-5 px-3 py-2"
                   onClick={() => navigate(`/${lang}/agreements`)}
@@ -156,7 +239,9 @@ const Home = () => {
               </div>
             </Col>
             <Col className="col-12 col-md-12 box1_color">
-              <div className="my-3"><HomeTable /></div>
+              <div className="my-3">
+                <HomeTable />
+              </div>
             </Col>
           </Row>
         </div>
