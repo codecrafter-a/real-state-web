@@ -193,7 +193,7 @@
 
     "age_main_title":"Adding a new property",
     "age_type_com_distribution":"Type of collaboration and commission distribution",
-    "age_comm_type_1":"Joint pool – The seller's commission and the buyer's commission are combined, and each broker receives half.",
+    "age_comm_type_1":"Common fund",
     "age_comm_type_2":"Each one receives from their own client.",
     "age_comm_type_3":"The buyer's broker transfers to the seller's broker.",
     "age_comm_type_4":"Another summary",
@@ -520,6 +520,13 @@
   "secure_room1": "Secure Room",
   "price2": "₪ 2,425,000",
   "potential_clients": "List of Potential Clients",
+  "broker_name": "Romi Shefan",
+  "broker_placeholder": "Shirims@gmail.com | 054-4692650",
+  "br_commission": "Commission",
+  "rental_months": "Number of Rental Months",
+  "property_br_address": "Nurit 22, Haifa",
+  "Additional_data": "Additional data",
+  "Br_title": "Signing of interested parties",
     
   "changePassword": "Change Password",
   "personalDetails": "Personal Details",

@@ -137,15 +137,15 @@ const Sidebar = ({ isToggle,setShow }) => {
               <div className='cmn_actions'>
                 <h4 className=' text-success fw-bold'>Actions</h4>
                 <ul className='cmn_actions_list d-block'>
-                  <button className='d-flex align-items-center 'onClick={() => navigate(`/${lang}/broker`)} >
+                  <button className='d-flex align-items-center 'onClick={() => navigate(`/${i18n.language}/broker`)} >
                     <img src={userkey} alt="action icon " />
                     <p className='fs-5 fw-normal px-2 pt-2 lh-1'>{t("action1")}</p> 
                   </button>
-                  <button className='d-flex align-items-center' onClick={() => navigate(`/${lang}/property_owner`)}>
+                  <button className='d-flex align-items-center' onClick={() => navigate(`/${i18n.language}/property_owner`)}>
                     <img src={userhouse} alt="action icon " />
                     <p className='fs-5 fw-normal px-2 pt-3 lh-1'>{t("action2")}</p>
                   </button>
-                  <button className='d-flex align-items-center' onClick={() => navigate(`/${lang}/broker_between`)}>
+                  <button className='d-flex align-items-center' onClick={() => navigate(`/${i18n.language}/broker_between`)}>
                     <img src={usercontact} alt="action icon " />
                     <p className='fs-5 fw-normal px-2 pt-3 lh-1'>{t("action3")}</p>
                   </button>

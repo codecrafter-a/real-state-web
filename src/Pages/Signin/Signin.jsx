@@ -136,7 +136,7 @@ const Signin = ({setIsPadding, isPadding}) => {
                       {t("sign_in_btn")}
                     </span>
                   </button>
-                  <img src={g10} alt="" className="w-100 d-none d-sm-block" />
+                  <img src={g10} alt="" className="w-75 h-auto d-none d-sm-block mx-auto" />
                 </div>
               </div>
             </div>

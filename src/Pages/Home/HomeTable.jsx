@@ -81,7 +81,7 @@ const HomeTable = () => {
                     <tbody className="border">
                         {tableData.map((row, index) => (
 
-                            <tr key={index}>
+                            <tr key={index} className=" fw-normal fs-15 lh-1">
                                 <td className="d-table-cell align-middle py-3">
                                     <div className="d-flex align-items-center gap-1">
                                         <img src={iconHome} alt="home icon" className="text-teal h-auto" style={{ width: '18px' }} />
@@ -108,7 +108,7 @@ const HomeTable = () => {
                                                 <span>{t("home_tab_r1_h1_l3")}</span>
                                             </div>
                                             <span className="d-flex align-items-center gap-1">
-                                                <IoMdAttach />
+                                                <IoMdAttach size={18}/>
                                                 {t("home_tab_r1_h1_l2")}
                                             </span>
                                             <div className="d-flex align-items-center gap-1">
@@ -122,19 +122,19 @@ const HomeTable = () => {
                                     <td className="d-table-cell align-middle py-3">
                                         <div className="d-flex align-items-center gap-3 p-2 bg-white">
                                             <div className="d-flex align-items-center gap-1">
-                                                <FaRegFile />
+                                                <FaRegFile size={18} />
                                                 <span>{t("open_agreement")}</span>
                                             </div>
                                             <div className="d-flex align-items-center gap-1">
-                                                <TbMailForward size={18} />
+                                                <TbMailForward size={24} />
                                                 <span>{t("send_copy")}</span>
                                             </div>
-                                            <span className="d-flex align-items-center gap-1">
-                                                <MdOutlineCheckCircleOutline />
+                                            <span className="d-flex align-items-center  gap-1">
+                                                <MdOutlineCheckCircleOutline size={24}/>
                                                 {t("close_deal")}
                                             </span>
                                             <div className="d-flex align-items-center gap-1">
-                                                <RiDeleteBin2Line />
+                                                <RiDeleteBin2Line size={18}/>
                                                 {t("delete")}
                                             </div>
                                         </div>
@@ -143,16 +143,16 @@ const HomeTable = () => {
                                 {row.status == "home_tab_r5_h2" && (
                                     <td className="d-table-cell align-middle py-3">
                                         <div className="d-flex align-items-center gap-3 p-2 bg-white">
-                                            <div className="d-flex align-items-center gap-1">
-                                                <TbMailForward size={18} />
+                                            <div className="d-flex align-items-center ">
+                                                <TbMailForward size={24} />
                                                 <span>{t("send_copy")}</span>
                                             </div>
-                                            <div className="d-flex align-items-center gap-1">
-                                                <LuBookMinus />
+                                            <div className="d-flex align-items-center">
+                                                <LuBookMinus size={20}/>
                                                 <span>{t("register_land")}</span>
                                             </div>
                                             <div className="d-flex align-items-center gap-1">
-                                                <RiDeleteBin2Line />
+                                                <RiDeleteBin2Line size={18}/>
                                                 {t("delete")}
                                             </div>
                                         </div>
@@ -162,11 +162,11 @@ const HomeTable = () => {
                                     <td className="d-table-cell align-middle py-3">
                                         <div className="d-flex align-items-center gap-3 p-2 bg-white">
                                             <div className="d-flex align-items-center gap-1">
-                                                <TbMailForward size={18} />
+                                                <TbMailForward size={20} />
                                                 <span>{t("send_copy")}</span>
                                             </div>
                                             <div className="d-flex align-items-center gap-1">
-                                                <RiDeleteBin2Line />
+                                                <RiDeleteBin2Line size={18} />
                                                 {t("delete")}
                                             </div>
                                         </div>
