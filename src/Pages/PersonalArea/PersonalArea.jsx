@@ -46,7 +46,7 @@ const PersonalArea = () => {
                 {t("personalArea.title")}
             </p>
             <div className="overflow-y-auto overflow-x-hidden custom-scrollbar scroll-height">
-                <div className="pe-md-3">
+                <div className="px-md-3">
                     <div className="d-flex flex-wrap gap-3 align-items-start mobile-form my-md-0 my-5 position-relative">
                         <div className="d-flex flex-column flex-grow-1 pt-sm-0 pt-5">
                             <div className="d-md-flex flex-wrap justify-content-between w-100 gap-4 align-items-center">

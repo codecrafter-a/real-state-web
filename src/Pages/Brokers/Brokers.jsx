@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import "../Brokers/Brokers.css";
- import key_vertical from "../../assets/images/key_vertical.svg";
+import key_vertical from "../../assets/images/key_vertical.svg";
 // import garage_door from "../../assets/images/garage_door.svg";
 import add_reaction from "../../assets/images/add_reaction.svg";
 import add_home from "../../assets/images/add_home.svg";
@@ -12,7 +12,7 @@ import CustomInput from "../../Componant/Common/Input/Custominput";
 import successIcon from "../../assets/images/success_icon.svg";
 import Accordion from "react-bootstrap/Accordion";
 import whatsapp from "../../assets/images/wa, whatsapp, message, communication, chat.svg";
-import { Modal,  Form, InputGroup  } from "react-bootstrap";
+import { Modal, Form, InputGroup } from "react-bootstrap";
 import sms from "../../assets/images/sms.svg";
 import email from "../../assets/images/email.svg";
 import group from "../../assets/images/Group 2538.png";
@@ -79,14 +79,14 @@ const Brokers = () => {
               <h5 className=" text-embed-500  fs-5 fw-semibold lh-1 mb-4">{t("age_details")}</h5>
               <button
                 type="button"
-                className="border  mt-2 d-flex align-items-center justify-content-center shadow-lg rounded-pill py-1 px-4 search-button"
+                className="border-teal mt-2 d-flex align-items-center justify-content-center rounded-pill py-1 px-4 search-button"
                 onClick={handleOpen}
               >
                 <div className="d-flex align-items-center justify-content-center">
                   <img className="me-1" src={add_reaction} alt="Add Client" />
                   <span className="fs-17 fw-semibold lh-1">
-                      {"add_cust"}{" "}
-                    </span>
+                    {"add_cust"}{" "}
+                  </span>
                 </div>
               </button>
             </div>
@@ -97,7 +97,7 @@ const Brokers = () => {
               <div className="border border-[#D6D6D6] bg-white rounded w-75 px-3">
                 <div className="d-flex">
                   <input
-                   onChange={handleSearchClick}
+                    onChange={handleSearchClick}
                     type="text"
                     className="form-control border-0 p-0"
                     placeholder={t("age_title_placeholder")}
@@ -110,8 +110,8 @@ const Brokers = () => {
             </div>
             {showDetails && (
               <>
-                <div className="border rounded w-full px-3">
-                  <div className="d-flex flex-row justify-content-between">
+                <div className="border rounded w-full">
+                  <div className="d-flex flex-row justify-content-between px-3 py-2">
                     <div className="d-flex flex-col">
                       <label>{t('broker_name')}</label>
                       <input
@@ -122,7 +122,7 @@ const Brokers = () => {
                       />
                     </div>
                     <div className="d-flex flex-row justify-content-end">
-                      <button className="btn " type="button" onClick={handleSearchClose}>
+                      <button className="btn p-0" type="button" onClick={handleSearchClose}>
                         <img src={close} alt="Search" />
                       </button>
                     </div>
@@ -137,13 +137,13 @@ const Brokers = () => {
               <button
                 type="button"
                 onClick={handleShow}
-                className="border  mt-2 d-flex align-items-center justify-content-center shadow-lg rounded-pill py-1 px-4 search-button"
+                className="border-teal mt-2 d-flex align-items-center justify-content-center rounded-pill py-1 px-4 search-button"
               >
                 <div className="d-flex align-items-center justify-content-center">
                   <img className="me-1" src={add_home} alt="Add Client" />
                   <span className="fs-17 fw-semibold lh-1">
-                      {"add_cust"}{" "}
-                    </span>
+                    {"add_cust"}{" "}
+                  </span>
                 </div>
               </button>
             </div>
@@ -165,67 +165,87 @@ const Brokers = () => {
                 </div>
               </div>
             </div>
-            <div className='d-flex align-items-center'> 
-              <Toggle defaultChecked={false} type={"checkbox"} id="toggleImages"/>
+            <div className='d-flex align-items-center'>
+              <Toggle defaultChecked={false} type={"checkbox"} id="toggleImages" />
               <label className="fs-6 fw-normal lh-1" htmlFor="">{t('lable1')}</label>
             </div>
             {propertySection && (
               <>
-                <div className="border rounded w-full px-3">
-                  <div className="d-flex flex-row justify-content-between">
-                    
+                <div className="w-full">
+                  <div className="d-flex flex-row justify-content-between border rounded my-2 px-3 py-2 w-75">
+
                     <div className="d-flex flex-row align-item-center gap-2">
-                    <div className="my-2"><img src={key_vertical}  alt="key vertical"/></div>
-                    <div>
-                    <label>{t("property_br_address")}</label>
-                      <input
-                        type="text"
-                        className="form-control border-0 p-0"
-                        placeholder="שכירות : 5000 לחודש"
-                        values=""
-                      />
-                    </div>
-                      
+                      <div className="my-2"><img src={key_vertical} alt="key vertical" /></div>
+                      <div>
+                        <label>{t("property_br_address")}</label>
+                        <input
+                          type="text"
+                          className="form-control border-0 p-0"
+                          placeholder="שכירות : 5000 לחודש"
+                          values=""
+                        />
+                      </div>
+
                     </div>
                     <div className="d-flex flex-row justify-content-end">
-                      <button className="btn " type="button" onClick={handlecloseProperty}>
+                      <button className="btn p-0" type="button" onClick={handlecloseProperty}>
                         <img src={close} alt="Search" />
                       </button>
                     </div>
                   </div>
                 </div>
                 <div className="d-flex align-items-center gap-2 justify-content-start">
-                  <div className=" mt-4"> 
-                  <InputGroup className="w-auto">
-                      <Form.Select className="text-center">
-                        <option>%</option>
-                        <option>₪</option>
-                      </Form.Select>
-                  </InputGroup>
+                  <div className="border-teal rounded-2 p-2 my-2 iconbox iconbox flex flex-column justify-content-center align-items-center bg-teal-100">
+                    <img src={key_vertical} alt="" />
+                    <span className="fs-6 fw-normal lh-base text-center">
+                      {t("age_tran_type_1")}
+                    </span>
                   </div>
-                  
+                  <div>
+                    <span className="fw-semibold">{t("rental_months")}</span>
+                    <Form.Control type="number" className=" w-100" defaultValue="12" />
+                  </div>
                   <div className="mx-0">
                     <span className=" fw-semibold">{t("br_commission")}</span>
                     <Form.Control type="number" className="t w-100" defaultValue="30" />
                   </div>
-                  <div>
-                    <span className= "fw-semibold">{t("rental_months")}</span>
-                    <Form.Control type="number" className=" w-100" defaultValue="12" />
+
+                  <div className=" mt-4">
+                    <InputGroup className="w-auto">
+                      <Form.Select className="text-center">
+                        <option>%</option>
+                        <option>₪</option>
+                      </Form.Select>
+                    </InputGroup>
                   </div>
-                  <div className="border-2 rounded-2 p-2 my-2 iconbox iconbox">
-                    <img src={garage_door} alt="" className="ms-3" />
-                    <span className="fs-5 fw-normal lh-base text-center px-2">
+                </div>
+                <div className="d-flex align-items-center gap-2 justify-content-start">
+                  <div className="border-teal rounded-2 p-2 my-2 iconbox iconbox flex flex-column justify-content-center align-items-center bg-teal-100">
+                    <img src={garage_door} alt="" />
+                    <span className="fs-6 fw-normal lh-base text-center">
                       {t("age_tran_type_2")}
                     </span>
                   </div>
+                  <div className="mx-0">
+                    <span className=" fw-semibold">{t("br_commission")}</span>
+                    <Form.Control type="number" className="t w-100" defaultValue="30" />
+                  </div>
 
+                  <div className=" mt-4">
+                    <InputGroup className="w-auto">
+                      <Form.Select className="text-center">
+                        <option>%</option>
+                        <option>₪</option>
+                      </Form.Select>
+                    </InputGroup>
+                  </div>
                 </div>
               </>
             )}
           </div>
           <div className="card p-3 border  rounded-3 mb-4">
             <h5 className=" text-embed-500 fw-semibold fs-5 lh-1  mb-4">{t("age_note")}</h5>
-            <div className=" px-2 pb-2">
+            <div className=" px-2 pb-2 w-75">
               <textarea
                 className="form-control"
                 placeholder={t("age_note_placeholder")}
@@ -317,30 +337,30 @@ const Brokers = () => {
                 </div>
               </div>
               {showDetails && (
-              <>
-                <div className="border rounded w-full px-3">
-                  <div className="d-flex flex-row justify-content-between">
-                    <div className="d-flex flex-col">
-                      <label>{t('broker_name')}</label>
-                      <input
-                        type="text"
-                        className="form-control border-0 p-0"
-                        placeholder="Shirims@gmail.com | 054-4692650"
-                        values=""
-                      />
-                    </div>
-                    <div className="d-flex flex-row justify-content-end">
-                      <button className="btn " type="button" onClick={handleSearchClose}>
-                        <img src={close} alt="Search" />
-                      </button>
+                <>
+                  <div className="border rounded w-full px-3">
+                    <div className="d-flex flex-row justify-content-between">
+                      <div className="d-flex flex-col">
+                        <label>{t('broker_name')}</label>
+                        <input
+                          type="text"
+                          className="form-control border-0 p-0"
+                          placeholder="Shirims@gmail.com | 054-4692650"
+                          values=""
+                        />
+                      </div>
+                      <div className="d-flex flex-row justify-content-end">
+                        <button className="btn " type="button" onClick={handleSearchClose}>
+                          <img src={close} alt="Search" />
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-              </>
-            )}
+                </>
+              )}
             </div>
-           
+
           </div>
           <div className="col-12">
             <div className="card p-3 border bg-light rounded-3 mb-4">
@@ -365,7 +385,7 @@ const Brokers = () => {
                 <div className="border border-[#D6D6D6] bg-white rounded w-full px-3">
                   <div className="d-flex">
                     <input
-                     onChange={handlePropertysection}
+                      onChange={handlePropertysection}
                       type="text"
                       className="form-control border-0 p-0"
                       placeholder={t("age_pro_asset_address")}
@@ -377,55 +397,55 @@ const Brokers = () => {
                 </div>
               </div>
               {propertySection && (
-              <>
-                <div className="border rounded w-full px-3">
-                  <div className="d-flex flex-row justify-content-between">
-                    
-                    <div className="d-flex flex-row align-item-center gap-2">
-                    <div className="my-2"><img src={key_vertical}  alt="key vertical"/></div>
+                <>
+                  <div className="border rounded w-full px-3">
+                    <div className="d-flex flex-row justify-content-between">
+
+                      <div className="d-flex flex-row align-item-center gap-2">
+                        <div className="my-2"><img src={key_vertical} alt="key vertical" /></div>
+                        <div>
+                          <label>{t('property_br_address')}</label>
+                          <input
+                            type="text"
+                            className="form-control border-0 p-0"
+                            placeholder="שכירות : 5000 לחודש"
+                            values=""
+                          />
+                        </div>
+
+                      </div>
+                      <div className="d-flex flex-row justify-content-end">
+                        <button className="btn " type="button" onClick={handlecloseProperty}>
+                          <img src={close} alt="Search" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="d-flex align-items-center gap-2 justify-content-start">
+                    <div className=" mt-4">
+                      <InputGroup className="w-auto">
+                        <Form.Select className="text-center">
+                          <option>%</option>
+                          <option>₪</option>
+                        </Form.Select>
+                      </InputGroup>
+                    </div>
+
+                    <div className="mx-0">
+                      <span className=" fw-semibold">{t("br_commission")}</span>
+                      <Form.Control type="number" className="t w-100" defaultValue="30" />
+                    </div>
                     <div>
-                    <label>{t('property_br_address')}</label>
-                      <input
-                        type="text"
-                        className="form-control border-0 p-0"
-                        placeholder="שכירות : 5000 לחודש"
-                        values=""
-                      />
-                    </div>
-                      
-                    </div>
-                    <div className="d-flex flex-row justify-content-end">
-                      <button className="btn " type="button" onClick={handlecloseProperty}>
-                        <img src={close} alt="Search" />
-                      </button>
+                      <span className="fw-semibold">{t("rental_months")}</span>
+                      <Form.Control type="number" className=" w-100" defaultValue="12" />
                     </div>
                   </div>
-                </div>
-                <div className="d-flex align-items-center gap-2 justify-content-start">
-                  <div className=" mt-4"> 
-                  <InputGroup className="w-auto">
-                      <Form.Select className="text-center">
-                        <option>%</option>
-                        <option>₪</option>
-                      </Form.Select>
-                  </InputGroup>
-                  </div>
-                  
-                  <div className="mx-0">
-                    <span className=" fw-semibold">{t("br_commission")}</span>
-                    <Form.Control type="number" className="t w-100" defaultValue="30" />
-                  </div>
-                  <div>
-                    <span className= "fw-semibold">{t("rental_months")}</span>
-                    <Form.Control type="number" className=" w-100" defaultValue="12" />
-                  </div>
-                </div>
-              </>
+                </>
               )}
-              <div className='d-flex align-items-center'> 
-                  <Toggle defaultChecked={false} type={"checkbox"} id="toggleImages"/>
-                  <label className="fs-6 fw-normal lh-1" htmlFor="">{t('lable1')}</label>
-                </div>
+              <div className='d-flex align-items-center'>
+                <Toggle defaultChecked={false} type={"checkbox"} id="toggleImages" />
+                <label className="fs-6 fw-normal lh-1" htmlFor="">{t('lable1')}</label>
+              </div>
             </div>
           </div>
           <div className="col-12">
@@ -635,7 +655,7 @@ const Brokers = () => {
         <Modal.Header closeButton className=" border-0">
           <img src={Next} alt="next btn" className="" />
         </Modal.Header>
-        <Modal.Body className="p-4">
+        <Modal.Body className="p-4 overflow-y-auto custom-scrollbar" style={{ height: "651px" }}>
           <div className="text-center">
             <img
               src={successIcon}
@@ -652,7 +672,7 @@ const Brokers = () => {
             <div className="option-item rounded-3 my-3">
               <Accordion defaultActiveKey={null} className="custom-accordion">
                 <Accordion.Item eventKey="0 " className="custom-header">
-                  <Accordion.Header className=" bg-success-subtle">
+                  <Accordion.Header className="bg-teal-100">
                     <div className="d-flex justify-content-between w-100">
                       <div className=" d-flex align-items-center">
                         <img src={whatsapp} alt="whatsapp" />
@@ -666,7 +686,7 @@ const Brokers = () => {
                       />
                     </div>
                   </Accordion.Header>
-                  <Accordion.Body className="bg-success-subtle">
+                  <Accordion.Body className="bg-teal-100">
                     <ul className="fw-bold ">
                       <li>{t("age_send_whatsapp_point_1")}</li>
                       <li>{t("age_send_whatsapp_point_2")}</li>
@@ -723,7 +743,7 @@ const Brokers = () => {
             <div className="option-item rounded-3 my-3">
               <Accordion defaultActiveKey={null} className="custom-accordion ">
                 <Accordion.Item eventKey="0" className="custom-header">
-                  <Accordion.Header className=" bg-success-subtle">
+                  <Accordion.Header className="bg-teal-100">
                     <div className="d-flex justify-content-between w-100">
                       <div className=" d-flex align-items-center">
                         <img src={sms} alt="whatsapp" />
@@ -737,7 +757,7 @@ const Brokers = () => {
                       />
                     </div>
                   </Accordion.Header>
-                  <Accordion.Body className="custom-body bg-success-subtle">
+                  <Accordion.Body className="custom-body bg-teal-100">
                     <ul className="list-unstyled">
                       <li>{t("age_send_text_message_point_1")}</li>
                       <li>{t("age_send_text_message_point_2")}</li>
@@ -753,7 +773,7 @@ const Brokers = () => {
             <div className="option-item rounded-3 my-3">
               <Accordion defaultActiveKey={null} className="custom-accordion ">
                 <Accordion.Item eventKey="0" className="custom-header">
-                  <Accordion.Header className=" bg-success-subtle">
+                  <Accordion.Header className=" bg-teal-100">
                     <div className="d-flex justify-content-between w-100">
                       <div className=" d-flex align-items-center">
                         <img src={email} alt="whatsapp" />
@@ -767,7 +787,7 @@ const Brokers = () => {
                       />
                     </div>
                   </Accordion.Header>
-                  <Accordion.Body className="custom-body bg-success-subtle">
+                  <Accordion.Body className="custom-body bg-teal-100">
                     <ul className="list-unstyled">
                       <li>{t("age_send_email_message_point_1")}</li>
                       <li>{t("age_send_email_message_point_2")}</li>
@@ -783,7 +803,7 @@ const Brokers = () => {
             <div className="option-item rounded-3 my-3">
               <Accordion defaultActiveKey={null} className="custom-accordion ">
                 <Accordion.Item eventKey="0" className=" custom-header">
-                  <Accordion.Header className=" bg-success-subtle">
+                  <Accordion.Header className=" bg-teal-100">
                     <div className="d-flex justify-content-between w-100">
                       <div className=" d-flex align-items-center">
                         <img src={group} alt="whatsapp" />
@@ -797,7 +817,7 @@ const Brokers = () => {
                       />
                     </div>
                   </Accordion.Header>
-                  <Accordion.Body className="bg-success-subtle">
+                  <Accordion.Body className="bg-teal-100">
                     <ul className="list-unstyled">
                       <li>{t("age_send_message_whatsapp_share_pont_1")}</li>
                       <li>{t("age_send_message_whatsapp_share_pont_2")}</li>
@@ -854,7 +874,7 @@ const Brokers = () => {
           </div>
         </Modal.Body>
 
-        <Modal.Footer className="justify-content-center">
+        <Modal.Footer className="justify-content-center border-top-0">
           <button
             className="btn btn-outline-success rounded-pill px-4 py-2 fw-bold shadow-sm"
             onClick={handleSentSuccess}

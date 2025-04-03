@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 import signin from "../../assets/images/Signin.png";
 import AuthenticationService from "../../Services/AuthenticationService";
 import { useLocation } from "react-router-dom";
-const Signin = ({setIsPadding, isPadding}) => {
+const Signin = ({ setIsPadding, isPadding }) => {
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -20,10 +20,10 @@ const Signin = ({setIsPadding, isPadding}) => {
   const lastPath = location.pathname.split("/").filter(Boolean).pop();
   console.log(lastPath, "aaaaaaaaaaaaaaaaaaaa")
   const [error, setError] = useState("");
-  const { t, i18n  } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [isClicked, setIsClicked] = useState(true)
   console.log(isPadding, "isPadding");
-  
+
   useEffect(() => {
     // Remove both classes first to avoid conflicts
     document.body.classList.remove("pt-0", "pt-5");
@@ -47,7 +47,7 @@ const Signin = ({setIsPadding, isPadding}) => {
   const handleLogin = () => {
     const { email, password } = userData;
     setIsClicked(true);
-   
+
     if (!email || !password) {
       setError("Email and Password are required.");
       return;
@@ -76,12 +76,11 @@ const Signin = ({setIsPadding, isPadding}) => {
     <>
       {
         <>
-          <Col className="col-12 bg-white shadow-lg rounded-3 d-none d-sm-block scroll-height ">
+          <Col className="col-12 bg-white shadow-lg rounded-3 d-none d-sm-block">
             <div
-              className="custom-scrollbar overflow-y-auto overflow-x-hidden px-3 "
-              style={{ maxHeight: "594px" }}
+              className="custom-scrollbar overflow-y-auto overflow-x-hidden scroll-height px-3 mt-4"
             >
-              <p className="py-4 my-4 text-center screen-1 fw-bold">
+              <p className="py-4 mb-4 text-center screen-1 fw-bold">
                 {t("sign_in_title")}
               </p>
               <h5 className="text-center">{t("sign_in_h5_0")}</h5>
@@ -90,7 +89,7 @@ const Signin = ({setIsPadding, isPadding}) => {
                 {t("sign_in_h5_2")}
                 {t("sign_in_h5_3")}
               </h5>
-              <h5 className="text-center py-3 fw-bold">
+              <h5 className="text-center py-4 fw-bold">
                 {t("sign_in_subtitle")}
               </h5>
               <div className="d-flex justify-content-center pb-md-0 pb-5">
@@ -225,7 +224,7 @@ const Signin = ({setIsPadding, isPadding}) => {
         </>
       }
     </>
-  );  
+  );
 };
 
 export default Signin;

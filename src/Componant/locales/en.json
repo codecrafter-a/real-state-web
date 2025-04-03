@@ -676,5 +676,16 @@
   "send_copy": "Send Copy to Clients",
   "close_deal": "Close Deal",
   "delete": "Delete",
-  "register_land": "Register in Land Registry"
+  "register_land": "Register in Land Registry",
+  "agreements_sent": "Agreements Sent",
+  "agreements_signed": "Agreements Signed",
+  "agreements_generated": "Agreements Generated",
+  "agreements_executed": "Agreements Signed & Executed",
+  "Haim": "Haim",
+  "Shiri": "Shiri",
+  "Liran": "Liran",
+  "Israel": "Israel",
+  "Ori": "Ori",
+  "Rami": "Rami",
+  "Moshe": "Moshe"
   }

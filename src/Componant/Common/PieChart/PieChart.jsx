@@ -41,7 +41,7 @@ const CommonPieChart = ({ data, colors}) => {
                       borderRadius: "50%",
                     }}
                   ></span>
-                  <span className="fs-6 fs-md-5">{entry.name}</span>
+                  <span className="fs-6 fs-md-5 w_max">{entry.name}</span>
                 </div>
               ))}
             </div>
@@ -60,7 +60,7 @@ const CommonPieChart = ({ data, colors}) => {
                       borderRadius: "50%",
                     }}
                   ></span>
-                  <span className="fs-6 fs-md-5">{entry.name}</span>
+                  <span className="fs-6 fs-md-5 w_max">{entry.name}</span>
                 </div>
               ))}
             </div>
