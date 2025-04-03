@@ -22,11 +22,14 @@ const Agreements = () => {
   const [fromDate, setFromDate] = useState(null);
   const [toDate, setToDate] = useState(null);
   const [removeData, setRemoveData] = useState(false);
-  const [addInvoices, setAddInvoices] = useState(false);
-  const [registriction, setRegistriction] = useState(false);
-  const [isInvoices, setIsInvoices] = useState(false);
-  const [iserror, setIserror] = useState(false);
-  const [isDocument, setIsDocument] = useState(false);
+  const [modalState, setModalState] = useState({
+    addInvoices: false,
+    isError: false,
+    restriction: false,
+    isInvoices: false,
+    isDocument: false,
+  });
+  console.log("modalstateisopen", modalState);
   const [tableData, setTableData] = useState([]);
   const { getAgreementData } = useAgreementServices();
 
@@ -49,28 +52,27 @@ const Agreements = () => {
   const handleClose = () => {
     setRemoveData(false);
   };
+
+  const updateModalState = (updatedValues) => {
+    setModalState((prev) => ({
+      ...prev,
+      ...updatedValues,
+    }));
+  };
   const handleToggle = (e) => {
-    setAddInvoices(e.target.checked);
+    if (e.target.checked) {
+      updateModalState({ addInvoices: true });
+    }
   };
 
-  const handleToggleClose = () => {
-    setAddInvoices(false);
-    setIserror(true);
-  };
-
-  const handleRegitrication = () => {
-    setIserror(false);
-    setRegistriction(true);
-  };
-
-  const handleSucessInvoices = () => {
-    setRegistriction(false);
-    setIsInvoices(true);
-  };
-
-  const handleDocument = () => {
-    setIsInvoices(false);
-    setIsDocument(true);
+  const handleCloseall = () => {
+    setModalState({
+      addInvoices: false,
+      isError: false,
+      restriction: false,
+      isInvoices: false,
+      isDocument: false,
+    });
   };
 
   const ActionButtons = ({ type, icon }) => {
@@ -139,34 +141,31 @@ const Agreements = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("");
   const handleStatusChange = (e) => setSelectedStatus(e.target.value);
-  const handleRemoveStatus = () => setSelectedStatus(""); // Remove selected status
+  const handleRemoveStatus = () => setSelectedStatus("");
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
   return (
     <>
-      <div className="px-4 my-3 my-md-0 bg-white d-none d-md-block rounded-3">
+      <div className="px-4 my-3 my-md-0 bg-white d-none d-md-block rounded-3 shadow-lg">
         <h3 className="py-1 my-4 text-center screen-1 border-bottom ">
           {t("all_agreements")}
         </h3>
-        <div
-          className="overflow-y-auto overflow-x-hidden custom-scrollbar"
-          style={{ maxHeight: "594px" }}
-        >
+        <div className="overflow-y-auto overflow-x-hidden custom-scrollbar scroll-height">
           <div className="me-4">
             <div className="w-100 border-bottom">
-              <Nav variant="tabs" className="mx-md-3 pt-2">
+              <Nav variant="tabs" className=" pt-2">
                 <Tab
-                  className={` border-0 text-center text-md-start ${
-                    activeTab === "all" ? "active-tab" : ""
+                  className={` border-0 text-center fs-5 fw-normal lh-1 text-md-start ${
+                    activeTab === "all" ? "active-tab fw-bold" : ""
                   }`}
                   onClick={() => setActiveTab("all")}
                   children={t("all_agreements")}
                   tab={true}
                 />
                 <Tab
-                  className={`border-0 text-center text-md-start ${
-                    activeTab === "recent" ? "active-tab" : ""
+                  className={`border-0 text-center fs-5 text-nowrap fw-normal px-1 lh-1 text-md-start ${
+                    activeTab === "recent" ? "active-tab fw-bold" : ""
                   }`}
                   onClick={() => setActiveTab("recent")}
                   children={t("recent_agreements")}
@@ -183,7 +182,7 @@ const Agreements = () => {
                         <div className="d-flex">
                           <input
                             type="text"
-                            className="form-control border-0 p-0"
+                            className="form-control fs-17 fw-semibold lh-1  border-0 p-0"
                             placeholder={t("search_placeholder_all")}
                             value={searchQuery}
                             onChange={handleSearchChange}
@@ -203,9 +202,11 @@ const Agreements = () => {
                       <IoIosArrowDown />
                     </div>
                   </div>
-                  <div className="mb-4 d-md-flex align-items-end gap-3 d-none">
+                  <div className="mb-4 d-md-flex flex-wrap flex-lg-nowrap align-items-center justify-content-around gap-3 d-none">
                     <div className="w-100">
-                      <label className="form-label">{t("from_date")}</label>
+                      <label className="form-label fs-15 fw-semibold lh-1">
+                        {t("from_date")}
+                      </label>
                       <input
                         type="date"
                         className="form-control"
@@ -214,7 +215,9 @@ const Agreements = () => {
                       />
                     </div>
                     <div className="w-100">
-                      <label className="form-label">{t("until_date")}</label>
+                      <label className="form-label fs-15 fw-semibold lh-1">
+                        {t("until_date")}
+                      </label>
                       <input
                         type="date"
                         className="form-control"
@@ -223,7 +226,7 @@ const Agreements = () => {
                       />
                     </div>
                     <div className="w-100">
-                      <label className="form-label">
+                      <label className="form-label fs-15 fw-semibold lh-1">
                         {t("agreement_status")}
                       </label>
                       <select
@@ -232,28 +235,37 @@ const Agreements = () => {
                         onChange={handleStatusChange}
                       >
                         <option>{t("status_agreement")}</option>
-                        <option value="Generated">Generated</option>
-                        <option value="Sent">Sent</option>
-                        <option value="Viewed">Viewed</option>
-                        <option value="Signed">Signed</option>
+                        <option value="Generated">
+                          {t("status2.generated")}
+                        </option>
+                        <option value="Sent">{t("status2.sent")}</option>
+                        <option value="Viewed">{t("status2.viewed")}</option>
+                        <option value="Signed">{t("status2.signed")}</option>
                       </select>
                     </div>
-                    <div className="w-100 d-flex align-items-center">
-                      <label className="me-2">{t("invoice_label")}</label>
+                    <div className="w-100 d-flex align-items-center mt-md-4 gap-3">
+                      <label className="fs-17 fw-semibold lh-1">
+                        {t("invoice_label")}
+                      </label>
                       <div className="form-check form-switch">
                         <input
-                          className="form-check-input"
+                          className="form-check-input "
                           type="checkbox"
                           id="invoiceToggle"
                           onChange={handleToggle}
+                          checked={
+                            modalState.addInvoices ||
+                            modalState.isError ||
+                            modalState.restriction ||
+                            modalState.isInvoices ||
+                            modalState.isDocument
+                          }
                         />
                       </div>
                     </div>
-                    <div>
-                      <button className="btn btn-outline-success rounded-pill px-5 py-2">
-                        {t("show_button")}
-                      </button>
-                    </div>
+                    <button className=" fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill ">
+                      {t("show_button")}
+                    </button>
                   </div>
 
                   {selectedStatus && (
@@ -300,9 +312,13 @@ const Agreements = () => {
               show={removeData}
               onClick={() => setRemoveData(false)}
               centered
+              className="modal-container"
             >
               <Modal.Header className="border-0 p-3 position-relative mt-4">
-                <button type="button" className="btn-close"></button>
+                <button
+                  type="button"
+                  className="btn-close position-absolute close-btn"
+                ></button>
               </Modal.Header>
               <Modal.Body className="text-center p-4">
                 <div className="d-flex justify-content-center align-items-center mb-3">
@@ -326,9 +342,10 @@ const Agreements = () => {
               </Modal.Body>
             </Modal>
             <Modal
-              show={addInvoices}
+              show={modalState.addInvoices}
+              className="modal-container"
               centered
-              onClick={() => setAddInvoices(false)}
+              onClick={() => updateModalState({ addInvoices: false })}
             >
               <Modal.Header className="border-0 p-3 position-relative mt-4">
                 <button
@@ -347,23 +364,30 @@ const Agreements = () => {
                 <h4 className="text-embed-500 fs-3 font-semibold pb-3">
                   {t("invoice_success")}
                 </h4>
-                <div className="d-flex justify-content-between my-3">
+                <div className="d-flex justify-content-center  my-3">
                   <button
-                    className="agent-button2 mx-auto rounded-pill px-3 py-2 fw-bold shadow-sm"
-                    onClick={() => setAddInvoices(false)}
-                  >
-                    {t("invoice_all")}
-                  </button>
-                  <button
-                    className="agent-button1 mx-auto rounded-pill px-3 py-2 fw-bold shadow-sm text-white"
-                    onClick={handleToggleClose}
+                    className="fs-5 lh-1 fw-semibold mt-md-4  agent-btn-responsive1 text-white w-50 py-2 mx-1 rounded-pill"
+                    onClick={() =>
+                      updateModalState({ addInvoices: false, isError: true })
+                    }
                   >
                     {t("invoice_view")}
+                  </button>
+                  <button
+                    className="fs-5 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill "
+                    onClick={() => updateModalState({ addInvoices: false })}
+                  >
+                    {t("invoice_all")}
                   </button>
                 </div>
               </Modal.Body>
             </Modal>
-            <Modal show={iserror} centered onClick={() => setIserror(false)}>
+            <Modal
+              show={modalState.isError}
+              centered
+              className="modal-container"
+              onClick={() => updateModalState({ isError: false })}
+            >
               <Modal.Header className="border-0 p-3 position-relative mt-4">
                 <button
                   type="button"
@@ -383,24 +407,27 @@ const Agreements = () => {
                 </p>
                 <div className="d-flex justify-content-between my-3">
                   <button
-                    className="agent-button2 mx-auto rounded-pill px-3 py-2 fw-bold shadow-sm"
-                    onClick={() => setIserror(false)}
-                  >
-                    {t("no_now")}
-                  </button>
-                  <button
-                    className="agent-button1 mx-auto rounded-pill px-3 py-2 fw-bold shadow-sm text-white"
-                    onClick={handleRegitrication}
+                    className="fs-5 lh-1 fw-semibold mt-md-4  agent-btn-responsive1 text-white w-50 py-2 mx-1 rounded-pill"
+                    onClick={() =>
+                      updateModalState({ isError: false, restriction: true })
+                    }
                   >
                     {t("yes_register")}
+                  </button>
+                  <button
+                    className="fs-5 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill "
+                    onClick={() => updateModalState({ isError: false })}
+                  >
+                    {t("no_now")}
                   </button>
                 </div>
               </Modal.Body>
             </Modal>
             <Modal
-              show={registriction}
+              show={modalState.restriction}
               centered
-              onClick={() => setRegistriction(false)}
+              className="modal-container"
+              onClick={() => updateModalState({ restriction: false })}
             >
               <Modal.Header className="border-0 p-3 position-relative mt-4">
                 <button
@@ -421,24 +448,27 @@ const Agreements = () => {
                 </h4>
                 <div className="d-flex justify-content-between my-3">
                   <button
-                    className="agent-button2 mx-auto rounded-pill px-3 py-2 fw-bold shadow-sm"
-                    onClick={() => setRegistriction(false)}
-                  >
-                    {t("no_now")}
-                  </button>
-                  <button
-                    className="agent-button1 mx-auto rounded-pill px-3 py-2 fw-bold shadow-sm text-white"
-                    onClick={handleSucessInvoices}
+                    className="fs-5 lh-1 fw-semibold mt-md-4  agent-btn-responsive1 text-white w-50 py-2 px-3 mx-1 rounded-pill"
+                    onClick={() =>
+                      updateModalState({ restriction: false, isInvoices: true })
+                    }
                   >
                     {t("yes_register_transaction")}
+                  </button>
+                  <button
+                    className="fs-5 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill "
+                    onClick={() => updateModalState({ restriction: false })}
+                  >
+                    {t("no_now")}
                   </button>
                 </div>
               </Modal.Body>
             </Modal>
             <Modal
-              show={isInvoices}
-              onClick={() => setIsInvoices(false)}
+              show={modalState.isInvoices}
               centered
+              className="modal-container"
+              onClick={() => updateModalState({ isInvoices: false })}
             >
               <Modal.Header className="border-0 p-3 position-relative mt-4">
                 <button
@@ -463,25 +493,27 @@ const Agreements = () => {
                 </h4>
                 <div className="d-flex justify-content-between my-3">
                   <button
-                    className="agent-button2 mx-auto rounded-pill px-3 py-2 fw-bold shadow-sm"
-                    onClick={() => setIsInvoices(false)}
-                  >
-                    {t("all_invoices")}
-                  </button>
-                  <button
-                    className="agent-button1 mx-auto rounded-pill px-3 py-2 fw-bold shadow-sm text-white"
-                    onClick={handleDocument}
+                    className="fs-5 lh-1 fw-semibold mt-md-4  agent-btn-responsive1 text-white w-50 py-2 mx-1 rounded-pill"
+                    onClick={() =>
+                      updateModalState({ isInvoices: false, isDocument: true })
+                    }
                   >
                     {t("view_invoice")}
+                  </button>
+                  <button
+                    className="fs-5 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill"
+                    onClick={() => updateModalState({ isInvoices: false })}
+                  >
+                    {t("all_invoices")}
                   </button>
                 </div>
               </Modal.Body>
             </Modal>
             <Modal
-              show={isDocument}
-              onClick={() => setIsDocument(false)}
-              centered
-              className="agreement-container"
+              show={modalState.isDocument}
+              center
+              className="modal-container "
+              onClick={() => updateModalState({ isDocument: false })}
             >
               <Modal.Header className="border-0 p-3 position-relative mt-4">
                 <button
@@ -503,21 +535,21 @@ const Agreements = () => {
                 <div className="d-flex justify-content-center align-items-center mb-3">
                   <img src={pdfinstall} alt="install pdf" />
                 </div>
-                <div className="d-flex justify-content-center flex-wrap gap-2 my-3">
-                  <button
-                    className="agent-button1 rounded-pill px-3 py-2 fs-6 fw-semibold shadow-sm text-white"
-                    onClick={handleClick}
-                  >
-                    {t("register_transaction")}
-                  </button>
-                  <button className="agent-button2 rounded-pill px-3 py-2 fs-6 fw-semibold shadow-sm">
+                <div className="d-flex justify-content-center flex-nowrap gap-2 my-3">
+                  <button className="fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill">
                     {t("all1_invoices")}
                   </button>
                   <button
-                    className="agent-button2 rounded-pill px-3 py-2 fs-6 fw-semibold shadow-sm"
-                    onClick={() => setIsDocument(false)}
+                    className="fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill"
+                    onClick={handleCloseall}
                   >
                     {t("download_invoice")}
+                  </button>
+                  <button
+                    className="fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive1 text-white w-50 py-2 mx-1 rounded-pill"
+                    onClick={handleClick}
+                  >
+                    {t("register_transaction")}
                   </button>
                 </div>
               </Modal.Body>
@@ -526,27 +558,30 @@ const Agreements = () => {
         </div>
       </div>
       {/** Mobile Screen */}
-
       <div className="d-block d-md-none">
         <div className="bg-white border-2 rounded-2 mb-4 shadow">
           <div className="w-100 border-bottom">
-            <Nav variant="tabs" className="mx-md-3 fs-15 pt-2">
-              <Tab
-                className={`border-0 text-center ${
-                  activeTab === "recent" ? "active-tab" : ""
-                }`}
-                onClick={() => setActiveTab("recent")}
-                children={t("recent_agreements")}
-                tab={true}
-              />
-              <Tab
-                className={` border-0 text-center  ${
-                  activeTab === "all" ? "active-tab" : ""
-                }`}
-                onClick={() => setActiveTab("all")}
-                children={t("all_agreements")}
-                tab={true}
-              />
+            <Nav variant="tabs" className="mx-md-3 fs-15 pt-2 ">
+              <div className="col-6 text-center">
+                <Tab
+                  className={`border-0 fs-6 text-nowrap fw-normal px-1 lh-1 w-100 ${
+                    activeTab === "recent" ? "active-tab fw-bold" : ""
+                  }`}
+                  onClick={() => setActiveTab("recent")}
+                  children={t("recent_agreements")}
+                  tab={true}
+                />
+              </div>
+              <div className="col-6 text-center">
+                <Tab
+                  className={`border-0 fs-6 text-nowrap fw-normal px-1 lh-1 w-100 ${
+                    activeTab === "all" ? "active-tab fw-bold" : ""
+                  }`}
+                  onClick={() => setActiveTab("all")}
+                  children={t("all_agreements")}
+                  tab={true}
+                />
+              </div>
             </Nav>
           </div>
           <div className="row px-1">
@@ -577,10 +612,7 @@ const Agreements = () => {
           </div>
         </div>
         {activeTab === "all" && (
-          <Accordion
-            className="d-block p-0 d-md-none d-flex flex-column gap-3 my-2 overflow-y-auto overflow-x-hidden custom-scrollbar"
-            style={{ height: "594px" }}
-          >
+          <Accordion className="d-block p-0 d-md-none d-flex flex-column gap-3 my-2 overflow-y-auto overflow-x-hidden custom-scrollbar">
             {tableData.map((row, index) => (
               <Accordion.Item
                 eventKey={index.toString()}

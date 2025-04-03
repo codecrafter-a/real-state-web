@@ -6,6 +6,17 @@ import { MdOutlineDeleteForever } from "react-icons/md";
 import { useAgreementServices } from "../../Services/AgreementServices";
 import { Accordion } from "react-bootstrap";
 import key from "../../assets/images/key_vertical.svg";
+import iconHome from "../../assets/images/icon_home.svg";
+import { HiOutlineDotsVertical } from "react-icons/hi";
+import { FaWhatsapp } from "react-icons/fa";
+import { IoMdAttach } from "react-icons/io";
+import { FaRegFile } from "react-icons/fa6";
+import { MdOutlineCheckCircleOutline } from "react-icons/md";
+import { RiDeleteBin2Line } from "react-icons/ri";
+import { LuBookMinus } from "react-icons/lu";
+import { Dropdown } from "react-bootstrap";
+import cancel from "../../assets/images/cancel.png";
+
 const AgreementsTable = ({ handleOpen, searchQuery, selectedStatus }) => {
   console.log(" ~ AgreementsTable ~ selectedStatus:", selectedStatus);
 
@@ -49,36 +60,197 @@ const AgreementsTable = ({ handleOpen, searchQuery, selectedStatus }) => {
       <table className="table text-center d-none d-md-table">
         <thead>
           <tr>
-            <th style={{ color: "#686868", fontWeight: "600" }}>
+            <th
+              style={{ color: "#686868", lineHeight: "20px" }}
+              className=" fw-semibold fs-15 "
+            >
               {t("home_tab_h7")}
             </th>
-            <th style={{ color: "#686868", fontWeight: "600" }}>
+            <th
+              style={{ color: "#686868", lineHeight: "20px" }}
+              className="fw-semibold fs-15"
+            >
               {t("home_tab_h6")}
             </th>
-            <th style={{ color: "#686868", fontWeight: "600" }}>
+            <th
+              style={{ color: "#686868", lineHeight: "20px" }}
+              className="fw-semibold fs-15"
+            >
               {t("home_tab_h5")}
             </th>
-            <th style={{ color: "#686868", fontWeight: "600" }}>
+            <th
+              style={{ color: "#686868", lineHeight: "20px" }}
+              className="fw-semibold fs-15"
+            >
               {t("home_tab_h4")}
             </th>
-            <th style={{ color: "#686868", fontWeight: "600" }}>
+            <th
+              style={{ color: "#686868", lineHeight: "20px" }}
+              className="fw-semibold fs-15"
+            >
               {t("home_tab_h3")}
             </th>
-            <th style={{ color: "#686868", fontWeight: "600" }}>
+            <th
+              style={{ color: "#686868", lineHeight: "20px" }}
+              className="fw-semibold fs-15"
+            >
               {t("home_tab_h2")}
             </th>
-            <th style={{ color: "#686868", fontWeight: "600" }}>
+            <th
+              style={{ color: "#686868", lineHeight: "20px" }}
+              className="fw-semibold fs-15"
+            >
               {t("home_tab_h1")}
             </th>
           </tr>
         </thead>
         <tbody className="border">
           {filteredData.map((row, index) => (
-            <TableRow key={index} data={row} handleOpen={handleOpen} />
+            <tr key={index} className=" fw-normal fs-15 lh-1">
+              <td className="d-table-cell align-middle py-3">
+                <div className="d-flex align-items-center gap-1">
+                  <img
+                    src={iconHome}
+                    alt="home icon"
+                    className="text-teal h-auto"
+                    style={{ width: "18px" }}
+                  />
+                  {t(row.agreementName)}
+                </div>
+              </td>
+              <td className="d-table-cell align-middle py-3">{row.date}</td>
+              <td className="d-table-cell align-middle py-3">
+                {t(row.agreementType)}
+              </td>
+              <td className="d-table-cell align-middle py-3">
+                {t(row.clients)}
+              </td>
+              <td className="d-table-cell align-middle py-3">
+                {row.commission}
+              </td>
+              <td className="d-table-cell align-middle py-3">
+                <StatusBadge status={t(row.status)} />
+              </td>
+
+              {(row.status === "home_tab_r3_h2" ||
+                row.status === "home_tab_r2_h2" ||
+                row.status === "home_tab_r1_h2") && (
+                <td className="d-table-cell align-middle py-3">
+                  <div className="d-flex align-items-center gap-3 p-2 bg-white">
+                    <div className="d-flex align-items-center gap-1">
+                      <TbMailForward size={18} />
+                      <span>{t("home_tab_r1_h1_l4")}</span>
+                    </div>
+                    <div className="d-flex align-items-center gap-1">
+                      <FaWhatsapp />
+                      <span>{t("home_tab_r1_h1_l3")}</span>
+                    </div>
+                    <span className="d-flex align-items-center ">
+                      <IoMdAttach size={18} />
+                      {t("home_tab_r1_h1_l2")}
+                    </span>
+                    <Dropdown className="d-flex align-items-center">
+                      <Dropdown.Toggle
+                        as="div"
+                        variant="light"
+                        className="border-0 bg-transparent custom-dropdown-toggle d-flex align-items-center gap-1"
+                      >
+                        <HiOutlineDotsVertical size={18} />
+                        {t("home_tab_r1_h1_l1")}
+                      </Dropdown.Toggle>
+
+                      <Dropdown.Menu>
+                        <Dropdown.Item
+                          href="#/action-1"
+                          className="d-flex  align-items-center gap-1 mx-1"
+                        >
+                          <img src={cancel} alt="cancel" />
+                          <span className="fs-15 lh-1 fw-normal">
+                            {t("cancel_signing_process")}
+                          </span>
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          href="#/action-2"
+                          className="d-flex align-items-center gap-2 mx-1"
+                        >
+                          <RiDeleteBin2Line size={18} />
+                          <span className="fs-15 lh-1 fw-normal">
+                            {t("delete_agreement")}
+                          </span>
+                        </Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
+                  </div>
+                </td>
+              )}
+              {row.status === "home_tab_r4_h2" && (
+                <td className="d-table-cell align-middle py-3">
+                  <div className="d-flex align-items-center gap-3 p-2 bg-white">
+                    <div className="d-flex align-items-center text-nowrap gap-1">
+                      <FaRegFile size={18} />
+                      <span>{t("open_agreement")}</span>
+                    </div>
+                    <div className="d-flex align-items-center text-nowrap gap-1">
+                      <TbMailForward size={18} />
+                      <span>{t("send_copy")}</span>
+                    </div>
+                    <span className="d-flex align-items-center text-nowrap gap-1">
+                      <MdOutlineCheckCircleOutline size={18} />
+                      {t("close_deal")}
+                    </span>
+                    <button
+                      className="d-flex align-items-center border-0 bg-transparent  text-nowrap gap-1"
+                      onClick={handleOpen}
+                    >
+                      <RiDeleteBin2Line size={18} />
+                      {t("delete")}
+                    </button>
+                  </div>
+                </td>
+              )}
+              {row.status === "home_tab_r5_h2" && (
+                <td className="d-table-cell align-middle py-3">
+                  <div className="d-flex align-items-center gap-3 p-2 bg-white">
+                    <div className="d-flex align-items-center gap-1">
+                      <TbMailForward size={18} />
+                      <span>{t("send_copy")}</span>
+                    </div>
+                    <div className="d-flex align-items-center gap-1">
+                      <LuBookMinus size={18} />
+                      <span>{t("register_land")}</span>
+                    </div>
+                    <button
+                      className="d-flex border-0 bg-transparent align-items-center gap-1"
+                      onClick={handleOpen}
+                    >
+                      <RiDeleteBin2Line size={18} />
+                      {t("delete")}
+                    </button>
+                  </div>
+                </td>
+              )}
+              {row.status === "home_tab_r6_h2" && (
+                <td className="d-table-cell align-middle py-3">
+                  <div className="d-flex align-items-center gap-3 p-2 bg-white">
+                    <div className="d-flex align-items-center gap-1">
+                      <TbMailForward size={18} />
+                      <span>{t("send_copy")}</span>
+                    </div>
+                    <button
+                      className="d-flex align-items-center border-0 bg-transparent gap-1"
+                      onClick={handleOpen}
+                    >
+                      <RiDeleteBin2Line size={18} />
+                      {t("delete")}
+                    </button>
+                  </div>
+                </td>
+              )}
+            </tr>
           ))}
         </tbody>
       </table>
-      <Accordion className="d-block p-0 d-md-none d-flex flex-column gap-3 ">
+      <Accordion className=" p-0 d-md-none d-flex flex-column gap-3 ">
         {tableData.map((row, index) => (
           <Accordion.Item
             eventKey={index.toString()}
@@ -127,7 +299,11 @@ const AgreementsTable = ({ handleOpen, searchQuery, selectedStatus }) => {
             <Accordion.Body className="p-0">
               <div className="border-top p-2 ">
                 <div className="d-flex justify-content-around  w-100">
-                  <ActionButtons type={t(row?.actionType)} icon={row?.icon} onDelete={handleOpen} />
+                  <ActionButtons
+                    type={t(row?.actionType)}
+                    icon={row?.icon}
+                    onDelete={handleOpen}
+                  />
                 </div>
               </div>
             </Accordion.Body>
@@ -145,21 +321,31 @@ const ActionButtons = ({ type, icon, onDelete }) => {
         <>
           <div className="d-md-flex align-items-center gap-1 cursor-pointer">
             <TbMailForward />
-            <span className=" fs-12 fs-md-15 fw-normal lh-1">{t("home_tab_r1_h1_l4")}</span>
+            <span className=" fs-12 fs-md-15 fw-normal lh-1">
+              {t("home_tab_r1_h1_l4")}
+            </span>
           </div>
           <div className="d-sm-flex align-items-center gap-1 cursor-pointer">
             {icon}
-            <span  className="fs-md-15 fs-12 fw-normal lh-1">{t("home_tab_r1_h1_l3")}</span>
+            <span className="fs-md-15 fs-12 fw-normal lh-1">
+              {t("home_tab_r1_h1_l3")}
+            </span>
           </div>
           <button
             className="d-sm-flex align-items-center border-0 bg-transparent gap-1 cursor-pointer"
             onClick={onDelete}
           >
             <MdOutlineDeleteForever />
-            <span className="fs-12 fs-md-15 fw-normal lh-1" >{t("age_delet")}</span>
+            <span className="fs-12 fs-md-15 fw-normal lh-1">
+              {t("age_delet")}
+            </span>
           </button>
-          <span  className="fs-12 fs-md-15 fw-normal lh-1">{t("home_tab_r1_h1_l2")}</span>
-          <span  className="fs-12 fs-md-15 fw-normal lh-1">{t("home_tab_r1_h1_l1")}</span>
+          <span className="fs-12 fs-md-15 fw-normal lh-1">
+            {t("home_tab_r1_h1_l2")}
+          </span>
+          <span className="fs-12 fs-md-15 fw-normal lh-1">
+            {t("home_tab_r1_h1_l1")}
+          </span>
         </>
       )}
     </div>
@@ -198,35 +384,6 @@ const StatusBadge = ({ status }) => {
     >
       {translatedStatus}
     </span>
-  );
-};
-
-const TableRow = ({ data, handleOpen }) => {
-  const { t } = useTranslation();
-  const {
-    status,
-    commission,
-    clients,
-    agreementType,
-    date,
-    agreementName,
-    actionType,
-    icon,
-  } = data;
-  return (
-    <tr>
-      <td className="d-table-cell align-middle py-3">{t(agreementName)}</td>
-      <td className="d-table-cell align-middle py-3">{date}</td>
-      <td className="d-table-cell align-middle py-3">{t(agreementType)}</td>
-      <td className="d-table-cell align-middle py-3">{t(clients)}</td>
-      <td className="d-table-cell align-middle py-3">{commission}</td>
-      <td className="d-table-cell align-middle py-3">
-        <StatusBadge status={t(status)} />
-      </td>
-      <td className="d-table-cell align-middle py-3">
-        <ActionButtons type={t(actionType)} icon={icon} onDelete={handleOpen} />
-      </td>
-    </tr>
   );
 };
 

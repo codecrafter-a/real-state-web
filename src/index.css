@@ -57,6 +57,10 @@ body {
 	font-family: "Assistant", serif;
 }
 
+.custom-dropdown-toggle::after {
+	display: none !important; 
+  }
+
 a,
 a:hover {
 	text-decoration: none;
@@ -77,11 +81,11 @@ a:hover {
 ;
 
 .fs-17 {
-	font-size: 17px;
+	font-size: 17px !important;
 }
 
 .fs-12 {
-	font-size: 12px;
+	font-size: 12px !important;
 }
 
 .custom-scrollbar::-webkit-scrollbar {

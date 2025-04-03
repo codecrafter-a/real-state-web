@@ -606,6 +606,15 @@
   "Property_own_detail": "הוספת בלעדיות על הנכס / הנכסים",
   "Brock_between": "שת”פ בין מתווכים",
   "no_data_available": "לא נמצאו נכסים תואמים",
+  "status2": {
+    "generated": "נוצר",
+    "sent": "נשלח",
+    "viewed": "נצפה",
+    "signed": "נחתם"
+  },
+
+  "delete_agreement": "מחיקת הסכם",
+  "cancel_signing_process": "ביטול תהליך החתימה",
 
   "report_name": "שירי נקבלי",
   "report_type": "מתעניין בשכירות",
