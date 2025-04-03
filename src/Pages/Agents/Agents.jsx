@@ -9,7 +9,7 @@ const Agents = () => {
     const { lang } = useParams();
 
     return (
-        <div className="p-4 bg-white rounded-3 shadow-sm">
+        <div className="p-4 bg-white rounded-3 shadow-lg">
             <p className="w-100 text-center screen-1 border-bottom pb-3 mb-5">
                 {t("welcome_message")}
             </p>

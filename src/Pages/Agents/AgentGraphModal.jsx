@@ -42,9 +42,7 @@ const AgentGraphModal = ({ show, handleClose }) => {
                                     <p className="mb-0 fw-semibold text-dark fs-5">{t("commission")}</p>
                                 </div>
                                 <div className="d-flex align-items-center">
-                                    <div
-                                        className=" border-2 border-success"
-                                        style={{ height: "87px", width: "2px" }}
+                                    <div style={{ height: "87px", width: "4px", background: "linear-gradient(to bottom, #009EA6, #75D976)" }}
                                     ></div>
                                 </div>
                                 <div>
@@ -60,10 +58,10 @@ const AgentGraphModal = ({ show, handleClose }) => {
                         <div className="w-100">
                             <h5 className="fw-bold text-teal text-center">{t("buy_sell_transactions")}</h5>
                             <div className="d-flex mt-4">
-                                <div className="d-flex align-items-center w-100">
+                                <div className="d-flex w-100 justify-content-between">
+                                <div className="d-flex align-items-center gap-4">
                                     <CommonPieChart data={data} colors={COLORS} />
                                 </div>
-                                <div className="d-flex w-100 justify-content-between">
                                     <div className="">
                                         <div className="d-flex align-items-center justify-content-center">
                                             <img src={garage_door} alt="door card" />

@@ -38,7 +38,7 @@ const Customer = () => {
     sought_area: "",
     desired_area: "",
     property_type: "",
-    property_condition: "",
+    property_condition: ""
   });
 
   const handleFilterChange = (key, value) => {
@@ -98,10 +98,11 @@ const Customer = () => {
 
   return (
     <>
-      <div className="customer-container d-none d-md-block w-100 mx-auto pb-3 position-relative z-50 rounded-3 shadow-lg px-0">
+      <div className="customer-container d-none d-md-block w-100 mx-auto pb-3 position-relative z-50 rounded-3 shadow-lg px-0" >
         <h1 className="fs-4 font-semibold border-bottom border-[#EAEAEA] py-3 px-4 mb-4 text-success text-center d-none d-md-block">
           {t("all_cust")}
         </h1>
+
         <div>
           <div className="px-3">
             <form className="custom-scrollbar overflow-y-auto overflow-x-hidden scroll-height">
@@ -109,125 +110,85 @@ const Customer = () => {
                 <div className="mb-3 d-flex justify-content-end flex-wrap gap-3">
                   <button
                     type="button"
-                    className="fs-17 lh-1 fw-semibold mt-md-4 agent-btn-responsive2 text-center w-20 py-2 rounded-pill justify-content-center d-flex gap-3 align-items-center"
+                    className="btn btn-outline-success d-flex align-items-center justify-content-center rounded-pill py-2 px-4 mt-2 gap-2"
                     onClick={() => navigate(`/${lang}/customers/add-customers`)}
                   >
                     <img src={add_reaction} alt="Add Client" />
                     {t("add_cust")}
                   </button>
                 </div>
-                <div className="border rounded-1 input-group responsive-width mb-4">
+
+                <div className="mb-4 position-relative border border-[#D6D6D6] rounded py-2 px-3 d-flex w-75">
                   <input
                     type="text"
-                    className="form-control border-0 "
-                    id="searchInput"
+                    className="form-control border-0 p-0 flex-grow-1"
                     placeholder={t("filter_cust")}
+                  onChange  ={(e) => setSearchTerm(e.target.value)}
                     value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
                   />
-                  <span className="input-group-text bg-transparent  border-0">
-                    <img src={search} alt="search" />
-                  </span>
+                  <button className="btn p-0 ms-2" type="button" aria-label="Search">
+                    <img src={search} alt="Search" />
+                  </button>
                 </div>
 
                 <div className="mb-4 d-flex flex-nowrap align-items-center gap-3">
                   <div>
-                    <label className="mb-1 fs-15 lh-1 fw-semibold">
-                      {t("cust_filter_1")}
-                    </label>
-                    <select
-                      className="form-select"
+                    <label className="mb-1 fs-15 lh-1 fw-semibold">{t("cust_filter_1")}</label>
+                    <select className="form-select"
                       value={filters.selectedClient}
-                      onChange={(e) =>
-                        handleFilterChange("selectedClient", e.target.value)
-                      }
+                      onChange={(e) => handleFilterChange("selectedClient", e.target.value)}
                     >
-                      <option disabled value="">
-                        Select Option
-                      </option>
+                      <option disabled value="">Select Option</option>
                       {clientFiltered.map((client) => (
-                        <option key={client.id} value={client.id}>
-                          {client.name}
-                        </option>
+                        <option key={client.id} value={client.id}>{client.name}</option>
                       ))}
                     </select>
                   </div>
                   <div>
-                    <label className="mb-1 fs-15 lh-1 fw-semibold">
-                      {t("cust_filter_2")}
-                    </label>
+                    <label className="mb-1 fs-15 lh-1 fw-semibold">{t("cust_filter_2")}</label>
                     <div className="position-relative border border-[#D6D6D6] rounded py-2 px-3 d-flex mx-auto">
                       <input
                         type="text"
                         className="form-control border-0 p-0 flex-grow-1"
                         placeholder={t("cust_filter_place_2")}
+
                       />
-                      <button
-                        className="btn p-0 ms-2"
-                        type="button"
-                        aria-label="Search"
-                      >
+                      <button className="btn p-0 ms-2" type="button" aria-label="Search">
                         <img src={search} alt="Search" />
                       </button>
                     </div>
                   </div>
                   <div>
-                    <label className="mb-1 fs-15 lh-1 fw-semibold">
-                      {t("cust_serch")}
-                    </label>
+                    <label className="mb-1 fs-15 lh-1 fw-semibold">{t("cust_serch")}</label>
                     <input
                       type="text"
                       className="form-control"
                       placeholder={t("cust_typing")}
                       value={filters.searchTerm}
-                      onChange={(e) =>
-                        handleFilterChange("searchTerm", e.target.value)
-                      }
+                      onChange={(e) => handleFilterChange("searchTerm", e.target.value)}
                     />
                   </div>
 
                   <div>
-                    <label className="mb-1 fs-15 lh-1 fw-semibold">
-                      {t("cust_Property_type")}
-                    </label>
-                    <select
-                      className="form-select"
+                    <label className="mb-1 fs-15 lh-1 fw-semibold">{t("cust_Property_type")}</label>
+                    <select className="form-select"
                       value={filters.selectedPropertyType}
-                      onChange={(e) =>
-                        handleFilterChange(
-                          "selectedPropertyType",
-                          e.target.value
-                        )
-                      }
+                      onChange={(e) => handleFilterChange("selectedPropertyType", e.target.value)}
                     >
-                      <option disabled selected>
-                        Select Option
-                      </option>
+                      <option disabled selected>Select Option</option>
                       {filterdClients.map((index) => (
-                        <option key={index}>
-                          {t("cust_property_type_value")}
-                        </option>
+                        <option key={index}>{t("cust_property_type_value")}</option>
                       ))}
                     </select>
                   </div>
 
                   <div>
-                    <label className="mb-1 fs-15 lh-1 fw-semibold">
-                      {t("cust_Property_condition")}
-                    </label>
-                    <select
-                      className="form-select"
+                    <label className="mb-1 fs-15 lh-1 fw-semibold">{t("cust_Property_condition")}</label>
+                    <select className="form-select"
                       value={filters.selectedPropertyCondition}
-                      onChange={(e) =>
-                        handleFilterChange(
-                          "selectedPropertyCondition",
-                          e.target.value
-                        )
-                      }
+                      onChange={(e) => handleFilterChange("selectedPropertyCondition", e.target.value)}
                     >
-                      <option disabled selected>
-                        Select Option
-                      </option>
+                      <option disabled selected>Select Option</option>
                       <option>{t("cust_Property_Condition_value")}</option>
                       <option>Option 2</option>
                     </select>
@@ -236,12 +197,8 @@ const Customer = () => {
                   <div className="d-flex mt-3">
                     <button
                       type="button"
-                      className="fs-17 lh-1 fw-semibold  w-20 agent-btn-responsive1 text-white py-2 mx-1 rounded-pill"
-                      style={{
-                        boxShadow: "0 10px 8px rgba(0, 0, 0, 0.1)",
-                        padding: "8px 15px",
-                        minWidth: "146px",
-                      }}
+                      className="btn btn-success  d-flex align-items-center justify-content-center fw-medium text-white border-0 rounded-pill"
+                      style={{ boxShadow: '0 10px 8px rgba(0, 0, 0, 0.1)', padding: '8px 15px', minWidth: '146px' }}
                       onClick={() => console.log(filters)}
                     >
                       {t("cust_search")}
@@ -260,11 +217,7 @@ const Customer = () => {
                             onClick={handleOpen}
                             className="btn btn-outline-success d-flex align-items-center w-auto rounded-pill py-2 px-3"
                           >
-                            <img
-                              className="me-2"
-                              src={search_icon2}
-                              alt="Add Client"
-                            />
+                            <img className="me-2" src={search_icon2} alt="Add Client" />
                             {t("advance_search")}
                           </button>
                         </li>
@@ -276,9 +229,7 @@ const Customer = () => {
                               margin: "5px",
                             }}
                           >
-                            <div className="custom-text">
-                              {t(`cust_opt_${i + 1}`)}
-                            </div>
+                            <div className="custom-text">{t(`cust_opt_${i + 1}`)}</div>
                             <span>
                               <img src={remove_icon} alt="Remove" />
                             </span>
@@ -296,7 +247,7 @@ const Customer = () => {
 
                       <button
                         type="button"
-                        className="fs-17 lh-1 fw-semibold mt-md-4 w-20 agent-btn-responsive1 text-white py-1 mx-1 rounded-pill"
+                        className="fs-17 lh-1 fw-semibold mt-md-4 w-20 agent-btn-responsive1 text-white py-1 mx-1 rounded-pill d-flex align-items-center justify-content-center"
                       >
                         <img src={action_icon1} alt="Sign Client" />
                         <span className="custom-text-green">
@@ -307,7 +258,7 @@ const Customer = () => {
 
                       <button
                         type="button"
-                        className="fs-17 lh-1 fw-semibold mt-md-4 w-20 agent-btn-responsive1 text-white  py-1 mx-1 rounded-pill"
+                        className="fs-17 lh-1 fw-semibold mt-md-4 w-20 agent-btn-responsive1 text-white  py-1 mx-1 rounded-pill d-flex align-items-center justify-content-center"
                       >
                         <img src={action_icon2} alt="Sign Owner" />
                         <span className="custom-text-green">
@@ -333,21 +284,11 @@ const Customer = () => {
                             <span>{t("cust_tbl_column_name")}</span>
                           </div>
                         </th>
-                        <th className="table-head">
-                          {t("cust_tbl_column_client_type")}
-                        </th>
-                        <th className="table-head">
-                          {t("cust_tbl_column_client_phone")}
-                        </th>
-                        <th className="table-head">
-                          {t("cust_tbl_column_client_email")}
-                        </th>
-                        <th className="table-head">
-                          {t("cust_tbl_column_request_area")}
-                        </th>
-                        <th className="table-head">
-                          {t("cust_tbl_column_status")}
-                        </th>
+                        <th className="table-head">{t("cust_tbl_column_client_type")}</th>
+                        <th className="table-head">{t("cust_tbl_column_client_phone")}</th>
+                        <th className="table-head">{t("cust_tbl_column_client_email")}</th>
+                        <th className="table-head">{t("cust_tbl_column_request_area")}</th>
+                        <th className="table-head">{t("cust_tbl_column_status")}</th>
                         <th className="table-head"></th>
                       </tr>
                     </thead>
@@ -387,11 +328,7 @@ const Customer = () => {
                                 <img
                                   src={table_arrrow}
                                   alt="table_arrow"
-                                  className={`w-4 h-4 transition-transform ${
-                                    expandedRows.includes(index)
-                                      ? "rotate-180"
-                                      : "rotate-0"
-                                  }`}
+                                  className={`w-4 h-4 transition-transform ${expandedRows.includes(index) ? "rotate-180" : "rotate-0"}`}
                                 />
                               </button>
                             </td>

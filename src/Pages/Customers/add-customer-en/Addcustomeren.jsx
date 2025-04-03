@@ -305,12 +305,12 @@ const AddCustomer = () => {
 
   return (
     <div className="bg-white shadow-lg rounded-3">
-      <div className="main_wrap_hdr d-none d-md-block">
+      <div className="d-none d-md-block px-3">
         <h1 className="bor_head_cmn text-center">{t("add_cust_form_title")}</h1>
       </div>
-      <div className="main_wrap_body p-0">
+      <div className="p-0">
         <form className="form_custom">
-          <div className="custom-scrollbar overflow-y-auto overflow-x-hidden scroll-height internal_scroll_custome _mCS_2 mCS_no_scrollbar px-4 pb-4">
+          <div className="custom-scrollbar overflow-y-auto overflow-x-hidden scroll-height px-3 pb-4">
             {!isMobileView ? (
               <>
                 {renderFirstScreen()}

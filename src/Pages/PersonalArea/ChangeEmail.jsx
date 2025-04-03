@@ -5,7 +5,7 @@ import "./PersonalArea.css";
 const ChangeEmail = () => {
     const { t } = useTranslation();
     return (
-        <div className="p-4 bg-white rounded-3 shadow-sm">
+        <div className="p-4 bg-white rounded-3 shadow-lg">
             <p className="w-100 text-center screen-1 border-bottom pb-3 mb-4 d-none d-md-block">
                 {t("changeEmail")}
             </p>

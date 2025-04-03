@@ -47,6 +47,10 @@
 	border: 1px solid #00A481 !important;
 }
 
+.bg-teal-100 {
+	background-color: #E9FAF4;
+}
+
 body {
 	background-color: #fff;
 	color: #000;
@@ -585,6 +589,10 @@ a:hover {
 
 .accordion-item {
 	overflow: hidden !important;
+}
+
+.w_max {
+	width: max-content;
 }
 
 

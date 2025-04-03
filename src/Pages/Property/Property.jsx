@@ -29,22 +29,21 @@ const Property = () => {
   return (
     <Container fluid className="py-4">
       <Row className="justify-content-center">
-        <Col lg={10}  sm={12} className="bg-white shadow-lg rounded-3 p-3">
+        <Col lg={10} sm={12} className="bg-white shadow-lg rounded-3 p-3">
           <p className="py-3 my-4 screen-1 text-center border-bottom d-none d-md-block">
             {t("pro_tab_title")}
           </p>
-          <div className="px-2 py-2">
+          <div className="py-2">
             <div className="stepper-container text-center d-flex flex-wrap justify-content-center">
               {[1, 2, 3, 4].map((step, index) => (
                 <div key={step} className="d-flex align-items-center">
                   <div
-                    className={`step-circle ${
-                      activeTab > step
+                    className={`step-circle ${activeTab > step
                         ? "completed"
                         : activeTab === step
-                        ? "active"
-                        : "pending"
-                    }`}
+                          ? "active"
+                          : "pending"
+                      }`}
                     onClick={() => setActiveTab(step)}
                   >
                     {step}
