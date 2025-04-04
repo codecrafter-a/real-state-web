@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import add_file from "../../../assets/images/add_file.svg";
 import add_img from "../../../assets/images/add_img.svg";
 import deleteIcon from "../../../assets/images/delete.svg";
 import { Form, Row, Col, Button } from "react-bootstrap";
-
+import download from "../../../assets/images/Download.png";
 const Attechment = ({ setActiveTab }) => {
   const { t } = useTranslation();
 
@@ -14,12 +14,26 @@ const Attechment = ({ setActiveTab }) => {
     additionalDocs: null,
   });
 
+  const [imageSizes, setImageSizes] = useState({});
+
   const [previews, setPreviews] = useState({
     tabo: null,
     cityApproval: null,
     additionalDocs: null,
   });
 
+  useEffect(() => {
+    Object.keys(previews).forEach((key) => {
+      const img = new Image();
+      img.onload = () => {
+        setImageSizes((prev) => ({
+          ...prev,
+          [key]: { width: img.width, height: img.height },
+        }));
+      };
+      img.src = previews[key];
+    });
+  }, [previews]);
   const handleFileChange = (event, type) => {
     const file = event.target.files[0];
     if (file) {
@@ -31,6 +45,14 @@ const Attechment = ({ setActiveTab }) => {
   const handleRemoveFile = (type) => {
     setFiles((prev) => ({ ...prev, [type]: null }));
     setPreviews((prev) => ({ ...prev, [type]: null }));
+  };
+
+  const formatFileSize = (bytes) => {
+    if (bytes >= 1024 * 1024) {
+      return (bytes / (1024 * 1024)).toFixed(1) + " MB";
+    } else {
+      return (bytes / 1024).toFixed(1) + " KB";
+    }
   };
 
   const fileInputs = [
@@ -46,9 +68,9 @@ const Attechment = ({ setActiveTab }) => {
           {t("pro_add_set4")}
         </h4>
         <p className="fs-15 lh-1 fw-semibold">{t("pro_add_attch_doc_note")}</p>
-        <div className="carddashed gap-2">
+        <div className="carddashed row">
           {fileInputs.map(({ key, label }) => (
-            <div key={key} className="grid col-12 col-md-4" >
+            <div key={key} className=" col-12 col-md-4">
               <div className="border-dashed p-2">
                 <Form.Label className="d-flex align-items-center cursor-pointer position-relative">
                   <Form.Control
@@ -65,23 +87,28 @@ const Attechment = ({ setActiveTab }) => {
                 </Form.Label>
               </div>
               {files[key] && (
-                <div className="mt-3 d-flex align-items-center border-dashed p-2">
-                  <Button
-                    variant="link"
-                    className="text-danger me-2 p-0"
-                    onClick={() => handleRemoveFile(key)}
-                  >
-                    <img src={deleteIcon} alt="Delete" />
-                  </Button>
-                  <span className="flex-grow-1 fs-6 fw-medium lh-1  ">{files[key]?.name}</span>
-                  {previews[key] && (
-                    <img
-                      src={previews[key]}
-                      alt="Preview"
-                      className="rounded-circle object-fit-cover"
-                      style={{ width: "40px", height: "40px" }}
-                    />
-                  )}
+                <div className="mt-3 d-flex align-items-center justify-content-between border border-secondary border-opacity-25 rounded-2  p-2">
+                  <div className="d-flex flex-column"> 
+                    <span className=" fs-6 fw-medium lh-1  text-teal">
+                      {files[key]?.name}
+                    </span>
+                    <span className="fs-12 fw-normal lh-1 py-1">
+                      {formatFileSize(files[key].size)}
+                    </span>
+                  </div>
+                  <div className="d-flex ">
+                    <Button variant="link" className="p-0">
+                      <img src={download} alt="download" />
+                    </Button>
+                    <Button
+                      variant="link"
+                      className="p-0"
+                      onClick={() => handleRemoveFile(key)}
+                    >
+                      <img src={deleteIcon} alt="Delete" />
+                    </Button>
+                  </div>
+                  
                 </div>
               )}
             </div>

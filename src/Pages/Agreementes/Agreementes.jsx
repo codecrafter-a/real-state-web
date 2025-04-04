@@ -148,7 +148,7 @@ const Agreements = () => {
   return (
     <>
       <div className="px-4 my-3 my-md-0 bg-white d-none d-md-block rounded-3 shadow-lg">
-        <h3 className="py-1 my-4 text-center screen-1 border-bottom ">
+        <h3 className="py-3 mb-4 screen-1 text-center border-bottom d-none d-md-block">
           {t("all_agreements")}
         </h3>
         <div className="overflow-y-auto overflow-x-hidden custom-scrollbar scroll-height">

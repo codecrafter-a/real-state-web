@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
 import { FiPlus } from "react-icons/fi";
 import companyLogo from "../../assets/images/company-logo.svg";
 import { useTranslation } from "react-i18next";
@@ -184,7 +184,7 @@ const PersonalArea = () => {
                                             left: direction === "rtl" ? "10px" : "auto",
                                         }}
                                         onClick={() => setShowPassword(!showPassword)}>
-                                        {showPassword ? <FaEyeSlash /> : <FaEye />}
+                                        {showPassword ? <IoEyeOffOutline /> : <IoEyeOutline />}
                                     </span>
                                 </div>
                                 <span
@@ -213,7 +213,7 @@ const PersonalArea = () => {
                 </div>
 
             </div>
-            <Modal show={showModal} onHide={handleCloseModal} centered>
+            <Modal show={showModal} onHide={handleCloseModal} centered className="modal-container">
                 <Modal.Header className="border-0 p-3 position-relative mt-4">
                     <button
                         type="button"
@@ -224,19 +224,19 @@ const PersonalArea = () => {
 
                 <Modal.Body className="text-center p-4">
                     <h4 className="text-embed-500 fw-bold">{t("personalArea.modalTitle")}</h4>
-                    <div className="d-flex justify-content-center gap-5 mt-4 mb-5">
-                        <div className="text-center d-flex align-items-center justify-content-center flex-column">
+                    <div className="d-flex justify-content-center mt-4 mb-5">
+                        <div className="text-center d-flex align-items-center flex-column w-full">
                             <div className="rounded-circle p-4 d-flex align-items-center justify-content-center gallery-option-circle">
                                 <FiCamera size={48} className="text-embed-500" />
                             </div>
-                            <p className="mt-2 text-black fw-semibold fs-5">{t("personalArea.galleryOption")}</p>
+                            <p className="mt-2 text-black fw-semibold fs-5">{t("personalArea.cameraOption")}</p>
                         </div>
 
-                        <div className="text-center">
+                        <div className="text-center d-flex align-items-center justify-content-center flex-column w-full">
                             <div className="rounded-circle p-4 d-flex align-items-center justify-content-center gallery-option-circle">
                                 <MdOutlineAddPhotoAlternate size={48} className="text-embed-500" />
                             </div>
-                            <p className="mt-2 text-black fw-semibold fs-5">{t("personalArea.cameraOption")}</p>
+                            <p className="mt-2 text-black fw-semibold fs-5 w-75">{t("personalArea.galleryOption")}</p>
                         </div>
                     </div>
                 </Modal.Body>

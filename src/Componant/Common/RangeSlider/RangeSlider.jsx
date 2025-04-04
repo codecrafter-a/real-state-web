@@ -22,7 +22,7 @@ const RangeSlider = ({ label }) => {
 
   return (
     <div className="col-12">
-      <label className="d-block text-secondary fw-semibold text-start mb-1">
+      <label className="d-block text-secondary fs-15 fw-semibold  mb-1">
         {label}
       </label>
 
@@ -43,25 +43,25 @@ const RangeSlider = ({ label }) => {
           className="w-50 border border-gray-300 focus-ring-0 rounded px-3 py-2 text-secondary text-center"
         />
       </div>
-
+      <div className="px-2">
       <div
-        className="position-relative my-3 d-flex align-items-center"
+        className="position-relative my-2 gap-3 d-flex align-items-center"
         style={{ height: "24px" }}
       >
         <div
           className="position-absolute w-100 rounded"
-          style={{ background: "#e7e7e7", height: "8px" }}
+          style={{ background: "#ffffff", height: "3px" }}
         ></div>
 
         <div
           className="position-absolute rounded"
           style={{
-            height: "8px",
+            height: "3px",
             left: isRTL
               ? `${(10000 - maxValue) / 100}%`
               : `${(minValue / 10000) * 100}%`,
             width: `${((maxValue - minValue) / 10000) * 100}%`,
-            backgroundColor: "#20c997",
+            backgroundColor: "#00A481",
           }}
         ></div>
 
@@ -100,13 +100,13 @@ const RangeSlider = ({ label }) => {
             height: "24px", 
           }}
         />
-
+       
         <div
-          className="position-absolute d-flex align-items-center justify-content-center rounded-circle shadow"
+          className="position-absolute fs-12 pb-1 d-flex align-items-center justify-content-center rounded-circle shadow"
           style={{
             width: "24px",
             height: "24px",
-            backgroundColor: "#20c997",
+            backgroundColor: "#00A481",
             color: "white",
             left: isRTL
               ? `${(10000 - minValue) / 100}%`
@@ -120,11 +120,11 @@ const RangeSlider = ({ label }) => {
         </div>
 
         <div
-          className="position-absolute d-flex align-items-center justify-content-center rounded-circle shadow"
+          className="position-absolute fs-12 pb-1 d-flex align-items-center justify-content-center rounded-circle shadow"
           style={{
             width: "24px",
             height: "24px",
-            backgroundColor: "#20c997",
+            backgroundColor: "#00A481",
             color: "white",
             left: isRTL
               ? `${(10000 - maxValue) / 100}%`
@@ -136,6 +136,7 @@ const RangeSlider = ({ label }) => {
         >
           ||
         </div>
+      </div>
       </div>
     </div>
   );

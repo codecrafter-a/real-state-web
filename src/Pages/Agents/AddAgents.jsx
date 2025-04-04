@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
 import { Modal } from "react-bootstrap";
 import { useTranslation } from 'react-i18next';
 import SuccessIcon from "../../assets/images/SuccessIcon.svg";
@@ -67,7 +67,7 @@ const AddAgents = () => {
                                         left: direction === "rtl" ? "10px" : "auto",
                                     }}
                                 >
-                                    {showPassword ? <FaEyeSlash /> : <FaEye />}
+                                    {showPassword ? <IoEyeOffOutline /> : <IoEyeOutline />}
                                 </span>
                             </div>
                             <span className="text-primary d-block mt-1 fs-15 lh-1  fw-semibold text-decoration-underline cursor-pointer">
@@ -91,7 +91,7 @@ const AddAgents = () => {
                                         left: direction === "rtl" ? "10px" : "auto",
                                     }}
                                 >
-                                    {passwordVerify ? <FaEyeSlash /> : <FaEye />}
+                                    {passwordVerify ? <IoEyeOffOutline /> : <IoEyeOutline />}
                                 </span>
                             </div>
                             <span className="d-block mt-1 fs-12 lh-1 fw-semibold" style={{ fontSize: "14px" }}>
