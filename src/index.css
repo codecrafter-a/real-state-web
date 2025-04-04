@@ -40,7 +40,7 @@
 
 
 .bg-teal {
-	background-color: #00A481;
+	background-color: #00A481 !important;
 }
 
 .border-teal {
@@ -49,6 +49,15 @@
 
 .bg-teal-100 {
 	background-color: #E9FAF4;
+}
+.border-teal-100 {
+	border: 1px solid #E9FAF4 !important;
+}
+.fs_15 {
+	font-size: 15px;
+}
+.fs_25 {
+	font-size: 25px;
 }
 
 body {

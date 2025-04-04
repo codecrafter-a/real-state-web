@@ -677,5 +677,14 @@
   "Israel": "ישראל",
   "Ori": "אורי",
   "Rami": "רמי",
-  "Moshe": "משה"
+  "Moshe": "משה",
+  "Add_broker": "הוספת מתווכ.ת",
+  "Add_Property": "הוספת נכס",
+  "Add_client": "הוספת לקוח.ה",
+  "Select_month": "חודש מהיום",
+  "Select_six_month": "חצי שנה מהיום",
+  "Select_year": "שנה מהיום",
+  "Select_Date": "בחירת תאריך מסויים",
+  "age_comm_type_1_subTitle": "מחברים יחד את עמלת המוכר, ואת עמלת הקונה, וכל מתווך מקבל חצי",
+  "text_place": "פרטו את שיתוף הפעולה שסוכם"
 }

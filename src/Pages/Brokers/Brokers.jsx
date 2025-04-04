@@ -85,7 +85,7 @@ const Brokers = () => {
                 <div className="d-flex align-items-center justify-content-center">
                   <img className="me-1" src={add_reaction} alt="Add Client" />
                   <span className="fs-17 fw-semibold lh-1">
-                    {"add_cust"}{" "}
+                    {t("Add_broker")}{" "}
                   </span>
                 </div>
               </button>
@@ -142,7 +142,7 @@ const Brokers = () => {
                 <div className="d-flex align-items-center justify-content-center">
                   <img className="me-1" src={add_home} alt="Add Client" />
                   <span className="fs-17 fw-semibold lh-1">
-                    {"add_cust"}{" "}
+                    {t("Add_Property")}{" "}
                   </span>
                 </div>
               </button>
@@ -165,10 +165,7 @@ const Brokers = () => {
                 </div>
               </div>
             </div>
-            <div className='d-flex align-items-center'>
-              <Toggle defaultChecked={false} type={"checkbox"} id="toggleImages" />
-              <label className="fs-6 fw-normal lh-1" htmlFor="">{t('lable1')}</label>
-            </div>
+            
             {propertySection && (
               <>
                 <div className="w-full">
@@ -195,7 +192,7 @@ const Brokers = () => {
                   </div>
                 </div>
                 <div className="d-flex align-items-center gap-2 justify-content-start">
-                  <div className="border-teal rounded-2 p-2 my-2 iconbox iconbox flex flex-column justify-content-center align-items-center bg-teal-100">
+                  <div className="border-teal rounded-2 p-2 my-2 iconbox flex flex-column justify-content-center align-items-center bg-teal-100">
                     <img src={key_vertical} alt="" />
                     <span className="fs-6 fw-normal lh-base text-center">
                       {t("age_tran_type_1")}
@@ -220,7 +217,7 @@ const Brokers = () => {
                   </div>
                 </div>
                 <div className="d-flex align-items-center gap-2 justify-content-start">
-                  <div className="border-teal rounded-2 p-2 my-2 iconbox iconbox flex flex-column justify-content-center align-items-center bg-teal-100">
+                  <div className="border-teal rounded-2 p-2 my-2 iconbox flex flex-column justify-content-center align-items-center bg-teal-100">
                     <img src={garage_door} alt="" />
                     <span className="fs-6 fw-normal lh-base text-center">
                       {t("age_tran_type_2")}
@@ -651,32 +648,34 @@ const Brokers = () => {
           setIsView(false);
         }}
         centered
+        className="modal-container"
       >
-        <Modal.Header closeButton className=" border-0">
-          <img src={Next} alt="next btn" className="" />
+        <Modal.Header className="d-flex justify-content-between align-items-center border-0">
+          <button><img src={Next} alt="next btn" className="" /></button>
+          <button type="button" className="btn-close m-0 fs-5" data-bs-dismiss="modal" aria-label="Close" onClick={() => setIsView(false)}></button>
         </Modal.Header>
-        <Modal.Body className="p-4 overflow-y-auto custom-scrollbar" style={{ height: "651px" }}>
+        <Modal.Body className="p-4 overflow-y-auto custom-scrollbar" style={{ height: "655px" }}>
           <div className="text-center">
             <img
               src={successIcon}
               alt="Success"
               className="mx-auto w-20 h-20 mb-3"
             />
-            <h4 className="text-embed-500 fs-3 font-semibold">
+            <h4 className="text-embed-500 fs_25 font-semibold">
               {t("age_report_title")}
             </h4>
-            <p className="fs-5 font-semibold">{t("age_report_question")}</p>
+            <p className="fs_25 font-semibold">{t("age_report_question")}</p>
           </div>
           {/* Options Section */}
-          <div className="options-container">
+          <div className="options-container m-auto" style={{ width: '417px' }}>
             <div className="option-item rounded-3 my-3">
               <Accordion defaultActiveKey={null} className="custom-accordion">
-                <Accordion.Item eventKey="0 " className="custom-header">
+                <Accordion.Item eventKey="0 " className="custom-header border-teal-100">
                   <Accordion.Header className="bg-teal-100">
                     <div className="d-flex justify-content-between w-100">
                       <div className=" d-flex align-items-center">
                         <img src={whatsapp} alt="whatsapp" />
-                        <span className="ps-2 text-start fs-5">
+                        <span className="ps-2 text-start fs_15">
                           {t("age_send_whatsapp")}
                         </span>
                       </div>
@@ -687,7 +686,7 @@ const Brokers = () => {
                     </div>
                   </Accordion.Header>
                   <Accordion.Body className="bg-teal-100">
-                    <ul className="fw-bold ">
+                    <ul className="fw-bold px-4" style={{ listStyleType: "disc" }}>
                       <li>{t("age_send_whatsapp_point_1")}</li>
                       <li>{t("age_send_whatsapp_point_2")}</li>
                       <li>{t("age_send_whatsapp_point_3")}</li>
@@ -696,9 +695,9 @@ const Brokers = () => {
                       {t("age_send_whatsapp_description")}
                     </p>
                     {/* Pricing Cards */}
-                    <div className="row justify-content-center text-center mt-4">
-                      <div className="col-md-3 ">
-                        <div className="border rounded p-2 bg-white  shadow-sm">
+                    <div className="row justify-content-center text-center mt-4 align-items-center">
+                      <div className="col-md-4 px-2">
+                        <div className="rounded p-2 bg-white  shadow-md">
                           <h3 className="text-embed-500 fs-2 fw-bold">150</h3>
                           <p className="mb-0 text-embed-500">
                             {t("age_send_whatsapp_message")}
@@ -709,8 +708,8 @@ const Brokers = () => {
                         </div>
                       </div>
 
-                      <div className="col-md-3 ">
-                        <div className="border rounded shadow-sm p-1 bg-white">
+                      <div className="col-md-4 px-2">
+                        <div className="rounded shadow-md p-1 bg-white">
                           <p className="mb-0 text-embed-500">
                             {t("age_send_whatsapp_cost")}
                           </p>
@@ -724,8 +723,8 @@ const Brokers = () => {
                         </div>
                       </div>
 
-                      <div className="col-md-3">
-                        <div className="border rounded p-2 bg-white shadow-sm">
+                      <div className="col-md-4 px-2">
+                        <div className="rounded p-2 bg-white shadow-md">
                           <h3 className="text-embed-500 fs-2 fw-bold">50</h3>
                           <p className="mb-0 text-embed-500">
                             {t("age_send_whatsapp_message")}
@@ -742,12 +741,12 @@ const Brokers = () => {
             </div>
             <div className="option-item rounded-3 my-3">
               <Accordion defaultActiveKey={null} className="custom-accordion ">
-                <Accordion.Item eventKey="0" className="custom-header">
+                <Accordion.Item eventKey="0" className="custom-header border-teal-100">
                   <Accordion.Header className="bg-teal-100">
                     <div className="d-flex justify-content-between w-100">
                       <div className=" d-flex align-items-center">
                         <img src={sms} alt="whatsapp" />
-                        <span className=" ps-2 text-start fs-5">
+                        <span className=" ps-2 text-start fs_15">
                           {t("age_send_text_message")}
                         </span>
                       </div>
@@ -772,12 +771,12 @@ const Brokers = () => {
             </div>
             <div className="option-item rounded-3 my-3">
               <Accordion defaultActiveKey={null} className="custom-accordion ">
-                <Accordion.Item eventKey="0" className="custom-header">
+                <Accordion.Item eventKey="0" className="custom-header border-teal-100">
                   <Accordion.Header className=" bg-teal-100">
                     <div className="d-flex justify-content-between w-100">
                       <div className=" d-flex align-items-center">
                         <img src={email} alt="whatsapp" />
-                        <span className="ps-2 text-start fs-5">
+                        <span className="ps-2 text-start fs_15">
                           {t("age_send_message_email")}
                         </span>
                       </div>
@@ -802,12 +801,12 @@ const Brokers = () => {
             </div>
             <div className="option-item rounded-3 my-3">
               <Accordion defaultActiveKey={null} className="custom-accordion ">
-                <Accordion.Item eventKey="0" className=" custom-header">
+                <Accordion.Item eventKey="0" className=" custom-header border-teal-100">
                   <Accordion.Header className=" bg-teal-100">
                     <div className="d-flex justify-content-between w-100">
                       <div className=" d-flex align-items-center">
                         <img src={group} alt="whatsapp" />
-                        <span className="ps-2 text-start fs-5">
+                        <span className="ps-2 text-start fs_15">
                           {t("age_send_message_whatsapp_share")}
                         </span>
                       </div>
@@ -844,7 +843,7 @@ const Brokers = () => {
           </div>
         </Modal.Body>
       </Modal>
-      <Modal show={showSuccess} onHide={() => setShowSuccess(false)} centered>
+      <Modal show={showSuccess} onHide={() => setShowSuccess(false)} centered className="modal-container">
         <div
           className="position-absolute top-0 start-50 translate-middle-x mt-5 z-2"
           style={{ pointerEvents: "none" }}
@@ -856,7 +855,9 @@ const Brokers = () => {
             style={{ marginTop: "-100px" }}
           />
         </div>
-        <Modal.Header closeButton className="border-0" />
+        <Modal.Header className="d-flex justify-content-end align-items-center border-0">
+          <button type="button" className="btn-close m-0 fs-5" data-bs-dismiss="modal" aria-label="Close" onClick={() => setShowSuccess(false)}></button>
+        </Modal.Header>
         <Modal.Body className="p-4 text-center position-relative z-3">
           <img
             src={successIcon}
@@ -865,31 +866,31 @@ const Brokers = () => {
             style={{ width: "80px", height: "80px" }}
           />
           <div>
-            <p className="fs-3 text-success fw-semibold">
+            <p className="fs-4 text-teal fw-semibold mb-0">
               {t("age_cust_review")}
             </p>
-            <h4 className="fs-3 text-success fw-semibold">
+            <h4 className="fs-4 text-teal fw-semibold mb-0">
               {t("age_cust_status")}
             </h4>
           </div>
         </Modal.Body>
 
-        <Modal.Footer className="justify-content-center border-top-0">
+        <Modal.Footer className="justify-content-center border-top-0 mb-3 gap-4">
           <button
-            className="btn btn-outline-success rounded-pill px-4 py-2 fw-bold shadow-sm"
+            className="btn bg-teal text-white rounded-pill px-4 py-2 fw-bold shadow-sm m-0"
             onClick={handleSentSuccess}
           >
             {t("age_cust_reconciliation_report")}
           </button>
           <button
-            className="btn btn-success rounded-pill px-4 py-2 fw-bold shadow-sm"
+            className="btn btn-outline-success rounded-pill px-5 py-2 fw-bold shadow-sm m-0"
             onClick={() => setShowSuccess(false)}
           >
             {t("age_cust_agreement")}
           </button>
         </Modal.Footer>
       </Modal>
-      <Modal show={sentSuccess} onHide={() => setSentSuccess(false)} centered>
+      <Modal show={sentSuccess} onHide={() => setSentSuccess(false)} centered className="modal-container">
         <div className="position-absolute top-0 start-50 translate-middle-x mt-5 z-2">
           <img
             src={gyiphy}
@@ -898,7 +899,9 @@ const Brokers = () => {
             style={{ marginTop: "-100px" }}
           />
         </div>
-        <Modal.Header closeButton className="border-0 position-relative z-2" />
+        <Modal.Header className="d-flex justify-content-end align-items-center border-0">
+          <button type="button" className="btn-close m-0 fs-5" data-bs-dismiss="modal" aria-label="Close" onClick={() => setSentSuccess(false)}></button>
+        </Modal.Header>
         <Modal.Body className="p-4 position-relative z-2">
           <div className="text-center">
             <div className="d-flex justify-content-center">
@@ -909,16 +912,16 @@ const Brokers = () => {
                 style={{ width: "80px", height: "80px" }}
               />
             </div>
-            <h4 className="fs-3 text-success fw-semibold">
+            <h4 className="fs-3 text-teal fw-semibold">
               {t("age_cust_agreement_status")}
             </h4>
-            <p className="fs-5 text-secondary fw-semibold">
+            <p className="fs-3 text-teal fw-semibold">
               {t("age_cust_status")}
             </p>
           </div>
           <div className="text-center mt-4">
             <button
-              className="btn btn-success rounded-pill px-4 py-2 fw-bold shadow-sm"
+              className="btn bg-teal text-white rounded-pill px-4 py-2 fw-bold shadow-sm w-75"
               onClick={() => setSentSuccess(false)}
             >
               {t("age_btn_description")}
