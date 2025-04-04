@@ -18,7 +18,7 @@ import deleteIcon from "../../assets/images/delete.svg";
 import { Accordion, Modal } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import { useClientService } from "../../Services/ClientService";
-
+import close from "../../assets/images/ButtonClose.png";
 const Customer = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ const Customer = () => {
     sought_area: "",
     desired_area: "",
     property_type: "",
-    property_condition: ""
+    property_condition: "",
   });
 
   const handleFilterChange = (key, value) => {
@@ -98,11 +98,10 @@ const Customer = () => {
 
   return (
     <>
-      <div className="customer-container d-none d-md-block w-100 mx-auto pb-3 position-relative z-50 rounded-3 shadow-lg px-0" >
-        <h1 className="fs-4 font-semibold border-bottom border-[#EAEAEA] py-3 px-4 mb-4 text-success text-center d-none d-md-block">
+      <div className="customer-container d-none d-md-block w-100 mx-auto pb-3 position-relative z-50 rounded-3 shadow-lg px-0">
+        <p className="py-3 mb-4 screen-1 text-center border-bottom d-none d-md-block">
           {t("all_cust")}
-        </h1>
-
+        </p>
         <div>
           <div className="px-3">
             <form className="custom-scrollbar overflow-y-auto overflow-x-hidden scroll-height">
@@ -110,7 +109,7 @@ const Customer = () => {
                 <div className="mb-3 d-flex justify-content-end flex-wrap gap-3">
                   <button
                     type="button"
-                    className="btn btn-outline-success d-flex align-items-center justify-content-center rounded-pill py-2 px-4 mt-2 gap-2"
+                    className="fs-17 lh-1 fw-semibold mt-md-4 agent-btn-responsive2 px-5 py-2 mx-1 rounded-pill align-items-center d-flex gap-1"
                     onClick={() => navigate(`/${lang}/customers/add-customers`)}
                   >
                     <img src={add_reaction} alt="Add Client" />
@@ -123,82 +122,129 @@ const Customer = () => {
                     type="text"
                     className="form-control border-0 p-0 flex-grow-1"
                     placeholder={t("filter_cust")}
-                  onChange  ={(e) => setSearchTerm(e.target.value)}
+                    onChange={(e) => setSearchTerm(e.target.value)}
                     value={searchTerm}
                   />
-                  <button className="btn p-0 ms-2" type="button" aria-label="Search">
+                  <button
+                    className="btn border-0 p-0 ms-2"
+                    type="button"
+                    aria-label="Search"
+                  >
                     <img src={search} alt="Search" />
                   </button>
                 </div>
 
                 <div className="mb-4 d-flex flex-nowrap align-items-center gap-3">
                   <div>
-                    <label className="mb-1 fs-15 lh-1 fw-semibold">{t("cust_filter_1")}</label>
-                    <select className="form-select"
+                    <label className="mb-1 fs-15 lh-1 fw-semibold">
+                      {t("cust_filter_1")}
+                    </label>
+                    <select
+                      className="form-select"
                       value={filters.selectedClient}
-                      onChange={(e) => handleFilterChange("selectedClient", e.target.value)}
+                      onChange={(e) =>
+                        handleFilterChange("selectedClient", e.target.value)
+                      }
                     >
-                      <option disabled value="">Select Option</option>
+                      <option disabled value="">
+                        Select Option
+                      </option>
                       {clientFiltered.map((client) => (
-                        <option key={client.id} value={client.id}>{client.name}</option>
+                        <option key={client.id} value={client.id}>
+                          {client.name}
+                        </option>
                       ))}
                     </select>
                   </div>
                   <div>
-                    <label className="mb-1 fs-15 lh-1 fw-semibold">{t("cust_filter_2")}</label>
+                    <label className="mb-1 fs-15 lh-1 fw-semibold">
+                      {t("cust_filter_2")}
+                    </label>
                     <div className="position-relative border border-[#D6D6D6] rounded py-2 px-3 d-flex mx-auto">
                       <input
                         type="text"
                         className="form-control border-0 p-0 flex-grow-1"
                         placeholder={t("cust_filter_place_2")}
-
                       />
-                      <button className="btn p-0 ms-2" type="button" aria-label="Search">
+                      <button
+                        className="btn border-0 p-0 ms-2"
+                        type="button"
+                        aria-label="Search"
+                      >
                         <img src={search} alt="Search" />
                       </button>
                     </div>
                   </div>
                   <div>
-                    <label className="mb-1 fs-15 lh-1 fw-semibold">{t("cust_serch")}</label>
+                    <label className="mb-1 fs-15 lh-1 fw-semibold">
+                      {t("cust_serch")}
+                    </label>
                     <input
                       type="text"
                       className="form-control"
                       placeholder={t("cust_typing")}
                       value={filters.searchTerm}
-                      onChange={(e) => handleFilterChange("searchTerm", e.target.value)}
+                      onChange={(e) =>
+                        handleFilterChange("searchTerm", e.target.value)
+                      }
                     />
                   </div>
 
                   <div>
-                    <label className="mb-1 fs-15 lh-1 fw-semibold">{t("cust_Property_type")}</label>
-                    <select className="form-select"
+                    <label className="mb-1 fs-15 lh-1 fw-semibold">
+                      {t("cust_Property_type")}
+                    </label>
+                    <select
+                      className="form-select"
                       value={filters.selectedPropertyType}
-                      onChange={(e) => handleFilterChange("selectedPropertyType", e.target.value)}
+                      onChange={(e) =>
+                        handleFilterChange(
+                          "selectedPropertyType",
+                          e.target.value
+                        )
+                      }
                     >
-                      <option disabled selected>Select Option</option>
+                      <option disabled selected>
+                        Select Option
+                      </option>
                       {filterdClients.map((index) => (
-                        <option key={index}>{t("cust_property_type_value")}</option>
+                        <option key={index}>
+                          {t("cust_property_type_value")}
+                        </option>
                       ))}
                     </select>
                   </div>
 
                   <div>
-                    <label className="mb-1 fs-15 lh-1 fw-semibold">{t("cust_Property_condition")}</label>
-                    <select className="form-select"
+                    <label className="mb-1 fs-15 lh-1 fw-semibold">
+                      {t("cust_Property_condition")}
+                    </label>
+                    <select
+                      className="form-select"
                       value={filters.selectedPropertyCondition}
-                      onChange={(e) => handleFilterChange("selectedPropertyCondition", e.target.value)}
+                      onChange={(e) =>
+                        handleFilterChange(
+                          "selectedPropertyCondition",
+                          e.target.value
+                        )
+                      }
                     >
-                      <option disabled selected>Select Option</option>
+                      <option disabled selected>
+                        Select Option
+                      </option>
                       <option>{t("cust_Property_Condition_value")}</option>
                       <option>Option 2</option>
                     </select>
                   </div>
 
-                  <div className="d-flex mt-3">
+                  <div className="d-flex ">
                     <button
                       type="button"
-                      className="btn btn-success  d-flex align-items-center justify-content-center fw-medium text-white border-0 rounded-pill"
-                      style={{ boxShadow: '0 10px 8px rgba(0, 0, 0, 0.1)', padding: '8px 15px', minWidth: '146px' }}
+                      className="fs-17 lh-1 fw-semibold mt-md-4 w-20 agent-btn-responsive1 text-white py-2 mx-1 rounded-pill"
+                      style={{
+                        boxShadow: "0 10px 8px rgba(0, 0, 0, 0.1)",
+                        minWidth: "146px",
+                      }}
                       onClick={() => console.log(filters)}
                     >
                       {t("cust_search")}
@@ -215,9 +261,9 @@ const Customer = () => {
                           <button
                             type="button"
                             onClick={handleOpen}
-                            className="btn btn-outline-success d-flex align-items-center w-auto rounded-pill py-2 px-3"
+                            className="fs-17 lh-1 fw-semibold  agent-btn-responsive2 px-3  py-2 mx-1 rounded-pill align-items-center d-flex gap-1"
                           >
-                            <img className="me-2" src={search_icon2} alt="Add Client" />
+                            <img src={search_icon2} alt="Add Client" />
                             {t("advance_search")}
                           </button>
                         </li>
@@ -229,7 +275,9 @@ const Customer = () => {
                               margin: "5px",
                             }}
                           >
-                            <div className="custom-text">{t(`cust_opt_${i + 1}`)}</div>
+                            <div className="custom-text">
+                              {t(`cust_opt_${i + 1}`)}
+                            </div>
                             <span>
                               <img src={remove_icon} alt="Remove" />
                             </span>
@@ -247,7 +295,7 @@ const Customer = () => {
 
                       <button
                         type="button"
-                        className="fs-17 lh-1 fw-semibold mt-md-4 w-20 agent-btn-responsive1 text-white py-1 mx-1 rounded-pill d-flex align-items-center justify-content-center"
+                        className="fs-17 lh-1 gap-1 fw-bold mt-md-4 w-20 agent-btn-responsive1 text-white py-1 mx-1 rounded-pill d-flex align-items-center justify-content-center"
                       >
                         <img src={action_icon1} alt="Sign Client" />
                         <span className="custom-text-green">
@@ -258,7 +306,7 @@ const Customer = () => {
 
                       <button
                         type="button"
-                        className="fs-17 lh-1 fw-semibold mt-md-4 w-20 agent-btn-responsive1 text-white  py-1 mx-1 rounded-pill d-flex align-items-center justify-content-center"
+                        className="fs-17 lh-1 gap-1 fw-bold mt-md-4 w-20 agent-btn-responsive1 text-white  py-1 mx-1 rounded-pill d-flex align-items-center justify-content-center"
                       >
                         <img src={action_icon2} alt="Sign Owner" />
                         <span className="custom-text-green">
@@ -284,11 +332,21 @@ const Customer = () => {
                             <span>{t("cust_tbl_column_name")}</span>
                           </div>
                         </th>
-                        <th className="table-head">{t("cust_tbl_column_client_type")}</th>
-                        <th className="table-head">{t("cust_tbl_column_client_phone")}</th>
-                        <th className="table-head">{t("cust_tbl_column_client_email")}</th>
-                        <th className="table-head">{t("cust_tbl_column_request_area")}</th>
-                        <th className="table-head">{t("cust_tbl_column_status")}</th>
+                        <th className="table-head">
+                          {t("cust_tbl_column_client_type")}
+                        </th>
+                        <th className="table-head">
+                          {t("cust_tbl_column_client_phone")}
+                        </th>
+                        <th className="table-head">
+                          {t("cust_tbl_column_client_email")}
+                        </th>
+                        <th className="table-head">
+                          {t("cust_tbl_column_request_area")}
+                        </th>
+                        <th className="table-head">
+                          {t("cust_tbl_column_status")}
+                        </th>
                         <th className="table-head"></th>
                       </tr>
                     </thead>
@@ -328,7 +386,11 @@ const Customer = () => {
                                 <img
                                   src={table_arrrow}
                                   alt="table_arrow"
-                                  className={`w-4 h-4 transition-transform ${expandedRows.includes(index) ? "rotate-180" : "rotate-0"}`}
+                                  className={`w-4 h-4 transition-transform ${
+                                    expandedRows.includes(index)
+                                      ? "rotate-180"
+                                      : "rotate-0"
+                                  }`}
                                 />
                               </button>
                             </td>
@@ -464,12 +526,14 @@ const Customer = () => {
             centered
             className="modal-container top-modal-dialog"
           >
-            <Modal.Header className="border-0 p-3 position-relative mt-4 d-">
+            <Modal.Header className="border-0 p-3 d-flex justify-content-end mt-4 ">
               <button
                 type="button"
-                className="btn-close position-absolute close-btn"
-                onClick={handleCloseModal}
-              ></button>
+                className="btn p-0 border-0 bg-transparent"
+                onClick={() => handleCloseModal}
+              >
+                <img src={close} alt="close" />
+              </button>
             </Modal.Header>
 
             <Modal.Body className="text-center justify-center pb-4">
@@ -478,52 +542,55 @@ const Customer = () => {
               </div>
               <div>
                 <p className="mt-4 mb-0 text-black fw-semibold fs-5">
-                  אתם עומדים למחוק לקוח/ות
+                  {t("modal.deleteCustomerTitle")}
                 </p>
                 <p className="m-0 text-black fw-semibold fs-5">
-                  האם לבצע מחיקה?
+                  {t("modal.deleteCustomerQuestion")}
                 </p>
               </div>
             </Modal.Body>
             <Modal.Footer className="border-top-0 justify-content-center flex gap-3">
               <button
-                className="btn btn-outline-success rounded-pill px-4"
+                className="fs-17 lh-1 gap-1 fw-semibold  w-25 agent-btn-responsive1 text-white py-3 rounded-pill"
+                style={{ width: "153px", padding: "13px 0" }}
+              >
+                {t("modal.yesButton")}
+              </button>
+              <button
+                className="fs-17 lh-1 gap-1 fw-semibold w-25 agent-btn-responsive2 py-3 rounded-pill"
                 style={{ width: "153px", padding: "13px 0" }}
                 onClick={handleCloseModal}
               >
-                לא
-              </button>
-              <button
-                className="btn btn-success rounded-pill px-4"
-                style={{ width: "153px", padding: "13px 0" }}
-              >
-                כן
+                {t("modal.noButton")}
               </button>
             </Modal.Footer>
           </Modal>
 
           <Modal
             show={isModalOpen}
-            onHide={() => setIsModalOpen(false)}
+            onClick={() => setIsModalOpen(false)}
             centered
             className="modal-container"
             dialogClassName="modal-dialog-bottom"
           >
-            <Modal.Header className="border-0 p-3 position-relative mt-3">
+            <Modal.Header className="border-0 p-3 d-flex justify-content-end mt-3">
               <button
                 type="button"
-                className="btn-close position-absolute close-btn"
+                className="btn p-0 border-0 bg-transparent"
                 onClick={() => setIsModalOpen(false)}
-              ></button>
+              >
+                <img src={close} alt="close" />
+              </button>
             </Modal.Header>
-
-            <Modal.Body className="text-center justify-center px-5 modal-body-scrollable">
-              <h2 className="text-2xl pb-3 font-semibold text-success text-center border-bottom mb-4 d-none d-md-block">
+              <h3 className="py-3 px-2 mb-3 text-center screen-1  d-none d-md-block">
                 {t("addtional_filter")}
-              </h2>
+                <hr className="border-secondary" />
+              </h3>
+
+            <Modal.Body className=" px-5 py-0 modal-body-scrollable">
               <div className="d-block d-md-none">
                 <div className="flex-grow-1 text-start">
-                  <label className="mb-1 fw-semibold">
+                  <label className="mb-1 fs-15 lh-1 fw-semibold">
                     {t("cust_filter_1")}
                   </label>
                   <select className="form-select">
@@ -535,7 +602,7 @@ const Customer = () => {
                   </select>
                 </div>
                 <div className="flex-grow-1 text-start">
-                  <label className="mb-1 fw-semibold">
+                  <label className="mb-1 fs-15 lh-1 fw-semibold ">
                     {t("cust_filter_2")}
                   </label>
                   <div className="position-relative border border-[#D6D6D6] rounded py-2 px-3 d-flex mx-auto">
@@ -545,7 +612,7 @@ const Customer = () => {
                       placeholder={t("cust_filter_place_2")}
                     />
                     <button
-                      className="btn p-0 ms-2"
+                      className="btn border-0 p-0 ms-2"
                       type="button"
                       aria-label="Search"
                     >
@@ -554,7 +621,7 @@ const Customer = () => {
                   </div>
                 </div>
                 <div className="flex-grow-1 text-start">
-                  <label className="form-label fw-semibold">
+                  <label className="form-label fs-15 lh-1 fw-semibold">
                     {t("cust_serch")}
                   </label>
                   <input
@@ -565,7 +632,7 @@ const Customer = () => {
                 </div>
 
                 <div className="flex-grow-1 text-start">
-                  <label className="mb-1 fw-semibold">
+                  <label className="mb-1 fs-15 lh-1 fw-semibold">
                     {t("cust_Property_type")}
                   </label>
                   <select className="form-select">
@@ -578,7 +645,7 @@ const Customer = () => {
                 </div>
 
                 <div className="flex-grow-1 text-start">
-                  <label className="mb-1 fw-semibold">
+                  <label className="mb-1 fs-15 lh-1 fw-semibold">
                     {t("cust_Property_condition")}
                   </label>
                   <select className="form-select">
@@ -592,7 +659,7 @@ const Customer = () => {
               </div>
               <div className="row row-cols-1 row-cols-md-2 g-4 mb-4">
                 <div className="col">
-                  <label className="d-block text-secondary text-start fw-semibold fs-6 mb-1">
+                  <label className="d-block text-secondary text-start fs-15 lh-1 fw-semibold mb-1">
                     {t("cust_modal_no_rooms")}
                   </label>
                   <div className="position-relative d-flex align-items-center border rounded px-2 py-1">
@@ -611,7 +678,7 @@ const Customer = () => {
                   </div>
                 </div>
                 <div className="col">
-                  <label className="d-block text-secondary text-start fw-semibold fs-6 mb-1">
+                  <label className="d-block text-secondary text-start  fs-15 lh-1 fw-semibold mb-1">
                     {t("floor")}
                   </label>
                   <select className="form-select">
@@ -624,14 +691,14 @@ const Customer = () => {
                 <RangeSlider label={t("cust_slider_label")} />
                 <RangeSlider label={t("cust_slider_label2")} />
               </div>
-              <h3 className="text-base text-start font-semibold text-success mb-2">
+              <h3 className="lh-1 fs-5  font-semibold text-teal mb-3">
                 {t("addtional_feature")}
               </h3>
               <div className="d-flex flex-wrap gap-2 justify-content-start">
                 {Array.from({ length: 9 }, (_, i) => (
                   <button
                     key={i}
-                    className="bg-gray-200 px-3 py-1 rounded-pill text-secondary border-0"
+                    className="bg-gray-200 px-3 py-1 rounded-pill text-secondary fs-15 fw-normal lh-1 border-0"
                   >
                     {t(`addtional_feature_${i + 1}`)}
                   </button>
@@ -640,13 +707,14 @@ const Customer = () => {
             </Modal.Body>
 
             <Modal.Footer className="border-top-0 justify-content-between gap-3 mb-3 px-4">
+             
               <button
-                className="btn btn-success text-white px-4 py-2 rounded-pill"
+                className="fs-17 lh-1 gap-1 fw-semibold mt-md-4 w-25 agent-btn-responsive2 py-2 mx-1 rounded-pill"
                 onClick={() => setIsModalOpen(false)}
               >
                 {t("cust_model_footer")}
               </button>
-              <button className="btn btn-outline-success px-4 py-2 rounded-pill">
+              <button className="fs-17 lh-1 gap-1 fw-semibold mt-md-4 w-25 agent-btn-responsive1 text-white  py-2 mx-1 rounded-pill">
                 {t("cust_model_footer1")}
               </button>
             </Modal.Footer>
@@ -684,7 +752,11 @@ const Customer = () => {
               className="form-control border-0 p-0 flex-grow-1 mb-0"
               placeholder={t("filter_cust")}
             />
-            <button className="btn p-0 ms-2" type="button" aria-label="Search">
+            <button
+              className="btn border-0 p-0 ms-2"
+              type="button"
+              aria-label="Search"
+            >
               <img src={search} alt="Search" />
             </button>
           </div>

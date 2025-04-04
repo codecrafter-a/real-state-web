@@ -64,8 +64,8 @@ small {
 }
 .agent-btn-responsive2 {
   max-width: 100% !important;
-  border: 2px solid #00a481;
-  color: #00a481;
+  border: 2px solid #00A481;
+  color: #00A481;
   background-color: white;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
   box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
@@ -80,8 +80,8 @@ small {
   max-width: 100% !important;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
   box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
-  border: 2px solid #00a481;
-  background-color: #00a481;	
+  border: 2px solid #00A481;
+  background-color: #00A481;	
 }
 .agent-btn-responsive1:hover {
   background-color: #55cd85 !important;

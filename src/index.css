@@ -498,6 +498,7 @@ a:hover {
 	font-size: 10px;
 	margin-top: 5px;
 	white-space: nowrap;
+	color: black;
 }
 
 .step-line {

@@ -50,7 +50,7 @@
 .form-check-input[type=radio]{
     width: 20px !important;
     height: 20px !important;
-    border: 1px solid #1C1B1F;
+    border: 2px solid #1C1B1F;
     background-color: transparent !important;
 }
 .form-check  { 

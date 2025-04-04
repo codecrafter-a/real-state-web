@@ -144,13 +144,13 @@ const Propertydetails = ({ setActiveTab }) => {
       <div className="d-flex justify-content-center justify-content-md-between mt-4 pb-3">
         <Button
           onClick={() => setActiveTab(1)}
-          className="agent-btn-responsive2 responsive-btn d-none d-md-block rounded-pill shadow-lg"
+          className="agent-btn-responsive2 responsive-btn d-none d-md-block rounded-pill "
         >
           {t("Pro_add_pev_btn")}
         </Button>
         <Button
           onClick={() => setActiveTab(3)}
-          className="responsive-btn agent-btn-responsive1  rounded-pill shadow-lg"
+          className="responsive-btn agent-btn-responsive1  rounded-pill "
         >
           {t("pro_add_next_btn")}
         </Button>

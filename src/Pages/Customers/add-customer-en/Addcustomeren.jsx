@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import userTypeIcon1 from "../../../assets/images/user_type_icon1.svg";
 import userTypeIcon2 from "../../../assets/images/user_type_icon2.svg";
 import userTypeIcon3 from "../../../assets/images/user_type_icon3.svg";
@@ -12,7 +12,8 @@ import CustomSelect from "../../../Componant/Common/Select/Customeselect";
 import successIcon from "../../../assets/images/success_icon.svg";
 import RangeSlider from "../../../Componant/Common/RangeSlider/RangeSlider";
 import { Modal } from "react-bootstrap";
-
+import Next from "../../../assets/images/Next.jpg";
+import close from "../../../assets/images/ButtonClose.png";
 const AddCustomer = () => {
   const { t } = useTranslation();
 
@@ -50,13 +51,12 @@ const AddCustomer = () => {
     };
 
     handleResize(); // Initial check
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const nextScreen = () => setCurrentScreen(2);
   const prevScreen = () => setCurrentScreen(1);
-
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -80,9 +80,11 @@ const AddCustomer = () => {
   const renderFirstScreen = () => (
     <>
       <div className="row form_group">
-        <h4>{t("cust_per_info")}</h4>
+        <h4 className="fs-5 lh-1 fw-semibold">{t("cust_per_info")}</h4>
         <div className="col-md-4">
-          <label className="form-label">{t("cust_full_name")}</label>
+          <label className="form-label fs-15 lh-1 fw-semibold">
+            {t("cust_full_name")}
+          </label>
           <CustomInput
             type="text"
             name="fullName"
@@ -92,7 +94,9 @@ const AddCustomer = () => {
           />
         </div>
         <div className="col-md-4">
-          <label className="form-label">{t("cust_phone")}</label>
+          <label className="form-label fs-15 lh-1 fw-semibold">
+            {t("cust_phone")}
+          </label>
           <CustomInput
             type="number"
             name="phone"
@@ -102,7 +106,9 @@ const AddCustomer = () => {
           />
         </div>
         <div className="col-md-4">
-          <label className="form-label">{t("cust_UE")}</label>
+          <label className="form-label fs-15 lh-1 fw-semibold">
+            {t("cust_UE")}
+          </label>
           <CustomInput
             type="email"
             name="email"
@@ -114,7 +120,9 @@ const AddCustomer = () => {
       </div>
       <div className="row form_group">
         <div className=" col-12 col-md-4">
-          <label className="form-label">{t("cust_TA")}</label>
+          <label className="form-label fs-15 lh-1 fw-semibold">
+            {t("cust_TA")}
+          </label>
           <CustomInput
             type="text"
             name="idCard"
@@ -124,7 +132,9 @@ const AddCustomer = () => {
           />
         </div>
         <div className=" col-12 col-md-8">
-          <label className="form-label">{t("cust_address")}</label>
+          <label className="form-label fs-15 lh-1 fw-semibold">
+            {t("cust_address")}
+          </label>
           <CustomInput
             type="text"
             name="residentialArea"
@@ -135,7 +145,9 @@ const AddCustomer = () => {
         </div>
       </div>
       <div className="row pb-3 mb-4">
-        <p className="form-label mb-2">{t("cust_type")}</p>
+        <p className="form-label fs-15 lh-1 fw-semibold mb-2">
+          {t("cust_type")}
+        </p>
         {[
           { id: "usertype_1", icon: userTypeIcon1, label: t("cust_type_1") },
           { id: "usertype_2", icon: userTypeIcon2, label: t("cust_type_2") },
@@ -155,7 +167,7 @@ const AddCustomer = () => {
                 <span className="user_type_icon">
                   <img src={icon} alt="icon" />
                 </span>
-                {label}
+                <span className=" fs-17 lh-1 fw-normal">{label}</span>
               </label>
             </div>
           </div>
@@ -169,14 +181,18 @@ const AddCustomer = () => {
         </div>
       )}
     </>
-  )
+  );
 
   const renderSecondScreen = () => (
     <>
       <div className="row pb-4">
-        <h4>{t("cust_preferences")}</h4>
+        <h4 className="fs-5 lh-1 fw-semibold">{t("cust_preferences")}</h4>
         {[
-          { id: "user_pra1", icon: keyVertical, label: t("cust_preferences_1") },
+          {
+            id: "user_pra1",
+            icon: keyVertical,
+            label: t("cust_preferences_1"),
+          },
           { id: "user_pra2", icon: garageDoor, label: t("cust_preferences_2") },
         ].map(({ id, icon, label }) => (
           <div className="col-auto" key={id}>
@@ -193,7 +209,7 @@ const AddCustomer = () => {
                 <span className="">
                   <img src={icon} alt="icon" />
                 </span>
-                <span> {label}</span>
+                <span className=" fs-17 fw-semibold lh-1"> {label}</span>
               </label>
             </div>
           </div>
@@ -201,23 +217,27 @@ const AddCustomer = () => {
       </div>
       <div className="row form_group">
         <div className="col-md-4">
-          <label className="form-label">{t("res_area")}</label>
-          <div className="input-group input_grp_cus">
+          <label className="form-label fs-15 fw-semibold lh-1">
+            {t("res_area")}
+          </label>
+          <div className="mb-4 position-relative border border-[#D6D6D6] rounded d-flex">
             <CustomInput
               type="text"
               name="requestedArea"
               value={formData.requestedArea}
               onChange={handleChange}
-              className="form-control"
+              className="form-control border-0 p-0 flex-grow-1"
               placeholder={t("type")}
             />
-            <button className="btn " type="button">
+            <button className="btn p-0 px-3 border-0 ms-2" type="button">
               <img src={searchIcon} alt="search" />
             </button>
           </div>
         </div>
         <div className="col-md-4">
-          <label className="form-label">{t("pro_type")}</label>
+          <label className="form-label fs-15 fw-semibold lh-1">
+            {t("pro_type")}
+          </label>
           <CustomSelect
             name="propertyType"
             value={formData.propertyType}
@@ -230,8 +250,10 @@ const AddCustomer = () => {
             className="form-select"
           />
         </div>
-        <div className="col-md-4">
-          <label className="form-label">{t("pro_condition")}</label>
+        <div className="col-md-4 ">
+          <label className="form-label fs-15 fw-semibold lh-1">
+            {t("pro_condition")}
+          </label>
           <CustomSelect
             name="propertyType"
             value={formData.propertyType}
@@ -245,9 +267,11 @@ const AddCustomer = () => {
           />
         </div>
       </div>
-      <div className="row form_group">
+      <div className="row g-4 form_group">
         <div className="col-md-4">
-          <label className="form-label">{t("no_rooms")}{/** Number of room */}</label>
+          <label className="form-label fs-15 fw-semibold my-1 lh-1">
+            {t("no_rooms")}
+          </label>
           <div className="input-group input_grp_cus">
             <CustomInput
               type="text"
@@ -258,17 +282,28 @@ const AddCustomer = () => {
             />
           </div>
         </div>
-        <div className="col-lg-4" >
-          <RangeSlider label={t("size")} customStyle={{ marginRight: "10px" }} />
-        </div>
+
         <div className="col-lg-4">
-          <RangeSlider label={t("price")} customStyle={{ marginLeft: "10px" }} />
+          <RangeSlider label={t("size")} customStyle={{ paddingTop: "10px" }} />
+        </div>
+
+        <div className="col-lg-4">
+          <RangeSlider
+            label={t("price")}
+            customStyle={{ paddingTop: "10px" }}
+          />
         </div>
       </div>
-      <h4>{t("fetures")}</h4>
+
+      <h4 className="fs-5 fw-semibod lh-1">{t("fetures")}</h4>
       <ul class="services_tags">
-        <li><span>{t("entry_type_1")}  </span></li>
-        <li><span>{t("entry_type_2")}  </span></li><br />
+        <li>
+          <span className=" fs-15 fw-normal lh-1">{t("entry_type_1")} </span>
+        </li>
+        <li>
+          <span className=" fs-15 fw-normal lh-1">{t("entry_type_2")} </span>
+        </li>
+        <br />
         {[
           { title: t("feture_1") },
           { title: t("feture_2") },
@@ -279,12 +314,16 @@ const AddCustomer = () => {
           { title: t("feture_7") },
           { title: t("feture_8") },
           { title: t("feture_9") },
-        ].map((item, index) => <li key={index}><span>{item.title}</span></li>
-
-        )}
+        ].map((item, index) => (
+          <li key={index}>
+            <span className=" fs-15 fw-normal lh-1">{item.title}</span>
+          </li>
+        ))}
       </ul>
       <div className="form_group">
-        <label className="form-label">{t("reports")}</label>
+        <label className="form-label fs-15 fw-semibold lh-1">
+          {t("reports")}
+        </label>
         <textarea
           name="customerRequests"
           value={formData.customerRequests}
@@ -295,18 +334,24 @@ const AddCustomer = () => {
       </div>
       {isMobileView && (
         <div className="d-flex justify-content-center mt-3">
-          <button type="button" className="btn_cmn mt-3" onClick={() => setIsFirstModalOpen(true)}>
+          <button
+            type="button"
+            className="btn_cmn mt-3"
+            onClick={() => setIsFirstModalOpen(true)}
+          >
             {t("cust_add")}
           </button>
         </div>
       )}
     </>
-  )
+  );
 
   return (
     <div className="bg-white shadow-lg rounded-3">
       <div className="d-none d-md-block px-3">
-        <h1 className="bor_head_cmn text-center">{t("add_cust_form_title")}</h1>
+        <h3 className="py-4 my-2   text-center screen-1 border-bottom ">
+          {t("add_cust_form_title")}
+        </h3>
       </div>
       <div className="p-0">
         <form className="form_custom">
@@ -315,63 +360,103 @@ const AddCustomer = () => {
               <>
                 {renderFirstScreen()}
                 {renderSecondScreen()}
-                <button type="button" className="btn_cmn mt-3" onClick={() => setIsFirstModalOpen(true)}>
+                <button
+                  type="button"
+                  className="btn_cmn mt-3"
+                  onClick={() => setIsFirstModalOpen(true)}
+                >
                   {t("cust_add")}
                 </button>
               </>
+            ) : currentScreen === 1 ? (
+              renderFirstScreen()
             ) : (
-              currentScreen === 1 ? renderFirstScreen() : renderSecondScreen()
+              renderSecondScreen()
             )}
           </div>
         </form>
       </div>
-      <Modal show={isFirstModalOpen} onHide={() => setIsFirstModalOpen(false)} centered className="modal-container">
-        <Modal.Header className="border-0 p-3 position-relative mt-4">
+      <Modal
+        show={isFirstModalOpen}
+        onHide={() => setIsFirstModalOpen(false)}
+        centered
+        className="modal-container"
+      >
+        <Modal.Header className="border-0 p-3 d-flex justify-content-end mt-4">
           <button
             type="button"
-            className="btn-close position-absolute close-btn"
+            className="btn p-0 border-0 bg-transparent"
             onClick={() => setIsFirstModalOpen(false)}
-          ></button>
+          >
+            <img src={close} alt="close" />
+          </button>
         </Modal.Header>
-
-        <Modal.Body className="text-center justify-center pb-4">
+        <div className=" d-flex justify-content-center  ">
+          <img src={successIcon} alt="Success" className="img-fluid mb-2" />
+        </div>
+        <Modal.Body className="text-center  my-1">
           <div className="d-flex justify-content-center">
-            <img src={successIcon} alt="Success" className="mx-auto w-20 h-20 mb-3" />
+            <h4 className="text-teal  fs-4 lh-1  fw-semibold">
+              {t("add_description")}
+            </h4>
           </div>
-          <h4 className="text-emerald-500 text-2xl font-semibold">{t("add_description")}</h4>
         </Modal.Body>
 
-        <Modal.Footer className="border-top-0 justify-content-center gap-3 mb-3">
-          <button className="btn btn_cmn fs-6 text-white px-4 py-2 rounded-pill" onClick={() => setIsFirstModalOpen(false)}>
+        <Modal.Footer className="border-top-0 d-flex align-items-center justify-content-center gap-4 mb-3">
+          <button
+            className="fs-5 lh-1 fw-semibold agent-btn-responsive1 w-50 text-white py-2  rounded-pill "
+            onClick={() => setIsFirstModalOpen(false)}
+          >
             {t("footer")}
           </button>
-          <button className="btn btn_bor_outline px-5 py-2 rounded-pill" onClick={openSecondModal}>
+          <button
+            className="fs-5 lh-1 fw-semibold agent-btn-responsive2 w-40 py-2  rounded-pill"
+            onClick={openSecondModal}
+          >
             {t("footer1")}
           </button>
         </Modal.Footer>
       </Modal>
 
-      <Modal show={isSecondModalOpen} onHide={() => setIsSecondModalOpen(false)} centered className="modal-container">
-        <Modal.Header className="border-0 p-3 position-relative mt-4">
-          <button
-            type="button"
-            className="btn-close position-absolute close-btn"
-            onClick={() => setIsSecondModalOpen(false)}
-          ></button>
-        </Modal.Header>
+      <Modal
+        show={isSecondModalOpen}
+        onHide={() => setIsSecondModalOpen(false)}
+        centered
+        className="modal-container"
+      >
+        <Modal.Header className="border-0 p-3 mt-4">
+          <div className="d-flex justify-content-between align-items-center w-100">
+            <img src={Next} alt="next btn" />
 
-        <Modal.Body className="text-center justify-center pb-4">
-          <div className=" text-center">
-            <img src={successIcon} alt="Success" className="mx-auto w-20 h-20 mb-3" />
-            <h4 className=" text-2xl mb-12 font-semibold">{t("add_cust_model_description")}</h4>
+            <button
+              type="button"
+              className="btn p-0 border-0 bg-transparent"
+              onClick={() => setIsSecondModalOpen(false)}
+            >
+              <img src={close} alt="close" />
+            </button>
           </div>
+        </Modal.Header>
+        <Modal.Body className="text-center">
+          <div className=" d-flex justify-content-center my-2 ">
+            <img src={successIcon} alt="Success" className="img-fluid mb-3" />
+          </div>
+          <h4 className="fs-4 lh-1  fw-semibold">
+            {t("add_cust_model_description")}
+          </h4>
         </Modal.Body>
 
-        <Modal.Footer className="border-top-0 justify-content-center gap-3 mb-3">
-          <div className="text-center d-flex flex-column justify-center">
-            <button className="modalbtn fs-6 py-2 px-3 mb-4">{t("add_cust_sign_in")}</button>
-            <button className="modalbtn fs-6 py-2 px-3 mb-4">{t("add_proprty_owers_sign_in")}</button>
-            <button className="modalbtn fs-6 py-2 px-3 mb-4">{t("add_cust_broker_sign_in")}</button>
+        <Modal.Footer className="border-top-0 d-flex justify-content-center mb-3">
+          <div className="text-center d-flex flex-column gap-3">
+            <button className="fs-5 lh-1 fw-semibold agent-btn-responsive2 w-100 py-3 px-3 shadow rounded-pill">
+              {t("add_cust_sign_in")}
+            </button>
+            <button className="fs-5 lh-1 fw-semibold agent-btn-responsive2 w-100 py-3 px-3 shadow rounded-pill">
+              {t("add_proprty_owers_sign_in")}
+            </button>
+            <button className="fs-5 lh-1 fw-semibold agent-btn-responsive2 w-100 py-3 px-3 shadow rounded-pill">
+              {t("add_cust_broker_sign_in")}
+            </button>
           </div>
         </Modal.Footer>
       </Modal>
@@ -379,5 +464,3 @@ const AddCustomer = () => {
   );
 };
 export default AddCustomer;
-
-

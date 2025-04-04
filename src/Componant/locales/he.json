@@ -449,7 +449,7 @@
   "toClientsWhoShowedInterest": "ללקוחות שהתעניינו",
   "toAllClientsFoundSuitable": "לכל הלקחות שנמצאו מתאימים",
   "sendMessageTags": "(ע”פ התגיות) כאשר מחיר הנכס יורד",
-  "ownertitle": "הצגת עמלות בעמוד הבית",
+  "ownertitle": "הצגת עמלות",
   "lable1": "הציגו את סכומי עמלות התיווך שלי בלבד",
   "lable2": "הציגו את סכומי עמלות התיווך של כל סוכני המשרד ",
   "lable3": "אל תציגו את עמלות התיווך ",
@@ -595,6 +595,12 @@
   "property_br_address": "נורית 22, חיפה",
   "Additional_data": "נתונים נוספים",
   "Br_title": "החתמת מתעניינים",
+  "changeReminderTitle": "אתם עומדים לשנות את אופן קבלת התזכורת",
+  "changeReminderSubtext": "איך תרצו לקבל תזכורות מאיתנו?",
+  "viaSMS": "ב-SMS",
+  "viaEmail": "בדוא”ל",
+  "viaWhatsapp": "ב- WhatsApp",
+  "update1": "עדכון",
 
   "client_name2": "אמילי סמית",
   "client_name3": "דוד בראון",
@@ -615,6 +621,12 @@
 
   "delete_agreement": "מחיקת הסכם",
   "cancel_signing_process": "ביטול תהליך החתימה",
+  "modal": {
+    "deleteCustomerTitle": "אתם עומדים למחוק לקוח/ות",
+    "deleteCustomerQuestion": "האם לבצע מחיקה?",
+    "noButton": "לא",
+    "yesButton": "כן"
+  },
 
   "report_name": "שירי נקבלי",
   "report_type": "מתעניין בשכירות",

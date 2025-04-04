@@ -142,6 +142,12 @@
     "addtional_feature_7":"Air Conditioner",
     "addtional_feature_8":"Parking",
     "addtional_feature_9":"Safe Room (Mamad)",
+    "modal": {
+    "deleteCustomerTitle": "You are about to delete customer(s)",
+    "deleteCustomerQuestion": "Proceed with deletion?",
+    "noButton": "No",
+    "yesButton": "Yes"
+  },
 
     "pro_tab_title":"Add New Property",
     "pro_add_set1":"Property Address",
@@ -484,10 +490,16 @@
   "toClientsWhoShowedInterest": "to clients who showed interest",
   "toAllClientsFoundSuitable": "to all clients who were found suitable",
   "sendMessageTags": "(according to tags) when the property price drops",
-  "ownertitle": "Display Commissions on the Home Page",
+  "ownertitle": "Presentation of fees",
   "lable1": "Show only my brokerage commission amounts",
   "lable2": "Show brokerage commission amounts for all office agents",
   "lable3": "Do not display brokerage commissions",
+  "changeReminderTitle": "You are about to change the reminder method",
+  "changeReminderSubtext": "How would you like to receive reminders from us?",
+  "viaSMS": "via SMS",
+  "viaEmail": "via Email",
+  "viaWhatsapp": "via WhatsApp",
+  "update1": "Update",
 
   "report_title": "Broker Matching Report",
   "tab_all": "Property Match",
