@@ -708,5 +708,14 @@
   "Israel": "Israel",
   "Ori": "Ori",
   "Rami": "Rami",
-  "Moshe": "Moshe"
+  "Moshe": "Moshe",
+  "Add_broker": "Add a broker",
+  "Add_Property": "Add a property",
+  "Add_client": "Add a Client",
+  "Select_month": "One month from today",
+  "Select_six_month": "Six months from today",
+  "Select_year": "A year from today",
+  "Select_Date": "Select a specific date",
+  "age_comm_type_1_subTitle": "The seller's commission and the buyer's commission are added together, and each broker receives half",
+  "text_place": "Detail the cooperation that was agreed upon."
   }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import "./PersonalArea.css";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
 
 const ChangePassword = () => {
     const { t } = useTranslation();
@@ -42,7 +42,7 @@ const ChangePassword = () => {
                                             right: direction === "ltr" ? "10px" : "auto",
                                             left: direction === "rtl" ? "10px" : "auto",
                                         }}>
-                                        {showPassword ? <FaEyeSlash /> : <FaEye />}
+                                        {showPassword ? <IoEyeOffOutline /> : <IoEyeOutline />}
                                     </span>
                                 </div>
                             </div>
@@ -66,7 +66,7 @@ const ChangePassword = () => {
                                             left: direction === "rtl" ? "10px" : "auto",
                                         }}
                                     >
-                                        {showNewPassword ? <FaEyeSlash /> : <FaEye />}
+                                        {showNewPassword ? <IoEyeOffOutline /> : <IoEyeOutline />}
                                     </span>
                                 </div>
                                 <span className="link-text d-block mt-1 fw-semibold text-decoration-underline cursor-pointer">
@@ -91,7 +91,7 @@ const ChangePassword = () => {
                                             left: direction === "rtl" ? "10px" : "auto",
                                         }}
                                     >
-                                        {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+                                        {showConfirmPassword ? <IoEyeOffOutline /> : <IoEyeOutline />}
                                     </span>
                                 </div>
                             </div>
