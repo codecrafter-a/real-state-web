@@ -5,7 +5,7 @@ const EditAgents = () => {
     const { t } = useTranslation();
 
     return (
-        <div className="p-4 bg-white rounded-3 shadow-sm">
+        <div className="p-4 bg-white rounded-3 shadow-lg">
             <p className="w-100 text-center screen-1 border-bottom pb-3 mb-4 d-none d-md-block">
                 {t("addAgent.editAgent")}
             </p>
@@ -36,7 +36,7 @@ const EditAgents = () => {
                     </div>
                     <div className="justify-content-center justify-content-md-start d-flex">
                         <button className="px-5 py-2 rounded-pill text-white bg-teal border-0">
-                           {t("addAgent.updateButton")}
+                            {t("addAgent.updateButton")}
                         </button>
                     </div>
                     {/* <div className="mt-5">

@@ -47,6 +47,10 @@
 	border: 1px solid #00A481 !important;
 }
 
+.bg-teal-100 {
+	background-color: #E9FAF4;
+}
+
 body {
 	background-color: #fff;
 	color: #000;
@@ -56,6 +60,10 @@ body {
 	padding-top: 64px;
 	font-family: "Assistant", serif;
 }
+
+.custom-dropdown-toggle::after {
+	display: none !important; 
+  }
 
 a,
 a:hover {
@@ -77,11 +85,11 @@ a:hover {
 ;
 
 .fs-17 {
-	font-size: 17px;
+	font-size: 17px !important;
 }
 
 .fs-12 {
-	font-size: 12px;
+	font-size: 12px !important;
 }
 
 .custom-scrollbar::-webkit-scrollbar {
@@ -581,6 +589,10 @@ a:hover {
 
 .accordion-item {
 	overflow: hidden !important;
+}
+
+.w_max {
+	width: max-content;
 }
 
 

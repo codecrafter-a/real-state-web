@@ -124,7 +124,7 @@
    "cust_additional_comments":"Additional comments",
    "cust_additional_comments_value":"Interested in a spacious apartment on the second floor of a villa, separate private entrance. Very special, beautiful and quiet with a lovely view of a green garden. Pastoral atmosphere.",
    "cust_additional_features":"Additional features",
-   "cust_additional_features_value":"Balcony,Air conditioning,Elevator,Furnished,Parking",
+   "cust_additional_features_value":"Balcony,Airconditioning,Elevator,Furnished,Parking",
     "cust_model_footer":"Clear Filters",
     "cust_model_footer1":"Filter",
     "addtional_filter":"Additional Filters",
@@ -527,6 +527,15 @@
   "property_br_address": "Nurit 22, Haifa",
   "Additional_data": "Additional data",
   "Br_title": "Signing of interested parties",
+  "status2": {
+    "generated": "Generated",
+    "sent": "Sent",
+    "viewed": "Viewed",
+    "signed": "Signed"
+  },
+
+  "delete_agreement": "Delete Agreement",
+  "cancel_signing_process": "Cancel Signing Process",
     
   "changePassword": "Change Password",
   "personalDetails": "Personal Details",
@@ -676,5 +685,16 @@
   "send_copy": "Send Copy to Clients",
   "close_deal": "Close Deal",
   "delete": "Delete",
-  "register_land": "Register in Land Registry"
+  "register_land": "Register in Land Registry",
+  "agreements_sent": "Agreements Sent",
+  "agreements_signed": "Agreements Signed",
+  "agreements_generated": "Agreements Generated",
+  "agreements_executed": "Agreements Signed & Executed",
+  "Haim": "Haim",
+  "Shiri": "Shiri",
+  "Liran": "Liran",
+  "Israel": "Israel",
+  "Ori": "Ori",
+  "Rami": "Rami",
+  "Moshe": "Moshe"
   }

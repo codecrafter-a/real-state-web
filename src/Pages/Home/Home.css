@@ -32,3 +32,7 @@ width: 1140px !important;}
 
 
 .right-bg-icon > img{width: 200px !important; height: 200px !important;}
+
+.text-auto {
+    text-align: -webkit-auto;
+}

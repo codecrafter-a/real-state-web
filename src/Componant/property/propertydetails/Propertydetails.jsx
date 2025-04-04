@@ -21,7 +21,7 @@ const Propertydetails = ({ setActiveTab }) => {
 
   return (
     <div
-      className="px-4 custom-scrollbar overflow-y-scroll overflow-x-hidden"
+      className="px-3 custom-scrollbar overflow-y-scroll overflow-x-hidden"
       style={{ maxHeight: "550px" }}
     >
       <Form>

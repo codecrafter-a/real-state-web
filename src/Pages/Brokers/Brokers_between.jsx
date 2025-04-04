@@ -22,23 +22,23 @@ const Brokers_between = () => {
   const [showSuccess, setShowSuccess] = useState(false);
   const [sentSuccess, setSentSuccess] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
-    const [propertySection, setPropertySection] = useState(false);
-  
-    const handlePropertysection = () => {
-      setPropertySection(true);
-    }
-  
-    const handlecloseProperty = () => {
-      setPropertySection(false);
-    }
-  
-    const handleSearchClick = () => {
-      setShowDetails(true);
-    };
-  
-    const handleSearchClose = () => {
-      setShowDetails(false);
-    }
+  const [propertySection, setPropertySection] = useState(false);
+
+  const handlePropertysection = () => {
+    setPropertySection(true);
+  }
+
+  const handlecloseProperty = () => {
+    setPropertySection(false);
+  }
+
+  const handleSearchClick = () => {
+    setShowDetails(true);
+  };
+
+  const handleSearchClose = () => {
+    setShowDetails(false);
+  }
 
   const handleView = () => {
     setIsView(true);
@@ -57,255 +57,15 @@ const Brokers_between = () => {
         <p className="w-100 text-center screen-1 border-bottom py-3 mb-4 d-none d-md-block">
           {t("Brock_between")}
         </p>
-        <div className="row custom-scrollbar overflow-y-auto overflow-x-hidden px-4" style={{ maxHeight: "594px" }}>
-          <div className="col-12">
-            <div className="card p-3 border rounded-3 mb-4">
-              <h5 className=" text-embed-500 fw-semibold fs-5 lh-1 mb-4">
-                {t("age_type_com_distribution")}
-              </h5>
-              <form>
-                <div className="d-flex ">
-                  <Toggle
-                    defaultChecked
-                    type={"radio"}
-                    name="commission"
-                    id="toggleImages"
-                  />
-                  <label className="form-check-label fw-bold" htmlFor="">
-                    {t("age_comm_type_1")}
-                  </label>
-                </div>
-                <div className="d-flex ">
-                  <Toggle
-                    defaultChecked
-                    type={"radio"}
-                    name="commission"
-                    id="toggleImages"
-                  />
-                  <label className="form-check-label" htmlFor="eachGetsOwn">
-                    {t("age_comm_type_2")}
-                  </label>
-                </div>
-                <div className="d-flex ">
-                  <Toggle
-                    defaultChecked
-                    type={"radio"}
-                    name="commission"
-                    id="toggleImages"
-                  />
-                  <label className="form-check-label" htmlFor="buyerPaysSeller">
-                    {t("age_comm_type_3")}
-                  </label>
-                </div>
-                <div className="d-flex ">
-                  <Toggle
-                    defaultChecked
-                    type={"radio"}
-                    name="commission"
-                    id="toggleImages"
-                  />
-                  <label className="form-check-label" htmlFor="other">
-                    {t("age_comm_type_4")}
-                  </label>
-                </div>
-              </form>
-            </div>
-          </div>
-          <div className="col-12">
-            <div className="card p-3 border  rounded-3 mb-4">
-              <h5 className=" text-embed-500 fw-semibold fs-5 lh-1 mb-4">{t("age_tran_type")}</h5>
-              <div className=" d-flex justify-content-start align-items-center gap-3">
-                <div className="border-2 rounded-2 p-2 iconbox iconbox ">
-                  <img src={key_vertical} alt="" className="ms-3" />
-                  <span className="fs-5 fw-normal lh-base text-center px-1">
-                    {t("age_tran_type_1")}
-                  </span>
-                </div>
-                <div className="border-2 rounded-2 p-2 iconbox iconbox">
-                  <img src={garage_door} alt="" className="ms-3" />
-                  <span className="fs-5 fw-normal lh-base text-center px-2">
-                    {t("age_tran_type_2")}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-12">
-          <div className="card p-3 border  rounded-3 mb-4">
-            <div className="form_group mb-2 mb-xl-0 d-flex justify-content-between">
-              <h5 className="text-embed-500 fw-semibold fs-5 lh-1 mb-4">{t("age_details")}</h5>
-              <button
-                type="button"
-                className="border text-xl mt-2 d-flex align-items-center justify-content-center shadow-lg rounded-pill py-1 px-4 search-button"
-              >
-                <div className="flex items-center justify-center">
-                  <img className="me-1" src={add_reaction} alt="Add Client" />
-                  {"add_cust"}{" "}
-                </div>
-              </button>
-            </div>
-            <div className="mb-3">
-              <label for="searchInput" className="form-label fw-semibold">
-                {t("age_details_title")}
-              </label>
-              <div className="border border-[#D6D6D6] rounded w-75 px-3">
-                <div className="d-flex">
-                  <input
-                   onChange={handleSearchClick}
-                    type="text"
-                    className="form-control border-0 p-0"
-                    placeholder={t("age_title_placeholder")}
-                  />
-                  <button className="btn" type="button">
-                    <img src={search} alt="Search" />
-                  </button>
-                </div>
-              </div>
-            </div>
-            {showDetails && (
-              <>
-                <div className="border rounded w-full px-3">
-                  <div className="d-flex flex-row justify-content-between">
-                    <div className="d-flex flex-col">
-                      <label>{t('broker_name')}</label>
-                      <input
-                        type="text"
-                        className="form-control border-0 p-0"
-                        placeholder="Shirims@gmail.com | 054-4692650"
-                        values=""
-                      />
-                    </div>
-                    <div className="d-flex flex-row justify-content-end">
-                      <button className="btn " type="button" onClick={handleSearchClose}>
-                        <img src={close} alt="Search" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </>
-            )}
-          </div>
-          </div>
-          <div className="col-12">
-          <div className="card p-3 border  rounded-3 mb-4">
-            <div className="form_group mb-2 mb-xl-0 d-flex justify-content-between">
-              <h5 className="text-embed-500 fw-semibold fs-5 lh-1 mb-4">{t("age_pro_section")}</h5>
-              <button
-                type="button"
-                className="border text-xl mt-2 d-flex align-items-center justify-content-center shadow-lg rounded-pill py-1 px-4 search-button"
-              >
-                <div className="flex items-center justify-center">
-                  <img className="me-1" src={add_home} alt="Add Client" />
-                  {"add_cust"}{" "}
-                </div>
-              </button>
-            </div>
-            <div className="mb-3">
-              <label for="searchInput" className="form-label fw-semibold">
-                {t("age_pro_section_title")}
-              </label>
-              <div className="border border-[#D6D6D6] rounded w-75 px-3">
-                <div className="d-flex">
-                  <input
-                    onChange={handlePropertysection}
-                    type="text"
-                    className="form-control border-0 p-0"
-                    placeholder={t("age_pro_asset_address")}
-                  />
-                  <button className="btn" type="button">
-                    <img src={search} alt="Search" />
-                  </button>
-                </div>
-              </div>
-            </div>
-            {propertySection && (
-              <>
-                <div className="border rounded w-full px-3">
-                  <div className="d-flex flex-row justify-content-between">
-                    
-                    <div className="d-flex flex-row align-item-center gap-2">
-                    <div className="my-2"><img src={key_vertical}  alt="key vertical"/></div>
-                    <div>
-                    <label>{t("property_br_address")}</label>
-                      <input
-                        type="text"
-                        className="form-control border-0 p-0"
-                        placeholder="שכירות : 5000 לחודש"
-                        values=""
-                      />
-                    </div>
-                      
-                    </div>
-                    <div className="d-flex flex-row justify-content-end">
-                      <button className="btn " type="button" onClick={handlecloseProperty}>
-                        <img src={close} alt="Search" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <div className="d-flex align-items-center gap-2 justify-content-start">
-                  <div className=" mt-4"> 
-                  <InputGroup className="w-auto">
-                      <Form.Select className="text-center">
-                        <option>%</option>
-                        <option>₪</option>
-                      </Form.Select>
-                  </InputGroup>
-                  </div>
-                  
-                  <div className="mx-0">
-                    <span className=" fw-semibold">{t("br_commission")}</span>
-                    <Form.Control type="number" className=" w-100" defaultValue="30" />
-                  </div>
-                  <div>
-                    <span className= "fw-semibold">{t("rental_months")}</span>
-                    <Form.Control type="number" className=" w-100" defaultValue=" 12" />
-                  </div>
-                </div>
-              </>
-            )}
-          </div>
-          </div>
-          <div className="col-12">
-            <div className="card p-3 border  rounded-3 mb-4">
-              <h5 className=" text-embed-500 fw-semibold fs-5 lh-1 mb-4">{t("age_note")}</h5>
-              <div className=" px-2 pb-2">
-                <textarea
-                  className="form-control"
-                  placeholder={t("age_note_placeholder")}
-                  rows="4"
-                ></textarea>
-              </div>
-            </div>
-          </div>
-          <div className="col-12">
-            <div className="d-flex gap-3 pb-3 ">
-              <button
-                className="agent-button1  rounded-pill px-5 py-2 fw-bold shadow-sm text-white"
-                onClick={handleView}
-              >
-                {t("age_btn_send")}
-              </button>
-              <button className=" agent-button2 rounded-pill px-4 py-2 fw-bold">
-                {t("age_btn_send_without")}
-              </button>
-              <button className=" agent-button2 rounded-pill px-5 py-1 fw-bold">
-                {t("age_btn_view")}
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/** Mobile Screen View */}
-      <div className="bg-transperant  d-block d-md-none">
-        <div className="row custom-scrollbar overflow-y-auto overflow-x-hidden"  style={{ maxHeight: "594px" }}>
-          <div className="col-12">
-              <div className="card p-3 border bg-light rounded-3 mb-4">
+        <div className="px-3">
+          <div className="row custom-scrollbar overflow-y-auto overflow-x-hidden px-3 scroll-height">
+            <div className="col-12 px-0">
+              <div className="card p-3 border rounded-3 mb-4">
                 <h5 className=" text-embed-500 fw-semibold fs-5 lh-1 mb-4">
                   {t("age_type_com_distribution")}
                 </h5>
                 <form>
-                  <div className="d-flex align-items-center gap-1 ">
+                  <div className="d-flex ">
                     <Toggle
                       defaultChecked
                       type={"radio"}
@@ -316,41 +76,283 @@ const Brokers_between = () => {
                       {t("age_comm_type_1")}
                     </label>
                   </div>
-                  <div className="d-flex align-items-center gap-1">
+                  <div className="d-flex ">
                     <Toggle
                       defaultChecked
                       type={"radio"}
                       name="commission"
                       id="toggleImages"
                     />
-                    <label className="fs-15 fw-normal lh-1 " htmlFor="eachGetsOwn">
+                    <label className="form-check-label" htmlFor="eachGetsOwn">
                       {t("age_comm_type_2")}
                     </label>
                   </div>
-                  <div className="d-flex align-items-center gap-1 ">
+                  <div className="d-flex ">
                     <Toggle
                       defaultChecked
                       type={"radio"}
                       name="commission"
                       id="toggleImages"
                     />
-                    <label className="fs-15 fw-normal lh-1" htmlFor="buyerPaysSeller">
+                    <label className="form-check-label" htmlFor="buyerPaysSeller">
                       {t("age_comm_type_3")}
                     </label>
                   </div>
-                  <div className="d-flex align-items-center gap-1 ">
+                  <div className="d-flex ">
                     <Toggle
                       defaultChecked
                       type={"radio"}
                       name="commission"
                       id="toggleImages"
                     />
-                    <label className="fs-15 fw-normal lh-1" htmlFor="other">
+                    <label className="form-check-label" htmlFor="other">
                       {t("age_comm_type_4")}
                     </label>
                   </div>
                 </form>
               </div>
+            </div>
+            <div className="col-12 px-0">
+              <div className="card p-3 border  rounded-3 mb-4">
+                <h5 className=" text-embed-500 fw-semibold fs-5 lh-1 mb-4">{t("age_tran_type")}</h5>
+                <div className=" d-flex justify-content-start align-items-center gap-3">
+                  <div className="border-2 rounded-2 p-2 iconbox iconbox ">
+                    <img src={key_vertical} alt="" className="ms-3" />
+                    <span className="fs-5 fw-normal lh-base text-center px-1">
+                      {t("age_tran_type_1")}
+                    </span>
+                  </div>
+                  <div className="border-2 rounded-2 p-2 iconbox iconbox">
+                    <img src={garage_door} alt="" className="ms-3" />
+                    <span className="fs-5 fw-normal lh-base text-center px-2">
+                      {t("age_tran_type_2")}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-12 px-0">
+              <div className="card p-3 border  rounded-3 mb-4">
+                <div className="form_group mb-2 mb-xl-0 d-flex justify-content-between">
+                  <h5 className="text-embed-500 fw-semibold fs-5 lh-1 mb-4">{t("age_details")}</h5>
+                  <button
+                    type="button"
+                    className="border text-xl mt-2 d-flex align-items-center justify-content-center shadow-lg rounded-pill py-1 px-4 search-button"
+                  >
+                    <div className="flex items-center justify-center">
+                      <img className="me-1" src={add_reaction} alt="Add Client" />
+                      {"add_cust"}{" "}
+                    </div>
+                  </button>
+                </div>
+                <div className="mb-3">
+                  <label for="searchInput" className="form-label fw-semibold">
+                    {t("age_details_title")}
+                  </label>
+                  <div className="border border-[#D6D6D6] rounded w-75 px-3">
+                    <div className="d-flex">
+                      <input
+                        onChange={handleSearchClick}
+                        type="text"
+                        className="form-control border-0 p-0"
+                        placeholder={t("age_title_placeholder")}
+                      />
+                      <button className="btn" type="button">
+                        <img src={search} alt="Search" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                {showDetails && (
+                  <>
+                    <div className="border rounded w-full px-3">
+                      <div className="d-flex flex-row justify-content-between">
+                        <div className="d-flex flex-col">
+                          <label>{t('broker_name')}</label>
+                          <input
+                            type="text"
+                            className="form-control border-0 p-0"
+                            placeholder="Shirims@gmail.com | 054-4692650"
+                            values=""
+                          />
+                        </div>
+                        <div className="d-flex flex-row justify-content-end">
+                          <button className="btn " type="button" onClick={handleSearchClose}>
+                            <img src={close} alt="Search" />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+            <div className="col-12 px-0">
+              <div className="card p-3 border  rounded-3 mb-4">
+                <div className="form_group mb-2 mb-xl-0 d-flex justify-content-between">
+                  <h5 className="text-embed-500 fw-semibold fs-5 lh-1 mb-4">{t("age_pro_section")}</h5>
+                  <button
+                    type="button"
+                    className="border text-xl mt-2 d-flex align-items-center justify-content-center shadow-lg rounded-pill py-1 px-4 search-button"
+                  >
+                    <div className="flex items-center justify-center">
+                      <img className="me-1" src={add_home} alt="Add Client" />
+                      {"add_cust"}{" "}
+                    </div>
+                  </button>
+                </div>
+                <div className="mb-3">
+                  <label for="searchInput" className="form-label fw-semibold">
+                    {t("age_pro_section_title")}
+                  </label>
+                  <div className="border border-[#D6D6D6] rounded w-75 px-3">
+                    <div className="d-flex">
+                      <input
+                        onChange={handlePropertysection}
+                        type="text"
+                        className="form-control border-0 p-0"
+                        placeholder={t("age_pro_asset_address")}
+                      />
+                      <button className="btn" type="button">
+                        <img src={search} alt="Search" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                {propertySection && (
+                  <>
+                    <div className="border rounded w-full px-3">
+                      <div className="d-flex flex-row justify-content-between">
+
+                        <div className="d-flex flex-row align-item-center gap-2">
+                          <div className="my-2"><img src={key_vertical} alt="key vertical" /></div>
+                          <div>
+                            <label>{t("property_br_address")}</label>
+                            <input
+                              type="text"
+                              className="form-control border-0 p-0"
+                              placeholder="שכירות : 5000 לחודש"
+                              values=""
+                            />
+                          </div>
+
+                        </div>
+                        <div className="d-flex flex-row justify-content-end">
+                          <button className="btn " type="button" onClick={handlecloseProperty}>
+                            <img src={close} alt="Search" />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="d-flex align-items-center gap-2 justify-content-start">
+                      <div className=" mt-4">
+                        <InputGroup className="w-auto">
+                          <Form.Select className="text-center">
+                            <option>%</option>
+                            <option>₪</option>
+                          </Form.Select>
+                        </InputGroup>
+                      </div>
+
+                      <div className="mx-0">
+                        <span className=" fw-semibold">{t("br_commission")}</span>
+                        <Form.Control type="number" className=" w-100" defaultValue="30" />
+                      </div>
+                      <div>
+                        <span className="fw-semibold">{t("rental_months")}</span>
+                        <Form.Control type="number" className=" w-100" defaultValue=" 12" />
+                      </div>
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+            <div className="col-12 px-0">
+              <div className="card p-3 border  rounded-3 mb-4">
+                <h5 className=" text-embed-500 fw-semibold fs-5 lh-1 mb-4">{t("age_note")}</h5>
+                <div className=" px-2 pb-2">
+                  <textarea
+                    className="form-control"
+                    placeholder={t("age_note_placeholder")}
+                    rows="4"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+            <div className="col-12 px-0">
+              <div className="d-flex gap-3 pb-3 ">
+                <button
+                  className="agent-button1  rounded-pill px-5 py-2 fw-bold shadow-sm text-white"
+                  onClick={handleView}
+                >
+                  {t("age_btn_send")}
+                </button>
+                <button className=" agent-button2 rounded-pill px-4 py-2 fw-bold">
+                  {t("age_btn_send_without")}
+                </button>
+                <button className=" agent-button2 rounded-pill px-5 py-1 fw-bold">
+                  {t("age_btn_view")}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/** Mobile Screen View */}
+      <div className="bg-transperant  d-block d-md-none">
+        <div className="row custom-scrollbar overflow-y-auto overflow-x-hidden">
+          <div className="col-12">
+            <div className="card p-3 border bg-light rounded-3 mb-4">
+              <h5 className=" text-embed-500 fw-semibold fs-5 lh-1 mb-4">
+                {t("age_type_com_distribution")}
+              </h5>
+              <form>
+                <div className="d-flex align-items-center gap-1 ">
+                  <Toggle
+                    defaultChecked
+                    type={"radio"}
+                    name="commission"
+                    id="toggleImages"
+                  />
+                  <label className="form-check-label fw-bold" htmlFor="">
+                    {t("age_comm_type_1")}
+                  </label>
+                </div>
+                <div className="d-flex align-items-center gap-1">
+                  <Toggle
+                    defaultChecked
+                    type={"radio"}
+                    name="commission"
+                    id="toggleImages"
+                  />
+                  <label className="fs-15 fw-normal lh-1 " htmlFor="eachGetsOwn">
+                    {t("age_comm_type_2")}
+                  </label>
+                </div>
+                <div className="d-flex align-items-center gap-1 ">
+                  <Toggle
+                    defaultChecked
+                    type={"radio"}
+                    name="commission"
+                    id="toggleImages"
+                  />
+                  <label className="fs-15 fw-normal lh-1" htmlFor="buyerPaysSeller">
+                    {t("age_comm_type_3")}
+                  </label>
+                </div>
+                <div className="d-flex align-items-center gap-1 ">
+                  <Toggle
+                    defaultChecked
+                    type={"radio"}
+                    name="commission"
+                    id="toggleImages"
+                  />
+                  <label className="fs-15 fw-normal lh-1" htmlFor="other">
+                    {t("age_comm_type_4")}
+                  </label>
+                </div>
+              </form>
+            </div>
           </div>
           <div className="col-12">
             <div className="card p-3 border  bg-light   rounded-3 mb-4">
@@ -363,7 +365,7 @@ const Brokers_between = () => {
                   </span>
                 </div>
                 <div className="border-2 bg-white rounded-2 p-2 iconbox d-flex flex-column align-items-center">
-                  <img src={garage_door} alt=""  />
+                  <img src={garage_door} alt="" />
                   <span className="fs-5 fw-normal lh-base text-center px-1">
                     {t("age_tran_type_2")}
                   </span>
@@ -408,30 +410,30 @@ const Brokers_between = () => {
                 </div>
               </div>
               {showDetails && (
-              <>
-                <div className="border rounded w-full px-3">
-                  <div className="d-flex flex-row justify-content-between">
-                    <div className="d-flex flex-col">
-                      <label>{t('broker_name')}</label>
-                      <input
-                        type="text"
-                        className="form-control border-0 p-0"
-                        placeholder="Shirims@gmail.com | 054-4692650"
-                        values=""
-                      />
-                    </div>
-                    <div className="d-flex flex-row justify-content-end">
-                      <button className="btn " type="button" onClick={handleSearchClose}>
-                        <img src={close} alt="Search" />
-                      </button>
+                <>
+                  <div className="border rounded w-full px-3">
+                    <div className="d-flex flex-row justify-content-between">
+                      <div className="d-flex flex-col">
+                        <label>{t('broker_name')}</label>
+                        <input
+                          type="text"
+                          className="form-control border-0 p-0"
+                          placeholder="Shirims@gmail.com | 054-4692650"
+                          values=""
+                        />
+                      </div>
+                      <div className="d-flex flex-row justify-content-end">
+                        <button className="btn " type="button" onClick={handleSearchClose}>
+                          <img src={close} alt="Search" />
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-              </>
-            )}
+                </>
+              )}
             </div>
-           
+
           </div>
           <div className="col-12">
             <div className="card p-3 border bg-light rounded-3 mb-4">
@@ -456,7 +458,7 @@ const Brokers_between = () => {
                 <div className="border border-[#D6D6D6] bg-white rounded w-full px-3">
                   <div className="d-flex">
                     <input
-                     onChange={handlePropertysection}
+                      onChange={handlePropertysection}
                       type="text"
                       className="form-control border-0 p-0"
                       placeholder={t("age_pro_asset_address")}
@@ -468,51 +470,51 @@ const Brokers_between = () => {
                 </div>
               </div>
               {propertySection && (
-              <>
-                <div className="border rounded w-full px-3">
-                  <div className="d-flex flex-row justify-content-between">
-                    
-                    <div className="d-flex flex-row align-item-center gap-2">
-                    <div className="my-2"><img src={key_vertical}  alt="key vertical"/></div>
+                <>
+                  <div className="border rounded w-full px-3">
+                    <div className="d-flex flex-row justify-content-between">
+
+                      <div className="d-flex flex-row align-item-center gap-2">
+                        <div className="my-2"><img src={key_vertical} alt="key vertical" /></div>
+                        <div>
+                          <label>{t("property_br_address")}</label>
+                          <input
+                            type="text"
+                            className="form-control border-0 p-0"
+                            placeholder="שכירות : 5000 לחודש"
+                            values=""
+                          />
+                        </div>
+
+                      </div>
+                      <div className="d-flex flex-row justify-content-end">
+                        <button className="btn " type="button" onClick={handlecloseProperty}>
+                          <img src={close} alt="Search" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="d-flex align-items-center gap-2 justify-content-start">
+                    <div className=" mt-4">
+                      <InputGroup className="w-auto">
+                        <Form.Select className="text-center">
+                          <option>%</option>
+                          <option>₪</option>
+                        </Form.Select>
+                      </InputGroup>
+                    </div>
+
+                    <div className="mx-0">
+                      <span className=" fw-semibold">{t("br_commission")}</span>
+                      <Form.Control type="number" className="t w-100" defaultValue="30" />
+                    </div>
                     <div>
-                    <label>{t("property_br_address")}</label>
-                      <input
-                        type="text"
-                        className="form-control border-0 p-0"
-                        placeholder="שכירות : 5000 לחודש"
-                        values=""
-                      />
-                    </div>
-                      
-                    </div>
-                    <div className="d-flex flex-row justify-content-end">
-                      <button className="btn " type="button" onClick={handlecloseProperty}>
-                        <img src={close} alt="Search" />
-                      </button>
+                      <span className="fw-semibold">{t("rental_months")}</span>
+                      <Form.Control type="string" className=" w-100" defaultValue="12" />
                     </div>
                   </div>
-                </div>
-                <div className="d-flex align-items-center gap-2 justify-content-start">
-                  <div className=" mt-4"> 
-                  <InputGroup className="w-auto">
-                      <Form.Select className="text-center">
-                        <option>%</option>
-                        <option>₪</option>
-                      </Form.Select>
-                  </InputGroup>
-                  </div>
-                  
-                  <div className="mx-0">
-                    <span className=" fw-semibold">{t("br_commission")}</span>
-                    <Form.Control type="number" className="t w-100" defaultValue="30" />
-                  </div>
-                  <div>
-                    <span className= "fw-semibold">{t("rental_months")}</span>
-                    <Form.Control type="string" className=" w-100" defaultValue="12" />
-                  </div>
-                </div>
-              </>
-            )}
+                </>
+              )}
             </div>
           </div>
           <div className="col-12">
@@ -774,7 +776,7 @@ const Brokers_between = () => {
           </div>
         </Modal.Body>
 
-        <Modal.Footer className="justify-content-center">
+        <Modal.Footer className="justify-content-center border-top-0">
           <button
             className="btn btn-outline-success rounded-pill px-4 py-2 fw-bold shadow-sm"
             onClick={handleSentSuccess}
