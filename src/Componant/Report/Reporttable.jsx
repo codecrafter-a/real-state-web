@@ -57,12 +57,12 @@ const DataTable = () => {
                   />
                 </td>
 
-                <td style={{ paddingTop: "25px", paddingBottom: "25px" }}>{row.name}</td>
-                <td style={{ paddingTop: "25px", paddingBottom: "25px" }}>{row.type}</td>
-                <td style={{ paddingTop: "25px", paddingBottom: "25px" }}>{row.phone}</td>
-                <td style={{ paddingTop: "25px", paddingBottom: "25px" }}>{row.email}</td>
-                <td style={{ paddingTop: "25px", paddingBottom: "25px" }}>{row.details.type}</td>
-                <td style={{ paddingTop: "25px", paddingBottom: "25px" }}>
+                <td className='fs-17 fw-normal lh-1' style={{ paddingTop: "25px", paddingBottom: "25px" }}>{row.name}</td>
+                <td className='fs-17 fw-normal lh-1' style={{ paddingTop: "25px", paddingBottom: "25px" }}>{row.type}</td>
+                <td className='fs-17 fw-normal lh-1' style={{ paddingTop: "25px", paddingBottom: "25px" }}>{row.phone}</td>
+                <td className='fs-17 fw-normal lh-1' style={{ paddingTop: "25px", paddingBottom: "25px" }}>{row.email}</td>
+                <td className='fs-17 fw-normal lh-1' style={{ paddingTop: "25px", paddingBottom: "25px" }}>{row.details.type}</td>
+                <td className='fs-17 fw-normal lh-1' style={{ paddingTop: "25px", paddingBottom: "25px" }}>
                   {expandedRows[row.id] ? (
                     <FaChevronUp
                       style={{ ...styles.dropdownIcon, color: '#00A6A4' }}

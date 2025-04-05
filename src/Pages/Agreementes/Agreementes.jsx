@@ -586,7 +586,7 @@ const Agreements = () => {
           </div>
           <div className="row px-1">
             <div className="col-12 col-md-8">
-              <div className="m-3 position-relative border border-[#D6D6D6] rounded py-2  px-3">
+              <div className="m-3 position-relative border border-[#D6D6D6] rounded py-2 px-3">
                 <div className="d-flex">
                   <input
                     type="text"
@@ -612,7 +612,7 @@ const Agreements = () => {
           </div>
         </div>
         {activeTab === "all" && (
-          <Accordion className="d-block p-0 d-md-none d-flex flex-column gap-3 my-2 overflow-y-auto overflow-x-hidden custom-scrollbar">
+          <Accordion className="d-block p-0 scroll-height d-md-none d-flex flex-column gap-3 my-2 overflow-y-auto overflow-x-hidden custom-scrollbar">
             {tableData.map((row, index) => (
               <Accordion.Item
                 eventKey={index.toString()}

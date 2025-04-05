@@ -64,7 +64,7 @@ export const reportData = {
       client_name: t("client_name"), 
       email_phone: t("email_phone"),
       properties: [
-        { id: 1, address: t("property_type"), price: t("price1"), rooms: t("rooms"), features: ["garage", "balcony", "secure_room"], description: t("description") },
+        { id: 1, address: t("property_type"), price: t("price1"), rooms: t("rooms"), features: ["garage", "balcony", "secure_room"], description: t("description"),  },
         { id: 2, address: t("property_type"), price: t("price1"), rooms: t("rooms"), features: ["garage", "balcony"], description: t("description") },
         { id: 3, address: t("property_type"), price: t("price1"), rooms: t("rooms"), features: ["garage", "secure_room"], description: t("description") },
         { id: 4, address: t("property_type"), price: t("price1"), rooms: t("rooms"), features: ["balcony"], description: t("description") },
@@ -77,7 +77,7 @@ export const reportData = {
       client_name: t("client_name2"), 
       email_phone: t("email_phone2"),
       properties: [
-        { id: 1, address: t("property_type2"), price: t("price2"), rooms: t("rooms"), features: ["garage", "balcony"], description: t("description") },
+        { id: 1, address: t("property_type2"), price: t("price2"), rooms: t("rooms"), features: ["garage", "balcony"], description: t("description"),  },
         { id: 2, address: t("property_type2"), price: t("price2"), rooms: t("rooms"), features: ["garage"], description: t("description") },
         { id: 3, address: t("property_type2"), price: t("price2"), rooms: t("rooms"), features: ["balcony", "secure_room"], description: t("description") }
       ]
@@ -102,7 +102,9 @@ export const reportDataRecent = {
       address: t("property1.address"),
       type: t("property1.type"),
       details: t("property1.details"),
+      subTitle: t("property1.subTitle"),
       description: t("property1.description"),
+      rowHouseDescription: t("property1.rowHouseDescription"),
       price: "₪1,200,000",
       features: ["garage", "balcony", "secure_room"],
       image: "house1.jpg",

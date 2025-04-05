@@ -25,7 +25,7 @@ const CommonPieChart = ({ data, colors}) => {
           <Tooltip />
         </PieChart>
       </div>
-      <div className="container">
+      <div className="container mx-4">
         <div className="row justify-content-center mt-3">  
           <div className="col-12 col-md-6 d-flex flex-column align-items-center">
             <div className="d-flex flex-column">
@@ -49,7 +49,7 @@ const CommonPieChart = ({ data, colors}) => {
           <div className="col-12 col-md-6 d-flex flex-column align-items-center mt-3 mt-md-0">
             <div className="d-flex flex-column">
               {data.slice(3, 5).map((entry, index) => (
-                <div key={index} className="d-flex align-items-center mb-1">
+                <div key={index} className="d-flex align-items-center justify-content-md-center mb-1">
                   <span
                     className="me-2"
                     style={{

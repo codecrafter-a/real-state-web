@@ -74,14 +74,14 @@ const Propertymatch = ({ properties }) => {
                     </div>
                     <div className="mb-2">
                       {property.features.map((feature, i) => (
-                        <Badge key={i} bg="light" text="dark" className="me-2">
+                        <Badge key={i} bg="light" text="dark" className="me-2 fw-normal">
                           {t(feature)}
                         </Badge>
                       ))}
                     </div>
-                    <p className="small text-muted">{t(property.description)}</p>
+                    <p className="fs-12 lh-1 fw-normal text-muted ">{t(property.description)}</p>
                     <div className="justify-content-center d-flex">
-                      <button className="agent-btn-responsive1 w-75 py-1 rounded-pill text-white">
+                      <button className="agent-btn-responsive1 w-75 fs-6 lh-1 fw-semibold py-2  rounded-pill text-white">
                         {t("send1_to_client")}
                       </button>
                     </div>
