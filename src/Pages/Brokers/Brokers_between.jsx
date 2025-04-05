@@ -12,7 +12,7 @@ import group from "../../assets/images/Group 2538.png";
 import successIcon from "../../assets/images/success_icon.svg";
 import Accordion from "react-bootstrap/Accordion";
 import whatsapp from "../../assets/images/wa, whatsapp, message, communication, chat.svg";
-import gyiphy from "../../assets/images/giphy 1.png";
+import celebration from "../../assets/images/celebration.gif";
 import key_vertical from "../../assets/images/key_vertical.svg";
 import garage_door from "../../assets/images/garage_door.svg";
 import close from '../../assets/images/close_small.png';
@@ -761,8 +761,8 @@ const Brokers_between = () => {
           style={{ pointerEvents: "none" }}
         >
           <img
-            src={gyiphy}
-            alt="gyiphy"
+            src={celebration}
+            alt="celebration"
             className="img-fluid w-full object-fit-cover"
             style={{ marginTop: "-100px" }}
           />
@@ -805,8 +805,8 @@ const Brokers_between = () => {
       <Modal show={sentSuccess} onHide={() => setSentSuccess(false)} centered className="modal-container">
         <div className="position-absolute top-0 start-50  translate-middle-x mt-5 z-2">
           <img
-            src={gyiphy}
-            alt="gyiphy"
+            src={celebration}
+            alt="celebration"
             className="img-fluid object-fit-cover w-full h-auto"
             style={{ marginTop: "-100px" }}
           />

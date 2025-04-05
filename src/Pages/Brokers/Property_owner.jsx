@@ -12,9 +12,10 @@ import group from "../../assets/images/Group 2538.png";
 import successIcon from "../../assets/images/success_icon.svg";
 import Accordion from "react-bootstrap/Accordion";
 import whatsapp from "../../assets/images/wa, whatsapp, message, communication, chat.svg";
-import gyiphy from "../../assets/images/giphy 1.png";
+import gyiphy from "../../assets/images/celebration.gif";
 import close from '../../assets/images/close_small.png';
 import Toggle from "../../Componant/Common/Toggle/Toggle";
+
 const Property_owner = () => {
   const { t } = useTranslation();
   const [isView, setIsView] = useState(false);
@@ -34,7 +35,7 @@ const Property_owner = () => {
   }
 
   const handleSearchClick = () => {
-    setShowDetails(true); // Show the details when the search button is clicked
+    setShowDetails(true); 
   };
 
   const handleSearchClose = () => {
@@ -71,7 +72,7 @@ const Property_owner = () => {
                   >
                     <div className="flex items-center justify-center">
                       <img className="me-1" src={add_reaction} alt="Add Client" />
-                      {t("Add_client")}{" "}
+                      {t("Add_client")}
                     </div>
                   </button>
                 </div>
