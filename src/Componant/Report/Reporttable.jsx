@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Table, Form, Accordion, Card, Button,} from 'react-bootstrap';
+import { Table, Form, Accordion, Card, Button, } from 'react-bootstrap';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { useTranslation } from "react-i18next"
 import { useReportServices } from '../../Services/ReportServices';
@@ -10,7 +10,7 @@ const DataTable = () => {
   const [reportData, setReportData] = useState([]);
   const { getReportServices } = useReportServices();
   
-  useEffect( () => {
+  useEffect(() => {
     const data = getReportServices();
     setReportData(data);
   }, []);
@@ -34,23 +34,35 @@ const DataTable = () => {
       <Table responsive hover style={styles.customTable} className='border  rounded-pill'>
         <thead>
           <tr className=''>
-            <th></th>
-            
-            <th className='fw-semibold lh-1 fs-6'>{t("customer_name")} </th>
-            <th className='fw-semibold lh-1 fs-6'>{t("customer_type")} </th>
-            <th className='fw-semibold lh-1 fs-6'>{t("phone")}</th>
-            <th className='fw-semibold lh-1 fs-6'>{t("client_email")}</th>
-            <th className='fw-semibold lh-1 fs-6'> {t("desired_area")}</th>
             <th>
               <Form.Check type="checkbox" />
             </th>
+            <th className='fw-semibold fs-6'>{t("customer_name")} </th>
+            <th className='fw-semibold fs-6'>{t("customer_type")} </th>
+            <th className='fw-semibold fs-6'>{t("phone")}</th>
+            <th className='fw-semibold fs-6'>{t("client_email")}</th>
+            <th className='fw-semibold fs-6'> {t("desired_area")}</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           {reportData.map((row) => (
             <>
-              <tr key={row.id}>
-                <td>
+              <tr key={row.id} >
+                <td style={{ paddingTop: "25px", paddingBottom: "25px" }}>
+                  <Form.Check
+                    type="checkbox"
+                    checked={selectedRows[row.id] || false}
+                    onChange={() => handleSelect(row.id)}
+                  />
+                </td>
+
+                <td style={{ paddingTop: "25px", paddingBottom: "25px" }}>{row.name}</td>
+                <td style={{ paddingTop: "25px", paddingBottom: "25px" }}>{row.type}</td>
+                <td style={{ paddingTop: "25px", paddingBottom: "25px" }}>{row.phone}</td>
+                <td style={{ paddingTop: "25px", paddingBottom: "25px" }}>{row.email}</td>
+                <td style={{ paddingTop: "25px", paddingBottom: "25px" }}>{row.details.type}</td>
+                <td style={{ paddingTop: "25px", paddingBottom: "25px" }}>
                   {expandedRows[row.id] ? (
                     <FaChevronUp
                       style={{ ...styles.dropdownIcon, color: '#00A6A4' }}
@@ -63,19 +75,6 @@ const DataTable = () => {
                     />
                   )}
                 </td>
-                
-                <td>{row.name}</td>
-                <td>{row.type}</td>
-                <td>{row.phone}</td>
-                <td>{row.email}</td>
-                <td>{row.details.type}</td>
-                <td>
-                  <Form.Check
-                    type="checkbox"
-                    checked={selectedRows[row.id] || false}
-                    onChange={() => handleSelect(row.id)}
-                  />
-                </td>
               </tr>
 
               {expandedRows[row.id] && (
@@ -84,48 +83,48 @@ const DataTable = () => {
                     <Accordion defaultActiveKey="0">
                       <Card style={styles.accordionCard}>
                         <Card.Body>
-                          <div style={styles.detailsContainer} className=' d-flex gap-5 justify-content-around'>
+                          <div style={styles.detailsContainer} className=' d-flex gap-5 justify-content-between'>
                             <div className='d-flex flex-column'>
-                              <strong>{t("client_property_type")}:</strong> {row.details.type}
+                              <span className='text-[#686868]'>{t("client_property_type")}:</span> {row.details.type}
                             </div>
                             <div className='d-flex flex-column'>
-                              <strong>{t("property_status")}:</strong> {row.details.status}
+                              <span className='text-[#686868]'>{t("property_status")}:</span> {row.details.status}
                             </div>
                             <div className='d-flex flex-column'>
-                              <strong>{t("client_rooms")}:</strong> {row.details.rooms}
+                              <span className='text-[#686868]'>{t("client_rooms")}:</span> {row.details.rooms}
                             </div>
                             <div className='d-flex flex-column'>
-                              <strong>{t("client_size")}:</strong> {row.details.size}
+                              <span className='text-[#686868]'>{t("client_size")}:</span> {row.details.size}
                             </div>
                             <div className='d-flex flex-column'>
-                              <strong>{t("client_floor")}:</strong> {row.details.floor}
+                              <span className='text-[#686868]'>{t("client_floor")}:</span> {row.details.floor}
                             </div>
                             <div className='d-flex flex-column'>
-                              <strong>{t("client_price")}:</strong> {row.details.price}
+                              <span className='text-[#686868]'>{t("client_price")}:</span> {row.details.price}
                             </div>
                           </div>
                           <div className='row' >
                             <div className='col-6'>
                               <p className='mb-1'>{t("title_comments")}</p>
-                            <div style={styles.comments}>
+                              <div style={styles.comments}>
                                 {row.details.comments}
-                            </div>
+                              </div>
                             </div>
                             <div className=' col-6'>
                               <p className='mb-1'>{t("title_feature")}</p>
                               <div style={styles.featuresContainer}>
-                                  {row.details.features.map((feature, index) => (
+                                {row.details.features.map((feature, index) => (
                                   <Button
-                                      key={index}
-                                      style={styles.featureButton}
-                                      className='bg-success bg-opacity-10 fw-bold border-success text-success'
+                                    key={index}
+                                    style={styles.featureButton}
+                                    className='bg-success bg-opacity-10 fw-bold border-success'
                                   >
-                                      {feature}
+                                    {feature}
                                   </Button>
-                                  ))}
-                              </div> 
+                                ))}
+                              </div>
                             </div>
-                          </div>                      
+                          </div>
                         </Card.Body>
                       </Card>
                     </Accordion>
@@ -136,7 +135,7 @@ const DataTable = () => {
           ))}
         </tbody>
       </Table>
-     
+
     </div>
   );
 };
@@ -172,6 +171,8 @@ const styles = {
     fontSize: '14px',
     padding: '4px 12px',
     borderRadius: '20px',
+    color: "#00A481",
+    fontWeight: "400"
   },
   comments: {
     fontSize: '14px',

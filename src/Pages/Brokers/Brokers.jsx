@@ -16,7 +16,7 @@ import { Modal, Form, InputGroup } from "react-bootstrap";
 import sms from "../../assets/images/sms.svg";
 import email from "../../assets/images/email.svg";
 import group from "../../assets/images/Group 2538.png";
-import gyiphy from "../../assets/images/giphy 1.png";
+import gyiphy from "../../assets/images/celebration.gif";
 import Toggle from "../../Componant/Common/Toggle/Toggle";
 import close from '../../assets/images/close_small.png';
 import garage_door from "../../assets/images/garage_door.svg";
