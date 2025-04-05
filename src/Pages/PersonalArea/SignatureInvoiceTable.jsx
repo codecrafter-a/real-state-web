@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next";
 import { FiEye } from "react-icons/fi";
 import { LuDownload } from "react-icons/lu";
 import "./PersonalArea.css";
-import { Accordion } from "react-bootstrap";
 
 const SignatureInvoiceTable = () => {
     const { t } = useTranslation();

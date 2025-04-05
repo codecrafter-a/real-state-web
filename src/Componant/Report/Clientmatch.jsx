@@ -89,7 +89,7 @@ const Clientmatch = ({ properties }) => {
 
       {properties.length > 0 && (
         <>
-          <p className="py-1 my-4 d-none d-md-block fs-5 fw-semibold lh-1 text-teal">
+          <p className="py-1 my-4 d-none d-md-block fs-5 fw-semibold lh-1 text-teal text-center">
             {t("potential_clients")}
           </p>
           <div className="my-3 d-none d-md-block">
