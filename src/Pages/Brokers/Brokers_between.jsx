@@ -160,7 +160,7 @@ const Brokers_between = () => {
             <div className="col-12 px-0">
               <div className="card p-3 border  rounded-3 mb-4">
                 <div className="form_group mb-2 mb-xl-0 d-flex justify-content-between">
-                  <h5 className="text-embed-500 fw-semibold fs-5 lh-1 mb-4">{t("age_details")}</h5>
+                  <h5 className="text-embed-500 fw-semibold fs-5 lh-1 mb-4">{t("customer_detail")}</h5>
                   <button
                     type="button"
                     className="border-teal mt-2 d-flex align-items-center justify-content-center rounded-pill py-1 px-4 search-button"
@@ -384,7 +384,7 @@ const Brokers_between = () => {
             <div className="card  p-3 border  rounded-3 overflow-hidden  rounded-3 bg-light mb-4">
               <div className="form_group mb-2 mb-xl-0 d-flex justify-content-between">
                 <h5 className=" text-embed-500 fs-5 fw-semibold lh-1 mb-4">
-                  {t("age_details")}
+                  {t("customer_detail")}
                 </h5>
                 <button
                   type="button"

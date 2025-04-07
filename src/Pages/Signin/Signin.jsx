@@ -18,11 +18,9 @@ const Signin = ({ setIsPadding, isPadding }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const lastPath = location.pathname.split("/").filter(Boolean).pop();
-  console.log(lastPath, "aaaaaaaaaaaaaaaaaaaa")
   const [error, setError] = useState("");
   const { t, i18n } = useTranslation();
   const [isClicked, setIsClicked] = useState(true)
-  console.log(isPadding, "isPadding");
 
   useEffect(() => {
     // Remove both classes first to avoid conflicts

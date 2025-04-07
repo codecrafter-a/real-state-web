@@ -153,16 +153,16 @@ const AgreementsTable = ({ handleOpen, searchQuery, selectedStatus }) => {
                       <Dropdown.Toggle
                         as="div"
                         variant="light"
-                        className="border-0 bg-transparent custom-dropdown-toggle d-flex align-items-center gap-1"
+                        className="border-0 bg-transparent custom-dropdown-toggle d-flex align-items-center gap-1 cursor-pointer"
                       >
                         <HiOutlineDotsVertical size={18} />
                         {t("home_tab_r1_h1_l1")}
                       </Dropdown.Toggle>
 
-                      <Dropdown.Menu>
+                      <Dropdown.Menu className="w_max more-menu">
                         <Dropdown.Item
                           href="#/action-1"
-                          className="d-flex  align-items-center gap-1 mx-1"
+                          className="d-flex  align-items-center gap-1 m-2 p-0"
                         >
                           <img src={cancel} alt="cancel" />
                           <span className="fs-15 lh-1 fw-normal">
@@ -171,7 +171,7 @@ const AgreementsTable = ({ handleOpen, searchQuery, selectedStatus }) => {
                         </Dropdown.Item>
                         <Dropdown.Item
                           href="#/action-2"
-                          className="d-flex align-items-center gap-2 mx-1"
+                          className="d-flex align-items-center gap-2 m-2 p-0"
                         >
                           <RiDeleteBin2Line size={18} />
                           <span className="fs-15 lh-1 fw-normal">

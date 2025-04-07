@@ -14,7 +14,7 @@ const SignatureInvoice = () => {
             </p>
             <div className="overflow-y-auto overflow-x-hidden custom-scrollbar scroll-height">
                 <div className="pe-md-3">
-                    <div className="mb-4 position-relative w-75 border border-[#D6D6D6] rounded py-2 px-3 d-md-flex d-none">
+                    <div className="mb-4 position-relative w-75 border border-[#D6D6D6] rounded py-2 px-3 d-md-block d-none">
                         <div className="d-flex">
                             <input
                                 type="text"
@@ -37,7 +37,7 @@ const SignatureInvoice = () => {
                         </div>
                         <div>
                             <button className="btn btn-outline-success rounded-pill px-4 py-2 w-103">
-                                {t("show")}
+                                {t("show_button")}
                             </button>
                         </div>
                     </div>

@@ -147,7 +147,7 @@ const Layout = ({ children }) => {
             className="d-flex justify-content-between text-center p-2 bg-white fixed-bottom gx-1 border-top border-secondary-subtle"
           >
             <Col
-              xs={2}
+              xs={2} className="d-flex flex-column align-items-center justify-content-center" 
             >
               <div className="d-flex flex-column align-items-center justify-content-center" onClick={() => navigate(`/${i18n.language}/home`)}>
                 <img src={iconHome} alt="home icon" className="text-teal" />
@@ -155,7 +155,7 @@ const Layout = ({ children }) => {
               </div>
             </Col>
             <Col
-              xs={2}
+              xs={2} className="d-flex flex-column align-items-center justify-content-center"
             >
               <div className="d-flex flex-column align-items-center justify-content-center" onClick={() => navigate(`/${i18n.language}/broker`)}>
                 <img src={userkey} alt="home icon" className="text-teal" />
@@ -165,7 +165,7 @@ const Layout = ({ children }) => {
               </div>
             </Col>
             <Col
-              xs={2}
+              xs={2} className="d-flex flex-column align-items-center justify-content-center"
             >
               <div className="d-flex flex-column align-items-center justify-content-center" onClick={() => navigate(`/${i18n.language}/property_owner`)}>
                 <img src={userhouse} alt="action icon " />

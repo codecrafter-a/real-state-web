@@ -31,7 +31,6 @@ const Data = () => {
   const [UserData, setUserData] = useState([]);
   const [colorData, setColorData] = useState([]);
 
-  console.log("🚀 ~ Data ~ pieData:", pieData);
   useEffect(() => {
     const data = getData();
     setPieData(data);

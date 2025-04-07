@@ -24,7 +24,6 @@ const Invocies = () => {
     setInvoiceData(getInvoiceService());
     }, [clientName]);
     
-   console.log(getInvoiceService , "getInvoiceService ")
   return (
     <>
       <Col className='bg-white shadow-lg rounded-3 my-3'>

@@ -5,7 +5,6 @@ const AuthenticationService = {
   
     login: (email, password, isClicked) => {
       const fakeToken = `Bearer ${btoa(email + ":" + password)}`;
-      console.log(fakeToken, email,password, "fakeToken");
       if (isClicked) {
         localStorage.setItem("authtoken", fakeToken);
       }
