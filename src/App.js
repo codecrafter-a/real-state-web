@@ -30,9 +30,7 @@ function App() {
   const { i18n } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
-  const [isPadding, setIsPadding] = useState(false)
-  console.log(isPadding, "isPadding")
-  
+  const [isPadding, setIsPadding] = useState(false)  
   const lastPath = location.pathname.split("/").filter(Boolean).pop();
   const isAuthenticated = () => {
     return AuthenticationService.getAuthenticated() !== null;

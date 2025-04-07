@@ -149,10 +149,10 @@ const Setting = () => {
                     {t("receivePerformanceReports")}
                   </label>
                 </div>
-                <Link to="#" className="fw-semibold fs-12 lh-1 text-primary">
+                <span className="fw-semibold fs-12 lh-1 text-primary text-decoration-underline cursor-pointer" onClick={() => setIsView(true)}>
                   {" "}
                   {t("changeReportsSettings")}{" "}
-                </Link>
+                </span>
               </div>
               <div className="py-4_5 d-flex flex-column gap-2">
                 <h4 className="text-teal fs-5  fw-sibold lh-1 mb-0">
@@ -186,10 +186,10 @@ const Setting = () => {
                     {t("sendMessageTags")}
                   </label>
                 </div>
-                <Link to="#" className="fw-semibold fs-12 lh-1 text-primary">
+                <span className="fw-semibold fs-12 lh-1 text-primary text-decoration-underline cursor-pointer" onClick={() => setIsView(true)}>
                   {" "}
                   {t("changePushNotificationSettings")}{" "}
-                </Link>
+                </span>
               </div>
             </div>
           </Col>

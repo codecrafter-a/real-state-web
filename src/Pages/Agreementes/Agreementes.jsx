@@ -19,14 +19,7 @@ import key from "../../assets/images/key_vertical.svg";
 import { TbMailForward } from "react-icons/tb";
 const Agreements = () => {
   const [activeTab, setActiveTab] = useState("all");
-  const [fromDate, setFromDate] = useState(null);
-  const [toDate, setToDate] = useState(null);
   const [removeData, setRemoveData] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedStatus, setSelectedStatus] = useState("");
-  const [clientName, setClientName] = useState("");
-  const [tableData, setTableData] = useState([]);
-  const [agreeData, setAgreeData] = useState(false);
   const [modalState, setModalState] = useState({
     addInvoices: false,
     isError: false,
@@ -34,44 +27,48 @@ const Agreements = () => {
     isInvoices: false,
     isDocument: false,
   });
-  console.log("modalstateisopen", modalState);
-  const { getAgreementData } = useAgreementServices(clientName);
+ 
+  const {
+    tableData,
+    agreeData,
+    searchQuery,
+    selectedStatus,
+    fromDate,
+    toDate,
+    handleStatusChange,
+    handleRemoveStatus,
+    handleSearchChange,
+    handleData,
+    setFromDate,
+    setToDate,
+    getAgreementData,
+    setTableData
+  } = useAgreementServices();
+ 
   useEffect(() => {
     setTableData(getAgreementData());
-  }, [clientName]);
-
-  const handleData = () => {
-    setAgreeData(true);
-  }
-  console.log("getAgrreement Data", getAgreementData);
+  }, []);
+ 
   const { t } = useTranslation();
-
-  const handleOpen = () => {
-    setRemoveData(true);
-  };
-
   const navigate = useNavigate();
-
-  const handleClick = () => {
-    navigate("/:lang/invoices");
-  };
-
-  const handleClose = () => {
-    setRemoveData(false);
-  };
-
+ 
+  const handleOpen = () => setRemoveData(true);
+  const handleClose = () => setRemoveData(false);
+  const handleClick = () => navigate("/:lang/invoices");
+ 
   const updateModalState = (updatedValues) => {
     setModalState((prev) => ({
       ...prev,
       ...updatedValues,
     }));
   };
+ 
   const handleToggle = (e) => {
     if (e.target.checked) {
       updateModalState({ addInvoices: true });
     }
   };
-
+ 
   const handleCloseall = () => {
     setModalState({
       addInvoices: false,
@@ -119,7 +116,6 @@ const Agreements = () => {
     };
 
     const translatedStatus = t(status);
-
     const statusKey = statusMap[translatedStatus] || translatedStatus;
 
     const statusStyles = {
@@ -144,11 +140,7 @@ const Agreements = () => {
       </span>
     );
   };
-  const handleStatusChange = (e) => setSelectedStatus(e.target.value);
-  const handleRemoveStatus = () => setSelectedStatus("");
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
-  };
+ 
   return (
     <>
       <div className="px-4 my-3 my-md-0 bg-white d-none d-md-block rounded-3 shadow-lg">
@@ -304,7 +296,7 @@ const Agreements = () => {
                       selectedStatus={selectedStatus}
                       fromDate={fromDate}
                       agreeData={agreeData}
-  toDate={toDate}
+                      toDate={toDate}
                     />
                   </div>
                 </div>

@@ -724,5 +724,7 @@
   "Select_year": "A year from today",
   "Select_Date": "Select a specific date",
   "age_comm_type_1_subTitle": "The seller's commission and the buyer's commission are added together, and each broker receives half",
-  "text_place": "Detail the cooperation that was agreed upon."
+  "text_place": "Detail the cooperation that was agreed upon.",
+  "property_detail": "Property Owner Details",
+  "customer_detail": "Customer Details for Signing"
   }

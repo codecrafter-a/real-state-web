@@ -15,6 +15,8 @@ import { FaRegFile } from "react-icons/fa6";
 import { MdOutlineCheckCircleOutline } from "react-icons/md";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import { LuBookMinus } from "react-icons/lu";
+import { Dropdown } from "react-bootstrap";
+import cancel from "../../assets/images/cancel.png";
 
 const StatusBadge = ({ status }) => {
     const { t } = useTranslation();
@@ -104,17 +106,44 @@ const HomeTable = () => {
                                                 <span>{t("home_tab_r1_h1_l4")}</span>
                                             </div>
                                             <div className="d-flex align-items-center gap-1 text-auto">
-                                                <span><FaWhatsapp size={18}/></span>
+                                                <span><FaWhatsapp size={18} /></span>
                                                 <span>{t("home_tab_r1_h1_l3")}</span>
                                             </div>
                                             <span className="d-flex align-items-center gap-1 text-auto">
-                                                <span><IoMdAttach size={18}/></span>
+                                                <span><IoMdAttach size={18} /></span>
                                                 <span>{t("home_tab_r1_h1_l2")}</span>
                                             </span>
-                                            <div className="d-flex align-items-center gap-1 text-auto">
-                                                <span><HiOutlineDotsVertical size={18}/></span>
-                                                <span>{t("home_tab_r1_h1_l1")}</span>
-                                            </div>
+                                            <Dropdown className="d-flex align-items-center">
+                                                <Dropdown.Toggle
+                                                    as="div"
+                                                    variant="light"
+                                                    className="border-0 bg-transparent custom-dropdown-toggle d-flex align-items-center gap-1 cursor-pointer"
+                                                >
+                                                    <HiOutlineDotsVertical size={18} />
+                                                    {t("home_tab_r1_h1_l1")}
+                                                </Dropdown.Toggle>
+
+                                                <Dropdown.Menu className="w_max more-menu">
+                                                    <Dropdown.Item
+                                                        href="#/action-1"
+                                                        className="d-flex  align-items-center gap-1 m-2 p-0"
+                                                    >
+                                                        <img src={cancel} alt="cancel" />
+                                                        <span className="fs-15 lh-1 fw-normal">
+                                                            {t("cancel_signing_process")}
+                                                        </span>
+                                                    </Dropdown.Item>
+                                                    <Dropdown.Item
+                                                        href="#/action-2"
+                                                        className="d-flex align-items-center gap-2 m-2 p-0"
+                                                    >
+                                                        <RiDeleteBin2Line size={18} />
+                                                        <span className="fs-15 lh-1 fw-normal">
+                                                            {t("delete_agreement")}
+                                                        </span>
+                                                    </Dropdown.Item>
+                                                </Dropdown.Menu>
+                                            </Dropdown>
                                         </div>
                                     </td>
                                 )}
@@ -130,11 +159,11 @@ const HomeTable = () => {
                                                 <span>{t("send_copy")}</span>
                                             </div>
                                             <div className="d-flex align-items-center  gap-1">
-                                                <span><MdOutlineCheckCircleOutline size={18}/></span>
+                                                <span><MdOutlineCheckCircleOutline size={18} /></span>
                                                 <span>{t("close_deal")}</span>
                                             </div>
                                             <div className="d-flex align-items-center gap-1 text-auto">
-                                                <span><RiDeleteBin2Line size={18}/></span>
+                                                <span><RiDeleteBin2Line size={18} /></span>
                                                 <span>{t("delete")}</span>
                                             </div>
                                         </div>
@@ -148,11 +177,11 @@ const HomeTable = () => {
                                                 <span>{t("send_copy")}</span>
                                             </div>
                                             <div className="d-flex align-items-center gap-1 text-auto">
-                                                <span><LuBookMinus size={18}/></span>
+                                                <span><LuBookMinus size={18} /></span>
                                                 <span>{t("register_land")}</span>
                                             </div>
                                             <div className="d-flex align-items-center gap-1 text-auto">
-                                                <span><RiDeleteBin2Line size={18}/></span>
+                                                <span><RiDeleteBin2Line size={18} /></span>
                                                 <span>{t("delete")}</span>
                                             </div>
                                         </div>

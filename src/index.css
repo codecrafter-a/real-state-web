@@ -697,3 +697,9 @@ a:hover {
 	opacity: 1;
 	background: #FFFFFF;
 }
+[lang="he"] .more-menu {
+	inset: 0px 0px auto 0px !important;
+}
+[lang="en"] .more-menu {
+	inset: 0px auto auto 0px !important;
+}
