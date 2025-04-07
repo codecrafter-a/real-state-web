@@ -24,7 +24,6 @@ const Invocies = () => {
     setInvoiceData(getInvoiceService());
     }, [clientName]);
     
-   console.log(getInvoiceService , "getInvoiceService ")
   return (
     <>
       <Col className='bg-white shadow-lg rounded-3 my-3'>
@@ -34,19 +33,19 @@ const Invocies = () => {
           <div className="w-100 border-bottom">
               <Nav variant="tabs" className=" pt-2">
                 <Tab
-                  className={` border-0 text-center fs-5 fw-normal lh-1 text-md-start ${
-                    activeTab === "all" ? "active-tab fw-bold" : ""
-                  }`}
-                  onClick={() => setActiveTab("all")}
-                  children={t("invoice_tab_title1")}
-                  tab={true}
-                />
-                <Tab
                   className={`border-0 text-center fs-5 text-nowrap fw-normal px-1 lh-1 text-md-start ${
                     activeTab === "recent" ? "active-tab fw-bold" : ""
                   }`}
                   onClick={() => setActiveTab("recent")}
                   children={t("invoice_tab_title2")}
+                  tab={true}
+                />
+                <Tab
+                  className={` border-0 text-center fs-5 fw-normal lh-1 text-md-start ${
+                    activeTab === "all" ? "active-tab fw-bold" : ""
+                  }`}
+                  onClick={() => setActiveTab("all")}
+                  children={t("invoice_tab_title1")}
                   tab={true}
                 />
               </Nav>

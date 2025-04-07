@@ -4,9 +4,10 @@ import { useTranslation } from "react-i18next";
 import { FiEye } from "react-icons/fi";
 import { LuDownload } from "react-icons/lu";
 import "./PersonalArea.css";
-import { Accordion } from "react-bootstrap";
 
-const SignatureInvoiceTable = () => {
+const SignatureInvoiceTable = ({ searchTerm, Todate, Fromdate , isDateFilter}) => {
+    console.log(searchTerm, "searchTerm")
+    
     const { t } = useTranslation();
 
     const tableData = [
@@ -18,6 +19,31 @@ const SignatureInvoiceTable = () => {
         { id: 6, invoice: "1234567", date: "06.06.24", clients: t("invoice_clients_Name"), subject: t("paymentForService"), amount: "3348 ₪" },
     ];
 
+    const filteredData = tableData.filter((item) => {
+        const term = searchTerm?.toLowerCase() || "";
+        const name = item.clients?.toLowerCase?.() || "";
+        console.log("itemsdadd", item);
+        let matchesDate = true;
+        if (isDateFilter) {
+        const [day, month, shortYear] = item.date.split(".");
+        const fullYear = `20${shortYear}`;
+        const itemDate = new Date(`${fullYear}-${month}-${day}`); 
+        const fromDateObj = Fromdate ? new Date(Fromdate) : null;
+        const toDateObj = Todate ? new Date(Todate) : null;
+        if (fromDateObj && toDateObj) {
+          matchesDate = itemDate >= fromDateObj && itemDate <= toDateObj;
+        } else if (fromDateObj) {
+          matchesDate = itemDate >= fromDateObj;
+        } else if (toDateObj) {
+          matchesDate = itemDate <= toDateObj;
+        }
+    }
+      
+      
+        const matchesSearch = name.includes(term);
+      
+        return matchesSearch && matchesDate;
+      });
     return (
         <>
             <div className="mt-4 d-md-block d-none">
@@ -34,10 +60,10 @@ const SignatureInvoiceTable = () => {
                             </tr>
                         </thead>
                         <tbody className="border">
-                            {tableData.map((row) => (
+                            {filteredData.map((row) => (
                                 <tr key={row.id}>
                                     <td className="d-table-cell align-middle py-4">{row.invoice}</td>
-                                    <td className="d-table-cell align-middle py-4">{row.date}</td>
+                                    <td c lassName="d-table-cell align-middle py-4">{row.date}</td>
                                     <td className="d-table-cell align-middle py-4">{row.clients}</td>
                                     <td className="d-table-cell align-middle py-4">{row.subject}</td>
                                     <td className="d-table-cell align-middle py-4">{row.amount}</td>

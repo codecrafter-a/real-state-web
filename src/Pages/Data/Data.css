@@ -12,9 +12,14 @@
 small {
   font-size: 66%;
 }
-.vrline {
-  border: solid #00a481;
+.py-30{
+  padding: 30px 00px !important
 }
+.vrline {
+  border: 2px solid #00a481;
+  height: 100% !important;
+}
+
 .card_title {
   font-size: 43.4px;
   font-weight: 600;
@@ -44,7 +49,9 @@ small {
   line-height: 24px;
   color: #686868;
 }
-
+.w-33{
+  width: 33% !important;
+}
 @media (max-width: 448px) {
   .screen-4 {
     font-size: 17px;

@@ -68,9 +68,9 @@ const Attechment = ({ setActiveTab }) => {
           {t("pro_add_set4")}
         </h4>
         <p className="fs-15 lh-1 fw-semibold">{t("pro_add_attch_doc_note")}</p>
-        <div className="carddashed row">
+        <div className="carddashed row my-2 my-md-0">
           {fileInputs.map(({ key, label }) => (
-            <div key={key} className=" col-12 col-md-4">
+            <div key={key} className=" col-12 col-md-4 my-2 my-md-1">
               <div className="border-dashed p-2">
                 <Form.Label className="d-flex align-items-center cursor-pointer position-relative">
                   <Form.Control
@@ -88,7 +88,7 @@ const Attechment = ({ setActiveTab }) => {
               </div>
               {files[key] && (
                 <div className="mt-3 d-flex align-items-center justify-content-between border border-secondary border-opacity-25 rounded-2  p-2">
-                  <div className="d-flex flex-column"> 
+                  <div className="d-flex flex-column">
                     <span className=" fs-6 fw-medium lh-1  text-teal">
                       {files[key]?.name}
                     </span>
@@ -108,7 +108,6 @@ const Attechment = ({ setActiveTab }) => {
                       <img src={deleteIcon} alt="Delete" />
                     </Button>
                   </div>
-                  
                 </div>
               )}
             </div>
@@ -117,19 +116,21 @@ const Attechment = ({ setActiveTab }) => {
         <Row className="my-4">
           <Col md={12}>
             <div className=" border-dashed rounded p-3">
-              <div className="d-flex justify-content-center text-center">
+              <div className="d-flex justify-content-center  text-center">
                 <div>
                   <div className="position-relative">
                     <Form.Control
                       type="file"
                       className="position-absolute w-100 h-100 opacity-0"
                     />
-                    <img
-                      src={add_img}
-                      alt="Upload Icon"
-                      className="cursor-pointer"
-                      style={{ width: "50px" }}
-                    />
+                    <div className="d-flex align-items-center justify-content-center">
+                      <img
+                        src={add_img}
+                        alt="Upload Icon"
+                        className="cursor-pointer"
+                        style={{ width: "50px" }}
+                      />
+                    </div>
                   </div>
                   <p className="text-success d-none d-md-block  mt-2">
                     {t("pro_add_attch_doc_des_1")}

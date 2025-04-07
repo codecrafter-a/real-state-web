@@ -27,13 +27,13 @@ const Clientmatch = ({ properties }) => {
                     <div className="d-flex w-100 gap-4">
                       {isOpen && (
                         <Col md={3}>
-                          <div>
+                          <div className=" px-2">
                             <Card.Img
                               variant="top"
                               src={house}
                               alt="Property"
-                              className="img-fluid border rounded-2 object-fit-cover w-100"
-                              style={{ height: "200px" }}
+                              className="img-fluid border rounded-2 w-100 object-fit-cover "
+                              style={{ height: "140px"}}
                             />
                           </div>
                         </Col>
@@ -48,13 +48,15 @@ const Clientmatch = ({ properties }) => {
                               {property.type}
                             </p>
                             <p className="lh-1 fs-15 fw-normal text-md-start mb-0">
-                              {property.details}
+                              {property.details} |  {property.subTitle}
+                              
                             </p>
+                            
                           </div>
                         </div>
                         <div className="d-flex gap-2 flex-wrap align-items-center">
                           {property.features.map((feature, index) => (
-                            <Badge key={index} bg="light" text="dark" className="h-fit">
+                            <Badge key={index} bg="light" text="dark" className="h-fit fw-normal">
                               {t(feature)}
                             </Badge>
                           ))}
@@ -62,9 +64,12 @@ const Clientmatch = ({ properties }) => {
                       </div>
                       {isOpen && (
                         <div className="col-md-5">
-                          <p className="fw-normal lh-1 fs-12 text-md-start">
+                          <div className="fw-normal lh-1 fs-12 text-md-start">
                             {property.description}
-                          </p>
+                            <p className="my-1 py-2 fw-normal lh-1 fs-12 text-md-start">
+                                {property.rowHouseDescription}
+                              </p>
+                          </div>
                         </div>
                       )}
 
@@ -75,8 +80,7 @@ const Clientmatch = ({ properties }) => {
                       </div>
                       <div className="row">
                         <div className="d-flex justify-content-between align-items-center flex-wrap w-100">
-
-                          <h2 className="fs-5 fw-bold lh-1 text-lg-end">{property.price}</h2>
+                          <h2 className="fs-5 fw-bold lh-1 text-lg-end">{property.price2}</h2>
                         </div>
                       </div>
                     </div>
@@ -89,7 +93,7 @@ const Clientmatch = ({ properties }) => {
 
       {properties.length > 0 && (
         <>
-          <p className="py-1 my-4 d-none d-md-block fs-5 fw-semibold lh-1 text-teal">
+          <p className="py-1 my-4 d-none d-md-block fs-5 fw-semibold lh-1 text-teal text-center">
             {t("potential_clients")}
           </p>
           <div className="my-3 d-none d-md-block">

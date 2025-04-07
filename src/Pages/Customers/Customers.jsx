@@ -9,6 +9,7 @@ import remove_icon from "../../assets/images/remove_icon.svg";
 import action_icon1 from "../../assets/images/action_icon1.svg";
 import action_icon2 from "../../assets/images/action_icon2.svg";
 import ErrorIcon from "../../assets/images/ErrorIcon.svg";
+import { Link } from "react-router-dom";
 // import check_tick from '../../assets/images/check_tick.svg';
 import table_arrrow from "../../assets/images/table_arrrow.svg";
 import RangeSlider from "../../Componant/Common/RangeSlider/RangeSlider";
@@ -24,46 +25,31 @@ const Customer = () => {
   const navigate = useNavigate();
   const { lang } = useParams();
   const [clients, setClients] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const [filters, setFilters] = useState({
-    searchTerm: "",
-    selectedClient: "",
-    selectedPropertyType: "",
-    selectedPropertyCondition: "",
-  });
-
-  const { getClients } = useClientService({
-    cutomer_type: "",
-    sought_area: "",
-    desired_area: "",
-    property_type: "",
-    property_condition: "",
-  });
-
-  const handleFilterChange = (key, value) => {
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      [key]: value,
-    }));
-  };
-
-  const clientFiltered = getClients();
-
-  const filterdClients = clients.filter((client) =>
-    client.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  useEffect(() => {
-    const data = getClients();
-    setClients(data);
-  }, []);
-
   const [expandedRows, setExpandedRows] = useState([]);
   const [selectedRows, setSelectedRows] = useState({});
   const [selectAll, setSelectAll] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [propertyType, setPropertyType] = useState("");
+  const [propertyCondition, setPropertyCondition] = useState("");
+  const [filteredClients, setFilteredClients] = useState([]);
+  const { getClients } = useClientService(searchTerm);
+  const clientFiltered = getClients();
+  console.log(clientFiltered, "clientFiltered");
+
+  console.log(clients, "clients");
+  const filterdClients = clients.filter(
+    (client) =>
+      (client.name || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (client.email || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (client.phone || "").toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  useEffect(() => {
+    setClients(getClients());
+    setFilteredClients(getClients());
+  }, [searchTerm]);
 
   const handleShowModal = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
@@ -76,6 +62,19 @@ const Customer = () => {
 
   const handleOpen = () => {
     setIsModalOpen(true);
+  };
+
+  const handleClick = () => {
+    const result = clients.filter((client) => {
+      const matchesPropertyType = propertyType
+        ? client.property_type === propertyType
+        : true;
+      const matchesPropertyCondition = propertyCondition
+        ? client.property_condition === propertyCondition
+        : true;
+
+      return matchesPropertyType && matchesPropertyCondition;
+    });
   };
 
   const toggleCheckbox = (index) => {
@@ -139,19 +138,12 @@ const Customer = () => {
                     <label className="mb-1 fs-15 lh-1 fw-semibold">
                       {t("cust_filter_1")}
                     </label>
-                    <select
-                      className="form-select"
-                      value={filters.selectedClient}
-                      onChange={(e) =>
-                        handleFilterChange("selectedClient", e.target.value)
-                      }
-                    >
-                      <option disabled value="">
-                        Select Option
-                      </option>
+                    <select className="form-select">
+                      <option value="">Select Option</option>
                       {clientFiltered.map((client) => (
                         <option key={client.id} value={client.id}>
                           {client.name}
+                          setSelectedValue
                         </option>
                       ))}
                     </select>
@@ -165,6 +157,8 @@ const Customer = () => {
                         type="text"
                         className="form-control border-0 p-0 flex-grow-1"
                         placeholder={t("cust_filter_place_2")}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        value={searchTerm}
                       />
                       <button
                         className="btn border-0 p-0 ms-2"
@@ -183,60 +177,39 @@ const Customer = () => {
                       type="text"
                       className="form-control"
                       placeholder={t("cust_typing")}
-                      value={filters.searchTerm}
-                      onChange={(e) =>
-                        handleFilterChange("searchTerm", e.target.value)
-                      }
                     />
                   </div>
-
                   <div>
                     <label className="mb-1 fs-15 lh-1 fw-semibold">
                       {t("cust_Property_type")}
                     </label>
                     <select
                       className="form-select"
-                      value={filters.selectedPropertyType}
-                      onChange={(e) =>
-                        handleFilterChange(
-                          "selectedPropertyType",
-                          e.target.value
-                        )
-                      }
+                      onChange={(e) => setPropertyType(e.target.value)}
                     >
-                      <option disabled selected>
-                        Select Option
-                      </option>
-                      {filterdClients.map((index) => (
-                        <option key={index}>
-                          {t("cust_property_type_value")}
+                      <option value="">Select Option</option>
+                      {clients.map((client, index) => (
+                        <option key={index} value={client.property_type}>
+                          {client.property_type}
                         </option>
                       ))}
                     </select>
                   </div>
-
                   <div>
                     <label className="mb-1 fs-15 lh-1 fw-semibold">
                       {t("cust_Property_condition")}
                     </label>
                     <select
                       className="form-select"
-                      value={filters.selectedPropertyCondition}
-                      onChange={(e) =>
-                        handleFilterChange(
-                          "selectedPropertyCondition",
-                          e.target.value
-                        )
-                      }
+                      onChange={(e) => setPropertyCondition(e.target.value)}
                     >
-                      <option disabled selected>
-                        Select Option
+                      <option value="">Select Option</option>
+                      <option value={t("cust_Property_Condition_value")}>
+                        {t("cust_Property_Condition_value")}
                       </option>
-                      <option>{t("cust_Property_Condition_value")}</option>
-                      <option>Option 2</option>
+                      <option value="Option 2">Option 2</option>
                     </select>
                   </div>
-
                   <div className="d-flex ">
                     <button
                       type="button"
@@ -245,7 +218,7 @@ const Customer = () => {
                         boxShadow: "0 10px 8px rgba(0, 0, 0, 0.1)",
                         minWidth: "146px",
                       }}
-                      onClick={() => console.log(filters)}
+                      onClick={handleClick}
                     >
                       {t("cust_search")}
                     </button>
@@ -360,7 +333,7 @@ const Customer = () => {
                                   type="checkbox"
                                   checked={!!selectedRows[index]}
                                   onChange={() => toggleCheckbox(index)}
-                                  className="form-check-input"
+                                  className="form-check-input "
                                 />
                                 {client.name}
                               </div>
@@ -530,7 +503,7 @@ const Customer = () => {
               <button
                 type="button"
                 className="btn p-0 border-0 bg-transparent"
-                onClick={() => handleCloseModal}
+                onClick={() => handleCloseModal(false)}
               >
                 <img src={close} alt="close" />
               </button>
@@ -549,7 +522,7 @@ const Customer = () => {
                 </p>
               </div>
             </Modal.Body>
-            <Modal.Footer className="border-top-0 justify-content-center flex gap-3">
+            <Modal.Footer className="border-top-0 justify-content-center flex-md-wrap d-flex gap-3">
               <button
                 className="fs-17 lh-1 gap-1 fw-semibold  w-25 agent-btn-responsive1 text-white py-3 rounded-pill"
                 style={{ width: "153px", padding: "13px 0" }}
@@ -582,10 +555,10 @@ const Customer = () => {
                 <img src={close} alt="close" />
               </button>
             </Modal.Header>
-              <h3 className="py-3 px-2 mb-3 text-center screen-1  d-none d-md-block">
-                {t("addtional_filter")}
-                <hr className="border-secondary" />
-              </h3>
+            <h3 className="py-3 px-2 mb-3 text-center screen-1  d-none d-md-block">
+              {t("addtional_filter")}
+              <hr className="border-secondary" />
+            </h3>
 
             <Modal.Body className=" px-5 py-0 modal-body-scrollable">
               <div className="d-block d-md-none">
@@ -751,6 +724,8 @@ const Customer = () => {
               type="text"
               className="form-control border-0 p-0 flex-grow-1 mb-0"
               placeholder={t("filter_cust")}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              value={searchTerm}
             />
             <button
               className="btn border-0 p-0 ms-2"
@@ -774,7 +749,7 @@ const Customer = () => {
 
         <div className="mt-4 bg-white p-3 rounded-3">
           <Accordion className="d-flex flex-column gap-3">
-            {clients.map((row, index) => (
+            {filterdClients.map((row, index) => (
               <Accordion.Item
                 eventKey={index.toString()}
                 key={row.id}
@@ -788,7 +763,7 @@ const Customer = () => {
                         type="checkbox"
                         checked={!!selectedRows[index]}
                         onChange={() => toggleCheckbox(index)}
-                        className="form-check-input"
+                        className="form-check-input border-2 border-black h-25 mx-1"
                       />
                       <div className="ml-3">
                         <p className="mb-1">{row?.name}</p>
@@ -803,7 +778,7 @@ const Customer = () => {
                   </div>
                 </Accordion.Header>
                 <Accordion.Body className="">
-                  <div className="text-start">
+                  <div className="">
                     <div>
                       <strong>{t("cust_property_type")}</strong>{" "}
                       <p>{t("cust_property_type_value")}</p>
@@ -817,7 +792,7 @@ const Customer = () => {
                       <p>{t("cust_no_rooms_value")}</p>
                     </div>
                     <div>
-                      <strong>{t("cust_apartment_size")}</strong>{" "}
+                      <strong>{t("cust_apartment_size")}</strong>
                       <p>{t("cust_apartment_size_value")}</p>
                     </div>
                     <div>
@@ -827,7 +802,7 @@ const Customer = () => {
                       <strong>{t("cust_price")}</strong> <p>1000 - 3000 ₪</p>
                     </div>
                   </div>
-                  <div className="text-start">
+                  <div className="">
                     <div>
                       <strong>{t("cust_additional_comments")}</strong>{" "}
                       <p className="text-wrap">
@@ -835,7 +810,7 @@ const Customer = () => {
                       </p>
                     </div>
                   </div>
-                  <div className="text-start mt-3">
+                  <div className=" mt-3">
                     <strong>{t("recent_agreements")}</strong>
                     <p className="mb-1">{t("recent_agreements_value_1")}</p>
                     <p className="mb-1">{t("recent_agreements_value_2")}</p>

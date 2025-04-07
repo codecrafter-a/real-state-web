@@ -12,7 +12,7 @@ import group from "../../assets/images/Group 2538.png";
 import successIcon from "../../assets/images/success_icon.svg";
 import Accordion from "react-bootstrap/Accordion";
 import whatsapp from "../../assets/images/wa, whatsapp, message, communication, chat.svg";
-import gyiphy from "../../assets/images/giphy 1.png";
+import celebration from "../../assets/images/celebration.gif";
 import key_vertical from "../../assets/images/key_vertical.svg";
 import garage_door from "../../assets/images/garage_door.svg";
 import close from '../../assets/images/close_small.png';
@@ -160,7 +160,7 @@ const Brokers_between = () => {
             <div className="col-12 px-0">
               <div className="card p-3 border  rounded-3 mb-4">
                 <div className="form_group mb-2 mb-xl-0 d-flex justify-content-between">
-                  <h5 className="text-embed-500 fw-semibold fs-5 lh-1 mb-4">{t("age_details")}</h5>
+                  <h5 className="text-embed-500 fw-semibold fs-5 lh-1 mb-4">{t("customer_detail")}</h5>
                   <button
                     type="button"
                     className="border-teal mt-2 d-flex align-items-center justify-content-center rounded-pill py-1 px-4 search-button"
@@ -384,7 +384,7 @@ const Brokers_between = () => {
             <div className="card  p-3 border  rounded-3 overflow-hidden  rounded-3 bg-light mb-4">
               <div className="form_group mb-2 mb-xl-0 d-flex justify-content-between">
                 <h5 className=" text-embed-500 fs-5 fw-semibold lh-1 mb-4">
-                  {t("age_details")}
+                  {t("customer_detail")}
                 </h5>
                 <button
                   type="button"
@@ -761,8 +761,8 @@ const Brokers_between = () => {
           style={{ pointerEvents: "none" }}
         >
           <img
-            src={gyiphy}
-            alt="gyiphy"
+            src={celebration}
+            alt="celebration"
             className="img-fluid w-full object-fit-cover"
             style={{ marginTop: "-100px" }}
           />
@@ -805,8 +805,8 @@ const Brokers_between = () => {
       <Modal show={sentSuccess} onHide={() => setSentSuccess(false)} centered className="modal-container">
         <div className="position-absolute top-0 start-50  translate-middle-x mt-5 z-2">
           <img
-            src={gyiphy}
-            alt="gyiphy"
+            src={celebration}
+            alt="celebration"
             className="img-fluid object-fit-cover w-full h-auto"
             style={{ marginTop: "-100px" }}
           />

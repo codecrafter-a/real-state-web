@@ -19,8 +19,6 @@ import key from "../../assets/images/key_vertical.svg";
 import { TbMailForward } from "react-icons/tb";
 const Agreements = () => {
   const [activeTab, setActiveTab] = useState("all");
-  const [fromDate, setFromDate] = useState(null);
-  const [toDate, setToDate] = useState(null);
   const [removeData, setRemoveData] = useState(false);
   const [modalState, setModalState] = useState({
     addInvoices: false,
@@ -29,42 +27,48 @@ const Agreements = () => {
     isInvoices: false,
     isDocument: false,
   });
-  console.log("modalstateisopen", modalState);
-  const [tableData, setTableData] = useState([]);
-  const { getAgreementData } = useAgreementServices();
-
+ 
+  const {
+    tableData,
+    agreeData,
+    searchQuery,
+    selectedStatus,
+    fromDate,
+    toDate,
+    handleStatusChange,
+    handleRemoveStatus,
+    handleSearchChange,
+    handleData,
+    setFromDate,
+    setToDate,
+    getAgreementData,
+    setTableData
+  } = useAgreementServices();
+ 
   useEffect(() => {
-    const data = getAgreementData();
-    setTableData(data);
+    setTableData(getAgreementData());
   }, []);
+ 
   const { t } = useTranslation();
-
-  const handleOpen = () => {
-    setRemoveData(true);
-  };
-
   const navigate = useNavigate();
-
-  const handleClick = () => {
-    navigate("/:lang/invoices");
-  };
-
-  const handleClose = () => {
-    setRemoveData(false);
-  };
-
+ 
+  const handleOpen = () => setRemoveData(true);
+  const handleClose = () => setRemoveData(false);
+  const handleClick = () => navigate("/:lang/invoices");
+ 
   const updateModalState = (updatedValues) => {
     setModalState((prev) => ({
       ...prev,
       ...updatedValues,
     }));
   };
+ 
   const handleToggle = (e) => {
     if (e.target.checked) {
       updateModalState({ addInvoices: true });
     }
   };
-
+ 
   const handleCloseall = () => {
     setModalState({
       addInvoices: false,
@@ -112,7 +116,6 @@ const Agreements = () => {
     };
 
     const translatedStatus = t(status);
-
     const statusKey = statusMap[translatedStatus] || translatedStatus;
 
     const statusStyles = {
@@ -137,14 +140,7 @@ const Agreements = () => {
       </span>
     );
   };
-
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedStatus, setSelectedStatus] = useState("");
-  const handleStatusChange = (e) => setSelectedStatus(e.target.value);
-  const handleRemoveStatus = () => setSelectedStatus("");
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
-  };
+ 
   return (
     <>
       <div className="px-4 my-3 my-md-0 bg-white d-none d-md-block rounded-3 shadow-lg">
@@ -263,7 +259,7 @@ const Agreements = () => {
                         />
                       </div>
                     </div>
-                    <button className=" fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill ">
+                    <button className=" fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill " onClick={handleData}>
                       {t("show_button")}
                     </button>
                   </div>
@@ -298,6 +294,9 @@ const Agreements = () => {
                       handleOpen={handleOpen}
                       searchQuery={searchQuery}
                       selectedStatus={selectedStatus}
+                      fromDate={fromDate}
+                      agreeData={agreeData}
+                      toDate={toDate}
                     />
                   </div>
                 </div>
@@ -586,7 +585,7 @@ const Agreements = () => {
           </div>
           <div className="row px-1">
             <div className="col-12 col-md-8">
-              <div className="m-3 position-relative border border-[#D6D6D6] rounded py-2  px-3">
+              <div className="m-3 position-relative border border-[#D6D6D6] rounded py-2 px-3">
                 <div className="d-flex">
                   <input
                     type="text"
@@ -612,7 +611,7 @@ const Agreements = () => {
           </div>
         </div>
         {activeTab === "all" && (
-          <Accordion className="d-block p-0 d-md-none d-flex flex-column gap-3 my-2 overflow-y-auto overflow-x-hidden custom-scrollbar">
+          <Accordion className="d-block p-0 scroll-height d-md-none d-flex flex-column gap-3 my-2 overflow-y-auto overflow-x-hidden custom-scrollbar">
             {tableData.map((row, index) => (
               <Accordion.Item
                 eventKey={index.toString()}

@@ -12,9 +12,10 @@ import group from "../../assets/images/Group 2538.png";
 import successIcon from "../../assets/images/success_icon.svg";
 import Accordion from "react-bootstrap/Accordion";
 import whatsapp from "../../assets/images/wa, whatsapp, message, communication, chat.svg";
-import gyiphy from "../../assets/images/giphy 1.png";
+import gyiphy from "../../assets/images/celebration.gif";
 import close from '../../assets/images/close_small.png';
 import Toggle from "../../Componant/Common/Toggle/Toggle";
+
 const Property_owner = () => {
   const { t } = useTranslation();
   const [isView, setIsView] = useState(false);
@@ -34,7 +35,7 @@ const Property_owner = () => {
   }
 
   const handleSearchClick = () => {
-    setShowDetails(true); // Show the details when the search button is clicked
+    setShowDetails(true); 
   };
 
   const handleSearchClose = () => {
@@ -64,14 +65,14 @@ const Property_owner = () => {
             <div className="col-12 px-0">
               <div className="card p-3 border  rounded-3 mb-4">
                 <div className="form_group mb-2 mb-xl-0 d-flex justify-content-between">
-                  <h5 className=" text-embed-500 fw-semibold fs-5 lh-1 mb-4 ">{t("age_details")}</h5>
+                  <h5 className=" text-embed-500 fw-semibold fs-5 lh-1 mb-4 ">{t("property_detail")}</h5>
                   <button
                     type="button"
                     className="border-teal mt-2 d-flex align-items-center justify-content-center rounded-pill py-1 px-4 search-button"
                   >
                     <div className="flex items-center justify-center">
                       <img className="me-1" src={add_reaction} alt="Add Client" />
-                      {t("Add_client")}{" "}
+                      {t("Add_client")}
                     </div>
                   </button>
                 </div>
@@ -259,7 +260,7 @@ const Property_owner = () => {
             <div className="card  p-3 border  rounded-3 overflow-hidden  rounded-3 bg-light mb-4">
               <div className="form_group mb-2 mb-xl-0 d-flex justify-content-between">
                 <h5 className=" text-embed-500 fs-5 fw-semibold lh-1 mb-4">
-                  {t("age_details")}
+                  {t("property_detail")}
                 </h5>
                 <button
                   type="button"

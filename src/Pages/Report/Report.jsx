@@ -75,20 +75,20 @@ const Report = () => {
     };
 
     return (
-        <>
-            <Col className=' bg-white shadow-lg rounded-3'>
-                <h3 className="py-1 my-4 text-center screen-1 border-bottom d-none d-md-block"> {t("report_title")}</h3>
+        <div className='position-relative'>
+            <Col className=' bg-white shadow-lg rounded-3 px-3'>
+                <p className="py-3 mb-4 screen-1 text-center border-bottom d-none d-md-block">{t("report_title")} </p>
                 <div className='custom-scrollbar overflow-y-auto overflow-x-hidden px-3 mt-4 mb-md-0 mb-4 scroll-height'>
                     <div className='w-100 border-bottom'>
                         <Nav variant="tabs" className="mx-md-3 pt-2 border-0">
                             <Tab
-                                className={`border-0 text-center text-md-start ${activeTab === "all" ? "active-tab" : ""}`}
+                                className={`border-0 fs-5 text-nowrap fw-normal px-1 lh-1 text-md-start  text-center text-md-start ${activeTab === "all" ? "active-tab" : ""}`}
                                 onClick={() => setActiveTab("all")}
                                 children={t("tab_all")}
                                 tab={true}
                             />
                             <Tab
-                                className={`border-0 text-center text-md-start ${activeTab === "recent" ? "active-tab" : ""}`}
+                                className={`border-0 text-center fs-5 fw-normal text-nowrap lh-1 text-md-start ${activeTab === "recent" ? "active-tab" : ""}`}
                                 onClick={() => setActiveTab("recent")}
                                 children={t("tab_recent")}
                                 tab={true}
@@ -100,7 +100,7 @@ const Report = () => {
                             <>
                                 <div className="row px-1 position-relative">
                                     <div className="col-12 col-md-8 ">
-                                        <div className="border border-[#D6D6D6] rounded py-2 px-3">
+                                        <div className="border border-[#D6D6D6] rounded py-1 px-3">
                                             <div className="d-flex">
                                                 <input
                                                     type="text"
@@ -162,7 +162,7 @@ const Report = () => {
                             <>
                                 <div className="row px-1 position-relative">
                                     <div className="col-12 col-md-8">
-                                        <div className="border border-[#D6D6D6] rounded py-2 px-3">
+                                        <div className="border border-[#D6D6D6] rounded py-1 px-3">
                                             <div className="d-flex">
                                                 <input
                                                     type="text"
@@ -238,8 +238,10 @@ const Report = () => {
                     </>
                 )
             )}
-
-        </>
+            <div className="w-full  py-2 bg-[#FFFFFFD6] flex justify-center" style={{ position: "sticky", bottom: "0" }}>
+                <button className="rounded-full py-2 px-[18px] bg-[#00A481] text-white  shadow-[0px_1px_3px_0px_rgba(0,0,0,0.1),0px_5px_5px_0px_rgba(0,0,0,0.09),0px_11px_7px_0px_rgba(0,0,0,0.05),0px_20px_8px_0px_rgba(0,0,0,0.01),0px_31px_9px_0px_rgba(0,0,0,0)]">{t("send_btn")}</button>
+            </div>
+        </div>
     )
 }
 

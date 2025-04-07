@@ -17,7 +17,7 @@ import { LuBookMinus } from "react-icons/lu";
 import { Dropdown } from "react-bootstrap";
 import cancel from "../../assets/images/cancel.png";
 
-const AgreementsTable = ({ handleOpen, searchQuery, selectedStatus }) => {
+const AgreementsTable = ({ handleOpen, searchQuery, selectedStatus, fromDate, toDate, agreeData }) => {
   console.log(" ~ AgreementsTable ~ selectedStatus:", selectedStatus);
 
   const { t } = useTranslation();
@@ -39,11 +39,11 @@ const AgreementsTable = ({ handleOpen, searchQuery, selectedStatus }) => {
   };
 
   const filteredData = tableData.filter((row) => {
-    // Search filter
-    const matchesSearchQuery = t(row.agreementName)
-      .toLowerCase()
-      .includes(searchQuery.toLowerCase());
-
+    // Search filter (match agreementName OR clients)
+    const matchesSearchQuery =
+      t(row.agreementName).toLowerCase().includes(searchQuery.toLowerCase()) ||
+      t(row.clients).toLowerCase().includes(searchQuery.toLowerCase());
+  
     // Status filter
     let matchesStatus = true;
     if (selectedStatus) {
@@ -52,7 +52,19 @@ const AgreementsTable = ({ handleOpen, searchQuery, selectedStatus }) => {
         rowStatusEnglish.toLowerCase() === selectedStatus.toLowerCase();
     }
 
-    return matchesSearchQuery && matchesStatus;
+    let matchesDate = true;
+  if (fromDate && toDate && agreeData) {
+    const rowDate = new Date(row.date);
+    const from = new Date(fromDate);
+    const to = new Date(toDate);
+    matchesDate = rowDate >= from && rowDate <= to;
+  } else if (fromDate) {
+    matchesDate = new Date(row.date) >= new Date(fromDate);
+  } else if (toDate) {
+    matchesDate = new Date(row.date) <= new Date(toDate);
+  }
+  
+    return matchesSearchQuery && matchesStatus && matchesDate;
   });
 
   return (
@@ -153,16 +165,16 @@ const AgreementsTable = ({ handleOpen, searchQuery, selectedStatus }) => {
                       <Dropdown.Toggle
                         as="div"
                         variant="light"
-                        className="border-0 bg-transparent custom-dropdown-toggle d-flex align-items-center gap-1"
+                        className="border-0 bg-transparent custom-dropdown-toggle d-flex align-items-center gap-1 cursor-pointer"
                       >
                         <HiOutlineDotsVertical size={18} />
                         {t("home_tab_r1_h1_l1")}
                       </Dropdown.Toggle>
 
-                      <Dropdown.Menu>
+                      <Dropdown.Menu className="w_max more-menu">
                         <Dropdown.Item
                           href="#/action-1"
-                          className="d-flex  align-items-center gap-1 mx-1"
+                          className="d-flex  align-items-center gap-1 m-2 p-0"
                         >
                           <img src={cancel} alt="cancel" />
                           <span className="fs-15 lh-1 fw-normal">
@@ -171,7 +183,7 @@ const AgreementsTable = ({ handleOpen, searchQuery, selectedStatus }) => {
                         </Dropdown.Item>
                         <Dropdown.Item
                           href="#/action-2"
-                          className="d-flex align-items-center gap-2 mx-1"
+                          className="d-flex align-items-center gap-2 m-2 p-0"
                         >
                           <RiDeleteBin2Line size={18} />
                           <span className="fs-15 lh-1 fw-normal">

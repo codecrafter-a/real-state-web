@@ -10,69 +10,87 @@ import warningIcon from "../../assets/images/warningIcon.svg";
 import AgentGraphModal from "./AgentGraphModal";
 import { Accordion } from "react-bootstrap";
 
+
+
+
+const agentData = [
+  {
+    id: 1,
+    agentNumber: "123456",
+    name: "agent_name",
+    commission: "35,9897",
+    agreements: "6",
+    phone: "054-4692650",
+    email: "shirims@gmail.com",
+  },
+  {
+    id: 2,
+    agentNumber: "123456",
+    name:"agent_name",
+    commission: "35,9897",
+    agreements: "6",
+    phone: "054-4692650",
+    email: "shirims@gmail.com",
+  },
+  {
+    id: 3,
+    agentNumber: "123456",
+    name:"agent_name",
+    commission: "35,9897",
+    agreements: "6",
+    phone: "054-4692650",
+    email: "shirims@gmail.com",
+  },
+  {
+    id: 4,
+    agentNumber: "123456",
+    name:"agent_name",
+    commission: "35,9897",
+    agreements: "6",
+    phone: "054-4692650",
+    email: "shirims@gmail.com",
+  },
+  {
+    id: 5,
+    agentNumber: "123456",
+    name:"agent_name",
+    commission: "35,9897",
+    agreements: "6",
+    phone: "054-4692650",
+    email: "shirims@gmail.com",
+  },
+  {
+    id: 6,
+    agentNumber: "123456",
+    name:"agent_name",
+    commission: "35,9897",
+    agreements: "6",
+    phone: "054-4692650",
+    email: "shirims@gmail.com",
+  },
+];
+
+
 const AgentManagement = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { lang } = useParams();
   const [showModal, setShowModal] = useState(false);
   const [showGraphModal, setShowGraphModal] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+const [filteredAgents, setFilteredAgents] = useState(agentData);
 
-  const agentData = [
-    {
-      id: 1,
-      agentNumber: "123456",
-      name: "רומי שפן",
-      commission: "35,9897",
-      agreements: "6",
-      phone: "054-4692650",
-      email: "shirims@gmail.com",
-    },
-    {
-      id: 2,
-      agentNumber: "123456",
-      name: "רומי שפן",
-      commission: "35,9897",
-      agreements: "6",
-      phone: "054-4692650",
-      email: "shirims@gmail.com",
-    },
-    {
-      id: 3,
-      agentNumber: "123456",
-      name: "רומי שפן",
-      commission: "35,9897",
-      agreements: "6",
-      phone: "054-4692650",
-      email: "shirims@gmail.com",
-    },
-    {
-      id: 4,
-      agentNumber: "123456",
-      name: "רומי שפן",
-      commission: "35,9897",
-      agreements: "6",
-      phone: "054-4692650",
-      email: "shirims@gmail.com",
-    },
-    {
-      id: 5,
-      agentNumber: "123456",
-      name: "רומי שפן",
-      commission: "35,9897",
-      agreements: "6",
-      phone: "054-4692650",
-      email: "shirims@gmail.com",
-    },
-    {
-      id: 6,
-      agentNumber: "123456",
-      name: "רומי שפן",
-      commission: "35,9897",
-      agreements: "6",
-      phone: "054-4692650",
-      email: "shirims@gmail.com",
-    },
-  ];
+const handleSearch = () => {
+  const term = searchTerm.toLowerCase();
+  const filtered = agentData.filter((agent) =>
+    agent.name.toLowerCase().includes(term) ||
+    agent.email.toLowerCase().includes(term) ||
+    agent.phone.toLowerCase().includes(term)
+  );
+  setFilteredAgents(filtered);
+};
+
+ 
 
   return (
     <>
@@ -96,8 +114,10 @@ const AgentManagement = () => {
                       type="text"
                       className="form-control border-0 p-0"
                       placeholder={t("searchPlaceholder")}
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
                     />
-                    <button className="btn p-0" type="button">
+                    <button className="btn p-0" type="button" onClick={handleSearch}>
                       <img src={search} alt="Search" />
                     </button>
                   </div>
@@ -136,13 +156,13 @@ const AgentManagement = () => {
                   </tr>
                 </thead>
                 <tbody className="border">
-                  {agentData.map((agent) => (
+                  {filteredAgents.map((agent) => (
                     <tr key={agent.id}>
                       <td className="d-table-cell align-middle py-4">
                         {agent.agentNumber}
                       </td>
                       <td className="d-table-cell align-middle py-4">
-                        {agent.name}
+                        {t(agent.name)}
                       </td>
                       <td className="d-table-cell align-middle py-4">
                         {agent.commission}
@@ -234,7 +254,7 @@ const AgentManagement = () => {
         />
       </div>
       <Accordion className="d-block p-0 d-md-none d-flex flex-column gap-3">
-        {agentData.map((row, index) => (
+        {filteredAgents.map((row, index) => (
           <Accordion.Item
             eventKey={index.toString()}
             key={row.id}
