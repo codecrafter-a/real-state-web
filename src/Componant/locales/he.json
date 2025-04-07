@@ -114,10 +114,10 @@
   "cust_Property_Condition_value": " חדש, משופץ",
   "cust_no_rooms": "מספר חדרים:",
   "cust_no_rooms_value": "3, 4, 5",
-  "cust_apartment_size:": "גודל דירה:",
   "cust_apartment_size_value": "100 - 300 sqm",
   "cust_floor": "קומה:",
   "cust_floor_value": "4, 5",
+  "cust_apartment_size": "גודל דירה:",
   "cust_price": "מחיר",
   "cust_price_value": "1000 - 3000 ₪",
   "cust_additional_comments": "הערות נוספות",
@@ -657,6 +657,8 @@
   "phone": "טלפון",
   "client_email": "דוא\"ל",
   "desired_area": "אזור רצוי",
+  "agent_name": "רומי שפן",
+  "cust_schedule": "נורית 22 חיפה | 03.06.24<br/>פלורנטין 9 ת”א | 06.06.24",
   
   "property1": {
     "address": "חיפה, קרית, נשר",

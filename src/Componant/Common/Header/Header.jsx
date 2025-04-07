@@ -54,13 +54,8 @@ const Header = () => {
      {isAuthenticated && 
        <header className={`header_main z-[1000]  `}>
        <section className="haeder_top">
-         <div className="row align-items-center justify-content-between">
-           <div className="col-auto">
-             <a className="logo_main" href="/">
-               <img src={logo} width="158px" height="30px" alt="logo" />
-             </a>
-           </div>
-           <div className='col-auto'>
+         <div className="row ">
+           <div className='col-4 '>
            {
               isOpen ? (<>
               <OffCanvas 
@@ -69,7 +64,7 @@ const Header = () => {
                  setShow={setShow}
                  buttonText={<FiAlignJustify className='text-teal' style={{ width: '34px', height: '34px'}} />}
                  titleContent={
-                 <div className="col-auto">
+                  <div className="col-auto">
                    <ul className="hdt_top_menu  align-items-center gap-4">
                      <li className="user_dd dropdown">
                        <a href="/" class="dropdown-toggle" type="button" id="dd_user" data-bs-toggle="dropdown" aria-expanded="false">
@@ -85,8 +80,8 @@ const Header = () => {
                        {t("update")}
                      </li>
                    </ul>
-                 </div>}
-                 bodyContent={<div className="custom-scrollbar overflow-y-auto overflow-x-hidden">
+                  </div>}
+                  bodyContent={<div className="custom-scrollbar overflow-y-auto overflow-x-hidden">
                    <Sidebar isToggle={toggle} setShow={setShow} />
                  </div>}
               />
@@ -110,6 +105,11 @@ const Header = () => {
                  </div>
               </>)
            }
+           </div>
+           <div className="col-auto ">
+             <a className="logo_main text-center" href="/">
+               <img src={logo} width="158px" height="30px" alt="logo" />
+             </a>
            </div>   
          </div>
        </section>

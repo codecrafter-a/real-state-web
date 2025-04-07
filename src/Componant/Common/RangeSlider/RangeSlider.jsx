@@ -6,6 +6,7 @@ const RangeSlider = ({ label }) => {
   const [maxValue, setMaxValue] = useState(10000);
   const [isRTL, setIsRTL] = useState(false);
 
+
   useEffect(() => {
     setIsRTL(document.dir === "rtl");
   }, []);
@@ -108,9 +109,8 @@ const RangeSlider = ({ label }) => {
             height: "24px",
             backgroundColor: "#00A481",
             color: "white",
-            left: isRTL
-              ? `${(10000 - minValue) / 100}%`
-              : `${(minValue / 10000) * 100}%`,
+            left: !isRTL ? `${(minValue / 10000) * 100}%` : `${(10000 - minValue) / 100}%`,
+              
             transform: "translateX(-50%)",
             zIndex: 3,
             pointerEvents: "none", 

@@ -17,7 +17,7 @@ import { LuBookMinus } from "react-icons/lu";
 import { Dropdown } from "react-bootstrap";
 import cancel from "../../assets/images/cancel.png";
 
-const AgreementsTable = ({ handleOpen, searchQuery, selectedStatus }) => {
+const AgreementsTable = ({ handleOpen, searchQuery, selectedStatus, fromDate, toDate, agreeData }) => {
   console.log(" ~ AgreementsTable ~ selectedStatus:", selectedStatus);
 
   const { t } = useTranslation();
@@ -39,11 +39,11 @@ const AgreementsTable = ({ handleOpen, searchQuery, selectedStatus }) => {
   };
 
   const filteredData = tableData.filter((row) => {
-    // Search filter
-    const matchesSearchQuery = t(row.agreementName)
-      .toLowerCase()
-      .includes(searchQuery.toLowerCase());
-
+    // Search filter (match agreementName OR clients)
+    const matchesSearchQuery =
+      t(row.agreementName).toLowerCase().includes(searchQuery.toLowerCase()) ||
+      t(row.clients).toLowerCase().includes(searchQuery.toLowerCase());
+  
     // Status filter
     let matchesStatus = true;
     if (selectedStatus) {
@@ -52,7 +52,19 @@ const AgreementsTable = ({ handleOpen, searchQuery, selectedStatus }) => {
         rowStatusEnglish.toLowerCase() === selectedStatus.toLowerCase();
     }
 
-    return matchesSearchQuery && matchesStatus;
+    let matchesDate = true;
+  if (fromDate && toDate && agreeData) {
+    const rowDate = new Date(row.date);
+    const from = new Date(fromDate);
+    const to = new Date(toDate);
+    matchesDate = rowDate >= from && rowDate <= to;
+  } else if (fromDate) {
+    matchesDate = new Date(row.date) >= new Date(fromDate);
+  } else if (toDate) {
+    matchesDate = new Date(row.date) <= new Date(toDate);
+  }
+  
+    return matchesSearchQuery && matchesStatus && matchesDate;
   });
 
   return (

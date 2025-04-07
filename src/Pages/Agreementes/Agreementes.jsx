@@ -22,6 +22,11 @@ const Agreements = () => {
   const [fromDate, setFromDate] = useState(null);
   const [toDate, setToDate] = useState(null);
   const [removeData, setRemoveData] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedStatus, setSelectedStatus] = useState("");
+  const [clientName, setClientName] = useState("");
+  const [tableData, setTableData] = useState([]);
+  const [agreeData, setAgreeData] = useState(false);
   const [modalState, setModalState] = useState({
     addInvoices: false,
     isError: false,
@@ -30,13 +35,15 @@ const Agreements = () => {
     isDocument: false,
   });
   console.log("modalstateisopen", modalState);
-  const [tableData, setTableData] = useState([]);
-  const { getAgreementData } = useAgreementServices();
-
+  const { getAgreementData } = useAgreementServices(clientName);
   useEffect(() => {
-    const data = getAgreementData();
-    setTableData(data);
-  }, []);
+    setTableData(getAgreementData());
+  }, [clientName]);
+
+  const handleData = () => {
+    setAgreeData(true);
+  }
+  console.log("getAgrreement Data", getAgreementData);
   const { t } = useTranslation();
 
   const handleOpen = () => {
@@ -137,9 +144,6 @@ const Agreements = () => {
       </span>
     );
   };
-
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedStatus, setSelectedStatus] = useState("");
   const handleStatusChange = (e) => setSelectedStatus(e.target.value);
   const handleRemoveStatus = () => setSelectedStatus("");
   const handleSearchChange = (e) => {
@@ -263,7 +267,7 @@ const Agreements = () => {
                         />
                       </div>
                     </div>
-                    <button className=" fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill ">
+                    <button className=" fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill " onClick={handleData}>
                       {t("show_button")}
                     </button>
                   </div>
@@ -298,6 +302,9 @@ const Agreements = () => {
                       handleOpen={handleOpen}
                       searchQuery={searchQuery}
                       selectedStatus={selectedStatus}
+                      fromDate={fromDate}
+                      agreeData={agreeData}
+  toDate={toDate}
                     />
                   </div>
                 </div>
