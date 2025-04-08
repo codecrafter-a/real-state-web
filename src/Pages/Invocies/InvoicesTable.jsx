@@ -8,7 +8,7 @@ import { LuDownload } from "react-icons/lu";
 
 const InvoicesTable = ({data}) => {
   const { t } = useTranslation();
-
+  
   return (
     <div className="custom-table-container">
       <Table hover className="table d-md-table  d-none">

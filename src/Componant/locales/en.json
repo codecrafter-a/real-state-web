@@ -150,6 +150,14 @@
     "yesButton": "Yes"
   },
 
+     "more_filters": "More Filters",
+  "previous_month": "Previous Month",
+  "three_months": "3 Months",
+  "half_year": "Half Year",
+  "agreement1_status": "Agreement Status",
+  "to_date1": "To Date",
+  "from_date1": "From Date",
+  "invoice_issued": "Invoice Issued",
     "pro_tab_title":"Add New Property",
     "pro_add_set1":"Property Address",
     "pro_add_set2":"Property Details",

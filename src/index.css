@@ -153,6 +153,9 @@ a:hover {
 	.scroll-height {
 		height: auto;
 	}
+	.ls-minus {
+		letter-spacing: -0.08rem;
+	  }
 }
 
 .custom-text {

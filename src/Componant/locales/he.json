@@ -631,6 +631,15 @@
     "yesButton": "כן"
   },
 
+  "more_filters": "פילטרים נוספים",
+  "previous_month": "חודש קודם",
+  "three_months": "3 חודשים",
+  "half_year": "חצי שנה",
+  "agreement1_status": "סטטוס ההסכם",
+  "to_date1": "עד תאריך",
+  "from_date1": "מתאריך",
+  "invoice_issued": "הופקה חשבונית",
+
   "report_name": "שירי נקבלי",
   "report_type": "מתעניין בשכירות",
   "condition": "חדש, משופץ",

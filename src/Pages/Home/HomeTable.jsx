@@ -31,7 +31,7 @@ const StatusBadge = ({ status }) => {
     };
 
     const translatedStatus = t(status);
-
+    
     const statusKey = statusMap[translatedStatus] || translatedStatus;
 
     const statusStyles = {
@@ -64,6 +64,14 @@ const HomeTable = () => {
         const data = getAgreementData();
         setTableData(data);
     }, []);
+
+    const borderColors = {
+        default: "#f87171",
+        signed: "#10b981",
+        executed: "#fdba74",
+        registered: "#3b82f6",
+        viewed: "#f87171",
+    };
 
     return (
         <div className="mt-4">
@@ -100,7 +108,7 @@ const HomeTable = () => {
 
                                 {(row.status == "home_tab_r3_h2" || row.status == "home_tab_r2_h2" || row.status == "home_tab_r1_h2") && (
                                     <td className="d-table-cell align-middle py-3">
-                                        <div className="d-flex align-items-center gap-3 p-2 bg-white">
+                                        <div className="d-flex align-items-center gap-2 p-2 bg-white">
                                             <div className="d-flex align-items-center gap-1 text-auto">
                                                 <span><TbMailForward size={18} /></span>
                                                 <span>{t("home_tab_r1_h1_l4")}</span>
@@ -211,24 +219,13 @@ const HomeTable = () => {
 
                 {tableData.map((row, index) => {
                     const collapseId = `collapse-${index}`;
-
+                    console.log("Action Type:", row.actionType);
                     return (
                         <div
                             key={index}
                             className="card mb-2 shadow-sm"
                             style={{
-                                borderInlineStart:
-                                    row.actionType === "genrated"
-                                        ? "6px solid #9ca3af"
-                                        : row.actionType === "viewd"
-                                            ? "6px solid #dc2626"
-                                            : row.actionType === "signed"
-                                                ? "6px solid #10b981"
-                                                : row.actionType === "sent"
-                                                    ? "6px solid #facc15"
-                                                    : row.actionType === "Signed and Executed"
-                                                        ? "6px solid #fdba74"
-                                                        : "none",
+                                borderInlineStart: `6px solid ${borderColors[row.actionType] || "#f87171"}`, // fallback color
                             }}
                         >
                             <div className="py-3 px-2 d-flex align-items-end justify-content-between">
@@ -264,8 +261,8 @@ const HomeTable = () => {
                 <div className="p-3 bg-white rounded shadow-sm my-2 d-flex align-items-center justify-content-between">
                     <div className="d-flex align-items-center flex-column">
                         <div className=" d-flex align-items-center">
-                            <span className="fs-3 fw-bold text-teal">325</span>
                             <GoPerson size={24} style={{ color: '#10b981' }} />
+                            <span className="fs-3 fw-bold text-teal">325</span>
                         </div>
                         <span className="text-success">לקוחות</span>
                     </div>
@@ -274,8 +271,8 @@ const HomeTable = () => {
                 <div className="p-3 bg-white  rounded shadow-sm my-2 d-flex align-items-center justify-content-between">
                     <div className="d-flex align-items-center flex-column">
                         <div className=" d-flex align-items-center">
-                            <span className="fs-3 fw-bold text-teal" >123</span>
                             <img src={house} alt="garaz door" />
+                            <span className="fs-3 fw-bold text-teal" >123</span>
                         </div>
                         <span className="text-success">נכסים</span>
                     </div>

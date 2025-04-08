@@ -54,8 +54,8 @@ const Header = () => {
      {isAuthenticated && 
        <header className={`header_main z-[1000]  `}>
        <section className="haeder_top">
-         <div className="row ">
-           <div className='col-4 '>
+         <div className="row d-flex justify-content-md-between flex-md-row-reverse">
+           <div className='col-md-auto col-4  '>
            {
               isOpen ? (<>
               <OffCanvas 

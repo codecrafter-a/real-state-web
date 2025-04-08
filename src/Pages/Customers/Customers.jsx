@@ -9,7 +9,7 @@ import remove_icon from "../../assets/images/remove_icon.svg";
 import action_icon1 from "../../assets/images/action_icon1.svg";
 import action_icon2 from "../../assets/images/action_icon2.svg";
 import ErrorIcon from "../../assets/images/ErrorIcon.svg";
-import { Link } from "react-router-dom";
+import { IoIosArrowUp } from "react-icons/io";
 // import check_tick from '../../assets/images/check_tick.svg';
 import table_arrrow from "../../assets/images/table_arrrow.svg";
 import RangeSlider from "../../Componant/Common/RangeSlider/RangeSlider";
@@ -757,7 +757,7 @@ const Customer = () => {
                 style={{ borderLeft: "6px solid #2CAC74" }}
               >
                 <Accordion.Header>
-                  <div className="d-flex justify-content-between w-full">
+                  <div className="d-flex justify-content-between w-100">
                     <div className="d-flex">
                       <input
                         type="checkbox"
@@ -774,6 +774,7 @@ const Customer = () => {
 
                     <div className="mr-2">
                       <span className="badge bg-warning">{row?.status}</span>
+                      <IoIosArrowUp className="mx-3"/>
                     </div>
                   </div>
                 </Accordion.Header>
