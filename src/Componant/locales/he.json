@@ -22,6 +22,7 @@
   "cust_full_name": "שם מלא*",
   "cust_phone": "טלפון*",
   "cust_UE": "דוא”ל*",
+   "send_report_consent": "אני מעוניין.ת לשלוח דוח התאמות ללקוח (המערכת תשלח ללקוח בקשה לאישור)",
   "cust_TA": "ת”ז",
   "cust_address": "כתובת מגורים מלאה",
   "cust_type": "סוג לקוח",
@@ -129,6 +130,7 @@
   "addtional_filter": "סנונים נוספים",
   "cust_modal_no_rooms": "מספר חדרים",
   "floor": "קומה",
+  "broker_title": "החתמת מתעניינים ",
   "cust_slider_label": "גודל (מ)",
   "cust_slider_label2": "מחיר (ש״ח)",
   "addtional_feature": "מאפיינים נוספים",
@@ -717,5 +719,18 @@
   "age_comm_type_1_subTitle": "מחברים יחד את עמלת המוכר, ואת עמלת הקונה, וכל מתווך מקבל חצי",
   "text_place": "פרטו את שיתוף הפעולה שסוכם",
   "property_detail": "פרטי בעל הנכס",
-  "customer_detail": "פרטי לקוחות להחתמה"
+  "customer_detail": "פרטי לקוחות להחתמה",
+
+  "registry": {
+    "propertyName": "פלורנטין 7 ת״א",
+    "rental": "השכרה",
+    "clients": "שיר קנבל, רומי שפן",
+    "download": "הורדה",
+    "actions": "פעולות",
+    "phone": "טלפון לקוחות",
+    "clients_label": "שמות הלקוחות",
+    "type": "סוג",
+    "date": "תאריך",
+    "property": "שם הנכס"
+  }
 }

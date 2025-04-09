@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import userTypeIcon1 from "../../../assets/images/user_type_icon1.svg";
 import userTypeIcon2 from "../../../assets/images/user_type_icon2.svg";
 import userTypeIcon3 from "../../../assets/images/user_type_icon3.svg";
@@ -16,6 +16,19 @@ import close from "../../../assets/images/ButtonClose.png";
 import { useClientService } from "../../../Services/ClientService";
 
 const AddCustomerMobile = () => {
+  const [isChecked, setIsChecked] = useState(false);
+  const handleMainCheck = (e) => {
+    const checked = e.target.checked;
+    setIsChecked(checked);
+
+    handleChange({
+      target: {
+        name: "userType",
+        value: t("cust_type_1"),
+        checked,
+      },
+    });
+  };
   const {
     formData,
     isFirstModalOpen,
@@ -101,30 +114,78 @@ const AddCustomerMobile = () => {
         <p className="form-label fs-15 lh-1 fw-semibold mb-2">
           {t("cust_type")}
         </p>
-        {[
-          { id: "usertype_1", icon: userTypeIcon1, label: t("cust_type_1") },
-          { id: "usertype_2", icon: userTypeIcon2, label: t("cust_type_2") },
-          { id: "usertype_3", icon: userTypeIcon3, label: t("cust_type_3") },
-        ].map(({ id, icon, label }) => (
-          <div className="col-auto" key={id}>
-            <div className="check_custom_icon">
-              <CustomInput
-                type="checkbox"
-                id={id}
-                name="userType"
-                value={label}
-                onChange={handleChange}
-                className="btn-check"
-              />
-              <label htmlFor={id}>
-                <span className="user_type_icon">
-                  <img src={icon} alt="icon" />
-                </span>
-                <span className="fs-17 lh-1 fw-normal">{label}</span>
-              </label>
-            </div>
+        <div className="col-auto">
+          <div className="check_custom_icon">
+            <CustomInput
+              type="checkbox"
+              id="usertype_1"
+              name="userType"
+              value={t("cust_type_1")}
+              checked={isChecked}
+              onChange={handleMainCheck}
+              className="btn-check"
+            />
+            <label htmlFor="usertype_1">
+              <span className="user_type_icon">
+                <img src={userTypeIcon1} alt="icon" />
+              </span>
+              <span className="fs-17 lh-1 fw-normal">{t("cust_type_1")}</span>
+            </label>
           </div>
-        ))}
+        </div>
+
+        <div className="col-auto">
+          <div className="check_custom_icon">
+            <CustomInput
+              type="checkbox"
+              id="usertype_2"
+              name="userType"
+              value={t("cust_type_2")}
+              onChange={handleChange}
+              className="btn-check"
+            />
+            <label htmlFor="usertype_2">
+              <span className="user_type_icon">
+                <img src={userTypeIcon2} alt="icon" />
+              </span>
+              <span className="fs-17 lh-1 fw-normal">{t("cust_type_2")}</span>
+            </label>
+          </div>
+        </div>
+
+        <div className="col-auto">
+          <div className="check_custom_icon">
+            <CustomInput
+              type="checkbox"
+              id="usertype_3"
+              name="userType"
+              value={t("cust_type_3")}
+              onChange={handleChange}
+              className="btn-check"
+            />
+            <label htmlFor="usertype_3">
+              <span className="user_type_icon">
+                <img src={userTypeIcon3} alt="icon" />
+              </span>
+              <span className="fs-17 lh-1 fw-normal">{t("cust_type_3")}</span>
+            </label>
+          </div>
+        </div>
+
+        <div className="d-flex justify-content-center gap-2 align-items-center my-3">
+          <input
+            className="form-check-input rounded-1 boredr-1 border-black "
+            type="checkbox"
+            value="select"
+            name="maincheck"
+            id="customCheck1"
+            checked={isChecked}
+            onChange={handleMainCheck}
+          />
+          <label className="fs-15 fw-normal lh-1" htmlFor="customCheck1">
+            {t("send_report_consent")}
+          </label>
+        </div>
       </div>
       <div className="d-flex justify-content-center mt-3">
         <button type="button" className="btn_cmn mt-3" onClick={nextScreen}>

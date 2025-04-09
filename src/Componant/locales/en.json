@@ -23,11 +23,13 @@
   "cust_phone":"phone*",
   "cust_UE":"EU*",
   "cust_TA":"TA",
+  "broker_title" : "Interested parties signing",
   "cust_address":"Full residential address",
   "cust_type":"Customer type",
   "cust_type_1":"Interested",
   "cust_type_2":"owner",
   "cust_type_3":"Mediator",
+  "send_report_consent": "I want to send a reconciliation report to the client (the system will send a request for approval)",
   "cust_preferences":"Customer preferences",
   "cust_preferences_1":"From rental",
   "cust_preferences_2":"In buying",
@@ -734,5 +736,18 @@
   "age_comm_type_1_subTitle": "The seller's commission and the buyer's commission are added together, and each broker receives half",
   "text_place": "Detail the cooperation that was agreed upon.",
   "property_detail": "Property Owner Details",
-  "customer_detail": "Customer Details for Signing"
+  "customer_detail": "Customer Details for Signing",
+
+  "registry": {
+    "propertyName": "Florentin 7 Tel Aviv",
+    "rental": "Rental",
+    "clients": "Shir Kenbel, Rumi Shafan",
+    "download": "Download",
+    "actions": "Actions",
+    "phone": "Client Phone",
+    "clients_label": "Client Names",
+    "type": "Type",
+    "date": "Date",
+    "property": "Property Name"
+  }
   }

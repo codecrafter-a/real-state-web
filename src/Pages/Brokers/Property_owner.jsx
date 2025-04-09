@@ -438,10 +438,9 @@ const Property_owner = () => {
           setIsView(false);
         }}
         centered
-        className="modal-container"
+        // className="modal-container"
       >
-        <Modal.Header className="d-flex justify-content-between align-items-center border-0">
-          <button><img src={Next} alt="next btn" className="" /></button>
+        <Modal.Header className="d-flex justify-content-end align-items-center border-0">
           <button type="button" className="btn-close m-0 fs-5" data-bs-dismiss="modal" aria-label="Close" onClick={() => setIsView(false)}></button>
         </Modal.Header>
         <Modal.Body className="p-4 overflow-y-auto custom-scrollbar" style={{ height: "655px" }}>
@@ -457,7 +456,7 @@ const Property_owner = () => {
             <p className="fs_25 font-semibold">{t("age_report_question")}</p>
           </div>
           {/* Options Section */}
-          <div className="options-container m-auto" style={{ width: '417px' }}>
+          <div className="options-container m-auto" >
             <div className="option-item rounded-3 my-3">
               <Accordion defaultActiveKey={null} className="custom-accordion">
                 <Accordion.Item eventKey="0 " className="custom-header border-teal-100">
@@ -620,14 +619,14 @@ const Property_owner = () => {
               </Accordion>
             </div>
           </div>
-          <div className="text-center mt-4 d-flex flex-col">
+          <div className="text-center mt-4 d-flex flex-wrap flex-md-nowrap justify-content-center">
             <button
-              className="agent-button1 mx-auto rounded-pill px-3 py-2 fw-bold shadow-sm text-white"
+              className="agent-btn-responsive1 h-25 w-50 py-2 rounded-pill text-white"
               onClick={handleIsShow}
             >
               {t("age_btn_send")}
             </button>
-            <button className="btn btn-link text-muted mt-2">
+            <button className="btn btn-link text-muted ">
               {t("age_btn_link")}
             </button>
           </div>
@@ -709,9 +708,9 @@ const Property_owner = () => {
               {t("age_cust_status")}
             </p>
           </div>
-          <div className="text-center mt-4">
+          <div className="text-center  mt-4 d-flex justify-content-center">
             <button
-              className="btn bg-teal text-white rounded-pill px-4 py-2 fw-bold shadow-sm w-75"
+              className="agent-btn-responsive1 w-50 py-2 rounded-pill text-white"
               onClick={() => setSentSuccess(false)}
             >
               {t("age_btn_description")}

@@ -226,13 +226,20 @@ const AgreementsTable = ({
                       <TbMailForward size={18} />
                       <span>{t("send_copy")}</span>
                     </div>
-                    <span className="d-flex align-items-center text-nowrap gap-1">
+                    {/* <span className="d-flex align-items-center text-nowrap gap-1">
                       <MdOutlineCheckCircleOutline size={18} />
                       {t("close_deal")}
-                    </span>
+                    </span> */}
                     <button
                       className="d-flex align-items-center border-0 bg-transparent  text-nowrap gap-1"
                       onClick={handleOpen}
+                    >
+                      <MdOutlineCheckCircleOutline size={18} />
+                      {t("close_deal")}
+                    </button>
+                    <button
+                      className="d-flex align-items-center border-0 bg-transparent  text-nowrap gap-1"
+                      
                     >
                       <RiDeleteBin2Line size={18} />
                       {t("delete")}
@@ -253,7 +260,7 @@ const AgreementsTable = ({
                     </div>
                     <button
                       className="d-flex border-0 bg-transparent align-items-center gap-1"
-                      onClick={handleOpen}
+                    
                     >
                       <RiDeleteBin2Line size={18} />
                       {t("delete")}
@@ -270,7 +277,7 @@ const AgreementsTable = ({
                     </div>
                     <button
                       className="d-flex align-items-center border-0 bg-transparent gap-1"
-                      onClick={handleOpen}
+                      
                     >
                       <RiDeleteBin2Line size={18} />
                       {t("delete")}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import userTypeIcon1 from "../../../assets/images/user_type_icon1.svg";
 import userTypeIcon2 from "../../../assets/images/user_type_icon2.svg";
 import userTypeIcon3 from "../../../assets/images/user_type_icon3.svg";
@@ -14,8 +14,12 @@ import { Modal } from "react-bootstrap";
 import Next from "../../../assets/images/Next.jpg";
 import close from "../../../assets/images/ButtonClose.png";
 import { useClientService } from "../../../Services/ClientService";
-
+import { motion } from "framer-motion";
 const AddCustomerDesktop = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const handleisopen = () => {
+    setIsOpen((prev) => !prev);
+  };
   const {
     formData,
     isFirstModalOpen,
@@ -35,7 +39,7 @@ const AddCustomerDesktop = () => {
           {t("add_cust_form_title")}
         </h3>
       </div>
-      <div className="p-0">
+      <div className="">
         <form className="form_custom">
           <div className="custom-scrollbar overflow-y-auto overflow-x-hidden scroll-height px-3 pb-4">
             <div className="row form_group">
@@ -107,179 +111,247 @@ const AddCustomerDesktop = () => {
               <p className="form-label fs-15 lh-1 fw-semibold mb-2">
                 {t("cust_type")}
               </p>
-              {[
-                { id: "usertype_1", icon: userTypeIcon1, label: t("cust_type_1") },
-                { id: "usertype_2", icon: userTypeIcon2, label: t("cust_type_2") },
-                { id: "usertype_3", icon: userTypeIcon3, label: t("cust_type_3") },
-              ].map(({ id, icon, label }) => (
-                <div className="col-auto" key={id}>
-                  <div className="check_custom_icon">
+              <div className="col-auto">
+                <div className="check_custom_icon">
+                  <CustomInput
+                    type="checkbox"
+                    id="usertype_1"
+                    name="userType"
+                    value={t("cust_type_1")}
+                    onChange={handleisopen}
+                    className="btn-check"
+                  />
+                  <label htmlFor="usertype_1">
+                    <span className="user_type_icon">
+                      <img src={userTypeIcon1} alt="icon" />
+                    </span>
+                    <span className="fs-17 lh-1 fw-normal">
+                      {t("cust_type_1")}
+                    </span>
+                  </label>
+                </div>
+              </div>
+
+              <div className="col-auto">
+                <div className="check_custom_icon">
+                  <CustomInput
+                    type="checkbox"
+                    id="usertype_2"
+                    name="userType"
+                    value={t("cust_type_2")}
+                    onChange={handleChange}
+                    className="btn-check"
+                  />
+                  <label htmlFor="usertype_2">
+                    <span className="user_type_icon">
+                      <img src={userTypeIcon2} alt="icon" />
+                    </span>
+                    <span className="fs-17 lh-1 fw-normal">
+                      {t("cust_type_2")}
+                    </span>
+                  </label>
+                </div>
+              </div>
+
+              <div className="col-auto">
+                <div className="check_custom_icon">
+                  <CustomInput
+                    type="checkbox"
+                    id="usertype_3"
+                    name="userType"
+                    value={t("cust_type_3")}
+                    onChange={handleChange}
+                    className="btn-check"
+                  />
+                  <label htmlFor="usertype_3">
+                    <span className="user_type_icon">
+                      <img src={userTypeIcon3} alt="icon" />
+                    </span>
+                    <span className="fs-17 lh-1 fw-normal">
+                      {t("cust_type_3")}
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={
+                isOpen
+                  ? { height: "auto", opacity: 1 }
+                  : { height: 0, opacity: 0 }
+              }
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+              style={{ overflow: "hidden" }}
+            >
+              <div className="row pb-4">
+                <h4 className="fs-5 lh-1 fw-semibold">
+                  {t("cust_preferences")}
+                </h4>
+                {[
+                  {
+                    id: "user_pra1",
+                    icon: keyVertical,
+                    label: t("cust_preferences_1"),
+                  },
+                  {
+                    id: "user_pra2",
+                    icon: garageDoor,
+                    label: t("cust_preferences_2"),
+                  },
+                ].map(({ id, icon, label }) => (
+                  <div className="col-auto" key={id}>
+                    <div className="check_custom_icon">
+                      <CustomInput
+                        type="checkbox"
+                        id={id}
+                        name="preferences"
+                        value={label}
+                        onChange={handleChange}
+                        className="btn-check"
+                      />
+                      <label htmlFor={id}>
+                        <span className="">
+                          <img src={icon} alt="icon" />
+                        </span>
+                        <span className="fs-17 fw-semibold lh-1"> {label}</span>
+                      </label>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="row form_group">
+                <div className="col-md-4">
+                  <label className="form-label fs-15 fw-semibold lh-1">
+                    {t("res_area")}
+                  </label>
+                  <div className="mb-4 position-relative border border-[#D6D6D6] rounded d-flex">
                     <CustomInput
-                      type="checkbox"
-                      id={id}
-                      name="userType"
-                      value={label}
+                      type="text"
+                      name="requestedArea"
+                      value={formData.requestedArea}
                       onChange={handleChange}
-                      className="btn-check"
+                      className="form-control border-0 p-0 flex-grow-1"
+                      placeholder={t("type")}
                     />
-                    <label htmlFor={id}>
-                      <span className="user_type_icon">
-                        <img src={icon} alt="icon" />
-                      </span>
-                      <span className="fs-17 lh-1 fw-normal">{label}</span>
-                    </label>
+                    <button
+                      className="btn p-0 px-3 border-0 ms-2"
+                      type="button"
+                    >
+                      <img src={searchIcon} alt="search" />
+                    </button>
                   </div>
                 </div>
-              ))}
-            </div>
-
-            <div className="row pb-4">
-              <h4 className="fs-5 lh-1 fw-semibold">{t("cust_preferences")}</h4>
-              {[
-                {
-                  id: "user_pra1",
-                  icon: keyVertical,
-                  label: t("cust_preferences_1"),
-                },
-                { id: "user_pra2", icon: garageDoor, label: t("cust_preferences_2") },
-              ].map(({ id, icon, label }) => (
-                <div className="col-auto" key={id}>
-                  <div className="check_custom_icon">
+                <div className="col-md-4">
+                  <label className="form-label fs-15 fw-semibold lh-1">
+                    {t("pro_type")}
+                  </label>
+                  <CustomSelect
+                    name="propertyType"
+                    value={formData.propertyType}
+                    onChange={handleChange}
+                    options={[
+                      { value: "", label: "" },
+                      { value: t("option1"), label: t("option1") },
+                      { value: t("option2"), label: t("option2") },
+                    ]}
+                    className="form-select"
+                  />
+                </div>
+                <div className="col-md-4">
+                  <label className="form-label fs-15 fw-semibold lh-1">
+                    {t("pro_condition")}
+                  </label>
+                  <CustomSelect
+                    name="propertyType"
+                    value={formData.propertyType}
+                    onChange={handleChange}
+                    options={[
+                      { value: "", label: "" },
+                      { value: t("option1"), label: t("option1") },
+                      { value: t("option1"), label: t("option1") },
+                    ]}
+                    className="form-select"
+                  />
+                </div>
+              </div>
+              <div className="row g-4 form_group ">
+                <div className="col-md-4">
+                  <label className="form-label fs-15 fw-semibold my-1 lh-1">
+                    {t("no_rooms")}
+                  </label>
+                  <div className="input-group input_grp_cus">
                     <CustomInput
-                      type="checkbox"
-                      id={id}
-                      name="preferences"
-                      value={label}
+                      type="text"
+                      name="numberOfRooms"
+                      value={formData.numberOfRooms}
                       onChange={handleChange}
-                      className="btn-check"
+                      className="form-control"
                     />
-                    <label htmlFor={id}>
-                      <span className="">
-                        <img src={icon} alt="icon" />
-                      </span>
-                      <span className="fs-17 fw-semibold lh-1"> {label}</span>
-                    </label>
                   </div>
                 </div>
-              ))}
-            </div>
-            <div className="row form_group">
-              <div className="col-md-4">
-                <label className="form-label fs-15 fw-semibold lh-1">
-                  {t("res_area")}
-                </label>
-                <div className="mb-4 position-relative border border-[#D6D6D6] rounded d-flex">
-                  <CustomInput
-                    type="text"
-                    name="requestedArea"
-                    value={formData.requestedArea}
-                    onChange={handleChange}
-                    className="form-control border-0 p-0 flex-grow-1"
-                    placeholder={t("type")}
+
+                <div className="col-lg-4">
+                  <RangeSlider
+                    label={t("size")}
+                    customStyle={{ paddingTop: "10px" }}
                   />
-                  <button className="btn p-0 px-3 border-0 ms-2" type="button">
-                    <img src={searchIcon} alt="search" />
-                  </button>
                 </div>
-              </div>
-              <div className="col-md-4">
-                <label className="form-label fs-15 fw-semibold lh-1">
-                  {t("pro_type")}
-                </label>
-                <CustomSelect
-                  name="propertyType"
-                  value={formData.propertyType}
-                  onChange={handleChange}
-                  options={[
-                    { value: "", label: "" },
-                    { value: t("option1"), label: t("option1") },
-                    { value: t("option2"), label: t("option2") },
-                  ]}
-                  className="form-select"
-                />
-              </div>
-              <div className="col-md-4">
-                <label className="form-label fs-15 fw-semibold lh-1">
-                  {t("pro_condition")}
-                </label>
-                <CustomSelect
-                  name="propertyType"
-                  value={formData.propertyType}
-                  onChange={handleChange}
-                  options={[
-                    { value: "", label: "" },
-                    { value: t("option1"), label: t("option1") },
-                    { value: t("option1"), label: t("option1") },
-                  ]}
-                  className="form-select"
-                />
-              </div>
-            </div>
-            <div className="row g-4 form_group">
-              <div className="col-md-4">
-                <label className="form-label fs-15 fw-semibold my-1 lh-1">
-                  {t("no_rooms")}
-                </label>
-                <div className="input-group input_grp_cus">
-                  <CustomInput
-                    type="text"
-                    name="numberOfRooms"
-                    value={formData.numberOfRooms}
-                    onChange={handleChange}
-                    className="form-control"
-                  />
+
+                <div className="col-lg-4 ">
+                  <div className="pe-2">
+                    <RangeSlider
+                      label={t("price")}
+                      customStyle={{ paddingTop: "10px" }}
+                    />
+                  </div>
                 </div>
               </div>
 
-              <div className="col-lg-4">
-                <RangeSlider label={t("size")} customStyle={{ paddingTop: "10px" }} />
-              </div>
-
-              <div className="col-lg-4">
-                <RangeSlider
-                  label={t("price")}
-                  customStyle={{ paddingTop: "10px" }}
-                />
-              </div>
-            </div>
-
-            <h4 className="fs-5 fw-semibod lh-1">{t("fetures")}</h4>
-            <ul className="services_tags">
-              <li>
-                <span className="fs-15 fw-normal lh-1">{t("entry_type_1")} </span>
-              </li>
-              <li>
-                <span className="fs-15 fw-normal lh-1">{t("entry_type_2")} </span>
-              </li>
-              <br />
-              {[
-                { title: t("feture_1") },
-                { title: t("feture_2") },
-                { title: t("feture_3") },
-                { title: t("feture_4") },
-                { title: t("feture_5") },
-                { title: t("feture_6") },
-                { title: t("feture_7") },
-                { title: t("feture_8") },
-                { title: t("feture_9") },
-              ].map((item, index) => (
-                <li key={index}>
-                  <span className="fs-15 fw-normal lh-1">{item.title}</span>
+              <h4 className="fs-5 fw-semibod lh-1">{t("fetures")}</h4>
+              <ul className="services_tags">
+                <li>
+                  <span className="fs-15 fw-normal lh-1">
+                    {t("entry_type_1")}{" "}
+                  </span>
                 </li>
-              ))}
-            </ul>
-            <div className="form_group">
-              <label className="form-label fs-15 fw-semibold lh-1">
-                {t("reports")}
-              </label>
-              <textarea
-                name="customerRequests"
-                value={formData.customerRequests}
-                onChange={handleChange}
-                placeholder={t("request_placeholder")}
-                className="form-control"
-              ></textarea>
-            </div>
+                <li>
+                  <span className="fs-15 fw-normal lh-1">
+                    {t("entry_type_2")}{" "}
+                  </span>
+                </li>
+                <br />
+                {[
+                  { title: t("feture_1") },
+                  { title: t("feture_2") },
+                  { title: t("feture_3") },
+                  { title: t("feture_4") },
+                  { title: t("feture_5") },
+                  { title: t("feture_6") },
+                  { title: t("feture_7") },
+                  { title: t("feture_8") },
+                  { title: t("feture_9") },
+                ].map((item, index) => (
+                  <li key={index}>
+                    <span className="fs-15 fw-normal lh-1">{item.title}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="form_group">
+                <label className="form-label fs-15 fw-semibold lh-1">
+                  {t("reports")}
+                </label>
+                <textarea
+                  name="customerRequests"
+                  value={formData.customerRequests}
+                  onChange={handleChange}
+                  placeholder={t("request_placeholder")}
+                  className="form-control"
+                ></textarea>
+              </div>
+            </motion.div>
+
             <button
               type="button"
               className="btn_cmn mt-3"

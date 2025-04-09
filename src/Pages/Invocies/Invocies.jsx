@@ -11,18 +11,37 @@ import { Button, Accordion } from "react-bootstrap";
 import { FaEye, FaDownload } from "react-icons/fa";
 import { BsWhatsapp } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
-
+import Modal from "react-bootstrap/Modal";
+import AddinvoicesIcon from "../../assets/images/addinvoices.png";
+import pdfinstall from "../../assets/images/pdf.png";
 const Invocies = () => {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState("all");
   const [invoiceData, setInvoiceData] = useState([]);
   const [clientName, setClientName] = useState("");
+  const [fromDate, setFromDate] = useState("");
+  const [untilDate, setUntilDate] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
 
-  const { getInvoiceService } = useInvoiceServices(clientName);
+  const { getInvoiceService } = useInvoiceServices(
+    clientName,
+    fromDate,
+    untilDate
+  );
+
+  const handleClick = () => setIsOpen(true);
 
   useEffect(() => {
     setInvoiceData(getInvoiceService());
   }, [clientName]);
+
+  const handleShow = () => {
+    if (fromDate && untilDate) {
+      setInvoiceData(getInvoiceService());
+    } else {
+      alert("Please select both From and Until dates");
+    }
+  };
 
   return (
     <>
@@ -71,25 +90,41 @@ const Invocies = () => {
                   </span>
                 </div>
               </div>
-              <div className="row d-flex  my-3">
-                <div className="col-2">
+              <div className="row g-3 align-items-end my-3">
+                <div className="col-12 col-md-3">
                   <label className="form-label fs-15 fw-semibold lh-1">
                     {t("from_date")}
                   </label>
-                  <input type="date" className="form-control " />
+                  <input
+                    type="date"
+                    className="form-control"
+                    value={fromDate}
+                    onChange={(e) => setFromDate(e.target.value)}
+                  />
                 </div>
-                <div className="col-2">
+
+                <div className="col-12 col-md-3">
                   <label className="form-label fs-15 fw-semibold lh-1">
                     {t("until_date")}
                   </label>
-                  <input type="date" className="form-control" />
+                  <input
+                    type="date"
+                    className="form-control"
+                    value={untilDate}
+                    onChange={(e) => setUntilDate(e.target.value)}
+                  />
                 </div>
-                <div className=" col-8 d-flex justify-content-end ">
-                  <button className=" fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-25 py-2 mx-1 rounded-pill ">
+
+                <div className="col-12 col-md-6 text-center text-md-end">
+                  <button
+                    className=" fs-17 lh-1 fw-semibold py-2 px-5 rounded-pill agent-btn-responsive2"
+                    onClick={handleShow}
+                  >
                     {t("show_button")}
                   </button>
                 </div>
               </div>
+
               <div className="d-md-none d-block">
                 <p className=" fs-16 fw-semibold lh-1 my-2 text-center text-teal">
                   פילטרים נוספים
@@ -99,7 +134,7 @@ const Invocies = () => {
                 </div>
               </div>
               <div className=" py-4">
-                <InvoicesTable data={invoiceData} />
+                <InvoicesTable data={invoiceData} handleClick={handleClick}/>
               </div>
             </>
           )}
@@ -139,7 +174,7 @@ const Invocies = () => {
               </div>
               <div className="border-top p-2 bg-light">
                 <div className="d-flex justify-content-around  w-100">
-                  <Button className="btn btn-light d-flex align-items-center p-1">
+                  <Button className="btn btn-light d-flex align-items-center p-1" onClick={handleClick}>
                     <FaEye size={16} />
                     <span className="fs-14 fw-normal lh-1">{t("view")}</span>
                   </Button>
@@ -165,6 +200,50 @@ const Invocies = () => {
           </Accordion.Item>
         ))}
       </Accordion>
+      <Modal
+              show={isOpen}
+              center
+              className="modal-container "
+              onClick={() => setIsOpen(false)}
+            >
+              <Modal.Header className="border-0 p-3 position-relative mt-4">
+                <button
+                  type="button"
+                  className="btn-close position-absolute close-btn"
+                ></button>
+              </Modal.Header>
+              <Modal.Body className="text-center p-4">
+                <div className="d-flex justify-content-center align-items-center mb-3">
+                  <img
+                    src={AddinvoicesIcon}
+                    alt="success icon open"
+                    className=""
+                  />
+                </div>
+                <h4 className="fs-3 font-semibold pb-3">
+                  {t("invoice1_number")}
+                </h4>
+                <div className="d-flex justify-content-center align-items-center mb-3">
+                  <img src={pdfinstall} alt="install pdf" />
+                </div>
+                <div className="d-flex justify-content-center flex-wrap flex-md-nowrap gap-2 my-3">
+                  <button className="fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill">
+                    {t("all1_invoices")}
+                  </button>
+                  <button
+                    className="fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill"
+                  >
+                    {t("download_invoice")}
+                  </button>
+                  <button
+                    className="fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive1 text-white w-50 py-2 mx-1 rounded-pill"
+                  >
+                    {t("register_transaction")}
+                  </button>
+                </div>
+              </Modal.Body>
+            </Modal>
+
     </>
   );
 };

@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { IoEyeOutline } from "react-icons/io5";
 import { LuDownload } from "react-icons/lu";
 
-const InvoicesTable = ({data}) => {
+const InvoicesTable = ({data, handleClick}) => {
   const { t } = useTranslation();
   
   return (
@@ -42,7 +42,7 @@ const InvoicesTable = ({data}) => {
               <td className="d-table-cell align-middle py-4 fs-14 lh-1 fw-normal">{row.amount}</td>
               <td className="d-table-cell align-middle">
                 <div className="d-flex align-items-center gap-4 p-2">
-                  <div className='flex gap-1 items-center'><IoEyeOutline /> <span className=' fs-15 lh-1'>{t("view")}</span></div>
+                  <button  onClick={handleClick} className='flex gap-1 items-center border-0 bg-transparent'><IoEyeOutline /> <span className=' fs-15 lh-1'>{t("view")}</span></button>
                   <div className='flex gap-1 items-center'><TbMailForward /> <span className=' fs-15 lh-1'>{t("send_to_client")}</span></div>
                   <div className='flex gap-1 items-center'><LuDownload /> <span className=' fs-15 lh-1'>{t("download")}</span></div>
                   <div className='flex gap-1 items-center'><FaWhatsapp /> <span className=' fs-15 lh-1'>{t("share")}</span></div>

@@ -60,6 +60,14 @@ const Customer = () => {
     );
   };
 
+  useEffect(() => {
+    const allSelected =
+      clients.length > 0 &&
+      clients.every((_, index) => selectedRows[index]);
+  
+    setSelectAll(allSelected);
+  }, [clients, selectedRows]);
+
   const handleOpen = () => {
     setIsModalOpen(true);
   };
@@ -80,20 +88,26 @@ const Customer = () => {
   const toggleCheckbox = (index) => {
     setSelectedRows((prev) => {
       const updated = { ...prev, [index]: !prev[index] };
-      setSelectAll(Object.values(updated).every(Boolean));
+      const allSelected = Object.values(updated).length === clients.length &&
+                          Object.values(updated).every(Boolean);
+  
+      setSelectAll(allSelected);
       return updated;
     });
   };
-
+  
   const toggleSelectAll = () => {
     const newState = !selectAll;
     setSelectAll(newState);
+  
     const updatedSelection = {};
     clients.forEach((_, index) => {
       updatedSelection[index] = newState;
     });
+  
     setSelectedRows(updatedSelection);
   };
+  
 
   return (
     <>
@@ -464,7 +478,7 @@ const Customer = () => {
                                   <CustomButton
                                     type="button"
                                     className="fs-17 lh-1 fw-semibold  agent-btn-responsive2 w-20 py-2 mx-1 rounded-pill"
-                                    children={" לכל ההסכמים  "}
+                                    children={t("all_agreements")}
                                   />
                                   <div className="d-flex align-items-center">
                                     <img
@@ -763,7 +777,7 @@ const Customer = () => {
                         type="checkbox"
                         checked={!!selectedRows[index]}
                         onChange={() => toggleCheckbox(index)}
-                        className="form-check-input border-2 border-black h-25 mx-1"
+                        className="form-check-input border-2 border-black  mx-1"
                       />
                       <div className="ml-3">
                         <p className="mb-1">{row?.name}</p>
@@ -772,7 +786,7 @@ const Customer = () => {
                       </div>
                     </div>
 
-                    <div className="mr-2">
+                    <div className="mr-2 d-flex h-25">
                       <span className="badge bg-warning">{row?.status}</span>
                       <IoIosArrowUp className="mx-3"/>
                     </div>

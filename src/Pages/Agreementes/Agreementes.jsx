@@ -391,14 +391,14 @@ const Agreements = () => {
                   {t("modal_success")}
                 </h4>
                 <p className="fs-5 font-semibold pb-3">{t("modal_invoice")}</p>
-                <div className="d-flex justify-content-between gap-3">
+                <div className="d-flex justify-content-center flex-wrap flex-md-nowrap justify-content-md-between gap-3">
                   <button
-                    className="agent-btn-responsive2 w-50 mx-auto rounded-pill px-3 py-2 fw-bold shadow-sm"
+                    className="agent-btn-responsive2 w-50  rounded-pill px-3 py-2 fw-bold shadow-sm"
                     onClick={handleClose}
                   >
                     {t("modal_no")}
                   </button>
-                  <button className="agent-btn-responsive1 w-50 mx-auto rounded-pill px-3 py-2 fw-bold shadow-sm text-white">
+                  <button className="agent-btn-responsive1 w-50  rounded-pill px-3 py-2 fw-bold shadow-sm text-white">
                     {t("modal_yes")}
                   </button>
                 </div>
@@ -427,9 +427,9 @@ const Agreements = () => {
                 <h4 className="text-embed-500 fs-3 font-semibold pb-3">
                   {t("invoice_success")}
                 </h4>
-                <div className="d-flex justify-content-center  my-3">
+                <div className="d-flex justify-content-center justify-content-md-between flex-wrap flex-md-nowrap my-3">
                   <button
-                    className="fs-5 lh-1 fw-semibold mt-md-4  agent-btn-responsive1 text-white w-50 py-2 mx-1 rounded-pill"
+                    className="fs-5 lh-1 fw-semibold agent-btn-responsive1 text-white my-md-3 w-50 py-2 py-md-0 mx-1 rounded-pill"
                     onClick={() =>
                       updateModalState({ addInvoices: false, isError: true })
                     }
@@ -437,7 +437,7 @@ const Agreements = () => {
                     {t("invoice_view")}
                   </button>
                   <button
-                    className="fs-5 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill "
+                    className="fs-5 lh-1 fw-semibold  py-2 my-3 agent-btn-responsive2 w-50  mx-1 rounded-pill "
                     onClick={() => updateModalState({ addInvoices: false })}
                   >
                     {t("invoice_all")}
@@ -468,9 +468,9 @@ const Agreements = () => {
                 <p className="fs-4 text-embed-500 fw-semibold pb-3">
                   {t("error_question")}
                 </p>
-                <div className="d-flex justify-content-between my-3">
+                <div className="d-flex justify-content-center flex-wrap flex-md-nowrap justify-content-md-between my-3">
                   <button
-                    className="fs-5 lh-1 fw-semibold mt-md-4  agent-btn-responsive1 text-white w-50 py-2 mx-1 rounded-pill"
+                    className="fs-6 lh-1 fw-semibold  my-3 agent-btn-responsive1 text-white my-md-3 w-50 py-2 py-md-0 mx-1 rounded-pill"
                     onClick={() =>
                       updateModalState({ isError: false, restriction: true })
                     }
@@ -478,7 +478,7 @@ const Agreements = () => {
                     {t("yes_register")}
                   </button>
                   <button
-                    className="fs-5 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill "
+                    className="fs-5 lh-1 fw-semibold  py-2 my-3 agent-btn-responsive2 w-50  mx-1 rounded-pill  "
                     onClick={() => updateModalState({ isError: false })}
                   >
                     {t("no_now")}
@@ -509,9 +509,9 @@ const Agreements = () => {
                 <h4 className="text-embed-500 fs-3 font-semibold pb-3">
                   {t("registriction_title")}
                 </h4>
-                <div className="d-flex justify-content-between my-3">
+                <div className="d-flex justify-content-center justify-content-md-between flex-wrap flex-md-nowrap my-3">
                   <button
-                    className="fs-5 lh-1 fw-semibold mt-md-4  agent-btn-responsive1 text-white w-50 py-2 px-3 mx-1 rounded-pill"
+                    className="fs-5 lh-1 fw-semibold  py-2 my-2 agent-btn-responsive1 text-white my-md-3 w-50  py-md-0  mx-1  rounded-pill"
                     onClick={() =>
                       updateModalState({ restriction: false, isInvoices: true })
                     }
@@ -519,7 +519,7 @@ const Agreements = () => {
                     {t("yes_register_transaction")}
                   </button>
                   <button
-                    className="fs-5 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill "
+                    className="fs-5 lh-1 fw-semibold  py-2 my-3 agent-btn-responsive2 w-50  mx-1 rounded-pill "
                     onClick={() => updateModalState({ restriction: false })}
                   >
                     {t("no_now")}
@@ -554,9 +554,9 @@ const Agreements = () => {
                 <h4 className="text-embed-500 fs-3 font-semibold pb-3">
                   {t("invoice_generated")}
                 </h4>
-                <div className="d-flex justify-content-between my-3">
+                <div className="d-flex justify-content-md-between justify-content-center flex-wrap flex-md-nowrap my-3">
                   <button
-                    className="fs-5 lh-1 fw-semibold mt-md-4  agent-btn-responsive1 text-white w-50 py-2 mx-1 rounded-pill"
+                    className="fs-5 lh-1 fw-semibold py-2  agent-btn-responsive1 text-white my-md-3 w-50  py-md-0 mx-1  rounded-pill"
                     onClick={() =>
                       updateModalState({ isInvoices: false, isDocument: true })
                     }
@@ -564,7 +564,7 @@ const Agreements = () => {
                     {t("view_invoice")}
                   </button>
                   <button
-                    className="fs-5 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill"
+                    className="fs-5 lh-1 fw-semibold  py-2 my-3 agent-btn-responsive2 w-50  mx-1 rounded-pill"
                     onClick={() => updateModalState({ isInvoices: false })}
                   >
                     {t("all_invoices")}
@@ -598,7 +598,7 @@ const Agreements = () => {
                 <div className="d-flex justify-content-center align-items-center mb-3">
                   <img src={pdfinstall} alt="install pdf" />
                 </div>
-                <div className="d-flex justify-content-center flex-nowrap gap-2 my-3">
+                <div className="d-flex justify-content-center flex-wrap flex-md-nowrap gap-2 my-3">
                   <button className="fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill">
                     {t("all1_invoices")}
                   </button>
@@ -722,7 +722,7 @@ const Agreements = () => {
                 </div>
                 <div className="w-100 px-3">
                   <div className="d-flex align-items-center">
-                    <Toggle defaultChecked type="checkbox" id="toggleImages" />
+                    <Toggle defaultChecked type="checkbox" id="toggleImages" onChange={handleToggle}/>
                     <label
                       className="fs-6 fw-normal lh-1"
                       htmlFor="toggleImages"
