@@ -17,9 +17,22 @@ import { useAgreementServices } from "../../Services/AgreementServices";
 import { Accordion } from "react-bootstrap";
 import key from "../../assets/images/key_vertical.svg";
 import { TbMailForward } from "react-icons/tb";
+import Toggle from "../../Componant/Common/Toggle/Toggle";
+import { motion } from "framer-motion";
+import { Dropdown } from "react-bootstrap";
+import cancel from "../../assets/images/cancel.png";
+import { HiOutlineDotsVertical } from "react-icons/hi";
+import { RiDeleteBin2Line } from "react-icons/ri";
 const Agreements = () => {
   const [activeTab, setActiveTab] = useState("all");
   const [removeData, setRemoveData] = useState(false);
+  const [selectData, setSelectData] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleisopen = () => {
+    setIsOpen((prev) => !prev);
+  };
+  console.log("sELEEKDK", selectData);
   const [modalState, setModalState] = useState({
     addInvoices: false,
     isError: false,
@@ -27,7 +40,11 @@ const Agreements = () => {
     isInvoices: false,
     isDocument: false,
   });
- 
+
+  const handleSelectClick = () => {
+    setSelectData(true);
+  };
+
   const {
     tableData,
     agreeData,
@@ -42,33 +59,33 @@ const Agreements = () => {
     setFromDate,
     setToDate,
     getAgreementData,
-    setTableData
+    setTableData,
   } = useAgreementServices();
- 
+
   useEffect(() => {
     setTableData(getAgreementData());
   }, []);
- 
+
   const { t } = useTranslation();
   const navigate = useNavigate();
- 
+
   const handleOpen = () => setRemoveData(true);
   const handleClose = () => setRemoveData(false);
   const handleClick = () => navigate("/:lang/invoices");
- 
+
   const updateModalState = (updatedValues) => {
     setModalState((prev) => ({
       ...prev,
       ...updatedValues,
     }));
   };
- 
+
   const handleToggle = (e) => {
     if (e.target.checked) {
       updateModalState({ addInvoices: true });
     }
   };
- 
+
   const handleCloseall = () => {
     setModalState({
       addInvoices: false,
@@ -95,8 +112,51 @@ const Agreements = () => {
                 <span>{t("home_tab_r1_h1_l3")}</span>
               </div>
             )}
+           
+            <div className="position-relative">
+              <Dropdown className="d-flex align-items-center">
+                <Dropdown.Toggle
+                id="dropdown-button-dark-example1"
+                  as="div"
+                  variant="light"
+                  className="border-0 bg-transparent custom-dropdown-toggle d-flex align-items-center gap-1 cursor-pointer"
+                >
+                  <HiOutlineDotsVertical size={18} />
+                  {t("home_tab_r1_h1_l1")}
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu className="w_max more-menu">
+                  <Dropdown.Item
+                    href="#/action-1"
+                    className="d-flex align-items-center gap-1 m-2 p-0"
+                  >
+                    <img
+                      src={cancel}
+                      alt="cancel"
+                      className="img-fluid"
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                        objectFit: "contain",
+                      }}
+                    />
+                    <span className="fs-15 lh-1 fw-normal">
+                      {t("cancel_signing_process")}
+                    </span>
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    href="#/action-2"
+                    className="d-flex align-items-center gap-2 m-2 p-0"
+                  >
+                    <RiDeleteBin2Line size={18} />
+                    <span className="fs-15 lh-1 fw-normal">
+                      {t("delete_agreement")}
+                    </span>
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
             <span>{t("home_tab_r1_h1_l2")}</span>
-            <span>{t("home_tab_r1_h1_l1")}</span>
           </>
         )}
       </div>
@@ -140,7 +200,7 @@ const Agreements = () => {
       </span>
     );
   };
- 
+
   return (
     <>
       <div className="px-4 my-3 my-md-0 bg-white d-none d-md-block rounded-3 shadow-lg">
@@ -259,7 +319,10 @@ const Agreements = () => {
                         />
                       </div>
                     </div>
-                    <button className=" fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill " onClick={handleData}>
+                    <button
+                      className=" fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill "
+                      onClick={handleSelectClick}
+                    >
                       {t("show_button")}
                     </button>
                   </div>
@@ -297,6 +360,7 @@ const Agreements = () => {
                       fromDate={fromDate}
                       agreeData={agreeData}
                       toDate={toDate}
+                      selectData={selectData}
                     />
                   </div>
                 </div>
@@ -327,14 +391,14 @@ const Agreements = () => {
                   {t("modal_success")}
                 </h4>
                 <p className="fs-5 font-semibold pb-3">{t("modal_invoice")}</p>
-                <div className="d-flex justify-content-between gap-3">
+                <div className="d-flex justify-content-center flex-wrap flex-md-nowrap justify-content-md-between gap-3">
                   <button
-                    className="agent-btn-responsive2 w-50 mx-auto rounded-pill px-3 py-2 fw-bold shadow-sm"
+                    className="agent-btn-responsive2 w-50  rounded-pill px-3 py-2 fw-bold shadow-sm"
                     onClick={handleClose}
                   >
                     {t("modal_no")}
                   </button>
-                  <button className="agent-btn-responsive1 w-50 mx-auto rounded-pill px-3 py-2 fw-bold shadow-sm text-white">
+                  <button className="agent-btn-responsive1 w-50  rounded-pill px-3 py-2 fw-bold shadow-sm text-white">
                     {t("modal_yes")}
                   </button>
                 </div>
@@ -363,9 +427,9 @@ const Agreements = () => {
                 <h4 className="text-embed-500 fs-3 font-semibold pb-3">
                   {t("invoice_success")}
                 </h4>
-                <div className="d-flex justify-content-center  my-3">
+                <div className="d-flex justify-content-center justify-content-md-between flex-wrap flex-md-nowrap my-3">
                   <button
-                    className="fs-5 lh-1 fw-semibold mt-md-4  agent-btn-responsive1 text-white w-50 py-2 mx-1 rounded-pill"
+                    className="fs-5 lh-1 fw-semibold agent-btn-responsive1 text-white my-md-3 w-50 py-2 py-md-0 mx-1 rounded-pill"
                     onClick={() =>
                       updateModalState({ addInvoices: false, isError: true })
                     }
@@ -373,7 +437,7 @@ const Agreements = () => {
                     {t("invoice_view")}
                   </button>
                   <button
-                    className="fs-5 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill "
+                    className="fs-5 lh-1 fw-semibold  py-2 my-3 agent-btn-responsive2 w-50  mx-1 rounded-pill "
                     onClick={() => updateModalState({ addInvoices: false })}
                   >
                     {t("invoice_all")}
@@ -404,9 +468,9 @@ const Agreements = () => {
                 <p className="fs-4 text-embed-500 fw-semibold pb-3">
                   {t("error_question")}
                 </p>
-                <div className="d-flex justify-content-between my-3">
+                <div className="d-flex justify-content-center flex-wrap flex-md-nowrap justify-content-md-between my-3">
                   <button
-                    className="fs-5 lh-1 fw-semibold mt-md-4  agent-btn-responsive1 text-white w-50 py-2 mx-1 rounded-pill"
+                    className="fs-6 lh-1 fw-semibold  my-3 agent-btn-responsive1 text-white my-md-3 w-50 py-2 py-md-0 mx-1 rounded-pill"
                     onClick={() =>
                       updateModalState({ isError: false, restriction: true })
                     }
@@ -414,7 +478,7 @@ const Agreements = () => {
                     {t("yes_register")}
                   </button>
                   <button
-                    className="fs-5 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill "
+                    className="fs-5 lh-1 fw-semibold  py-2 my-3 agent-btn-responsive2 w-50  mx-1 rounded-pill  "
                     onClick={() => updateModalState({ isError: false })}
                   >
                     {t("no_now")}
@@ -445,9 +509,9 @@ const Agreements = () => {
                 <h4 className="text-embed-500 fs-3 font-semibold pb-3">
                   {t("registriction_title")}
                 </h4>
-                <div className="d-flex justify-content-between my-3">
+                <div className="d-flex justify-content-center justify-content-md-between flex-wrap flex-md-nowrap my-3">
                   <button
-                    className="fs-5 lh-1 fw-semibold mt-md-4  agent-btn-responsive1 text-white w-50 py-2 px-3 mx-1 rounded-pill"
+                    className="fs-5 lh-1 fw-semibold  py-2 my-2 agent-btn-responsive1 text-white my-md-3 w-50  py-md-0  mx-1  rounded-pill"
                     onClick={() =>
                       updateModalState({ restriction: false, isInvoices: true })
                     }
@@ -455,7 +519,7 @@ const Agreements = () => {
                     {t("yes_register_transaction")}
                   </button>
                   <button
-                    className="fs-5 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill "
+                    className="fs-5 lh-1 fw-semibold  py-2 my-3 agent-btn-responsive2 w-50  mx-1 rounded-pill "
                     onClick={() => updateModalState({ restriction: false })}
                   >
                     {t("no_now")}
@@ -490,9 +554,9 @@ const Agreements = () => {
                 <h4 className="text-embed-500 fs-3 font-semibold pb-3">
                   {t("invoice_generated")}
                 </h4>
-                <div className="d-flex justify-content-between my-3">
+                <div className="d-flex justify-content-md-between justify-content-center flex-wrap flex-md-nowrap my-3">
                   <button
-                    className="fs-5 lh-1 fw-semibold mt-md-4  agent-btn-responsive1 text-white w-50 py-2 mx-1 rounded-pill"
+                    className="fs-5 lh-1 fw-semibold py-2  agent-btn-responsive1 text-white my-md-3 w-50  py-md-0 mx-1  rounded-pill"
                     onClick={() =>
                       updateModalState({ isInvoices: false, isDocument: true })
                     }
@@ -500,7 +564,7 @@ const Agreements = () => {
                     {t("view_invoice")}
                   </button>
                   <button
-                    className="fs-5 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill"
+                    className="fs-5 lh-1 fw-semibold  py-2 my-3 agent-btn-responsive2 w-50  mx-1 rounded-pill"
                     onClick={() => updateModalState({ isInvoices: false })}
                   >
                     {t("all_invoices")}
@@ -534,7 +598,7 @@ const Agreements = () => {
                 <div className="d-flex justify-content-center align-items-center mb-3">
                   <img src={pdfinstall} alt="install pdf" />
                 </div>
-                <div className="d-flex justify-content-center flex-nowrap gap-2 my-3">
+                <div className="d-flex justify-content-center flex-wrap flex-md-nowrap gap-2 my-3">
                   <button className="fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill">
                     {t("all1_invoices")}
                   </button>
@@ -602,11 +666,77 @@ const Agreements = () => {
             </div>
           </div>
           <div className="d-md-none d-block">
-            <p className=" fs-6 fw-semibold lh-1 my-2 text-center text-teal">
-              פילטרים נוספים
+            <p className="fs-6 fw-semibold lh-1 my-2 text-center text-teal">
+              {t("more_filters")}
             </p>
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={
+                isOpen
+                  ? { height: "auto", opacity: 1 }
+                  : { height: 0, opacity: 0 }
+              }
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              style={{ overflow: "hidden" }}
+            >
+              <div className="d-block">
+                <div className="row mx-1">
+                  <div className="col-4">
+                    <button className="agent-btn-responsive1 w-100 py-2 rounded-pill text-white">
+                      {t("previous_month")}
+                    </button>
+                  </div>
+                  <div className="col-4">
+                    <button className="agent-btn-responsive2 w-100 py-2 rounded-pill">
+                      {t("three_months")}
+                    </button>
+                  </div>
+                  <div className="col-4">
+                    <button className="agent-btn-responsive2 w-100 py-2 rounded-pill">
+                      {t("half_year")}
+                    </button>
+                  </div>
+                </div>
+                <div className="w-100 px-3 my-3">
+                  <label className="form-label fs-15 fw-semibold lh-1">
+                    {t("agreement1_status")}
+                  </label>
+                  <select className="form-select">
+                    {/* Option items here */}
+                  </select>
+                </div>
+                <div className="row px-3">
+                  <div className="col-6">
+                    <label className="form-label fs-15 fw-semibold lh-1">
+                      {t("to_date1")}
+                    </label>
+                    <input type="date" className="form-control" />
+                  </div>
+                  <div className="col-6">
+                    <label className="form-label fs-15 fw-semibold lh-1">
+                      {t("from_date1")}
+                    </label>
+                    <input type="date" className="form-control" />
+                  </div>
+                </div>
+                <div className="w-100 px-3">
+                  <div className="d-flex align-items-center">
+                    <Toggle defaultChecked type="checkbox" id="toggleImages" onChange={handleToggle}/>
+                    <label
+                      className="fs-6 fw-normal lh-1"
+                      htmlFor="toggleImages"
+                    >
+                      {t("invoice_issued")}
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
             <div className="justify-content-center d-flex">
-              <IoIosArrowDown />
+              <button className="border-0 bg-white" onClick={handleisopen}>
+                <IoIosArrowDown />
+              </button>
             </div>
           </div>
         </div>
@@ -620,7 +750,7 @@ const Agreements = () => {
                 style={{ borderLeft: "6px solid #2CAC74" }}
               >
                 <Accordion.Header>
-                  <div className="">
+                  <div className="d-flex">
                     <div className=" d-flex align-items-center">
                       <div className="p-1">
                         <img
@@ -642,13 +772,13 @@ const Agreements = () => {
                           </span>
                         </p>
                         <p className="fw-bold  fs-12 d-block my-0">
-                          {t("home_tab_h4")} :{" "}
+                          {t("sitem3")} :{" "}
                           <span className="fw-semibold lh-1 fs-12">
                             {t(row?.clients)}
                           </span>
                         </p>
                         <p className="fw-bold fs-12 d-block mb-0">
-                          {t("home_tab_h5")} :{" "}
+                          {t("br_commission")} :{" "}
                           <span className="fw-semibold lh-1 fs-12">
                             {row?.commission}
                           </span>
@@ -660,15 +790,13 @@ const Agreements = () => {
                     </div>
                   </div>
                 </Accordion.Header>
-                <Accordion.Body>
-                  <div className="p-2 ">
-                    <div className="d-flex justify-content-around  w-100">
-                      <ActionButtons
-                        type={t(row?.actionType)}
-                        icon={row?.icon}
-                        onDelete={handleOpen}
-                      />
-                    </div>
+                <Accordion.Body className="p-0">
+                  <div className="d-flex justify-content-around w-100">
+                    <ActionButtons
+                      type={t(row?.actionType)}
+                      icon={row?.icon}
+                      onDelete={handleOpen}
+                    />
                   </div>
                 </Accordion.Body>
               </Accordion.Item>

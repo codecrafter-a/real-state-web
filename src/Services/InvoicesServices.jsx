@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-export const useInvoiceServices = (clientName) => {
+export const useInvoiceServices = (clientName, fromDate, untilDate) => {
     const {t} = useTranslation();
     const getInvoiceService = () => {   
       const data = [
@@ -43,9 +43,22 @@ export const useInvoiceServices = (clientName) => {
                 invoice.clientNames.toLowerCase().includes(searchQuery)
             );
         }
-
-        return data;
-        
-    };
+        let filteredData = data;
+        if (fromDate && untilDate) {
+            const parseDate = (dateStr) => {
+              const [day, month, year] = dateStr.split(".");
+              return new Date(`20${year}`, month - 1, day);
+            };
+      
+            const from = new Date(fromDate);
+            const until = new Date(untilDate);
+      
+            filteredData = filteredData.filter((invoice) => {
+              const invoiceDate = parseDate(invoice.date);
+              return invoiceDate >= from && invoiceDate <= until;
+            });
+          }
+        return data && filteredData;
+};
     return { getInvoiceService };
 };

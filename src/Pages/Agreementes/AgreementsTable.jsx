@@ -17,7 +17,16 @@ import { LuBookMinus } from "react-icons/lu";
 import { Dropdown } from "react-bootstrap";
 import cancel from "../../assets/images/cancel.png";
 
-const AgreementsTable = ({ handleOpen, searchQuery, selectedStatus, fromDate, toDate, agreeData }) => {
+
+const AgreementsTable = ({
+  handleOpen,
+  searchQuery,
+  selectedStatus,
+  selectData,
+  fromDate,
+  toDate,
+  agreeData,
+}) => {
   console.log(" ~ AgreementsTable ~ selectedStatus:", selectedStatus);
 
   const { t } = useTranslation();
@@ -38,12 +47,20 @@ const AgreementsTable = ({ handleOpen, searchQuery, selectedStatus, fromDate, to
     home_tab_r6_h2: "Signed and Registered",
   };
 
+  const borderColors = {
+    default: "#f87171",
+    signed: "#10b981",
+    executed: "#fdba74",
+    registered: "#3b82f6",
+    viewed: "#f87171",
+  };
+
   const filteredData = tableData.filter((row) => {
     // Search filter (match agreementName OR clients)
     const matchesSearchQuery =
       t(row.agreementName).toLowerCase().includes(searchQuery.toLowerCase()) ||
       t(row.clients).toLowerCase().includes(searchQuery.toLowerCase());
-  
+
     // Status filter
     let matchesStatus = true;
     if (selectedStatus) {
@@ -53,17 +70,20 @@ const AgreementsTable = ({ handleOpen, searchQuery, selectedStatus, fromDate, to
     }
 
     let matchesDate = true;
-  if (fromDate && toDate && agreeData) {
-    const rowDate = new Date(row.date);
-    const from = new Date(fromDate);
-    const to = new Date(toDate);
-    matchesDate = rowDate >= from && rowDate <= to;
-  } else if (fromDate) {
-    matchesDate = new Date(row.date) >= new Date(fromDate);
-  } else if (toDate) {
-    matchesDate = new Date(row.date) <= new Date(toDate);
-  }
-  
+
+    if (selectData) {
+      if (fromDate && toDate && agreeData) {
+        const rowDate = new Date(row.date);
+        const from = new Date(fromDate);
+        const to = new Date(toDate);
+        matchesDate = rowDate >= from && rowDate <= to;
+      } else if (fromDate) {
+        matchesDate = new Date(row.date) >= new Date(fromDate);
+      } else if (toDate) {
+        matchesDate = new Date(row.date) <= new Date(toDate);
+      }
+    }
+
     return matchesSearchQuery && matchesStatus && matchesDate;
   });
 
@@ -206,13 +226,20 @@ const AgreementsTable = ({ handleOpen, searchQuery, selectedStatus, fromDate, to
                       <TbMailForward size={18} />
                       <span>{t("send_copy")}</span>
                     </div>
-                    <span className="d-flex align-items-center text-nowrap gap-1">
+                    {/* <span className="d-flex align-items-center text-nowrap gap-1">
                       <MdOutlineCheckCircleOutline size={18} />
                       {t("close_deal")}
-                    </span>
+                    </span> */}
                     <button
                       className="d-flex align-items-center border-0 bg-transparent  text-nowrap gap-1"
                       onClick={handleOpen}
+                    >
+                      <MdOutlineCheckCircleOutline size={18} />
+                      {t("close_deal")}
+                    </button>
+                    <button
+                      className="d-flex align-items-center border-0 bg-transparent  text-nowrap gap-1"
+                      
                     >
                       <RiDeleteBin2Line size={18} />
                       {t("delete")}
@@ -233,7 +260,7 @@ const AgreementsTable = ({ handleOpen, searchQuery, selectedStatus, fromDate, to
                     </div>
                     <button
                       className="d-flex border-0 bg-transparent align-items-center gap-1"
-                      onClick={handleOpen}
+                    
                     >
                       <RiDeleteBin2Line size={18} />
                       {t("delete")}
@@ -250,7 +277,7 @@ const AgreementsTable = ({ handleOpen, searchQuery, selectedStatus, fromDate, to
                     </div>
                     <button
                       className="d-flex align-items-center border-0 bg-transparent gap-1"
-                      onClick={handleOpen}
+                      
                     >
                       <RiDeleteBin2Line size={18} />
                       {t("delete")}
@@ -267,47 +294,54 @@ const AgreementsTable = ({ handleOpen, searchQuery, selectedStatus, fromDate, to
           <Accordion.Item
             eventKey={index.toString()}
             key={row.id}
+            style={{
+              borderInlineStart: `6px solid ${
+                borderColors[row.actionType] || "#f87171"
+              }`,
+            }}
             className="border-2  border-top rounded-3 overflow-visible"
-          >
-            <Accordion.Header>
-              <div className="">
-                <div className=" d-flex align-items-center">
-                  <div className="p-1">
-                    <img
-                      src={key}
-                      alt="vertical key"
-                      className="img-fluid w-75 h-75"
-                    />
-                  </div>
-                  <div>
-                    <span className="fw-semibold fs-12 d-block">
-                      {" "}
-                      {row?.accountNumber} | {row?.date}
+          > 
+            <Accordion.Header id="accordionDropdown"></Accordion.Header>
+            <label aria-label="accordionDropdown"  as="div" className="d-flex align-items-center">
+              <div className="d-flex align-items-center gap-2">
+                <img
+                  src={key}
+                  alt="vertical key"
+                  className="img-fluid"
+                  style={{
+                    width: "40px",
+                    height: "40px",
+                    objectFit: "contain",
+                  }}
+                />
+                <div>
+                  <span className="fw-semibold fs-12 d-block">
+                    {row?.accountNumber} | {row?.date}
+                  </span>
+                  <p className="fw-bold fs-14 d-block mb-0">
+                    {t(row?.agreementName)} |{" "}
+                    <span className="fw-semibold lh-1 fs-12">
+                      {t(row?.agreementType)}
                     </span>
-                    <p className="fw-bold fs-14 d-block mb-0">
-                      {" "}
-                      {t(row?.agreementName)} |{" "}
-                      <span className="fw-semibold lh-1 fs-12">
-                        {t(row?.agreementType)}
-                      </span>
-                    </p>
-                    <p className="fw-bold  fs-12 d-block my-0">
-                      {t("home_tab_h4")} :{" "}
-                      <span className="fw-semibold lh-1 fs-12">
-                        {t(row?.clients)}
-                      </span>
-                    </p>
-                    <p className="fw-bold fs-12 d-block mb-0">
-                      {t("home_tab_h5")} :{" "}
-                      <span className="fw-semibold lh-1 fs-12">
-                        {row?.commission}
-                      </span>
-                    </p>
-                  </div>
+                  </p>
+                  <p className="fw-bold fs-12 d-block my-0">
+                    {t("home_tab_h4")} :{" "}
+                    <span className="fw-semibold lh-1 fs-12">
+                      {t(row?.clients)}
+                    </span>
+                  </p>
+                  <p className="fw-bold fs-12 d-block mb-0">
+                    {t("br_commission")}
+                    <span className="fw-semibold lh-1 fs-12">
+                      {row?.commission}
+                    </span>
+                  </p>
                 </div>
+              </div>
+              <div>
                 <StatusBadge status={t(row?.status)} />
               </div>
-            </Accordion.Header>
+            </label>
             <Accordion.Body className="p-0">
               <div className="border-top p-2 ">
                 <div className="d-flex justify-content-around  w-100">
@@ -328,7 +362,7 @@ const AgreementsTable = ({ handleOpen, searchQuery, selectedStatus, fromDate, to
 const ActionButtons = ({ type, icon, onDelete }) => {
   const { t } = useTranslation();
   return (
-    <div className="d-flex align-items-center gap-3 p-2 bg-white mx-auto">
+    <div className="d-flex align-items-center gap-2 p-2 bg-white ">
       {type === "default" && (
         <>
           <div className="d-md-flex align-items-center gap-1 cursor-pointer">
@@ -356,7 +390,7 @@ const ActionButtons = ({ type, icon, onDelete }) => {
             {t("home_tab_r1_h1_l2")}
           </span>
           <span className="fs-12 fs-md-15 fw-normal lh-1">
-            {t("home_tab_r1_h1_l1")}
+          {t("home_tab_r1_h1_l1")}
           </span>
         </>
       )}

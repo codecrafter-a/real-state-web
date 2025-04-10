@@ -25,6 +25,7 @@ import AuthenticationService from "./Services/AuthenticationService.jsx";
 import { useEffect, useState} from 'react';
 import Property_owner from "./Pages/Brokers/Property_owner.jsx";
 import Brokers_between from "./Pages/Brokers/Brokers_between.jsx";
+import Landregistry from "../src/Pages/LandRegistry/Landregistry.jsx";
 
 function App() {
   const { i18n } = useTranslation();
@@ -84,6 +85,7 @@ function App() {
               <Route path="personal-area/change-email" element={<ProtectedRoute><ChangeEmail /></ProtectedRoute>} />
               <Route path="personal-area/signature-invoice" element={<ProtectedRoute><SignatureInvoice /></ProtectedRoute>} />
               <Route path="broker" element={<ProtectedRoute><Brokers /></ProtectedRoute>} />
+              <Route path="landregistry" element={<ProtectedRoute><Landregistry/></ProtectedRoute>} />
               <Route path="property_owner" element={<ProtectedRoute><Property_owner/></ProtectedRoute>}/>
               <Route path="broker_between" element={<ProtectedRoute><Brokers_between/></ProtectedRoute>}/>
               <Route path="*" element={<Navigate to={`/${i18n.language}/signin`}/>} />

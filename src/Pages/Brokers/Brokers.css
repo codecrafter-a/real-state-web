@@ -84,14 +84,40 @@ h5 {
   border: 1px solid transparent;
 }
 .custom-header:hover {
-  border: 1px solid rgb(0, 164, 129) !important;
+  border: 2px solid #00a481 !important;
 }
+
+.card-pay{
+  border: 1px solid transparent;
+  color: #00a481 !important;
+}
+
+.card-pay:hover {
+  border: 1px solid #00a481 !important;
+  background-color: #00a481 !important;
+  color: rgb(170, 14, 14) !important;
+  opacity: 0.2 !important;
+}
+
 .scrollbar-left {
   overflow-y: scroll;
   height: 550px;
 }
 .scrollbar-left .scrollbar-content {
   padding: 1rem;
+}
+
+@media (max-width: 576px) {
+  .responsive-modal .modal-dialog {
+    margin: 1rem;
+  }
+  .options-container {
+    width: 100% !important;
+    padding: 0 1rem;
+  }
+  .fs_25 {
+    font-size: 18px !important;
+  }
 }
 
 .success {

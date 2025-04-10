@@ -41,13 +41,62 @@ const Home = () => {
   }, []);
 
   const barChartdata = [
-    { name: t("Haim"), value: 37000, green: 15000, gray: 12000, red: 7000, orange: 3000 },
-    { name: t("Shiri"), value: 37000, green: 15000, gray: 12000, red: 7000, orange: 3000 },
-    { name: t("Liran"), value: 36000, green: 14000, gray: 11000, red: 7000, orange: 4000 },
-    { name: t("Israel"), value: 35000, green: 13000, gray: 11000, red: 7000, orange: 4000 },
-    { name: t("Ori"), value: 32000, green: 12000, gray: 10000, red: 6000, orange: 4000 },
-    { name: t("Rami"), value: 15000, green: 6000, gray: 5000, red: 3000, orange: 2000 },
-    { name: t("Moshe"), value: 15000, green: 6000, gray: 5000, red: 3000, orange: 2000 }
+    {
+      name: t("Haim"),
+      value: 37000,
+      green: 15000,
+      gray: 12000,
+      red: 7000,
+      orange: 3000,
+    },
+    {
+      name: t("Shiri"),
+      value: 37000,
+      green: 15000,
+      gray: 12000,
+      red: 7000,
+      orange: 3000,
+    },
+    {
+      name: t("Liran"),
+      value: 36000,
+      green: 14000,
+      gray: 11000,
+      red: 7000,
+      orange: 4000,
+    },
+    {
+      name: t("Israel"),
+      value: 35000,
+      green: 13000,
+      gray: 11000,
+      red: 7000,
+      orange: 4000,
+    },
+    {
+      name: t("Ori"),
+      value: 32000,
+      green: 12000,
+      gray: 10000,
+      red: 6000,
+      orange: 4000,
+    },
+    {
+      name: t("Rami"),
+      value: 15000,
+      green: 6000,
+      gray: 5000,
+      red: 3000,
+      orange: 2000,
+    },
+    {
+      name: t("Moshe"),
+      value: 15000,
+      green: 6000,
+      gray: 5000,
+      red: 3000,
+      orange: 2000,
+    },
   ];
 
   return (
@@ -62,11 +111,21 @@ const Home = () => {
             className={`custom-scrollbar overflow-y-auto overflow-x-hidden px-3 scroll-height`}
           >
             <Row className=" align-items-center justify-content-between d-flex overflow-hidden">
-              <Col xs={12} xl={6} className=" my-2">
+              <Col xs={12} lg={6} className=" my-2">
                 <div className="rounded-1 p-md-4 p-3 shadow my-3 box1_color">
-                  <div>
-                    <p className="screen-2 mb-0">{t("home_block2_title")}</p>
-                  </div>
+                    <div className="d-none d-md-block"> <p className="screen-2 mb-0">{t("home_block2_title")}</p></div>
+
+                    <div className="d-flex d-md-none justify-content-between align-items-center">
+                      <div>
+                        <p className="screen-2 mb-0">{t("cust_name_1")}</p>
+                        <span className="fs-15 fw-bold lh-1 text-teal">
+                          {t("personalArea.role")}
+                        </span>
+                      </div>
+                      <button className="agent-btn-responsive1 text-white px-3 w-50 fw-semibold py-2 rounded-pill">
+                        {t("personalArea.upgradeSubscription")}
+                      </button>
+                    </div>
                   <div className="d-flex align-items-center gap-md-5 gap-3">
                     <div>
                       <div className="py-3 w-100 h-auto shadow-md-lg">
@@ -80,7 +139,7 @@ const Home = () => {
                     </div>
 
                     <div>
-                      <div className="py-3 w-100 h-auto shadow-md-lg">
+                      <div className="py-2 w-100 h-auto shadow-md-lg">
                         <span className="table-head home-card-title">
                           {t("home2_btn2_title")}
                         </span>
@@ -90,8 +149,8 @@ const Home = () => {
                       </div>
                     </div>
                     <div>
-                      <div className="py-3 w-100 h-auto shadow-md-lg">
-                        <span className="table-head home-card-title">
+                      <div className="py-2 w-100 h-auto shadow-md-lg">
+                        <span className="text-nowrap ls-minus table-head home-card-title">
                           {t("home2_btn1_title")}
                         </span>
                         <div className="fw-semibold home-card-subtitle">
@@ -108,9 +167,14 @@ const Home = () => {
                     <p className="screen-2">{t("home_block1_title")}</p>
                   </div>
                   <Row className="d-flex justify-content-center">
-                    <Col xs={12} sm={12} md={4} className="py-2 py-md-0 px-sm-2">
+                    <Col
+                      xs={12}
+                      sm={12}
+                      md={4}
+                      className="py-2 py-md-0 px-sm-2"
+                    >
                       <div
-                        className="agent-button2 rounded-2 p-2 gap-2 py-3 d-flex fs-14 lh-1 fw-semibold align-items-center cursor-pointer"
+                        className="agent-button2 rounded-2 p-2 gap-2 text-center py-3 d-flex fs-14 lh-1  fw-semibold  justify-content-center  align-items-center cursor-pointer"
                         onClick={() => navigate(`/${lang}/broker`)}
                         style={{ fontSize: fontSize }}
                       >
@@ -118,9 +182,14 @@ const Home = () => {
                         <span>{t("home1_btn3_title")}</span>
                       </div>
                     </Col>
-                    <Col xs={12} sm={12} md={4} className="py-2 py-md-0 px-sm-2">
+                    <Col
+                      xs={12}
+                      sm={12}
+                      md={4}
+                      className="py-2 py-md-0 px-sm-2"
+                    >
                       <div
-                        className="agent-button2 rounded-2 p-2 gap-2 py-3 d-flex fs-14 lh-1 fw-semibold align-items-center cursor-pointer"
+                        className="agent-button2 rounded-2 p-2 gap-2 py-3 d-flex fs-14 lh-1 text-center justify-content-center  fw-semibold  align-items-center cursor-pointer"
                         onClick={() => navigate(`/${lang}/property_owner`)}
                         style={{ fontSize: fontSize }}
                       >
@@ -128,9 +197,14 @@ const Home = () => {
                         <span>{t("home1_btn2_title")}</span>
                       </div>
                     </Col>
-                    <Col xs={12} sm={12} md={4} className="py-2 py-md-0 px-sm-2">
+                    <Col
+                      xs={12}
+                      sm={12}
+                      md={4}
+                      className="py-2 py-md-0 px-sm-2"
+                    >
                       <div
-                        className="agent-button2 rounded-2 p-2 gap-2 py-3 d-flex fs-14 lh-1 fw-semibold align-items-center cursor-pointer"
+                        className="agent-button2 rounded-2 p-2 gap-1 py-3 text-center d-flex fs-14 lh-1  justify-content-center  fw-semibold  align-items-center cursor-pointer"
                         onClick={() => navigate(`/${lang}/broker_between`)}
                         style={{ fontSize: fontSize }}
                       >
@@ -285,7 +359,7 @@ const Home = () => {
               <Col className="col-12 box1_color">
                 <div className="d-flex justify-content-between py-3 align-items-center">
                   <span className="text-start screen-2">
-                    {t("home_accro_r_btn")}
+                    5{t("home_accro_r_btn")}
                   </span>
                   <button
                     className=" hr_btn rounded-pill fw-semibold px-sm-5 px-3 py-2"

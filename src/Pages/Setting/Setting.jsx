@@ -5,7 +5,6 @@ import Toggle from "../../Componant/Common/Toggle/Toggle";
 import Card from "react-bootstrap/Card";
 import sms from "../../assets/images/sms.svg";
 import email from "../../assets/images/email.svg";
-import { Link } from "react-router-dom";
 import whatsapp from "../../assets/images/wa, whatsapp, message, communication, chat.svg";
 import { useTranslation } from "react-i18next";
 import Next from "../../assets/images/Next.jpg";
@@ -19,6 +18,51 @@ const Setting = () => {
     setOwnerData(!ownerData);
     setIsView(false);
   };
+
+
+  const [settings, setSettings] = useState({
+    lable1: false,
+    lable2: false,
+    lable3: false,
+    showCommissionAmounts: false,
+    receivePerformanceReports: true,
+    notifyOnPropertyMatch: true,
+    sendMessageToInterestedClients: true,
+    firstReminderOnceAMonth: true,
+    firstReminderEveryTwoWeeks: false,
+    secondReminderOnceAMonth: false,
+    secondReminderEveryTwoWeeks: false,
+    sendMessageToAllClients: true,
+    exclusivePropertyExpiry: true,
+    reminderOnceAMonth: false,
+    reminderEveryTwoWeeks: false,
+    interestedClientsNoAgreement: true,
+    agreementOnceAMonth: true,
+    agreementEveryTwoWeeks: true,
+    viaSMS: false,
+    viaEmail: false,
+    viaWhatsapp: false,
+  });
+
+  console.log("dssddsfkhsdjfhlkjsdhf", settings);
+
+ 
+
+
+  const handleToggleChange = (key) => (e) => {
+    setSettings((prev) => ({ ...prev, [key]: e.target.checked }));
+  };
+
+ 
+
+  const handleRadioChange = (groupKeys, selectedKey) => () => {
+    const updatedGroup = groupKeys.reduce((acc, key) => {
+      acc[key] = key === selectedKey;
+      return acc;
+    }, {});
+    setSettings((prev) => ({ ...prev, ...updatedGroup }));
+  };
+
   return (
     <Col className="py-2 px-4 bg-white shadow-lg rounded-3">
       <h3 className=" text-center screen-1 border-bottom mb-0 p-2_5 d-none d-md-block">
@@ -40,6 +84,7 @@ const Setting = () => {
                     <div className="d-flex flex-column">
                       <div className="d-flex align-items-center">
                         <Toggle
+                          checked={settings.lable1} onChange={handleToggleChange("lable1")}
                           defaultChecked={false}
                           type={"checkbox"}
                           id="toggleImages"
@@ -50,6 +95,7 @@ const Setting = () => {
                       </div>
                       <div className="d-flex align-items-center">
                         <Toggle
+                          checked={settings.lable2} onChange={handleToggleChange("lable2")}
                           defaultChecked={false}
                           type={"checkbox"}
                           id="toggleImages"
@@ -60,7 +106,8 @@ const Setting = () => {
                       </div>
                       <div className="d-flex align-items-center">
                         <Toggle
-                          defaultChecked={false}
+                           checked={settings.lable3} onChange={handleToggleChange("lable3")} 
+                           defaultChecked={false}
                           type={"checkbox"}
                           id="toggleImages"
                         />
@@ -80,7 +127,8 @@ const Setting = () => {
                     </h4>
                     <div className="d-flex align-items-center">
                       <Toggle
-                        defaultChecked
+                       checked={settings.showCommissionAmounts} onChange={handleToggleChange("showCommissionAmounts")} 
+                        // defaultChecked
                         type={"checkbox"}
                         id="toggleImages"
                       />
@@ -144,7 +192,7 @@ const Setting = () => {
                   {t("report")}
                 </h4>
                 <div className="d-flex align-items-center">
-                  <Toggle defaultChecked type={"checkbox"} id="toggleImages" />
+                  <Toggle checked={settings.receivePerformanceReports} onChange={handleToggleChange("receivePerformanceReports")} type={"checkbox"} id="toggleImages" />
                   <label className="fs-6 fw-normal lh-1" htmlFor="">
                     {t("receivePerformanceReports")}
                   </label>
@@ -160,13 +208,13 @@ const Setting = () => {
                   {t("automaticPushNotifications")}
                 </h4>
                 <div className="d-flex align-items-center">
-                  <Toggle defaultChecked type={"checkbox"} id="toggleImages" />
+                  <Toggle checked={settings.notifyOnPropertyMatch} onChange={handleToggleChange("notifyOnPropertyMatch")}  type={"checkbox"} id="toggleImages" />
                   <label className="fs-6 fw-normal lh-1" htmlFor="">
                     {t("notifyOnPropertyMatch")}
                   </label>
                 </div>
                 <div className="d-flex align-items-center ">
-                  <Toggle defaultChecked type={"checkbox"} id="toggleImages" />
+                  <Toggle checked={settings.toClientsWhoShowedInterest} onChange={handleToggleChange("toClientsWhoShowedInterest")}  type={"checkbox"} id="toggleImages" />
                   <label className="fs-6 fw-normal lh-1" htmlFor="">
                     {t("sendMessage", {
                       spanText: (
@@ -178,7 +226,7 @@ const Setting = () => {
                   </label>
                 </div>
                 <div className="d-flex align-items-center">
-                  <Toggle defaultChecked type={"checkbox"} id="toggleImages" />
+                  <Toggle checked={settings.toAllClientsFoundSuitable} onChange={handleToggleChange("toAllClientsFoundSuitable")} type={"checkbox"} id="toggleImages" />
                   <label className="fs-6 fw-normal lh-1" htmlFor="">
                     <span className="fw-semibold">
                       {t("toAllClientsFoundSuitable")}
@@ -211,7 +259,11 @@ const Setting = () => {
                 <div className="d-flex gap-3 align-items-center">
                   <div className=" d-flex align-items-center  gap-2">
                     <Toggle
-                      defaultChecked={false}
+                    checked={settings.firstReminderOnceAMonth}
+                    onChange={handleRadioChange(
+                      ["firstReminderOnceAMonth", "firstReminderEveryTwoWeeks"],
+                      "firstReminderOnceAMonth"
+                    )}
                       type="radio"
                       name="optionGroup1"
                       id="toggleImages"
@@ -222,7 +274,11 @@ const Setting = () => {
                   </div>
                   <div className=" d-flex align-items-center gap-2">
                     <Toggle
-                      defaultChecked={false}
+                      checked={settings.firstReminderEveryTwoWeeks}
+                      onChange={handleRadioChange(
+                        ["firstReminderOnceAMonth", "firstReminderEveryTwoWeeks"],
+                        "firstReminderEveryTwoWeeks"
+                      )}
                       type="radio"
                       name="optionGroup1"
                       id="toggleImages"
@@ -243,7 +299,11 @@ const Setting = () => {
                 <div className="d-flex align-items-center gap-3">
                   <div className=" d-flex align-items-center  gap-2">
                     <Toggle
-                      defaultChecked
+                     checked={settings.secondReminderOnceAMonth}
+                     onChange={handleRadioChange(
+                       ["secondReminderOnceAMonth", "secondReminderEveryTwoWeeks"],
+                       "secondReminderOnceAMonth"
+                     )}
                       type="radio"
                       name="optionGroup"
                       id="toggleImages"
@@ -254,7 +314,11 @@ const Setting = () => {
                   </div>
                   <div className=" d-flex align-items-center gap-2">
                     <Toggle
-                      defaultChecked
+                       checked={settings.secondReminderEveryTwoWeeks}
+                       onChange={handleRadioChange(
+                         ["secondReminderOnceAMonth", "secondReminderEveryTwoWeeks"],
+                         "secondReminderEveryTwoWeeks"
+                       )}
                       type="radio"
                       name="optionGroup"
                       id="toggleImages"
@@ -292,11 +356,11 @@ const Setting = () => {
                   </div>
                 </Modal.Header>
                 <Modal.Body className="p-4">
-                  <div className="text-center">
+                  <div className="text-center d-flex flex-column gap-3">
                     <h4 className="fs-5 lh-1 fw-semibold py-2">
                       {t("changeReminderTitle")}
                     </h4>
-                    <p className="fs-4 lh-1 fw-normal">
+                    <p className="fs-5 text-center lh-1 fw-normal">
                       {t("changeReminderSubtext")}
                     </p>
                   </div>
@@ -310,8 +374,9 @@ const Setting = () => {
                           </span>
                         </div>
                         <input
-                          className="form-check-input border border-black bg-white"
+                          className="form-check-input border-2 border-black bg-white"
                           type="checkbox"
+                          checked={settings.viaSMS} onChange={handleToggleChange("viaSMS")}
                         />
                       </div>
                     </div>
@@ -324,8 +389,9 @@ const Setting = () => {
                           </span>
                         </div>
                         <input
-                          className="form-check-input border border-black bg-white"
+                          className="form-check-input border-2 border-black bg-white"
                           type="checkbox"
+                          checked={settings.viaEmail} onChange={handleToggleChange("viaEmail")}
                         />
                       </div>
                     </div>
@@ -338,8 +404,9 @@ const Setting = () => {
                           </span>
                         </div>
                         <input
-                          className="form-check-input border border-black bg-white"
+                          className="form-check-input border-2 border-black bg-white"
                           type="checkbox"
+                          checked={settings.viaWhatsapp} onChange={handleToggleChange("viaWhatsapp")} 
                         />
                       </div>
                     </div>
