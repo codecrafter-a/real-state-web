@@ -1,17 +1,37 @@
-import React from "react";
-import { Col, Form, InputGroup } from "react-bootstrap";
+import React, { useState } from "react";
+import { Col} from "react-bootstrap";
 import search from "../../assets/images/search.png";
 import { useTranslation } from "react-i18next";
-import calendarMonth from "../../assets/images/mobile_calendar.png";
 import Landregistrytable from "../LandRegistry/Landregistrytable";
-
+import { useLandregistryServices } from "../../Services/LandregistryServices";
+import { Accordion } from "react-bootstrap";
+import key from "../../assets/images/key_vertical.svg";
 const Landregistry = () => {
   const { t } = useTranslation();
+  const { getFilteredRegistryData } = useLandregistryServices();
+  const { getRegistryData } = useLandregistryServices();
+  const registerData = getRegistryData();
+
+  const [clientName, setClientName] = useState("");
+  const [fromDate, setFromDate] = useState("");
+  const [untilDate, setUntilDate] = useState("");
+  const [filteredData, setFilteredData] = useState(registerData);
+  console.log(filteredData, "filteredData");
+
+  // const handleChange = (clientName) => {
+  //   const data = getFilteredRegistryData({ clientName });
+  //   setFilteredData(data);
+  //   setClientName(clientName);
+  // };
+  const handleSearch = () => {
+    const data = getFilteredRegistryData({ clientName, fromDate, untilDate });
+    setFilteredData(data);
+  };
   return (
     <>
       <Col className="bg-white shadow-lg rounded-3 my-3">
         <p className="py-3 mb-4 screen-1 text-center border-bottom d-none d-md-block">
-          נכסים הרשומים בספר המקרקעין
+          {t("registry_title")}{" "}
         </p>
         <div
           className="custom-scrollbar overflow-y-auto overflow-x-hidden px-3 mt-4"
@@ -24,81 +44,120 @@ const Landregistry = () => {
                 className="form-control border-0 "
                 id="searchInput"
                 placeholder={t("invoice_placeholder")}
+                value={clientName}
+                onChange={(e) => setClientName(e.target.value)}
               />
               <span className="input-group-text bg-transparent  border-0">
                 <img src={search} alt="search" />
               </span>
             </div>
           </div>
-          <div className="row my-4">
-            <div className="col-12 col-md-6 d-flex three button my-2 my-md-0 gap-2 align-items-center justify-content-center justify-content-md-start gap-md-3">
-              <button className="agent-btn-responsive2 px-3 py-2 rounded-pill ">
-                {t("data_btn_3")}
-              </button>
-              <button className="agent-btn-responsive2 px-4 py-2 rounded-pill">
-                {t("data_btn_2")}
-              </button>
-              <button className="agent-btn-responsive2 px-3  py-2 rounded-pill">
-                {t("data_btn_1")}
+          <div className="row  align-items-center d-flex justify-content-center  my-md-3 justify-content-md-start">
+              <div className="col-4 col-md-2">
+                <button className="agent-btn-responsive2 w-100   py-2 rounded-pill ">
+                  {t("data_btn_3")}
+                </button>
+              </div>
+              <div className="col-4 col-md-2">
+                <button className="agent-btn-responsive2 w-100 py-2 rounded-pill">
+                  {t("data_btn_2")}
+                </button>
+              </div>
+              <div className="col-4 col-md-2 ">
+                <button className="agent-btn-responsive2 w-100 py-2 rounded-pill">
+                  {t("data_btn_1")}
+                </button>
+              </div>
+          </div>
+          <div className="row g-3 align-items-end my-3">
+            <div className="col-6 col-md-3">
+              <label className="form-label fs-15 fw-semibold lh-1">
+                {t("from_date")}
+              </label>
+              <input
+                type="date"
+                className="form-control"
+                value={fromDate}
+                onChange={(e) => setFromDate(e.target.value)}
+              />
+            </div>
+
+            <div className="col-6 col-md-3">
+              <label className="form-label fs-15 fw-semibold lh-1">
+                {t("until_date")}
+              </label>
+              <input
+                type="date"
+                className="form-control"
+                value={untilDate}
+                onChange={(e) => setUntilDate(e.target.value)}
+              />
+            </div>
+
+            <div className="col-12 col-md-6 text-center text-md-start ">
+              <button
+                className=" fs-17 lh-1 fw-semibold py-2 px-5 rounded-pill agent-btn-responsive1 text-white"
+                onClick={handleSearch}
+              >
+                {t("show_button")}
               </button>
             </div>
           </div>
-          <div className="w-100 my-2">
-            <Col className=" col-12 col-md-6 d-flex flex-md-nowrap flex-wrap">
-              <div className="d-flex justify-content-center  align-items-center gap-3">
-                <div className="mb-md-4">
-                  <Form.Label
-                    htmlFor="basic-url"
-                    className="  fw-semibold fs-15 lh-1"
-                  >
-                    {t("data_in_title")}
-                  </Form.Label>
-                  <InputGroup className="border rounded overflow-hidden">
-                    <InputGroup.Text
-                      id="basic-addon1"
-                      className="bg-white rounded-0 border-start-0"
-                    >
-                      <img src={calendarMonth} alt="Calendar" />
-                    </InputGroup.Text>
-                    <Form.Control
-                      aria-label="Username"
-                      aria-describedby="basic-addon1"
-                      className="border-0 shadow-none"
-                    />
-                  </InputGroup>
-                </div>
-                <div className="mb-md-4">
-                  <Form.Label
-                    htmlFor="basic-url "
-                    className="fw-semibold fs-15 lh-1"
-                  >
-                    {t("data_in_title2")}
-                  </Form.Label>
-                  <InputGroup className="border rounded overflow-hidden">
-                    <InputGroup.Text
-                      id="basic-addon1"
-                      className="bg-white rounded-0 border-start-0"
-                    >
-                      <img src={calendarMonth} alt="Calendar" />
-                    </InputGroup.Text>
-                    <Form.Control
-                      aria-label="Username"
-                      aria-describedby="basic-addon1"
-                      className="border-0 shadow-none"
-                    />
-                  </InputGroup>
-                </div>
-                <div className="d-none d-md-block ">
-                  <button className="text-center rounded-pill agent-btn-responsive1 text-white px-4  py-2">
-                    {t("cust_search")}
-                  </button>
-                </div>
-              </div>
-            </Col>
-          </div>
-          <Landregistrytable />
+          <Landregistrytable data={filteredData} />
         </div>
       </Col>
+      <Accordion className="d-block p-0 d-md-none d-flex flex-column gap-3 px-2">
+        {filteredData.map((row, index) => (
+          <Accordion.Item
+            eventKey={index.toString()}
+            key={row.id}
+            className="border-2  border-top rounded-3 overflow-visible"
+          >
+            <Accordion.Header>
+              <div className="d-flex justify-content-between gap-2">
+                <div className="d-flex">
+                    <div className=" d-flex align-items-center">
+                      <div className="p-1">
+                        <img
+                          src={key}
+                          alt="vertical key"
+                          className="img-fluid w-75 h-75"
+                        />
+                      </div>
+                      <div>
+                        <span className="fw-semibold fs-12 d-block">
+                          {row?.agreementDate}
+                        </span>
+                        <p className="fw-bold fs-14 d-block   text-teal  mb-0">
+                          <span className="text-decoration-underline">{t(row.propertyName)}</span> | <span className="text-black text-decoration-none  ">{t(row.agreementType)}</span>   
+                        </p>
+                        <p className="fw-bold  fs-12 d-block my-0">
+                          {t("registry.clients_label")} :{" "}
+                          <span className="fw-semibold lh-1 fs-12">
+                            {t(row?.clients)} | {t(row?.phoneNumber)}
+                          </span>
+                        </p>
+                        
+                      </div>
+                    </div>
+                   
+                </div>
+                <button className="agent-btn-responsive2 h-25 w-50 py-2 mt-3  rounded-pill"> {t("download_agreement")}</button> 
+              </div>
+            </Accordion.Header>
+            <Accordion.Body className="p-0">
+              <div className="px-3 border-bottom">
+                <p className="m-0">
+                  <strong>{t("for")}:</strong> {t(row?.agreementType)}
+                </p>
+                <p className="m-0">
+                  <strong>{t("registry.clients_label")}:</strong> {t(row?.clients)}
+                </p>
+              </div>
+            </Accordion.Body>
+          </Accordion.Item>
+        ))}
+      </Accordion>
     </>
   );
 };

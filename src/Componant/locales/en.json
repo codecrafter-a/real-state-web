@@ -23,7 +23,7 @@
   "cust_phone":"phone*",
   "cust_UE":"EU*",
   "cust_TA":"TA",
-  "broker_title" : "Interested parties signing",
+  "broker_title" : " signing Interested parties",
   "cust_address":"Full residential address",
   "cust_type":"Customer type",
   "cust_type_1":"Interested",
@@ -737,7 +737,8 @@
   "text_place": "Detail the cooperation that was agreed upon.",
   "property_detail": "Property Owner Details",
   "customer_detail": "Customer Details for Signing",
-
+  "registry_title": "Properties Registered in the Land Registry",
+  "download1": "Download",
   "registry": {
     "propertyName": "Florentin 7 Tel Aviv",
     "rental": "Rental",
@@ -749,5 +750,13 @@
     "type": "Type",
     "date": "Date",
     "property": "Property Name"
-  }
+  },
+
+   "send_property_attachments": "Send Property Attachments",
+   "send_images": "Send Images",
+    "client_details": "Client Details",
+    "client_name_1": "Shiri Nakbali",
+  "client_name_2": "Romi Shafan",
+    "download_agreement": "Download Agreement",
+    "additional_filters": "Additional filters"
   }

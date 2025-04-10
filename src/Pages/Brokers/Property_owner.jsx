@@ -259,9 +259,7 @@ const Property_owner = () => {
           <div className="col-12">
             <div className="card  p-3 border  rounded-3 overflow-hidden  rounded-3 bg-light mb-4">
               <div className="form_group mb-2 mb-xl-0 d-flex justify-content-between">
-                <h5 className=" text-embed-500 fs-5 fw-semibold lh-1 mb-4">
-                  {t("property_detail")}
-                </h5>
+                <h5 className=" text-embed-500 fs-5 fw-semibold lh-1 mb-4">{t("client_details")}</h5>
                 <button
                   type="button"
                   className="agent-btn-responsive2 w-50 bg-transperant h-50 py-2  d-flex align-items-center justify-content-center  rounded-pill"
@@ -269,7 +267,7 @@ const Property_owner = () => {
                   <div className="d-flex align-items-center justify-content-center">
                     <img className="me-1" src={add_reaction} alt="Add Client" />
                     <span className="fs-17 fw-semibold lh-1">
-                      {"add_cust"}{" "}
+                    {t("add_cust")}{" "}
                     </span>
                   </div>
                 </button>
@@ -330,7 +328,7 @@ const Property_owner = () => {
                 >
                   <div className="d-flex align-items-center justify-content-center">
                     <img className="me-1" src={add_home} alt="Add Client" />
-                    {"add_cust"}{" "}
+                    {t("Add_Property")}{" "}
                   </div>
                 </button>
               </div>

@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { TbMailForward } from "react-icons/tb";
 import { useTranslation } from "react-i18next";
 import { MdOutlineDeleteForever } from "react-icons/md";
-import { useAgreementServices } from "../../Services/AgreementServices";
 import { Accordion } from "react-bootstrap";
 import key from "../../assets/images/key_vertical.svg";
 import iconHome from "../../assets/images/icon_home.svg";
@@ -20,32 +19,12 @@ import cancel from "../../assets/images/cancel.png";
 
 const AgreementsTable = ({
   handleOpen,
-  searchQuery,
   selectedStatus,
   selectData,
-  fromDate,
-  toDate,
-  agreeData,
 }) => {
   console.log(" ~ AgreementsTable ~ selectedStatus:", selectedStatus);
 
   const { t } = useTranslation();
-  const [tableData, setTableData] = useState([]);
-  const { getAgreementData } = useAgreementServices();
-
-  useEffect(() => {
-    const data = getAgreementData();
-    setTableData(data);
-  }, []);
-
-  const statusKeyToEnglish = {
-    home_tab_r1_h2: "Generated",
-    home_tab_r2_h2: "Sent",
-    home_tab_r3_h2: "Viewed",
-    home_tab_r4_h2: "Signed",
-    home_tab_r5_h2: "Signed and Executed",
-    home_tab_r6_h2: "Signed and Registered",
-  };
 
   const borderColors = {
     default: "#f87171",
@@ -54,38 +33,6 @@ const AgreementsTable = ({
     registered: "#3b82f6",
     viewed: "#f87171",
   };
-
-  const filteredData = tableData.filter((row) => {
-    // Search filter (match agreementName OR clients)
-    const matchesSearchQuery =
-      t(row.agreementName).toLowerCase().includes(searchQuery.toLowerCase()) ||
-      t(row.clients).toLowerCase().includes(searchQuery.toLowerCase());
-
-    // Status filter
-    let matchesStatus = true;
-    if (selectedStatus) {
-      const rowStatusEnglish = statusKeyToEnglish[row.status] || row.status;
-      matchesStatus =
-        rowStatusEnglish.toLowerCase() === selectedStatus.toLowerCase();
-    }
-
-    let matchesDate = true;
-
-    if (selectData) {
-      if (fromDate && toDate && agreeData) {
-        const rowDate = new Date(row.date);
-        const from = new Date(fromDate);
-        const to = new Date(toDate);
-        matchesDate = rowDate >= from && rowDate <= to;
-      } else if (fromDate) {
-        matchesDate = new Date(row.date) >= new Date(fromDate);
-      } else if (toDate) {
-        matchesDate = new Date(row.date) <= new Date(toDate);
-      }
-    }
-
-    return matchesSearchQuery && matchesStatus && matchesDate;
-  });
 
   return (
     <div className="mt-4 ">
@@ -137,7 +84,7 @@ const AgreementsTable = ({
           </tr>
         </thead>
         <tbody className="border">
-          {filteredData.map((row, index) => (
+          {selectData.map((row, index) => (
             <tr key={index} className=" fw-normal fs-15 lh-1">
               <td className="d-table-cell align-middle py-3">
                 <div className="d-flex align-items-center gap-1">
@@ -226,10 +173,6 @@ const AgreementsTable = ({
                       <TbMailForward size={18} />
                       <span>{t("send_copy")}</span>
                     </div>
-                    {/* <span className="d-flex align-items-center text-nowrap gap-1">
-                      <MdOutlineCheckCircleOutline size={18} />
-                      {t("close_deal")}
-                    </span> */}
                     <button
                       className="d-flex align-items-center border-0 bg-transparent  text-nowrap gap-1"
                       onClick={handleOpen}
@@ -290,7 +233,7 @@ const AgreementsTable = ({
         </tbody>
       </table>
       <Accordion className=" p-0 d-md-none d-flex flex-column gap-3 ">
-        {tableData.map((row, index) => (
+        {selectData.map((row, index) => (
           <Accordion.Item
             eventKey={index.toString()}
             key={row.id}

@@ -167,7 +167,7 @@ const Brokers_between = () => {
                   >
                     <div className="flex items-center justify-center">
                       <img className="me-1" src={add_reaction} alt="Add Client" />
-                      {"add_cust"}{" "}
+                      {t("add_cust")}{" "}
                     </div>
                   </button>
                 </div>
@@ -223,7 +223,7 @@ const Brokers_between = () => {
                   >
                     <div className="flex items-center justify-center">
                       <img className="me-1" src={add_home} alt="Add Client" />
-                      {"add_cust"}{" "}
+                      {t("Add_Property")}{" "}
                     </div>
                   </button>
                 </div>
@@ -393,7 +393,7 @@ const Brokers_between = () => {
                   <div className="d-flex align-items-center justify-content-center">
                     <img className="me-1" src={add_reaction} alt="Add Client" />
                     <span className="fs-17 fw-semibold lh-1">
-                      {"add_cust"}{" "}
+                    {t("add_cust")}{" "}
                     </span>
                   </div>
                 </button>
@@ -454,7 +454,7 @@ const Brokers_between = () => {
                 >
                   <div className="d-flex align-items-center justify-content-center">
                     <img className="me-1" src={add_home} alt="Add Client" />
-                    {"add_cust"}{" "}
+                    {t("Add_Property")}{" "}
                   </div>
                 </button>
               </div>

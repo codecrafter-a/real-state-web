@@ -27,9 +27,39 @@ export const useLandregistryServices = () => {
           actionLabel: t("registry.download")
         }
       ];
-
-    return { getRegistryData };
-  
+      const getFilteredRegistryData = ({ clientName, fromDate, untilDate }) => {
+        let data = getRegistryData();
+    
+        if (clientName) {
+          const searchQuery = clientName.toLowerCase();
+          data = data.filter((item) =>
+            item.clients.toLowerCase().includes(searchQuery)
+          );
+        }
+    
+        if (fromDate && untilDate) {
+          const parseDate = (dateStr) => {
+            const [day, month, year] = dateStr.split(".");
+            return new Date(`20${year}`, month - 1, day);
+          };
+    
+          console.log("fromdata", fromDate, untilDate)
+          const from = new Date(fromDate);
+          const until = new Date(untilDate);
+    
+          data = data.filter((item) => {
+            const itemDate = parseDate(item.agreementDate);
+            return itemDate >= from && itemDate <= until;
+          });
+        }
+    console.log(data, "datadatadata");
+    
+        return data;
+      };
+      return {
+        getRegistryData,          
+        getFilteredRegistryData,
+      };
 }
 
 

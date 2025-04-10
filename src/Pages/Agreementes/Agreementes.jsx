@@ -10,7 +10,7 @@ import AddinvoicesIcon from "../../assets/images/addinvoices.png";
 import sadicon from "../../assets/images/sad.png";
 import businessicon from "../../assets/images/book_2.png";
 import pdfinstall from "../../assets/images/pdf.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Tab from "../../Componant/Common/Tab/Tab";
 import { IoIosArrowDown } from "react-icons/io";
 import { useAgreementServices } from "../../Services/AgreementServices";
@@ -26,13 +26,12 @@ import { RiDeleteBin2Line } from "react-icons/ri";
 const Agreements = () => {
   const [activeTab, setActiveTab] = useState("all");
   const [removeData, setRemoveData] = useState(false);
-  const [selectData, setSelectData] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleisopen = () => {
     setIsOpen((prev) => !prev);
   };
-  console.log("sELEEKDK", selectData);
+  
   const [modalState, setModalState] = useState({
     addInvoices: false,
     isError: false,
@@ -41,13 +40,8 @@ const Agreements = () => {
     isDocument: false,
   });
 
-  const handleSelectClick = () => {
-    setSelectData(true);
-  };
-
   const {
     tableData,
-    agreeData,
     searchQuery,
     selectedStatus,
     fromDate,
@@ -55,23 +49,25 @@ const Agreements = () => {
     handleStatusChange,
     handleRemoveStatus,
     handleSearchChange,
-    handleData,
     setFromDate,
     setToDate,
     getAgreementData,
     setTableData,
+    handleAgreeChange
   } = useAgreementServices();
 
-  useEffect(() => {
+  useEffect(() => { 
     setTableData(getAgreementData());
   }, []);
+  console.log("formfataaauhdsf", fromDate);
 
   const { t } = useTranslation();
   const navigate = useNavigate();
-
+  const { lang } = useParams();
   const handleOpen = () => setRemoveData(true);
   const handleClose = () => setRemoveData(false);
-  const handleClick = () => navigate("/:lang/invoices");
+  const handleClick = () => navigate(`/${lang}/invoices`);
+  const handleRegistry = () => navigate(`/${lang}/landregistry`)
 
   const updateModalState = (updatedValues) => {
     setModalState((prev) => ({
@@ -251,9 +247,7 @@ const Agreements = () => {
                     </div>
                   </div>
                   <div className="d-md-none d-block">
-                    <p className=" fs-16 fw-semibold lh-1 my-2 text-center text-teal">
-                      פילטרים נוספים
-                    </p>
+                    <p className=" fs-16 fw-semibold lh-1 my-2 text-center text-teal">{t("additional_filters")}</p>
                     <div className="justify-content-center d-flex">
                       <IoIosArrowDown />
                     </div>
@@ -321,7 +315,7 @@ const Agreements = () => {
                     </div>
                     <button
                       className=" fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill "
-                      onClick={handleSelectClick}
+                      onClick={handleAgreeChange}
                     >
                       {t("show_button")}
                     </button>
@@ -355,12 +349,8 @@ const Agreements = () => {
                   <div>
                     <AgreementsTable
                       handleOpen={handleOpen}
-                      searchQuery={searchQuery}
                       selectedStatus={selectedStatus}
-                      fromDate={fromDate}
-                      agreeData={agreeData}
-                      toDate={toDate}
-                      selectData={selectData}
+                      selectData={tableData}
                     />
                   </div>
                 </div>
@@ -599,7 +589,7 @@ const Agreements = () => {
                   <img src={pdfinstall} alt="install pdf" />
                 </div>
                 <div className="d-flex justify-content-center flex-wrap flex-md-nowrap gap-2 my-3">
-                  <button className="fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill">
+                  <button className="fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill" onClick={handleClick}>
                     {t("all1_invoices")}
                   </button>
                   <button
@@ -610,7 +600,7 @@ const Agreements = () => {
                   </button>
                   <button
                     className="fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive1 text-white w-50 py-2 mx-1 rounded-pill"
-                    onClick={handleClick}
+                    onClick={handleRegistry}
                   >
                     {t("register_transaction")}
                   </button>
@@ -703,7 +693,9 @@ const Agreements = () => {
                     {t("agreement1_status")}
                   </label>
                   <select className="form-select">
-                    {/* Option items here */}
+                     <option>Genrated</option>
+                     <option>Fail</option>
+                     <option>Viewd</option>
                   </select>
                 </div>
                 <div className="row px-3">

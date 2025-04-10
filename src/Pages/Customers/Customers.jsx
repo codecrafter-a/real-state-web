@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-// import { motion } from 'framer-motion';
 import add_reaction from "../../assets/images/add_reaction.svg";
 import search from "../../assets/images/search.svg";
 import search_icon2 from "../../assets/images/search_icon2.svg";
@@ -10,7 +9,6 @@ import action_icon1 from "../../assets/images/action_icon1.svg";
 import action_icon2 from "../../assets/images/action_icon2.svg";
 import ErrorIcon from "../../assets/images/ErrorIcon.svg";
 import { IoIosArrowUp } from "react-icons/io";
-// import check_tick from '../../assets/images/check_tick.svg';
 import table_arrrow from "../../assets/images/table_arrrow.svg";
 import RangeSlider from "../../Componant/Common/RangeSlider/RangeSlider";
 import CustomButton from "../../Componant/Common/Button/Button";
@@ -31,12 +29,15 @@ const Customer = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const [propertyType, setPropertyType] = useState("");
-  const [propertyCondition, setPropertyCondition] = useState("");
-  const [filteredClients, setFilteredClients] = useState([]);
-  const { getClients } = useClientService(searchTerm);
+  const [clientNameInput, setClientNameInput] = useState("");
+const [propertyType, setPropertyType] = useState("");
+const [propertyCondition, setPropertyCondition] = useState("");
+const [location, setLocation] = useState("");
+const [filteredClients, setFilteredClients] = useState([]);
+  const { getClients,  getClientData } = useClientService(searchTerm);
   const clientFiltered = getClients();
-  console.log(clientFiltered, "clientFiltered");
+
+
 
   console.log(clients, "clients");
   const filterdClients = clients.filter(
@@ -60,6 +61,8 @@ const Customer = () => {
     );
   };
 
+  console.log("dsgkjfgjksfgksjdf", filterdClients)
+
   useEffect(() => {
     const allSelected =
       clients.length > 0 &&
@@ -73,16 +76,14 @@ const Customer = () => {
   };
 
   const handleClick = () => {
-    const result = clients.filter((client) => {
-      const matchesPropertyType = propertyType
-        ? client.property_type === propertyType
-        : true;
-      const matchesPropertyCondition = propertyCondition
-        ? client.property_condition === propertyCondition
-        : true;
-
-      return matchesPropertyType && matchesPropertyCondition;
+    const filtered = getClientData({
+      clientName: clientNameInput,
+      type: "", 
+      property_type: propertyType,
+      property_condition: propertyCondition,
+      location: location,
     });
+    setFilteredClients(filtered);
   };
 
   const toggleCheckbox = (index) => {
@@ -171,8 +172,8 @@ const Customer = () => {
                         type="text"
                         className="form-control border-0 p-0 flex-grow-1"
                         placeholder={t("cust_filter_place_2")}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        value={searchTerm}
+                        value={location}
+                        onChange={(e) => setLocation(e.target.value)}
                       />
                       <button
                         className="btn border-0 p-0 ms-2"
@@ -191,6 +192,8 @@ const Customer = () => {
                       type="text"
                       className="form-control"
                       placeholder={t("cust_typing")}
+                      value={clientNameInput}
+                      onChange={(e) => setClientNameInput(e.target.value)}
                     />
                   </div>
                   <div>

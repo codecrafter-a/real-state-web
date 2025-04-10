@@ -32,7 +32,7 @@ const Brokers = () => {
 
   const handlePropertysection = () => {
     setPropertySection(true);
-  };
+  };    
 
   const handlecloseProperty = () => {
     setPropertySection(false);
@@ -329,7 +329,7 @@ const Brokers = () => {
             <div className="card  p-3 border  rounded-3 overflow-hidden  rounded-3 bg-light mb-4">
               <div className="form_group mb-2 mb-xl-0 d-flex justify-content-between">
                 <h5 className=" text-embed-500 fs-5 fw-semibold lh-1 mb-4">
-                  {t("age_details")}
+                  {t("customer_detail")}
                 </h5>
                 <button
                   type="button"
@@ -339,7 +339,7 @@ const Brokers = () => {
                   <div className="d-flex align-items-center justify-content-center">
                     <img className="me-1" src={add_reaction} alt="Add Client" />
                     <span className="fs-17 fw-semibold lh-1">
-                      {"add_cust"}{" "}
+                      {t("add_cust")}{" "}
                     </span>
                   </div>
                 </button>
@@ -402,7 +402,7 @@ const Brokers = () => {
                 >
                   <div className="d-flex align-items-center justify-content-center">
                     <img className="me-1" src={add_home} alt="Add Client" />
-                    {"add_cust"}{" "}
+                    {t("Add_Property")}{" "}
                   </div>
                 </button>
               </div>
@@ -506,6 +506,29 @@ const Brokers = () => {
                   rows="4"
                 ></textarea>
               </div>
+            </div>
+          </div>
+          <div className="col-12 my-2">
+            <div className="d-flex align-items-center">
+              <Toggle
+                defaultChecked={true}
+                type={"checkbox"}
+                id="toggleImages"
+                
+              />
+              <label className="fs-6 fw-normal lh-1" htmlFor="">
+                {t("send_property_attachments")}
+              </label>
+            </div>
+            <div className="d-flex align-items-center">
+              <Toggle
+                defaultChecked={false}
+                type={"checkbox"}
+                id="toggleImages"
+              />
+              <label className="fs-6 fw-normal lh-1" htmlFor="">
+                {t("send_images")}
+              </label>
             </div>
           </div>
           <div className="col-12">
