@@ -15,7 +15,9 @@ import Next from "../../../assets/images/Next.jpg";
 import close from "../../../assets/images/ButtonClose.png";
 import { useClientService } from "../../../Services/ClientService";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 const AddCustomerDesktop = () => {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const handleisopen = () => {
     setIsOpen((prev) => !prev);
@@ -29,7 +31,6 @@ const AddCustomerDesktop = () => {
     closeFirstModal,
     closeSecondModal,
     setIsFirstModalOpen,
-    t,
   } = useClientService();
 
   return (

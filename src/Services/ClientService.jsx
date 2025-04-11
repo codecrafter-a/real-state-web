@@ -30,12 +30,8 @@ export const useClientService = () => {
   const [isFirstModalOpen, setIsFirstModalOpen] = useState(false);
   const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
   const [currentScreen, setCurrentScreen] = useState(1);
-
   const [clientName, setClientName] = useState('');
-  const [filterType, setFilterType] = useState('');
-  const [filterPropertyType, setFilterPropertyType] = useState('');
-  const [filterLocation, setFilterLocation] = useState('');
-  const [filterPropertyCondition, setFilterPropertyCondition] = useState('');
+
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -93,51 +89,55 @@ export const useClientService = () => {
 
   const getClientData = ({
     clientName,
-    type,
-    property_type,
-    location,
-    property_condition,
+    type1,
+    property_type1,
+    location1,
+    property_condition1,
+    recent_agreement
   }) => {
-    console.log("typeppe", type, location, property_type, clientName, property_condition);
+
     
     let data = getClients();
-
     if (clientName) {
       const query = clientName.toLowerCase();
       data = data.filter(
         (item) =>
           item.name.toLowerCase().includes(query) ||
           item.phone.toLowerCase().includes(query) ||
-          item.email.toLowerCase().includes(query)
+          item.email.toLowerCase().includes(query)      
       );
     }
 
-    if (type) {
-      const query = type.toLowerCase();
+    if (type1) {
+      const query = type1.toLowerCase();
       data = data.filter((item) => item.type.toLowerCase().includes(query));
     }
 
-    if (property_type) {
-      const query = property_type.toLowerCase();
-      data = data.filter((item) =>
-        item.property_type.toLowerCase().includes(query)
+    if (property_type1) {
+      console.log("datatadtaat", data);
+      data = data.filter(
+        (item) => item.property_type?.toLowerCase() === property_type1.toLowerCase()
       );
+      console.log("BeforeFilter", data.map(d => d.property_type));
+      console.log("Selected property_type1:", property_type1);
+    }
+     if (location1) {
+       const query = location1.toLowerCase();
+       data = data.filter((item) =>
+         item.location.toLowerCase().includes(query)
+       );
+     }
+    if (recent_agreement) {
+      const query = recent_agreement.toLowerCase().value;
+      data = data.filter((item) => item.location?.toLowerCase().includes(query) );
     }
 
-    if (location) {
-      const query = location.toLowerCase();
-      data = data.filter((item) =>
-        item.location.toLowerCase().includes(query)
-      );
-    }
-
-    if (property_condition) {
-      const query = property_condition.toLowerCase();
-      data = data.filter((item) =>
-        item.property_condition.toLowerCase().includes(query)
-      );
-      console.log(data, "data");
-    }
+     if (property_condition1) {
+       const query = property_condition1.toLowerCase();
+       data = data.filter((item) =>
+         item.property_condition?.toLowerCase().includes(query)
+       );
+     }
     return data;
   };
 
@@ -154,14 +154,6 @@ export const useClientService = () => {
     setCurrentScreen,
     clientName,
     setClientName,
-    filterType,
-    setFilterType,
-    filterPropertyType,
-    setFilterPropertyType,
-    filterLocation,
-    setFilterLocation,
-    filterPropertyCondition,
-    setFilterPropertyCondition,
     handleChange,
     nextScreen,
     prevScreen,

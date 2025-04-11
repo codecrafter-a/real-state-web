@@ -15,7 +15,7 @@ import whatsapp from "../../assets/images/wa, whatsapp, message, communication, 
 import celebration from "../../assets/images/celebration.gif";
 import key_vertical from "../../assets/images/key_vertical.svg";
 import garage_door from "../../assets/images/garage_door.svg";
-import close from '../../assets/images/close_small.png';
+import close from "../../assets/images/close_small.png";
 const Brokers_between = () => {
   const { t } = useTranslation();
   const [isView, setIsView] = useState(false);
@@ -27,11 +27,11 @@ const Brokers_between = () => {
 
   const handlePropertysection = () => {
     setPropertySection(true);
-  }
+  };
 
   const handlecloseProperty = () => {
     setPropertySection(false);
-  }
+  };
 
   const handleSearchClick = () => {
     setShowDetails(true);
@@ -39,7 +39,7 @@ const Brokers_between = () => {
 
   const handleSearchClose = () => {
     setShowDetails(false);
-  }
+  };
 
   const handleView = () => {
     setIsView(true);
@@ -108,8 +108,15 @@ const Brokers_between = () => {
 
                   {selectedOption === "option3" && (
                     <div className="d-flex align-items-center mt-2 ms-4">
-                      <input type="text" className="form-control w-25" placeholder="30" />
-                      <select className="form-select me-2 w-auto" defaultValue="%">
+                      <input
+                        type="text"
+                        className="form-control w-25"
+                        placeholder="30"
+                      />
+                      <select
+                        className="form-select me-2 w-auto"
+                        defaultValue="%"
+                      >
                         <option value="%">%</option>
                         <option value="USD">USD</option>
                       </select>
@@ -131,24 +138,30 @@ const Brokers_between = () => {
 
                   {selectedOption === "option4" && (
                     <div className="my-2 w-75">
-                      <textarea class="form-control" placeholder={t("text_place")} rows="2"></textarea>
+                      <textarea
+                        className="form-control"
+                        placeholder={t("text_place")}
+                        rows="2"
+                      ></textarea>
                     </div>
                   )}
-
                 </form>
               </div>
             </div>
             <div className="col-12 px-0">
               <div className="card p-3 border  rounded-3 mb-4">
-                <h5 className=" text-embed-500 fw-semibold fs-5 lh-1 mb-4">{t("age_tran_type")}</h5>
+                <h5 className=" text-embed-500 fw-semibold fs-5 lh-1 mb-4">
+                  {t("age_tran_type")}
+                </h5>
                 <div className=" d-flex justify-content-start align-items-center gap-3">
-                  <div className="border-teal rounded-2 p-2 my-2 iconbox flex flex-column justify-content-center align-items-center bg-teal-100 ">
+                  <div className="border-teal rounded-2 p-2 my-2 iconbox d-flex flex-column justify-content-center align-items-center bg-teal-100">
                     <img src={key_vertical} alt="" />
                     <span className="fs-6 fw-normal lh-base text-center">
                       {t("age_tran_type_1")}
                     </span>
                   </div>
-                  <div className="border-teal rounded-2 p-2 my-2 iconbox flex flex-column justify-content-center align-items-center bg-teal-100">
+
+                  <div className="border-teal rounded-2 p-2 my-2 iconbox d-flex flex-column justify-content-center align-items-center bg-teal-100">
                     <img src={garage_door} alt="" />
                     <span className="fs-6 fw-normal lh-base text-center">
                       {t("age_tran_type_2")}
@@ -160,13 +173,19 @@ const Brokers_between = () => {
             <div className="col-12 px-0">
               <div className="card p-3 border  rounded-3 mb-4">
                 <div className="form_group mb-2 mb-xl-0 d-flex justify-content-between">
-                  <h5 className="text-embed-500 fw-semibold fs-5 lh-1 mb-4">{t("customer_detail")}</h5>
+                  <h5 className="text-embed-500 fw-semibold fs-5 lh-1 mb-4">
+                    {t("customer_detail")}
+                  </h5>
                   <button
                     type="button"
                     className="border-teal mt-2 d-flex align-items-center justify-content-center rounded-pill py-1 px-4 search-button"
                   >
                     <div className="flex items-center justify-center">
-                      <img className="me-1" src={add_reaction} alt="Add Client" />
+                      <img
+                        className="me-1"
+                        src={add_reaction}
+                        alt="Add Client"
+                      />
                       {t("add_cust")}{" "}
                     </div>
                   </button>
@@ -194,7 +213,7 @@ const Brokers_between = () => {
                     <div className="border rounded w-full">
                       <div className="d-flex flex-row justify-content-between px-3 py-2">
                         <div className="d-flex flex-col">
-                          <label>{t('broker_name')}</label>
+                          <label>{t("broker_name")}</label>
                           <input
                             type="text"
                             className="form-control border-0 p-0"
@@ -203,7 +222,11 @@ const Brokers_between = () => {
                           />
                         </div>
                         <div className="d-flex flex-row justify-content-end">
-                          <button className="btn p-0" type="button" onClick={handleSearchClose}>
+                          <button
+                            className="btn p-0"
+                            type="button"
+                            onClick={handleSearchClose}
+                          >
                             <img src={close} alt="Search" />
                           </button>
                         </div>
@@ -216,7 +239,9 @@ const Brokers_between = () => {
             <div className="col-12 px-0">
               <div className="card p-3 border  rounded-3 mb-4">
                 <div className="form_group mb-2 mb-xl-0 d-flex justify-content-between">
-                  <h5 className="text-embed-500 fw-semibold fs-5 lh-1 mb-4">{t("age_pro_section")}</h5>
+                  <h5 className="text-embed-500 fw-semibold fs-5 lh-1 mb-4">
+                    {t("age_pro_section")}
+                  </h5>
                   <button
                     type="button"
                     className="border-teal mt-2 d-flex align-items-center justify-content-center rounded-pill py-1 px-4 search-button"
@@ -249,9 +274,10 @@ const Brokers_between = () => {
                   <>
                     <div className="border rounded w-75 mb-3">
                       <div className="d-flex flex-row justify-content-between px-3 py-2">
-
                         <div className="d-flex flex-row align-item-center gap-2">
-                          <div className="my-2"><img src={key_vertical} alt="key vertical" /></div>
+                          <div className="my-2">
+                            <img src={key_vertical} alt="key vertical" />
+                          </div>
                           <div>
                             <label>{t("property_br_address")}</label>
                             <input
@@ -261,10 +287,13 @@ const Brokers_between = () => {
                               values=""
                             />
                           </div>
-
                         </div>
                         <div className="d-flex flex-row justify-content-end">
-                          <button className="btn p-0" type="button" onClick={handlecloseProperty}>
+                          <button
+                            className="btn p-0"
+                            type="button"
+                            onClick={handlecloseProperty}
+                          >
                             <img src={close} alt="Search" />
                           </button>
                         </div>
@@ -276,7 +305,9 @@ const Brokers_between = () => {
             </div>
             <div className="col-12 px-0">
               <div className="card p-3 border  rounded-3 mb-4">
-                <h5 className=" text-embed-500 fw-semibold fs-5 lh-1 mb-4">{t("age_note")}</h5>
+                <h5 className=" text-embed-500 fw-semibold fs-5 lh-1 mb-4">
+                  {t("age_note")}
+                </h5>
                 <div className=" px-2 pb-2 w-75">
                   <textarea
                     className="form-control"
@@ -294,7 +325,10 @@ const Brokers_between = () => {
                 >
                   {t("age_btn_send")}
                 </button>
-                <button className=" agent-button2 rounded-pill px-4 py-2 fw-bold" onClick={() => setShowSuccess(true)}>
+                <button
+                  className=" agent-button2 rounded-pill px-4 py-2 fw-bold"
+                  onClick={() => setShowSuccess(true)}
+                >
                   {t("age_btn_send_without")}
                 </button>
                 <button className=" agent-button2 rounded-pill px-5 py-1 fw-bold">
@@ -332,7 +366,10 @@ const Brokers_between = () => {
                     name="commission"
                     id="toggleImages"
                   />
-                  <label className="fs-15 fw-normal lh-1 " htmlFor="eachGetsOwn">
+                  <label
+                    className="fs-15 fw-normal lh-1 "
+                    htmlFor="eachGetsOwn"
+                  >
                     {t("age_comm_type_2")}
                   </label>
                 </div>
@@ -343,7 +380,10 @@ const Brokers_between = () => {
                     name="commission"
                     id="toggleImages"
                   />
-                  <label className="fs-15 fw-normal lh-1" htmlFor="buyerPaysSeller">
+                  <label
+                    className="fs-15 fw-normal lh-1"
+                    htmlFor="buyerPaysSeller"
+                  >
                     {t("age_comm_type_3")}
                   </label>
                 </div>
@@ -363,7 +403,9 @@ const Brokers_between = () => {
           </div>
           <div className="col-12">
             <div className="card p-3 border  bg-light   rounded-3 mb-4">
-              <h5 className="  text-embed-500 fw-semibold fs-5 lh-1 mb-4">{t("age_tran_type")}</h5>
+              <h5 className="  text-embed-500 fw-semibold fs-5 lh-1 mb-4">
+                {t("age_tran_type")}
+              </h5>
               <div className=" d-flex justify-content-center align-items-center gap-4">
                 <div className="border-2 bg-white rounded-2 p-2  iconbox d-flex flex-column align-items-center">
                   <img src={key_vertical} alt="" />
@@ -393,7 +435,7 @@ const Brokers_between = () => {
                   <div className="d-flex align-items-center justify-content-center">
                     <img className="me-1" src={add_reaction} alt="Add Client" />
                     <span className="fs-17 fw-semibold lh-1">
-                    {t("add_cust")}{" "}
+                      {t("add_cust")}{" "}
                     </span>
                   </div>
                 </button>
@@ -421,7 +463,7 @@ const Brokers_between = () => {
                   <div className="border rounded w-full px-3">
                     <div className="d-flex flex-row justify-content-between">
                       <div className="d-flex flex-col">
-                        <label>{t('broker_name')}</label>
+                        <label>{t("broker_name")}</label>
                         <input
                           type="text"
                           className="form-control border-0 p-0"
@@ -430,17 +472,19 @@ const Brokers_between = () => {
                         />
                       </div>
                       <div className="d-flex flex-row justify-content-end">
-                        <button className="btn " type="button" onClick={handleSearchClose}>
+                        <button
+                          className="btn "
+                          type="button"
+                          onClick={handleSearchClose}
+                        >
                           <img src={close} alt="Search" />
                         </button>
                       </div>
                     </div>
                   </div>
-
                 </>
               )}
             </div>
-
           </div>
           <div className="col-12">
             <div className="card p-3 border bg-light rounded-3 mb-4">
@@ -480,9 +524,10 @@ const Brokers_between = () => {
                 <>
                   <div className="border rounded w-full px-3">
                     <div className="d-flex flex-row justify-content-between">
-
                       <div className="d-flex flex-row align-item-center gap-2">
-                        <div className="my-2"><img src={key_vertical} alt="key vertical" /></div>
+                        <div className="my-2">
+                          <img src={key_vertical} alt="key vertical" />
+                        </div>
                         <div>
                           <label>{t("property_br_address")}</label>
                           <input
@@ -492,10 +537,13 @@ const Brokers_between = () => {
                             values=""
                           />
                         </div>
-
                       </div>
                       <div className="d-flex flex-row justify-content-end">
-                        <button className="btn " type="button" onClick={handlecloseProperty}>
+                        <button
+                          className="btn "
+                          type="button"
+                          onClick={handlecloseProperty}
+                        >
                           <img src={close} alt="Search" />
                         </button>
                       </div>
@@ -513,11 +561,19 @@ const Brokers_between = () => {
 
                     <div className="mx-0">
                       <span className=" fw-semibold">{t("br_commission")}</span>
-                      <Form.Control type="number" className="t w-100" defaultValue="30" />
+                      <Form.Control
+                        type="number"
+                        className="t w-100"
+                        defaultValue="30"
+                      />
                     </div>
                     <div>
                       <span className="fw-semibold">{t("rental_months")}</span>
-                      <Form.Control type="string" className=" w-100" defaultValue="12" />
+                      <Form.Control
+                        type="string"
+                        className=" w-100"
+                        defaultValue="12"
+                      />
                     </div>
                   </div>
                 </>
@@ -526,7 +582,9 @@ const Brokers_between = () => {
           </div>
           <div className="col-12">
             <div className="card p-3 border bg-light rounded-3 mb-4">
-              <h5 className=" text-embed-500 fw-semibold fs-5 lh-1  mb-4">{t("age_note")}</h5>
+              <h5 className=" text-embed-500 fw-semibold fs-5 lh-1  mb-4">
+                {t("age_note")}
+              </h5>
               <div className=" px-2 pb-2">
                 <textarea
                   className="form-control"
@@ -544,7 +602,10 @@ const Brokers_between = () => {
               >
                 {t("age_btn_send")}
               </button>
-              <button className=" agent-btn-responsive2 w-50 bg-transperant h-25 py-1 shadow rounded-pill" onClick={() => setShowSuccess(true)}>
+              <button
+                className=" agent-btn-responsive2 w-50 bg-transperant h-25 py-1 shadow rounded-pill"
+                onClick={() => setShowSuccess(true)}
+              >
                 {t("age_btn_send_without")}
               </button>
               <button className="  agent-btn-responsive2 w-25 bg-transperant h-25 py-1 shadow rounded-pill">
@@ -563,10 +624,21 @@ const Brokers_between = () => {
         className="modal-container"
       >
         <Modal.Header className="d-flex justify-content-between align-items-center border-0">
-          <button><img src={Next} alt="next btn" className="" /></button>
-          <button type="button" className="btn-close m-0 fs-5" data-bs-dismiss="modal" aria-label="Close" onClick={() => setIsView(false)}></button>
+          <button className="border-0">
+            <img src={Next} alt="next btn" className="" />
+          </button>
+          <button
+            type="button"
+            className="btn-close m-0 fs-5"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            onClick={() => setIsView(false)}
+          ></button>
         </Modal.Header>
-        <Modal.Body className="p-4 overflow-y-auto custom-scrollbar" style={{ height: "655px" }}>
+        <Modal.Body
+          className="p-4 overflow-y-auto custom-scrollbar"
+          style={{ height: "655px" }}
+        >
           <div className="text-center">
             <img
               src={successIcon}
@@ -579,10 +651,13 @@ const Brokers_between = () => {
             <p className="fs_25 font-semibold">{t("age_report_question")}</p>
           </div>
           {/* Options Section */}
-          <div className="options-container m-auto" style={{ width: '417px' }}>
+          <div className="options-container m-auto" style={{ width: "417px" }}>
             <div className="option-item rounded-3 my-3">
               <Accordion defaultActiveKey={null} className="custom-accordion">
-                <Accordion.Item eventKey="0 " className="custom-header border-teal-100">
+                <Accordion.Item
+                  eventKey="0 "
+                  className="custom-header border-teal-100"
+                >
                   <Accordion.Header className="bg-teal-100">
                     <div className="d-flex justify-content-between w-100">
                       <div className=" d-flex align-items-center">
@@ -598,7 +673,10 @@ const Brokers_between = () => {
                     </div>
                   </Accordion.Header>
                   <Accordion.Body className="bg-teal-100">
-                    <ul className="fw-bold px-4" style={{ listStyleType: "disc" }}>
+                    <ul
+                      className="fw-bold px-4"
+                      style={{ listStyleType: "disc" }}
+                    >
                       <li>{t("age_send_whatsapp_point_1")}</li>
                       <li>{t("age_send_whatsapp_point_2")}</li>
                       <li>{t("age_send_whatsapp_point_3")}</li>
@@ -653,7 +731,10 @@ const Brokers_between = () => {
             </div>
             <div className="option-item rounded-3 my-3">
               <Accordion defaultActiveKey={null} className="custom-accordion ">
-                <Accordion.Item eventKey="0" className="custom-header border-teal-100">
+                <Accordion.Item
+                  eventKey="0"
+                  className="custom-header border-teal-100"
+                >
                   <Accordion.Header className="bg-teal-100">
                     <div className="d-flex justify-content-between w-100">
                       <div className=" d-flex align-items-center">
@@ -683,7 +764,10 @@ const Brokers_between = () => {
             </div>
             <div className="option-item rounded-3 my-3">
               <Accordion defaultActiveKey={null} className="custom-accordion ">
-                <Accordion.Item eventKey="0" className="custom-header border-teal-100">
+                <Accordion.Item
+                  eventKey="0"
+                  className="custom-header border-teal-100"
+                >
                   <Accordion.Header className=" bg-teal-100">
                     <div className="d-flex justify-content-between w-100">
                       <div className=" d-flex align-items-center">
@@ -713,7 +797,10 @@ const Brokers_between = () => {
             </div>
             <div className="option-item rounded-3 my-3">
               <Accordion defaultActiveKey={null} className="custom-accordion ">
-                <Accordion.Item eventKey="0" className=" custom-header border-teal-100">
+                <Accordion.Item
+                  eventKey="0"
+                  className=" custom-header border-teal-100"
+                >
                   <Accordion.Header className=" bg-teal-100">
                     <div className="d-flex justify-content-between w-100">
                       <div className=" d-flex align-items-center">
@@ -755,7 +842,12 @@ const Brokers_between = () => {
           </div>
         </Modal.Body>
       </Modal>
-      <Modal show={showSuccess} onHide={() => setShowSuccess(false)} centered className="modal-container">
+      <Modal
+        show={showSuccess}
+        onHide={() => setShowSuccess(false)}
+        centered
+        className="modal-container"
+      >
         <div
           className="position-absolute top-0 start-50 translate-middle-x mt-5 z-2"
           style={{ pointerEvents: "none" }}
@@ -768,7 +860,13 @@ const Brokers_between = () => {
           />
         </div>
         <Modal.Header className="d-flex justify-content-end align-items-center border-0">
-          <button type="button" className="btn-close m-0 fs-5" data-bs-dismiss="modal" aria-label="Close" onClick={() => setShowSuccess(false)}></button>
+          <button
+            type="button"
+            className="btn-close m-0 fs-5"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            onClick={() => setShowSuccess(false)}
+          ></button>
         </Modal.Header>
         <Modal.Body className="p-4 text-center position-relative z-3">
           <img
@@ -802,7 +900,12 @@ const Brokers_between = () => {
           </button>
         </Modal.Footer>
       </Modal>
-      <Modal show={sentSuccess} onHide={() => setSentSuccess(false)} centered className="modal-container">
+      <Modal
+        show={sentSuccess}
+        onHide={() => setSentSuccess(false)}
+        centered
+        className="modal-container"
+      >
         <div className="position-absolute top-0 start-50  translate-middle-x mt-5 z-2">
           <img
             src={celebration}
@@ -812,7 +915,13 @@ const Brokers_between = () => {
           />
         </div>
         <Modal.Header className="d-flex justify-content-end align-items-center border-0">
-          <button type="button" className="btn-close m-0 fs-5" data-bs-dismiss="modal" aria-label="Close" onClick={() => setSentSuccess(false)}></button>
+          <button
+            type="button"
+            className="btn-close m-0 fs-5"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            onClick={() => setSentSuccess(false)}
+          ></button>
         </Modal.Header>
         <Modal.Body className="p-4 position-relative z-2">
           <div className="text-center">
@@ -827,9 +936,7 @@ const Brokers_between = () => {
             <h4 className="fs-3 text-teal fw-semibold">
               {t("age_cust_agreement_status")}
             </h4>
-            <p className="fs-3 text-teal fw-semibold">
-              {t("age_cust_status")}
-            </p>
+            <p className="fs-3 text-teal fw-semibold">{t("age_cust_status")}</p>
           </div>
           <div className="text-center mt-4">
             <button

@@ -3,7 +3,6 @@ import "../Signin/Signin.css";
 import g10 from "../../assets/images/g10.png";
 import { Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import i18n from "i18next";
 import Form from "react-bootstrap/Form";
 import { useTranslation } from "react-i18next";
 import signin from "../../assets/images/Signin.png";

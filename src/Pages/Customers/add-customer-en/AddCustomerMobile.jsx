@@ -14,8 +14,10 @@ import { Modal } from "react-bootstrap";
 import Next from "../../../assets/images/Next.jpg";
 import close from "../../../assets/images/ButtonClose.png";
 import { useClientService } from "../../../Services/ClientService";
+import { useTranslation } from "react-i18next";
 
 const AddCustomerMobile = () => {
+    const { t } = useTranslation();
   const [isChecked, setIsChecked] = useState(false);
   const handleMainCheck = (e) => {
     const checked = e.target.checked;
@@ -40,7 +42,7 @@ const AddCustomerMobile = () => {
     closeFirstModal,
     closeSecondModal,
     setIsFirstModalOpen,
-    t,
+   
   } = useClientService();
 
   const renderFirstScreen = () => (

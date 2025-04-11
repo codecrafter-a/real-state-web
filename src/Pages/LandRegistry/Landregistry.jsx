@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Col} from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import search from "../../assets/images/search.png";
 import { useTranslation } from "react-i18next";
 import Landregistrytable from "../LandRegistry/Landregistrytable";
@@ -18,11 +18,6 @@ const Landregistry = () => {
   const [filteredData, setFilteredData] = useState(registerData);
   console.log(filteredData, "filteredData");
 
-  // const handleChange = (clientName) => {
-  //   const data = getFilteredRegistryData({ clientName });
-  //   setFilteredData(data);
-  //   setClientName(clientName);
-  // };
   const handleSearch = () => {
     const data = getFilteredRegistryData({ clientName, fromDate, untilDate });
     setFilteredData(data);
@@ -53,21 +48,21 @@ const Landregistry = () => {
             </div>
           </div>
           <div className="row  align-items-center d-flex justify-content-center  my-md-3 justify-content-md-start">
-              <div className="col-4 col-md-2">
-                <button className="agent-btn-responsive2 w-100   py-2 rounded-pill ">
-                  {t("data_btn_3")}
-                </button>
-              </div>
-              <div className="col-4 col-md-2">
-                <button className="agent-btn-responsive2 w-100 py-2 rounded-pill">
-                  {t("data_btn_2")}
-                </button>
-              </div>
-              <div className="col-4 col-md-2 ">
-                <button className="agent-btn-responsive2 w-100 py-2 rounded-pill">
-                  {t("data_btn_1")}
-                </button>
-              </div>
+            <div className="col-4 col-md-2">
+              <button className="agent-btn-responsive2 w-100   py-2 rounded-pill ">
+                {t("data_btn_3")}
+              </button>
+            </div>
+            <div className="col-4 col-md-2">
+              <button className="agent-btn-responsive2 w-100 py-2 rounded-pill">
+                {t("data_btn_2")}
+              </button>
+            </div>
+            <div className="col-4 col-md-2 ">
+              <button className="agent-btn-responsive2 w-100 py-2 rounded-pill">
+                {t("data_btn_1")}
+              </button>
+            </div>
           </div>
           <div className="row g-3 align-items-end my-3">
             <div className="col-6 col-md-3">
@@ -116,33 +111,40 @@ const Landregistry = () => {
             <Accordion.Header>
               <div className="d-flex justify-content-between gap-2">
                 <div className="d-flex">
-                    <div className=" d-flex align-items-center">
-                      <div className="p-1">
-                        <img
-                          src={key}
-                          alt="vertical key"
-                          className="img-fluid w-75 h-75"
-                        />
-                      </div>
-                      <div>
-                        <span className="fw-semibold fs-12 d-block">
-                          {row?.agreementDate}
-                        </span>
-                        <p className="fw-bold fs-14 d-block   text-teal  mb-0">
-                          <span className="text-decoration-underline">{t(row.propertyName)}</span> | <span className="text-black text-decoration-none  ">{t(row.agreementType)}</span>   
-                        </p>
-                        <p className="fw-bold  fs-12 d-block my-0">
-                          {t("registry.clients_label")} :{" "}
-                          <span className="fw-semibold lh-1 fs-12">
-                            {t(row?.clients)} | {t(row?.phoneNumber)}
-                          </span>
-                        </p>
-                        
-                      </div>
+                  <div className=" d-flex align-items-center">
+                    <div className="p-1">
+                      <img
+                        src={key}
+                        alt="vertical key"
+                        className="img-fluid w-75 h-75"
+                      />
                     </div>
-                   
+                    <div>
+                      <span className="fw-semibold fs-12 d-block">
+                        {row?.agreementDate}
+                      </span>
+                      <p className="fw-bold fs-14 d-block   text-teal  mb-0">
+                        <span className="text-decoration-underline">
+                          {t(row.propertyName)}
+                        </span>{" "}
+                        |{" "}
+                        <span className="text-black text-decoration-none  ">
+                          {t(row.agreementType)}
+                        </span>
+                      </p>
+                      <p className="fw-bold  fs-12 d-block my-0">
+                        {t("registry.clients_label")} :{" "}
+                        <span className="fw-semibold lh-1 fs-12">
+                          {t(row?.clients)} | {t(row?.phoneNumber)}
+                        </span>
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <button className="agent-btn-responsive2 h-25 w-50 py-2 mt-3  rounded-pill"> {t("download_agreement")}</button> 
+                <button className="agent-btn-responsive2 h-25 w-50 py-2 mt-3  rounded-pill">
+                  {" "}
+                  {t("download_agreement")}
+                </button>
               </div>
             </Accordion.Header>
             <Accordion.Body className="p-0">
@@ -151,7 +153,8 @@ const Landregistry = () => {
                   <strong>{t("for")}:</strong> {t(row?.agreementType)}
                 </p>
                 <p className="m-0">
-                  <strong>{t("registry.clients_label")}:</strong> {t(row?.clients)}
+                  <strong>{t("registry.clients_label")}:</strong>{" "}
+                  {t(row?.clients)}
                 </p>
               </div>
             </Accordion.Body>

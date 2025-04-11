@@ -67,7 +67,7 @@ const Header = () => {
                   <div className="col-auto">
                    <ul className="hdt_top_menu  align-items-center gap-4">
                      <li className="user_dd dropdown">
-                       <a href="/" class="dropdown-toggle" type="button" id="dd_user" data-bs-toggle="dropdown" aria-expanded="false">
+                       <a href="/" className="dropdown-toggle" type="button" id="dd_user" data-bs-toggle="dropdown" aria-expanded="false">
                          <div className=' flex justify-center'><img src={userIcon} alt="gfdgdg" />{t("starter")} </div>
                        </a>
                        <ul className="dropdown-menu" aria-labelledby="dd_user">
@@ -89,7 +89,7 @@ const Header = () => {
                  <div className="col-auto">
                    <ul className="hdt_top_menu d-flex align-items-center gap-4">
                      <li className="user_dd dropdown">
-                       <a href="/" class="dropdown-toggle" type="button" id="dd_user" data-bs-toggle="dropdown" aria-expanded="false">
+                       <a href="/" className="dropdown-toggle" type="button" id="dd_user" data-bs-toggle="dropdown" aria-expanded="false">
                          <div className=' flex justify-center'><img src={userIcon} alt="gfdgdg" />{t("starter")} </div>
                        </a>
                        <ul className="dropdown-menu" aria-labelledby="dd_user">
