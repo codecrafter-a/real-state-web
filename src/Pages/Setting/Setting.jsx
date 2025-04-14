@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import { Col, Row, Modal } from "react-bootstrap";
 import "../Setting/setting.css";
 import Toggle from "../../Componant/Common/Toggle/Toggle";
-import Card from "react-bootstrap/Card";
 import sms from "../../assets/images/sms.svg";
 import email from "../../assets/images/email.svg";
 import whatsapp from "../../assets/images/wa, whatsapp, message, communication, chat.svg";
 import { useTranslation } from "react-i18next";
 import Next from "../../assets/images/Next.jpg";
-
+import CustomInput from "../../Componant/Common/Input/Custominput";
 const Setting = () => {
   const { t } = useTranslation();
   const [isView, setIsView] = useState(false);
@@ -19,12 +18,14 @@ const Setting = () => {
     setIsView(false);
   };
 
-
   const [settings, setSettings] = useState({
     lable1: false,
     lable2: false,
     lable3: false,
     showCommissionAmounts: false,
+    usertype_1: false,
+    usertype_2: true,
+    usertype_3: false,
     receivePerformanceReports: true,
     notifyOnPropertyMatch: true,
     sendMessageToInterestedClients: true,
@@ -46,14 +47,9 @@ const Setting = () => {
 
   console.log("dssddsfkhsdjfhlkjsdhf", settings);
 
- 
-
-
   const handleToggleChange = (key) => (e) => {
     setSettings((prev) => ({ ...prev, [key]: e.target.checked }));
   };
-
- 
 
   const handleRadioChange = (groupKeys, selectedKey) => () => {
     const updatedGroup = groupKeys.reduce((acc, key) => {
@@ -84,7 +80,8 @@ const Setting = () => {
                     <div className="d-flex flex-column">
                       <div className="d-flex align-items-center">
                         <Toggle
-                          checked={settings.lable1} onChange={handleToggleChange("lable1")}
+                          checked={settings.lable1}
+                          onChange={handleToggleChange("lable1")}
                           defaultChecked={false}
                           type={"checkbox"}
                           id="toggleImages"
@@ -95,7 +92,8 @@ const Setting = () => {
                       </div>
                       <div className="d-flex align-items-center">
                         <Toggle
-                          checked={settings.lable2} onChange={handleToggleChange("lable2")}
+                          checked={settings.lable2}
+                          onChange={handleToggleChange("lable2")}
                           defaultChecked={false}
                           type={"checkbox"}
                           id="toggleImages"
@@ -106,8 +104,9 @@ const Setting = () => {
                       </div>
                       <div className="d-flex align-items-center">
                         <Toggle
-                           checked={settings.lable3} onChange={handleToggleChange("lable3")} 
-                           defaultChecked={false}
+                          checked={settings.lable3}
+                          onChange={handleToggleChange("lable3")}
+                          defaultChecked={false}
                           type={"checkbox"}
                           id="toggleImages"
                         />
@@ -127,7 +126,8 @@ const Setting = () => {
                     </h4>
                     <div className="d-flex align-items-center">
                       <Toggle
-                       checked={settings.showCommissionAmounts} onChange={handleToggleChange("showCommissionAmounts")} 
+                        checked={settings.showCommissionAmounts}
+                        onChange={handleToggleChange("showCommissionAmounts")}
                         // defaultChecked
                         type={"checkbox"}
                         id="toggleImages"
@@ -150,36 +150,63 @@ const Setting = () => {
                 </span>
               </div>
               <div className="d-flex pt-3">
-                <Card className="border-custom-gray contact-cards p-0">
-                  <Card.Body>
-                    <Card.Text className="d-flex flex-column align-items-center gap-2">
-                      <img src={email} alt="sms" />
-                      <p className="fw-semibold fs-17 text-teal m-0">
-                        {t("email")}
-                      </p>
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-                <Card className="border-custom-gray mx-3_5 contact-cards p-0">
-                  <Card.Body>
-                    <Card.Text className="d-flex flex-column align-items-center gap-2">
-                      <img src={whatsapp} alt="sms" />
-                      <p className="fw-semibold fs-17 text-teal mb-0">
-                        {t("whatsapp")}
-                      </p>
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-                <Card className="border-custom-gray contact-cards p-0">
-                  <Card.Body>
-                    <Card.Text className="d-flex flex-column align-items-center gap-2">
-                      <img src={sms} alt="sms" />
-                      <p className="fw-semibold fs-17 text-teal m-0">
-                        {t("sms")}
-                      </p>
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
+                <div className="check_custom_icon">
+                  <CustomInput
+                   type="checkbox"
+                   id="usertype_1"
+                   name="userType"
+                   value={t("email")}
+                   className="btn-check"
+                   checked={settings.usertype_1}
+                   onChange={handleToggleChange("email")}
+                  />
+                  <label htmlFor="usertype_1">
+                    <span className="user_type_icon">
+                      <img src={email} alt="icon" />
+                    </span>
+                    <span className="fw-semibold fs-17 text-teal mb-0">
+                      {t("email")}
+                    </span>
+                  </label>
+                </div>
+                <div className="check_custom_icon mx-3">
+                  <CustomInput
+                    type="checkbox"
+                    id="usertype_2"
+                    name="userType"
+                    value={t("whatsapp")}
+                    className="btn-check"
+                    checked={settings.usertype_2}
+                    onChange={handleToggleChange("whatsapp")}
+                  />
+                  <label htmlFor="usertype_2">
+                    <span className="user_type_icon">
+                      <img src={whatsapp} alt="icon" />
+                    </span>
+                    <span className="fw-semibold fs-17 text-teal mb-0">
+                      {t("whatsapp")}
+                    </span>
+                  </label>
+                </div>
+                <div className="check_custom_icon">
+                  <CustomInput
+                    type="checkbox"
+                    id="usertype_3"
+                    name="userType"
+                    value={t("sms")}
+                    className="btn-check"
+                    checked={settings.usertype_3}
+                    onChange={handleToggleChange("sms")}
+                  />
+                  <label htmlFor="usertype_3">
+                    <span className="user_type_icon">
+                      <img src={sms} alt="icon" />
+                    </span>
+                    <span className="fw-semibold fs-17 text-teal mb-0">
+                      {t("sms")}
+                    </span>
+                  </label>
+                </div>
               </div>
             </div>
           </div>
@@ -192,12 +219,20 @@ const Setting = () => {
                   {t("report")}
                 </h4>
                 <div className="d-flex align-items-center">
-                  <Toggle checked={settings.receivePerformanceReports} onChange={handleToggleChange("receivePerformanceReports")} type={"checkbox"} id="toggleImages" />
+                  <Toggle
+                    checked={settings.receivePerformanceReports}
+                    onChange={handleToggleChange("receivePerformanceReports")}
+                    type={"checkbox"}
+                    id="toggleImages"
+                  />
                   <label className="fs-6 fw-normal lh-1" htmlFor="">
                     {t("receivePerformanceReports")}
                   </label>
                 </div>
-                <span className="fw-semibold fs-12 lh-1 text-primary text-decoration-underline cursor-pointer" onClick={() => setIsView(true)}>
+                <span
+                  className="fw-semibold fs-12 lh-1 text-primary text-decoration-underline cursor-pointer"
+                  onClick={() => setIsView(true)}
+                >
                   {" "}
                   {t("changeReportsSettings")}{" "}
                 </span>
@@ -208,13 +243,23 @@ const Setting = () => {
                   {t("automaticPushNotifications")}
                 </h4>
                 <div className="d-flex align-items-center">
-                  <Toggle checked={settings.notifyOnPropertyMatch} onChange={handleToggleChange("notifyOnPropertyMatch")}  type={"checkbox"} id="toggleImages" />
+                  <Toggle
+                    checked={settings.notifyOnPropertyMatch}
+                    onChange={handleToggleChange("notifyOnPropertyMatch")}
+                    type={"checkbox"}
+                    id="toggleImages"
+                  />
                   <label className="fs-6 fw-normal lh-1" htmlFor="">
                     {t("notifyOnPropertyMatch")}
                   </label>
                 </div>
                 <div className="d-flex align-items-center ">
-                  <Toggle checked={settings.toClientsWhoShowedInterest} onChange={handleToggleChange("toClientsWhoShowedInterest")}  type={"checkbox"} id="toggleImages" />
+                  <Toggle
+                    checked={settings.toClientsWhoShowedInterest}
+                    onChange={handleToggleChange("toClientsWhoShowedInterest")}
+                    type={"checkbox"}
+                    id="toggleImages"
+                  />
                   <label className="fs-6 fw-normal lh-1" htmlFor="">
                     {t("sendMessage", {
                       spanText: (
@@ -226,7 +271,12 @@ const Setting = () => {
                   </label>
                 </div>
                 <div className="d-flex align-items-center">
-                  <Toggle checked={settings.toAllClientsFoundSuitable} onChange={handleToggleChange("toAllClientsFoundSuitable")} type={"checkbox"} id="toggleImages" />
+                  <Toggle
+                    checked={settings.toAllClientsFoundSuitable}
+                    onChange={handleToggleChange("toAllClientsFoundSuitable")}
+                    type={"checkbox"}
+                    id="toggleImages"
+                  />
                   <label className="fs-6 fw-normal lh-1" htmlFor="">
                     <span className="fw-semibold">
                       {t("toAllClientsFoundSuitable")}
@@ -234,7 +284,10 @@ const Setting = () => {
                     {t("sendMessageTags")}
                   </label>
                 </div>
-                <span className="fw-semibold fs-12 lh-1 text-primary text-decoration-underline cursor-pointer" onClick={() => setIsView(true)}>
+                <span
+                  className="fw-semibold fs-12 lh-1 text-primary text-decoration-underline cursor-pointer"
+                  onClick={() => setIsView(true)}
+                >
                   {" "}
                   {t("changePushNotificationSettings")}{" "}
                 </span>
@@ -259,11 +312,14 @@ const Setting = () => {
                 <div className="d-flex gap-3 align-items-center">
                   <div className=" d-flex align-items-center  gap-2">
                     <Toggle
-                    checked={settings.firstReminderOnceAMonth}
-                    onChange={handleRadioChange(
-                      ["firstReminderOnceAMonth", "firstReminderEveryTwoWeeks"],
-                      "firstReminderOnceAMonth"
-                    )}
+                      checked={settings.firstReminderOnceAMonth}
+                      onChange={handleRadioChange(
+                        [
+                          "firstReminderOnceAMonth",
+                          "firstReminderEveryTwoWeeks",
+                        ],
+                        "firstReminderOnceAMonth"
+                      )}
                       type="radio"
                       name="optionGroup1"
                       id="toggleImages"
@@ -276,7 +332,10 @@ const Setting = () => {
                     <Toggle
                       checked={settings.firstReminderEveryTwoWeeks}
                       onChange={handleRadioChange(
-                        ["firstReminderOnceAMonth", "firstReminderEveryTwoWeeks"],
+                        [
+                          "firstReminderOnceAMonth",
+                          "firstReminderEveryTwoWeeks",
+                        ],
                         "firstReminderEveryTwoWeeks"
                       )}
                       type="radio"
@@ -299,11 +358,14 @@ const Setting = () => {
                 <div className="d-flex align-items-center gap-3">
                   <div className=" d-flex align-items-center  gap-2">
                     <Toggle
-                     checked={settings.secondReminderOnceAMonth}
-                     onChange={handleRadioChange(
-                       ["secondReminderOnceAMonth", "secondReminderEveryTwoWeeks"],
-                       "secondReminderOnceAMonth"
-                     )}
+                      checked={settings.secondReminderOnceAMonth}
+                      onChange={handleRadioChange(
+                        [
+                          "secondReminderOnceAMonth",
+                          "secondReminderEveryTwoWeeks",
+                        ],
+                        "secondReminderOnceAMonth"
+                      )}
                       type="radio"
                       name="optionGroup"
                       id="toggleImages"
@@ -314,11 +376,14 @@ const Setting = () => {
                   </div>
                   <div className=" d-flex align-items-center gap-2">
                     <Toggle
-                       checked={settings.secondReminderEveryTwoWeeks}
-                       onChange={handleRadioChange(
-                         ["secondReminderOnceAMonth", "secondReminderEveryTwoWeeks"],
-                         "secondReminderEveryTwoWeeks"
-                       )}
+                      checked={settings.secondReminderEveryTwoWeeks}
+                      onChange={handleRadioChange(
+                        [
+                          "secondReminderOnceAMonth",
+                          "secondReminderEveryTwoWeeks",
+                        ],
+                        "secondReminderEveryTwoWeeks"
+                      )}
                       type="radio"
                       name="optionGroup"
                       id="toggleImages"
@@ -376,7 +441,8 @@ const Setting = () => {
                         <input
                           className="form-check-input border-2 border-black bg-white"
                           type="checkbox"
-                          checked={settings.viaSMS} onChange={handleToggleChange("viaSMS")}
+                          checked={settings.viaSMS}
+                          onChange={handleToggleChange("viaSMS")}
                         />
                       </div>
                     </div>
@@ -391,7 +457,8 @@ const Setting = () => {
                         <input
                           className="form-check-input border-2 border-black bg-white"
                           type="checkbox"
-                          checked={settings.viaEmail} onChange={handleToggleChange("viaEmail")}
+                          checked={settings.viaEmail}
+                          onChange={handleToggleChange("viaEmail")}
                         />
                       </div>
                     </div>
@@ -406,7 +473,8 @@ const Setting = () => {
                         <input
                           className="form-check-input border-2 border-black bg-white"
                           type="checkbox"
-                          checked={settings.viaWhatsapp} onChange={handleToggleChange("viaWhatsapp")} 
+                          checked={settings.viaWhatsapp}
+                          onChange={handleToggleChange("viaWhatsapp")}
                         />
                       </div>
                     </div>

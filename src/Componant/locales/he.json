@@ -720,6 +720,8 @@
   "text_place": "פרטו את שיתוף הפעולה שסוכם",
   "property_detail": "פרטי בעל הנכס",
   "customer_detail": "פרטי לקוחות להחתמה",
+  "registry_title": "נכסים הרשומים בספר המקרקעין",
+  "download1": "הורדה",
 
   "registry": {
     "propertyName": "פלורנטין 7 ת״א",
@@ -732,5 +734,17 @@
     "type": "סוג",
     "date": "תאריך",
     "property": "שם הנכס"
-  }
+  },
+
+  "send_property_attachments": "שליחת נספחי הנכס",
+  "send_images": "שליחת תמונות",
+   "client_details": "פרטי לקוח/ות",
+    "client_name_1": "שירי נקבלי",
+  "client_name_2": "רומי שפן",
+    "download_agreement": "להורדת ההסכם",
+     "additional_filters": "פילטרים נוספים",
+     "card_title": "רוצים לנהל הכל במקום אחד?",
+     "card_description": "רוצים להוסיף עוד סוכנים? לשלוח מסמכים ושהכל יופיע לכם במקום אחד?",
+     "card_button": "שדרגו את המנוי שלכם"
+   
 }

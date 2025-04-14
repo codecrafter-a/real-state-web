@@ -1,113 +1,55 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-// import { motion } from 'framer-motion';
 import add_reaction from "../../assets/images/add_reaction.svg";
 import search from "../../assets/images/search.svg";
 import search_icon2 from "../../assets/images/search_icon2.svg";
-import white_search_icon from "../../assets/images/white-search-icon.svg";
 import remove_icon from "../../assets/images/remove_icon.svg";
 import action_icon1 from "../../assets/images/action_icon1.svg";
 import action_icon2 from "../../assets/images/action_icon2.svg";
 import ErrorIcon from "../../assets/images/ErrorIcon.svg";
-import { IoIosArrowUp } from "react-icons/io";
-// import check_tick from '../../assets/images/check_tick.svg';
-import table_arrrow from "../../assets/images/table_arrrow.svg";
 import RangeSlider from "../../Componant/Common/RangeSlider/RangeSlider";
-import CustomButton from "../../Componant/Common/Button/Button";
-import edit from "../../assets/images/edit.svg";
-import deleteIcon from "../../assets/images/delete.svg";
-import { Accordion, Modal } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import { useClientService } from "../../Services/ClientService";
 import close from "../../assets/images/ButtonClose.png";
+import CustomerMobile from "./CustomerMobile";
+import CustomerTable from "./CustomerTable";
 const Customer = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { lang } = useParams();
-  const [clients, setClients] = useState([]);
-  const [expandedRows, setExpandedRows] = useState([]);
-  const [selectedRows, setSelectedRows] = useState({});
-  const [selectAll, setSelectAll] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [location, setLocation] = useState("");
   const [propertyType, setPropertyType] = useState("");
   const [propertyCondition, setPropertyCondition] = useState("");
+  const [clientNameInput, setClientNameInput] = useState("");
+  const [clientType, setClientType] = useState("");
+  const [recent, setRecent] = useState("");
   const [filteredClients, setFilteredClients] = useState([]);
-  const { getClients } = useClientService(searchTerm);
-  const clientFiltered = getClients();
-  console.log(clientFiltered, "clientFiltered");
+  const { getClientData } = useClientService();
 
-  console.log(clients, "clients");
-  const filterdClients = clients.filter(
-    (client) =>
-      (client.name || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
-      (client.email || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
-      (client.phone || "").toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  useEffect(() => {
-    setClients(getClients());
-    setFilteredClients(getClients());
-  }, [searchTerm]);
+  console.log(filteredClients, "getClientsgetClients");
 
   const handleShowModal = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
-
-  const toggleRow = (index) => {
-    setExpandedRows((prev) =>
-      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
-    );
-  };
-
-  useEffect(() => {
-    const allSelected =
-      clients.length > 0 &&
-      clients.every((_, index) => selectedRows[index]);
-  
-    setSelectAll(allSelected);
-  }, [clients, selectedRows]);
-
   const handleOpen = () => {
     setIsModalOpen(true);
   };
-
   const handleClick = () => {
-    const result = clients.filter((client) => {
-      const matchesPropertyType = propertyType
-        ? client.property_type === propertyType
-        : true;
-      const matchesPropertyCondition = propertyCondition
-        ? client.property_condition === propertyCondition
-        : true;
-
-      return matchesPropertyType && matchesPropertyCondition;
+    const filtered = getClientData({
+      clientName: clientNameInput,
+      type1: clientType,
+      property_type1: propertyType,
+      location1: location,
+      property_condition1: propertyCondition,
+      recent_agreement: recent,
     });
+    console.log("locatiodfkj", location);
+    setFilteredClients(filtered);
   };
 
-  const toggleCheckbox = (index) => {
-    setSelectedRows((prev) => {
-      const updated = { ...prev, [index]: !prev[index] };
-      const allSelected = Object.values(updated).length === clients.length &&
-                          Object.values(updated).every(Boolean);
-  
-      setSelectAll(allSelected);
-      return updated;
-    });
-  };
-  
-  const toggleSelectAll = () => {
-    const newState = !selectAll;
-    setSelectAll(newState);
-  
-    const updatedSelection = {};
-    clients.forEach((_, index) => {
-      updatedSelection[index] = newState;
-    });
-  
-    setSelectedRows(updatedSelection);
-  };
-  
+  console.log("handleCLick Event", propertyType);
 
   return (
     <>
@@ -135,8 +77,8 @@ const Customer = () => {
                     type="text"
                     className="form-control border-0 p-0 flex-grow-1"
                     placeholder={t("filter_cust")}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    value={searchTerm}
+                    value={clientNameInput}
+                    onChange={(e) => setClientNameInput(e.target.value)}
                   />
                   <button
                     className="btn border-0 p-0 ms-2"
@@ -152,14 +94,17 @@ const Customer = () => {
                     <label className="mb-1 fs-15 lh-1 fw-semibold">
                       {t("cust_filter_1")}
                     </label>
-                    <select className="form-select">
+                    <select
+                      className="form-select"
+                      value={clientType}
+                      onChange={(e) => setClientType(e.target.value)}
+                    >
                       <option value="">Select Option</option>
-                      {clientFiltered.map((client) => (
-                        <option key={client.id} value={client.id}>
-                          {client.name}
-                          setSelectedValue
-                        </option>
-                      ))}
+                      <option value={t("type_cust_2")}>
+                        {" "}
+                        {t("type_cust_2")}
+                      </option>
+                      <option value="Location 2">auraaa</option>
                     </select>
                   </div>
                   <div>
@@ -171,8 +116,8 @@ const Customer = () => {
                         type="text"
                         className="form-control border-0 p-0 flex-grow-1"
                         placeholder={t("cust_filter_place_2")}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        value={searchTerm}
+                        value={location}
+                        onChange={(e) => setLocation(e.target.value)}
                       />
                       <button
                         className="btn border-0 p-0 ms-2"
@@ -191,6 +136,8 @@ const Customer = () => {
                       type="text"
                       className="form-control"
                       placeholder={t("cust_typing")}
+                      value={recent}
+                      onChange={(e) => setRecent(e.target.value)}
                     />
                   </div>
                   <div>
@@ -199,14 +146,17 @@ const Customer = () => {
                     </label>
                     <select
                       className="form-select"
+                      value={propertyType}
                       onChange={(e) => setPropertyType(e.target.value)}
                     >
-                      <option value="">Select Option</option>
-                      {clients.map((client, index) => (
-                        <option key={index} value={client.property_type}>
-                          {client.property_type}
-                        </option>
-                      ))}
+                      <option value="">All Property Types</option>
+                      <option value={t("cust_property_type_value")}>
+                        {t("cust_property_type_value")}
+                      </option>
+                      <option value="villa">{t("cust_property_villa")}</option>
+                      <option value="studio">
+                        {t("cust_property_studio")}
+                      </option>
                     </select>
                   </div>
                   <div>
@@ -215,13 +165,14 @@ const Customer = () => {
                     </label>
                     <select
                       className="form-select"
+                      value={propertyCondition}
                       onChange={(e) => setPropertyCondition(e.target.value)}
                     >
                       <option value="">Select Option</option>
                       <option value={t("cust_Property_Condition_value")}>
                         {t("cust_Property_Condition_value")}
                       </option>
-                      <option value="Option 2">Option 2</option>
+                      <option value="Bad">Option 2</option>
                     </select>
                   </div>
                   <div className="d-flex ">
@@ -242,7 +193,6 @@ const Customer = () => {
                 <div className="mb-4">
                   <div>
                     <div className="d-flex align-items-center gap-3">
-                      {/* List Container */}
                       <ul className="list-unstyled d-flex flex-wrap justify-content-start m-0 align-items-center p-0 w-100">
                         <li>
                           <button
@@ -304,209 +254,14 @@ const Customer = () => {
                     </div>
                   </div>
                 </div>
-                <div>
-                  <table className="table text-center d-none d-md-table">
-                    <thead>
-                      <tr>
-                        <th className="table-head">
-                          <div className="d-flex align-items-center gap-2">
-                            <input
-                              type="checkbox"
-                              checked={selectAll}
-                              onChange={toggleSelectAll}
-                              className="form-check-input"
-                            />
-                            <span>{t("cust_tbl_column_name")}</span>
-                          </div>
-                        </th>
-                        <th className="table-head">
-                          {t("cust_tbl_column_client_type")}
-                        </th>
-                        <th className="table-head">
-                          {t("cust_tbl_column_client_phone")}
-                        </th>
-                        <th className="table-head">
-                          {t("cust_tbl_column_client_email")}
-                        </th>
-                        <th className="table-head">
-                          {t("cust_tbl_column_request_area")}
-                        </th>
-                        <th className="table-head">
-                          {t("cust_tbl_column_status")}
-                        </th>
-                        <th className="table-head"></th>
-                      </tr>
-                    </thead>
-                    <tbody className="border border-[#E6E6E6] rounded-3">
-                      {filterdClients.map((client, index) => (
-                        <React.Fragment key={index}>
-                          <tr>
-                            <td className="px-4 py-3">
-                              <div className="d-flex align-items-center gap-2">
-                                <input
-                                  type="checkbox"
-                                  checked={!!selectedRows[index]}
-                                  onChange={() => toggleCheckbox(index)}
-                                  className="form-check-input "
-                                />
-                                {client.name}
-                              </div>
-                            </td>
-                            <td className="px-4 py-3">{client.type}</td>
-                            <td className="px-4 py-3">{client.phone}</td>
-                            <td className="px-4 py-3">{client.email}</td>
-                            <td className="px-4 py-3">{client.location}</td>
-                            <td className="px-4 py-3">
-                              <span className="badge bg-warning">
-                                {client.status}
-                              </span>
-                            </td>
-                            <td className="text-center px-4 py-3">
-                              <button
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  e.preventDefault();
-                                  toggleRow(index);
-                                }}
-                                className="border-0 bg-transparent"
-                              >
-                                <img
-                                  src={table_arrrow}
-                                  alt="table_arrow"
-                                  className={`w-4 h-4 transition-transform ${
-                                    expandedRows.includes(index)
-                                      ? "rotate-180"
-                                      : "rotate-0"
-                                  }`}
-                                />
-                              </button>
-                            </td>
-                          </tr>
-                          {expandedRows.includes(index) && (
-                            <tr>
-                              <td colSpan={7} className="px-4 py-2">
-                                <div className=" d-flex align-items-center justify-content-between">
-                                  <div>
-                                    <h5 className="fs-15 lh-1 fw-semibold d-flex align-items-center">
-                                      {t("cust_property_type")}
-                                    </h5>
-                                    <p className="text-wrap mb-0">
-                                      {t("cust_property_type_value")}
-                                    </p>
-                                  </div>
-                                  <div>
-                                    <h5 className="fs-15 lh-1 fw-semibold d-flex align-items-center">
-                                      {t("cust_Property_Condition")}
-                                    </h5>{" "}
-                                    <p className="text-wrap mb-0">
-                                      {t("cust_Property_Condition_value")}
-                                    </p>
-                                  </div>
-                                  <div>
-                                    <h5 className="fs-15 lh-1 fw-semibold d-flex align-items-center">
-                                      {t("cust_no_rooms")}
-                                    </h5>{" "}
-                                    <p className="text-wrap mb-0">
-                                      {t("cust_no_rooms_value")}
-                                    </p>
-                                  </div>
-                                  <div>
-                                    <h5 className="fs-15 lh-1 fw-semibold d-flex align-items-center">
-                                      {t("cust_apartment_size")}
-                                    </h5>{" "}
-                                    <p className="text-wrap mb-0">
-                                      {t("cust_apartment_size_value")}
-                                    </p>
-                                  </div>
-                                  <div>
-                                    <h5 className="fs-15 lh-1 fw-semibold d-flex align-items-center">
-                                      {t("cust_floor")}
-                                    </h5>{" "}
-                                    <p className="text-wrap mb-0">4,5</p>
-                                  </div>
-                                  <div>
-                                    <h5 className="fs-15 lh-1 fw-semibold d-flex align-items-center">
-                                      {t("cust_price")}
-                                    </h5>
-                                    <p className="text-wrap mb-0">
-                                      1000 - 3000 ₪
-                                    </p>
-                                  </div>
-                                </div>
-                                <div className="align-items-center d-flex justify-content-between gap-4 mt-3">
-                                  <div>
-                                    <h5 className="fs-15 lh-1 fw-semibold d-flex align-items-center">
-                                      {t("cust_additional_comments")}
-                                    </h5>{" "}
-                                    <p className="text-wrap fw-normal  mb-0 text-start">
-                                      {t("cust_additional_comments_value")}
-                                    </p>
-                                  </div>
-                                  <div>
-                                    <h5 className="fs-15 lh-1 fw-semibold d-flex align-items-center">
-                                      {t("cust_additional_features")}
-                                    </h5>
-                                    <div className="d-flex flex-nowrap align-items-center gap-2 mt-2">
-                                      {t("cust_additional_features_value")
-                                        .split(",")
-                                        .map((feature, index) => (
-                                          <span
-                                            key={index}
-                                            className="custom-badge "
-                                          >
-                                            {feature.trim()}
-                                          </span>
-                                        ))}
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="mt-3 d-flex justify-content-start align-item-center">
-                                  <div className="d-flex flex-column align-item-center">
-                                    <h5 className="fs-15 lh-1 fw-semibold mb-2 d-flex align-items-center">
-                                      {t("recent_agreements")}
-                                    </h5>
-                                    <ul className="list-unstyled mb-0 text-start">
-                                      <li className="mb-1">
-                                        {t("recent_agreements_value_1")}
-                                      </li>
-                                      <li>{t("recent_agreements_value_2")}</li>
-                                    </ul>
-                                  </div>
-                                </div>
-
-                                <div className="d-flex justify-content-between align-items-center my-3">
-                                  <CustomButton
-                                    type="button"
-                                    className="fs-17 lh-1 fw-semibold  agent-btn-responsive2 w-20 py-2 mx-1 rounded-pill"
-                                    children={t("all_agreements")}
-                                  />
-                                  <div className="d-flex align-items-center">
-                                    <img
-                                      src={edit}
-                                      alt={"editbtn"}
-                                      className="px-1"
-                                    />
-                                    <img
-                                      src={deleteIcon}
-                                      alt={"deletebtn"}
-                                      className="px-1"
-                                      style={{ cursor: "pointer" }}
-                                      onClick={handleShowModal}
-                                    />
-                                  </div>
-                                </div>
-                              </td>
-                            </tr>
-                          )}
-                        </React.Fragment>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                <CustomerTable
+                  handleShowModal={handleShowModal}
+                  filteredClients={filteredClients}
+                  setFilteredClients={setFilteredClients}
+                />
               </div>
             </form>
           </div>
-
           <Modal
             show={showModal}
             onHide={handleCloseModal}
@@ -552,7 +307,6 @@ const Customer = () => {
               </button>
             </Modal.Footer>
           </Modal>
-
           <Modal
             show={isModalOpen}
             onClick={() => setIsModalOpen(false)}
@@ -694,7 +448,6 @@ const Customer = () => {
             </Modal.Body>
 
             <Modal.Footer className="border-top-0 justify-content-between gap-3 mb-3 px-4">
-             
               <button
                 className="fs-17 lh-1 gap-1 fw-semibold mt-md-4 w-25 agent-btn-responsive2 py-2 mx-1 rounded-pill"
                 onClick={() => setIsModalOpen(false)}
@@ -709,150 +462,11 @@ const Customer = () => {
         </div>
       </div>
       {/* Mobile size */}
-      <div className="d-block d-lg-none ">
-        <div className="bg-white p-3 rounded-3">
-          <div className="d-flex justify-content-between align-items-center pt-3">
-            <button
-              type="button"
-              className="btn btn-outline-success d-flex align-items-center fs-15 justify-content-center rounded-pill py-1  gap-2"
-              onClick={() => navigate(`/${lang}/customers/add-customers`)}
-            >
-              <img src={add_reaction} alt="Add Client" />
-              {t("add_cust")}
-            </button>
-            <button
-              type="button"
-              className="btn btn-outline-success rounded-pill py-1 px-4 d-flex align-items-center"
-            >
-              <img
-                src={deleteIcon}
-                alt={"deletebtn"}
-                className="pr-1"
-                style={{ cursor: "pointer" }}
-              />
-              {t("cust_delete")}
-            </button>
-          </div>
-          <div className="my-4 position-relative border border-[#D6D6D6] rounded py-2 px-3 d-flex w-100 w-md-75 mx-auto">
-            <input
-              type="text"
-              className="form-control border-0 p-0 flex-grow-1 mb-0"
-              placeholder={t("filter_cust")}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              value={searchTerm}
-            />
-            <button
-              className="btn border-0 p-0 ms-2"
-              type="button"
-              aria-label="Search"
-            >
-              <img src={search} alt="Search" />
-            </button>
-          </div>
-          <div>
-            <button
-              type="button"
-              onClick={handleOpen}
-              className="btn btn_cmn d-flex align-items-center justify-content-center rounded-pill py-2 px-3"
-            >
-              <img className="me-2" src={white_search_icon} alt="Add Client" />
-              {t("advance_search")}
-            </button>
-          </div>
-        </div>
-
-        <div className="mt-4 bg-white p-3 rounded-3">
-          <Accordion className="d-flex flex-column gap-3">
-            {filterdClients.map((row, index) => (
-              <Accordion.Item
-                eventKey={index.toString()}
-                key={row.id}
-                className="border-top-2 border-top rounded-3 border-start-4"
-                style={{ borderLeft: "6px solid #2CAC74" }}
-              >
-                <Accordion.Header>
-                  <div className="d-flex justify-content-between w-100">
-                    <div className="d-flex">
-                      <input
-                        type="checkbox"
-                        checked={!!selectedRows[index]}
-                        onChange={() => toggleCheckbox(index)}
-                        className="form-check-input border-2 border-black  mx-1"
-                      />
-                      <div className="ml-3">
-                        <p className="mb-1">{row?.name}</p>
-                        <p className="mb-1">{row?.type}</p>
-                        <p className="mb-1">{row?.phone}</p>
-                      </div>
-                    </div>
-
-                    <div className="mr-2 d-flex h-25">
-                      <span className="badge bg-warning">{row?.status}</span>
-                      <IoIosArrowUp className="mx-3"/>
-                    </div>
-                  </div>
-                </Accordion.Header>
-                <Accordion.Body className="">
-                  <div className="">
-                    <div>
-                      <strong>{t("cust_property_type")}</strong>{" "}
-                      <p>{t("cust_property_type_value")}</p>
-                    </div>
-                    <div>
-                      <strong>{t("cust_Property_Condition")}</strong>{" "}
-                      <p>{t("cust_Property_Condition_value")}</p>
-                    </div>
-                    <div>
-                      <strong>{t("cust_no_rooms")}</strong>{" "}
-                      <p>{t("cust_no_rooms_value")}</p>
-                    </div>
-                    <div>
-                      <strong>{t("cust_apartment_size")}</strong>
-                      <p>{t("cust_apartment_size_value")}</p>
-                    </div>
-                    <div>
-                      <strong>{t("cust_floor")}</strong> <p>4,5</p>
-                    </div>
-                    <div>
-                      <strong>{t("cust_price")}</strong> <p>1000 - 3000 ₪</p>
-                    </div>
-                  </div>
-                  <div className="">
-                    <div>
-                      <strong>{t("cust_additional_comments")}</strong>{" "}
-                      <p className="text-wrap">
-                        {t("cust_additional_comments_value")}
-                      </p>
-                    </div>
-                  </div>
-                  <div className=" mt-3">
-                    <strong>{t("recent_agreements")}</strong>
-                    <p className="mb-1">{t("recent_agreements_value_1")}</p>
-                    <p className="mb-1">{t("recent_agreements_value_2")}</p>
-                  </div>
-                  <div className="d-flex justify-content-between mt-3">
-                    <CustomButton
-                      type="button"
-                      className="btn btn-outline-success rounded-pill py-1 px-4 d-flex align-items-center justify-content-center gap-2"
-                      children={" לכל ההסכמים  "}
-                    />
-                    <div className="d-flex align-items-center">
-                      <img src={edit} alt={"editbtn"} className="px-1" />
-                      <img
-                        src={deleteIcon}
-                        alt={"deletebtn"}
-                        className="px-1"
-                        style={{ cursor: "pointer" }}
-                        onClick={handleShowModal}
-                      />
-                    </div>
-                  </div>
-                </Accordion.Body>
-              </Accordion.Item>
-            ))}
-          </Accordion>
-        </div>
-      </div>
+      <CustomerMobile
+        handleShowModal={handleShowModal}
+        filteredClients={filteredClients}
+        setFilteredClients={setFilteredClients}
+      />
     </>
   );
 };

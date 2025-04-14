@@ -2,17 +2,13 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import "../Brokers/Brokers.css";
 import key_vertical from "../../assets/images/key_vertical.svg";
-// import garage_door from "../../assets/images/garage_door.svg";
 import add_reaction from "../../assets/images/add_reaction.svg";
 import add_home from "../../assets/images/add_home.svg";
 import search from "../../assets/images/search.svg";
-import CustomModal from "../../Componant/Common/Modal/CustomeModal";
-import Next from "../../assets/images/Next.jpg";
-import CustomInput from "../../Componant/Common/Input/Custominput";
 import successIcon from "../../assets/images/success_icon.svg";
 import Accordion from "react-bootstrap/Accordion";
 import whatsapp from "../../assets/images/wa, whatsapp, message, communication, chat.svg";
-import { Modal, Form, InputGroup } from "react-bootstrap";
+import { Modal, Form, InputGroup, Button, Row, Col } from "react-bootstrap";
 import sms from "../../assets/images/sms.svg";
 import email from "../../assets/images/email.svg";
 import group from "../../assets/images/Group 2538.png";
@@ -20,6 +16,7 @@ import gyiphy from "../../assets/images/celebration.gif";
 import Toggle from "../../Componant/Common/Toggle/Toggle";
 import close from "../../assets/images/close_small.png";
 import garage_door from "../../assets/images/garage_door.svg";
+import Next from "../../assets/images/Next.jpg";
 const Brokers = () => {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
@@ -329,7 +326,7 @@ const Brokers = () => {
             <div className="card  p-3 border  rounded-3 overflow-hidden  rounded-3 bg-light mb-4">
               <div className="form_group mb-2 mb-xl-0 d-flex justify-content-between">
                 <h5 className=" text-embed-500 fs-5 fw-semibold lh-1 mb-4">
-                  {t("age_details")}
+                  {t("customer_detail")}
                 </h5>
                 <button
                   type="button"
@@ -339,7 +336,7 @@ const Brokers = () => {
                   <div className="d-flex align-items-center justify-content-center">
                     <img className="me-1" src={add_reaction} alt="Add Client" />
                     <span className="fs-17 fw-semibold lh-1">
-                      {"add_cust"}{" "}
+                      {t("add_cust")}{" "}
                     </span>
                   </div>
                 </button>
@@ -402,7 +399,7 @@ const Brokers = () => {
                 >
                   <div className="d-flex align-items-center justify-content-center">
                     <img className="me-1" src={add_home} alt="Add Client" />
-                    {"add_cust"}{" "}
+                    {t("Add_Property")}{" "}
                   </div>
                 </button>
               </div>
@@ -508,6 +505,28 @@ const Brokers = () => {
               </div>
             </div>
           </div>
+          <div className="col-12 my-2">
+            <div className="d-flex align-items-center">
+              <Toggle
+                defaultChecked={true}
+                type={"checkbox"}
+                id="toggleImages"
+              />
+              <label className="fs-6 fw-normal lh-1" htmlFor="">
+                {t("send_property_attachments")}
+              </label>
+            </div>
+            <div className="d-flex align-items-center">
+              <Toggle
+                defaultChecked={false}
+                type={"checkbox"}
+                id="toggleImages"
+              />
+              <label className="fs-6 fw-normal lh-1" htmlFor="">
+                {t("send_images")}
+              </label>
+            </div>
+          </div>
           <div className="col-12">
             <div className="d-flex gap-2 pb-3 ">
               <button
@@ -529,371 +548,134 @@ const Brokers = () => {
           </div>
         </div>
       </div>
+      <Modal show={isOpen} centered className="modal-container">
+        <Modal.Header className="d-flex justify-content-between align-items-center border-0">
+          <button className="border-0">
+            <img src={Next} alt="next btn" className="" />
+          </button>
+          <button
+            type="button"
+            className="btn-close m-0 fs-5"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            onClick={() => setIsOpen(false)}
+          ></button>
+        </Modal.Header>
 
-      {isOpen && (
-        <div className="w-100">
-          <CustomModal
-            show={isOpen}
-            onClick={handleOpen}
-            handleClose={() => setIsOpen(false)}
-            header={<img src={Next} alt="next btn" />}
-          >
-            <h5 className=" text-embed-500 mb-2 fs-3 text-center">
-              {t("age_quick_add_model_title")}
-            </h5>
-            <p className="fs-5S font-normal text-center">
-              {t("age_quick_add_model_description")}
-            </p>
-            <div className="d-flex flex-row justify-center">
-              <form className=" w-100">
-                <div className="container-fluid">
-                  <div className="mb-3 w-100">
-                    <label
-                      htmlFor="email"
-                      className="form-label fw-bold text-start d-block mb-1"
-                    >
-                      {t("age_quick_add_email")}
-                    </label>
-                    <CustomInput
-                      type="email"
-                      className="form-control w-100"
-                      id="email"
-                      required
-                    />
-                  </div>
-
-                  <div className="mb-3 w-100">
-                    <label
-                      htmlFor="phone"
-                      className="form-label fw-bold text-start d-block mb-1"
-                    >
-                      {t("age_quick_add_phone")}
-                    </label>
-                    <CustomInput
-                      type="tel"
-                      className="form-control w-100"
-                      id="phone"
-                      required
-                    />
-                  </div>
-
-                  <div className="mb-3 w-100">
-                    <label
-                      htmlFor="fullname"
-                      className="form-label fw-bold text-start d-block mb-1"
-                    >
-                      {t("age_quick_add_name")}
-                    </label>
-                    <CustomInput
-                      type="text"
-                      className="form-control w-100"
-                      id="fullname"
-                      required
-                    />
-                  </div>
-                </div>
-              </form>
-            </div>
-            <div className=" my-4">
-              <button
-                className="agent-button1  rounded-pill px-5 py-2 fw-bold shadow-sm text-white"
-                onClick={() => setIsOpen(false)}
-              >
-                {t("age_btn_add")}
-              </button>
-            </div>
-          </CustomModal>
-        </div>
-      )}
-      <div className="w-100">
-        <CustomModal
-          show={isShow}
-          onClick={handleShow}
-          handleClose={() => setIsShow(false)}
-          header={<img src={Next} alt="next btn" width="32px" height="32px" />}
-        >
-          <h5 className=" text-embed-500 mb-2 fs-3 text-center">
-            {t("age_quick_add_new_property")}
+        <Modal.Body>
+          <h5 className="text-embed-500 mb-2 fs-3 text-center">
+            {t("age_quick_add_model_title")}
           </h5>
-          <p className="fs-5S font-normal text-center">
-            {t("age_quick_add_new_property_subtitle")}
+          <p className="fs-5 font-normal text-center">
+            {t("age_quick_add_model_description")}
           </p>
-          <div className="d-flex flex-row justify-center">
-            <form>
-              <div className=" mb-3">
-                <label
-                  for="email"
-                  className="form-label fw-bold text-start d-block mb-1"
-                >
-                  {t("age_new_property_city")}
-                </label>
-                <CustomInput
-                  type={"email"}
-                  className={"w-100"}
-                  id={"email"}
-                  required
-                />
-              </div>
 
-              <div className=" mb-3">
-                <label
-                  for="phone"
-                  className="form-label fw-bold text-start d-block mb-1"
-                >
-                  {t("age_new_property_street")}
-                </label>
-                <CustomInput
-                  type={"tel"}
-                  className={"w-100"}
-                  id={"phone"}
-                  required
-                />
-              </div>
-              <div className="d-flex  justify-content-center">
-                <div className="row g-3 align-items-center">
-                  <div className="col-md-6">
-                    <label
-                      for="apartmentNumber"
-                      className="form-label text-start fw-bold  d-block"
-                    >
-                      {t("age_new_property_apartment_number")}
-                    </label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="apartmentNumber"
-                      required
-                    />
-                  </div>
+          <Form>
+            <Form.Group className="mb-3">
+              <Form.Label className="fw-bold">
+                {t("age_quick_add_email")}
+              </Form.Label>
+              <Form.Control type="email" placeholder="Enter email" required />
+            </Form.Group>
 
-                  <div className="col-md-6">
-                    <label
-                      for="buildingNumber"
-                      className="form-label fw-bold text-start d-block"
-                    >
-                      {t("age_new_property_building_number")}
-                    </label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="buildingNumber"
-                      required
-                    />
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-          <div className=" my-4">
-            <button
-              className="agent-button1  rounded-pill px-5 py-2 fw-bold shadow-sm text-white"
+            <Form.Group className="mb-3">
+              <Form.Label className="fw-bold">
+                {t("age_quick_add_phone")}
+              </Form.Label>
+              <Form.Control
+                type="tel"
+                placeholder="Enter phone number"
+                required
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label className="fw-bold">
+                {t("age_quick_add_name")}
+              </Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter full name"
+                required
+              />
+            </Form.Group>
+          </Form>
+          <div className=" d-flex justify-content-center">
+            <Button
+              className="fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive1 text-white w-50 py-2 mx-1 rounded-pill"
               onClick={() => setIsOpen(false)}
             >
               {t("age_btn_add")}
-            </button>
-          </div>
-        </CustomModal>
-      </div>
-      {/* <Modal
-        show={isView}
-        onHide={() => {
-          setIsView(false);
-        }}
-        centered
-        
-      >
-        <Modal.Header className="d-flex justify-content-end align-items-center border-0">
-          <button type="button" className="btn-close m-0 fs-5" data-bs-dismiss="modal" aria-label="Close" onClick={() => setIsView(false)}></button>
-        </Modal.Header>
-        <Modal.Body className="p-4 overflow-y-auto custom-scrollbar" style={{ height: "655px" }}>
-          <div className="text-center">
-            <img
-              src={successIcon}
-              alt="Success"
-              className="mx-auto mb-3"
-            />
-            <h4 className="text-embed-500 fs_25 font-semibold">
-              {t("age_report_title")}
-            </h4>
-            <p className="fs_25 font-semibold">{t("age_report_question")}</p>
-          </div>
-          
-          <div className="options-container m-auto" style={{ width: '417px' }}>
-            <div className="option-item rounded-3 my-3">
-              <Accordion defaultActiveKey={null} className="custom-accordion">
-                <Accordion.Item eventKey="0 " className="custom-header border-teal-100">
-                  <Accordion.Header className="bg-teal-100">
-                    <div className="d-flex justify-content-between w-100">
-                      <div className=" d-flex align-items-center">
-                        <img src={whatsapp} alt="whatsapp" />
-                        <span className="ps-2 text-start fs_15">
-                          {t("age_send_whatsapp")}
-                        </span>
-                      </div>
-                      <input
-                        className="form-check-input border border-black bg-white"
-                        type="checkbox"
-                      />
-                    </div>
-                  </Accordion.Header>
-                  <Accordion.Body className="bg-teal-100">
-                    <ul className="fw-bold px-4" style={{ listStyleType: "disc" }}>
-                      <li>{t("age_send_whatsapp_point_1")}</li>
-                      <li>{t("age_send_whatsapp_point_2")}</li>
-                      <li>{t("age_send_whatsapp_point_3")}</li>
-                    </ul>
-                    <p className="mt-3 fw-bold ">
-                      {t("age_send_whatsapp_description")}
-                    </p>
-                 
-                    <div className="row justify-content-center text-center mt-4 align-items-center">
-                      <div className="col-md-4 px-2">
-                        <div className="rounded p-2 bg-white  shadow-md">
-                          <h3 className="text-embed-500 fs-2 fw-bold">150</h3>
-                          <p className="mb-0 text-embed-500">
-                            {t("age_send_whatsapp_message")}
-                          </p>
-                          <p className="text-embed-500">
-                            {t("age_send_whatsapp_message_info")}
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="col-md-4 px-2">
-                        <div className="rounded shadow-md p-1 bg-white">
-                          <p className="mb-0 text-embed-500">
-                            {t("age_send_whatsapp_cost")}
-                          </p>
-                          <h3 className="text-embed-500 fs-2 fw-bold">100</h3>
-                          <p className="mb-0 text-embed-500">
-                            {t("age_send_whatsapp_message")}
-                          </p>
-                          <p className=" text-embed-500">
-                            {t("age_send_whatsapp_message_info2")}
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="col-md-4 px-2">
-                        <div className="rounded p-2 bg-white shadow-md">
-                          <h3 className="text-embed-500 fs-2 fw-bold">50</h3>
-                          <p className="mb-0 text-embed-500">
-                            {t("age_send_whatsapp_message")}
-                          </p>
-                          <p className="text-embed-500">
-                            {t("age_send_whatsapp_message_info3")}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </Accordion.Body>
-                </Accordion.Item>
-              </Accordion>
-            </div>
-            <div className="option-item rounded-3 my-3">
-              <Accordion defaultActiveKey={null} className="custom-accordion ">
-                <Accordion.Item eventKey="0" className="custom-header border-teal-100">
-                  <Accordion.Header className="bg-teal-100">
-                    <div className="d-flex justify-content-between w-100">
-                      <div className=" d-flex align-items-center">
-                        <img src={sms} alt="whatsapp" />
-                        <span className=" ps-2 text-start fs_15">
-                          {t("age_send_text_message")}
-                        </span>
-                      </div>
-                      <input
-                        className="form-check-input border border-black bg-white"
-                        type="checkbox"
-                      />
-                    </div>
-                  </Accordion.Header>
-                  <Accordion.Body className="custom-body bg-teal-100">
-                    <ul className="list-unstyled">
-                      <li>{t("age_send_text_message_point_1")}</li>
-                      <li>{t("age_send_text_message_point_2")}</li>
-                      <li>{t("age_send_text_message_point_3")}</li>
-                    </ul>
-                    <p className="mt-3">
-                      {t("age_send_text_message_description")}
-                    </p>
-                  </Accordion.Body>
-                </Accordion.Item>
-              </Accordion>
-            </div>
-            <div className="option-item rounded-3 my-3">
-              <Accordion defaultActiveKey={null} className="custom-accordion ">
-                <Accordion.Item eventKey="0" className="custom-header border-teal-100">
-                  <Accordion.Header className=" bg-teal-100">
-                    <div className="d-flex justify-content-between w-100">
-                      <div className=" d-flex align-items-center">
-                        <img src={email} alt="whatsapp" />
-                        <span className="ps-2 text-start fs_15">
-                          {t("age_send_message_email")}
-                        </span>
-                      </div>
-                      <input
-                        className="form-check-input border border-black bg-white"
-                        type="checkbox"
-                      />
-                    </div>
-                  </Accordion.Header>
-                  <Accordion.Body className="custom-body bg-teal-100">
-                    <ul className="list-unstyled">
-                      <li>{t("age_send_email_message_point_1")}</li>
-                      <li>{t("age_send_email_message_point_2")}</li>
-                      <li>{t("age_send_email_message_point_3")}</li>
-                    </ul>
-                    <p className="mt-3">
-                      {t("age_send_email_message_description")}
-                    </p>
-                  </Accordion.Body>
-                </Accordion.Item>
-              </Accordion>
-            </div>
-            <div className="option-item rounded-3 my-3">
-              <Accordion defaultActiveKey={null} className="custom-accordion ">
-                <Accordion.Item eventKey="0" className=" custom-header border-teal-100">
-                  <Accordion.Header className=" bg-teal-100">
-                    <div className="d-flex justify-content-between w-100">
-                      <div className=" d-flex align-items-center">
-                        <img src={group} alt="whatsapp" />
-                        <span className="ps-2 text-start fs_15">
-                          {t("age_send_message_whatsapp_share")}
-                        </span>
-                      </div>
-                      <input
-                        className="form-check-input border border-black bg-white"
-                        type="checkbox"
-                      />
-                    </div>
-                  </Accordion.Header>
-                  <Accordion.Body className="bg-teal-100">
-                    <ul className="list-unstyled">
-                      <li>{t("age_send_message_whatsapp_share_pont_1")}</li>
-                      <li>{t("age_send_message_whatsapp_share_pont_2")}</li>
-                      <li>{t("age_send_message_whatsapp_share_pont_3")}</li>
-                    </ul>
-                    <p className="mt-3">
-                      {t("age_send_message_whatsapp_share_description")}
-                    </p>
-                  </Accordion.Body>
-                </Accordion.Item>
-              </Accordion>
-            </div>
-          </div>
-          <div className="text-center mt-4 d-flex flex-col">
-            <button
-              className="agent-button1 mx-auto rounded-pill px-3 py-2 fw-bold shadow-sm text-white"
-              onClick={handleIsShow}
-            >
-              {t("age_btn_send")}
-            </button>
-            <button className="btn btn-link text-muted mt-2">
-              {t("age_btn_link")}
-            </button>
+            </Button>
           </div>
         </Modal.Body>
-      </Modal> */}
+      </Modal>
+      <Modal show={isShow} centered>
+        <Modal.Header className="d-flex justify-content-between align-items-center border-0">
+          <button className="border-0">
+            <img src={Next} alt="next btn" className="" />
+          </button>
+          <button
+            type="button"
+            className="btn-close m-0 fs-5"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            onClick={() => setIsShow(false)}
+          ></button>
+        </Modal.Header>
+
+        <Modal.Body>
+          <h5 className="text-embed-500 mb-2 fs-3 text-center">
+            {t("age_quick_add_new_property")}
+          </h5>
+          <p className="fs-5 font-normal text-center">
+            {t("age_quick_add_new_property_subtitle")}
+          </p>
+
+          <Form>
+            <Form.Group className="mb-3" controlId="email">
+              <Form.Label className="fw-bold">
+                {t("age_new_property_city")}
+              </Form.Label>
+              <Form.Control type="email" required />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="phone">
+              <Form.Label className="fw-bold">
+                {t("age_new_property_street")}
+              </Form.Label>
+              <Form.Control type="tel" required />
+            </Form.Group>
+
+            <Row className="g-3 align-items-center">
+              <Col md={6}>
+                <Form.Group controlId="apartmentNumber">
+                  <Form.Label className="fw-bold">
+                    {t("age_new_property_apartment_number")}
+                  </Form.Label>
+                  <Form.Control type="text" required />
+                </Form.Group>
+              </Col>
+              <Col md={6}>
+                <Form.Group controlId="buildingNumber">
+                  <Form.Label className="fw-bold">
+                    {t("age_new_property_building_number")}
+                  </Form.Label>
+                  <Form.Control type="text" required />
+                </Form.Group>
+              </Col>
+            </Row>
+          </Form>
+          <div className=" d-flex justify-content-center">
+            <Button
+              className="fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive1 text-white w-50 py-2 mx-1 rounded-pill"
+              onClick={() => setIsShow(false)}
+            >
+              {t("age_btn_add")}
+            </Button>
+          </div>
+        </Modal.Body>
+      </Modal>
       <Modal
         show={isView}
         onHide={() => setIsView(false)}

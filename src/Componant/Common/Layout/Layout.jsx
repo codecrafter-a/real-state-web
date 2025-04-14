@@ -77,11 +77,13 @@ const Layout = ({ children }) => {
       case "signature-invoice":
         return t("signature_invoice");
       case "broker":
-        return t("age_main_title");
+        return t("broker_title");
       case "property_owner":
         return t("Property_own_title");
       case "broker_between":
         return t("Brock_between");
+      case "landregistry" :
+         return t("registry_title");
       default:
         return "";
     }

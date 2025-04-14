@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { Col, Nav } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import Tab from "../../Componant/Common/Tab/Tab";
@@ -17,32 +17,19 @@ import pdfinstall from "../../assets/images/pdf.png";
 const Invocies = () => {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState("all");
-  const [invoiceData, setInvoiceData] = useState([]);
+  const { getInvoiceService } = useInvoiceServices();
+  const { getFilterInvoicesData } = useInvoiceServices();
+  const AgentData = getInvoiceService();
+  const [invoiceData, setInvoiceData] = useState(AgentData);
   const [clientName, setClientName] = useState("");
   const [fromDate, setFromDate] = useState("");
   const [untilDate, setUntilDate] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-
-  const { getInvoiceService } = useInvoiceServices(
-    clientName,
-    fromDate,
-    untilDate
-  );
-
-  const handleClick = () => setIsOpen(true);
-
-  useEffect(() => {
-    setInvoiceData(getInvoiceService());
-  }, [clientName]);
-
-  const handleShow = () => {
-    if (fromDate && untilDate) {
-      setInvoiceData(getInvoiceService());
-    } else {
-      alert("Please select both From and Until dates");
-    }
+  const handleSearch = () => {
+    const data = getFilterInvoicesData({ clientName, fromDate, untilDate });
+    setInvoiceData(data);
   };
-
+  const handleClick = () => setIsOpen(true);
   return (
     <>
       <Col className="bg-white shadow-lg rounded-3 my-3">
@@ -76,7 +63,7 @@ const Invocies = () => {
           {activeTab === "all" && (
             <>
               <div className=" d-flex justify-content-start ">
-                <div className="border rounded-1 input-group responsive-width ">
+                <div className="border rounded-1 input-group responsive-width p-0">
                   <input
                     type="text"
                     className="form-control border-0 "
@@ -90,8 +77,18 @@ const Invocies = () => {
                   </span>
                 </div>
               </div>
+              <div className="w-100 my-3 d-block d-md-none">
+                  <label className="form-label fs-15 fw-semibold lh-1">
+                    {t("agreement1_status")}
+                  </label>
+                  <select className="form-select">
+                     <option>Genrated</option>
+                     <option>Fail</option>
+                     <option>Viewd</option>
+                  </select>
+                </div>
               <div className="row g-3 align-items-end my-3">
-                <div className="col-12 col-md-3">
+                <div className="col-6 col-md-3">
                   <label className="form-label fs-15 fw-semibold lh-1">
                     {t("from_date")}
                   </label>
@@ -103,7 +100,7 @@ const Invocies = () => {
                   />
                 </div>
 
-                <div className="col-12 col-md-3">
+                <div className="col-6 col-md-3">
                   <label className="form-label fs-15 fw-semibold lh-1">
                     {t("until_date")}
                   </label>
@@ -118,7 +115,7 @@ const Invocies = () => {
                 <div className="col-12 col-md-6 text-center text-md-end">
                   <button
                     className=" fs-17 lh-1 fw-semibold py-2 px-5 rounded-pill agent-btn-responsive2"
-                    onClick={handleShow}
+                    onClick={handleSearch}
                   >
                     {t("show_button")}
                   </button>
@@ -127,7 +124,7 @@ const Invocies = () => {
 
               <div className="d-md-none d-block">
                 <p className=" fs-16 fw-semibold lh-1 my-2 text-center text-teal">
-                  פילטרים נוספים
+                  {t('additional_filters')}
                 </p>
                 <div className="justify-content-center d-flex">
                   <IoIosArrowDown />
@@ -201,17 +198,17 @@ const Invocies = () => {
         ))}
       </Accordion>
       <Modal
-              show={isOpen}
-              center
-              className="modal-container "
-              onClick={() => setIsOpen(false)}
-            >
-              <Modal.Header className="border-0 p-3 position-relative mt-4">
-                <button
-                  type="button"
-                  className="btn-close position-absolute close-btn"
-                ></button>
-              </Modal.Header>
+        show={isOpen}
+        center
+        className="modal-container "
+        onClick={() => setIsOpen(false)}
+      >
+        <Modal.Header className="border-0 p-3 position-relative mt-4">
+          <button
+            type="button"
+            className="btn-close position-absolute close-btn"
+          ></button>
+        </Modal.Header>
               <Modal.Body className="text-center p-4">
                 <div className="d-flex justify-content-center align-items-center mb-3">
                   <img
@@ -242,8 +239,7 @@ const Invocies = () => {
                   </button>
                 </div>
               </Modal.Body>
-            </Modal>
-
+      </Modal>
     </>
   );
 };

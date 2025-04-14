@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
-
+import { useTranslation } from "react-i18next";
 export const useAgreementServices = () => {
   const [tableData, setTableData] = useState([]);
   const [agreeData, setAgreeData] = useState(false);
@@ -8,7 +8,7 @@ export const useAgreementServices = () => {
   const [selectedStatus, setSelectedStatus] = useState("");
   const [fromDate, setFromDate] = useState(null);
   const [toDate, setToDate] = useState(null);
-
+const { t } = useTranslation();
   const getAgreementData = () => {
     return [
       {
@@ -86,11 +86,43 @@ export const useAgreementServices = () => {
     ];
   };
 
+  const AgreefilterService = ({ searchQuery, fromDate, toDate }) => {
+    let data = getAgreementData();
+
+    console.log("clientnafsa", searchQuery);
+    if (searchQuery) {
+      const query  = searchQuery.toLowerCase();
+      data = data.filter((item) =>
+        t(item.clients) .toLowerCase().includes(query)
+      );
+    }
+  
+    if (fromDate && toDate) {
+      const parseDate = (dateStr) => {
+        const [day, month, year] = dateStr.split('.');
+        return new Date(`20${year}`, month - 1, day);
+      };
+  
+      const from = new Date(fromDate);
+      const to = new Date(toDate);
+  
+      data = data.filter((item) => {
+        const itemDate = parseDate(item.date);
+        return itemDate >= from && itemDate <= to;
+      });
+    }
+  
+    return data;
+  };
+
   const handleStatusChange = (e) => setSelectedStatus(e.target.value);
   const handleRemoveStatus = () => setSelectedStatus("");
   const handleSearchChange = (e) => setSearchQuery(e.target.value);
   const handleData = () => setAgreeData(true);
-
+  const handleAgreeChange = () => {
+    const data = AgreefilterService({searchQuery, fromDate, toDate})
+    setTableData(data);
+  }
   return {
     tableData,
     setTableData,
@@ -109,5 +141,7 @@ export const useAgreementServices = () => {
     handleRemoveStatus,
     handleSearchChange,
     handleData,
+    AgreefilterService,
+    handleAgreeChange
   };
 };

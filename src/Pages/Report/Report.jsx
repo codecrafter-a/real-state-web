@@ -238,8 +238,8 @@ const Report = () => {
                     </>
                 )
             )}
-            <div className="w-full  py-2 bg-[#FFFFFFD6] flex justify-center" style={{ position: "sticky", bottom: "0" }}>
-                <button className="rounded-full py-2 px-[18px] bg-[#00A481] text-white  shadow-[0px_1px_3px_0px_rgba(0,0,0,0.1),0px_5px_5px_0px_rgba(0,0,0,0.09),0px_11px_7px_0px_rgba(0,0,0,0.05),0px_20px_8px_0px_rgba(0,0,0,0.01),0px_31px_9px_0px_rgba(0,0,0,0)]">{t("send_btn")}</button>
+            <div className="w-100   py-2 bg-[#FFFFFFD6] d-flex justify-content-center" style={{ position: "sticky", bottom: "0" }}>
+                <button className="agent-btn-responsive1 text-white fw-bold h-25 shadow w-25 py-2 mt-3 rounded-pill">{t("send_btn")}</button>
             </div>
         </div>
     )
