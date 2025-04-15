@@ -26,7 +26,7 @@ const Home = () => {
   const [userdata, setUserdata] = useState([]);
   const [agrreedata, setAgreedata] = useState([]);
   const [agreecolor, setAgreecolor] = useState([]);
-  const { getHomes, getUserData, getAgreementData, getAgreementColors } =
+    const { getHomes, getUserData, getAgreementData, getAgreementColors } =
     useHomeService();
 
   useEffect(() => {
@@ -231,7 +231,7 @@ const Home = () => {
                   </button>
                 </div>
 
-                {isOpen && (
+                {isOpen ? 
                   <div>
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
@@ -352,7 +352,7 @@ const Home = () => {
                       </div>
                     </motion.div>
                   </div>
-                )}
+                 : null}
               </Col>
             </Row>
             <Row className="px-2">

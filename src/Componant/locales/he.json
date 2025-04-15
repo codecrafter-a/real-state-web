@@ -604,7 +604,8 @@
   "viaEmail": "בדוא”ל",
   "viaWhatsapp": "ב- WhatsApp",
   "update1": "עדכון",
-
+ 
+  "All_Property": "כל הנכסים",
   "client_name2": "אמילי סמית",
   "client_name3": "דוד בראון",
   "property_type2": "פנטהאוז",
@@ -745,6 +746,32 @@
      "additional_filters": "פילטרים נוספים",
      "card_title": "רוצים לנהל הכל במקום אחד?",
      "card_description": "רוצים להוסיף עוד סוכנים? לשלוח מסמכים ושהכל יופיע לכם במקום אחד?",
-     "card_button": "שדרגו את המנוי שלכם"
+     "card_button": "שדרגו את המנוי שלכם",
+     "all_property_type": "בית פרטי/קוטג'",
+     "all_property_status": "דרוש שיפוץ",
+     "all_area_sqm": "שטח (מ\"ר)",
+     "all_floor": "קומה",
+     "all_rooms": "חדרים",
+     "all_price": "מחיר",
+     "all_owner": "בעלים",
+     "all_deal_type": "סוג עסקה",
+     "all_address": "כתובת",
+     "all_note": "הערה",
+     "all_exclusive_sale": "מכירה (בבלעדיות עד {{date}})",
+     "all_row_data1": "נורית 22 חיפה",
+     "transition_type": "סוג עסקה",
+     "sale": "מכירה",
+     "pro_type3": "סוג הנכס",
+     "property_status3": "מצב הנכס",
+  "area_sqm_label": "שטח(מ”ר)",
+  "floor_label": "קומה",
+  "rooms_label": "חדרים",
+  "price_label": "מחיר מבוקש",
+  "owner_label": "בעלים",
+  "renovated": "דרוש שיפוץ",
+  "missing_details": "נכסים שחסרים בהם פרטים",
+  "available_assets": "נכסים זמינים",
+  "prop_services":  "חפשו נכס לפי כתובת/ שם הבעלים",
+  "owner_name": "ישראל ישראלי"
    
 }

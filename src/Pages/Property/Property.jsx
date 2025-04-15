@@ -25,7 +25,7 @@ const Property = () => {
         return <Propertyaddress setActiveTab={setActiveTab} />;
     }
   };
-
+                       
   return (
     <Container fluid className="py-4">
       <Row className="justify-content-center ">

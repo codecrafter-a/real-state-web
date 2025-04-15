@@ -87,7 +87,7 @@ const SignatureInvoiceTable = ({ searchTerm, Todate, Fromdate , isDateFilter}) =
             </div>
             <div className="d-md-none d-block">
                 <div className="accordion d-flex flex-column gap-3 mt-3" id="invoiceAccordion">
-                    {tableData.map((row, index) => (
+                    {filteredData.map((row, index) => (
                         <div key={index} className="accordion-item rounded-3 overflow-hidden border">
                             <h2 className="accordion-header" id={`heading${index}`}>
                                 <button className={`accordion-button align-items-start text-dark ${index === 0 ? "" : "collapsed"}`} type="button" data-bs-toggle="collapse" data-bs-target={`#collapse${index}`} aria-expanded={index === 0} aria-controls={`collapse${index}`}>
@@ -108,7 +108,6 @@ const SignatureInvoiceTable = ({ searchTerm, Todate, Fromdate , isDateFilter}) =
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     ))}

@@ -36,7 +36,7 @@ const Brokers = () => {
   };
 
   const handleSearchClick = () => {
-    setShowDetails(true); // Show the details when the search button is clicked
+    setShowDetails(true); 
   };
 
   const handleSearchClose = () => {
@@ -74,7 +74,7 @@ const Brokers = () => {
           <div className="card p-3 border  rounded-3 mb-4">
             <div className="form_group mb-2 mb-xl-0 d-flex justify-content-between">
               <h5 className=" text-embed-500  fs-5 fw-semibold lh-1 mb-4">
-                {t("age_details")}
+                {t("customer_detail")}
               </h5>
               <button
                 type="button"
@@ -306,7 +306,7 @@ const Brokers = () => {
             </button>
             <button
               className=" agent-button2 rounded-pill px-4 py-2 fw-bold"
-              onClick={() => setShowSuccess(true)}
+              onClick={() => setSentSuccess(true)}
             >
               {t("age_btn_send_without")}
             </button>
@@ -537,7 +537,7 @@ const Brokers = () => {
               </button>
               <button
                 className=" agent-btn-responsive2 w-50 bg-transperant h-25 py-1 shadow rounded-pill"
-                onClick={() => setShowSuccess(true)}
+                onClick={() => setSentSuccess(true)}
               >
                 {t("age_btn_send_without")}
               </button>
@@ -548,6 +548,7 @@ const Brokers = () => {
           </div>
         </div>
       </div>
+      
       <Modal show={isOpen} centered className="modal-container">
         <Modal.Header className="d-flex justify-content-between align-items-center border-0">
           <button className="border-0">
@@ -707,7 +708,7 @@ const Brokers = () => {
             className="options-container mx-auto w-100"
             style={{ maxWidth: "417px" }}
           >
-            {[whatsapp, sms, email, group].map((icon, idx) => (
+            {[whatsapp,].map((icon, idx) => (
               <div className="option-item rounded-3 my-3" key={idx}>
                 <Accordion defaultActiveKey={null} className="custom-accordion">
                   <Accordion.Item
@@ -774,7 +775,7 @@ const Brokers = () => {
                               className="col-md-4 col-12 mb-3 px-2"
                               key={colIdx}
                             >
-                              <div className="rounded p-2 bg-white shadow-md card-pay">
+                              <div className="rounded p-2 bg-white shadow-md ">
                                 <h3 className="text-embed-500 fs-2 fw-bold">
                                   {val}
                                 </h3>

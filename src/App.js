@@ -26,6 +26,9 @@ import { useEffect, useState} from 'react';
 import Property_owner from "./Pages/Brokers/Property_owner.jsx";
 import Brokers_between from "./Pages/Brokers/Brokers_between.jsx";
 import Landregistry from "../src/Pages/LandRegistry/Landregistry.jsx";
+import Allproperty from "./Pages/Property/Allproperty.jsx";
+
+
 
 function App() {
   const { i18n } = useTranslation();
@@ -88,6 +91,7 @@ function App() {
               <Route path="landregistry" element={<ProtectedRoute><Landregistry/></ProtectedRoute>} />
               <Route path="property_owner" element={<ProtectedRoute><Property_owner/></ProtectedRoute>}/>
               <Route path="broker_between" element={<ProtectedRoute><Brokers_between/></ProtectedRoute>}/>
+              <Route path="property/add_property" element={<ProtectedRoute><Allproperty/></ProtectedRoute>}/>
               <Route path="*" element={<Navigate to={`/${i18n.language}/signin`}/>} />
             </Routes>
           } />

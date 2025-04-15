@@ -370,15 +370,18 @@ const Agreements = () => {
                 </h4>
                 <p className="fs-5 font-semibold pb-3">{t("modal_invoice")}</p>
                 <div className="d-flex justify-content-center flex-wrap flex-md-nowrap justify-content-md-between gap-3">
+                <button className="agent-btn-responsive1 w-50  rounded-pill px-3 py-2 fw-bold shadow-sm text-white" onClick={() =>
+                      updateModalState({ addInvoices: false, isError: true })
+                    }>
+                    {t("modal_yes")}
+                  </button>
                   <button
                     className="agent-btn-responsive2 w-50  rounded-pill px-3 py-2 fw-bold shadow-sm"
                     onClick={handleClose}
                   >
                     {t("modal_no")}
                   </button>
-                  <button className="agent-btn-responsive1 w-50  rounded-pill px-3 py-2 fw-bold shadow-sm text-white">
-                    {t("modal_yes")}
-                  </button>
+                  
                 </div>
               </Modal.Body>
             </Modal>
@@ -408,9 +411,10 @@ const Agreements = () => {
                 <div className="d-flex justify-content-center justify-content-md-between flex-wrap flex-md-nowrap my-3">
                   <button
                     className="fs-5 lh-1 fw-semibold agent-btn-responsive1 text-white my-md-3 w-50 py-2 py-md-0 mx-1 rounded-pill"
-                    onClick={() =>
-                      updateModalState({ addInvoices: false, isError: true })
-                    }
+                    // onClick={() =>
+                    //   updateModalState({ addInvoices: false, isError: true })
+                    // }
+                    onClick={handleClick}
                   >
                     {t("invoice_view")}
                   </button>

@@ -32,10 +32,10 @@ const LandregistryTable = ({ data }) => {
             </th>
           </tr>
         </thead>
-        <tbody className="border">
+        <tbody className="border-2">
           {data.map((row, index) => (
             <tr key={index}>
-              <td className="d-table-cell align-middle py-4  fs-15 d-flex justify-content-center align-items-center gap-1">
+              <td className="d-table-cell align-middle py-4 d-flex justify-content-center align-items-center gap-1 fs-15 ">
                 <img src={key} alt="vertical key" />
                 {row.propertyName}
               </td>

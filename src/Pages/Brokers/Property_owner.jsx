@@ -242,7 +242,7 @@ const Property_owner = () => {
                 >
                   {t("age_btn_send")}
                 </button>
-                <button className=" agent-button2 rounded-pill px-4 py-2 fw-bold" onClick={() => setShowSuccess(true)}>
+                <button className=" agent-button2 rounded-pill px-4 py-2 fw-bold" onClick={() => setSentSuccess(true)}>
                   {t("age_btn_send_without")}
                 </button>
                 <button className=" agent-button2 rounded-pill px-5 py-1 fw-bold">
@@ -418,7 +418,7 @@ const Property_owner = () => {
               >
                 {t("age_btn_send")}
               </button>
-              <button className=" agent-btn-responsive2 w-50 bg-transperant h-25 py-1 shadow rounded-pill" onClick={() => setShowSuccess(true)}>
+              <button className=" agent-btn-responsive2 w-50 bg-transperant h-25 py-1 shadow rounded-pill" onClick={() => setSentSuccess(true)}>
                 {t("age_btn_send_without")}
               </button>
               <button className="  agent-btn-responsive2 w-25 bg-transperant h-25 py-1 shadow rounded-pill">
@@ -436,12 +436,12 @@ const Property_owner = () => {
           setIsView(false);
         }}
         centered
-        // className="modal-container"
+        className="modal-container"
       >
         <Modal.Header className="d-flex justify-content-end align-items-center border-0">
           <button type="button" className="btn-close m-0 fs-5" data-bs-dismiss="modal" aria-label="Close" onClick={() => setIsView(false)}></button>
         </Modal.Header>
-        <Modal.Body className="p-4 overflow-y-auto custom-scrollbar" style={{ height: "655px" }}>
+        <Modal.Body className="p-4 overflow-y-auto custom-scrollbar" >
           <div className="text-center">
             <img
               src={successIcon}
@@ -481,7 +481,6 @@ const Property_owner = () => {
                     <p className="mt-3 fw-bold ">
                       {t("age_send_whatsapp_description")}
                     </p>
-                    {/* Pricing Cards */}
                     <div className="row justify-content-center text-center mt-4 align-items-center">
                       <div className="col-md-4 px-2">
                         <div className="rounded p-2 bg-white  shadow-md">
@@ -526,7 +525,7 @@ const Property_owner = () => {
                 </Accordion.Item>
               </Accordion>
             </div>
-            <div className="option-item rounded-3 my-3">
+            {/* <div className="option-item rounded-3 my-3">
               <Accordion defaultActiveKey={null} className="custom-accordion ">
                 <Accordion.Item eventKey="0" className="custom-header border-teal-100">
                   <Accordion.Header className="bg-teal-100">
@@ -615,7 +614,7 @@ const Property_owner = () => {
                   </Accordion.Body>
                 </Accordion.Item>
               </Accordion>
-            </div>
+            </div> */}
           </div>
           <div className="text-center mt-4 d-flex flex-wrap flex-md-nowrap justify-content-center">
             <button

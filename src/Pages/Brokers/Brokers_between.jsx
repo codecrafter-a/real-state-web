@@ -327,7 +327,7 @@ const Brokers_between = () => {
                 </button>
                 <button
                   className=" agent-button2 rounded-pill px-4 py-2 fw-bold"
-                  onClick={() => setShowSuccess(true)}
+                  onClick={() => setSentSuccess(true)}
                 >
                   {t("age_btn_send_without")}
                 </button>
@@ -604,7 +604,7 @@ const Brokers_between = () => {
               </button>
               <button
                 className=" agent-btn-responsive2 w-50 bg-transperant h-25 py-1 shadow rounded-pill"
-                onClick={() => setShowSuccess(true)}
+                onClick={() => setSentSuccess(true)}
               >
                 {t("age_btn_send_without")}
               </button>
