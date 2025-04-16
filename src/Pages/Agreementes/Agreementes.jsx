@@ -83,17 +83,17 @@ const Agreements = () => {
   const ActionButtons = ({ type, icon }) => {
     const { t } = useTranslation();
     return (
-      <div className="d-flex align-items-center gap-3 p-2 bg-white">
+      <div className="d-flex align-items-center gap-2  p-2  bg-white">
         {(type === "genrated" || "sent" || "viewd") && (
           <>
             <div className="d-flex align-items-center gap-1">
               <TbMailForward />
-              <span>{t("home_tab_r1_h1_l4")}</span>
+              <span className="text-nowrap fs-14">{t("home_tab_r1_h1_l4")}</span>
             </div>
             {icon && (
               <div className="d-flex align-items-center gap-1">
                 {icon}
-                <span>{t("home_tab_r1_h1_l3")}</span>
+                <span className="text-nowrap fs-14">{t("home_tab_r1_h1_l3")}</span>
               </div>
             )}
            
@@ -109,7 +109,9 @@ const Agreements = () => {
                   {t("home_tab_r1_h1_l1")}
                 </Dropdown.Toggle>
 
-                <Dropdown.Menu className="w_max more-menu">
+                <Dropdown.Menu 
+                className="w_max"
+                >
                   <Dropdown.Item
                     href="#/action-1"
                     className="d-flex align-items-center gap-1 m-2 p-0"
@@ -140,7 +142,7 @@ const Agreements = () => {
                 </Dropdown.Menu>
               </Dropdown>
             </div>
-            <span>{t("home_tab_r1_h1_l2")}</span>
+            <span className="text-nowrap fs-14">{t("home_tab_r1_h1_l2")}</span>
           </>
         )}
       </div>

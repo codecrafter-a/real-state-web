@@ -359,7 +359,7 @@ const Home = () => {
               <Col className="col-12 box1_color">
                 <div className="d-flex justify-content-between py-3 align-items-center">
                   <span className="text-start screen-2">
-                    5{t("home_accro_r_btn")}
+                    {t("home_accro_r_btn")}
                   </span>
                   <button
                     className=" hr_btn rounded-pill fw-semibold px-sm-5 px-3 py-2"

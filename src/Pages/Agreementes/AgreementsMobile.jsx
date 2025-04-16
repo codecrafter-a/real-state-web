@@ -9,7 +9,9 @@ import Toggle from "../../Componant/Common/Toggle/Toggle";
 import key from "../../assets/images/key_vertical.svg";
 import { useAgreementServices } from "../../Services/AgreementServices";
 import { IoIosArrowDown } from "react-icons/io";
-      const AgreementsMobile = ({StatusBadge, ActionButtons, handletoggle, handleOpen, selectData}) => {
+
+
+const AgreementsMobile = ({StatusBadge, ActionButtons, handletoggle, handleOpen, selectData}) => {
     const { t } = useTranslation();
     const [activeTab, setActiveTab] = useState("all");
     const {  searchQuery, handleSearchChange } = useAgreementServices();
@@ -19,6 +21,14 @@ import { IoIosArrowDown } from "react-icons/io";
         setIsOpen((prev) => !prev);
       };
     
+      
+      const borderColors = {
+        default: "#f87171",
+        signed: "#10b981",
+        executed: "#fdba74",
+        registered: "#3b82f6",
+        viewed: "#f87171",
+      };
       
   return (
     <>
@@ -144,67 +154,69 @@ import { IoIosArrowDown } from "react-icons/io";
           </div>
         </div>
         {activeTab === "all" && (
-          <Accordion className="d-block p-0 scroll-height d-md-none d-flex flex-column gap-3 my-2 overflow-y-auto overflow-x-hidden custom-scrollbar">
-            {selectData.map((row, index) => (
-              <Accordion.Item
-                eventKey={index.toString()}
-                key={row.id}
-                className="border-top-2 border-top rounded-3 mx-1 border-start-4 overflow-visible"
-                style={{ borderLeft: "6px solid #2CAC74" }}
-              >
-                <Accordion.Header>
-                  <div className="d-flex">
-                    <div className=" d-flex align-items-center">
-                      <div className="p-1">
-                        <img
-                          src={key}
-                          alt="vertical key"
-                          className="img-fluid w-75 h-75"
-                        />
-                      </div>
-                      <div>
-                        <span className="fw-semibold fs-12 d-block">
-                          {" "}
-                          {row?.accountNumber} | {row?.date}
-                        </span>
-                        <p className="fw-bold fs-14 d-block mb-0">
-                          {" "}
-                          {t(row?.agreementName)} |{" "}
-                          <span className="fw-semibold lh-1 fs-12">
-                            {t(row?.agreementType)}
-                          </span>
-                        </p>
-                        <p className="fw-bold  fs-12 d-block my-0">
-                          {t("sitem3")} :{" "}
-                          <span className="fw-semibold lh-1 fs-12">
-                            {t(row?.clients)}
-                          </span>
-                        </p>
-                        <p className="fw-bold fs-12 d-block mb-0">
-                          {t("br_commission")} :{" "}
-                          <span className="fw-semibold lh-1 fs-12">
-                            {row?.commission}
-                          </span>
-                        </p>
-                      </div>
-                    </div>
-                    <div className="my-2">
-                      <StatusBadge status={t(row?.status)} />
-                    </div>
-                  </div>
-                </Accordion.Header>
-                <Accordion.Body className="p-0">
-                  <div className="d-flex justify-content-around w-100">
+          <Accordion className=" p-0 d-md-none d-flex flex-column gap-3 ">
+          {selectData.map((row, index) => (
+            <Accordion.Item
+              eventKey={index.toString()}
+              key={row.id}
+              style={{
+                borderInlineStart: `6px solid ${
+                  borderColors[row.actionType] || "#f87171"
+                }`, 
+              }}
+              className=" card mb-2 border-top"
+            > 
+              <Accordion.Header>
+                   <div className="d-flex align-items-center justify-content-between w-100 gap-2">
+  <div className="d-flex align-items-center flex-grow-1 gap-2">
+    <div className="p-1">
+      <img
+        src={key}
+        alt="vertical key"
+        className="img-fluid"
+        style={{ width: "30px", height: "30px", objectFit: "contain" }}
+      />
+    </div>
+    <div>
+      <span className="fw-semibold fs-12 d-block">
+        {row?.accountNumber} | {row?.date}
+      </span>
+      <p className="fw-bold fs-14 d-block mb-0">
+        {t(row?.agreementName)} |{" "}
+        <span className="fw-semibold lh-1 fs-12">
+          {t(row?.agreementType)}
+        </span>
+      </p>
+      <p className="fw-bold fs-12 d-block my-0">
+        {t("sitem3")} :{" "}
+        <span className="fw-semibold lh-1 fs-12">{t(row?.clients)}</span>
+      </p>
+      <p className="fw-bold fs-12 d-block mb-0">
+        {t("br_commission")} :{" "}
+        <span className="fw-semibold lh-1 fs-12">{row?.commission}</span>
+      </p>
+    </div>
+  </div>
+  <div className="flex-shrink-0 my-2">
+    <StatusBadge status={row?.status} />
+  </div>
+</div>
+
+                 </Accordion.Header>
+              <Accordion.Body className="p-0">
+                <div className="border-top px-2 ">
+                  <div className="d-flex justify-content-center gap-1 w-100">
                     <ActionButtons
                       type={t(row?.actionType)}
                       icon={row?.icon}
                       onDelete={handleOpen}
                     />
                   </div>
-                </Accordion.Body>
-              </Accordion.Item>
-            ))}
-          </Accordion>
+                </div>
+              </Accordion.Body>
+            </Accordion.Item>
+          ))}
+        </Accordion>
         )}
       </div>
     </>

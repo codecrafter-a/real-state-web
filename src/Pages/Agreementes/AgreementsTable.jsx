@@ -4,7 +4,7 @@ import { TbMailForward } from "react-icons/tb";
 import { useTranslation } from "react-i18next";
 import { MdOutlineDeleteForever } from "react-icons/md";
 import { Accordion } from "react-bootstrap";
-import key from "../../assets/images/key_vertical.svg";
+
 import iconHome from "../../assets/images/icon_home.svg";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { FaWhatsapp } from "react-icons/fa";
@@ -228,7 +228,7 @@ const AgreementsTable = ({
           ))}
         </tbody>
       </table>
-      <Accordion className=" p-0 d-md-none d-flex flex-column gap-3 ">
+      {/* <Accordion className=" p-0 d-md-none d-flex flex-column gap-3 ">
         {selectData.map((row, index) => (
           <Accordion.Item
             eventKey={index.toString()}
@@ -294,14 +294,14 @@ const AgreementsTable = ({
             </Accordion.Body>
           </Accordion.Item>
         ))}
-      </Accordion>
+      </Accordion> */}
     </div>
   );
 };
 const ActionButtons = ({ type, icon, onDelete }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation();     
   return (
-    <div className="d-flex align-items-center gap-2 p-2 bg-white ">
+    <div className="d-flex align-items-center gap-2 p-1 bg-white ">
       {type === "default" && (
         <>
           <div className="d-md-flex align-items-center gap-1 cursor-pointer">

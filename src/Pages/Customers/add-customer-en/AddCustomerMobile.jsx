@@ -17,20 +17,23 @@ import { useClientService } from "../../../Services/ClientService";
 import { useTranslation } from "react-i18next";
 
 const AddCustomerMobile = () => {
-    const { t } = useTranslation();
+  const { t } = useTranslation();
   const [isChecked, setIsChecked] = useState(false);
+  console.log(isChecked, "isChecked");
+  
   const handleMainCheck = (e) => {
     const checked = e.target.checked;
     setIsChecked(checked);
-
-    handleChange({
+    handleChange?.({
       target: {
-        name: "userType",
-        value: t("cust_type_1"),
+        name: "maincheck",
+        value: "select",
+        id: "customCheck1",
         checked,
       },
     });
   };
+  console.log(handleMainCheck, "handlemainchck")
   const {
     formData,
     isFirstModalOpen,
@@ -42,7 +45,6 @@ const AddCustomerMobile = () => {
     closeFirstModal,
     closeSecondModal,
     setIsFirstModalOpen,
-   
   } = useClientService();
 
   const renderFirstScreen = () => (
@@ -127,6 +129,7 @@ const AddCustomerMobile = () => {
               onChange={handleMainCheck}
               className="btn-check"
             />
+             
             <label htmlFor="usertype_1">
               <span className="user_type_icon">
                 <img src={userTypeIcon1} alt="icon" />
@@ -176,7 +179,7 @@ const AddCustomerMobile = () => {
 
         <div className="d-flex justify-content-center gap-2 align-items-center my-3">
           <input
-            className="form-check-input rounded-1 boredr-1 border-black "
+            className="form-check-input rounded-1 border-1 border-black"
             type="checkbox"
             value="select"
             name="maincheck"
