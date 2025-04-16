@@ -788,5 +788,12 @@
    "missing_details": "Assets Missing Details",
   "available_assets": "Available Assets",
   "prop_services": "Search for a property by address/owner name",
-  "owner_name": "Israel is an Israeli"
+  "owner_name": "Israel is an Israeli",
+  "interested_clients": "2 customers were interested in this property",
+  "client_3": "Shiri Nakabli | 03.06.24",
+  "client_4": "Romi Cohen | 06.06.24",
+  "view_att": "View attachments",
+  "genral_prop": "General description of the property",
+  "4-room": "4-room apartment with 4 air directions, bright, beautiful",
+  "2-child": "Suitable for a family with 2 children"
   }

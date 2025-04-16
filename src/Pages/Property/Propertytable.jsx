@@ -5,50 +5,42 @@ import CustomButton from "../../Componant/Common/Button/Button";
 import edit from "../../assets/images/edit.svg";
 import deleteIcon from "../../assets/images/delete.svg";
 import { usePropertyservices } from "../../Services/PropertyServices";
-import { motion } from "framer-motion";
-const Propertytable = () => {
+import Carousel from 'react-bootstrap/Carousel';
+import { Image } from "react-bootstrap";
+const Propertytable = ({filter}) => {
   const { t } = useTranslation();
 
-  const getpropertyservices = usePropertyservices(); 
-  const propertyData = getpropertyservices();
   const [selectAll, setSelectAll] = useState(false); 
+  const [expandedRows, setExpandedRows] = useState([]);
   const [selectedRows, setSelectedRows] = useState([]); 
-   const [isOpen, setIsOpen] = useState(false);
-    const handleisopen = () => {
-      setIsOpen((prev) => !prev);
-    };
-  
-  const handleSelectAllChange = () => {
-    setSelectAll((prevSelectAll) => {
-      const newSelectAll = !prevSelectAll;
-     
-      const newSelectedRows = newSelectAll ? propertyData.map((_, index) => index) : [];
-      setSelectedRows(newSelectedRows); 
-      return newSelectAll; 
-    });
-  };
-  
+  const { slides} = usePropertyservices();
  
-  const handleCheckboxChange = (index) => {
-    setSelectedRows((prevSelectedRows) => {
-      
-      if (prevSelectedRows.includes(index)) {
-        return prevSelectedRows.filter((i) => i !== index); 
-      } else {
-        return [...prevSelectedRows, index]; 
-      }
-    });
+  
+    const toggleRow = (index) => {
+      setExpandedRows((prev) =>
+        prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+      );
+    };
+
+  const handleSelectAllChange = () => {
+    const newSelectAll = !selectAll;
+    setSelectAll(newSelectAll);
+    // setSelectedRows(newSelectAll ? getpropertyservices().map((_, index) => index) : []);
   };
   
-  
-  useEffect(() => {
-    if (selectedRows.length === propertyData.length) {
-      setSelectAll(true); 
-    } else {
-      setSelectAll(false); 
-    }
-  }, [selectedRows, propertyData.length]);
+  const handleCheckboxChange = (index) => {
+    setSelectedRows((prevSelectedRows) =>
+      prevSelectedRows.includes(index)
+        ? prevSelectedRows.filter((i) => i !== index)
+        : [...prevSelectedRows, index]
+    );
+  };
+  // useEffect(() => {
+  //   setSelectAll(selectedRows.length === getpropertyservices().length);
+  // }, [selectedRows,getpropertyservices().length]);
 
+
+  console.log("fillterss" , filter);
 
   return (
     <>
@@ -77,14 +69,14 @@ const Propertytable = () => {
           </tr>
         </thead>
         <tbody className="border border-[#E6E6E6] rounded-3">
-          {propertyData.map((client, index) => (
+          {filter.map((client, index) => (
             <React.Fragment key={index}>
               <tr>
                 <td className="px-4 py-3">
                   <div className="d-flex align-items-center gap-2">
                     <input
                       type="checkbox"
-                      checked={selectedRows.includes(index)}
+                       checked={selectedRows.includes(index)}
                       onChange={() => handleCheckboxChange(index)}
                       className="form-check-input "
                     />
@@ -104,86 +96,36 @@ const Propertytable = () => {
                 </td>
                 <td className="text-center px-4 py-3">
                   <button
-                    onClick={handleisopen}
-                    className="border-0 bg-transparent"
-                  >
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggleRow(index);
+                      }}
+                      className="bg-transparent border-0"
+                      >
                     <img
                       src={table_arrrow}
-                      alt="table_arrow"
-                      className={`w-4 h-4 transition-transform ${
-                        propertyData.includes(index) ? "rotate-180" : "rotate-0"
-                      }`}
+                      alt="toggle"
+                      className={`transition-transform ${expandedRows.includes(index) ? "rotate-180" : "rotate-0"}`}
+                      style={{ width: "1rem", height: "1rem", transition: "transform 0.3s" }}
                     />
                   </button>
                 </td>
               </tr>
-              <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={
-                isOpen
-                  ? { height: "auto", opacity: 1 }
-                  : { height: 0, opacity: 0 }
-              }
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
-              style={{ overflow: "hidden" }}
-            >
-              {propertyData.includes(index) && (
+             
+              {expandedRows.includes(index) && (
                 <tr>
-                  <td colSpan={7} className="px-4 py-2">
-                    <div className=" d-flex align-items-center justify-content-between">
-                      <div>
-                        <h5 className="fs-15 lh-1 fw-semibold d-flex align-items-center">
-                          {t("cust_property_type")}
-                        </h5>
-                        <p className="text-wrap mb-0">
-                          {t("cust_property_type_value")}
-                        </p>
-                      </div>
-                      <div>
-                        <h5 className="fs-15 lh-1 fw-semibold d-flex align-items-center">
-                          {t("cust_Property_Condition")}
-                        </h5>{" "}
-                        <p className="text-wrap mb-0">
-                          {t("cust_Property_Condition_value")}
-                        </p>
-                      </div>
-                      <div>
-                        <h5 className="fs-15 lh-1 fw-semibold d-flex align-items-center">
-                          {t("cust_no_rooms")}
-                        </h5>{" "}
-                        <p className="text-wrap mb-0">
-                          {t("cust_no_rooms_value")}
-                        </p>
-                      </div>
-                      <div>
-                        <h5 className="fs-15 lh-1 fw-semibold d-flex align-items-center">
-                          {t("cust_apartment_size")}
-                        </h5>{" "}
-                        <p className="text-wrap mb-0">
-                          {t("cust_apartment_size_value")}
-                        </p>
-                      </div>
-                      <div>
-                        <h5 className="fs-15 lh-1 fw-semibold d-flex align-items-center">
-                          {t("cust_floor")}
-                        </h5>{" "}
-                        <p className="text-wrap mb-0">4,5</p>
-                      </div>
-                      <div>
-                        <h5 className="fs-15 lh-1 fw-semibold d-flex align-items-center">
-                          {t("cust_price")}
-                        </h5>
-                        <p className="text-wrap mb-0">1000 - 3000 ₪</p>
-                      </div>
-                    </div>
+                  <td colSpan={11} className="px-4 py-2">
                     <div className="align-items-center d-flex justify-content-between gap-4 mt-3">
                       <div>
                         <h5 className="fs-15 lh-1 fw-semibold d-flex align-items-center">
-                          {t("cust_additional_comments")}
-                        </h5>{" "}
+                          {t("genral_prop")}
+                        </h5>
                         <p className="text-wrap fw-normal  mb-0 text-start">
-                          {t("cust_additional_comments_value")}
+                          {t("4-room")} 
+                        </p>
+                        <p className="text-wrap fw-normal  mb-0 text-start"> 
+                          {t("2-child")}
                         </p>
                       </div>
                       <div>
@@ -201,16 +143,32 @@ const Propertytable = () => {
                         </div>
                       </div>
                     </div>
+                    <Carousel data-bs-theme="dark" interval={null}>
+                      {slides.map((slide, idx) => (
+                        <Carousel.Item key={idx} >
+                          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', padding: '1rem' }}>
+                            {slide.map((src, index) => (
+                              <Image
+                                key={index}
+                                src={src}
+                                className="img-fluid"
+                                style={{ width: '210px', height: '119px', borderRadius: '8px' }}
+                              />
+                            ))}
+                          </div>
+                        </Carousel.Item>
+                      ))}
+                    </Carousel>
                     <div className="mt-3 d-flex justify-content-start align-item-center">
                       <div className="d-flex flex-column align-item-center">
                         <h5 className="fs-15 lh-1 fw-semibold mb-2 d-flex align-items-center">
-                          {t("recent_agreements")}
+                          {t("interested_clients")}
                         </h5>
                         <ul className="list-unstyled mb-0 text-start">
                           <li className="mb-1">
-                            {t("recent_agreements_value_1")}
+                            {t("client_3")}
                           </li>
-                          <li>{t("recent_agreements_value_2")}</li>
+                          <li>{t("client_4")}</li>
                         </ul>
                       </div>
                     </div>
@@ -218,7 +176,7 @@ const Propertytable = () => {
                       <CustomButton
                         type="button"
                         className="fs-17 lh-1 fw-semibold  agent-btn-responsive2 w-20 py-2 mx-1 rounded-pill"
-                        children={t("all_agreements")}
+                        children={t("view_att")}
                       />
                       <div className="d-flex align-items-center">
                         <img src={edit} alt={"editbtn"} className="px-1" />
@@ -232,7 +190,7 @@ const Propertytable = () => {
                     </div>
                   </td>
                 </tr>
-              )}</motion.div>
+              )}
             </React.Fragment>
           ))}
         </tbody>

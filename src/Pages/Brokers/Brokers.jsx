@@ -694,7 +694,6 @@ const Brokers = () => {
         </Modal.Header>
         <Modal.Body
           className="p-4 overflow-y-auto custom-scrollbar"
-          style={{ height: "655px" }}
         >
           <div className="text-center">
             <img src={successIcon} alt="Success" className="mx-auto mb-3" />

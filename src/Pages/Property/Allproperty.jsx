@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import add_home from "../../assets/images/add_home.svg";
 import Toggle from "../../Componant/Common/Toggle/Toggle";
@@ -6,15 +6,38 @@ import search from "../../assets/images/search.png";
 import search_icon2 from "../../assets/images/search_icon2.svg";
 import remove_icon from "../../assets/images/remove_icon.svg";
 import Propertytable from "./Propertytable";
+import { usePropertyservices } from "../../Services/PropertyServices";
 
 const Allproperty = () => {
   const { t } = useTranslation();
+  const {location, setLocation, setClientNameInput, clientNameInput, setPropertytype, propertytype, getClientData,dataPropertyServices, setFilteredClients, filteredClients, sel, setSel, setProcondition,
+    procondition  } = usePropertyservices();
+  console.log(clientNameInput, "filteredclient")
+  console.log(dataPropertyServices, "dataPropertyServices")
+  const handleClick = () => {
+    const filtered = getClientData({
+      clientName: clientNameInput,
+      type1: sel,
+      property_type1: propertytype,
+      location1: location,
+      property_condition1: procondition,
+    });
+    console.log("locatiodfkj", filteredClients);
+    setFilteredClients(filtered);
+  };
+  useEffect(() => {
+    setFilteredClients(dataPropertyServices);
+  }, []);
+
+  console.log(filteredClients, "asdsdsd");
   return (
     <>
       <div className="bg-white shadow-lg d-none d-md-block">
         <p className="w-100 text-center screen-1 border-bottom py-3 mb-4 d-none d-md-block">
           {t("All_Property")}
         </p>
+        <div className="custom-scrollbar overflow-y-auto overflow-x-hidden px-3 mt-4"
+          style={{ maxHeight: "594px" }}>
         <button
           type="button"
           className="border-teal my-2 d-flex align-items-center justify-content-center rounded-pill py-1 px-4 search-button"
@@ -33,6 +56,8 @@ const Allproperty = () => {
                   className="form-control border-0"
                   id="searchInput"
                   placeholder={t("prop_services")}
+                  value={clientNameInput}
+                    onChange={(e) => setClientNameInput(e.target.value)}
                 />
                 <span className="input-group-text bg-transparent border-0">
                   <img src={search} alt="search" />
@@ -65,8 +90,9 @@ const Allproperty = () => {
               <label className="mb-1 fs-15 lh-1 fw-semibold">
               {t("transition_type")}
               </label>
-              <select className="form-select">
-                <option value="">Select Option</option>
+              <select className="form-select"  value={sel}
+                      onChange={(e) => setSel(e.target.value)}>
+                <option value="sdf">Select Option</option>
                 <option value={t("sale")}> {t("sale")}</option>
                 <option value="Location 2">auraaa</option>
               </select>
@@ -80,6 +106,8 @@ const Allproperty = () => {
                   type="text"
                   className="form-control border-0 p-0 flex-grow-1"
                   placeholder={t("cust_filter_place_2")}
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value)}
                 />
                 <button
                   className="btn border-0 p-0 ms-2"
@@ -95,10 +123,10 @@ const Allproperty = () => {
               <label className="mb-1 fs-15 lh-1 fw-semibold">
                 {t("cust_Property_type")}
               </label>
-              <select className="form-select">
+              <select className="form-select" value={propertytype} onChange={(e) => setPropertytype(e.target.value)}>
                 <option value="">All Property Types</option>
-                <option value={t("cust_property_type_value")}>
-                  {t("cust_property_type_value")}
+                <option value={t("all_property_type")}>
+                  {t("all_property_type")}
                 </option>
                 <option value="villa">{t("cust_property_villa")}</option>
                 <option value="studio">{t("cust_property_studio")}</option>
@@ -108,10 +136,10 @@ const Allproperty = () => {
               <label className="mb-1 fs-15 lh-1 fw-semibold">
                 {t("cust_Property_condition")}
               </label>
-              <select className="form-select">
+              <select className="form-select" value={procondition} onChange={(e) => setProcondition(e.target.value)}>
                 <option value="">Select Option</option>
-                <option value={t("cust_Property_Condition_value")}>
-                  {t("cust_Property_Condition_value")}
+                <option value={t("renovated")}>
+                  {t("renovated")}
                 </option>
                 <option value="Bad">Option 2</option>
               </select>
@@ -124,6 +152,7 @@ const Allproperty = () => {
                   boxShadow: "0 10px 8px rgba(0, 0, 0, 0.1)",
                   minWidth: "146px",
                 }}
+                onClick={handleClick}
               >
                 {t("cust_search")}
               </button>
@@ -157,7 +186,8 @@ const Allproperty = () => {
             ))}
           </ul>
         </div>
-        <Propertytable />
+        <Propertytable filter={filteredClients}/>
+        </div>
       </div>
     </>
   );
