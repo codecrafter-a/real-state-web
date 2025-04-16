@@ -8,7 +8,7 @@ import Signin from "./Pages/Signin/Signin.jsx";
 import Home from "./Pages/Home/Home.jsx";
 import Data from "./Pages/Data/Data.jsx";
 import Agreementes from "./Pages/Agreementes/Agreementes.jsx";
-import Property from "./Pages/property/Property.jsx";
+import Property from "./Pages/Property/Property.jsx";
 import Invocies from "./Pages/Invocies/Invocies.jsx";
 import Setting from "./Pages/Setting/Setting.jsx";
 import PersonalArea from "./Pages/PersonalArea/PersonalArea.jsx";
@@ -26,7 +26,7 @@ import { useEffect, useState} from 'react';
 import Property_owner from "./Pages/Brokers/Property_owner.jsx";
 import Brokers_between from "./Pages/Brokers/Brokers_between.jsx";
 import Landregistry from "../src/Pages/LandRegistry/Landregistry.jsx";
-import Allproperty from "./Pages/property/Allproperty.jsx";
+import Allproperty from "./Pages/Property/Allproperty.jsx";
 
 
 
