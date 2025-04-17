@@ -7,9 +7,12 @@ import search_icon2 from "../../assets/images/search_icon2.svg";
 import remove_icon from "../../assets/images/remove_icon.svg";
 import Propertytable from "./Propertytable";
 import { usePropertyservices } from "../../Services/PropertyServices";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Allproperty = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const { lang } = useParams();
   const {location, setLocation, setClientNameInput, clientNameInput, setPropertytype, propertytype, getClientData,dataPropertyServices, setFilteredClients, filteredClients, sel, setSel, setProcondition,
     procondition  } = usePropertyservices();
   console.log(clientNameInput, "filteredclient")
@@ -41,6 +44,7 @@ const Allproperty = () => {
         <button
           type="button"
           className="border-teal my-2 d-flex align-items-center justify-content-center rounded-pill py-1 px-4 search-button"
+          onClick={() => navigate(`/${lang}/Property/add_property`)}
         >
           <div className="flex items-center justify-center">
             <img className="me-1" src={add_home} alt="Add Client" />

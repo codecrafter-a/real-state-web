@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 export const useClientService = () => {
   const { t } = useTranslation();
-
+   const [filteredClients, setFilteredClients] = useState([]);
   const [formData, setFormData] = useState({
     fullName: "",
     phone: "",
@@ -144,6 +144,8 @@ export const useClientService = () => {
 
 
   return {
+    filteredClients,
+    setFilteredClients,
     formData,
     setFormData,
     isFirstModalOpen,

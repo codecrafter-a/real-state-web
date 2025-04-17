@@ -20,20 +20,11 @@ const AddCustomerMobile = () => {
   const { t } = useTranslation();
   const [isChecked, setIsChecked] = useState(false);
   console.log(isChecked, "isChecked");
-  
+
   const handleMainCheck = (e) => {
-    const checked = e.target.checked;
-    setIsChecked(checked);
-    handleChange?.({
-      target: {
-        name: "maincheck",
-        value: "select",
-        id: "customCheck1",
-        checked,
-      },
-    });
+    setIsChecked(e.target.checked);
   };
-  console.log(handleMainCheck, "handlemainchck")
+  console.log(handleMainCheck, "handlemainchck");
   const {
     formData,
     isFirstModalOpen,
@@ -120,16 +111,16 @@ const AddCustomerMobile = () => {
         </p>
         <div className="col-auto">
           <div className="check_custom_icon">
-            <CustomInput
+            <input
+              className="form-check-input d-none"
               type="checkbox"
-              id="usertype_1"
-              name="userType"
               value={t("cust_type_1")}
+              name="userType"
+              id="usertype_1"
               checked={isChecked}
               onChange={handleMainCheck}
-              className="btn-check"
             />
-             
+
             <label htmlFor="usertype_1">
               <span className="user_type_icon">
                 <img src={userTypeIcon1} alt="icon" />
@@ -179,12 +170,11 @@ const AddCustomerMobile = () => {
 
         <div className="d-flex justify-content-center gap-2 align-items-center my-3">
           <input
-            className="form-check-input rounded-1 border-1 border-black"
+            className="form-check-input rounded-1 border-1 border-black mt-2"
             type="checkbox"
             value="select"
-            name="maincheck"
-            id="customCheck1"
-            checked={isChecked}
+            name="userType"
+            id="usertype_1_duplicate"
             onChange={handleMainCheck}
           />
           <label className="fs-15 fw-normal lh-1" htmlFor="customCheck1">

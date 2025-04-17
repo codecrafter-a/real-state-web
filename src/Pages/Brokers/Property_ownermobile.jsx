@@ -14,247 +14,47 @@ import Accordion from "react-bootstrap/Accordion";
 import whatsapp from "../../assets/images/wa, whatsapp, message, communication, chat.svg";
 import gyiphy from "../../assets/images/celebration.gif";
 import close from '../../assets/images/close_small.png';
-import Toggle from "../../Componant/Common/Toggle/Toggle";
+// import Toggle from "../../Componant/Common/Toggle/Toggle";
 
-const Property_owner = () => {
-  const { t } = useTranslation();
-  const [isView, setIsView] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
-  const [sentSuccess, setSentSuccess] = useState(false);
-  const [showDetails, setShowDetails] = useState(false);
-  const [propertySection, setPropertySection] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("");
-  const [selectedDate, setSelectedDate] = useState("");
-
-  const handlePropertysection = () => {
-    setPropertySection(true);
-  }
-
-  const handlecloseProperty = () => {
-    setPropertySection(false);
-  }
-
-  const handleSearchClick = () => {
-    setShowDetails(true); 
-  };
-
-  const handleSearchClose = () => {
-    setShowDetails(false);
-  }
-  const handleView = () => {
-    setIsView(true);
-  };
-  const handleSentSuccess = () => {
-    setShowSuccess(false);
-    setSentSuccess(true);
-  };
-  const handleIsShow = () => {
-    setIsView(false);
-    setShowSuccess(true);
-  };
-
+const Property_ownermobile = () => {
+    const { t } = useTranslation();
+      const [isView, setIsView] = useState(false);
+      const [showSuccess, setShowSuccess] = useState(false);
+      const [sentSuccess, setSentSuccess] = useState(false);
+      const [showDetails, setShowDetails] = useState(false);
+      const [propertySection, setPropertySection] = useState(false);
+    //   const [selectedOption, setSelectedOption] = useState("");
+    //   const [selectedDate, setSelectedDate] = useState("");
+    
+      const handlePropertysection = () => {
+        setPropertySection(true);
+      }
+    
+      const handlecloseProperty = () => {
+        setPropertySection(false);
+      }
+    
+      const handleSearchClick = () => {
+        setShowDetails(true); 
+      };
+    
+      const handleSearchClose = () => {
+        setShowDetails(false);
+      }
+      const handleView = () => {
+        setIsView(true);
+      };
+      const handleSentSuccess = () => {
+        setShowSuccess(false);
+        setSentSuccess(true);
+      };
+      const handleIsShow = () => {
+        setIsView(false);
+        setShowSuccess(true);
+      };
   return (
     <>
-      <div className="bg-white shadow-lg d-none d-md-block">
-        <p className="w-100 text-center screen-1 border-bottom py-3 mb-4 d-none d-md-block">
-          {t("Property_own_title")}
-        </p>
-        <div className="px-3">
-          <div
-            className="row custom-scrollbar overflow-y-auto overflow-x-hidden px-3 scroll-height">
-            <div className="col-12 px-0">
-              <div className="card p-3 border  rounded-3 mb-4">
-                <div className="form_group mb-2 mb-xl-0 d-flex justify-content-between">
-                  <h5 className=" text-embed-500 fw-semibold fs-5 lh-1 mb-4 ">{t("property_detail")}</h5>
-                  <button
-                    type="button"
-                    className="border-teal mt-2 d-flex align-items-center justify-content-center rounded-pill py-1 px-4 search-button"
-                  >
-                    <div className="flex items-center justify-center">
-                      <img className="me-1" src={add_reaction} alt="Add Client" />
-                      {t("Add_client")}
-                    </div>
-                  </button>
-                </div>
-                <div className="mb-3">
-                  <label for="searchInput" className="form-label fw-semibold">
-                    {t("age_details_title")}
-                  </label>
-                  <div className="border border-[#D6D6D6] rounded w-75 px-3">
-                    <div className="d-flex p-2">
-                      <input
-                        onChange={handleSearchClick}
-                        type="text"
-                        className="form-control border-0 p-0"
-                        placeholder={t("age_title_placeholder")}
-                      />
-                      <button className="btn p-0" type="button">
-                        <img src={search} alt="Search" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                {showDetails && (
-                  <>
-                    <div className="border rounded w-full">
-                      <div className="d-flex flex-row justify-content-between px-3 py-2">
-                        <div className="d-flex flex-col">
-                          <label>{t('broker_name')}</label>
-                          <input
-                            type="text"
-                            className="form-control border-0 p-0"
-                            placeholder="Shirims@gmail.com | 054-4692650"
-                            values=""
-                          />
-                        </div>
-                        <div className="d-flex flex-row justify-content-end">
-                          <button className="btn p-0" type="button" onClick={handleSearchClose}>
-                            <img src={close} alt="Search" />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </>
-                )}
-              </div>
-            </div>
-            <div className="col-12 px-0">
-              <div className="card p-3 border  rounded-3 mb-4">
-                <div className="form_group mb-2 mb-xl-0 d-flex justify-content-between">
-                  <h5 className="  text-embed-500 fw-semibold fs-5 lh-1 mb-4 ">{t("age_pro_section")}</h5>
-                  <button
-                    type="button"
-                    className="border-teal mt-2 d-flex align-items-center justify-content-center rounded-pill py-1 px-4 search-button"
-                  >
-                    <div className="flex items-center justify-center">
-                      <img className="me-1" src={add_home} alt="Add Client" />
-                      {t("Add_Property")}{" "}
-                    </div>
-                  </button>
-                </div>
-                <div className="mb-3">
-                  <label for="searchInput" className="form-label fw-semibold">
-                    {t("age_pro_section_title")}
-                  </label>
-                  <div className="border border-[#D6D6D6] rounded w-75">
-                    <div className="d-flex p-2 ">
-                      <input
-                        onChange={handlePropertysection}
-                        type="text"
-                        className="form-control border-0 p-0"
-                        placeholder={t("age_pro_asset_address")}
-                      />
-                      <button className="btn p-0" type="button">
-                        <img src={search} alt="Search" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                {propertySection && (
-                  <>
-                    <div className="border rounded w-75">
-                      <div className="d-flex flex-row justify-content-between px-3 py-2">
-
-                        <div className="d-flex flex-row align-item-center gap-2">
-                          <div className="my-2"><img src={key_vertical} alt="key vertical" /></div>
-                          <div>
-                            <label>{t('property_br_address')}</label>
-                            <input
-                              type="text"
-                              className="form-control border-0 p-0"
-                              placeholder="שכירות : 5000 לחודש"
-                              values=""
-                            />
-                          </div>
-
-                        </div>
-                        <div className="d-flex flex-row justify-content-end">
-                          <button className="btn p-0" type="button" onClick={handlecloseProperty}>
-                            <img src={close} alt="Search" />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="d-flex align-items-center gap-2 justify-content-start my-3">
-                      <div>
-                        <span className="fw-semibold">{t("rental_months")}</span>
-                        <Form.Control type="number" className="w-100" defaultValue="12" />
-                      </div>
-                      <div className="mx-0">
-                        <span className=" fw-semibold">{t("br_commission")}</span>
-                        <Form.Control type="number" className="w-100" defaultValue="30" />
-                      </div>
-                      <div className=" mt-4">
-                        <InputGroup className="w-auto">
-                          <Form.Select className="text-center">
-                            <option>%</option>
-                            <option>₪</option>
-                          </Form.Select>
-                        </InputGroup>
-                      </div>
-                    </div>
-                  </>
-                )}
-                <div className='d-flex align-items-center'>
-                  <Toggle defaultChecked={false} type={"checkbox"} id="toggleImages" />
-                  <label className="fs-6 fw-normal lh-1" htmlFor="">{t('Property_own_detail')}</label>
-                </div>
-                {propertySection && (
-                  <div className="mt-4 w-25">
-                    <InputGroup className="w-auto">
-                      <Form.Select onChange={(e) => setSelectedOption(e.target.value)}>
-                        <option>{t("Select_month")}</option>
-                        <option>{t("Select_six_month")}</option>
-                        <option>{t("Select_year")}</option>
-                        <option value="date">{t("Select_Date")}</option>
-                      </Form.Select>
-                    </InputGroup>
-
-                    {selectedOption === "date" && (
-                      <Form.Control
-                        type="date"
-                        className="mt-2"
-                        onChange={(e) => setSelectedDate(e.target.value)}
-                        value={selectedDate}
-                      />
-                    )}
-                  </div>
-                )}
-              </div>
-            </div>
-            <div className="col-12 px-0">
-              <div className="card p-3 border  rounded-3 mb-4">
-                <h5 className=" text-embed-500 fw-semibold fs-5 lh-1 mb-4 ">{t("age_note")}</h5>
-                <div className=" px-2 pb-2 w-75">
-                  <textarea
-                    className="form-control"
-                    placeholder={t("age_note_placeholder")}
-                    rows="4"
-                  ></textarea>
-                </div>
-              </div>
-            </div>
-            <div className="col-12 px-0">
-              <div className="d-flex gap-3 pb-3 ">
-                <button
-                  className="agent-button1  rounded-pill px-5 py-2 fw-bold shadow-sm text-white"
-                  onClick={handleView}
-                >
-                  {t("age_btn_send")}
-                </button>
-                <button className=" agent-button2 rounded-pill px-4 py-2 fw-bold" onClick={() => setSentSuccess(true)}>
-                  {t("age_btn_send_without")}
-                </button>
-                <button className=" agent-button2 rounded-pill px-5 py-1 fw-bold">
-                  {t("age_btn_view")}
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/** Mobile Screen avaible */}
-      {/* <div className="bg-transperant  d-block d-md-none">
+       <div className="bg-transperant">
         <div className="row custom-scrollbar overflow-y-auto overflow-x-hidden">
           <div className="col-12">
             <div className="card  p-3 border  rounded-3 overflow-hidden  rounded-3 bg-light mb-4">
@@ -427,9 +227,7 @@ const Property_owner = () => {
             </div>
           </div>
         </div>
-      </div> */}
-
-
+      </div>
       <Modal
         show={isView}
         onHide={() => {
@@ -442,7 +240,7 @@ const Property_owner = () => {
           <button type="button" className="btn-close m-0 fs-5" data-bs-dismiss="modal" aria-label="Close" onClick={() => setIsView(false)}></button>
         </Modal.Header>
         <Modal.Body className="p-4 overflow-y-auto custom-scrollbar"
-          style={{ height: "655px" }}>
+          style={{ height: "655px" }} >
           <div className="text-center">
             <img
               src={successIcon}
@@ -716,8 +514,9 @@ const Property_owner = () => {
           </div>
         </Modal.Body>
       </Modal>
+    
     </>
-  );
-};
+  )
+}
 
-export default Property_owner;
+export default Property_ownermobile

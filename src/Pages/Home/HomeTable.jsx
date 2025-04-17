@@ -18,6 +18,7 @@ import { LuBookMinus } from "react-icons/lu";
 import { Dropdown, Modal } from "react-bootstrap";
 import cancel from "../../assets/images/cancel.png";
 import successIcon from "../../assets/images/success_icon.svg";
+import { useNavigate } from "react-router-dom";
 
 const StatusBadge = ({ status }) => {
   const { t } = useTranslation();
@@ -55,6 +56,7 @@ const StatusBadge = ({ status }) => {
 };
 
 const HomeTable = () => {
+  const navigate = useNavigate()
   const { t } = useTranslation();
   const { i18n } = useTranslation();
   const isRTL = i18n.dir() === "rtl";
@@ -359,7 +361,7 @@ const HomeTable = () => {
             </div>
             <span className="text-success">נכסים</span>
           </div>
-          <button className="hr_btn rounded-pill fw-semibold px-sm-5 px-3 py-2">
+          <button className="hr_btn rounded-pill fw-semibold px-sm-5 px-3 py-2" onClick={() =>  navigate(`/${i18n.language}/Property`)}>
             {t("all_properties")}
           </button>
         </div>

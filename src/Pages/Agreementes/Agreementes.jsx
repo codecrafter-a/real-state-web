@@ -14,12 +14,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import Tab from "../../Componant/Common/Tab/Tab";
 import { IoIosArrowDown } from "react-icons/io";
 import { useAgreementServices } from "../../Services/AgreementServices";
-import { TbMailForward } from "react-icons/tb";
-import { Dropdown } from "react-bootstrap";
-import cancel from "../../assets/images/cancel.png";
-import { HiOutlineDotsVertical } from "react-icons/hi";
-import { RiDeleteBin2Line } from "react-icons/ri";
-import AgreementsMobile from "./AgreementsMobile";
 const Agreements = () => {
   const [activeTab, setActiveTab] = useState("all");
   const [removeData, setRemoveData] = useState(false);
@@ -78,113 +72,6 @@ const Agreements = () => {
       isInvoices: false,
       isDocument: false,
     });
-  };
-
-  const ActionButtons = ({ type, icon }) => {
-    const { t } = useTranslation();
-    return (
-      <div className="d-flex align-items-center gap-2  p-2  bg-white">
-        {(type === "genrated" || "sent" || "viewd") && (
-          <>
-            <div className="d-flex align-items-center gap-1">
-              <TbMailForward />
-              <span className="text-nowrap fs-14">{t("home_tab_r1_h1_l4")}</span>
-            </div>
-            {icon && (
-              <div className="d-flex align-items-center gap-1">
-                {icon}
-                <span className="text-nowrap fs-14">{t("home_tab_r1_h1_l3")}</span>
-              </div>
-            )}
-           
-            <div className="position-relative">
-              <Dropdown className="d-flex align-items-center">
-                <Dropdown.Toggle
-                id="dropdown-button-dark-example1"
-                  as="div"
-                  variant="light"
-                  className="border-0 bg-transparent custom-dropdown-toggle d-flex align-items-center gap-1 cursor-pointer"
-                >
-                  <HiOutlineDotsVertical size={18} />
-                  {t("home_tab_r1_h1_l1")}
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu 
-                className="w_max"
-                >
-                  <Dropdown.Item
-                    href="#/action-1"
-                    className="d-flex align-items-center gap-1 m-2 p-0"
-                  >
-                    <img
-                      src={cancel}
-                      alt="cancel"
-                      className="img-fluid"
-                      style={{
-                        width: "20px",
-                        height: "20px",
-                        objectFit: "contain",
-                      }}
-                    />
-                    <span className="fs-15 lh-1 fw-normal">
-                      {t("cancel_signing_process")}
-                    </span>
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    href="#/action-2"
-                    className="d-flex align-items-center gap-2 m-2 p-0"
-                  >
-                    <RiDeleteBin2Line size={18} />
-                    <span className="fs-15 lh-1 fw-normal">
-                      {t("delete_agreement")}
-                    </span>
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-            </div>
-            <span className="text-nowrap fs-14">{t("home_tab_r1_h1_l2")}</span>
-          </>
-        )}
-      </div>
-    );
-  };
-
-  const StatusBadge = ({ status }) => {
-    const { t } = useTranslation();
-
-    const statusMap = {
-      Generated: "הופק",
-      Sent: "נשלח",
-      Viewed: "נצפה",
-      Signed: "נחתם",
-      "Signed and Executed": "נחתם ויצא לפועל",
-      "Signed and Registered": "נחתם ונרשם",
-    };
-
-    const translatedStatus = t(status);
-    const statusKey = statusMap[translatedStatus] || translatedStatus;
-
-    const statusStyles = {
-      הופק: { backgroundColor: "#f3f4f6", color: "#6b7280" },
-      נשלח: { backgroundColor: "#fef3c7", color: "#d97706" },
-      נצפה: { backgroundColor: "#fee2e2", color: "#dc2626" },
-      נחתם: { backgroundColor: "#ecfdf5", color: "#10b981" },
-      "נחתם ויצא לפועל": { backgroundColor: "#ecfdf5", color: "#10b981" },
-      "נחתם ונרשם": { backgroundColor: "#ecfdf5", color: "#10b981" },
-    };
-
-    return (
-      <span
-        className="px-4 my-auto text-center fw-semibold rounded-pill d-flex align-items-center justify-content-center"
-        style={{
-          ...statusStyles[statusKey],
-          minHeight: "28px",
-          width: "123px",
-        }}
-      >
-        {translatedStatus}
-      </span>
-    );
   };
 
   return (
@@ -604,14 +491,6 @@ const Agreements = () => {
           </div>
         </div>
       </div>
-      {/** Mobile Screen */}
-      <AgreementsMobile 
-      ActionButtons={ActionButtons}  
-      StatusBadge={StatusBadge} 
-      handletoggle={handleToggle} 
-      handleOpen={handleOpen}
-      selectData={tableData}
-      />
     </>
   );
 };

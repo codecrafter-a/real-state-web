@@ -23,13 +23,6 @@ const AgreementsTable = ({
 }) => {
   console.log(" ~ AgreementsTable ~ selectedStatus:", selectedStatus);
   const { t } = useTranslation();
-  const borderColors = {
-    default: "#f87171",
-    signed: "#10b981",
-    executed: "#fdba74",
-    registered: "#3b82f6",
-    viewed: "#f87171",
-  };
   return (
     <div className="mt-4 ">
       <table className="table text-center d-none d-md-table">

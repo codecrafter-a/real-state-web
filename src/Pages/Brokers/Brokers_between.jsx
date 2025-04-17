@@ -729,7 +729,7 @@ const Brokers_between = () => {
                 </Accordion.Item>
               </Accordion>
             </div>
-            <div className="option-item rounded-3 my-3">
+            {/* <div className="option-item rounded-3 my-3">
               <Accordion defaultActiveKey={null} className="custom-accordion ">
                 <Accordion.Item
                   eventKey="0"
@@ -827,7 +827,7 @@ const Brokers_between = () => {
                   </Accordion.Body>
                 </Accordion.Item>
               </Accordion>
-            </div>
+            </div> */}
           </div>
           <div className="text-center mt-4 d-flex flex-col">
             <button

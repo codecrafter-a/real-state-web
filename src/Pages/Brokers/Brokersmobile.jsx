@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, {useState} from 'react'
 import { useTranslation } from "react-i18next";
-import "../Brokers/Brokers.css";
 import key_vertical from "../../assets/images/key_vertical.svg";
 import add_reaction from "../../assets/images/add_reaction.svg";
 import add_home from "../../assets/images/add_home.svg";
@@ -15,309 +14,55 @@ import { Modal, Form, InputGroup, Button, Row, Col } from "react-bootstrap";
 import gyiphy from "../../assets/images/celebration.gif";
 import Toggle from "../../Componant/Common/Toggle/Toggle";
 import close from "../../assets/images/close_small.png";
-import garage_door from "../../assets/images/garage_door.svg";
 import Next from "../../assets/images/Next.jpg";
-const Brokers = () => {
-  const { t } = useTranslation();
-  const [isOpen, setIsOpen] = useState(false);
-  const [isShow, setIsShow] = useState(false);
-  const [isView, setIsView] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
-  const [sentSuccess, setSentSuccess] = useState(false);
-  const [showDetails, setShowDetails] = useState(false);
-  const [propertySection, setPropertySection] = useState(false);
 
-  const handlePropertysection = () => {
-    setPropertySection(true);
-  };
 
-  const handlecloseProperty = () => {
-    setPropertySection(false);
-  };
-
-  const handleSearchClick = () => {
-    setShowDetails(true); 
-  };
-
-  const handleSearchClose = () => {
-    setShowDetails(false);
-  };
-
-  const handleOpen = () => {
-    setIsOpen(true);
-  };
-  const handleShow = () => {
-    setIsShow(true);
-  };
-  const handleView = () => {
-    setIsView(true);
-  };
-  const handleSentSuccess = () => {
-    setShowSuccess(false);
-    setSentSuccess(true);
-  };
-  const handleIsShow = () => {
-    setIsView(false);
-    setShowSuccess(true);
-  };
-
+const Brokersmobile = () => {
+    const { t } = useTranslation();
+     const [isOpen, setIsOpen] = useState(false);
+      const [isShow, setIsShow] = useState(false);
+      const [isView, setIsView] = useState(false);
+      const [showSuccess, setShowSuccess] = useState(false);
+      const [sentSuccess, setSentSuccess] = useState(false);
+      const [showDetails, setShowDetails] = useState(false);
+      const [propertySection, setPropertySection] = useState(false);
+    
+      const handlePropertysection = () => {
+        setPropertySection(true);
+      };
+    
+      const handlecloseProperty = () => {
+        setPropertySection(false);
+      };
+    
+      const handleSearchClick = () => {
+        setShowDetails(true); 
+      };
+    
+      const handleSearchClose = () => {
+        setShowDetails(false);
+      };
+    
+      const handleOpen = () => {
+        setIsOpen(true);
+      };
+      const handleShow = () => {
+        setIsShow(true);
+      };
+      const handleView = () => {
+        setIsView(true);
+      };
+      const handleSentSuccess = () => {
+        setShowSuccess(false);
+        setSentSuccess(true);
+      };
+      const handleIsShow = () => {
+        setIsView(false);
+        setShowSuccess(true);
+      };
   return (
     <>
-      <div className="p-md-4 p-2 custom-col bg-white rounded-3 d-none d-md-block">
-        <p className="w-100 text-center screen-1 border-bottom py-3 mb-4 d-none d-md-block">
-          {t("broker_title")}
-        </p>
-        <div
-          className="custom-scrollbar overflow-y-auto overflow-x-hidden px-4"
-          style={{ maxHeight: "594px" }}
-        >
-          <div className="card p-3 border  rounded-3 mb-4">
-            <div className="form_group mb-2 mb-xl-0 d-flex justify-content-between">
-              <h5 className=" text-embed-500  fs-5 fw-semibold lh-1 mb-4">
-                {t("customer_detail")}
-              </h5>
-              <button
-                type="button"
-                className="border-teal mt-2 d-flex align-items-center justify-content-center rounded-pill py-1 px-4 search-button"
-                onClick={handleOpen}
-              >
-                <div className="d-flex align-items-center justify-content-center">
-                  <img className="me-1" src={add_reaction} alt="Add Client" />
-                  <span className="fs-17 fw-semibold lh-1">
-                    {t("Add_broker")}{" "}
-                  </span>
-                </div>
-              </button>
-            </div>
-            <div className="mb-3">
-              <label for="searchInput" className="form-label fw-semibold">
-                {t("age_details_title")}
-              </label>
-              <div className="border border-[#D6D6D6] bg-white rounded w-75 px-3">
-                <div className="d-flex">
-                  <input
-                    onChange={handleSearchClick}
-                    type="text"
-                    className="form-control border-0 p-0"
-                    placeholder={t("age_title_placeholder")}
-                  />
-                  <button className="btn" type="button">
-                    <img src={search} alt="Search" />
-                  </button>
-                </div>
-              </div>
-            </div>
-            {showDetails && (
-              <>
-                <div className="border rounded w-full">
-                  <div className="d-flex flex-row justify-content-between px-3 py-2">
-                    <div className="d-flex flex-col">
-                      <label>{t("broker_name")}</label>
-                      <input
-                        type="text"
-                        className="form-control border-0 p-0"
-                        placeholder="Shirims@gmail.com | 054-4692650"
-                        values=""
-                      />
-                    </div>
-                    <div className="d-flex flex-row justify-content-end">
-                      <button
-                        className="btn p-0"
-                        type="button"
-                        onClick={handleSearchClose}
-                      >
-                        <img src={close} alt="Search" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </>
-            )}
-          </div>
-          <div className="card p-3 border  rounded-3 mb-4">
-            <div className="form_group mb-2 mb-xl-0 d-flex justify-content-between">
-              <h5 className=" text-embed-500 fs-5 fw-semibold lh-1 mb-4">
-                {t("age_pro_section")}
-              </h5>
-              <button
-                type="button"
-                onClick={handleShow}
-                className="border-teal mt-2 d-flex align-items-center justify-content-center rounded-pill py-1 px-4 search-button"
-              >
-                <div className="d-flex align-items-center justify-content-center">
-                  <img className="me-1" src={add_home} alt="Add Client" />
-                  <span className="fs-17 fw-semibold lh-1">
-                    {t("Add_Property")}{" "}
-                  </span>
-                </div>
-              </button>
-            </div>
-            <div className="mb-3">
-              <label for="searchInput" className="form-label fw-semibold">
-                {t("age_pro_section_title")}
-              </label>
-              <div className="border border-[#D6D6D6] rounded w-75 px-3">
-                <div className="d-flex">
-                  <input
-                    onChange={handlePropertysection}
-                    type="text"
-                    className="form-control border-0 p-0"
-                    placeholder={t("age_pro_asset_address")}
-                  />
-                  <button className="btn" type="button">
-                    <img src={search} alt="Search" />
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {propertySection && (
-              <>
-                <div className="w-full">
-                  <div className="d-flex flex-row justify-content-between border rounded my-2 px-3 py-2 w-75">
-                    <div className="d-flex flex-row align-item-center gap-2">
-                      <div className="my-2">
-                        <img src={key_vertical} alt="key vertical" />
-                      </div>
-                      <div>
-                        <label>{t("property_br_address")}</label>
-                        <input
-                          type="text"
-                          className="form-control border-0 p-0"
-                          placeholder="שכירות : 5000 לחודש"
-                          values=""
-                        />
-                      </div>
-                    </div>
-                    <div className="d-flex flex-row justify-content-end">
-                      <button
-                        className="btn p-0"
-                        type="button"
-                        onClick={handlecloseProperty}
-                      >
-                        <img src={close} alt="Search" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <div className="d-flex align-items-center gap-2 justify-content-start">
-                  <div className="border-teal rounded-2 p-2 my-2 iconbox flex flex-column justify-content-center align-items-center bg-teal-100">
-                    <img src={key_vertical} alt="" />
-                    <span className="fs-6 fw-normal lh-base text-center">
-                      {t("age_tran_type_1")}
-                    </span>
-                  </div>
-                  <div>
-                    <span className="fw-semibold">{t("rental_months")}</span>
-                    <Form.Control
-                      type="number"
-                      className=" w-100"
-                      defaultValue="12"
-                    />
-                  </div>
-                  <div className="mx-0">
-                    <span className=" fw-semibold">{t("br_commission")}</span>
-                    <Form.Control
-                      type="number"
-                      className="t w-100"
-                      defaultValue="30"
-                    />
-                  </div>
-
-                  <div className=" mt-4">
-                    <InputGroup className="w-auto">
-                      <Form.Select className="text-center">
-                        <option>%</option>
-                        <option>₪</option>
-                      </Form.Select>
-                    </InputGroup>
-                  </div>
-                </div>
-                <div className="d-flex align-items-center gap-2 justify-content-start">
-                  <div className="border-teal rounded-2 p-2 my-2 iconbox flex flex-column justify-content-center align-items-center bg-teal-100">
-                    <img src={garage_door} alt="" />
-                    <span className="fs-6 fw-normal lh-base text-center">
-                      {t("age_tran_type_2")}
-                    </span>
-                  </div>
-                  <div className="mx-0">
-                    <span className=" fw-semibold">{t("br_commission")}</span>
-                    <Form.Control
-                      type="number"
-                      className="t w-100"
-                      defaultValue="30"
-                    />
-                  </div>
-
-                  <div className=" mt-4">
-                    <InputGroup className="w-auto">
-                      <Form.Select className="text-center">
-                        <option>%</option>
-                        <option>₪</option>
-                      </Form.Select>
-                    </InputGroup>
-                  </div>
-                </div>
-              </>
-            )}
-          </div>
-          <div className="card p-3 border  rounded-3 mb-4">
-            <h5 className=" text-embed-500 fw-semibold fs-5 lh-1  mb-4">
-              {t("age_note")}
-            </h5>
-            <div className=" px-2 pb-2 w-75">
-              <textarea
-                className="form-control"
-                placeholder={t("age_note_placeholder")}
-                rows="4"
-              ></textarea>
-            </div>
-          </div>
-          <div className="d-flex align-items-center gap-3 mb-4">
-            <div className="d-flex ">
-              <Toggle
-                defaultChecked
-                type={"checkbox"}
-                name="commission"
-                id="toggleImages"
-              />
-              <label className="fs-5 fw-normal lh-1" htmlFor="">
-                {t("age_photos")}
-              </label>
-            </div>
-            <div className="d-flex ">
-              <Toggle
-                defaultChecked
-                type={"checkbox"}
-                name="commission"
-                id="toggleImages"
-              />
-              <label className="fs-5 fw-normal lh-1" htmlFor="">
-                {t("age_pro_attech")}
-              </label>
-            </div>
-          </div>
-          <div className="d-flex gap-3 pb-3 ">
-            <button
-              className="agent-button1  rounded-pill px-5 py-2 fw-bold shadow-sm text-white"
-              onClick={handleView}
-            >
-              {t("age_btn_send")}
-            </button>
-            <button
-              className=" agent-button2 rounded-pill px-4 py-2 fw-bold"
-              onClick={() => setSentSuccess(true)}
-            >
-              {t("age_btn_send_without")}
-            </button>
-            <button className=" agent-button2 rounded-pill px-5 py-1 fw-bold">
-              {t("age_btn_view")}
-            </button>
-          </div>
-        </div>
-      </div>
-      {/** Mobile Screen  */}
-      {/* <div className="bg-transperant  d-block d-md-none">
+     <div className="bg-transperant ">
         <div
           className="row custom-scrollbar overflow-y-auto overflow-x-hidden"
           style={{ maxHeight: "594px" }}
@@ -547,8 +292,7 @@ const Brokers = () => {
             </div>
           </div>
         </div>
-      </div> */}
-      
+      </div>
       <Modal show={isOpen} centered className="modal-container">
         <Modal.Header className="d-flex justify-content-between align-items-center border-0">
           <button className="border-0">
@@ -920,8 +664,9 @@ const Brokers = () => {
           </div>
         </Modal.Body>
       </Modal>
+    
     </>
-  );
-};
+  )
+}
 
-export default Brokers;
+export default Brokersmobile
