@@ -125,6 +125,7 @@ export const usePropertyservices = () => {
 
   return {
     dataPropertyServices,
+    getpropertyservices,
     getClientData,
     slides,
     setLocation,

@@ -43,7 +43,7 @@ const Data = () => {
   }, []);
   return (
     <>
-      <Col className="bg-white shadow-lg rounded-3 p-2 px-4 d-none d-md-block">
+      <Col className="bg-white shadow-lg rounded-3 p-2 px-4">
         <p className="w-100 text-center screen-1 border-bottom py-3 mb-4 d-none d-md-block">
           {t("data_title")}
         </p>
@@ -294,7 +294,7 @@ const Data = () => {
         </div>
       </Col>
       {/** mobile Screen on */}
-      <div className="d-block d-md-none ">
+      {/* <div className="d-block d-md-none ">
         <div className=" border-2 rounded-3 bg-light mb-4 shadow p-3">
           <div className="w-100 border-bottom">
             <Nav variant="tabs" className="mx-md-3 fs-15 pt-2 ">
@@ -402,46 +402,6 @@ const Data = () => {
                     </div>
                   </div>
                   <CommonPieChart data={pieData} colors={COLORS} />
-                  {/* <div className="row my-3 ">
-                    <div className="col-6 d-flex align-items-center justify-content-center ">
-                      <div className="d-flex flex-column align-items-center text-center">
-                        <img
-                          src={garage_door}
-                          alt="garage_door"
-                          className=" img-fluid"
-                        />
-                        <p
-                          className="fw-semibold fs-5 lh-1 mb-0 text-teal text-nowrap text-center"
-                          style={{ fontSize: largeFont }}
-                        >
-                            {t("data_garage_title")}
-                        </p>
-                        <p className="fs-2 fw-semibold text-dark lh-1 my-1">₪25,378</p>
-                        <p className="screen-5 "><span className="fs-3 text-black fw-semibold px-1 lh-1">08</span>{t("data_garage_Subtitle2")}</p>      
-                      </div> 
-                    </div>
-                    <div className="col-6 d-flex align-items-center justify-content-center">
-                      <div className="d-flex flex-column align-items-center text-center">
-                        <img
-                          src={key_vertical} 
-                          alt="key icon"
-                          className="img-fluid"
-                          
-                        />
-
-                        <p className="fw-semibold fs-5 mb-0 lh-1 text-teal text-nowrap text-center">
-                          {t("data_key_title")}:
-                        </p>
-
-                        <p className="fs-2 fw-semibold text-dark lh-1 my-1">₪10,281</p>
-
-                        <p className="screen-5 mb-0">
-                          <span className="fw-semibold fs-3 text-black px-1 lh-1">15</span>
-                          {t("data_key_subTitle1")}
-                        </p>
-                      </div>
-                    </div>
-                  </div> */}
                   <div className="row my-3">
                     <div className="col-5 d-flex align-items-center justify-content-center">
                       <div className="d-flex flex-column align-items-center text-center">
@@ -507,7 +467,7 @@ const Data = () => {
             <div className="col-6">
               <div className="d-flex flex-column align-items-center gap-2">
                 <h3 className="text-teal fw-bold fs-1 mb-0">123</h3>
-                <p className="fs-17 fw-semibold lh-1">נכסים במערכת</p>
+                <p className="fs-17 fw-semibold lh-1">{t("data_homework")}</p>
               </div>
             </div> 
             <div className="col-6">
@@ -517,20 +477,20 @@ const Data = () => {
                         alt="garage_door"
                         className="img-fluid mb-2" /> 
                       <p className="fw-semibold fs-2 lh-1 mb-0">150</p> 
-                      <p className="fw-semibold fs-15 lh-1 mb-0"> קנייה</p>                               
+                      <p className="fw-semibold fs-15 lh-1 mb-0"> {t("pro_add_del_buy")}</p>                               
                    </div>
                    <div className="d-flex gap-2">
                       <img src={key_vertical}
                         alt="garage_door"
                         className="img-fluid mb-2" /> 
                       <p className="fw-semibold fs-2 lh-1 mb-0">175</p> 
-                      <p className="fw-semibold fs-15 lh-1 mb-0">השכרה</p>
+                      <p className="fw-semibold fs-15 lh-1 mb-0">{t("pro_add_del_rent")}</p>
                    </div>
                 </div>
              </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

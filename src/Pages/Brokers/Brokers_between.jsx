@@ -4,11 +4,11 @@ import search from "../../assets/images/search.svg";
 import add_reaction from "../../assets/images/add_reaction.svg";
 import add_home from "../../assets/images/add_home.svg";
 import Toggle from "../../Componant/Common/Toggle/Toggle";
-import { Modal, Form, InputGroup } from "react-bootstrap";
+import { Modal} from "react-bootstrap";
 import Next from "../../assets/images/Next.jpg";
-import sms from "../../assets/images/sms.svg";
-import email from "../../assets/images/email.svg";
-import group from "../../assets/images/Group 2538.png";
+// import sms from "../../assets/images/sms.svg";
+// import email from "../../assets/images/email.svg";
+// import group from "../../assets/images/Group 2538.png";
 import successIcon from "../../assets/images/success_icon.svg";
 import Accordion from "react-bootstrap/Accordion";
 import whatsapp from "../../assets/images/wa, whatsapp, message, communication, chat.svg";
@@ -340,7 +340,7 @@ const Brokers_between = () => {
         </div>
       </div>
       {/** Mobile Screen View */}
-      <div className="bg-transperant  d-block d-md-none">
+      {/* <div className="bg-transperant  d-block d-md-none">
         <div className="row custom-scrollbar overflow-y-auto overflow-x-hidden">
           <div className="col-12">
             <div className="card p-3 border bg-light rounded-3 mb-4">
@@ -614,7 +614,7 @@ const Brokers_between = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <Modal
         show={isView}
         onHide={() => {

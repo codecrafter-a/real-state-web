@@ -1,20 +1,20 @@
 import React, { useState} from "react";
-import { Col, Nav } from "react-bootstrap";
+import {  Nav } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import Tab from "../../Componant/Common/Tab/Tab";
 import search from "../../assets/images/search.png";
 import "../Invocies/invocies.css";
-import InvoicesTable from "./InvoicesTable";
 import { IoIosArrowDown } from "react-icons/io";
 import { useInvoiceServices } from "../../Services/InvoicesServices";
-// import { Button, Accordion } from "react-bootstrap";
-// import { FaEye, FaDownload } from "react-icons/fa";
-// import { BsWhatsapp } from "react-icons/bs";
-// import { MdEmail } from "react-icons/md";
+import { Button, Accordion } from "react-bootstrap";
+import { FaEye, FaDownload } from "react-icons/fa";
+import { BsWhatsapp } from "react-icons/bs";
+import { MdEmail } from "react-icons/md";
 import Modal from "react-bootstrap/Modal";
 import AddinvoicesIcon from "../../assets/images/addinvoices.png";
 import pdfinstall from "../../assets/images/pdf.png";
-const Invocies = () => {
+
+const Invoices_mobile = () => {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState("all");
   const { getInvoiceService } = useInvoiceServices();
@@ -32,10 +32,7 @@ const Invocies = () => {
   const handleClick = () => setIsOpen(true);
   return (
     <>
-      <Col className="bg-white shadow-lg rounded-3 my-3">
-        <p className="py-3 mb-4 screen-1 text-center border-bottom d-none d-md-block">
-          {t("invoice_title")}
-        </p>
+      <div className="bg-white shadow-lg rounded-3 my-3">
         <div className="w-100 border-bottom">
           <Nav variant="tabs" className=" pt-2">
             <Tab
@@ -130,9 +127,6 @@ const Invocies = () => {
                   <IoIosArrowDown />
                 </div>
               </div>
-              <div className=" py-4">
-                <InvoicesTable data={invoiceData} handleClick={handleClick}/>
-              </div>
             </>
           )}
           {activeTab === "recent" && (
@@ -141,8 +135,8 @@ const Invocies = () => {
             </div>
           )}
         </div>
-      </Col>
-      {/* <Accordion className="d-block p-0 d-md-none d-flex flex-column gap-3">
+      </div>
+      <Accordion className="p-0 d-flex flex-column gap-3">
         {invoiceData.map((row, index) => (
           <Accordion.Item
             eventKey={index.toString()}
@@ -196,7 +190,7 @@ const Invocies = () => {
             </Accordion.Body>
           </Accordion.Item>
         ))}
-      </Accordion> */}
+      </Accordion>
       <Modal
         show={isOpen}
         center
@@ -241,7 +235,7 @@ const Invocies = () => {
               </Modal.Body>
       </Modal>
     </>
-  );
-};
+  )
+}
 
-export default Invocies;
+export default Invoices_mobile

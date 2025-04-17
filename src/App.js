@@ -4,9 +4,7 @@ import Layout from "./Componant/Common/Layout/Layout";
 import LanguageHandler from "./Componant/language-selector";
 import Signin from "./Pages/Signin/Signin.jsx";
 import Home from "./Pages/Home/Home.jsx";
-import Data from "./Pages/Data/Data.jsx";
-import Property from "./Pages/Property/Property.jsx";
-import Invocies from "./Pages/Invocies/Invocies.jsx";
+import Property from "./Pages/property/Property.jsx";
 import Setting from "./Pages/Setting/Setting.jsx";
 import PersonalArea from "./Pages/PersonalArea/PersonalArea.jsx";
 import Report from "./Pages/Report/Report.jsx";
@@ -20,13 +18,15 @@ import EditAgents from "./Pages/Agents/EditAgents.jsx";
 import AddCustomer from "./Pages/Customers/add-customer-en/Addcustomeren.jsx";
 import AuthenticationService from "./Services/AuthenticationService.jsx";
 import { useEffect, useState} from 'react';
-import Brokers_between from "./Pages/Brokers/Brokers_between.jsx";
-import Landregistry from "../src/Pages/LandRegistry/Landregistry.jsx";
-import Allproperty from "./Pages/Property/Allproperty.jsx";
 import Agreementsen from "./Pages/Agreementes/Agreementsen.jsx";
 import Customeren from "./Pages/Customers/Customeren.jsx";
 import Brokersen from "./Pages/Brokers/Brokersen.jsx";
 import Property_owneren from "./Pages/Brokers/Property_owneren.jsx";
+import Data_en from "./Pages/Data/Data_en.jsx";
+import Brokers_betweenen from "./Pages/Brokers/Brokers_betweenen.jsx";
+import Invoicesen from "./Pages/Invocies/Invoicesen.jsx";
+import Landregistryen from "./Pages/LandRegistry/Landregistryen.jsx";
+import Allpropertyen from "./Pages/property/Allpropertyen.jsx";
 
 
 
@@ -73,24 +73,24 @@ function App() {
               <Route path="home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
               <Route path="customers" element={<ProtectedRoute><Customeren /></ProtectedRoute>} />
               <Route path="customers/add-customers" element={<ProtectedRoute><AddCustomer /></ProtectedRoute>} />
-              <Route path="property" element={<ProtectedRoute><Allproperty/></ProtectedRoute>} />
+              <Route path="property" element={<ProtectedRoute><Allpropertyen/></ProtectedRoute>} />
               <Route path="agents" element={<ProtectedRoute><Agents /></ProtectedRoute>} />
               <Route path="agent-management" element={<ProtectedRoute><AgentManagement /></ProtectedRoute>} />
               <Route path="agents/add-agents" element={<ProtectedRoute><AddAgents /></ProtectedRoute>} />
               <Route path="agents/edit-agents" element={<ProtectedRoute><EditAgents /></ProtectedRoute>} />
               <Route path="setting" element={<ProtectedRoute><Setting /></ProtectedRoute>} />
-              <Route path="invoices" element={<ProtectedRoute><Invocies /></ProtectedRoute>} />
+              <Route path="invoices" element={<ProtectedRoute><Invoicesen/></ProtectedRoute>} />
               <Route path="agreements" element={<ProtectedRoute><Agreementsen /></ProtectedRoute>} />
-              <Route path="data" element={<ProtectedRoute><Data /></ProtectedRoute>} />
+              <Route path="data" element={<ProtectedRoute><Data_en /></ProtectedRoute>} />
               <Route path="personal-area" element={<ProtectedRoute><PersonalArea /></ProtectedRoute>} />
               <Route path="report" element={<ProtectedRoute><Report /></ProtectedRoute>} />
               <Route path="personal-area/change-password" element={<ProtectedRoute><ChangePassword /></ProtectedRoute>} />
               <Route path="personal-area/change-email" element={<ProtectedRoute><ChangeEmail /></ProtectedRoute>} />
               <Route path="personal-area/signature-invoice" element={<ProtectedRoute><SignatureInvoice /></ProtectedRoute>} />
               <Route path="broker" element={<ProtectedRoute><Brokersen /></ProtectedRoute>} />
-              <Route path="landregistry" element={<ProtectedRoute><Landregistry/></ProtectedRoute>} />
+              <Route path="landregistry" element={<ProtectedRoute><Landregistryen/></ProtectedRoute>} />
               <Route path="property_owner" element={<ProtectedRoute><Property_owneren/></ProtectedRoute>}/>
-              <Route path="broker_between" element={<ProtectedRoute><Brokers_between/></ProtectedRoute>}/>
+              <Route path="broker_between" element={<ProtectedRoute><Brokers_betweenen/></ProtectedRoute>}/>
               <Route path="property/add_property" element={<ProtectedRoute><Property /></ProtectedRoute>}/>
               <Route path="*" element={<Navigate to={`/${i18n.language}/signin`}/>} />
             </Routes>

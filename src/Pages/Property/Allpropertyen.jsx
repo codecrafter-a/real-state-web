@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react'
-import Brokers_betweenmobile from './Brokers_betweenmobile';
+import Allproperty from './Allproperty';
+import Allpropertymobile from './Allpropertymobile';
 
-const Brokers_betweenen = () => {
-     const [isMobileView, setIsMobileView] = useState(false);
+const Allpropertyen = () => {
+    const [isMobileView, setIsMobileView] = useState(false);
         useEffect(() => {
             const handleResize = () => {
               setIsMobileView(window.innerWidth < 867);
@@ -13,7 +14,7 @@ const Brokers_betweenen = () => {
             return () => window.removeEventListener("resize", handleResize);
           }, []);
         
-      return !isMobileView ? <Brokers_betweenen/> : <Brokers_betweenmobile/>
+      return !isMobileView ? <Allproperty/> : <Allpropertymobile/>
 }
 
-export default Brokers_betweenen
+export default Allpropertyen
