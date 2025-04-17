@@ -4,7 +4,7 @@ import { TbMailForward } from "react-icons/tb";
 import { useTranslation } from "react-i18next";
 import { MdOutlineDeleteForever } from "react-icons/md";
 import { Accordion } from "react-bootstrap";
-import key from "../../assets/images/key_vertical.svg";
+
 import iconHome from "../../assets/images/icon_home.svg";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { FaWhatsapp } from "react-icons/fa";
@@ -16,24 +16,13 @@ import { LuBookMinus } from "react-icons/lu";
 import { Dropdown } from "react-bootstrap";
 import cancel from "../../assets/images/cancel.png";
 
-
 const AgreementsTable = ({
   handleOpen,
   selectedStatus,
   selectData,
 }) => {
   console.log(" ~ AgreementsTable ~ selectedStatus:", selectedStatus);
-
   const { t } = useTranslation();
-
-  const borderColors = {
-    default: "#f87171",
-    signed: "#10b981",
-    executed: "#fdba74",
-    registered: "#3b82f6",
-    viewed: "#f87171",
-  };
-
   return (
     <div className="mt-4 ">
       <table className="table text-center d-none d-md-table">
@@ -128,20 +117,20 @@ const AgreementsTable = ({
                       <IoMdAttach size={18} />
                       {t("home_tab_r1_h1_l2")}
                     </span>
-                    <Dropdown className="d-flex align-items-center">
+                    <Dropdown className="d-flex bg-white align-items-center">
                       <Dropdown.Toggle
                         as="div"
                         variant="light"
-                        className="border-0 bg-transparent custom-dropdown-toggle d-flex align-items-center gap-1 cursor-pointer"
+                        className="border-0  custom-dropdown-toggle d-flex align-items-center gap-1 cursor-pointer"
                       >
                         <HiOutlineDotsVertical size={18} />
                         {t("home_tab_r1_h1_l1")}
                       </Dropdown.Toggle>
 
-                      <Dropdown.Menu className="w_max more-menu">
+<Dropdown.Menu style={{ width: '200px' }} className=" z-3 shadow d-flex flex-column py-2 gap-1">
                         <Dropdown.Item
                           href="#/action-1"
-                          className="d-flex  align-items-center gap-1 m-2 p-0"
+                          className="d-flex align-items-center gap-1 m-2 p-0"
                         >
                           <img src={cancel} alt="cancel" />
                           <span className="fs-15 lh-1 fw-normal">
@@ -232,7 +221,7 @@ const AgreementsTable = ({
           ))}
         </tbody>
       </table>
-      <Accordion className=" p-0 d-md-none d-flex flex-column gap-3 ">
+      {/* <Accordion className=" p-0 d-md-none d-flex flex-column gap-3 ">
         {selectData.map((row, index) => (
           <Accordion.Item
             eventKey={index.toString()}
@@ -298,14 +287,14 @@ const AgreementsTable = ({
             </Accordion.Body>
           </Accordion.Item>
         ))}
-      </Accordion>
+      </Accordion> */}
     </div>
   );
 };
 const ActionButtons = ({ type, icon, onDelete }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation();     
   return (
-    <div className="d-flex align-items-center gap-2 p-2 bg-white ">
+    <div className="d-flex align-items-center gap-2 p-1 bg-white ">
       {type === "default" && (
         <>
           <div className="d-md-flex align-items-center gap-1 cursor-pointer">
@@ -358,7 +347,7 @@ const StatusBadge = ({ status }) => {
   const statusKey = statusMap[translatedStatus] || translatedStatus;
 
   const statusStyles = {
-    הופק: { backgroundColor: "#f3f4f6", color: "#6b7280" },
+    "Genrated" : { backgroundColor: "#f3f4f6", color: "#6b7280" },
     נשלח: { backgroundColor: "#fef3c7", color: "#d97706" },
     נצפה: { backgroundColor: "#fee2e2", color: "#dc2626" },
     נחתם: { backgroundColor: "#ecfdf5", color: "#10b981" },

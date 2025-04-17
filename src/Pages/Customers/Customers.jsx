@@ -12,7 +12,6 @@ import { Modal } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import { useClientService } from "../../Services/ClientService";
 import close from "../../assets/images/ButtonClose.png";
-import CustomerMobile from "./CustomerMobile";
 import CustomerTable from "./CustomerTable";
 const Customer = () => {
   const { t } = useTranslation();
@@ -26,8 +25,7 @@ const Customer = () => {
   const [clientNameInput, setClientNameInput] = useState("");
   const [clientType, setClientType] = useState("");
   const [recent, setRecent] = useState("");
-  const [filteredClients, setFilteredClients] = useState([]);
-  const { getClientData } = useClientService();
+  const { getClientData,  filteredClients, setFilteredClients, } = useClientService();
 
   console.log(filteredClients, "getClientsgetClients");
 
@@ -328,7 +326,7 @@ const Customer = () => {
               <hr className="border-secondary" />
             </h3>
 
-            <Modal.Body className=" px-5 py-0 modal-body-scrollable">
+            <Modal.Body className=" px-5 py-0 modal-body-scrollable" >
               <div className="d-block d-md-none">
                 <div className="flex-grow-1 text-start">
                   <label className="mb-1 fs-15 lh-1 fw-semibold">
@@ -461,12 +459,6 @@ const Customer = () => {
           </Modal>
         </div>
       </div>
-      {/* Mobile size */}
-      <CustomerMobile
-        handleShowModal={handleShowModal}
-        filteredClients={filteredClients}
-        setFilteredClients={setFilteredClients}
-      />
     </>
   );
 };

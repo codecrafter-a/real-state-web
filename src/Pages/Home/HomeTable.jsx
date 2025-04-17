@@ -18,6 +18,7 @@ import { LuBookMinus } from "react-icons/lu";
 import { Dropdown, Modal } from "react-bootstrap";
 import cancel from "../../assets/images/cancel.png";
 import successIcon from "../../assets/images/success_icon.svg";
+import { useNavigate } from "react-router-dom";
 
 const StatusBadge = ({ status }) => {
   const { t } = useTranslation();
@@ -46,7 +47,7 @@ const StatusBadge = ({ status }) => {
 
   return (
     <span
-      className="px-3 text-center fw-semibold rounded-pill d-flex align-items-center justify-content-center"
+      className=" text-center fw-semibold rounded-pill d-flex align-items-center justify-content-center"
       style={{ ...statusStyles[statusKey], minHeight: "28px" }}
     >
       {translatedStatus}
@@ -55,6 +56,7 @@ const StatusBadge = ({ status }) => {
 };
 
 const HomeTable = () => {
+  const navigate = useNavigate()
   const { t } = useTranslation();
   const { i18n } = useTranslation();
   const isRTL = i18n.dir() === "rtl";
@@ -88,7 +90,7 @@ const HomeTable = () => {
               <th className="table-head px-4 py-3">{t("home_tab_h6")}</th>
               <th className="table-head px-4 py-3">{t("home_tab_h5")}</th>
               <th className="table-head px-4 py-3">{t("home_tab_h4")}</th>
-              <th className="table-head px-4 py-3">{t("home_tab_h3")}</th>
+              <th className="table-head px-0 py-3">{t("home_tab_h3")}</th>
               <th className="table-head px-4 py-3">{t("home_tab_h2")}</th>
               <th className="table-head px-4 py-3">{t("home_tab_h1")}</th>
             </tr>
@@ -144,7 +146,7 @@ const HomeTable = () => {
                         </span>
                         <span>{t("home_tab_r1_h1_l2")}</span>
                       </span>
-                      <Dropdown className="d-flex align-items-center">
+                      <Dropdown className="d-flex align-items-center ">
                         <Dropdown.Toggle
                           as="div"
                           variant="light"
@@ -154,7 +156,7 @@ const HomeTable = () => {
                           {t("home_tab_r1_h1_l1")}
                         </Dropdown.Toggle>
 
-                        <Dropdown.Menu className="w_max more-menu">
+                        <Dropdown.Menu style={{ width: '200px' }} className=" z-3 shadow d-flex flex-column py-2 gap-1">
                           <Dropdown.Item
                             href="#/action-1"
                             className="d-flex  align-items-center gap-1 m-2 p-0"
@@ -359,7 +361,7 @@ const HomeTable = () => {
             </div>
             <span className="text-success">נכסים</span>
           </div>
-          <button className="hr_btn rounded-pill fw-semibold px-sm-5 px-3 py-2">
+          <button className="hr_btn rounded-pill fw-semibold px-sm-5 px-3 py-2" onClick={() =>  navigate(`/${i18n.language}/Property`)}>
             {t("all_properties")}
           </button>
         </div>

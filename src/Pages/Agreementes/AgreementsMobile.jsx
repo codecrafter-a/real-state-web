@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Nav } from "react-bootstrap";
 import Tab from "../../Componant/Common/Tab/Tab";
@@ -6,23 +6,174 @@ import { motion } from "framer-motion";
 import search from "../../assets/images/search.png";
 import { Accordion } from "react-bootstrap";
 import Toggle from "../../Componant/Common/Toggle/Toggle";
+import { useNavigate, useParams } from "react-router-dom";
 import key from "../../assets/images/key_vertical.svg";
 import { useAgreementServices } from "../../Services/AgreementServices";
 import { IoIosArrowDown } from "react-icons/io";
-      const AgreementsMobile = ({StatusBadge, ActionButtons, handletoggle, handleOpen, selectData}) => {
-    const { t } = useTranslation();
-    const [activeTab, setActiveTab] = useState("all");
-    const {  searchQuery, handleSearchChange } = useAgreementServices();
-    const [isOpen, setIsOpen] = useState(false);
-    
-      const handleisopen = () => {
-        setIsOpen((prev) => !prev);
-      };
-    
-      
+import { TbMailForward } from "react-icons/tb";
+import { Dropdown } from "react-bootstrap";
+import cancel from "../../assets/images/cancel.png";
+import { HiOutlineDotsVertical } from "react-icons/hi";
+import { RiDeleteBin2Line } from "react-icons/ri";
+import AddinvoicesIcon from "../../assets/images/addinvoices.png";
+import Modal from "react-bootstrap/Modal";
+const ActionButtons = ({ type, icon }) => {
+  const { t } = useTranslation();
+  return (
+    <div className="d-flex align-items-center gap-2  p-2  bg-white">
+      {(type === "genrated" || "sent" || "viewd") && (
+        <>
+          <div className="d-flex align-items-center gap-1">
+            <TbMailForward />
+            <span className="text-nowrap fs-14">{t("home_tab_r1_h1_l4")}</span>
+          </div>
+          {icon && (
+            <div className="d-flex align-items-center gap-1">
+              {icon}
+              <span className="text-nowrap fs-14">
+                {t("home_tab_r1_h1_l3")}
+              </span>
+            </div>
+          )}
+
+          <div className="position-relative">
+            <Dropdown className="d-flex align-items-center">
+              <Dropdown.Toggle
+                id="dropdown-button-dark-example1"
+                as="div"
+                variant="light"
+                className="border-0 bg-transparent custom-dropdown-toggle d-flex align-items-center gap-1 cursor-pointer"
+              >
+                <HiOutlineDotsVertical size={18} />
+                {t("home_tab_r1_h1_l1")}
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu className="w_max">
+                <Dropdown.Item
+                  href="#/action-1"
+                  className="d-flex align-items-center gap-1 m-2 p-0"
+                >
+                  <img
+                    src={cancel}
+                    alt="cancel"
+                    className="img-fluid"
+                    style={{
+                      width: "20px",
+                      height: "20px",
+                      objectFit: "contain",
+                    }}
+                  />
+                  <span className="fs-15 lh-1 fw-normal">
+                    {t("cancel_signing_process")}
+                  </span>
+                </Dropdown.Item>
+                <Dropdown.Item
+                  href="#/action-2"
+                  className="d-flex align-items-center gap-2 m-2 p-0"
+                >
+                  <RiDeleteBin2Line size={18} />
+                  <span className="fs-15 lh-1 fw-normal">
+                    {t("delete_agreement")}
+                  </span>
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </div>
+          <span className="text-nowrap fs-14">{t("home_tab_r1_h1_l2")}</span>
+        </>
+      )}
+    </div>
+  );
+};
+
+const StatusBadge = ({ status }) => {
+  const { t } = useTranslation();
+
+  const statusMap = {
+    Generated: "הופק",
+    Sent: "נשלח",
+    Viewed: "נצפה",
+    Signed: "נחתם",
+    "Signed and Executed": "נחתם ויצא לפועל",
+    "Signed and Registered": "נחתם ונרשם",
+  };
+
+  const translatedStatus = t(status);
+  const statusKey = statusMap[translatedStatus] || translatedStatus;
+
+  const statusStyles = {
+    הופק: { backgroundColor: "#f3f4f6", color: "#6b7280" },
+    נשלח: { backgroundColor: "#fef3c7", color: "#d97706" },
+    נצפה: { backgroundColor: "#fee2e2", color: "#dc2626" },
+    נחתם: { backgroundColor: "#ecfdf5", color: "#10b981" },
+    "נחתם ויצא לפועל": { backgroundColor: "#ecfdf5", color: "#10b981" },
+    "נחתם ונרשם": { backgroundColor: "#ecfdf5", color: "#10b981" },
+  };
+
+  return (
+    <span
+      className="px-4 my-auto text-center fw-semibold rounded-pill d-flex align-items-center justify-content-center"
+      style={{
+        ...statusStyles[statusKey],
+        minHeight: "28px",
+        width: "123px",
+      }}
+    >
+      {translatedStatus}
+    </span>
+  );
+};
+
+const AgreementsMobile = () => {
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+  const { lang } = useParams();
+  const [activeTab, setActiveTab] = useState("all");
+  const {
+    tableData,
+    searchQuery,
+    selectedStatus,
+    fromDate,
+    toDate,
+    handleStatusChange,
+    handleRemoveStatus,
+    handleSearchChange,
+    setFromDate,
+    setToDate,
+    getAgreementData,
+    setTableData,
+    handleAgreeChange,
+  } = useAgreementServices();
+  const [isOpen, setIsOpen] = useState(false);
+  const [addInvoices, setAddInvoices] = useState(false);
+  const updateModalState = (value) => {
+    setAddInvoices(value);
+  };
+  const handleToggle = (e) => {
+    updateModalState(e.target.checked);
+  };
+
+  const handleClick = () => navigate(`/${lang}/invoices`);
+  const handleInvoice = () => setAddInvoices(true);
+  const handleisopen = () => {
+    setIsOpen((prev) => !prev);
+  };
+
+  useEffect(() => {
+    setTableData(getAgreementData());
+  }, []);
+
+  const borderColors = {
+    default: "#f87171",
+    signed: "#10b981",
+    executed: "#fdba74",
+    registered: "#3b82f6",
+    viewed: "#f87171",
+  };
+
   return (
     <>
-      <div className="d-block d-md-none">
+      <div className="d-block ">
         <div className="bg-white border-2 rounded-2 mb-4 shadow">
           <div className="w-100 border-bottom">
             <Nav variant="tabs" className="mx-md-3 fs-15 pt-2 ">
@@ -66,7 +217,7 @@ import { IoIosArrowDown } from "react-icons/io";
               </div>
             </div>
           </div>
-          <div className="d-md-none d-block">
+          <div className=" d-block">
             <p className="fs-6 fw-semibold lh-1 my-2 text-center text-teal">
               {t("more_filters")}
             </p>
@@ -104,9 +255,9 @@ import { IoIosArrowDown } from "react-icons/io";
                     {t("agreement1_status")}
                   </label>
                   <select className="form-select">
-                     <option>Genrated</option>
-                     <option>Fail</option>
-                     <option>Viewd</option>
+                    <option>Genrated</option>
+                    <option>Fail</option>
+                    <option>Viewd</option>
                   </select>
                 </div>
                 <div className="row px-3">
@@ -125,7 +276,13 @@ import { IoIosArrowDown } from "react-icons/io";
                 </div>
                 <div className="w-100 px-3">
                   <div className="d-flex align-items-center">
-                    <Toggle defaultChecked type="checkbox" id="toggleImages" onChange={handletoggle}/>
+                    <Toggle
+                      defaultChecked
+                      checked={addInvoices}
+                      type="checkbox"
+                      id="toggleImages"
+                      onChange={handleToggle}
+                    />
                     <label
                       className="fs-6 fw-normal lh-1"
                       htmlFor="toggleImages"
@@ -144,37 +301,44 @@ import { IoIosArrowDown } from "react-icons/io";
           </div>
         </div>
         {activeTab === "all" && (
-          <Accordion className="d-block p-0 scroll-height d-md-none d-flex flex-column gap-3 my-2 overflow-y-auto overflow-x-hidden custom-scrollbar">
-            {selectData.map((row, index) => (
+          <Accordion className=" p-0 d-md-none d-flex flex-column gap-3 ">
+            {tableData.map((row, index) => (
               <Accordion.Item
                 eventKey={index.toString()}
                 key={row.id}
-                className="border-top-2 border-top rounded-3 mx-1 border-start-4 overflow-visible"
-                style={{ borderLeft: "6px solid #2CAC74" }}
+                style={{
+                  borderInlineStart: `6px solid ${
+                    borderColors[row.actionType] || "#f87171"
+                  }`,
+                }}
+                className=" card mb-2 border-top"
               >
                 <Accordion.Header>
-                  <div className="d-flex">
-                    <div className=" d-flex align-items-center">
+                  <div className="d-flex align-items-center justify-content-between w-100 gap-2">
+                    <div className="d-flex align-items-center flex-grow-1 gap-2">
                       <div className="p-1">
                         <img
                           src={key}
                           alt="vertical key"
-                          className="img-fluid w-75 h-75"
+                          className="img-fluid"
+                          style={{
+                            width: "30px",
+                            height: "30px",
+                            objectFit: "contain",
+                          }}
                         />
                       </div>
                       <div>
                         <span className="fw-semibold fs-12 d-block">
-                          {" "}
                           {row?.accountNumber} | {row?.date}
                         </span>
                         <p className="fw-bold fs-14 d-block mb-0">
-                          {" "}
                           {t(row?.agreementName)} |{" "}
                           <span className="fw-semibold lh-1 fs-12">
                             {t(row?.agreementType)}
                           </span>
                         </p>
-                        <p className="fw-bold  fs-12 d-block my-0">
+                        <p className="fw-bold fs-12 d-block my-0">
                           {t("sitem3")} :{" "}
                           <span className="fw-semibold lh-1 fs-12">
                             {t(row?.clients)}
@@ -188,18 +352,20 @@ import { IoIosArrowDown } from "react-icons/io";
                         </p>
                       </div>
                     </div>
-                    <div className="my-2">
-                      <StatusBadge status={t(row?.status)} />
+                    <div className="flex-shrink-0 my-2">
+                      <StatusBadge status={row?.status} />
                     </div>
                   </div>
                 </Accordion.Header>
                 <Accordion.Body className="p-0">
-                  <div className="d-flex justify-content-around w-100">
-                    <ActionButtons
-                      type={t(row?.actionType)}
-                      icon={row?.icon}
-                      onDelete={handleOpen}
-                    />
+                  <div className="border-top px-2 ">
+                    <div className="d-flex justify-content-center gap-1 w-100">
+                      <ActionButtons
+                        type={t(row?.actionType)}
+                        icon={row?.icon}
+                        onDelete={handleInvoice}
+                      />
+                    </div>
                   </div>
                 </Accordion.Body>
               </Accordion.Item>
@@ -207,8 +373,43 @@ import { IoIosArrowDown } from "react-icons/io";
           </Accordion>
         )}
       </div>
+      <Modal
+        show={addInvoices}
+        className="modal-container"
+        centered
+        onClick={() => setAddInvoices(false)}
+      >
+        <Modal.Header className="border-0 p-3 position-relative mt-4">
+          <button
+            type="button"
+            className="btn-close position-absolute close-btn"
+          ></button>
+        </Modal.Header>
+        <Modal.Body className="text-center p-4">
+          <div className="d-flex justify-content-center align-items-center mb-3">
+            <img src={AddinvoicesIcon} alt="success icon open" className="" />
+          </div>
+          <h4 className="text-embed-500 fs-3 font-semibold pb-3">
+            {t("invoice_success")}
+          </h4>
+          <div className="d-flex justify-content-center justify-content-md-between flex-wrap flex-md-nowrap my-3">
+            <button
+              className="fs-5 lh-1 fw-semibold agent-btn-responsive1 text-white my-md-3 w-50 py-2 py-md-0 mx-1 rounded-pill"
+              onClick={handleClick}
+            >
+              {t("invoice_view")}
+            </button>
+            <button
+              className="fs-5 lh-1 fw-semibold  py-2 my-3 agent-btn-responsive2 w-50  mx-1 rounded-pill "
+              onClick={() => setAddInvoices(false)}
+            >
+              {t("invoice_all")}
+            </button>
+          </div>
+        </Modal.Body>
+      </Modal>
     </>
-  )
-}
+  );
+};
 
-export default AgreementsMobile
+export default AgreementsMobile;

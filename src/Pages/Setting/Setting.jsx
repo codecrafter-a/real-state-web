@@ -45,8 +45,6 @@ const Setting = () => {
     viaWhatsapp: false,
   });
 
-  console.log("dssddsfkhsdjfhlkjsdhf", settings);
-
   const handleToggleChange = (key) => (e) => {
     setSettings((prev) => ({ ...prev, [key]: e.target.checked }));
   };
@@ -417,7 +415,7 @@ const Setting = () => {
                       type="button"
                       className=" p-0 border-0 bg-transparent"
                       onClick={() => setIsView(false)}
-                    ></button>
+                    />
                   </div>
                 </Modal.Header>
                 <Modal.Body className="p-4">

@@ -26,7 +26,7 @@ const Home = () => {
   const [userdata, setUserdata] = useState([]);
   const [agrreedata, setAgreedata] = useState([]);
   const [agreecolor, setAgreecolor] = useState([]);
-  const { getHomes, getUserData, getAgreementData, getAgreementColors } =
+    const { getHomes, getUserData, getAgreementData, getAgreementColors } =
     useHomeService();
 
   useEffect(() => {
@@ -231,7 +231,7 @@ const Home = () => {
                   </button>
                 </div>
 
-                {isOpen && (
+                {isOpen ? 
                   <div>
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
@@ -352,14 +352,14 @@ const Home = () => {
                       </div>
                     </motion.div>
                   </div>
-                )}
+                 : null}
               </Col>
             </Row>
             <Row className="px-2">
               <Col className="col-12 box1_color">
                 <div className="d-flex justify-content-between py-3 align-items-center">
                   <span className="text-start screen-2">
-                    5{t("home_accro_r_btn")}
+                    {t("home_accro_r_btn")}
                   </span>
                   <button
                     className=" hr_btn rounded-pill fw-semibold px-sm-5 px-3 py-2"
