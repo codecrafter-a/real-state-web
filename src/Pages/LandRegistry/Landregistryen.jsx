@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import Landregistry from './Landregistry';
-import Landregistry_mobile from './Landregistry_mobile';
+import LandregistryMobile from './LandregistryMobile';
 
 const Landregistryen = () => {
     const [isMobileView, setIsMobileView] = useState(false);
@@ -14,7 +14,7 @@ const Landregistryen = () => {
         return () => window.removeEventListener("resize", handleResize);
       }, []);
     
-  return !isMobileView ? <Landregistry/> : <Landregistry_mobile/>
+  return !isMobileView ? <Landregistry/> : <LandregistryMobile/>
 }
 
 export default Landregistryen

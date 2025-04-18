@@ -23,7 +23,7 @@ const Data_mobile = () => {
     const COLORS = ["#166D64", "#3AC2A3"];
     const [pieData, setPieData] = useState([]);
     const [Agreement, setAgreement] = useState([]);
-    const [UserData, setUserData] = useState([]);
+    const [, setUserData] = useState([]);
     const [colorData, setColorData] = useState([]);
   
     useEffect(() => {

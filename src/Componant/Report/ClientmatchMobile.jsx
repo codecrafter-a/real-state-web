@@ -10,7 +10,7 @@ const Clientmatch_mobile = () => {
     useEffect( () => {
      const data = getReportServices();
      setReportData(data);
-    }, []);
+    }, [getReportServices]);
   return (
      <>
         <div className='row '>

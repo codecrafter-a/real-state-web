@@ -123,9 +123,9 @@ const HomeTable = () => {
                   <StatusBadge status={t(row.status)} />
                 </td>
 
-                {(row.status == "home_tab_r3_h2" ||
-                  row.status == "home_tab_r2_h2" ||
-                  row.status == "home_tab_r1_h2") && (
+                {(row.status === "home_tab_r3_h2" ||
+                  row.status === "home_tab_r2_h2" ||
+                  row.status === "home_tab_r1_h2") && (
                   <td className="d-table-cell align-middle py-3">
                     <div className="d-flex align-items-center gap-2 p-2 bg-white">
                       <div className="d-flex align-items-center gap-1 text-auto">
@@ -180,7 +180,7 @@ const HomeTable = () => {
                     </div>
                   </td>
                 )}
-                {row.status == "home_tab_r4_h2" && (
+                {row.status === "home_tab_r4_h2" && (
                   <td className="d-table-cell align-middle py-3">
                     <div className="d-flex align-items-center gap-3 p-2 bg-white">
                       <div className="d-flex align-items-center gap-1 text-auto">
@@ -211,7 +211,7 @@ const HomeTable = () => {
                     </div>
                   </td>
                 )}
-                {row.status == "home_tab_r5_h2" && (
+                {row.status === "home_tab_r5_h2" && (
                   <td className="d-table-cell align-middle py-3">
                     <div className="d-flex align-items-center gap-3 p-2 bg-white">
                       <div className="d-flex align-items-center gap-1 text-auto">
@@ -235,7 +235,7 @@ const HomeTable = () => {
                     </div>
                   </td>
                 )}
-                {row.status == "home_tab_r6_h2" && (
+                {row.status === "home_tab_r6_h2" && (
                   <td className="d-table-cell align-middle py-3">
                     <div className="d-flex align-items-center gap-3 p-2 bg-white">
                       <div className="d-flex align-items-center gap-1 text-auto">

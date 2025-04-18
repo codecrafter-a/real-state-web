@@ -20,7 +20,7 @@ import usercontact from "../../../assets/images/user-contect.png";
 import userhouse from "../../../assets/images/user-house.png";
 import "../Sidebar/Sidebar.css";
 import { Button, Card } from "react-bootstrap";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import AuthenticationService from "../../../Services/AuthenticationService";
 
@@ -28,7 +28,6 @@ const Sidebar = ({ isToggle, setShow }) => {
   const { i18n, t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
-  const { lang } = useParams();
 
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {

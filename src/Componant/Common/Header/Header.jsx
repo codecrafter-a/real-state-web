@@ -45,7 +45,7 @@ const Header = () => {
     return () => {
       window.removeEventListener("storage", handleStoreChange);
     };
-  }, [i18n.language, navigate]);
+  }, [navigate]);
 
 
 

@@ -39,11 +39,6 @@ const EditAgents = () => {
                             {t("addAgent.updateButton")}
                         </button>
                     </div>
-                    {/* <div className="mt-5">
-                        <button className="px-5 py-2 rounded-pill text-white bg-teal border-0">
-                            {t("addAgent.updateButton")}
-                        </button>
-                    </div> */}
                 </div>
             </div>
         </div>

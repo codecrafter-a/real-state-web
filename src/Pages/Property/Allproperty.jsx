@@ -42,7 +42,7 @@ const Allproperty = () => {
   };
   useEffect(() => {
     setFilteredClients(dataPropertyServices);
-  }, []);
+  });
 
   console.log(filteredClients, "asdsdsd");
   return (

@@ -4,7 +4,7 @@ import Layout from "./Componant/Common/Layout/Layout";
 import LanguageHandler from "./Componant/language-selector";
 import Signin from "./Pages/Signin/Signin.jsx";
 import Home from "./Pages/Home/Home.jsx";
-import Property from "./Pages/property/Property.jsx";
+import Property from "./Pages/Property/Property.jsx";
 import Setting from "./Pages/Setting/Setting.jsx";
 import PersonalArea from "./Pages/PersonalArea/PersonalArea.jsx";
 import Report from "./Pages/Report/Report.jsx";
@@ -21,12 +21,12 @@ import { useEffect, useState} from 'react';
 import Agreementsen from "./Pages/Agreementes/Agreementsen.jsx";
 import Customeren from "./Pages/Customers/Customeren.jsx";
 import Brokersen from "./Pages/Brokers/Brokersen.jsx";
-import Property_owneren from "./Pages/Brokers/Property_owneren.jsx";
-import Data_en from "./Pages/Data/Data_en.jsx";
-import Brokers_betweenen from "./Pages/Brokers/Brokers_betweenen.jsx";
+import PropertyOwneren from "./Pages/Brokers/PropertyOwneren.jsx";
+import DataEn from "./Pages/Data/DataEn.jsx";
+import BrokersBetweenen from "./Pages/Brokers/Brokers_betweenen.jsx";
 import Invoicesen from "./Pages/Invocies/Invoicesen.jsx";
 import Landregistryen from "./Pages/LandRegistry/Landregistryen.jsx";
-import Allpropertyen from "./Pages/property/Allpropertyen.jsx";
+import Allpropertyen from "./Pages/Property/Allpropertyen.jsx";
 
 
 
@@ -81,7 +81,7 @@ function App() {
               <Route path="setting" element={<ProtectedRoute><Setting /></ProtectedRoute>} />
               <Route path="invoices" element={<ProtectedRoute><Invoicesen/></ProtectedRoute>} />
               <Route path="agreements" element={<ProtectedRoute><Agreementsen /></ProtectedRoute>} />
-              <Route path="data" element={<ProtectedRoute><Data_en /></ProtectedRoute>} />
+              <Route path="data" element={<ProtectedRoute><DataEn /></ProtectedRoute>} />
               <Route path="personal-area" element={<ProtectedRoute><PersonalArea /></ProtectedRoute>} />
               <Route path="report" element={<ProtectedRoute><Report /></ProtectedRoute>} />
               <Route path="personal-area/change-password" element={<ProtectedRoute><ChangePassword /></ProtectedRoute>} />
@@ -89,8 +89,8 @@ function App() {
               <Route path="personal-area/signature-invoice" element={<ProtectedRoute><SignatureInvoice /></ProtectedRoute>} />
               <Route path="broker" element={<ProtectedRoute><Brokersen /></ProtectedRoute>} />
               <Route path="landregistry" element={<ProtectedRoute><Landregistryen/></ProtectedRoute>} />
-              <Route path="property_owner" element={<ProtectedRoute><Property_owneren/></ProtectedRoute>}/>
-              <Route path="broker_between" element={<ProtectedRoute><Brokers_betweenen/></ProtectedRoute>}/>
+              <Route path="property_owner" element={<ProtectedRoute><PropertyOwneren/></ProtectedRoute>}/>
+              <Route path="broker_between" element={<ProtectedRoute><BrokersBetweenen/></ProtectedRoute>}/>
               <Route path="property/add_property" element={<ProtectedRoute><Property /></ProtectedRoute>}/>
               <Route path="*" element={<Navigate to={`/${i18n.language}/signin`}/>} />
             </Routes>

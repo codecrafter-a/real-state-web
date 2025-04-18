@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import Data_mobile from "./Data_mobile";
+import DataMobile from "./DataMobile";
 import Data from "./Data";
 const Data_en = () => {
      const [isMobileView, setIsMobileView] = useState(false);
@@ -13,7 +13,7 @@ const Data_en = () => {
             return () => window.removeEventListener("resize", handleResize);
           }, []);
         
-      return !isMobileView ? <Data/> : <Data_mobile/>
+      return !isMobileView ? <Data/> : <DataMobile/>
 }
 
 export default Data_en;

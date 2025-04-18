@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import Invocies from './Invocies';
-import Invoices_mobile from './Invoices_mobile';
+import InvoicesMobile from './InvoicesMobile';
 
 const Invoicesen = () => {
     const [isMobileView, setIsMobileView] = useState(false);
@@ -14,7 +14,7 @@ const Invoicesen = () => {
             return () => window.removeEventListener("resize", handleResize);
           }, []);
         
-      return !isMobileView ? <Invocies/> : <Invoices_mobile/>
+      return !isMobileView ? <Invocies/> : <InvoicesMobile/>
 }
 
 export default Invoicesen

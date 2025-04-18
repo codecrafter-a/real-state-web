@@ -13,7 +13,7 @@ const DataTable = () => {
   useEffect(() => {
     const data = getReportServices();
     setReportData(data);
-  }, []);
+  }, [getReportServices]);
 
   const handleSelect = (id) => {
     setSelectedRows((prev) => ({

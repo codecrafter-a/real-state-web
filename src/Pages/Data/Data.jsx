@@ -40,7 +40,7 @@ const Data = () => {
     setUserData(cardUserdata);
     const colors = getAgreementColors();
     setColorData(colors);
-  }, []);
+  }, [getData]);
   return (
     <>
       <Col className="bg-white shadow-lg rounded-3 p-2 px-4">
