@@ -5,12 +5,13 @@ import { useReportServices } from '../../Services/ReportServices';
 import { useTranslation } from "react-i18next";
 const Clientmatch_mobile = () => {
     const [reportData, setReportData] = useState([]);
+
     const { getReportServices } = useReportServices();
     const { t } = useTranslation();      
     useEffect( () => {
      const data = getReportServices();
      setReportData(data);
-    }, [getReportServices]);
+    }, []);
   return (
      <>
         <div className='row '>
