@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react'
-import BrokersBetweenmobile from './BrokersBetweenmobile';
-import BrokersBetween from "./BrokersBetween";
-const Brokers_betweenen = () => {
+import React, {useState, useEffect} from "react";
+import DataMobile from "./DataMobile";
+import Data from "./Data";
+const Data_en = () => {
      const [isMobileView, setIsMobileView] = useState(false);
         useEffect(() => {
             const handleResize = () => {
@@ -13,7 +13,7 @@ const Brokers_betweenen = () => {
             return () => window.removeEventListener("resize", handleResize);
           }, []);
         
-      return !isMobileView ? <BrokersBetween/> : <BrokersBetweenmobile/>
+      return !isMobileView ? <Data/> : <DataMobile/>
 }
 
-export default Brokers_betweenen
+export default Data_en;

@@ -90,12 +90,13 @@ const { t } = useTranslation();
     let data = getAgreementData();
 
     console.log("clientnafsa", searchQuery);
-    if (searchQuery) {
-      const query  = searchQuery.toLowerCase();
-      data = data.filter((item) =>
-        t(item.clients) .toLowerCase().includes(query)
-      );
-    }
+
+if (searchQuery) {
+  const query = searchQuery.toLowerCase();
+  data = data.filter((item) =>
+    t(item.clients).toLowerCase().includes(query)
+  );
+}
   
     if (fromDate && toDate) {
       const parseDate = (dateStr) => {

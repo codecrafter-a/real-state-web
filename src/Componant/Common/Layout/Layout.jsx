@@ -46,7 +46,9 @@ const Layout = ({ children }) => {
         return t("personal_area_title");
       case "customers":
         return t("all_cust");
-      case "property":
+      case "property": 
+        return t("All_Property")
+      case "add_property":
         return t("pro_tab_title");
       case "agents":
         return t("");

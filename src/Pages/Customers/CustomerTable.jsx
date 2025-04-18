@@ -34,10 +34,14 @@ const CustomerTable = ({
       return updated;
     });
   };
+
+
   useEffect(() => {
     const fetchedClients = getClients();
     setFilteredClients(fetchedClients);
+    
   }, []);
+  
 
   const toggleSelectAll = () => {
     const newState = !selectAll;

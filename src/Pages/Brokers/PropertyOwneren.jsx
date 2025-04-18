@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
-import Property_owner from './Property_owner';
-import Property_ownermobile from './Property_ownermobile';
+import PropertyOwner from './PropertyOwner';
+import PropertyOwnermobile from './PropertyOwnermobile';
 
 const Property_owneren = () => {
    const [isMobileView, setIsMobileView] = useState(false);
@@ -14,7 +14,7 @@ const Property_owneren = () => {
           return () => window.removeEventListener("resize", handleResize);
         }, []);
       
-    return !isMobileView ? <Property_owner/> : <Property_ownermobile/>
+    return !isMobileView ? <PropertyOwner/> : <PropertyOwnermobile/>
 }
 
 export default Property_owneren

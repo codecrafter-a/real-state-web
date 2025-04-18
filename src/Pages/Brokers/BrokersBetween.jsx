@@ -1,22 +1,22 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import search from "../../assets/images/search.svg";
-import key_vertical from "../../assets/images/key_vertical.svg";
 import add_reaction from "../../assets/images/add_reaction.svg";
 import add_home from "../../assets/images/add_home.svg";
-import { Modal, InputGroup, Form } from "react-bootstrap";
-// import Next from "../../assets/images/Next.jpg";
+import Toggle from "../../Componant/Common/Toggle/Toggle";
+import { Modal} from "react-bootstrap";
+import Next from "../../assets/images/Next.jpg";
 // import sms from "../../assets/images/sms.svg";
 // import email from "../../assets/images/email.svg";
 // import group from "../../assets/images/Group 2538.png";
 import successIcon from "../../assets/images/success_icon.svg";
 import Accordion from "react-bootstrap/Accordion";
 import whatsapp from "../../assets/images/wa, whatsapp, message, communication, chat.svg";
-import gyiphy from "../../assets/images/celebration.gif";
-import close from '../../assets/images/close_small.png';
-import Toggle from "../../Componant/Common/Toggle/Toggle";
-
-const Property_owner = () => {
+import celebration from "../../assets/images/celebration.gif";
+import key_vertical from "../../assets/images/key_vertical.svg";
+import garage_door from "../../assets/images/garage_door.svg";
+import close from "../../assets/images/close_small.png";
+const Brokers_between = () => {
   const { t } = useTranslation();
   const [isView, setIsView] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -24,23 +24,23 @@ const Property_owner = () => {
   const [showDetails, setShowDetails] = useState(false);
   const [propertySection, setPropertySection] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
-  const [selectedDate, setSelectedDate] = useState("");
 
   const handlePropertysection = () => {
     setPropertySection(true);
-  }
+  };
 
   const handlecloseProperty = () => {
     setPropertySection(false);
-  }
+  };
 
   const handleSearchClick = () => {
-    setShowDetails(true); 
+    setShowDetails(true);
   };
 
   const handleSearchClose = () => {
     setShowDetails(false);
-  }
+  };
+
   const handleView = () => {
     setIsView(true);
   };
@@ -52,27 +52,141 @@ const Property_owner = () => {
     setIsView(false);
     setShowSuccess(true);
   };
-
   return (
     <>
       <div className="bg-white shadow-lg d-none d-md-block">
         <p className="w-100 text-center screen-1 border-bottom py-3 mb-4 d-none d-md-block">
-          {t("Property_own_title")}
+          {t("Brock_between")}
         </p>
         <div className="px-3">
-          <div
-            className="row custom-scrollbar overflow-y-auto overflow-x-hidden px-3 scroll-height">
+          <div className="row custom-scrollbar overflow-y-auto overflow-x-hidden px-3 scroll-height">
+            <div className="col-12 px-0">
+              <div className="card p-3 border rounded-3 mb-4">
+                <h5 className="text-embed-500 fw-semibold fs-5 lh-1 mb-4">
+                  {t("age_type_com_distribution")}
+                </h5>
+                <form>
+                  <div className="d-flex">
+                    <Toggle
+                      type="radio"
+                      name="commission"
+                      id="option1"
+                      checked={selectedOption === "option1"}
+                      onChange={() => setSelectedOption("option1")}
+                    />
+                    <label className="form-check-label ms-2" htmlFor="option1">
+                      <span className="fw-bold">{t("age_comm_type_1")}</span> -{" "}
+                      <span>{t("age_comm_type_1_subTitle")}</span>
+                    </label>
+                  </div>
+
+                  <div className="d-flex mt-2">
+                    <Toggle
+                      type="radio"
+                      name="commission"
+                      id="option2"
+                      checked={selectedOption === "option2"}
+                      onChange={() => setSelectedOption("option2")}
+                    />
+                    <label className="form-check-label ms-2" htmlFor="option2">
+                      {t("age_comm_type_2")}
+                    </label>
+                  </div>
+
+                  <div className="d-flex mt-2">
+                    <Toggle
+                      type="radio"
+                      name="commission"
+                      id="option3"
+                      checked={selectedOption === "option3"}
+                      onChange={() => setSelectedOption("option3")}
+                    />
+                    <label className="form-check-label ms-2" htmlFor="option3">
+                      {t("age_comm_type_3")}
+                    </label>
+                  </div>
+
+                  {selectedOption === "option3" && (
+                    <div className="d-flex align-items-center mt-2 ms-4">
+                      <input
+                        type="text"
+                        className="form-control w-25"
+                        placeholder="30"
+                      />
+                      <select
+                        className="form-select me-2 w-auto"
+                        defaultValue="%"
+                      >
+                        <option value="%">%</option>
+                        <option value="USD">USD</option>
+                      </select>
+                    </div>
+                  )}
+
+                  <div className="d-flex mt-2">
+                    <Toggle
+                      type="radio"
+                      name="commission"
+                      id="option4"
+                      checked={selectedOption === "option4"}
+                      onChange={() => setSelectedOption("option4")}
+                    />
+                    <label className="form-check-label ms-2" htmlFor="option4">
+                      {t("age_comm_type_4")}
+                    </label>
+                  </div>
+
+                  {selectedOption === "option4" && (
+                    <div className="my-2 w-75">
+                      <textarea
+                        className="form-control"
+                        placeholder={t("text_place")}
+                        rows="2"
+                      ></textarea>
+                    </div>
+                  )}
+                </form>
+              </div>
+            </div>
+            <div className="col-12 px-0">
+              <div className="card p-3 border  rounded-3 mb-4">
+                <h5 className=" text-embed-500 fw-semibold fs-5 lh-1 mb-4">
+                  {t("age_tran_type")}
+                </h5>
+                <div className=" d-flex justify-content-start align-items-center gap-3">
+                  <div className="border-teal rounded-2 p-2 my-2 iconbox d-flex flex-column justify-content-center align-items-center bg-teal-100">
+                    <img src={key_vertical} alt="" />
+                    <span className="fs-6 fw-normal lh-base text-center">
+                      {t("age_tran_type_1")}
+                    </span>
+                  </div>
+
+                  <div className="border-teal rounded-2 p-2 my-2 iconbox d-flex flex-column justify-content-center align-items-center bg-teal-100">
+                    <img src={garage_door} alt="" />
+                    <span className="fs-6 fw-normal lh-base text-center">
+                      {t("age_tran_type_2")}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div className="col-12 px-0">
               <div className="card p-3 border  rounded-3 mb-4">
                 <div className="form_group mb-2 mb-xl-0 d-flex justify-content-between">
-                  <h5 className=" text-embed-500 fw-semibold fs-5 lh-1 mb-4 ">{t("property_detail")}</h5>
+                  <h5 className="text-embed-500 fw-semibold fs-5 lh-1 mb-4">
+                    {t("customer_detail")}
+                  </h5>
                   <button
                     type="button"
                     className="border-teal mt-2 d-flex align-items-center justify-content-center rounded-pill py-1 px-4 search-button"
                   >
                     <div className="flex items-center justify-center">
-                      <img className="me-1" src={add_reaction} alt="Add Client" />
-                      {t("Add_client")}
+                      <img
+                        className="me-1"
+                        src={add_reaction}
+                        alt="Add Client"
+                      />
+                      {t("add_cust")}{" "}
                     </div>
                   </button>
                 </div>
@@ -80,8 +194,8 @@ const Property_owner = () => {
                   <label for="searchInput" className="form-label fw-semibold">
                     {t("age_details_title")}
                   </label>
-                  <div className="border border-[#D6D6D6] rounded w-75 px-3">
-                    <div className="d-flex p-2">
+                  <div className="border border-[#D6D6D6] rounded w-75">
+                    <div className="d-flex px-3 py-2">
                       <input
                         onChange={handleSearchClick}
                         type="text"
@@ -99,7 +213,7 @@ const Property_owner = () => {
                     <div className="border rounded w-full">
                       <div className="d-flex flex-row justify-content-between px-3 py-2">
                         <div className="d-flex flex-col">
-                          <label>{t('broker_name')}</label>
+                          <label>{t("broker_name")}</label>
                           <input
                             type="text"
                             className="form-control border-0 p-0"
@@ -108,7 +222,11 @@ const Property_owner = () => {
                           />
                         </div>
                         <div className="d-flex flex-row justify-content-end">
-                          <button className="btn p-0" type="button" onClick={handleSearchClose}>
+                          <button
+                            className="btn p-0"
+                            type="button"
+                            onClick={handleSearchClose}
+                          >
                             <img src={close} alt="Search" />
                           </button>
                         </div>
@@ -121,7 +239,9 @@ const Property_owner = () => {
             <div className="col-12 px-0">
               <div className="card p-3 border  rounded-3 mb-4">
                 <div className="form_group mb-2 mb-xl-0 d-flex justify-content-between">
-                  <h5 className="  text-embed-500 fw-semibold fs-5 lh-1 mb-4 ">{t("age_pro_section")}</h5>
+                  <h5 className="text-embed-500 fw-semibold fs-5 lh-1 mb-4">
+                    {t("age_pro_section")}
+                  </h5>
                   <button
                     type="button"
                     className="border-teal mt-2 d-flex align-items-center justify-content-center rounded-pill py-1 px-4 search-button"
@@ -137,7 +257,7 @@ const Property_owner = () => {
                     {t("age_pro_section_title")}
                   </label>
                   <div className="border border-[#D6D6D6] rounded w-75">
-                    <div className="d-flex p-2 ">
+                    <div className="d-flex px-3 py-2">
                       <input
                         onChange={handlePropertysection}
                         type="text"
@@ -152,13 +272,14 @@ const Property_owner = () => {
                 </div>
                 {propertySection && (
                   <>
-                    <div className="border rounded w-75">
+                    <div className="border rounded w-75 mb-3">
                       <div className="d-flex flex-row justify-content-between px-3 py-2">
-
                         <div className="d-flex flex-row align-item-center gap-2">
-                          <div className="my-2"><img src={key_vertical} alt="key vertical" /></div>
+                          <div className="my-2">
+                            <img src={key_vertical} alt="key vertical" />
+                          </div>
                           <div>
-                            <label>{t('property_br_address')}</label>
+                            <label>{t("property_br_address")}</label>
                             <input
                               type="text"
                               className="form-control border-0 p-0"
@@ -166,65 +287,27 @@ const Property_owner = () => {
                               values=""
                             />
                           </div>
-
                         </div>
                         <div className="d-flex flex-row justify-content-end">
-                          <button className="btn p-0" type="button" onClick={handlecloseProperty}>
+                          <button
+                            className="btn p-0"
+                            type="button"
+                            onClick={handlecloseProperty}
+                          >
                             <img src={close} alt="Search" />
                           </button>
                         </div>
                       </div>
                     </div>
-                    <div className="d-flex align-items-center gap-2 justify-content-start my-3">
-                      <div>
-                        <span className="fw-semibold">{t("rental_months")}</span>
-                        <Form.Control type="number" className="w-100" defaultValue="12" />
-                      </div>
-                      <div className="mx-0">
-                        <span className=" fw-semibold">{t("br_commission")}</span>
-                        <Form.Control type="number" className="w-100" defaultValue="30" />
-                      </div>
-                      <div className=" mt-4">
-                        <InputGroup className="w-auto">
-                          <Form.Select className="text-center">
-                            <option>%</option>
-                            <option>₪</option>
-                          </Form.Select>
-                        </InputGroup>
-                      </div>
-                    </div>
                   </>
-                )}
-                <div className='d-flex align-items-center'>
-                  <Toggle defaultChecked={false} type={"checkbox"} id="toggleImages" />
-                  <label className="fs-6 fw-normal lh-1" htmlFor="">{t('Property_own_detail')}</label>
-                </div>
-                {propertySection && (
-                  <div className="mt-4 w-25">
-                    <InputGroup className="w-auto">
-                      <Form.Select onChange={(e) => setSelectedOption(e.target.value)}>
-                        <option>{t("Select_month")}</option>
-                        <option>{t("Select_six_month")}</option>
-                        <option>{t("Select_year")}</option>
-                        <option value="date">{t("Select_Date")}</option>
-                      </Form.Select>
-                    </InputGroup>
-
-                    {selectedOption === "date" && (
-                      <Form.Control
-                        type="date"
-                        className="mt-2"
-                        onChange={(e) => setSelectedDate(e.target.value)}
-                        value={selectedDate}
-                      />
-                    )}
-                  </div>
                 )}
               </div>
             </div>
             <div className="col-12 px-0">
               <div className="card p-3 border  rounded-3 mb-4">
-                <h5 className=" text-embed-500 fw-semibold fs-5 lh-1 mb-4 ">{t("age_note")}</h5>
+                <h5 className=" text-embed-500 fw-semibold fs-5 lh-1 mb-4">
+                  {t("age_note")}
+                </h5>
                 <div className=" px-2 pb-2 w-75">
                   <textarea
                     className="form-control"
@@ -242,7 +325,10 @@ const Property_owner = () => {
                 >
                   {t("age_btn_send")}
                 </button>
-                <button className=" agent-button2 rounded-pill px-4 py-2 fw-bold" onClick={() => setSentSuccess(true)}>
+                <button
+                  className=" agent-button2 rounded-pill px-4 py-2 fw-bold"
+                  onClick={() => setSentSuccess(true)}
+                >
                   {t("age_btn_send_without")}
                 </button>
                 <button className=" agent-button2 rounded-pill px-5 py-1 fw-bold">
@@ -253,13 +339,95 @@ const Property_owner = () => {
           </div>
         </div>
       </div>
-      {/** Mobile Screen avaible */}
+      {/** Mobile Screen View */}
       {/* <div className="bg-transperant  d-block d-md-none">
         <div className="row custom-scrollbar overflow-y-auto overflow-x-hidden">
           <div className="col-12">
+            <div className="card p-3 border bg-light rounded-3 mb-4">
+              <h5 className=" text-embed-500 fw-semibold fs-5 lh-1 mb-4">
+                {t("age_type_com_distribution")}
+              </h5>
+              <form>
+                <div className="d-flex align-items-center gap-1 ">
+                  <Toggle
+                    defaultChecked
+                    type={"radio"}
+                    name="commission"
+                    id="toggleImages"
+                  />
+                  <label className="form-check-label fw-bold" htmlFor="">
+                    {t("age_comm_type_1")}
+                  </label>
+                </div>
+                <div className="d-flex align-items-center gap-1">
+                  <Toggle
+                    defaultChecked
+                    type={"radio"}
+                    name="commission"
+                    id="toggleImages"
+                  />
+                  <label
+                    className="fs-15 fw-normal lh-1 "
+                    htmlFor="eachGetsOwn"
+                  >
+                    {t("age_comm_type_2")}
+                  </label>
+                </div>
+                <div className="d-flex align-items-center gap-1 ">
+                  <Toggle
+                    defaultChecked
+                    type={"radio"}
+                    name="commission"
+                    id="toggleImages"
+                  />
+                  <label
+                    className="fs-15 fw-normal lh-1"
+                    htmlFor="buyerPaysSeller"
+                  >
+                    {t("age_comm_type_3")}
+                  </label>
+                </div>
+                <div className="d-flex align-items-center gap-1 ">
+                  <Toggle
+                    defaultChecked
+                    type={"radio"}
+                    name="commission"
+                    id="toggleImages"
+                  />
+                  <label className="fs-15 fw-normal lh-1" htmlFor="other">
+                    {t("age_comm_type_4")}
+                  </label>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div className="col-12">
+            <div className="card p-3 border  bg-light   rounded-3 mb-4">
+              <h5 className="  text-embed-500 fw-semibold fs-5 lh-1 mb-4">
+                {t("age_tran_type")}
+              </h5>
+              <div className=" d-flex justify-content-center align-items-center gap-4">
+                <div className="border-2 bg-white rounded-2 p-2  iconbox d-flex flex-column align-items-center">
+                  <img src={key_vertical} alt="" />
+                  <span className="fs-5 fw-normal lh-base text-center px-1">
+                    {t("age_tran_type_1")}
+                  </span>
+                </div>
+                <div className="border-2 bg-white rounded-2 p-2 iconbox d-flex flex-column align-items-center">
+                  <img src={garage_door} alt="" />
+                  <span className="fs-5 fw-normal lh-base text-center px-1">
+                    {t("age_tran_type_2")}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-12">
             <div className="card  p-3 border  rounded-3 overflow-hidden  rounded-3 bg-light mb-4">
               <div className="form_group mb-2 mb-xl-0 d-flex justify-content-between">
-                <h5 className=" text-embed-500 fs-5 fw-semibold lh-1 mb-4">{t("client_details")}</h5>
+                <h5 className=" text-embed-500 fs-5 fw-semibold lh-1 mb-4">
+                  {t("customer_detail")}
+                </h5>
                 <button
                   type="button"
                   className="agent-btn-responsive2 w-50 bg-transperant h-50 py-2  d-flex align-items-center justify-content-center  rounded-pill"
@@ -267,7 +435,7 @@ const Property_owner = () => {
                   <div className="d-flex align-items-center justify-content-center">
                     <img className="me-1" src={add_reaction} alt="Add Client" />
                     <span className="fs-17 fw-semibold lh-1">
-                    {t("add_cust")}{" "}
+                      {t("add_cust")}{" "}
                     </span>
                   </div>
                 </button>
@@ -295,7 +463,7 @@ const Property_owner = () => {
                   <div className="border rounded w-full px-3">
                     <div className="d-flex flex-row justify-content-between">
                       <div className="d-flex flex-col">
-                        <label>{t('broker_name')}</label>
+                        <label>{t("broker_name")}</label>
                         <input
                           type="text"
                           className="form-control border-0 p-0"
@@ -304,17 +472,19 @@ const Property_owner = () => {
                         />
                       </div>
                       <div className="d-flex flex-row justify-content-end">
-                        <button className="btn " type="button" onClick={handleSearchClose}>
+                        <button
+                          className="btn "
+                          type="button"
+                          onClick={handleSearchClose}
+                        >
                           <img src={close} alt="Search" />
                         </button>
                       </div>
                     </div>
                   </div>
-
                 </>
               )}
             </div>
-
           </div>
           <div className="col-12">
             <div className="card p-3 border bg-light rounded-3 mb-4">
@@ -354,11 +524,12 @@ const Property_owner = () => {
                 <>
                   <div className="border rounded w-full px-3">
                     <div className="d-flex flex-row justify-content-between">
-
                       <div className="d-flex flex-row align-item-center gap-2">
-                        <div className="my-2"><img src={key_vertical} alt="key vertical" /></div>
+                        <div className="my-2">
+                          <img src={key_vertical} alt="key vertical" />
+                        </div>
                         <div>
-                          <label>{t('property_br_address')}</label>
+                          <label>{t("property_br_address")}</label>
                           <input
                             type="text"
                             className="form-control border-0 p-0"
@@ -366,10 +537,13 @@ const Property_owner = () => {
                             values=""
                           />
                         </div>
-
                       </div>
                       <div className="d-flex flex-row justify-content-end">
-                        <button className="btn " type="button" onClick={handlecloseProperty}>
+                        <button
+                          className="btn "
+                          type="button"
+                          onClick={handlecloseProperty}
+                        >
                           <img src={close} alt="Search" />
                         </button>
                       </div>
@@ -387,11 +561,19 @@ const Property_owner = () => {
 
                     <div className="mx-0">
                       <span className=" fw-semibold">{t("br_commission")}</span>
-                      <Form.Control type="number" className="w-100" value="30" />
+                      <Form.Control
+                        type="number"
+                        className="t w-100"
+                        defaultValue="30"
+                      />
                     </div>
                     <div>
                       <span className="fw-semibold">{t("rental_months")}</span>
-                      <Form.Control type="number" className="w-100" value="12" />
+                      <Form.Control
+                        type="string"
+                        className=" w-100"
+                        defaultValue="12"
+                      />
                     </div>
                   </div>
                 </>
@@ -400,7 +582,9 @@ const Property_owner = () => {
           </div>
           <div className="col-12">
             <div className="card p-3 border bg-light rounded-3 mb-4">
-              <h5 className=" text-embed-500 fw-semibold fs-5 lh-1  mb-4">{t("age_note")}</h5>
+              <h5 className=" text-embed-500 fw-semibold fs-5 lh-1  mb-4">
+                {t("age_note")}
+              </h5>
               <div className=" px-2 pb-2">
                 <textarea
                   className="form-control"
@@ -418,7 +602,10 @@ const Property_owner = () => {
               >
                 {t("age_btn_send")}
               </button>
-              <button className=" agent-btn-responsive2 w-50 bg-transperant h-25 py-1 shadow rounded-pill" onClick={() => setSentSuccess(true)}>
+              <button
+                className=" agent-btn-responsive2 w-50 bg-transperant h-25 py-1 shadow rounded-pill"
+                onClick={() => setSentSuccess(true)}
+              >
                 {t("age_btn_send_without")}
               </button>
               <button className="  agent-btn-responsive2 w-25 bg-transperant h-25 py-1 shadow rounded-pill">
@@ -428,8 +615,6 @@ const Property_owner = () => {
           </div>
         </div>
       </div> */}
-
-
       <Modal
         show={isView}
         onHide={() => {
@@ -438,11 +623,22 @@ const Property_owner = () => {
         centered
         className="modal-container"
       >
-        <Modal.Header className="d-flex justify-content-end align-items-center border-0">
-          <button type="button" className="btn-close m-0 fs-5" data-bs-dismiss="modal" aria-label="Close" onClick={() => setIsView(false)}></button>
+        <Modal.Header className="d-flex justify-content-between align-items-center border-0">
+          <button className="border-0">
+            <img src={Next} alt="next btn" className="" />
+          </button>
+          <button
+            type="button"
+            className="btn-close m-0 fs-5"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            onClick={() => setIsView(false)}
+          ></button>
         </Modal.Header>
-        <Modal.Body className="p-4 overflow-y-auto custom-scrollbar"
-          style={{ height: "655px" }}>
+        <Modal.Body
+          className="p-4 overflow-y-auto custom-scrollbar"
+          style={{ height: "655px" }}
+        >
           <div className="text-center">
             <img
               src={successIcon}
@@ -455,10 +651,13 @@ const Property_owner = () => {
             <p className="fs_25 font-semibold">{t("age_report_question")}</p>
           </div>
           {/* Options Section */}
-          <div className="options-container m-auto" >
+          <div className="options-container m-auto" style={{ width: "417px" }}>
             <div className="option-item rounded-3 my-3">
               <Accordion defaultActiveKey={null} className="custom-accordion">
-                <Accordion.Item eventKey="0 " className="custom-header border-teal-100">
+                <Accordion.Item
+                  eventKey="0 "
+                  className="custom-header border-teal-100"
+                >
                   <Accordion.Header className="bg-teal-100">
                     <div className="d-flex justify-content-between w-100">
                       <div className=" d-flex align-items-center">
@@ -474,7 +673,10 @@ const Property_owner = () => {
                     </div>
                   </Accordion.Header>
                   <Accordion.Body className="bg-teal-100">
-                    <ul className="fw-bold px-4" style={{ listStyleType: "disc" }}>
+                    <ul
+                      className="fw-bold px-4"
+                      style={{ listStyleType: "disc" }}
+                    >
                       <li>{t("age_send_whatsapp_point_1")}</li>
                       <li>{t("age_send_whatsapp_point_2")}</li>
                       <li>{t("age_send_whatsapp_point_3")}</li>
@@ -482,6 +684,7 @@ const Property_owner = () => {
                     <p className="mt-3 fw-bold ">
                       {t("age_send_whatsapp_description")}
                     </p>
+                    {/* Pricing Cards */}
                     <div className="row justify-content-center text-center mt-4 align-items-center">
                       <div className="col-md-4 px-2">
                         <div className="rounded p-2 bg-white  shadow-md">
@@ -511,7 +714,7 @@ const Property_owner = () => {
                       </div>
 
                       <div className="col-md-4 px-2">
-                        <div className="rounded p-2 bg-white shadow-sm">
+                        <div className="rounded p-2 bg-white shadow-md">
                           <h3 className="text-embed-500 fs-2 fw-bold">50</h3>
                           <p className="mb-0 text-embed-500">
                             {t("age_send_whatsapp_message")}
@@ -528,7 +731,10 @@ const Property_owner = () => {
             </div>
             {/* <div className="option-item rounded-3 my-3">
               <Accordion defaultActiveKey={null} className="custom-accordion ">
-                <Accordion.Item eventKey="0" className="custom-header border-teal-100">
+                <Accordion.Item
+                  eventKey="0"
+                  className="custom-header border-teal-100"
+                >
                   <Accordion.Header className="bg-teal-100">
                     <div className="d-flex justify-content-between w-100">
                       <div className=" d-flex align-items-center">
@@ -558,7 +764,10 @@ const Property_owner = () => {
             </div>
             <div className="option-item rounded-3 my-3">
               <Accordion defaultActiveKey={null} className="custom-accordion ">
-                <Accordion.Item eventKey="0" className="custom-header border-teal-100">
+                <Accordion.Item
+                  eventKey="0"
+                  className="custom-header border-teal-100"
+                >
                   <Accordion.Header className=" bg-teal-100">
                     <div className="d-flex justify-content-between w-100">
                       <div className=" d-flex align-items-center">
@@ -588,7 +797,10 @@ const Property_owner = () => {
             </div>
             <div className="option-item rounded-3 my-3">
               <Accordion defaultActiveKey={null} className="custom-accordion ">
-                <Accordion.Item eventKey="0" className=" custom-header border-teal-100">
+                <Accordion.Item
+                  eventKey="0"
+                  className=" custom-header border-teal-100"
+                >
                   <Accordion.Header className=" bg-teal-100">
                     <div className="d-flex justify-content-between w-100">
                       <div className=" d-flex align-items-center">
@@ -617,33 +829,44 @@ const Property_owner = () => {
               </Accordion>
             </div> */}
           </div>
-          <div className="text-center mt-4 d-flex flex-wrap flex-md-nowrap justify-content-center">
+          <div className="text-center mt-4 d-flex flex-col">
             <button
-              className="agent-btn-responsive1 h-25 w-50 py-2 rounded-pill text-white"
+              className="agent-button1 mx-auto rounded-pill px-3 py-2 fw-bold shadow-sm text-white"
               onClick={handleIsShow}
             >
               {t("age_btn_send")}
             </button>
-            <button className="btn btn-link text-muted ">
+            <button className="btn btn-link text-muted mt-2">
               {t("age_btn_link")}
             </button>
           </div>
         </Modal.Body>
       </Modal>
-      <Modal show={showSuccess} onHide={() => setShowSuccess(false)} centered className="modal-container">
+      <Modal
+        show={showSuccess}
+        onHide={() => setShowSuccess(false)}
+        centered
+        className="modal-container"
+      >
         <div
           className="position-absolute top-0 start-50 translate-middle-x mt-5 z-2"
           style={{ pointerEvents: "none" }}
         >
           <img
-            src={gyiphy}
-            alt="gyiphy"
+            src={celebration}
+            alt="celebration"
             className="img-fluid w-full object-fit-cover"
             style={{ marginTop: "-100px" }}
           />
         </div>
         <Modal.Header className="d-flex justify-content-end align-items-center border-0">
-          <button type="button" className="btn-close m-0 fs-5" data-bs-dismiss="modal" aria-label="Close" onClick={() => setShowSuccess(false)}></button>
+          <button
+            type="button"
+            className="btn-close m-0 fs-5"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            onClick={() => setShowSuccess(false)}
+          ></button>
         </Modal.Header>
         <Modal.Body className="p-4 text-center position-relative z-3">
           <img
@@ -677,17 +900,28 @@ const Property_owner = () => {
           </button>
         </Modal.Footer>
       </Modal>
-      <Modal show={sentSuccess} onHide={() => setSentSuccess(false)} centered className="modal-container">
+      <Modal
+        show={sentSuccess}
+        onHide={() => setSentSuccess(false)}
+        centered
+        className="modal-container"
+      >
         <div className="position-absolute top-0 start-50  translate-middle-x mt-5 z-2">
           <img
-            src={gyiphy}
-            alt="gyiphy"
+            src={celebration}
+            alt="celebration"
             className="img-fluid object-fit-cover w-full h-auto"
             style={{ marginTop: "-100px" }}
           />
         </div>
         <Modal.Header className="d-flex justify-content-end align-items-center border-0">
-          <button type="button" className="btn-close m-0 fs-5" data-bs-dismiss="modal" aria-label="Close" onClick={() => setSentSuccess(false)}></button>
+          <button
+            type="button"
+            className="btn-close m-0 fs-5"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            onClick={() => setSentSuccess(false)}
+          ></button>
         </Modal.Header>
         <Modal.Body className="p-4 position-relative z-2">
           <div className="text-center">
@@ -702,13 +936,11 @@ const Property_owner = () => {
             <h4 className="fs-3 text-teal fw-semibold">
               {t("age_cust_agreement_status")}
             </h4>
-            <p className="fs-3 text-teal fw-semibold">
-              {t("age_cust_status")}
-            </p>
+            <p className="fs-3 text-teal fw-semibold">{t("age_cust_status")}</p>
           </div>
-          <div className="text-center  mt-4 d-flex justify-content-center">
+          <div className="text-center mt-4">
             <button
-              className="agent-btn-responsive1 w-50 py-2 rounded-pill text-white"
+              className="btn bg-teal text-white rounded-pill px-4 py-2 fw-bold shadow-sm w-75"
               onClick={() => setSentSuccess(false)}
             >
               {t("age_btn_description")}
@@ -720,4 +952,4 @@ const Property_owner = () => {
   );
 };
 
-export default Property_owner;
+export default Brokers_between;

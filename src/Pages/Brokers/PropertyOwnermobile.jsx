@@ -5,16 +5,11 @@ import key_vertical from "../../assets/images/key_vertical.svg";
 import add_reaction from "../../assets/images/add_reaction.svg";
 import add_home from "../../assets/images/add_home.svg";
 import { Modal, InputGroup, Form } from "react-bootstrap";
-// import Next from "../../assets/images/Next.jpg";
-// import sms from "../../assets/images/sms.svg";
-// import email from "../../assets/images/email.svg";
-// import group from "../../assets/images/Group 2538.png";
 import successIcon from "../../assets/images/success_icon.svg";
 import Accordion from "react-bootstrap/Accordion";
 import whatsapp from "../../assets/images/wa, whatsapp, message, communication, chat.svg";
 import gyiphy from "../../assets/images/celebration.gif";
 import close from '../../assets/images/close_small.png';
-// import Toggle from "../../Componant/Common/Toggle/Toggle";
 
 const Property_ownermobile = () => {
     const { t } = useTranslation();
@@ -23,8 +18,6 @@ const Property_ownermobile = () => {
       const [sentSuccess, setSentSuccess] = useState(false);
       const [showDetails, setShowDetails] = useState(false);
       const [propertySection, setPropertySection] = useState(false);
-    //   const [selectedOption, setSelectedOption] = useState("");
-    //   const [selectedDate, setSelectedDate] = useState("");
     
       const handlePropertysection = () => {
         setPropertySection(true);
@@ -324,96 +317,6 @@ const Property_ownermobile = () => {
                 </Accordion.Item>
               </Accordion>
             </div>
-            {/* <div className="option-item rounded-3 my-3">
-              <Accordion defaultActiveKey={null} className="custom-accordion ">
-                <Accordion.Item eventKey="0" className="custom-header border-teal-100">
-                  <Accordion.Header className="bg-teal-100">
-                    <div className="d-flex justify-content-between w-100">
-                      <div className=" d-flex align-items-center">
-                        <img src={sms} alt="whatsapp" />
-                        <span className=" ps-2 text-start fs_15">
-                          {t("age_send_text_message")}
-                        </span>
-                      </div>
-                      <input
-                        className="form-check-input border border-black bg-white"
-                        type="checkbox"
-                      />
-                    </div>
-                  </Accordion.Header>
-                  <Accordion.Body className="custom-body bg-teal-100">
-                    <ul className="list-unstyled">
-                      <li>{t("age_send_text_message_point_1")}</li>
-                      <li>{t("age_send_text_message_point_2")}</li>
-                      <li>{t("age_send_text_message_point_3")}</li>
-                    </ul>
-                    <p className="mt-3">
-                      {t("age_send_text_message_description")}
-                    </p>
-                  </Accordion.Body>
-                </Accordion.Item>
-              </Accordion>
-            </div>
-            <div className="option-item rounded-3 my-3">
-              <Accordion defaultActiveKey={null} className="custom-accordion ">
-                <Accordion.Item eventKey="0" className="custom-header border-teal-100">
-                  <Accordion.Header className=" bg-teal-100">
-                    <div className="d-flex justify-content-between w-100">
-                      <div className=" d-flex align-items-center">
-                        <img src={email} alt="whatsapp" />
-                        <span className="ps-2 text-start fs_15">
-                          {t("age_send_message_email")}
-                        </span>
-                      </div>
-                      <input
-                        className="form-check-input border border-black bg-white"
-                        type="checkbox"
-                      />
-                    </div>
-                  </Accordion.Header>
-                  <Accordion.Body className="custom-body bg-teal-100">
-                    <ul className="list-unstyled">
-                      <li>{t("age_send_email_message_point_1")}</li>
-                      <li>{t("age_send_email_message_point_2")}</li>
-                      <li>{t("age_send_email_message_point_3")}</li>
-                    </ul>
-                    <p className="mt-3">
-                      {t("age_send_email_message_description")}
-                    </p>
-                  </Accordion.Body>
-                </Accordion.Item>
-              </Accordion>
-            </div>
-            <div className="option-item rounded-3 my-3">
-              <Accordion defaultActiveKey={null} className="custom-accordion ">
-                <Accordion.Item eventKey="0" className=" custom-header border-teal-100">
-                  <Accordion.Header className=" bg-teal-100">
-                    <div className="d-flex justify-content-between w-100">
-                      <div className=" d-flex align-items-center">
-                        <img src={group} alt="whatsapp" />
-                        <span className="ps-2 text-start fs_15">
-                          {t("age_send_message_whatsapp_share")}
-                        </span>
-                      </div>
-                      <input
-                        className="form-check-input border border-black bg-white"
-                        type="checkbox"
-                      />
-                    </div>
-                  </Accordion.Header>
-                  <Accordion.Body className="bg-teal-100">
-                    <ul className="list-unstyled">
-                      <li>{t("age_send_message_whatsapp_share_pont_1")}</li>
-                      <li>{t("age_send_message_whatsapp_share_pont_2")}</li>
-                      <li>{t("age_send_message_whatsapp_share_pont_3")}</li>
-                    </ul>
-                    <p className="mt-3">
-                      {t("age_send_message_whatsapp_share_description")}
-                    </p>
-                  </Accordion.Body>
-                </Accordion.Item>
-              </Accordion>
-            </div> */}
           </div>
           <div className="text-center mt-4 d-flex flex-wrap flex-md-nowrap justify-content-center">
             <button

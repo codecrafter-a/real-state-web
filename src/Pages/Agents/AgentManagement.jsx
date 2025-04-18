@@ -9,6 +9,7 @@ import { Modal } from "react-bootstrap";
 import warningIcon from "../../assets/images/warningIcon.svg";
 import AgentGraphModal from "./AgentGraphModal";
 import { Accordion } from "react-bootstrap";
+import i18n from "../../i18n";
 
 
 
@@ -101,7 +102,7 @@ const handleSearch = () => {
         <div className="overflow-y-auto overflow-x-hidden custom-scrollbar scroll-height">
           <div className="px-md-3">
             <div className="d-flex justify-content-start justify-content-md-end my-3   ">
-              <button className="d-flex gap-1 align-items-center py-1 fs-12 px-4 text-teal bg-transparent border-teal rounded-pill fw-semibold">
+              <button className="d-flex gap-1 align-items-center py-1 fs-12 px-4 text-teal bg-transparent border-teal rounded-pill fw-semibold" onClick={() => navigate(`/${i18n}/agents/adddagents`)}>
                 <img src={person_add} alt="person_add" />
                 {t("addNewAgent")}
               </button>

@@ -132,17 +132,9 @@ const AgreementsMobile = () => {
   const {
     tableData,
     searchQuery,
-    selectedStatus,
-    fromDate,
-    toDate,
-    handleStatusChange,
-    handleRemoveStatus,
     handleSearchChange,
-    setFromDate,
-    setToDate,
     getAgreementData,
     setTableData,
-    handleAgreeChange,
   } = useAgreementServices();
   const [isOpen, setIsOpen] = useState(false);
   const [addInvoices, setAddInvoices] = useState(false);
@@ -160,9 +152,17 @@ const AgreementsMobile = () => {
   };
 
   useEffect(() => {
-    setTableData(getAgreementData());
+    const fetchAgreementData = async () => {
+      try {
+        const data = await getAgreementData();
+        setTableData(data);
+      } catch (error) {
+        console.error("Failed to fetch agreement data:", error);
+      }
+    };
+  
+    fetchAgreementData();
   }, []);
-
   const borderColors = {
     default: "#f87171",
     signed: "#10b981",

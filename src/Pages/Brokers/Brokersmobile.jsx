@@ -42,10 +42,6 @@ const Brokersmobile = () => {
       const handleSearchClose = () => {
         setShowDetails(false);
       };
-    
-      const handleOpen = () => {
-        setIsOpen(true);
-      };
       const handleShow = () => {
         setIsShow(true);
       };

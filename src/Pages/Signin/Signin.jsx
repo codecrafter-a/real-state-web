@@ -7,7 +7,7 @@ import Form from "react-bootstrap/Form";
 import { useTranslation } from "react-i18next";
 import signin from "../../assets/images/Signin.png";
 import AuthenticationService from "../../Services/AuthenticationService";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 const Signin = ({ setIsPadding, isPadding }) => {
   const [userData, setUserData] = useState({
     email: "",
@@ -15,8 +15,8 @@ const Signin = ({ setIsPadding, isPadding }) => {
   });
 
   const navigate = useNavigate();
-  const location = useLocation();
-  const lastPath = location.pathname.split("/").filter(Boolean).pop();
+  // const location = useLocation();
+  // const lastPath = location.pathname.split("/").filter(Boolean).pop();
   const [error, setError] = useState("");
   const { t, i18n } = useTranslation();
   const [isClicked, setIsClicked] = useState(true)

@@ -2,9 +2,6 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { TbMailForward } from "react-icons/tb";
 import { useTranslation } from "react-i18next";
-import { MdOutlineDeleteForever } from "react-icons/md";
-import { Accordion } from "react-bootstrap";
-
 import iconHome from "../../assets/images/icon_home.svg";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { FaWhatsapp } from "react-icons/fa";
@@ -291,44 +288,44 @@ const AgreementsTable = ({
     </div>
   );
 };
-const ActionButtons = ({ type, icon, onDelete }) => {
-  const { t } = useTranslation();     
-  return (
-    <div className="d-flex align-items-center gap-2 p-1 bg-white ">
-      {type === "default" && (
-        <>
-          <div className="d-md-flex align-items-center gap-1 cursor-pointer">
-            <TbMailForward />
-            <span className=" fs-12 fs-md-15 fw-normal lh-1">
-              {t("home_tab_r1_h1_l4")}
-            </span>
-          </div>
-          <div className="d-sm-flex align-items-center gap-1 cursor-pointer">
-            {icon}
-            <span className="fs-md-15 fs-12 fw-normal lh-1">
-              {t("home_tab_r1_h1_l3")}
-            </span>
-          </div>
-          <button
-            className="d-sm-flex align-items-center border-0 bg-transparent gap-1 cursor-pointer"
-            onClick={onDelete}
-          >
-            <MdOutlineDeleteForever />
-            <span className="fs-12 fs-md-15 fw-normal lh-1">
-              {t("age_delet")}
-            </span>
-          </button>
-          <span className="fs-12 fs-md-15 fw-normal lh-1">
-            {t("home_tab_r1_h1_l2")}
-          </span>
-          <span className="fs-12 fs-md-15 fw-normal lh-1">
-          {t("home_tab_r1_h1_l1")}
-          </span>
-        </>
-      )}
-    </div>
-  );
-};
+// const ActionButtons = ({ type, icon, onDelete }) => {
+//   const { t } = useTranslation();     
+//   return (
+//     <div className="d-flex align-items-center gap-2 p-1 bg-white ">
+//       {type === "default" && (
+//         <>
+//           <div className="d-md-flex align-items-center gap-1 cursor-pointer">
+//             <TbMailForward />
+//             <span className=" fs-12 fs-md-15 fw-normal lh-1">
+//               {t("home_tab_r1_h1_l4")}
+//             </span>
+//           </div>
+//           <div className="d-sm-flex align-items-center gap-1 cursor-pointer">
+//             {icon}
+//             <span className="fs-md-15 fs-12 fw-normal lh-1">
+//               {t("home_tab_r1_h1_l3")}
+//             </span>
+//           </div>
+//           <button
+//             className="d-sm-flex align-items-center border-0 bg-transparent gap-1 cursor-pointer"
+//             onClick={onDelete}
+//           >
+//             <MdOutlineDeleteForever />
+//             <span className="fs-12 fs-md-15 fw-normal lh-1">
+//               {t("age_delet")}
+//             </span>
+//           </button>
+//           <span className="fs-12 fs-md-15 fw-normal lh-1">
+//             {t("home_tab_r1_h1_l2")}
+//           </span>
+//           <span className="fs-12 fs-md-15 fw-normal lh-1">
+//           {t("home_tab_r1_h1_l1")}
+//           </span>
+//         </>
+//       )}
+//     </div>
+//   );
+// };
 
 const StatusBadge = ({ status }) => {
   const { t } = useTranslation();

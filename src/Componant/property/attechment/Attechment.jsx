@@ -14,7 +14,7 @@ const Attechment = ({ setActiveTab }) => {
     additionalDocs: null,
   });
 
-  const [imageSizes, setImageSizes] = useState({});
+  const [, setImageSizes] = useState({});
 
   const [previews, setPreviews] = useState({
     tabo: null,

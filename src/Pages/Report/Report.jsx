@@ -7,9 +7,9 @@ import visa from "../../assets/images/Get a new visa.jpg";
 import { useTranslation } from "react-i18next";
 import Propertymatch from '../../Componant/Report/Propertymatch';
 import Clientmatch from '../../Componant/Report/Clientmatch';
-import './Report.css'
-import Clientmatch_mobile from '../../Componant/Report/Clientmatch_mobile';
-import Propertymatch_mobile from '../../Componant/Report/Propertymatch_mobile';
+import './Report.css';
+import ClientmatchMobile from '../../Componant/Report/ClientmatchMobile';
+import PropertymatchMobile from '../../Componant/Report/PropertymatchMobile';
 import { AiOutlineClose } from "react-icons/ai";
 import { reportData, reportDataRecent } from '../../Services/ReportServices';
 
@@ -213,7 +213,7 @@ const Report = () => {
                 searchTermRecent.trim() !== "" ? (
                     filteredProperties.length > 0 ? (
                         <div className="d-block d-md-none">
-                            <Clientmatch_mobile properties={filteredProperties} />
+                            <ClientmatchMobile properties={filteredProperties} />
                         </div>
                     ) : (
                         null
@@ -227,7 +227,7 @@ const Report = () => {
                 selectedSuggestion ? (
                     <>
                         <div className=' d-block d-md-none'>
-                            <Propertymatch_mobile properties={selectedProperties} />
+                            <PropertymatchMobile properties={selectedProperties} />
                         </div>
                     </>
                 ) : (
