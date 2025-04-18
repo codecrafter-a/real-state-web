@@ -259,7 +259,7 @@ const handleSearch = () => {
           <Accordion.Item
             eventKey={index.toString()}
             key={row.id}
-            className="border-2  border-top rounded-3 overflow-visible"
+            className="border-top-2 border-top rounded-3 border-start-4 "
           >
             <Accordion.Header>
               <div className="d-flex align-items-center gap-2">

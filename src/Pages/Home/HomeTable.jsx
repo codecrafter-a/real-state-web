@@ -47,7 +47,7 @@ const StatusBadge = ({ status }) => {
 
   return (
     <span
-      className=" text-center fw-semibold rounded-pill d-flex align-items-center justify-content-center"
+      className=" text-center fw-semibold rounded-pill d-flex align-items-center px-2 px-md-0 justify-content-center"
       style={{ ...statusStyles[statusKey], minHeight: "28px" }}
     >
       {translatedStatus}
@@ -302,19 +302,18 @@ const HomeTable = () => {
               style={{
                 borderInlineStart: `6px solid ${
                   borderColors[row.actionType] || "#f87171"
-                }`, // fallback color
+                }`
               }}
-            >
-              <div className="py-3 px-2 d-flex align-items-end justify-content-between">
-                <div className="d-flex align-items-end gap-2_5">
-                  <img src={garagedoor} alt="garagedoor" />
+            >             
+              <div className="py-3 px-2 d-flex align-items-center justify-content-between">
+                <div className="d-flex align-items-start gap-2_5">
+                <img src={garagedoor} alt="garagedoor" />
                   <div className="flex-grow-1">
                     <p className="mb-1 text-muted">{row.date}</p>
                     <h4 className="fs-6 fw-bold mb-0">{t("home_tab_card")}</h4>
                   </div>
                 </div>
                 <StatusBadge status={row.status} />
-
                 <div
                   data-bs-toggle="collapse"
                   data-bs-target={`#${collapseId}`}
@@ -330,10 +329,10 @@ const HomeTable = () => {
 
               <div id={collapseId} className="collapse px-2 pb-3">
                 <p className="mb-0">
-                  <strong>Action Type:</strong> {row.actionType}
+                  <strong>{t("Action_type")}:</strong> {row.actionType}
                 </p>
                 <p className="mb-0">
-                  <strong>Additional Info:</strong>{" "}
+                  <strong>{t("Addition_in")}:</strong>{" "}
                   {row.additionalInfo || "No extra details"}
                 </p>
               </div>
@@ -346,7 +345,7 @@ const HomeTable = () => {
               <GoPerson size={24} style={{ color: "#10b981" }} />
               <span className="fs-3 fw-bold text-teal">325</span>
             </div>
-            <span className="text-success">לקוחות</span>
+            <span className="text-success">{t("sitem3")}</span>
           </div>
           <button className="hr_btn rounded-pill fw-semibold px-sm-5 px-3 py-2">
             {" "}
@@ -359,7 +358,7 @@ const HomeTable = () => {
               <img src={house} alt="garaz door" />
               <span className="fs-3 fw-bold text-teal">123</span>
             </div>
-            <span className="text-success">נכסים</span>
+            <span className="text-success">{t("sitem4")}</span>
           </div>
           <button className="hr_btn rounded-pill fw-semibold px-sm-5 px-3 py-2" onClick={() =>  navigate(`/${i18n.language}/Property`)}>
             {t("all_properties")}

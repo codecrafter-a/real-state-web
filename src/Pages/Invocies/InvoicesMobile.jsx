@@ -1,5 +1,5 @@
 import React, { useState} from "react";
-import {  Nav } from "react-bootstrap";
+import { Nav } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import Tab from "../../Componant/Common/Tab/Tab";
 import search from "../../assets/images/search.png";
@@ -32,6 +32,7 @@ const Invoices_mobile = () => {
   const handleClick = () => setIsOpen(true);
   return (
     <>
+    <div className="px-3">
       <div className="bg-white shadow-lg rounded-3 my-3">
         <div className="w-100 border-bottom">
           <Nav variant="tabs" className=" pt-2">
@@ -136,12 +137,12 @@ const Invoices_mobile = () => {
           )}
         </div>
       </div>
-      <Accordion className="p-0 d-flex flex-column gap-3">
+      <Accordion className="p-0 d-flex  flex-column gap-3">
         {invoiceData.map((row, index) => (
           <Accordion.Item
             eventKey={index.toString()}
             key={row.id}
-            className="border-2  border-top rounded-3 overflow-visible"
+            className="border-top-2 border-top rounded-3 border-start-4 "
           >
             <Accordion.Header>
               <div>
@@ -191,6 +192,9 @@ const Invoices_mobile = () => {
           </Accordion.Item>
         ))}
       </Accordion>
+    </div>
+     
+     
       <Modal
         show={isOpen}
         center

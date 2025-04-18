@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 import Layout from "./Componant/Common/Layout/Layout";
 import LanguageHandler from "./Componant/language-selector";
 import Signin from "./Pages/Signin/Signin.jsx";
-import Home from "./Pages/Home/Home.jsx";
 import Property from "./Pages/Property/Property.jsx";
 import Setting from "./Pages/Setting/Setting.jsx";
 import PersonalArea from "./Pages/PersonalArea/PersonalArea.jsx";
@@ -27,6 +26,7 @@ import BrokersBetweenen from "./Pages/Brokers/Brokers_betweenen.jsx";
 import Invoicesen from "./Pages/Invocies/Invoicesen.jsx";
 import Landregistryen from "./Pages/LandRegistry/Landregistryen.jsx";
 import Allpropertyen from "./Pages/Property/Allpropertyen.jsx";
+import HomeEn from "./Pages/Home/HomeEn.jsx";
 
 
 
@@ -70,7 +70,7 @@ function App() {
           <Route path="/:lang/*" element={
             <Routes>
               <Route path="signin" element={isAuthenticated() ? <Navigate to={`/${i18n.language}/home`} /> : <Signin setIsPadding={setIsPadding} isPadding={isPadding}/>} />
-              <Route path="home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+              <Route path="home" element={<ProtectedRoute><HomeEn /></ProtectedRoute>} />
               <Route path="customers" element={<ProtectedRoute><Customeren /></ProtectedRoute>} />
               <Route path="customers/add-customers" element={<ProtectedRoute><AddCustomer /></ProtectedRoute>} />
               <Route path="property" element={<ProtectedRoute><Allpropertyen/></ProtectedRoute>} />

@@ -11,9 +11,7 @@ const SignatureInvoice = () => {
   const [toDate, setToDate] = useState(null);
   const [isDateFilter, setIsDateFilter] = useState(false);
 
-   const dateFilter = () => {
-    setIsDateFilter(true)
-   }
+   const dateFilter = () => {setIsDateFilter(true)}
   return (
     <div className="p-md-4 custom-col rounded-3">
       <p className="w-100 text-center screen-1 border-bottom pb-3 mb-4 d-none d-md-block">

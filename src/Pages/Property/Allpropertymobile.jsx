@@ -32,7 +32,8 @@ const Allpropertymobile = () => {
     };
   return (
     <>
-      <div className="bg-white shadow-lg rounded-3">
+    <div className="rounded-3">
+     <div className="bg-white shadow-lg px-3 rounded-3">
         <div className="d-flex justify-content-between align-items-center">
           <button
             type="button"
@@ -88,7 +89,9 @@ const Allpropertymobile = () => {
           </div>
         </div>
       </div>
-      <div className="mt-4 bg-white p-3 rounded-3">
+    </div>
+     
+      <div className="mt-4 bg-white px-3 rounded-3">
         <Accordion className="d-flex flex-column gap-3">
           {filteredClients.map((client, index) => (
             <Accordion.Item

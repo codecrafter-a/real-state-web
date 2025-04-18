@@ -100,7 +100,7 @@ const Landregistry_mobile = () => {
           <Accordion.Item
             eventKey={index.toString()}
             key={row.id}
-            className="border-2  border-top rounded-3 overflow-visible"
+            className="border-top-2 border-top rounded-3 border-start-4   "
           >
             <Accordion.Header>
               <div className="d-flex justify-content-between gap-2">
