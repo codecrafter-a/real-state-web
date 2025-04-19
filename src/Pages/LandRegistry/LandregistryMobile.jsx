@@ -49,7 +49,7 @@ const Landregistry_mobile = () => {
               </button>
             </div>
             <div className="col-4 ">
-              <button className="agent-btn-responsive2 w-100 py-2 rounded-pill">
+              <button className="agent-btn-responsive2 text-nowrap fs-14 w-100 py-2 rounded-pill">
                 {t("data_btn_2")}
               </button>
             </div>
