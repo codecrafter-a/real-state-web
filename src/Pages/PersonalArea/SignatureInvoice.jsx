@@ -1,17 +1,22 @@
-import React, {useState} from "react";
+import React from "react";
 import "./PersonalArea.css";
 import search from "../../assets/images/search.png";
 import SignatureInvoiceTable from "./SignatureInvoiceTable";
 import { useTranslation } from "react-i18next";
+import SignatureInvoiceServices from "../../Services/SignatureInvoiceServices";
 
 const SignatureInvoice = () => {
   const { t } = useTranslation();
-  const [searchTerm, setSearchTerm] = useState("");
-  const [fromDate, setFromDate] = useState(null);
-  const [toDate, setToDate] = useState(null);
-  const [isDateFilter, setIsDateFilter] = useState(false);
+  // const [searchTerm, setSearchTerm] = useState("");
+  // const [fromDate, setFromDate] = useState(null);
+  // const [toDate, setToDate] = useState(null);
+  // const [isDateFilter, setIsDateFilter] = useState(false);
+
+  const {searchTerm, setSearchTerm, fromDate, setFromDate, toDate, setToDate, setIsDateFilter, filteredData} = SignatureInvoiceServices();
+ 
 
    const dateFilter = () => {setIsDateFilter(true)}
+   console.log("setIsDateFiltersetIsDateFilter", searchTerm, toDate, fromDate, dateFilter);
   return (
     <div className="p-md-4 custom-col rounded-3">
       <p className="w-100 text-center screen-1 border-bottom pb-3 mb-4 d-none d-md-block">
@@ -55,7 +60,7 @@ const SignatureInvoice = () => {
               </button>
             </div>
           </div>
-          <SignatureInvoiceTable  searchTerm={searchTerm} Fromdate={fromDate} Todate={toDate} isDateFilter={isDateFilter}/>
+          <SignatureInvoiceTable filteredData={filteredData}/>
         </div>
       </div>
     </div>

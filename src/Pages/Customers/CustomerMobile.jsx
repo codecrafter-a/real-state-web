@@ -75,7 +75,7 @@ const CustomerMobile = () => {
         <div>
           <button
             type="button"
-            className="btn btn_cmn d-flex align-items-center justify-content-center rounded-pill py-2 px-3"
+            className="agent-btn-responsive1  text-white d-flex align-items-center justify-content-center rounded-pill py-2 px-3"
             onClick={() => setShowModal(true)}
           >
             <img className="me-2" src={whiteSearchIcon} alt="Advanced Search" />
