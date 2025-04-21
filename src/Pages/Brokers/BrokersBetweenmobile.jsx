@@ -6,9 +6,6 @@ import add_home from "../../assets/images/add_home.svg";
 import Toggle from "../../Componant/Common/Toggle/Toggle";
 import { Modal, Form, InputGroup } from "react-bootstrap";
 import Next from "../../assets/images/Next.jpg";
-// import sms from "../../assets/images/sms.svg";
-// import email from "../../assets/images/email.svg";
-// import group from "../../assets/images/Group 2538.png";
 import successIcon from "../../assets/images/success_icon.svg";
 import Accordion from "react-bootstrap/Accordion";
 import whatsapp from "../../assets/images/wa, whatsapp, message, communication, chat.svg";
@@ -24,7 +21,7 @@ const Brokers_betweenmobile = () => {
       const [sentSuccess, setSentSuccess] = useState(false);
       const [showDetails, setShowDetails] = useState(false);
       const [propertySection, setPropertySection] = useState(false);
-    //   const [selectedOption, setSelectedOption] = useState("");
+      const [genrateSuccess, setGenrateSuccess] = useState(false);
     
       const handlePropertysection = () => {
         setPropertySection(true);
@@ -319,7 +316,7 @@ const Brokers_betweenmobile = () => {
               </button>
               <button
                 className=" agent-btn-responsive2 w-50 bg-transperant h-25 py-1 shadow rounded-pill"
-                onClick={() => setSentSuccess(true)}
+                onClick={() => setGenrateSuccess(true)}
               >
                 {t("age_btn_send_without")}
               </button>
@@ -558,6 +555,54 @@ const Brokers_betweenmobile = () => {
             <button
               className="btn bg-teal text-white rounded-pill px-4 py-2 fw-bold shadow-sm w-75"
               onClick={() => setSentSuccess(false)}
+            >
+              {t("age_btn_description")}
+            </button>
+          </div>
+        </Modal.Body>
+      </Modal>
+      <Modal
+        show={genrateSuccess}
+        onHide={() => setGenrateSuccess(false)}
+        centered
+        className="modal-container"
+      >
+        <div className="position-absolute top-0 start-50 translate-middle-x mt-5 z-2">
+          <img
+            src={celebration}
+            alt="gyiphy"
+            className="img-fluid object-fit-cover w-full h-auto"
+            style={{ marginTop: "-100px" }}
+          />
+        </div>
+        <Modal.Header className="d-flex justify-content-end align-items-center border-0">
+          <button
+            type="button"
+            className="btn-close m-0 fs-5"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            onClick={() => setGenrateSuccess(false)}
+          ></button>
+        </Modal.Header>
+        <Modal.Body className="p-4 position-relative z-2">
+          <div className="text-center">
+            <div className="d-flex justify-content-center">
+              <img
+                src={successIcon}
+                alt="Success"
+                className="img-fluid mb-3"
+                style={{ width: "80px", height: "80px" }}
+              />
+            </div>
+            <h4 className="fs-3 text-teal fw-semibold">
+              {t("age_cust_agreement_status")}
+            </h4>
+            <p className="fs-3 text-teal fw-semibold">{t("sent")}</p>
+          </div>
+          <div className="text-center mt-4">
+            <button
+              className="btn bg-teal text-white rounded-pill px-4 py-2 fw-bold shadow-sm w-75"
+              onClick={() =>setGenrateSuccess(false)}
             >
               {t("age_btn_description")}
             </button>

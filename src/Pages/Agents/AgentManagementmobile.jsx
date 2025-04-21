@@ -35,10 +35,10 @@ const AgentManagementmobile = () => {
   return (
     <>
       <div className="pt-4 px-3 bg-white rounded-3 shadow-lg my-3">
-        <div className="d-flex justify-content-start  my-3   ">
+        <div className="d-flex justify-content-start  my-3 ">
           <button
             className="d-flex gap-1 align-items-center py-1 fs-12 px-4 text-teal bg-transparent border-teal rounded-pill fw-semibold"
-            onClick={() => navigate(`/${i18n}/agents/adddagents`)}
+            onClick={() => navigate(`/${i18n}/agents/add-agents`)}
           >
             <img src={person_add} alt="person_add" />
             {t("addNewAgent")}

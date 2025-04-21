@@ -13,15 +13,11 @@ import { LuBookMinus } from "react-icons/lu";
 import { Dropdown } from "react-bootstrap";
 import cancel from "../../assets/images/cancel.png";
 
-const AgreementsTable = ({
-  handleOpen,
-  selectedStatus,
-  selectData,
-}) => {
+const AgreementsTable = ({ handleOpen, selectedStatus, selectData }) => {
   console.log(" ~ AgreementsTable ~ selectedStatus:", selectedStatus);
   const { t } = useTranslation();
   return (
-    <div className="mt-4 ">
+    <div className="mt-4 ps-3">
       <table className="table text-center d-none d-md-table">
         <thead>
           <tr>
@@ -67,6 +63,13 @@ const AgreementsTable = ({
             >
               {t("home_tab_h1")}
             </th>
+            <th
+              style={{ color: "#686868", lineHeight: "20px" }}
+              className="fw-semibold fs-15"
+            >
+              
+            </th>
+            
           </tr>
         </thead>
         <tbody className="border">
@@ -123,14 +126,16 @@ const AgreementsTable = ({
                         <HiOutlineDotsVertical size={18} />
                         {t("home_tab_r1_h1_l1")}
                       </Dropdown.Toggle>
-
-<Dropdown.Menu style={{ width: '200px' }} className=" z-3 shadow d-flex flex-column py-2 gap-1">
+                      <Dropdown.Menu
+                        style={{ width: "100px" }}
+                        className=" z-3 shadow d-flex flex-column py-2 gap-1 more-menu"
+                      >
                         <Dropdown.Item
                           href="#/action-1"
                           className="d-flex align-items-center gap-1 m-2 p-0"
                         >
                           <img src={cancel} alt="cancel" />
-                          <span className="fs-15 lh-1 fw-normal">
+                          <span className="fs-12 lh-1 fw-normal">
                             {t("cancel_signing_process")}
                           </span>
                         </Dropdown.Item>
@@ -139,7 +144,7 @@ const AgreementsTable = ({
                           className="d-flex align-items-center gap-2 m-2 p-0"
                         >
                           <RiDeleteBin2Line size={18} />
-                          <span className="fs-15 lh-1 fw-normal">
+                          <span className="fs-12 lh-1 fw-normal">
                             {t("delete_agreement")}
                           </span>
                         </Dropdown.Item>
@@ -166,10 +171,7 @@ const AgreementsTable = ({
                       <MdOutlineCheckCircleOutline size={18} />
                       {t("close_deal")}
                     </button>
-                    <button
-                      className="d-flex align-items-center border-0 bg-transparent  text-nowrap gap-1"
-                      
-                    >
+                    <button className="d-flex align-items-center border-0 bg-transparent  text-nowrap gap-1">
                       <RiDeleteBin2Line size={18} />
                       {t("delete")}
                     </button>
@@ -187,10 +189,7 @@ const AgreementsTable = ({
                       <LuBookMinus size={18} />
                       <span>{t("register_land")}</span>
                     </div>
-                    <button
-                      className="d-flex border-0 bg-transparent align-items-center gap-1"
-                    
-                    >
+                    <button className="d-flex border-0 bg-transparent align-items-center gap-1">
                       <RiDeleteBin2Line size={18} />
                       {t("delete")}
                     </button>
@@ -204,16 +203,16 @@ const AgreementsTable = ({
                       <TbMailForward size={18} />
                       <span>{t("send_copy")}</span>
                     </div>
-                    <button
-                      className="d-flex align-items-center border-0 bg-transparent gap-1"
-                      
-                    >
+                    <button className="d-flex align-items-center border-0 bg-transparent gap-1">
                       <RiDeleteBin2Line size={18} />
                       {t("delete")}
                     </button>
                   </div>
                 </td>
               )}
+              <td className="d-table-cell align-middle py-3">
+               
+              </td>
             </tr>
           ))}
         </tbody>
@@ -289,7 +288,7 @@ const AgreementsTable = ({
   );
 };
 // const ActionButtons = ({ type, icon, onDelete }) => {
-//   const { t } = useTranslation();     
+//   const { t } = useTranslation();
 //   return (
 //     <div className="d-flex align-items-center gap-2 p-1 bg-white ">
 //       {type === "default" && (
@@ -344,7 +343,7 @@ const StatusBadge = ({ status }) => {
   const statusKey = statusMap[translatedStatus] || translatedStatus;
 
   const statusStyles = {
-    "Genrated" : { backgroundColor: "#f3f4f6", color: "#6b7280" },
+    Genrated: { backgroundColor: "#f3f4f6", color: "#6b7280" },
     נשלח: { backgroundColor: "#fef3c7", color: "#d97706" },
     נצפה: { backgroundColor: "#fee2e2", color: "#dc2626" },
     נחתם: { backgroundColor: "#ecfdf5", color: "#10b981" },

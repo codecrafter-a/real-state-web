@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-// import { Col } from "react-bootstrap";
 import search from "../../assets/images/search.png";
 import { useTranslation } from "react-i18next";
-// import Landregistrytable from "../LandRegistry/Landregistrytable";
 import { useLandregistryServices } from "../../Services/LandregistryServices";
 import { Accordion } from "react-bootstrap";
 import key from "../../assets/images/key_vertical.svg";

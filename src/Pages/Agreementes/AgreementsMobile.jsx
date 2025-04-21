@@ -301,7 +301,7 @@ const AgreementsMobile = () => {
           </div>
         </div>
         {activeTab === "all" && (
-          <Accordion className=" p-0 d-md-none d-flex flex-column gap-3 ">
+          <Accordion className=" p-0  d-flex flex-column gap-3 ">
             {tableData.map((row, index) => (
               <Accordion.Item
                 eventKey={index.toString()}

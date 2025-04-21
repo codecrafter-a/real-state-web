@@ -209,7 +209,7 @@ a:hover {
 
 
 
-@media (max-width: 1042px) {
+@media (max-width: 1024px) {
 	.datacard {
 		display: flex;
 		flex-wrap: wrap;
@@ -230,7 +230,7 @@ a:hover {
 }
 
 
-@media (max-width: 1042px) {
+@media (max-width: 1024px) {
 	.piedata {
 		justify-content: center;
 		display: flex;
@@ -300,6 +300,10 @@ a:hover {
 .cursor-pointer {
 	cursor: pointer;
 }
+
+/* .w-10 {
+	width:% !important; 
+} */
 
 .agent-button2 {
 	min-width: 11rem;
@@ -627,6 +631,20 @@ a:hover {
 	width: max-content;
 }
 
+.customer-container {
+	background-color: white;
+	--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+	--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+	box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.agreement-container {
+	background-color: white;
+	--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+	--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+	box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
 
 @media (max-width: 768px) {
 	.modal-dialog-bottom {
@@ -664,23 +682,7 @@ a:hover {
 		background-color: transparent;
 		box-shadow: none !important;
 	}
-}
 
-.customer-container {
-	background-color: white;
-	--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-	--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
-	box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-.agreement-container {
-	background-color: white;
-	--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-	--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
-	box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-@media (max-width : 768px) {
 	.agreement-container {
 		background-color: transparent;
 		box-shadow: none !important;

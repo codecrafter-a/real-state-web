@@ -101,7 +101,7 @@ const Home = () => {
 
   return (
     <>
-      <Col className="p-0 custom-col rounded-3">
+      <Col className="p-0 custom-col rounded-3  z-1">
         <p className="py-1 my-4 text-center screen-1 border-bottom pb-3 d-none d-md-block">
           {" "}
           {t("home_title")}{" "}
@@ -109,6 +109,7 @@ const Home = () => {
         <div className="px-3">
           <div
             className={`custom-scrollbar overflow-y-auto overflow-x-hidden px-3 scroll-height`}
+            
           >
             <Row className=" align-items-center justify-content-between d-flex overflow-hidden">
               <Col xs={12} lg={6} className=" my-2">
@@ -370,7 +371,7 @@ const Home = () => {
                 </div>
               </Col>
               <Col className="col-12 col-md-12 box1_color">
-                <div className="my-3">
+                <div className="my-3 mx-2 z-1">
                   <HomeTable />
                 </div>
               </Col>
