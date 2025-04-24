@@ -40,8 +40,8 @@ const CustomerMobile = () => {
   console.log("filtererererer", filtered)
   return (
     <>
-    <div className="d-block">
-      <div className="bg-white p-3 rounded-3">
+    <div className="d-block  bg-transparent px-3 bg-white mx-0 py-2" >
+      <div className="bg-white p-3 rounded-3 ">
         <div className="d-flex justify-content-between align-items-center pt-3">
           <button
             type="button"
@@ -75,7 +75,7 @@ const CustomerMobile = () => {
         <div>
           <button
             type="button"
-            className="btn btn_cmn d-flex align-items-center justify-content-center rounded-pill py-2 px-3"
+            className="agent-btn-responsive1  text-white d-flex align-items-center justify-content-center rounded-pill py-2 px-3"
             onClick={() => setShowModal(true)}
           >
             <img className="me-2" src={whiteSearchIcon} alt="Advanced Search" />
@@ -83,7 +83,7 @@ const CustomerMobile = () => {
           </button>
         </div>
       </div>
-      <div className="mt-4 bg-white p-3 rounded-3">
+      <div className="mt-4 bg-transparent p-3 rounded-3">
         <Accordion className="d-flex flex-column gap-3">
           {filteredClients.map((client, index) => (
             <Accordion.Item

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import add_home from "../../assets/images/add_home.svg";
@@ -14,10 +14,14 @@ import { Image } from "react-bootstrap";
 import edit from "../../assets/images/edit.svg";
 import deleteIcon from "../../assets/images/delete.svg";
 import imagecard from "../../assets/images/imagesfolder.png";
+import  RangeSlider  from '../../Componant/Common/RangeSlider/RangeSlider';
+import { Modal } from "react-bootstrap";
+import close from "../../assets/images/ButtonClose.png";
 const Allpropertymobile = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { lang } = useParams();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const {dataPropertyServices,slides, filteredClients,setFilteredClients, setClientNameInput, clientNameInput, getClientData,} = usePropertyservices();
   useEffect(() => {
       setFilteredClients(dataPropertyServices);
@@ -32,14 +36,15 @@ const Allpropertymobile = () => {
     };
   return (
     <>
-      <div className="bg-white shadow-lg rounded-3">
+    <div className="rounded-3">
+     <div className="bg-white shadow-lg px-3 rounded-3">
         <div className="d-flex justify-content-between align-items-center">
           <button
             type="button"
             className="border-teal my-2 d-flex align-items-center justify-content-center rounded-pill py-1 px-4 search-button"
             onClick={() => navigate(`/${lang}/Property/add_property`)}
           >
-            <div className="flex items-center justify-center">
+            <div className="flex items-center text-nowrap justify-center">
               <img className="me-1" src={add_home} alt="Add Client" />
               {t("Add_Property")}{" "}
             </div>
@@ -73,6 +78,7 @@ const Allpropertymobile = () => {
           <div className="flex-shrink-1 me-3 mb-3 mb-md-0">
             <button
               type="button"
+              onClick={() => setIsModalOpen(true)}
               className="fs-17 lh-1 fw-semibold agent-btn-responsive1 bg-opacity-65 w-100 text-white py-1 px-3 rounded-pill d-flex align-items-center justify-content-center gap-2"
             >
               <img src={search_icon2} alt="Add Client" />
@@ -88,7 +94,9 @@ const Allpropertymobile = () => {
           </div>
         </div>
       </div>
-      <div className="mt-4 bg-white p-3 rounded-3">
+    </div>
+     
+      <div className="mt-4 bg-white px-3 rounded-3">
         <Accordion className="d-flex flex-column gap-3">
           {filteredClients.map((client, index) => (
             <Accordion.Item
@@ -213,6 +221,92 @@ const Allpropertymobile = () => {
           ))}
         </Accordion>
       </div>
+
+      <Modal
+            show={isModalOpen}
+            onClick={() => setIsModalOpen(false)}
+            centered
+            className="modal-container"
+            
+          >
+            <Modal.Header className="border-0 p-3 d-flex justify-content-end mt-3">
+              <button
+                type="button"
+                className="btn p-0 border-0 bg-transparent"
+                onClick={() => setIsModalOpen(false)}
+              >
+                <img src={close} alt="close" />
+              </button>
+            </Modal.Header>
+            <h3 className="py-3 px-2 mb-3 text-center screen-1 ">
+              {t("addtional_filter")}
+              <hr className="border-secondary" />
+            </h3>
+
+            <Modal.Body className=" px-5 py-0 modal-body-scrollable" >
+              <div className="row row-cols-1 row-cols-md-2 g-4">
+                <div className="col">
+                  <label className="d-block text-secondary text-start  fs-15 lh-1 fw-semibold mb-1">
+                    {t("cust_modal_no_rooms")}
+                  </label>
+                  <select className="form-select">
+                    <option></option>
+                    <option>בחר</option>
+                  </select>
+                </div>
+                <div className="col">
+                  <label className="d-block text-secondary text-start  fs-15 lh-1 fw-semibold mb-1">
+                    {t("floor")}
+                  </label>
+                  <select className="form-select">
+                    <option></option>
+                    <option>בחר</option>
+                  </select>
+                </div>
+              </div>
+              <div className="flex-grow-1 text-start w-100 my-4">
+                  <label className="d-block text-secondary text-start  fs-15 lh-1 fw-semibold mb-1">
+                    {t("cust_Property_condition")}
+                  </label>
+                  <select className="form-select">
+                    <option disabled selected>
+                      Select Option
+                    </option>
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                  </select>
+                </div>
+              <div className="d-flex flex-column gap-4 mb-4">
+                {/* <RangeSlider label={t("cust_slider_label")} /> */}
+                <RangeSlider label={t("cust_slider_label2")} />
+              </div>
+              <h3 className="lh-1 fs-5  font-semibold text-teal mb-3">
+                {t("addtional_feature")}
+              </h3>
+              <div className="d-flex flex-wrap gap-2 justify-content-start">
+                {Array.from({ length: 9 }, (_, i) => (
+                  <button
+                    key={i}
+                    className="bg-gray-200 px-3 py-1 rounded-pill text-secondary fs-15 fw-normal lh-1 border-0"
+                  >
+                    {t(`addtional_feature_${i + 1}`)}
+                  </button>
+                ))}
+              </div>
+            </Modal.Body>
+
+            <Modal.Footer className="border-top-0 justify-content-between gap-3 mb-3 px-4">
+              <button
+                className="fs-17 lh-1 gap-1 fw-semibold mt-md-4 w-25 agent-btn-responsive2 py-2 mx-1 rounded-pill"
+                onClick={() => setIsModalOpen(false)}
+              >
+                {t("cust_model_footer")}
+              </button>
+              <button className="fs-17 lh-1 gap-1 fw-semibold mt-md-4 w-25 agent-btn-responsive1 text-white  py-2 mx-1 rounded-pill">
+                {t("cust_model_footer1")}
+              </button>
+            </Modal.Footer>
+      </Modal>
     </>
   );
 };

@@ -3,14 +3,9 @@ import { Col, Nav } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import Tab from "../../Componant/Common/Tab/Tab";
 import search from "../../assets/images/search.png";
-import "../Invocies/invocies.css";
 import InvoicesTable from "./InvoicesTable";
 import { IoIosArrowDown } from "react-icons/io";
 import { useInvoiceServices } from "../../Services/InvoicesServices";
-// import { Button, Accordion } from "react-bootstrap";
-// import { FaEye, FaDownload } from "react-icons/fa";
-// import { BsWhatsapp } from "react-icons/bs";
-// import { MdEmail } from "react-icons/md";
 import Modal from "react-bootstrap/Modal";
 import AddinvoicesIcon from "../../assets/images/addinvoices.png";
 import pdfinstall from "../../assets/images/pdf.png";
@@ -142,61 +137,6 @@ const Invocies = () => {
           )}
         </div>
       </Col>
-      {/* <Accordion className="d-block p-0 d-md-none d-flex flex-column gap-3">
-        {invoiceData.map((row, index) => (
-          <Accordion.Item
-            eventKey={index.toString()}
-            key={row.id}
-            className="border-2  border-top rounded-3 overflow-visible"
-          >
-            <Accordion.Header>
-              <div>
-                <span className="fw-semibold fs-14 d-block">
-                  {row?.accountNumber} | {row?.date}
-                </span>
-                <p className="fw-semibold fs-14 mb-0">
-                  {t("client_names")}:{" "}
-                  <span className="fw-light">{t(row?.clientNames)}</span>
-                </p>
-              </div>
-            </Accordion.Header>
-            <Accordion.Body className="p-0">
-              <div className="px-3 border-bottom">
-                <p className="m-0">
-                  <strong>{t("for")}:</strong> {t(row?.subject || "N/A")}
-                </p>
-                <p className="m-0">
-                  <strong>{t("amount")}:</strong> {row?.amount || "N/A"}
-                </p>
-              </div>
-              <div className="border-top p-2 bg-light">
-                <div className="d-flex justify-content-around  w-100">
-                  <Button className="btn btn-light d-flex align-items-center p-1" onClick={handleClick}>
-                    <FaEye size={16} />
-                    <span className="fs-14 fw-normal lh-1">{t("view")}</span>
-                  </Button>
-                  <Button className="btn btn-light d-flex align-items-center p-1">
-                    <MdEmail size={18} />
-                    <span className="fs-14 fw-normal lh-1">
-                      {t("send_to_client")}
-                    </span>
-                  </Button>
-                  <Button className="btn btn-light d-flex align-items-center p-1">
-                    <FaDownload size={16} />
-                    <span className="fs-14 fw-normal lh-1">
-                      {t("download")}
-                    </span>
-                  </Button>
-                  <Button className="btn btn-light d-flex align-items-center p-1">
-                    <BsWhatsapp size={16} />
-                    <span className="fs-14 fw-normal lh-1">{t("share")}</span>
-                  </Button>
-                </div>
-              </div>
-            </Accordion.Body>
-          </Accordion.Item>
-        ))}
-      </Accordion> */}
       <Modal
         show={isOpen}
         center

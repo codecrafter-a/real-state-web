@@ -801,5 +801,10 @@
    "3_rrom_new": "New | 3 rooms | Ground floor | 356 sqm",
    "instrated": "2 Customers Interested in This Property",
    "Customer_intrasted": "2 customers were interested in this property",
-   "View_attech": "View attachments >"
+   "View_attech": "View attachments >",
+   "Action_type": "Action Type",
+   "Additional_in": "Additional Info",
+   "group": "Shared via WhatsApp",
+   "sent": "The document was successfully generated!",
+   "Price": "Price (₪)"
   }

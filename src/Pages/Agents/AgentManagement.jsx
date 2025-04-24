@@ -8,69 +8,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Modal } from "react-bootstrap";
 import warningIcon from "../../assets/images/warningIcon.svg";
 import AgentGraphModal from "./AgentGraphModal";
-import { Accordion } from "react-bootstrap";
 import i18n from "../../i18n";
-
-
-
-
-const agentData = [
-  {
-    id: 1,
-    agentNumber: "123456",
-    name: "agent_name",
-    commission: "35,9897",
-    agreements: "6",
-    phone: "054-4692650",
-    email: "shirims@gmail.com",
-  },
-  {
-    id: 2,
-    agentNumber: "123456",
-    name:"agent_name",
-    commission: "35,9897",
-    agreements: "6",
-    phone: "054-4692650",
-    email: "shirims@gmail.com",
-  },
-  {
-    id: 3,
-    agentNumber: "123456",
-    name:"agent_name",
-    commission: "35,9897",
-    agreements: "6",
-    phone: "054-4692650",
-    email: "shirims@gmail.com",
-  },
-  {
-    id: 4,
-    agentNumber: "123456",
-    name:"agent_name",
-    commission: "35,9897",
-    agreements: "6",
-    phone: "054-4692650",
-    email: "shirims@gmail.com",
-  },
-  {
-    id: 5,
-    agentNumber: "123456",
-    name:"agent_name",
-    commission: "35,9897",
-    agreements: "6",
-    phone: "054-4692650",
-    email: "shirims@gmail.com",
-  },
-  {
-    id: 6,
-    agentNumber: "123456",
-    name:"agent_name",
-    commission: "35,9897",
-    agreements: "6",
-    phone: "054-4692650",
-    email: "shirims@gmail.com",
-  },
-];
-
+import AgentServices from "../../Services/AgentServices";
 
 const AgentManagement = () => {
   const { t } = useTranslation();
@@ -79,19 +18,19 @@ const AgentManagement = () => {
   const [showModal, setShowModal] = useState(false);
   const [showGraphModal, setShowGraphModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-const [filteredAgents, setFilteredAgents] = useState(agentData);
+  const agentData = AgentServices();
+  const [filteredAgents, setFilteredAgents] = useState(agentData);
 
-const handleSearch = () => {
-  const term = searchTerm.toLowerCase();
-  const filtered = agentData.filter((agent) =>
-    agent.name.toLowerCase().includes(term) ||
-    agent.email.toLowerCase().includes(term) ||
-    agent.phone.toLowerCase().includes(term)
-  );
-  setFilteredAgents(filtered);
-};
-
- 
+  const handleSearch = () => {
+    const term = searchTerm.toLowerCase();
+    const filtered = agentData.filter(
+      (agent) =>
+        agent.name.toLowerCase().includes(term) ||
+        agent.email.toLowerCase().includes(term) ||
+        agent.phone.toLowerCase().includes(term)
+    );
+    setFilteredAgents(filtered);
+  };
 
   return (
     <>
@@ -102,7 +41,10 @@ const handleSearch = () => {
         <div className="overflow-y-auto overflow-x-hidden custom-scrollbar scroll-height">
           <div className="px-md-3">
             <div className="d-flex justify-content-start justify-content-md-end my-3   ">
-              <button className="d-flex gap-1 align-items-center py-1 fs-12 px-4 text-teal bg-transparent border-teal rounded-pill fw-semibold" onClick={() => navigate(`/${i18n}/agents/adddagents`)}>
+              <button
+                className="d-flex gap-1 align-items-center py-1 fs-12 px-4 text-teal bg-transparent border-teal rounded-pill fw-semibold"
+                onClick={() => navigate(`/${i18n}/agents/add-agents`)}
+              >
                 <img src={person_add} alt="person_add" />
                 {t("addNewAgent")}
               </button>
@@ -118,7 +60,11 @@ const handleSearch = () => {
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
                     />
-                    <button className="btn p-0" type="button" onClick={handleSearch}>
+                    <button
+                      className="btn p-0"
+                      type="button"
+                      onClick={handleSearch}
+                    >
                       <img src={search} alt="Search" />
                     </button>
                   </div>
@@ -254,73 +200,6 @@ const handleSearch = () => {
           handleClose={() => setShowGraphModal(false)}
         />
       </div>
-      <Accordion className="d-block p-0 d-md-none d-flex flex-column gap-3">
-        {filteredAgents.map((row, index) => (
-          <Accordion.Item
-            eventKey={index.toString()}
-            key={row.id}
-            className="border-2  border-top rounded-3 overflow-visible"
-          >
-            <Accordion.Header>
-              <div className="d-flex align-items-center gap-2">
-                <div>
-                  <p className=" fw-semibold fs-6 text-teal lh-1">
-                    {t("tableHeaders.phone")}
-                  </p>
-                  <p className="fw-normal fs-15 lh-1">{row.phone}</p>
-                </div>
-                <div>
-                  <p className=" fw-semibold fs-12 lh-1">
-                    {t("tableHeaders.commission")}
-                  </p>
-                  <p className="fw-normal fs-15 lh-1">{row.commission}</p>
-                </div>
-                <div>
-                  <p className=" fw-semibold fs-12  lh-1">
-                    {t("tableHeaders.agreementsSent")}
-                  </p>
-                  <p className="fw-normal fs-15 lh-1">{row.agreements}</p>
-                </div>
-              </div>
-            </Accordion.Header>
-            <Accordion.Body className="p-0">
-              <div className="px-2">
-                <p className="m-0">{t(row?.email || "N/A")}</p>
-                <p className="m-0">{t(row?.agentNumber || "N/A")}</p>
-              </div>
-              <div className=" p-2">
-                <div className="d-flex justify-content-between gap-2 w-100">
-                  <div>
-                    <button
-                      className="py-1 px-3 text-teal bg-transparent border-teal rounded-pill fw-semibold"
-                      onClick={() => setShowModal(true)}
-                    >
-                      {t("loginAsAgent")}
-                    </button>
-                  </div>
-                  <div className=" d-flex align-items-center gap-3">
-                    <span
-                      className="cursor-pointer"
-                      onClick={() => setShowGraphModal(true)}
-                    >
-                      <RiBarChartFill />
-                    </span>
-                    <span
-                      className="cursor-pointer"
-                      onClick={() => navigate(`/${lang}/agents/edit-agents`)}
-                    >
-                      <MdOutlineModeEditOutline />
-                    </span>
-                    <span className="cursor-pointer">
-                      <RiDeleteBin2Line />
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </Accordion.Body>
-          </Accordion.Item>
-        ))}
-      </Accordion>
     </>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { TbMailForward } from "react-icons/tb";
 import { useTranslation } from "react-i18next";
@@ -47,7 +47,7 @@ const StatusBadge = ({ status }) => {
 
   return (
     <span
-      className=" text-center fw-semibold rounded-pill d-flex align-items-center justify-content-center"
+      className=" text-center fw-semibold rounded-pill d-flex align-items-center px-2 px-md-0 justify-content-center"
       style={{ ...statusStyles[statusKey], minHeight: "28px" }}
     >
       {translatedStatus}
@@ -56,12 +56,31 @@ const StatusBadge = ({ status }) => {
 };
 
 const HomeTable = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const { i18n } = useTranslation();
   const isRTL = i18n.dir() === "rtl";
   const [tableData, setTableData] = useState([]);
   const { getAgreementData } = useAgreementServices();
+  // const [dropdownOpen, setDropdownOpen] = useState(false);
+  // const dropdownRef = useRef(null);
+
+  // // Close dropdown if clicked outside
+  // useEffect(() => {
+  //   const handleClickOutside = (event) => {
+  //     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+  //       setDropdownOpen(false);
+  //     }
+  //   };
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   };
+  // }, []);
+
+  // const toggleDropdown = () => {
+  //   setDropdownOpen((prev) => !prev);
+  // };
 
   useEffect(() => {
     const data = getAgreementData();
@@ -82,8 +101,8 @@ const HomeTable = () => {
 
   return (
     <div className="mt-4">
-      <div className="table-responsive">
-        <table className="table text-center d-none d-md-table">
+      <div className="table-responsive overflow-x-hidden" style={{zIndex: "999 !important"}}>
+        <table className="table text-center d-none mx-auto d-md-table " style={{minWidth: "auto"}}>
           <thead>
             <tr>
               <th className="table-head px-4 py-3">{t("home_tab_h7")}</th>
@@ -93,6 +112,7 @@ const HomeTable = () => {
               <th className="table-head px-0 py-3">{t("home_tab_h3")}</th>
               <th className="table-head px-4 py-3">{t("home_tab_h2")}</th>
               <th className="table-head px-4 py-3">{t("home_tab_h1")}</th>
+              <th className="table-head px-4 py-3 "></th>
             </tr>
           </thead>
           <tbody className="border">
@@ -127,7 +147,7 @@ const HomeTable = () => {
                   row.status === "home_tab_r2_h2" ||
                   row.status === "home_tab_r1_h2") && (
                   <td className="d-table-cell align-middle py-3">
-                    <div className="d-flex align-items-center gap-2 p-2 bg-white">
+                    <div className="d-flex align-items-center gap-2 p-2 bg-white position-relative">
                       <div className="d-flex align-items-center gap-1 text-auto">
                         <span>
                           <TbMailForward size={18} />
@@ -146,7 +166,8 @@ const HomeTable = () => {
                         </span>
                         <span>{t("home_tab_r1_h1_l2")}</span>
                       </span>
-                      <Dropdown className="d-flex align-items-center ">
+                      <div>
+                      <Dropdown className="d-flex bg-white align-items-center position-relative">
                         <Dropdown.Toggle
                           as="div"
                           variant="light"
@@ -156,13 +177,16 @@ const HomeTable = () => {
                           {t("home_tab_r1_h1_l1")}
                         </Dropdown.Toggle>
 
-                        <Dropdown.Menu style={{ width: '200px' }} className=" z-3 shadow d-flex flex-column py-2 gap-1">
+                        <Dropdown.Menu
+                          className=" shadow d-flex flex-column py-2 gap-1 more-menu"
+                          
+                        >
                           <Dropdown.Item
                             href="#/action-1"
-                            className="d-flex  align-items-center gap-1 m-2 p-0"
+                            className="d-flex  align-items-center gap-1 m-1 p-0"
                           >
                             <img src={cancel} alt="cancel" />
-                            <span className="fs-15 lh-1 fw-normal">
+                            <span className="fs-12 lh-1 fw-normal">
                               {t("cancel_signing_process")}
                             </span>
                           </Dropdown.Item>
@@ -171,12 +195,14 @@ const HomeTable = () => {
                             className="d-flex align-items-center gap-2 m-2 p-0"
                           >
                             <RiDeleteBin2Line size={18} />
-                            <span className="fs-15 lh-1 fw-normal">
+                            <span className="fs-12 lh-1 fw-normal">
                               {t("delete_agreement")}
                             </span>
                           </Dropdown.Item>
                         </Dropdown.Menu>
                       </Dropdown>
+                      </div>
+                      
                     </div>
                   </td>
                 )}
@@ -253,6 +279,7 @@ const HomeTable = () => {
                     </div>
                   </td>
                 )}
+                <td className="bg-white p-2 w-10"></td>
               </tr>
             ))}
           </tbody>
@@ -302,11 +329,11 @@ const HomeTable = () => {
               style={{
                 borderInlineStart: `6px solid ${
                   borderColors[row.actionType] || "#f87171"
-                }`, // fallback color
+                }`,
               }}
             >
-              <div className="py-3 px-2 d-flex align-items-end justify-content-between">
-                <div className="d-flex align-items-end gap-2_5">
+              <div className="py-3 px-2 d-flex align-items-center justify-content-between">
+                <div className="d-flex align-items-start gap-2_5">
                   <img src={garagedoor} alt="garagedoor" />
                   <div className="flex-grow-1">
                     <p className="mb-1 text-muted">{row.date}</p>
@@ -314,7 +341,6 @@ const HomeTable = () => {
                   </div>
                 </div>
                 <StatusBadge status={row.status} />
-
                 <div
                   data-bs-toggle="collapse"
                   data-bs-target={`#${collapseId}`}
@@ -330,10 +356,10 @@ const HomeTable = () => {
 
               <div id={collapseId} className="collapse px-2 pb-3">
                 <p className="mb-0">
-                  <strong>Action Type:</strong> {row.actionType}
+                  <strong>{t("Action_type")}:</strong> {row.actionType}
                 </p>
                 <p className="mb-0">
-                  <strong>Additional Info:</strong>{" "}
+                  <strong>{t("Addition_in")}:</strong>{" "}
                   {row.additionalInfo || "No extra details"}
                 </p>
               </div>
@@ -346,7 +372,7 @@ const HomeTable = () => {
               <GoPerson size={24} style={{ color: "#10b981" }} />
               <span className="fs-3 fw-bold text-teal">325</span>
             </div>
-            <span className="text-success">לקוחות</span>
+            <span className="text-success">{t("sitem3")}</span>
           </div>
           <button className="hr_btn rounded-pill fw-semibold px-sm-5 px-3 py-2">
             {" "}
@@ -359,9 +385,12 @@ const HomeTable = () => {
               <img src={house} alt="garaz door" />
               <span className="fs-3 fw-bold text-teal">123</span>
             </div>
-            <span className="text-success">נכסים</span>
+            <span className="text-success">{t("sitem4")}</span>
           </div>
-          <button className="hr_btn rounded-pill fw-semibold px-sm-5 px-3 py-2" onClick={() =>  navigate(`/${i18n.language}/Property`)}>
+          <button
+            className="hr_btn rounded-pill fw-semibold px-sm-5 px-3 py-2"
+            onClick={() => navigate(`/${i18n.language}/Property`)}
+          >
             {t("all_properties")}
           </button>
         </div>

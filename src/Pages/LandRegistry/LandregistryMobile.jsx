@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-// import { Col } from "react-bootstrap";
 import search from "../../assets/images/search.png";
 import { useTranslation } from "react-i18next";
-// import Landregistrytable from "../LandRegistry/Landregistrytable";
 import { useLandregistryServices } from "../../Services/LandregistryServices";
 import { Accordion } from "react-bootstrap";
 import key from "../../assets/images/key_vertical.svg";
@@ -49,7 +47,7 @@ const Landregistry_mobile = () => {
               </button>
             </div>
             <div className="col-4 ">
-              <button className="agent-btn-responsive2 w-100 py-2 rounded-pill">
+              <button className="agent-btn-responsive2 text-nowrap fs-14 w-100 py-2 rounded-pill">
                 {t("data_btn_2")}
               </button>
             </div>
@@ -100,7 +98,7 @@ const Landregistry_mobile = () => {
           <Accordion.Item
             eventKey={index.toString()}
             key={row.id}
-            className="border-2  border-top rounded-3 overflow-visible"
+            className="border-top-2 border-top rounded-3 border-start-4   "
           >
             <Accordion.Header>
               <div className="d-flex justify-content-between gap-2">

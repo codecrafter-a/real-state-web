@@ -3,17 +3,14 @@ import { useTranslation } from "react-i18next";
 import Layout from "./Componant/Common/Layout/Layout";
 import LanguageHandler from "./Componant/language-selector";
 import Signin from "./Pages/Signin/Signin.jsx";
-import Home from "./Pages/Home/Home.jsx";
 import Property from "./Pages/Property/Property.jsx";
 import Setting from "./Pages/Setting/Setting.jsx";
 import PersonalArea from "./Pages/PersonalArea/PersonalArea.jsx";
 import Report from "./Pages/Report/Report.jsx";
 import ChangePassword from "./Pages/PersonalArea/ChangePassword.jsx";
 import ChangeEmail from "./Pages/PersonalArea/ChangeEmail.jsx";
-import SignatureInvoice from "./Pages/PersonalArea/SignatureInvoice.jsx";
 import Agents from "./Pages/Agents/Agents.jsx";
 import AddAgents from "./Pages/Agents/AddAgents.jsx";
-import AgentManagement from "./Pages/Agents/AgentManagement.jsx";
 import EditAgents from "./Pages/Agents/EditAgents.jsx";
 import AddCustomer from "./Pages/Customers/add-customer-en/Addcustomeren.jsx";
 import AuthenticationService from "./Services/AuthenticationService.jsx";
@@ -27,6 +24,9 @@ import BrokersBetweenen from "./Pages/Brokers/Brokers_betweenen.jsx";
 import Invoicesen from "./Pages/Invocies/Invoicesen.jsx";
 import Landregistryen from "./Pages/LandRegistry/Landregistryen.jsx";
 import Allpropertyen from "./Pages/Property/Allpropertyen.jsx";
+import HomeEn from "./Pages/Home/HomeEn.jsx";
+import AgentMangementEn from "./Pages/Agents/AgentMangementEn.jsx";
+import SignatureInvoiceEn from "./Pages/PersonalArea/SignatureInvoiceEn.jsx";
 
 
 
@@ -70,12 +70,12 @@ function App() {
           <Route path="/:lang/*" element={
             <Routes>
               <Route path="signin" element={isAuthenticated() ? <Navigate to={`/${i18n.language}/home`} /> : <Signin setIsPadding={setIsPadding} isPadding={isPadding}/>} />
-              <Route path="home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+              <Route path="home" element={<ProtectedRoute><HomeEn /></ProtectedRoute>} />
               <Route path="customers" element={<ProtectedRoute><Customeren /></ProtectedRoute>} />
               <Route path="customers/add-customers" element={<ProtectedRoute><AddCustomer /></ProtectedRoute>} />
               <Route path="property" element={<ProtectedRoute><Allpropertyen/></ProtectedRoute>} />
               <Route path="agents" element={<ProtectedRoute><Agents /></ProtectedRoute>} />
-              <Route path="agent-management" element={<ProtectedRoute><AgentManagement /></ProtectedRoute>} />
+              <Route path="agent-management" element={<ProtectedRoute><AgentMangementEn /></ProtectedRoute>} />
               <Route path="agents/add-agents" element={<ProtectedRoute><AddAgents /></ProtectedRoute>} />
               <Route path="agents/edit-agents" element={<ProtectedRoute><EditAgents /></ProtectedRoute>} />
               <Route path="setting" element={<ProtectedRoute><Setting /></ProtectedRoute>} />
@@ -86,7 +86,7 @@ function App() {
               <Route path="report" element={<ProtectedRoute><Report /></ProtectedRoute>} />
               <Route path="personal-area/change-password" element={<ProtectedRoute><ChangePassword /></ProtectedRoute>} />
               <Route path="personal-area/change-email" element={<ProtectedRoute><ChangeEmail /></ProtectedRoute>} />
-              <Route path="personal-area/signature-invoice" element={<ProtectedRoute><SignatureInvoice /></ProtectedRoute>} />
+              <Route path="personal-area/signature-invoice" element={<ProtectedRoute><SignatureInvoiceEn /></ProtectedRoute>} />
               <Route path="broker" element={<ProtectedRoute><Brokersen /></ProtectedRoute>} />
               <Route path="landregistry" element={<ProtectedRoute><Landregistryen/></ProtectedRoute>} />
               <Route path="property_owner" element={<ProtectedRoute><PropertyOwneren/></ProtectedRoute>}/>

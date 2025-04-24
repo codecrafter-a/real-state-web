@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Invocies from './Invocies';
 import InvoicesMobile from './InvoicesMobile';
+import "../Invocies/invocies.css";
 
 const Invoicesen = () => {
     const [isMobileView, setIsMobileView] = useState(false);
@@ -17,4 +18,4 @@ const Invoicesen = () => {
       return !isMobileView ? <Invocies/> : <InvoicesMobile/>
 }
 
-export default Invoicesen
+export default Invoicesen;

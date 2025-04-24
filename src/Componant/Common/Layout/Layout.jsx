@@ -129,9 +129,9 @@ const Layout = ({ children }) => {
                     <span className="fs-2 w-100 d-flex justify-content-center dynamic-margin">
                       {title}
                     </span>
-                    <span>
+                    <button className="bg-transparent text-white border-0" onClick={() => navigate(window.history.back())}>
                       <IoChevronBackOutline size={20} />
-                    </span>
+                    </button>
                   </div>
                   <div></div>
                 </div>

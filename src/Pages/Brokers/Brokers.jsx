@@ -9,9 +9,9 @@ import successIcon from "../../assets/images/success_icon.svg";
 import Accordion from "react-bootstrap/Accordion";
 import whatsapp from "../../assets/images/wa, whatsapp, message, communication, chat.svg";
 import { Modal, Form, InputGroup, Button, Row, Col } from "react-bootstrap";
-// import sms from "../../assets/images/sms.svg";
-// import email from "../../assets/images/email.svg";
-// import group from "../../assets/images/Group 2538.png";
+import sms from "../../assets/images/sms.svg";
+import email from "../../assets/images/email.svg";
+import group from "../../assets/images/Group 2538.png";
 import gyiphy from "../../assets/images/celebration.gif";
 import Toggle from "../../Componant/Common/Toggle/Toggle";
 import close from "../../assets/images/close_small.png";
@@ -26,6 +26,7 @@ const Brokers = () => {
   const [sentSuccess, setSentSuccess] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
   const [propertySection, setPropertySection] = useState(false);
+  const [genrateSuccess, setGenrateSuccess] = useState(false);
 
   const handlePropertysection = () => {
     setPropertySection(true);
@@ -306,7 +307,7 @@ const Brokers = () => {
             </button>
             <button
               className=" agent-button2 rounded-pill px-4 py-2 fw-bold"
-              onClick={() => setSentSuccess(true)}
+              onClick={() => setGenrateSuccess(true)}
             >
               {t("age_btn_send_without")}
             </button>
@@ -703,108 +704,151 @@ const Brokers = () => {
             </h4>
             <p className="fs_25 font-semibold">{t("age_report_question")}</p>
           </div>
-
-          <div
-            className="options-container mx-auto w-100"
-            style={{ maxWidth: "417px" }}
-          >
-            {[whatsapp,].map((icon, idx) => (
-              <div className="option-item rounded-3 my-3" key={idx}>
-                <Accordion defaultActiveKey={null} className="custom-accordion">
-                  <Accordion.Item
-                    eventKey="0"
-                    className="custom-header border-teal-100"
-                  >
-                    <Accordion.Header className="bg-teal-100">
-                      <div className="d-flex justify-content-between w-100">
-                        <div className="d-flex align-items-center gap-2">
-                          <img src={icon} alt="icon" />
-                          <span className="ps-2 text-start fs_15">
-                            {t(
-                              `age_send_${
-                                [
-                                  "whatsapp",
-                                  "text_message",
-                                  "message_email",
-                                  "message_whatsapp_share",
-                                ][idx]
-                              }`
-                            )}
-                          </span>
-                        </div>
-                        <input
-                          className="form-check-input border border-black bg-white"
-                          type="checkbox"
-                        />
+          {/** Option View  */}
+          <div className="options-container m-auto" >
+            <div className="option-item rounded-3 my-3">
+              <Accordion defaultActiveKey={null} className="custom-accordion">
+                <Accordion.Item eventKey="0 " className="custom-header border-teal-100">
+                  <Accordion.Header className="bg-teal-100">
+                    <div className="d-flex justify-content-between w-100">
+                      <div className=" d-flex align-items-center">
+                        <img src={whatsapp} alt="whatsapp" />
+                        <span className="ps-2 text-start fs_15">
+                          {t("viaSMS")}
+                        </span>
                       </div>
-                    </Accordion.Header>
-                    <Accordion.Body className="bg-teal-100">
-                      <ul className="px-4  fw-bold">
-                        {[1, 2, 3].map((num) => (
-                          <li key={num}>
-                            {t(
-                              `age_send_${
-                                [
-                                  "whatsapp",
-                                  "text_message",
-                                  "email_message",
-                                  "message_whatsapp_share",
-                                ][idx]
-                              }_point_${num}`
-                            )}
-                          </li>
-                        ))}
-                      </ul>
-                      <p className="mt-3 fw-bold">
-                        {t(
-                          `age_send_${
-                            [
-                              "whatsapp",
-                              "text_message",
-                              "email_message",
-                              "message_whatsapp_share",
-                            ][idx]
-                          }_description`
-                        )}
-                      </p>
-
-                      {idx === 0 && (
-                        <div className="row justify-content-center text-center mt-4 align-items-center">
-                          {[150, 100, 50].map((val, colIdx) => (
-                            <div
-                              className="col-md-4 col-12 mb-3 px-2"
-                              key={colIdx}
-                            >
-                              <div className="rounded p-2 bg-white shadow-md ">
-                                <h3 className="text-embed-500 fs-2 fw-bold">
-                                  {val}
-                                </h3>
-                                <p className="mb-0 text-embed-500">
-                                  {t("age_send_whatsapp_message")}
-                                </p>
-                                <p className="text-embed-500">
-                                  {t(
-                                    `age_send_whatsapp_message_info${
-                                      colIdx === 0 ? "" : colIdx + 1
-                                    }`
-                                  )}
-                                </p>
-                              </div>
-                            </div>
-                          ))}
+                      <input
+                        className="form-check-input border border-black bg-white"
+                        type="checkbox"
+                      />
+                    </div>
+                  </Accordion.Header>
+                  <Accordion.Body className="bg-teal-100">
+                    {/* <p className="mt-3 fw-bold">Helllo</p> */}
+                    {/* <ul className="fw-bold px-4" style={{ listStyleType: "disc" }}>
+                      <li>{t("age_send_whatsapp_point_1")}</li>
+                      <li>{t("age_send_whatsapp_point_2")}</li>
+                      <li>{t("age_send_whatsapp_point_3")}</li>
+                    </ul>
+                    <p className="mt-3 fw-bold ">
+                      {t("age_send_whatsapp_description")}
+                    </p>
+                    <div className="row justify-content-center text-center mt-4 align-items-center">
+                      <div className="col-md-4 px-2">
+                        <div className="rounded p-2 bg-white  shadow-md">
+                          <h3 className="text-embed-500 fs-2 fw-bold">150</h3>
+                          <p className="mb-0 text-embed-500">
+                            {t("age_send_whatsapp_message")}
+                          </p>
+                          <p className="text-embed-500">
+                            {t("age_send_whatsapp_message_info")}
+                          </p>
                         </div>
-                      )}
-                    </Accordion.Body>
-                  </Accordion.Item>
-                </Accordion>
-              </div>
-            ))}
+                      </div>
+
+                      <div className="col-md-4 px-2">
+                        <div className="rounded shadow-md p-1 bg-white">
+                          <p className="mb-0 text-embed-500">
+                            {t("age_send_whatsapp_cost")}
+                          </p>
+                          <h3 className="text-embed-500 fs-2 fw-bold">100</h3>
+                          <p className="mb-0 text-embed-500">
+                            {t("age_send_whatsapp_message")}
+                          </p>
+                          <p className=" text-embed-500">
+                            {t("age_send_whatsapp_message_info2")}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="col-md-4 px-2">
+                        <div className="rounded p-2 bg-white shadow-sm">
+                          <h3 className="text-embed-500 fs-2 fw-bold">50</h3>
+                          <p className="mb-0 text-embed-500">
+                            {t("age_send_whatsapp_message")}
+                          </p>
+                          <p className="text-embed-500">
+                            {t("age_send_whatsapp_message_info3")}
+                          </p>
+                        </div>
+                      </div>
+                    </div> */}
+                  </Accordion.Body>
+                  
+                </Accordion.Item>
+              </Accordion>
+            </div>
+            <div className="option-item rounded-3 my-3">
+              <Accordion defaultActiveKey={null} className="custom-accordion">
+                <Accordion.Item eventKey="0 " className="custom-header border-teal-100">
+                  <Accordion.Header className="bg-teal-100">
+                    <div className="d-flex justify-content-between w-100">
+                      <div className=" d-flex align-items-center">
+                        <img src={sms} alt="whatsapp" />
+                        <span className="ps-2 text-start fs_15">
+                          {t("age_send_whatsapp")}
+                        </span>
+                      </div>
+                      <input
+                        className="form-check-input border border-black bg-white"
+                        type="checkbox"
+                      />
+                    </div>
+                  </Accordion.Header>
+                </Accordion.Item>
+              </Accordion>
+            </div>
+            <div className="option-item rounded-3 my-3">
+              <Accordion defaultActiveKey={null} className="custom-accordion">
+                <Accordion.Item eventKey="0 " className="custom-header border-teal-100">
+                  <Accordion.Header className="bg-teal-100">
+                    <div className="d-flex justify-content-between w-100">
+                      <div className=" d-flex align-items-center">
+                        <img src={email} alt="whatsapp" />
+                        <span className="ps-2 text-start fs_15">
+                          {t("viaEmail")}
+                        </span>
+                      </div>
+                      <input
+                        className="form-check-input border border-black bg-white"
+                        type="checkbox"
+                      />
+                    </div>
+                  </Accordion.Header>
+                </Accordion.Item>
+              </Accordion>
+            </div>
+            <div className="option-item rounded-3 my-3">
+              <Accordion defaultActiveKey={null} className="custom-accordion">
+                <Accordion.Item eventKey="0 " className="custom-header border-teal-100">
+                  <Accordion.Header className="bg-teal-100">
+                    <div className="d-flex justify-content-between w-100">
+                      <div className=" d-flex align-items-center">
+                        <img src={group} alt="whatsapp" />
+                        <span className="ps-2 text-start fs_15">
+                          {t("group")}
+                        </span>
+                      </div>
+                      <input
+                        className="form-check-input border border-black bg-white"
+                        type="checkbox"
+                      />
+                    </div>
+                  </Accordion.Header>
+                </Accordion.Item>
+              </Accordion>
+            </div>
           </div>
 
           <div className="text-center mt-4 d-flex flex-wrap flex-md-nowrap">
             <button
               className="agent-button1 mx-auto rounded-pill px-3 py-2 fw-bold shadow-sm text-white"
-              onClick={handleIsShow}
+              onClick={
+                () => {
+                  setSentSuccess(true);
+                  setIsView(false);
+                }
+              }
             >
               {t("age_btn_send")}
             </button>
@@ -914,6 +958,54 @@ const Brokers = () => {
             <button
               className="btn bg-teal text-white rounded-pill px-4 py-2 fw-bold shadow-sm w-75"
               onClick={() => setSentSuccess(false)}
+            >
+              {t("age_btn_description")}
+            </button>
+          </div>
+        </Modal.Body>
+      </Modal>
+      <Modal
+        show={genrateSuccess}
+        onHide={() => setGenrateSuccess(false)}
+        centered
+        className="modal-container"
+      >
+        <div className="position-absolute top-0 start-50 translate-middle-x mt-5 z-2">
+          <img
+            src={gyiphy}
+            alt="gyiphy"
+            className="img-fluid object-fit-cover w-full h-auto"
+            style={{ marginTop: "-100px" }}
+          />
+        </div>
+        <Modal.Header className="d-flex justify-content-end align-items-center border-0">
+          <button
+            type="button"
+            className="btn-close m-0 fs-5"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            onClick={() => setGenrateSuccess(false)}
+          ></button>
+        </Modal.Header>
+        <Modal.Body className="p-4 position-relative z-2">
+          <div className="text-center">
+            <div className="d-flex justify-content-center">
+              <img
+                src={successIcon}
+                alt="Success"
+                className="img-fluid mb-3"
+                style={{ width: "80px", height: "80px" }}
+              />
+            </div>
+            <h4 className="fs-3 text-teal fw-semibold">
+              {t("age_cust_agreement_status")}
+            </h4>
+            <p className="fs-3 text-teal fw-semibold">{t("sent")}</p>
+          </div>
+          <div className="text-center mt-4">
+            <button
+              className="btn bg-teal text-white rounded-pill px-4 py-2 fw-bold shadow-sm w-75"
+              onClick={() =>setGenrateSuccess(false)}
             >
               {t("age_btn_description")}
             </button>

@@ -1,7 +1,7 @@
 .input-group:focus-within {
     border: 1px solid rgb(0, 164, 129) !important;
-    border-radius: 8px; /* Optional: for rounded corners */
-    outline: none; /* Removes default outline */
+    border-radius: 8px; 
+    outline: none; 
 }
 
 .fs-14{
@@ -66,7 +66,7 @@ input:focus-within {outline: none;}
   }
   .custom-table th:last-child,
   .custom-table td:last-child {
-    border-left: 0;
+    border-left: 0; 
   }
   
 .collapse{ visibility: visible;}

@@ -7,6 +7,7 @@ import deleteIcon from "../../assets/images/delete.svg";
 import { usePropertyservices } from "../../Services/PropertyServices";
 import Carousel from 'react-bootstrap/Carousel';
 import { Image } from "react-bootstrap";
+import  imagedoc  from '../../assets/images/image-progress.png';
 const Propertytable = ({filter}) => {
   const { t } = useTranslation();
 
@@ -179,6 +180,7 @@ const Propertytable = ({filter}) => {
                         children={t("view_att")}
                       />
                       <div className="d-flex align-items-center">
+                      <img src={imagedoc} alt="imagedoc" />
                         <img src={edit} alt={"editbtn"} className="px-1" />
                         <img
                           src={deleteIcon}
@@ -186,6 +188,7 @@ const Propertytable = ({filter}) => {
                           className="px-1"
                           style={{ cursor: "pointer" }}
                         />
+                        
                       </div>
                     </div>
                   </td>
