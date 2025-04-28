@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Table, Form } from 'react-bootstrap';
 import { FaWhatsapp } from 'react-icons/fa';
 import { TbMailForward } from "react-icons/tb";
@@ -8,7 +8,26 @@ import { LuDownload } from "react-icons/lu";
 
 const InvoicesTable = ({data, handleClick}) => {
   const { t } = useTranslation();
-  
+  const [selectedRows, setSelectedRows] = useState([]);
+  const handleRowCheckboxChange = (id) => {
+    setSelectedRows(prevSelected =>
+      prevSelected.includes(id)
+        ? prevSelected.filter(rowId => rowId !== id) // unselect
+        : [...prevSelected, id] // select
+    );
+  };
+
+  // Handle select all checkbox
+  const handleSelectAll = () => {
+    if (selectedRows.length === data.length) {
+      setSelectedRows([]); // Unselect all
+    } else {
+      const allIds = data.map(row => row.id);
+      setSelectedRows(allIds); // Select all
+    }
+  };
+
+  const isAllSelected = selectedRows.length === data.length && data.length > 0;
   return (
     <div className="custom-table-container">
       <Table hover className="table d-md-table  d-none">
@@ -16,7 +35,8 @@ const InvoicesTable = ({data, handleClick}) => {
           <tr>
             <th className="p-2">
               <div className="d-flex align-items-center">
-                <Form.Check type="checkbox" className="mx-2" />
+                <Form.Check type="checkbox" className="mx-2" checked={isAllSelected} 
+                  onChange={handleSelectAll} />
                 <span className='fs-15 fw-semibold lh-sm '>{t("invoice_number")}</span>
               </div>
             </th>
@@ -32,7 +52,7 @@ const InvoicesTable = ({data, handleClick}) => {
             <tr key={row.id}>
               <td className="d-table-cell align-middle py-4">
                 <div className="d-flex align-items-center">
-                  <Form.Check type="checkbox" className="mx-2" />
+                  <Form.Check type="checkbox" className="mx-2"  checked={selectedRows.includes(row.id)}onChange={() => handleRowCheckboxChange(row.id)} />
                   {row.accountNumber}
                 </div>
               </td>

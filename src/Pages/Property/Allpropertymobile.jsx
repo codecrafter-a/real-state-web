@@ -38,10 +38,10 @@ const Allpropertymobile = () => {
     <>
     <div className="rounded-3">
      <div className="bg-white shadow-lg px-3 rounded-3">
-        <div className="d-flex justify-content-between align-items-center">
+        <div className="d-flex justify-content-between align-items-center gap-2">
           <button
             type="button"
-            className="border-teal my-2 d-flex align-items-center justify-content-center rounded-pill py-1 px-4 search-button"
+            className="border-teal my-2 d-flex align-items-center justify-content-center rounded-pill py-1 w-100 "
             onClick={() => navigate(`/${lang}/Property/add_property`)}
           >
             <div className="flex items-center text-nowrap justify-center">
@@ -51,7 +51,7 @@ const Allpropertymobile = () => {
           </button>
           <button
             type="button"
-            className="border-teal my-2 d-flex align-items-center justify-content-center rounded-pill py-1 px-4 search-button"
+            className="border-teal my-2 d-flex align-items-center justify-content-center rounded-pill w-100 py-1"
           >
             <div className="flex items-center justify-center">
               <img className="me-1" src={delet} alt="Add Client" />

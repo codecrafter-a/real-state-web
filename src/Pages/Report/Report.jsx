@@ -239,7 +239,7 @@ const Report = () => {
                 )
             )}
             <div className="w-100   py-2 bg-[#FFFFFFD6] d-flex justify-content-center" style={{ position: "sticky", bottom: "0" }}>
-                <button className="agent-btn-responsive1 text-white fw-bold h-25 shadow w-25 py-2 mt-3 rounded-pill">{t("send_btn")}</button>
+                <button className="agent-btn-responsive1 text-white fw-bold h-25 shadow report-btn py-2 mt-3 rounded-pill">{t("send_btn")}</button>
             </div>
         </div>
     )

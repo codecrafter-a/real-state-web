@@ -626,7 +626,7 @@ const Brokers_between = () => {
               className="btn bg-teal text-white rounded-pill px-4 py-2 fw-bold shadow-sm w-75"
               onClick={() => setSentSuccess(false)}
             >
-              {t("age_btn_description")}
+              {t("Customert_btn_description")}
             </button>
           </div>
         </Modal.Body>
@@ -674,7 +674,7 @@ const Brokers_between = () => {
               className="btn bg-teal text-white rounded-pill px-4 py-2 fw-bold shadow-sm w-75"
               onClick={() =>setGenrateSuccess(false)}
             >
-              {t("age_btn_description")}
+              {t("Customert_btn_description")}
             </button>
           </div>
         </Modal.Body>

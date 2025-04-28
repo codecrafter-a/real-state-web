@@ -688,7 +688,7 @@ const Property_owner = () => {
               className="agent-btn-responsive1 w-50 py-2 rounded-pill text-white"
               onClick={() => setSentSuccess(false)}
             >
-              {t("age_btn_description")}
+              {t("Customert_btn_description")}
             </button>
           </div>
         </Modal.Body>
@@ -736,7 +736,7 @@ const Property_owner = () => {
               className="btn bg-teal text-white rounded-pill px-4 py-2 fw-bold shadow-sm w-75"
               onClick={() =>setGenrateSuccess(false)}
             >
-              {t("age_btn_description")}
+              {t("Customert_btn_description")}
             </button>
           </div>
         </Modal.Body>
