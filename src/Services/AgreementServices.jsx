@@ -21,6 +21,7 @@ const { t } = useTranslation();
         actionType: "default",
         icon: <FaWhatsapp />,
         deletes: "age_delet",
+        actionType: "Generated",
         userID: 1,
       },
       {
@@ -33,6 +34,7 @@ const { t } = useTranslation();
         actionType: "default",
         icon: <FaWhatsapp />,
         deletes: "age_delet",
+        actionType: "Sent",
         userID: 2,
       },
       {
@@ -45,6 +47,7 @@ const { t } = useTranslation();
         actionType: "default",
         icon: <FaWhatsapp />,
         deletes: "age_delet",
+        actionType: "Viewed",
         userID: 3,
       },
       {
@@ -57,6 +60,7 @@ const { t } = useTranslation();
         actionType: "signed",
         icon: <FaWhatsapp />,
         deletes: "age_delet",
+        actionType: "Signed",
         userID: 4,
       },
       {
@@ -69,6 +73,7 @@ const { t } = useTranslation();
         actionType: "executed",
         icon: <FaWhatsapp />,
         deletes: "age_delet",
+        actionType: "Signed and executed",
         userID: 5,
       },
       {
@@ -81,6 +86,7 @@ const { t } = useTranslation();
         actionType: "registered",
         icon: <FaWhatsapp />,
         deletes: "age_delet",
+        actionType: "Signed and registered",
         userID: 6,
       },
     ];

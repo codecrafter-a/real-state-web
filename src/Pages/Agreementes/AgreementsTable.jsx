@@ -14,7 +14,6 @@ import { Dropdown } from "react-bootstrap";
 import cancel from "../../assets/images/cancel.png";
 
 const AgreementsTable = ({ handleOpen, selectedStatus, selectData }) => {
-  console.log(" ~ AgreementsTable ~ selectedStatus:", selectedStatus);
   const { t } = useTranslation();
   return (
     <div className="mt-4 ps-3">
@@ -117,7 +116,7 @@ const AgreementsTable = ({ handleOpen, selectedStatus, selectData }) => {
                       <IoMdAttach size={18} />
                       {t("home_tab_r1_h1_l2")}
                     </span>
-                    <Dropdown className="d-flex bg-white align-items-center">
+                    <Dropdown className="d-flex bg-white align-items-center justify-content-center px-3">
                       <Dropdown.Toggle
                         as="div"
                         variant="light"
@@ -217,118 +216,12 @@ const AgreementsTable = ({ handleOpen, selectedStatus, selectData }) => {
           ))}
         </tbody>
       </table>
-      {/* <Accordion className=" p-0 d-md-none d-flex flex-column gap-3 ">
-        {selectData.map((row, index) => (
-          <Accordion.Item
-            eventKey={index.toString()}
-            key={row.id}
-            style={{
-              borderInlineStart: `6px solid ${
-                borderColors[row.actionType] || "#f87171"
-              }`,
-            }}
-            className="border-2  border-top rounded-3 overflow-visible"
-          > 
-            <Accordion.Header id="accordionDropdown"></Accordion.Header>
-            <label aria-label="accordionDropdown"  as="div" className="d-flex align-items-center">
-              <div className="d-flex align-items-center gap-2">
-                <img
-                  src={key}
-                  alt="vertical key"
-                  className="img-fluid"
-                  style={{
-                    width: "40px",
-                    height: "40px",
-                    objectFit: "contain",
-                  }}
-                />
-                <div>
-                  <span className="fw-semibold fs-12 d-block">
-                    {row?.accountNumber} | {row?.date}
-                  </span>
-                  <p className="fw-bold fs-14 d-block mb-0">
-                    {t(row?.agreementName)} |{" "}
-                    <span className="fw-semibold lh-1 fs-12">
-                      {t(row?.agreementType)}
-                    </span>
-                  </p>
-                  <p className="fw-bold fs-12 d-block my-0">
-                    {t("home_tab_h4")} :{" "}
-                    <span className="fw-semibold lh-1 fs-12">
-                      {t(row?.clients)}
-                    </span>
-                  </p>
-                  <p className="fw-bold fs-12 d-block mb-0">
-                    {t("br_commission")}
-                    <span className="fw-semibold lh-1 fs-12">
-                      {row?.commission}
-                    </span>
-                  </p>
-                </div>
-              </div>
-              <div>
-                <StatusBadge status={t(row?.status)} />
-              </div>
-            </label>
-            <Accordion.Body className="p-0">
-              <div className="border-top p-2 ">
-                <div className="d-flex justify-content-around  w-100">
-                  <ActionButtons
-                    type={t(row?.actionType)}
-                    icon={row?.icon}
-                    onDelete={handleOpen}
-                  />
-                </div>
-              </div>
-            </Accordion.Body>
-          </Accordion.Item>
-        ))}
-      </Accordion> */}
     </div>
   );
 };
-// const ActionButtons = ({ type, icon, onDelete }) => {
-//   const { t } = useTranslation();
-//   return (
-//     <div className="d-flex align-items-center gap-2 p-1 bg-white ">
-//       {type === "default" && (
-//         <>
-//           <div className="d-md-flex align-items-center gap-1 cursor-pointer">
-//             <TbMailForward />
-//             <span className=" fs-12 fs-md-15 fw-normal lh-1">
-//               {t("home_tab_r1_h1_l4")}
-//             </span>
-//           </div>
-//           <div className="d-sm-flex align-items-center gap-1 cursor-pointer">
-//             {icon}
-//             <span className="fs-md-15 fs-12 fw-normal lh-1">
-//               {t("home_tab_r1_h1_l3")}
-//             </span>
-//           </div>
-//           <button
-//             className="d-sm-flex align-items-center border-0 bg-transparent gap-1 cursor-pointer"
-//             onClick={onDelete}
-//           >
-//             <MdOutlineDeleteForever />
-//             <span className="fs-12 fs-md-15 fw-normal lh-1">
-//               {t("age_delet")}
-//             </span>
-//           </button>
-//           <span className="fs-12 fs-md-15 fw-normal lh-1">
-//             {t("home_tab_r1_h1_l2")}
-//           </span>
-//           <span className="fs-12 fs-md-15 fw-normal lh-1">
-//           {t("home_tab_r1_h1_l1")}
-//           </span>
-//         </>
-//       )}
-//     </div>
-//   );
-// };
 
 const StatusBadge = ({ status }) => {
   const { t } = useTranslation();
-
   const statusMap = {
     Generated: "הופק",
     Sent: "נשלח",
@@ -337,13 +230,11 @@ const StatusBadge = ({ status }) => {
     "Signed and Executed": "נחתם ויצא לפועל",
     "Signed and Registered": "נחתם ונרשם",
   };
-
   const translatedStatus = t(status);
-
   const statusKey = statusMap[translatedStatus] || translatedStatus;
 
   const statusStyles = {
-    Genrated: { backgroundColor: "#f3f4f6", color: "#6b7280" },
+    הופק: { backgroundColor: "#f3f4f6", color: "#6b7280" },
     נשלח: { backgroundColor: "#fef3c7", color: "#d97706" },
     נצפה: { backgroundColor: "#fee2e2", color: "#dc2626" },
     נחתם: { backgroundColor: "#ecfdf5", color: "#10b981" },
@@ -354,11 +245,18 @@ const StatusBadge = ({ status }) => {
   return (
     <span
       className="px-4 my-auto text-center fw-semibold rounded-pill d-flex align-items-center justify-content-center"
-      style={{ ...statusStyles[statusKey], minHeight: "28px", width: "123px" }}
+      style={{
+        ...statusStyles[statusKey],
+        minHeight: "28px",
+        width: "123px",
+      }}
     >
       {translatedStatus}
     </span>
   );
 };
+
+
+
 
 export default AgreementsTable;

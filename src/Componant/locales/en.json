@@ -278,6 +278,8 @@
     "age_btn_description":"To sign the client on my device",
     "age_delet": "Delete",
     "Customert_btn_description": "For customer signing on my device",
+    "Agree_mobile_btn": "Send to this device",
+    
 
     "home_title": "Home Page",
     "home_block1_title": "What would you like to do?", 
