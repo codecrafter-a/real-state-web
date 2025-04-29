@@ -83,9 +83,8 @@ const Clientmatch_mobile = () => {
                             {row.details.features.map((feature, index) => {
                             return (<>
                                 <Button
-                                    key={index}
-                                    
-                                    className='bg-success bg-opacity-10 fw-bold border-success text-success'
+                                    key={index} 
+                                    className='bg-success bg-opacity-10 fw-bold border-success rounded-pill  text-success'
                                 >
                                     {feature}
                                 </Button>

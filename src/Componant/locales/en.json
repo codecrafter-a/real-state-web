@@ -279,8 +279,10 @@
     "age_delet": "Delete",
     "Customert_btn_description": "For customer signing on my device",
     "Agree_mobile_btn": "Send to this device",
-    
-
+    "copy_signature": "Copy link to signature",
+    "cancel_signature": "Cancel the signature process",
+    "delet_signature": "Delete agreement",
+    "all_age": "To All Agreements (5) >>",
     "home_title": "Home Page",
     "home_block1_title": "What would you like to do?", 
     "home1_btn1_title": "Collaboration between brokers",

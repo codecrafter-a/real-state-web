@@ -4,11 +4,9 @@ import { Nav } from "react-bootstrap";
 import Tab from "../../Componant/Common/Tab/Tab";
 import { motion } from "framer-motion";
 import search from "../../assets/images/search.png";
-import { BsLink45Deg } from "react-icons/bs";
-import { MdCancel } from "react-icons/md";
 import { RiDeleteBin6Line } from "react-icons/ri";
-
-import { Modal, ListGroup } from "react-bootstrap";
+import  pin  from "../../assets/images/pin.png";
+import { Modal} from "react-bootstrap";
 import { Accordion } from "react-bootstrap";
 import Toggle from "../../Componant/Common/Toggle/Toggle";
 import { TbNotes } from "react-icons/tb";
@@ -17,12 +15,10 @@ import key from "../../assets/images/key_vertical.svg";
 import { useAgreementServices } from "../../Services/AgreementServices";
 import { IoIosArrowDown } from "react-icons/io";
 import { TbMailForward } from "react-icons/tb";
-import { Dropdown } from "react-bootstrap";
 import cancel from "../../assets/images/cancel.png";
 import { HiOutlineDotsVertical } from "react-icons/hi";
-import { RiDeleteBin2Line } from "react-icons/ri";
 import AddinvoicesIcon from "../../assets/images/addinvoices.png";
-const ActionButtons = ({ type, icon }) => {
+const ActionButtons = ({ type, icon, onClick }) => {
 
 
   const { t } = useTranslation();
@@ -49,50 +45,11 @@ const ActionButtons = ({ type, icon }) => {
               </span>
           </div>
           <div className="position-relative">
-            <Dropdown className="d-flex align-items-center">
-              <Dropdown.Toggle
-                id="dropdown-button-dark-example1"
-                as="div"
-                variant="light"
-                className="border-0 bg-transparent custom-dropdown-toggle d-flex align-items-center gap-1 cursor-pointer"
-              >
-                <HiOutlineDotsVertical size={18} />
-                {t("home_tab_r1_h1_l1")}
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu className="w_max">
-                <Dropdown.Item
-                  href="#/action-1"
-                  className="d-flex align-items-center gap-1 m-2 p-0"
-                >
-                  <img
-                    src={cancel}
-                    alt="cancel"
-                    className="img-fluid"
-                    style={{
-                      width: "20px",
-                      height: "20px",
-                      objectFit: "contain",
-                    }}
-                  />
-                  <span className="fs-15 lh-1 fw-normal">
-                    {t("cancel_signing_process")}
-                  </span>
-                </Dropdown.Item>
-                <Dropdown.Item
-                  href="#/action-2"
-                  className="d-flex align-items-center gap-2 m-2 p-0"
-                >
-                  <RiDeleteBin2Line size={18} />
-                  <span className="fs-15 lh-1 fw-normal">
-                    {t("delete_agreement")}
-                  </span>
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </div>
-         
-         
+            <button className="border-0 bg-white d-flex align-items-center gap-2" onClick={onClick}>
+              <HiOutlineDotsVertical size={18} />
+              {t("home_tab_r1_h1_l1")}
+            </button>
+          </div> 
         </>
       )}
     </div>
@@ -140,8 +97,6 @@ const AgreementsMobile = () => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   const { lang } = useParams();
   const [activeTab, setActiveTab] = useState("all");
   const {
@@ -153,7 +108,7 @@ const AgreementsMobile = () => {
   } = useAgreementServices();
   const [isOpen, setIsOpen] = useState(false);
   const [addInvoices, setAddInvoices] = useState(false);
-
+ const handleShow = () => setShow(true);
 
   useEffect(() => {
     const fetchAgreementData = async () => {
@@ -167,257 +122,22 @@ const AgreementsMobile = () => {
 
     fetchAgreementData();
   }, []);
+
+  useEffect(() => {
+    console.log("Modal show state:", show);
+  }, [show]);
   const borderColors = [
     { Generated: "#555555" },
     { sent: "#fef3c7" },
-    { signed: "#f87171" },
+    { viewed: "#f87171" },
     { executed: "#10b981" },
     { registered: "#10b981" },
-    { viewed: "#10b981" },
+    { signin: "#10b981" },
   ];
 
   const handleModalClose = () => setAddInvoices(false);
   const handleInvoiceViewClick = () => navigate(`/${lang}/invoices`);
 
-  // return (
-  //   <>
-  //     <div className="d-block ">
-  //       <div className="bg-white border-2 rounded-2 mb-4 shadow">
-  //         <div className="w-100 border-bottom">
-  //           <Nav variant="tabs" className="mx-md-3 fs-15 pt-2 ">
-  //             <div className="col-6 text-center">
-  //               <Tab
-  //                 className={`border-0 fs-6 text-nowrap fw-normal px-1 lh-1 w-100 ${
-  //                   activeTab === "recent" ? "active-tab fw-bold" : ""
-  //                 }`}
-  //                 onClick={() => setActiveTab("recent")}
-  //                 children={t("recent_agreements")}
-  //                 tab={true}
-  //               />
-  //             </div>
-  //             <div className="col-6 text-center">
-  //               <Tab
-  //                 className={`border-0 fs-6 text-nowrap fw-normal px-1 lh-1 w-100 ${
-  //                   activeTab === "all" ? "active-tab fw-bold" : ""
-  //                 }`}
-  //                 onClick={() => setActiveTab("all")}
-  //                 children={t("all_agreements")}
-  //                 tab={true}
-  //               />
-  //             </div>
-  //           </Nav>
-  //         </div>
-  //         <div className="row px-1">
-  //           <div className="col-12 col-md-8">
-  //             <div className="m-3 position-relative border border-[#D6D6D6] rounded py-2 px-3">
-  //               <div className="d-flex">
-  //                 <input
-  //                   type="text"
-  //                   className="form-control border-0 p-0"
-  //                   placeholder={t("search_placeholder_all")}
-  //                   value={searchQuery}
-  //                   onChange={handleSearchChange}
-  //                 />
-  //                 <button className="btn" type="button">
-  //                   <img src={search} alt="Search" />
-  //                 </button>
-  //               </div>
-  //             </div>
-  //           </div>
-  //         </div>
-  //         <div className=" d-block">
-  //           <p className="fs-6 fw-semibold lh-1 my-2 text-center text-teal">
-  //             {t("more_filters")}
-  //           </p>
-  //           <motion.div
-  //             initial={{ height: 0, opacity: 0 }}
-  //             animate={
-  //               isOpen
-  //                 ? { height: "auto", opacity: 1 }
-  //                 : { height: 0, opacity: 0 }
-  //             }
-  //             exit={{ height: 0, opacity: 0 }}
-  //             transition={{ duration: 0.4, ease: "easeInOut" }}
-  //             style={{ overflow: "hidden" }}
-  //           >
-  //             <div className="d-block">
-  //               <div className="row mx-1">
-  //                 <div className="col-4">
-  //                   <button className="agent-btn-responsive1 w-100 py-2 rounded-pill text-white">
-  //                     {t("previous_month")}
-  //                   </button>
-  //                 </div>
-  //                 <div className="col-4">
-  //                   <button className="agent-btn-responsive2 w-100 py-2 rounded-pill">
-  //                     {t("three_months")}
-  //                   </button>
-  //                 </div>
-  //                 <div className="col-4">
-  //                   <button className="agent-btn-responsive2 w-100 py-2 rounded-pill">
-  //                     {t("half_year")}
-  //                   </button>
-  //                 </div>
-  //               </div>
-  //               <div className="w-100 px-3 my-3">
-  //                 <label className="form-label fs-15 fw-semibold lh-1">
-  //                   {t("agreement1_status")}
-  //                 </label>
-  //                 <select className="form-select">
-  //                   <option>Genrated</option>
-  //                   <option>Fail</option>
-  //                   <option>Viewd</option>
-  //                 </select>
-  //               </div>
-  //               <div className="row px-3">
-  //                 <div className="col-6">
-  //                   <label className="form-label fs-15 fw-semibold lh-1">
-  //                     {t("to_date1")}
-  //                   </label>
-  //                   <input type="date" className="form-control" />
-  //                 </div>
-  //                 <div className="col-6">
-  //                   <label className="form-label fs-15 fw-semibold lh-1">
-  //                     {t("from_date1")}
-  //                   </label>
-  //                   <input type="date" className="form-control" />
-  //                 </div>
-  //               </div>
-  //               <div className="w-100 px-3">
-  //                 <div className="d-flex align-items-center">
-  //                   <Toggle
-  //                     defaultChecked
-  //                     checked={addInvoices}
-  //                     type="checkbox"
-  //                     id="toggleImages"
-  //                     onChange={handleToggle}
-  //                   />
-  //                   <label
-  //                     className="fs-6 fw-normal lh-1"
-  //                     htmlFor="toggleImages"
-  //                   >
-  //                     {t("invoice_issued")}
-  //                   </label>
-  //                 </div>
-  //               </div>
-  //             </div>
-  //           </motion.div>
-  //           <div className="justify-content-center d-flex">
-  //             <button className="border-0 bg-white" onClick={handleisopen}>
-  //               <IoIosArrowDown />
-  //             </button>
-  //           </div>
-  //         </div>
-  //       </div>
-  //       {activeTab === "all" && (
-  //         <Accordion className=" p-0  d-flex flex-column gap-3 ">
-  //           {tableData.map((row, index) => (
-  //             <Accordion.Item
-  //               eventKey={index.toString()}
-  //               key={row.id}
-  //               style={{
-  //                 borderInlineStart: `6px solid ${
-  //                   borderColors[row.actionType] || "#f87171"
-  //                 }`,
-  //               }}
-  //               className=" card mb-2 border-top"
-  //             >
-  //               <Accordion.Header>
-  //                 <div className="d-flex align-items-center justify-content-between w-100 gap-2">
-  //                   <div className="d-flex align-items-center flex-grow-1 gap-2">
-  //                     <div className="p-1">
-  //                       <img
-  //                         src={key}
-  //                         alt="vertical key"
-  //                         className="img-fluid"
-  //                         style={{
-  //                           width: "30px",
-  //                           height: "30px",
-  //                           objectFit: "contain",
-  //                         }}
-  //                       />
-  //                     </div>
-  //                     <div>
-  //                       <span className="fw-semibold fs-12 d-block">
-  //                         {row?.accountNumber} | {row?.date}
-  //                       </span>
-  //                       <p className="fw-bold fs-14 d-block mb-0">
-  //                         {t(row?.agreementName)} |{" "}
-  //                         <span className="fw-semibold lh-1 fs-12">
-  //                           {t(row?.agreementType)}
-  //                         </span>
-  //                       </p>
-  //                       <p className="fw-bold fs-12 d-block my-0">
-  //                         {t("sitem3")} :{" "}
-  //                         <span className="fw-semibold lh-1 fs-12">
-  //                           {t(row?.clients)}
-  //                         </span>
-  //                       </p>
-  //                       <p className="fw-bold fs-12 d-block mb-0">
-  //                         {t("br_commission")} :{" "}
-  //                         <span className="fw-semibold lh-1 fs-12">
-  //                           {row?.commission}
-  //                         </span>
-  //                       </p>
-  //                     </div>
-  //                   </div>
-  //                   <div className="flex-shrink-0 my-2">
-  //                     <StatusBadge status={row?.status} />
-  //                   </div>
-  //                 </div>
-  //               </Accordion.Header>
-  //               <Accordion.Body className="p-0">
-  //                 <div className="border-top px-2 ">
-  //                   <div className="d-flex justify-content-center gap-1 w-100">
-  //                     <ActionButtons
-  //                       type={t(row?.actionType)}
-  //                       icon={row?.icon}
-  //                       onDelete={handleInvoice}
-  //                     />
-  //                   </div>
-  //                 </div>
-  //               </Accordion.Body>
-  //             </Accordion.Item>
-  //           ))}
-  //         </Accordion>
-  //       )}
-  //     </div>
-  //     <Modal
-  //       show={addInvoices}
-  //       className="modal-container"
-  //       centered
-  //       onClick={() => setAddInvoices(false)}
-  //     >
-  //       <Modal.Header className="border-0 p-3 position-relative mt-4">
-  //         <button
-  //           type="button"
-  //           className="btn-close position-absolute close-btn"
-  //         ></button>
-  //       </Modal.Header>
-  //       <Modal.Body className="text-center p-4">
-  //         <div className="d-flex justify-content-center align-items-center mb-3">
-  //           <img src={AddinvoicesIcon} alt="success icon open" className="" />
-  //         </div>
-  //         <h4 className="text-embed-500 fs-3 font-semibold pb-3">
-  //           {t("invoice_success")}
-  //         </h4>
-  //         <div className="d-flex justify-content-center justify-content-md-between flex-wrap flex-md-nowrap my-3">
-  //           <button
-  //             className="fs-5 lh-1 fw-semibold agent-btn-responsive1 text-white my-md-3 w-50 py-2 py-md-0 mx-1 rounded-pill"
-  //             onClick={handleClick}
-  //           >
-  //             {t("invoice_view")}
-  //           </button>
-  //           <button
-  //             className="fs-5 lh-1 fw-semibold  py-2 my-3 agent-btn-responsive2 w-50  mx-1 rounded-pill "
-  //             onClick={() => setAddInvoices(false)}
-  //           >
-  //             {t("invoice_all")}
-  //           </button>
-  //         </div>
-  //       </Modal.Body>
-  //     </Modal>
-  //   </>
-  // );
   return (
     <>
       <div className="d-block">
@@ -524,6 +244,7 @@ const AgreementsMobile = () => {
                 </div>
               </div>
             </motion.div>
+           
             <div className="justify-content-center d-flex">
               <button
                 className="border-0 bg-white"
@@ -534,53 +255,46 @@ const AgreementsMobile = () => {
             </div>
           </div>
         </div>
-        <Modal
-        show={show}
-        onHide={handleClose}
-        centered
-        dialogClassName="modal-bottom"
-        contentClassName="rounded-top"
+        {show && (
+        <div
+          className="position-fixed top-0 start-0 w-100 h-100"
+          style={{ zIndex: 1040, backgroundColor: "rgba(0,0,0,0.3)" }}
+          onClick={() => setShow(false)}
+        />
+            )}
+           <motion.div
+        initial={{ y: "100%" }}
+        animate={show ? { y: "0%" } : { y: "100%" }}
+        exit={{ y: "100%" }}
+        transition={{ duration: 0.4, ease: "easeInOut" }}
+        className="bottom-sheet position-fixed bg-white w-100 shadow"
+        style={{
+          zIndex: 1155,
+          left: 0,
+          bottom: 0,
+          borderTopLeftRadius: "1rem",
+          borderTopRightRadius: "1rem",
+        }}
       >
-        <Modal.Body className="p-3">
-          <div className="d-flex justify-content-center mb-3">
-            <div style={{
-              width: "40px",
-              height: "4px",
-              backgroundColor: "#ccc",
-              borderRadius: "4px"
-            }} />
-          </div>
+        {/* Drag Indicator */}
+        <div className="drag-indicator bg-teal mx-auto mt-2"></div>
 
-          <ListGroup variant="flush">
-            <ListGroup.Item
-              className="d-flex align-items-center gap-2"
-              action
-              onClick={() => console.log("Copy Link")}
-            >
-              <BsLink45Deg size={20} />
-              העתקת קישור לחתימה
-            </ListGroup.Item>
-
-            <ListGroup.Item
-              className="d-flex align-items-center gap-2"
-              action
-              onClick={() => console.log("Cancel Signing Process")}
-            >
-              <MdCancel size={20} />
-              ביטול תהליך החתימה
-            </ListGroup.Item>
-
-            <ListGroup.Item
-              className="d-flex align-items-center gap-2"
-              action
-              onClick={() => console.log("Delete Agreement")}
-            >
-              <RiDeleteBin6Line size={20} />
-              מחיקת הסכם
-            </ListGroup.Item>
-          </ListGroup>
-        </Modal.Body>
-      </Modal>
+        {/* Options List */}
+        <ul className="list-unstyled p-3 my-3">
+          <li className="d-flex align-items-center  gap-2">
+            <img src={pin} alt="pin" style={{width: "17px", height: "17px"}} />
+            <span className="fs-6 lh-1 fw-normal">{t("copy_signature")}</span>
+          </li>
+          <li className="d-flex align-items-center my-3 gap-2">
+            <img src={cancel} alt="cancel"  className="" />
+            <span className="fs-6 lh-1 fw-normal">{t("cancel_signature")}</span>
+          </li>
+          <li className="d-flex align-items-center  gap-2">
+            <RiDeleteBin6Line  className="" size={20}/>
+            <span className="fs-6 lh-1 fw-normal">{t("delet_signature")}</span>
+          </li>
+        </ul>
+           </motion.div>
 
         {activeTab === "all" && (
           <Accordion className="p-0 d-flex flex-column gap-3">
@@ -615,7 +329,7 @@ const AgreementsMobile = () => {
                           }}
                         />
                         <div>
-                          <span className="fw-semibold fs-12 d-block">
+                          <span className="fw-semibold fs-12 d-block" >
                             {row?.accountNumber} | {row?.date}
                           </span>
                           <p className="fw-bold fs-14 mb-0">
@@ -647,6 +361,7 @@ const AgreementsMobile = () => {
                         <ActionButtons
                           type={t(row?.actionType)}
                           icon={row?.icon}
+                          onClick={handleShow}
                         />
                       </div>
                     </div>
@@ -656,8 +371,9 @@ const AgreementsMobile = () => {
             })}
           </Accordion>
           
+          
         )}
-     
+         
       </div>
       
       {/* Add Invoices Modal */}

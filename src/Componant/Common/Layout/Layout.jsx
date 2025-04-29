@@ -148,7 +148,8 @@ const Layout = ({ children }) => {
         <div className="d-block d-lg-none">
           <Row
             xs={10}
-            className="d-flex justify-content-between text-center p-2 bg-white fixed-bottom gx-1 border-top border-secondary-subtle"
+            className="d-flex justify-content-between text-center  p-2 bg-white fixed-bottom gx-1 border-top border-secondary-subtle"
+            style={{ zIndex: 1040 }}
           >
             <Col
               xs={2} className="d-flex flex-column align-items-center justify-content-center" 

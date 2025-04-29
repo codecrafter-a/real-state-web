@@ -56,7 +56,7 @@ const Clientmatch = ({ properties }) => {
                         </div>
                         <div className="d-flex gap-2 flex-wrap align-items-center">
                           {property.features.map((feature, index) => (
-                            <Badge key={index} bg="light" text="dark" className="h-fit fw-normal">
+                            <Badge key={index} bg="light" text="dark" className="h-fit rounded-pill fw-normal">
                               {t(feature)}
                             </Badge>
                           ))}

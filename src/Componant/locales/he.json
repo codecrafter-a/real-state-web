@@ -115,7 +115,7 @@
   "cust_Property_Condition_value": " חדש, משופץ",
   "cust_no_rooms": "מספר חדרים:",
   "cust_no_rooms_value": "3, 4, 5",
-  "cust_apartment_size_value": "100 - 300 sqm",
+  "cust_apartment_size_value": "מ\"ר 100 - 300",
   "cust_floor": "קומה:",
   "cust_floor_value": "4, 5",
   "cust_apartment_size": "גודל דירה:",
@@ -274,6 +274,9 @@
   "home_accro_btn": "לכל הנתונים",
   "home_accro_title": "נתונים",
   "home_accro_te": "₪",
+  "copy_signature": "העתקת קישור לחתימה",
+  "cancel_signature": "ביטול תהליך החתימה",
+  "delet_signature": "מחיקת הסכם",
   "home_accro_r_btn": "5 הסכמים אחרונים",
   "home_accro_in1": "עמלות מעסקאות השכרה",
   "home_accro_in2": "עמלות מעסקאות קנייה",
@@ -725,6 +728,7 @@
   "customer_detail": "פרטי לקוחות להחתמה",
   "registry_title": "נכסים הרשומים בספר המקרקעין",
   "download1": "הורדה",
+  "all_age": "לכל ההסכמים (5) >>",
 
   "registry": {
     "propertyName": "פלורנטין 7 ת״א",

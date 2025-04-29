@@ -226,13 +226,13 @@ const Report = () => {
             {activeTab === "all" && (
                 selectedSuggestion ? (
                     <>
-                        <div className=' d-block d-md-none'>
+                        <div className=' d-block d-lg-none'>
                             <PropertymatchMobile properties={selectedProperties} />
                         </div>
                     </>
                 ) : (
                     <>
-                        <div className={`mt-5 mb-2 d-block d-md-none justify-content-${justifyContent}`}>
+                        <div className={`mt-5 mb-2 d-block d-lg-none justify-content-${justifyContent}`}>
                             <img src={report} alt="visa" className='img-fluid h-75' />
                         </div>
                     </>
