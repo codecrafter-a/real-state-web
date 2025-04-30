@@ -16,7 +16,7 @@ import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import AuthenticationService from "../../../Services/AuthenticationService";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, show }) => {
   const { i18n, t } = useTranslation();
   const location = useLocation();
   const [isAuthenticated, setIsAuthenticated] = useState();
@@ -144,12 +144,14 @@ const Layout = ({ children }) => {
           </div>
         </main>
       </div>
-      {isAuthenticated && (
+      {(isAuthenticated && !show) && (
         <div className="d-block d-lg-none">
           <Row
             xs={10}
-            className="d-flex justify-content-between text-center  p-2 bg-white fixed-bottom gx-1 border-top border-secondary-subtle"
-            style={{ zIndex: 1040 }}
+            className="d-flex justify-content-between text-center  p-2 bg-white
+             fixed-bottom  
+             gx-1 border-top border-secondary-subtle"
+             style={{ zIndex: 1040 }}
           >
             <Col
               xs={2} className="d-flex flex-column align-items-center justify-content-center" 

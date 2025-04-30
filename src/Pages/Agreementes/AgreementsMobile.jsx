@@ -5,11 +5,10 @@ import Tab from "../../Componant/Common/Tab/Tab";
 import { motion } from "framer-motion";
 import search from "../../assets/images/search.png";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import  pin  from "../../assets/images/pin.png";
-import { Modal} from "react-bootstrap";
+import pin from "../../assets/images/pin.png";
+import { Modal } from "react-bootstrap";
 import { Accordion } from "react-bootstrap";
 import Toggle from "../../Componant/Common/Toggle/Toggle";
-import { TbNotes } from "react-icons/tb";
 import { useNavigate, useParams } from "react-router-dom";
 import key from "../../assets/images/key_vertical.svg";
 import { useAgreementServices } from "../../Services/AgreementServices";
@@ -17,39 +16,59 @@ import { IoIosArrowDown } from "react-icons/io";
 import { TbMailForward } from "react-icons/tb";
 import cancel from "../../assets/images/cancel.png";
 import { HiOutlineDotsVertical } from "react-icons/hi";
+import { MdOutlineCheckCircleOutline } from "react-icons/md";
 import AddinvoicesIcon from "../../assets/images/addinvoices.png";
-const ActionButtons = ({ type, icon, onClick }) => {
+import successIcon from "../../assets/images/success_icon.svg";
+import sadicon from "../../assets/images/sad.png";
+import businessicon from "../../assets/images/book_2.png";
+import pdfinstall from "../../assets/images/pdf.png";
 
+const ActionButtons = ({ type, icon, onClick, setRemoveData }) => {
+  console.log("🚀 ~ ActionButtons ~ handleOpen:");
+  console.log("🚀 ~ ActionButtons ~ type:", type);
+  console.log("🚀 ~ ActionButtons ~ onClick:", onClick);
 
   const { t } = useTranslation();
   return (
     <div className="d-flex align-items-center justify-content-center justify-content-sm-start gap-3 p-2 bg-white">
-      {(type === "genrated" || "sent" || "viewd") && (
+      {(type === "Genrated" || "Sent" || "Viewd") && (
         <>
-          <div className="d-flex align-items-center gap-1">
+          <div className="d-flex align-items-center gap-2">
             <TbMailForward className="fs-5" />
             <span className="text-wrap text-center fs-14 lh-1">
               {t("home_tab_r1_h1_l4")}
             </span>
           </div>
           {icon && (
-            <div className="d-flex align-items-center gap-1">
-              {icon} 
-              <span className="text-wrap lh-1 fs-14" >{t("home_tab_r1_h1_l3")}</span>
+            <div className="d-flex align-items-center gap-2">
+              {icon}
+              <span className="text-wrap lh-1 fs-14">
+                {t("home_tab_r1_h1_l3")}
+              </span>
             </div>
           )}
-          <div className="d-flex align-items-center gap-2">
+          {/* <div className="d-flex align-items-center gap-2">
             <TbNotes className="fs-5"/>
               <span className="text-wrap text-center fs-14 lh-1" >
                 {t("Agree_mobile_btn")}
               </span>
-          </div>
+          </div> */}
+          <button
+            className="d-flex align-items-center border-0 bg-transparent  text-nowrap gap-2"
+            onClick={() => setRemoveData(true)}
+          >
+            <MdOutlineCheckCircleOutline size={18} />
+            {t("close_deal")}
+          </button>
           <div className="position-relative">
-            <button className="border-0 bg-white d-flex align-items-center gap-2" onClick={onClick}>
+            <button
+              className="border-0 bg-white d-flex align-items-center gap-2"
+              onClick={onClick}
+            >
               <HiOutlineDotsVertical size={18} />
               {t("home_tab_r1_h1_l1")}
             </button>
-          </div> 
+          </div>
         </>
       )}
     </div>
@@ -92,23 +111,30 @@ const StatusBadge = ({ status }) => {
   );
 };
 
-const AgreementsMobile = () => {
-  const { t } = useTranslation();
-  const navigate = useNavigate();
-  const [show, setShow] = useState(false);
+const AgreementsMobile = ({ handleOpen ,show, setShow }) => {
+  console.log("🚀 ~ AgreementsMobile ~ handleOpen:", handleOpen);
 
-  const { lang } = useParams();
-  const [activeTab, setActiveTab] = useState("all");
   const {
     tableData,
     searchQuery,
+    modalState,
+    setModalState,
+    updateModalState,
+    removeData,
+    setRemoveData,
     handleSearchChange,
     getAgreementData,
     setTableData,
   } = useAgreementServices();
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState("all");
   const [isOpen, setIsOpen] = useState(false);
   const [addInvoices, setAddInvoices] = useState(false);
- const handleShow = () => setShow(true);
+  const { lang } = useParams();
+  const handleShow = () => setShow(true);
+  const handleClick = () => navigate(`/${lang}/invoices`);
+  const handleRegistry = () => navigate(`/${lang}/landregistry`);
 
   useEffect(() => {
     const fetchAgreementData = async () => {
@@ -135,6 +161,15 @@ const AgreementsMobile = () => {
     { signin: "#10b981" },
   ];
 
+  const handleCloseall = () => {
+    setModalState({
+      addInvoices: false,
+      isError: false,
+      restriction: false,
+      isInvoices: false,
+      isDocument: false,
+    });
+  };
   const handleModalClose = () => setAddInvoices(false);
   const handleInvoiceViewClick = () => navigate(`/${lang}/invoices`);
 
@@ -244,7 +279,7 @@ const AgreementsMobile = () => {
                 </div>
               </div>
             </motion.div>
-           
+
             <div className="justify-content-center d-flex">
               <button
                 className="border-0 bg-white"
@@ -256,45 +291,53 @@ const AgreementsMobile = () => {
           </div>
         </div>
         {show && (
-        <div
-          className="position-fixed top-0 start-0 w-100 h-100"
-          style={{ zIndex: 1040, backgroundColor: "rgba(0,0,0,0.3)" }}
-          onClick={() => setShow(false)}
-        />
-            )}
-           <motion.div
-        initial={{ y: "100%" }}
-        animate={show ? { y: "0%" } : { y: "100%" }}
-        exit={{ y: "100%" }}
-        transition={{ duration: 0.4, ease: "easeInOut" }}
-        className="bottom-sheet position-fixed bg-white w-100 shadow"
-        style={{
-          zIndex: 1155,
-          left: 0,
-          bottom: 0,
-          borderTopLeftRadius: "1rem",
-          borderTopRightRadius: "1rem",
-        }}
-      >
-        {/* Drag Indicator */}
-        <div className="drag-indicator bg-teal mx-auto mt-2"></div>
+          <div
+            className="position-fixed top-0 start-0 w-100 h-100"
+            style={{ zIndex: 1040, backgroundColor: "rgba(0,0,0,0.3)" }}
+            onClick={() => setShow(false)}
+          />
+        )}
+        <motion.div
+          initial={{ y: "100%" }}
+          animate={show ? { y: "0%" } : { y: "100%" }}
+          exit={{ y: "100%" }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+          className="bottom-sheet position-fixed bg-white w-100 shadow"
+          style={{
+            zIndex: 1155,
+            left: 0,
+            bottom: 0,
+            borderTopLeftRadius: "1rem",
+            borderTopRightRadius: "1rem",
+          }}
+        >
+          {/* Drag Indicator */}
+          <div className="drag-indicator bg-teal mx-auto mt-2"></div>
 
-        {/* Options List */}
-        <ul className="list-unstyled p-3 my-3">
-          <li className="d-flex align-items-center  gap-2">
-            <img src={pin} alt="pin" style={{width: "17px", height: "17px"}} />
-            <span className="fs-6 lh-1 fw-normal">{t("copy_signature")}</span>
-          </li>
-          <li className="d-flex align-items-center my-3 gap-2">
-            <img src={cancel} alt="cancel"  className="" />
-            <span className="fs-6 lh-1 fw-normal">{t("cancel_signature")}</span>
-          </li>
-          <li className="d-flex align-items-center  gap-2">
-            <RiDeleteBin6Line  className="" size={20}/>
-            <span className="fs-6 lh-1 fw-normal">{t("delet_signature")}</span>
-          </li>
-        </ul>
-           </motion.div>
+          {/* Options List */}
+          <ul className="list-unstyled p-3 my-3">
+            <li className="d-flex align-items-center  gap-2">
+              <img
+                src={pin}
+                alt="pin"
+                style={{ width: "17px", height: "17px" }}
+              />
+              <span className="fs-6 lh-1 fw-normal">{t("copy_signature")}</span>
+            </li>
+            <li className="d-flex align-items-center my-3 gap-2">
+              <img src={cancel} alt="cancel" className="" />
+              <span className="fs-6 lh-1 fw-normal">
+                {t("cancel_signature")}
+              </span>
+            </li>
+            <li className="d-flex align-items-center  gap-2">
+              <RiDeleteBin6Line className="" size={20} />
+              <span className="fs-6 lh-1 fw-normal">
+                {t("delet_signature")}
+              </span>
+            </li>
+          </ul>
+        </motion.div>
 
         {activeTab === "all" && (
           <Accordion className="p-0 d-flex flex-column gap-3">
@@ -329,7 +372,7 @@ const AgreementsMobile = () => {
                           }}
                         />
                         <div>
-                          <span className="fw-semibold fs-12 d-block" >
+                          <span className="fw-semibold fs-12 d-block">
                             {row?.accountNumber} | {row?.date}
                           </span>
                           <p className="fw-bold fs-14 mb-0">
@@ -362,6 +405,7 @@ const AgreementsMobile = () => {
                           type={t(row?.actionType)}
                           icon={row?.icon}
                           onClick={handleShow}
+                          setRemoveData={setRemoveData}
                         />
                       </div>
                     </div>
@@ -370,12 +414,8 @@ const AgreementsMobile = () => {
               );
             })}
           </Accordion>
-          
-          
         )}
-         
       </div>
-      
       {/* Add Invoices Modal */}
       <Modal
         show={addInvoices}
@@ -385,7 +425,7 @@ const AgreementsMobile = () => {
       >
         <Modal.Header closeButton className="border-0 p-3 mt-4" />
         <Modal.Body className="text-center p-4">
-          <img src={AddinvoicesIcon} alt="success icon open" className="mb-3" />
+          <div className="d-flex justify-content-center"><img src={AddinvoicesIcon} alt="success icon open" className="mb-3" /></div>
           <h4 className="text-embed-500 fs-3 font-semibold pb-3">
             {t("invoice_success")}
           </h4>
@@ -405,7 +445,241 @@ const AgreementsMobile = () => {
           </div>
         </Modal.Body>
       </Modal>
-     
+      <Modal
+        show={removeData}
+        onClick={() => setRemoveData(false)}
+        centered
+        className="modal-container"
+      >
+        <Modal.Header className="border-0 p-3 position-relative mt-4">
+          <button
+            type="button"
+            className="btn-close position-absolute close-btn"
+          ></button>
+        </Modal.Header>
+        <Modal.Body className="text-center p-4">
+          <div className="d-flex justify-content-center align-items-center mb-3">
+            <img src={successIcon} alt="success icon open" className="" />
+          </div>
+          <h4 className="text-embed-500 fs-3 font-semibold">
+            {t("modal_success")}
+          </h4>
+          <p className="fs-5 font-semibold pb-3">{t("modal_invoice")}</p>
+          <div className="d-flex justify-content-center flex-wrap flex-md-nowrap justify-content-md-between gap-3">
+            <button
+              className="agent-btn-responsive1 w-50  rounded-pill px-3 py-2 fw-bold shadow-sm text-white"
+              onClick={() =>
+                updateModalState({ addInvoices: false, isError: true })
+              }
+            >
+              {t("modal_yes")}
+            </button>
+            <button
+              className="agent-btn-responsive2 w-50  rounded-pill px-3 py-2 fw-bold shadow-sm"
+              onClick={() => setRemoveData(false)}
+            >
+              {t("modal_no")}
+            </button>
+          </div>
+        </Modal.Body>
+      </Modal>
+      <Modal
+        show={modalState.addInvoices}
+        className="modal-container"
+        centered
+        onClick={() => updateModalState({ addInvoices: false })}
+      >
+        <Modal.Header className="border-0 p-3 position-relative mt-4">
+          <button
+            type="button"
+            className="btn-close position-absolute close-btn"
+          ></button>
+        </Modal.Header>
+        <Modal.Body className="text-center p-4">
+          <div className="d-flex justify-content-center align-items-center mb-3">
+            <img src={AddinvoicesIcon} alt="success icon open" className="" />
+          </div>
+          <h4 className="text-embed-500 fs-3 font-semibold pb-3">
+            {t("invoice_success")}
+          </h4>
+          <div className="d-flex justify-content-center justify-content-md-between flex-wrap flex-md-nowrap my-3">
+            <button
+              className="fs-5 lh-1 fw-semibold agent-btn-responsive1 text-white my-md-3 w-50 py-2 py-md-0 mx-1 rounded-pill"
+              // onClick={() =>
+              //   updateModalState({ addInvoices: false, isError: true })
+              // }
+              onClick={handleClick}
+            >
+              {t("invoice_view")}
+            </button>
+            <button
+              className="fs-5 lh-1 fw-semibold  py-2 my-3 agent-btn-responsive2 w-50  mx-1 rounded-pill "
+              onClick={() => updateModalState({ addInvoices: false })}
+            >
+              {t("invoice_all")}
+            </button>
+          </div>
+        </Modal.Body>
+      </Modal>
+      <Modal
+        show={modalState.isError}
+        centered
+        className="modal-container"
+        onClick={() => updateModalState({ isError: false })}
+      >
+        <Modal.Header className="border-0 p-3 position-relative mt-4">
+          <button
+            type="button"
+            className="btn-close position-absolute close-btn"
+          ></button>
+        </Modal.Header>
+        <Modal.Body className="text-center p-4">
+          <div className="d-flex justify-content-center align-items-center mb-3">
+            <img src={sadicon} alt="success icon open" className="" />
+          </div>
+          <p className="text-danger fs-4 fw-semibold">{t("error_title")}</p>
+          <p className="fs-4 fw-semibold py-3">{t("error_message")}</p>
+          <p className="fs-4 text-embed-500 fw-semibold pb-3">
+            {t("error_question")}
+          </p>
+          <div className="d-flex justify-content-center flex-wrap flex-md-nowrap justify-content-md-between my-3">
+            <button
+              className="fs-6 lh-1 fw-semibold  my-3 agent-btn-responsive1 text-white my-md-3 w-50 py-2 py-md-0 mx-1 rounded-pill"
+              onClick={() =>
+                updateModalState({ isError: false, restriction: true })
+              }
+            >
+              {t("yes_register")}
+            </button>
+            <button
+              className="fs-5 lh-1 fw-semibold  py-2 my-3 agent-btn-responsive2 w-50  mx-1 rounded-pill  "
+              onClick={() => updateModalState({ isError: false })}
+            >
+              {t("no_now")}
+            </button>
+          </div>
+        </Modal.Body>
+      </Modal>
+      <Modal
+        show={modalState.restriction}
+        centered
+        className="modal-container"
+        onClick={() => updateModalState({ restriction: false })}
+      >
+        <Modal.Header className="border-0 p-3 position-relative mt-4">
+          <button
+            type="button"
+            className="btn-close position-absolute close-btn"
+          ></button>
+        </Modal.Header>
+        <Modal.Body className="text-center p-4">
+          <div className="d-flex justify-content-center align-items-center mb-3">
+            <img src={businessicon} alt="success icon open" className="" />
+          </div>
+          <h4 className="text-embed-500 fs-3 font-semibold pb-3">
+            {t("registriction_title")}
+          </h4>
+          <div className="d-flex justify-content-center justify-content-md-between flex-wrap flex-md-nowrap my-3">
+            <button
+              className="fs-5 lh-1 fw-semibold  py-2 my-2 agent-btn-responsive1 text-white my-md-3 w-50  py-md-0  mx-1  rounded-pill"
+              onClick={() =>
+                updateModalState({ restriction: false, isInvoices: true })
+              }
+            >
+              {t("yes_register_transaction")}
+            </button>
+            <button
+              className="fs-5 lh-1 fw-semibold  py-2 my-3 agent-btn-responsive2 w-50  mx-1 rounded-pill "
+              onClick={() => updateModalState({ restriction: false })}
+            >
+              {t("no_now")}
+            </button>
+          </div>
+        </Modal.Body>
+      </Modal>
+      <Modal
+        show={modalState.isInvoices}
+        centered
+        className="modal-container"
+        onClick={() => updateModalState({ isInvoices: false })}
+      >
+        <Modal.Header className="border-0 p-3 position-relative mt-4">
+          <button
+            type="button"
+            className="btn-close position-absolute close-btn"
+          ></button>
+        </Modal.Header>
+        <Modal.Body className="text-center p-4">
+          <div className="d-flex justify-content-center align-items-center mb-3">
+            <img src={AddinvoicesIcon} alt="success icon open" className="" />
+          </div>
+          <p className="text-embed-500 fs-4 font-semibold">
+            {t("invoice1_success")}
+          </p>
+          <p className="py-2 fs-4 font-semibold">{t("next_charge")}</p>
+          <h4 className="text-embed-500 fs-3 font-semibold pb-3">
+            {t("invoice_generated")}
+          </h4>
+          <div className="d-flex justify-content-md-between justify-content-center flex-wrap flex-md-nowrap my-3">
+            <button
+              className="fs-5 lh-1 fw-semibold py-2  agent-btn-responsive1 text-white my-md-3 w-50  py-md-0 mx-1  rounded-pill"
+              onClick={() =>
+                updateModalState({ isInvoices: false, isDocument: true })
+              }
+            >
+              {t("view_invoice")}
+            </button>
+            <button
+              className="fs-5 lh-1 fw-semibold  py-2 my-3 agent-btn-responsive2 w-50  mx-1 rounded-pill"
+              onClick={() => updateModalState({ isInvoices: false })}
+            >
+              {t("all_invoices")}
+            </button>
+          </div>
+        </Modal.Body>
+      </Modal>
+      <Modal
+        show={modalState.isDocument}
+        center
+        className="modal-container "
+        onClick={() => updateModalState({ isDocument: false })}
+      >
+        <Modal.Header className="border-0 p-3 position-relative mt-4">
+          <button
+            type="button"
+            className="btn-close position-absolute close-btn"
+          ></button>
+        </Modal.Header>
+        <Modal.Body className="text-center p-4">
+          <div className="d-flex justify-content-center align-items-center mb-3">
+            <img src={AddinvoicesIcon} alt="success icon open" className="" />
+          </div>
+          <h4 className="fs-3 font-semibold pb-3">{t("invoice1_number")}</h4>
+          <div className="d-flex justify-content-center align-items-center mb-3">
+            <img src={pdfinstall} alt="install pdf" />
+          </div>
+          <div className="d-flex justify-content-center flex-wrap flex-md-nowrap gap-2 my-3">
+            <button
+              className="fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill"
+              onClick={handleClick}
+            >
+              {t("all1_invoices")}
+            </button>
+            <button
+              className="fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill"
+              onClick={handleCloseall}
+            >
+              {t("download_invoice")}
+            </button>
+            <button
+              className="fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive1 text-white w-50 py-2 mx-1 rounded-pill"
+              onClick={handleRegistry}
+            >
+              {t("register_transaction")}
+            </button>
+          </div>
+        </Modal.Body>
+      </Modal>
     </>
   );
 };

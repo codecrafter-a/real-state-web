@@ -4,11 +4,25 @@ import { useTranslation } from "react-i18next";
 export const useAgreementServices = () => {
   const [tableData, setTableData] = useState([]);
   const [agreeData, setAgreeData] = useState(false);
+  const [removeData, setRemoveData] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("");
   const [fromDate, setFromDate] = useState(null);
   const [toDate, setToDate] = useState(null);
 const { t } = useTranslation();
+const [modalState, setModalState] = useState({
+  addInvoices: false,
+  isError: false,
+  restriction: false,
+  isInvoices: false,
+  isDocument: false,
+});
+const updateModalState = (updatedValues) => {
+  setModalState((prev) => ({
+    ...prev,
+    ...updatedValues,
+  }));
+};
   const getAgreementData = () => {
     return [
       {
@@ -140,8 +154,13 @@ if (searchQuery) {
     selectedStatus,
     setSelectedStatus,
     fromDate,
+    modalState, 
+    setModalState,
     setFromDate,
     toDate,
+    updateModalState,
+    removeData, 
+    setRemoveData,
     setToDate,
     getAgreementData,
     handleStatusChange,

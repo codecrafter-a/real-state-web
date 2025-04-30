@@ -14,28 +14,27 @@ import { useNavigate, useParams } from "react-router-dom";
 import Tab from "../../Componant/Common/Tab/Tab";
 import { IoIosArrowDown } from "react-icons/io";
 import { useAgreementServices } from "../../Services/AgreementServices";
+
 const Agreements = () => {
   const [activeTab, setActiveTab] = useState("all");
-  const [removeData, setRemoveData] = useState(false);
-  const [modalState, setModalState] = useState({
-    addInvoices: false,
-    isError: false,
-    restriction: false,
-    isInvoices: false,
-    isDocument: false,
-  });
-
+  
+  
   const {
     tableData,
     searchQuery,
     selectedStatus,
     fromDate,
     toDate,
+    modalState, 
+    setModalState,
+    removeData, 
+    setRemoveData,
     handleStatusChange,
     handleRemoveStatus,
     handleSearchChange,
     setFromDate,
     setToDate,
+    updateModalState,
     getAgreementData,
     setTableData,
     handleAgreeChange
@@ -49,16 +48,11 @@ const Agreements = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { lang } = useParams();
-  const handleOpen = () => setRemoveData(true);
+  const handleOpen = () => {setRemoveData(true)};
   const handleClose = () => setRemoveData(false);
   const handleClick = () => navigate(`/${lang}/invoices`);
   const handleRegistry = () => navigate(`/${lang}/landregistry`)
-  const updateModalState = (updatedValues) => {
-    setModalState((prev) => ({
-      ...prev,
-      ...updatedValues,
-    }));
-  };
+ 
   const handleToggle = (e) => {
     if (e.target.checked) {
       updateModalState({ addInvoices: true });
@@ -491,6 +485,7 @@ const Agreements = () => {
           </div>
         </div>
       </div>
+
     </>
   );
 };

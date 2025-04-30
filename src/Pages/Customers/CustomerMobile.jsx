@@ -148,7 +148,7 @@ const CustomerMobile = () => {
                         <p className="mb-1 fs-15 fw-normal lh-1">
                           {client.type}
                         </p>
-                        <p className="mb-1 fs-15 fw-normal lh-1 text-decoration-underline">
+                        <p className="mb-1 fs-15 fw-normal text-nowrap lh-1 text-decoration-underline">
                           {client.phone}
                         </p>
                       </div>

@@ -583,7 +583,8 @@ a:hover {
 }
 
 .report-btn {
-	width: 25% !important;
+	width: auto !important;
+	padding: 0px 10px !important;
 }
 @media (max-width: 576px) {
 	.custom-col {

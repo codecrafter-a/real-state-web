@@ -14,6 +14,7 @@ import { Dropdown } from "react-bootstrap";
 import cancel from "../../assets/images/cancel.png";
 
 const AgreementsTable = ({ handleOpen, selectedStatus, selectData }) => {
+  console.log("🚀 ~ AgreementsTable ~ handleOpen:", handleOpen)
   const { t } = useTranslation();
   const borderColors = [
     { Generated: "#555555" },
