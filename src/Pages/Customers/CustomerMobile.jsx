@@ -8,7 +8,6 @@ import searchIcon from "../../assets/images/search.svg";
 import whiteSearchIcon from "../../assets/images/white-search-icon.svg";
 import editIcon from "../../assets/images/edit.svg";
 import deleteIcon from "../../assets/images/delete.svg";
-// import CustomButton from "../../Componant/Common/Button/Button";
 import { useClientService } from "../../Services/ClientService";
 import search from "../../assets/images/search.svg";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
@@ -16,49 +15,23 @@ import search_icon2 from "../../assets/images/search_icon2.svg";
 import RangeSlider from "../../Componant/Common/RangeSlider/RangeSlider";
 import { Modal } from "react-bootstrap";
 import close from "../../assets/images/ButtonClose.png";
-
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 const CustomerMobile = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { lang } = useParams();
+  const { i18n } = useTranslation();
+  const isRTL = i18n.dir() === "rtl";
   const { getClientData, getClients, filteredClients, setFilteredClients } =
     useClientService();
   const [clientNameInput, setClientNameInput] = useState("");
   const [showModal, setShowModal] = useState(false);
-
   const handleShowModal = () => setShowModal(true);
-
-  const scrollRef = useRef(null);
-
   const features = t("cust_additional_features_value")
     .split(",")
     .map((feature) => feature.trim());
-
-  console.log(scrollRef, "saafsfsfsdgsgdfgdfg");
-  const scroll = (direction) => {
-    if (scrollRef.current) {
-      const container = scrollRef.current;
-      const scrollAmount = 120; 
-      const currentScroll = container.scrollLeft;
-
-      let newScroll =
-        direction === "right"
-          ? currentScroll + scrollAmount
-          : currentScroll - scrollAmount;
- 
-      newScroll = Math.max(
-        0,
-        Math.min(newScroll, container.scrollWidth - container.clientWidth)
-      );
-
-      container.scrollTo({
-        left: newScroll,
-        behavior: "smooth",
-      });
-    }
-
-    console.log(scroll, "adsdfwjrgijerioguou")
-  };
 
   const filtered = () => {
     const results = getClientData({
@@ -70,6 +43,36 @@ const CustomerMobile = () => {
     const fetchedClients = getClients();
     setFilteredClients(fetchedClients);
   }, []);
+
+  const sliderRefs = useRef([]);
+  const slidesToShow = 3; 
+  const totalSlides = features.length;
+  const maxIndex = totalSlides - slidesToShow;
+  
+    const settings = {
+      dots: false,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      rtl: isRTL,
+    };
+  
+    const goToNext = (index) => {
+      const slider = sliderRefs.current[index];
+      if (slider) {
+        slider.slickNext();
+      }
+    };
+  
+    const goToPrev = (index) => {
+      const slider = sliderRefs.current[index];
+      if (slider) {
+        slider.slickPrev();
+      }
+    };
+  
+ 
 
   console.log("filtererererer", filtered);
   return (
@@ -159,38 +162,35 @@ const CustomerMobile = () => {
                     </div>
                   </div>
                 </Accordion.Header>
+
                 <div className="position-relative my-3 px-2">
                   <div className="d-flex align-items-center">
-                  <button
-                      className="btn-circle ms-2"
-                      onClick={() => scroll("right")}
-                    >
-                      <FaChevronRight />
-                    </button>
-                    
-                    <div
-                      ref={scrollRef}
-                      className="scroll-container d-flex flex-nowrap overflow-auto align-items-center gap-2"
-                      style={{
-                        scrollBehavior: "smooth",
-                        whiteSpace: "nowrap",
-                        width: "100%",
-                      }}
-                    >
-                      {features.map((feature, id) => (
-                        <span key={id} className="custom-badge px-3 py-1">
-                          {feature}
-                        </span>
-                      ))}
+                    {/* Prev button — appears on the correct side based on language */}
+                     <button className="btn-circle  me-2" onClick={goToPrev}>
+                                      {isRTL ? <FaChevronRight /> : <FaChevronLeft />}
+                                    </button>
+
+
+                    {/* Slider */}
+                    <div className="w-85  slider-demo">
+                      <Slider ref={sliderRefs} {...settings}>
+                        {features.map((feature, id) => (
+                          <div key={id} className="px-1">
+                            <span className="custom-badge px-3 py-2  d-inline-block text-nowrap">
+                              {feature}
+                            </span>
+                          </div>
+                        ))}
+                      </Slider>
                     </div>
-                    <button
-                      className="btn-circle me-2"
-                      onClick={() => scroll("left")}
-                    >
-                      <FaChevronLeft />
-                    </button>
+
+                    {/* Next button */}
+                   <button className="btn-circle  ms-2" onClick={goToNext}>
+                                     {isRTL ? <FaChevronLeft /> : <FaChevronRight />}
+                                   </button>
                   </div>
                 </div>
+
                 <Accordion.Body>
                   <div>
                     <div className="d-flex align-items-center gap-2 mb-1">

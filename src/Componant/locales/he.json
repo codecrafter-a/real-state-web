@@ -796,7 +796,11 @@
   "Addition_in": "מידע נוסף",
   "group": "בשיתוף דרך ה- WhatsApp",
   "sent": "המסמך הופק בהצלחה!",
-  "Price": "מחיר (₪)"
-
-   
+  "Price": "מחיר (₪)",
+  "action_view": "נצפה",
+  "action_sign": "נחתם",
+  "action_sign_executed": "נחתם ובוצע",
+  "action_sign_registred": "נחתם ונרשם",
+  "action_sent": "נשלח",
+  "action_detail": "אין פרטים נוספים"
 }

@@ -7,17 +7,20 @@ import {
   AccordionHeader,
   Badge,
 } from "react-bootstrap";
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from "swiper/react";
 import { IoIosArrowDown } from "react-icons/io";
 import house from "../../assets/images/property-house.png";
 import { useReportServices } from "../../Services/ReportServices";
 import { useTranslation } from "react-i18next";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 import { AiOutlineDown } from "react-icons/ai";
-import { Pagination, Navigation } from 'swiper/modules';
+import { Pagination, Navigation } from "swiper/modules";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 const Clientmatch_mobile = () => {
   const [reportData, setReportData] = useState([]);
 
@@ -27,40 +30,39 @@ const Clientmatch_mobile = () => {
     const data = getReportServices();
     setReportData(data);
   }, []);
+  const { i18n } = useTranslation();
+  const isRTL = i18n.dir() === "rtl";
   const scrollRef = useRef(null);
 
   const features = t("cust_additional_features_value")
     .split(",")
     .map((feature) => feature.trim());
-    const sampleImages = [
-      house,
-      house,
-      house
-    ];
+  const sampleImages = [house, house, house];
   console.log(scrollRef, "saafsfsfsdgsgdfgdfg");
-  const scroll = (direction) => {
-    if (scrollRef.current) {
-      const container = scrollRef.current;
-      const scrollAmount = 120;
-      const currentScroll = container.scrollLeft;
+  
+  const sliderRefs = useRef([]);
 
-      let newScroll =
-        direction === "right"
-          ? currentScroll + scrollAmount
-          : currentScroll - scrollAmount;
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    rtl: isRTL,
+  };
 
-      newScroll = Math.max(
-        0,
-        Math.min(newScroll, container.scrollWidth - container.clientWidth)
-      );
-
-      container.scrollTo({
-        left: newScroll,
-        behavior: "smooth",
-      });
+  const goToNext = (index) => {
+    const slider = sliderRefs.current[index];
+    if (slider) {
+      slider.slickNext();
     }
+  };
 
-    console.log(scroll, "adsdfwjrgijerioguou");
+  const goToPrev = (index) => {
+    const slider = sliderRefs.current[index];
+    if (slider) {
+      slider.slickPrev();
+    }
   };
 
   return (
@@ -68,37 +70,34 @@ const Clientmatch_mobile = () => {
       <div className="row bg-light">
         <div className=" col-12">
           <div className="p-3 bg-white border shadow my-3 rounded-3">
-            {/* <Card.Img
-              variant="top"
-              src={house}
-              alt="Property"
-              className="img-fluid border rounded-2 object-fit-cover w-100"
-              style={{ height: "200px" }}
-            /> */}
             <div className="p-3">
-                  <Swiper
-                     pagination={{
-                      clickable: true,
-                      bulletClass: 'swiper-pagination-bullet',
-                      bulletActiveClass: 'swiper-pagination-bullet-active',
-                    }}
-                    navigation={true}
-                    modules={[Pagination, Navigation]}
-                    className="property-swiper"
-                  >
-                    {sampleImages.map((img, imgIndex) => (
-                      <SwiperSlide key={imgIndex}>
-                        <Card.Img
-                          variant="top"
-                          src={img}
-                          alt={`Property ${imgIndex + 1}`}
-                          className="img-fluid border rounded-2"
-                          style={{ height: "200px", objectFit: "cover", width: "100%" }}
-                        />
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
-                  </div>
+              <Swiper
+                pagination={{
+                  clickable: true,
+                  bulletClass: "swiper-pagination-bullet",
+                  bulletActiveClass: "swiper-pagination-bullet-active",
+                }}
+                navigation={true}
+                modules={[Pagination, Navigation]}
+                className="property-swiper"
+              >
+                {sampleImages.map((img, imgIndex) => (
+                  <SwiperSlide key={imgIndex}>
+                    <Card.Img
+                      variant="top"
+                      src={img}
+                      alt={`Property ${imgIndex + 1}`}
+                      className="img-fluid border rounded-2"
+                      style={{
+                        height: "200px",
+                        objectFit: "cover",
+                        width: "100%",
+                      }}
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
             <Accordion className="border-0 d-block d-lg-none">
               <AccordionItem className="border-0">
                 <div className="d-flex justify-content-between py-2 px-3 gap-3 align-items-center">
@@ -164,66 +163,46 @@ const Clientmatch_mobile = () => {
                     <p className=" fw-normal fs-6 lh-1 my-1">
                       {t("client_property_type")}
                     </p>
-                    <p className="fw-normal fs-15 lh-1 mb-0 text-decoration-underline">{row.phone}</p>
+                    <p className="fw-normal fs-15 lh-1 mb-0 text-decoration-underline">
+                      {row.phone}
+                    </p>
                   </div>
                 </div>
                 <div className="me-2 d-flex align-items-center justify-content-between">
-                <IoIosArrowDown />
+                  <IoIosArrowDown />
                 </div>
               </div>
             </Accordion.Header>
             <div className="position-relative my-3 px-2">
               <div className="d-flex align-items-center">
-                <button
-                  className="btn-circle ms-2"
-                  onClick={() => scroll("right")}
-                >
-                  <FaChevronRight />
+                {/* Prev button — appears on the correct side based on language */}
+                <button className="btn-circle  me-2" onClick={goToPrev}>
+                  {isRTL ? <FaChevronRight /> : <FaChevronLeft />}
                 </button>
 
-                <div
-                  ref={scrollRef}
-                  className="scroll-container d-flex flex-nowrap overflow-auto align-items-center gap-2"
-                  style={{
-                    scrollBehavior: "smooth",
-                    whiteSpace: "nowrap",
-                    width: "100%",
-                  }}
-                >
-                  {features.map((feature, id) => (
-                    <span key={id} className="custom-badge px-3 py-1">
-                      {feature}
-                    </span>
-                  ))}
+                {/* Slider */}
+                <div className="w-75 slider-demo">
+                  <Slider ref={sliderRefs} {...settings}>
+                    {features.map((feature, id) => (
+                      <div key={id} className="px-1">
+                        <span className="custom-badge px-3 py-2  d-inline-block text-nowrap">
+                          {feature}
+                        </span>
+                      </div>
+                    ))}
+                  </Slider>
                 </div>
-                <button
-                  className="btn-circle me-2"
-                  onClick={() => scroll("left")}
-                >
-                  <FaChevronLeft />
+
+                {/* Next button */}
+                <button className="btn-circle  ms-2" onClick={goToNext}>
+                  {isRTL ? <FaChevronLeft /> : <FaChevronRight />}
                 </button>
               </div>
             </div>
-            {/* <div className="fs-12 fw-normal lh-1">{row.details.comments}</div> */}
             <Accordion.Body className="p-0">
-            <div className="fs-12 fw-normal lh-1 my-1 px-3"><span>{row.details.comments}</span></div>
-              {/* <div className="px-3 border-bottom">
-                <div>
-                  {row.details.features.map((feature, index) => {
-                    return (
-                      <>
-                        <Button
-                          key={index}
-                          className="bg-success bg-opacity-10 fw-bold border-success rounded-pill  text-success"
-                        >
-                          {feature}
-                        </Button>
-                      </>
-                    );
-                  })}
-                  <div>{row.details.comments}</div>
-                </div>
-              </div> */}
+              <div className="fs-12 fw-normal lh-1 my-1 px-3">
+                <span>{row.details.comments}</span>
+              </div>
             </Accordion.Body>
           </Accordion.Item>
         ))}

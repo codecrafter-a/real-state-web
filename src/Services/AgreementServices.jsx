@@ -35,8 +35,10 @@ const updateModalState = (updatedValues) => {
         actionType: "default",
         icon: <FaWhatsapp />,
         deletes: "age_delet",
-        actionType: "Generated",
+        additionalInfo: t("action_detail"),
+        actionType: t("generated"),
         userID: 1,
+
       },
       {
         status: "home_tab_r2_h2",
@@ -48,7 +50,8 @@ const updateModalState = (updatedValues) => {
         actionType: "default",
         icon: <FaWhatsapp />,
         deletes: "age_delet",
-        actionType: "Sent",
+        additionalInfo: t("action_detail"),
+        actionType: t("action_sent"),
         userID: 2,
       },
       {
@@ -61,7 +64,8 @@ const updateModalState = (updatedValues) => {
         actionType: "default",
         icon: <FaWhatsapp />,
         deletes: "age_delet",
-        actionType: "Viewed",
+        additionalInfo: t("action_detail"),
+        actionType: t("action_view"),
         userID: 3,
       },
       {
@@ -74,7 +78,8 @@ const updateModalState = (updatedValues) => {
         actionType: "signed",
         icon: <FaWhatsapp />,
         deletes: "age_delet",
-        actionType: "Signed",
+        additionalInfo: t("action_detail"),
+        actionType: t("action_sign"),
         userID: 4,
       },
       {
@@ -87,7 +92,8 @@ const updateModalState = (updatedValues) => {
         actionType: "executed",
         icon: <FaWhatsapp />,
         deletes: "age_delet",
-        actionType: "Signed and executed",
+        additionalInfo: t("action_detail"),
+        actionType: t("action_sign_executed"),
         userID: 5,
       },
       {
@@ -100,7 +106,8 @@ const updateModalState = (updatedValues) => {
         actionType: "registered",
         icon: <FaWhatsapp />,
         deletes: "age_delet",
-        actionType: "Signed and registered",
+        additionalInfo: t("action_detail"),
+        actionType: t("action_sign_registred"),
         userID: 6,
       },
     ];

@@ -13,8 +13,10 @@ import HomeTable from "./HomeTable";
 
 const HomeMobile = () => {
   const { t } = useTranslation();
+   const { i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
+  const isRTL = i18n.dir() === "rtl";
   const { lang } = useParams();
   const {
     getHomes,
@@ -30,6 +32,7 @@ const HomeMobile = () => {
     sethomedatapage,
     userdata,
     setUserdata,
+    tableData, setTableData
   } = useHomeService();
 
   console.log("fdfdsfsfsfsdf", getAgreementColors);
@@ -45,12 +48,20 @@ const HomeMobile = () => {
     setAgreecolor(AgreeColor);
   }, []);
 
-  const [, setTableData] = useState([]);
 
   useEffect(() => {
     const data = getAgreementData();
     setTableData(data);
   }, []);
+
+  const borderColors = [
+    { Generated: "#555555" },
+    { sent: "#fef3c7" },
+    { viewed: "#f87171" },
+    { executed: "#10b981" },
+    { registered: "#10b981" },
+    { signin: "#10b981" },
+  ];
 
   return (
     <>
@@ -232,6 +243,7 @@ const HomeMobile = () => {
                     <Homechart />
                   </div>
                 </motion.div>
+                
               </div>
             ) : null}
           </Col>
@@ -254,9 +266,10 @@ const HomeMobile = () => {
           </Col>
         </Row>
       </div>
-      <div className="px-4">
-        <HomeTable />
+      <div className="px-4 my-3">
+        <HomeTable/>
       </div>
+      
     </>
   );
 };

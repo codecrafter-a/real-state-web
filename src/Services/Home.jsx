@@ -13,6 +13,7 @@ export const useHomeService = () => {
      const [userdata, setUserdata] = useState([]);
      const [agrreedata, setAgreedata] = useState([]);
      const [agreecolor, setAgreecolor] = useState([]);
+     const [tableData, setTableData] = useState([]);
   const getHomes = () => {
     return [
       {
@@ -131,5 +132,5 @@ const getAgreementColors = () => {
 };
 
 
-  return { getHomes, getUserData, getAgreementColors, agreecolor, setAgreecolor, homedatapage, sethomedatapage, agrreedata, setAgreedata, userdata, setUserdata, getAgreementData, barChartdata, isOpen, setIsOpen };
+  return { getHomes,tableData, setTableData, getUserData, getAgreementColors, agreecolor, setAgreecolor, homedatapage, sethomedatapage, agrreedata, setAgreedata, userdata, setUserdata, getAgreementData, barChartdata, isOpen, setIsOpen };
 };

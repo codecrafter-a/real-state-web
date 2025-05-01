@@ -811,5 +811,11 @@
    "Additional_in": "Additional Info",
    "group": "Shared via WhatsApp",
    "sent": "The document was successfully generated!",
-   "Price": "Price (₪)"
+   "Price": "Price (₪)",
+   "action_view": "viewed",
+   "action_sign": "signed",
+   "action_sign_executed": "signed and executed",
+   "action_sign_registred": "signed and registered",
+   "action_sent": "sent",
+   "action_detail": "No extra details"
   }

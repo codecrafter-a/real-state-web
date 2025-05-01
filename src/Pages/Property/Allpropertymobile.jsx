@@ -97,7 +97,7 @@ const Allpropertymobile = () => {
     </div>
      
       <div className="mt-4 bg-white px-3 rounded-3">
-        <Accordion className="d-flex flex-column gap-3">
+        <Accordion className="d-flex flex-column gap-3 my-2">
           {filteredClients.map((client, index) => (
             <Accordion.Item
               eventKey={index.toString()}
