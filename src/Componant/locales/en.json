@@ -277,7 +277,12 @@
     "age_cust_agreement_status":"Great! ",
     "age_btn_description":"To sign the client on my device",
     "age_delet": "Delete",
-
+    "Customert_btn_description": "For customer signing on my device",
+    "Agree_mobile_btn": "Send to this device",
+    "copy_signature": "Copy link to signature",
+    "cancel_signature": "Cancel the signature process",
+    "delet_signature": "Delete agreement",
+    "all_age": "To All Agreements (5) >>",
     "home_title": "Home Page",
     "home_block1_title": "What would you like to do?", 
     "home1_btn1_title": "Collaboration between brokers",
@@ -806,5 +811,11 @@
    "Additional_in": "Additional Info",
    "group": "Shared via WhatsApp",
    "sent": "The document was successfully generated!",
-   "Price": "Price (₪)"
+   "Price": "Price (₪)",
+   "action_view": "viewed",
+   "action_sign": "signed",
+   "action_sign_executed": "signed and executed",
+   "action_sign_registred": "signed and registered",
+   "action_sent": "sent",
+   "action_detail": "No extra details"
   }

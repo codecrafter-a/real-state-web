@@ -87,13 +87,14 @@ const HomeTable = () => {
     setTableData(data);
   }, []);
 
-  const borderColors = {
-    default: "#f87171",
-    signed: "#10b981",
-    executed: "#fdba74",
-    registered: "#3b82f6",
-    viewed: "#f87171",
-  };
+  const borderColors = [
+    { Generated: "#555555" },
+    { sent: "#fef3c7" },
+    { viewed: "#f87171" },
+    { executed: "#10b981" },
+    { registered: "#10b981" },
+    { signin: "#10b981" },
+  ];
   const [removeData, setRemoveData] = useState(false);
   const handleOpen = () => {
     setRemoveData(true);
@@ -285,6 +286,84 @@ const HomeTable = () => {
           </tbody>
         </table>
       </div>
+      {/* Mobile screen on */}
+      <div className="d-lg-none">
+          {tableData.map((row, index) => {
+            const collapseId = `collapse-${index}`;
+            const borderColor = borderColors[index]
+            ? Object.values(borderColors[index])[0]
+            : "#000000";
+            return (
+              <div
+                key={index}
+                className="card mb-2 shadow-sm"
+                style={{
+                  borderInlineStart: `6px solid ${borderColor}`,
+                }}
+              >
+                <div className="py-3 px-2 d-flex align-items-center justify-content-between">
+                  <div className="d-flex align-items-start gap-2_5">
+                    <img src={garagedoor} alt="garagedoor" />
+                    <div className="flex-grow-1">
+                      <p className="mb-1 text-muted">{row.date}</p>
+                      <h4 className="fs-6 fw-bold mb-0">{t("home_tab_card")}</h4>
+                    </div>
+                  </div>
+                  <StatusBadge status={row?.status} />
+                  <div
+                    data-bs-toggle="collapse"
+                    data-bs-target={`#${collapseId}`}
+                    style={{ cursor: "pointer" }}
+                  >
+                    {isRTL ? (
+                      <GoChevronLeft style={{ width: "24px", height: "24px" }} />
+                    ) : (
+                      <GoChevronRight style={{ width: "24px", height: "24px" }} />
+                    )}
+                  </div>
+                </div>
+
+                <div id={collapseId} className="collapse px-2 pb-3">
+                  <p className="mb-0">
+                    <strong>{t("Action_type")}:</strong> {row.actionType}
+                  </p>
+                  <p className="mb-0">
+                    <strong>{t("Addition_in")}:</strong>{" "}
+                    {row.additionalInfo || "No extra details"}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+          <div className="p-3 bg-white rounded shadow-sm my-2 d-flex align-items-center justify-content-between">
+            <div className="d-flex align-items-center flex-column">
+              <div className=" d-flex align-items-center">
+                <GoPerson size={24} style={{ color: "#10b981" }} />
+                <span className="fs-3 fw-bold text-teal">325</span>
+              </div>
+              <span className="text-success">{t("sitem3")}</span>
+            </div>
+            <button className="hr_btn rounded-pill fw-semibold px-sm-5 px-3 py-2">
+              {" "}
+              {t("all_clients")}
+            </button>
+          </div>
+          <div className="p-3 bg-white  rounded shadow-sm my-2 d-flex align-items-center justify-content-between">
+            <div className="d-flex align-items-center flex-column">
+              <div className=" d-flex align-items-center">
+                <img src={house} alt="garaz door" />
+                <span className="fs-3 fw-bold text-teal">123</span>
+              </div>
+              <span className="text-success">{t("sitem4")}</span>
+            </div>
+            <button
+              className="hr_btn rounded-pill fw-semibold px-sm-5 px-3 py-2"
+              onClick={() => navigate(`/${i18n.language}/Property`)}
+            >
+              {t("all_properties")}
+            </button>
+          </div>
+      </div>
       <Modal
         show={removeData}
         onClick={() => setRemoveData(false)}
@@ -318,83 +397,83 @@ const HomeTable = () => {
           </div>
         </Modal.Body>
       </Modal>
-      <div className="d-md-none">
-        {tableData.map((row, index) => {
-          const collapseId = `collapse-${index}`;
-          console.log("Action Type:", row.actionType);
-          return (
-            <div
-              key={index}
-              className="card mb-2 shadow-sm"
-              style={{
-                borderInlineStart: `6px solid ${
-                  borderColors[row.actionType] || "#f87171"
-                }`,
-              }}
-            >
-              <div className="py-3 px-2 d-flex align-items-center justify-content-between">
-                <div className="d-flex align-items-start gap-2_5">
-                  <img src={garagedoor} alt="garagedoor" />
-                  <div className="flex-grow-1">
-                    <p className="mb-1 text-muted">{row.date}</p>
-                    <h4 className="fs-6 fw-bold mb-0">{t("home_tab_card")}</h4>
+      {/* <div className="d-lg-none">
+          {tableData.map((row, index) => {
+            const collapseId = `collapse-${index}`;
+            const borderColor = borderColors[index]
+            ? Object.values(borderColors[index])[0]
+            : "#000000";
+            return (
+              <div
+                key={index}
+                className="card mb-2 shadow-sm"
+                style={{
+                  borderInlineStart: `6px solid ${borderColor}`,
+                }}
+              >
+                <div className="py-3 px-2 d-flex align-items-center justify-content-between">
+                  <div className="d-flex align-items-start gap-2_5">
+                    <img src={garagedoor} alt="garagedoor" />
+                    <div className="flex-grow-1">
+                      <p className="mb-1 text-muted">{row.date}</p>
+                      <h4 className="fs-6 fw-bold mb-0">{t("home_tab_card")}</h4>
+                    </div>
+                  </div>
+                  <StatusBadge status={row?.status} />
+                  <div
+                    data-bs-toggle="collapse"
+                    data-bs-target={`#${collapseId}`}
+                    style={{ cursor: "pointer" }}
+                  >
+                    {isRTL ? (
+                      <GoChevronLeft style={{ width: "24px", height: "24px" }} />
+                    ) : (
+                      <GoChevronRight style={{ width: "24px", height: "24px" }} />
+                    )}
                   </div>
                 </div>
-                <StatusBadge status={row.status} />
-                <div
-                  data-bs-toggle="collapse"
-                  data-bs-target={`#${collapseId}`}
-                  style={{ cursor: "pointer" }}
-                >
-                  {isRTL ? (
-                    <GoChevronLeft style={{ width: "24px", height: "24px" }} />
-                  ) : (
-                    <GoChevronRight style={{ width: "24px", height: "24px" }} />
-                  )}
+
+                <div id={collapseId} className="collapse px-2 pb-3">
+                  <p className="mb-0">
+                    <strong>{t("Action_type")}:</strong> {row.actionType}
+                  </p>
+                  <p className="mb-0">
+                    <strong>{t("Addition_in")}:</strong>{" "}
+                    {row.additionalInfo || "No extra details"}
+                  </p>
                 </div>
               </div>
-
-              <div id={collapseId} className="collapse px-2 pb-3">
-                <p className="mb-0">
-                  <strong>{t("Action_type")}:</strong> {row.actionType}
-                </p>
-                <p className="mb-0">
-                  <strong>{t("Addition_in")}:</strong>{" "}
-                  {row.additionalInfo || "No extra details"}
-                </p>
+            );
+          })}
+          <div className="p-3 bg-white rounded shadow-sm my-2 d-flex align-items-center justify-content-between">
+            <div className="d-flex align-items-center flex-column">
+              <div className=" d-flex align-items-center">
+                <GoPerson size={24} style={{ color: "#10b981" }} />
+                <span className="fs-3 fw-bold text-teal">325</span>
               </div>
+              <span className="text-success">{t("sitem3")}</span>
             </div>
-          );
-        })}
-        <div className="p-3 bg-white rounded shadow-sm my-2 d-flex align-items-center justify-content-between">
-          <div className="d-flex align-items-center flex-column">
-            <div className=" d-flex align-items-center">
-              <GoPerson size={24} style={{ color: "#10b981" }} />
-              <span className="fs-3 fw-bold text-teal">325</span>
-            </div>
-            <span className="text-success">{t("sitem3")}</span>
+            <button className="hr_btn rounded-pill fw-semibold px-sm-5 px-3 py-2">
+              {" "}
+              {t("all_clients")}
+            </button>
           </div>
-          <button className="hr_btn rounded-pill fw-semibold px-sm-5 px-3 py-2">
-            {" "}
-            {t("all_clients")}
-          </button>
-        </div>
-        <div className="p-3 bg-white  rounded shadow-sm my-2 d-flex align-items-center justify-content-between">
-          <div className="d-flex align-items-center flex-column">
-            <div className=" d-flex align-items-center">
-              <img src={house} alt="garaz door" />
-              <span className="fs-3 fw-bold text-teal">123</span>
+          <div className="p-3 bg-white  rounded shadow-sm my-2 d-flex align-items-center justify-content-between">
+            <div className="d-flex align-items-center flex-column">
+              <div className=" d-flex align-items-center">
+                <img src={house} alt="garaz door" />
+                <span className="fs-3 fw-bold text-teal">123</span>
+              </div>
+              <span className="text-success">{t("sitem4")}</span>
             </div>
-            <span className="text-success">{t("sitem4")}</span>
+            <button
+              className="hr_btn rounded-pill fw-semibold px-sm-5 px-3 py-2"
+              onClick={() => navigate(`/${i18n.language}/Property`)}
+            >
+              {t("all_properties")}
+            </button>
           </div>
-          <button
-            className="hr_btn rounded-pill fw-semibold px-sm-5 px-3 py-2"
-            onClick={() => navigate(`/${i18n.language}/Property`)}
-          >
-            {t("all_properties")}
-          </button>
-        </div>
-      </div>
+        </div> */}
     </div>
   );
 };

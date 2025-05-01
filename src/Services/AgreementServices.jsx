@@ -4,11 +4,25 @@ import { useTranslation } from "react-i18next";
 export const useAgreementServices = () => {
   const [tableData, setTableData] = useState([]);
   const [agreeData, setAgreeData] = useState(false);
+  const [removeData, setRemoveData] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("");
   const [fromDate, setFromDate] = useState(null);
   const [toDate, setToDate] = useState(null);
 const { t } = useTranslation();
+const [modalState, setModalState] = useState({
+  addInvoices: false,
+  isError: false,
+  restriction: false,
+  isInvoices: false,
+  isDocument: false,
+});
+const updateModalState = (updatedValues) => {
+  setModalState((prev) => ({
+    ...prev,
+    ...updatedValues,
+  }));
+};
   const getAgreementData = () => {
     return [
       {
@@ -21,7 +35,10 @@ const { t } = useTranslation();
         actionType: "default",
         icon: <FaWhatsapp />,
         deletes: "age_delet",
+        additionalInfo: t("action_detail"),
+        actionType: t("generated"),
         userID: 1,
+
       },
       {
         status: "home_tab_r2_h2",
@@ -33,6 +50,8 @@ const { t } = useTranslation();
         actionType: "default",
         icon: <FaWhatsapp />,
         deletes: "age_delet",
+        additionalInfo: t("action_detail"),
+        actionType: t("action_sent"),
         userID: 2,
       },
       {
@@ -45,6 +64,8 @@ const { t } = useTranslation();
         actionType: "default",
         icon: <FaWhatsapp />,
         deletes: "age_delet",
+        additionalInfo: t("action_detail"),
+        actionType: t("action_view"),
         userID: 3,
       },
       {
@@ -57,6 +78,8 @@ const { t } = useTranslation();
         actionType: "signed",
         icon: <FaWhatsapp />,
         deletes: "age_delet",
+        additionalInfo: t("action_detail"),
+        actionType: t("action_sign"),
         userID: 4,
       },
       {
@@ -69,6 +92,8 @@ const { t } = useTranslation();
         actionType: "executed",
         icon: <FaWhatsapp />,
         deletes: "age_delet",
+        additionalInfo: t("action_detail"),
+        actionType: t("action_sign_executed"),
         userID: 5,
       },
       {
@@ -81,6 +106,8 @@ const { t } = useTranslation();
         actionType: "registered",
         icon: <FaWhatsapp />,
         deletes: "age_delet",
+        additionalInfo: t("action_detail"),
+        actionType: t("action_sign_registred"),
         userID: 6,
       },
     ];
@@ -134,8 +161,13 @@ if (searchQuery) {
     selectedStatus,
     setSelectedStatus,
     fromDate,
+    modalState, 
+    setModalState,
     setFromDate,
     toDate,
+    updateModalState,
+    removeData, 
+    setRemoveData,
     setToDate,
     getAgreementData,
     handleStatusChange,

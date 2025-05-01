@@ -13,6 +13,7 @@ import PropertymatchMobile from '../../Componant/Report/PropertymatchMobile';
 import { AiOutlineClose } from "react-icons/ai";
 import { reportData, reportDataRecent } from '../../Services/ReportServices';
 
+
 const Report = () => {
     const { t, i18n } = useTranslation();
     const justifyContent = i18n.language === "he" ? "start" : "end";
@@ -99,7 +100,7 @@ const Report = () => {
                         {activeTab === "all" && (
                             <>
                                 <div className="row px-1 position-relative">
-                                    <div className="col-12 col-md-8 ">
+                                    <div className="col-12  ">
                                         <div className="border border-[#D6D6D6] rounded py-1 px-3">
                                             <div className="d-flex">
                                                 <input
@@ -142,7 +143,12 @@ const Report = () => {
                                 </div>
 
                                 {selectedSuggestion ? (
-                                    <Propertymatch properties={selectedProperties} />
+                                    <div>
+                                        <Propertymatch properties={selectedProperties} />
+                                        <div className="w-100   py-2 bg-[#FFFFFFD6] d-flex justify-content-center" style={{ position: "sticky", bottom: "0" }}>
+                                            <button className="agent-btn-responsive1 text-white fw-bold h-25 shadow report-btn py-2 mt-3 rounded-pill">{t("send_btn")}</button>
+                                        </div>
+                                    </div>                                  
                                 ) : (
                                     <div>
                                         <div className='mt-4'>
@@ -150,9 +156,9 @@ const Report = () => {
                                             <p className='fs-17 fw-normal lh-1'>{t("description_2")}</p>
                                             <p className='fs-17 fw-normal lh-1'>{t("description_3")}</p>
                                         </div>
-                                        <div className="mt-5 mb-2 d-none d-md-flex justify-content-end">
+                                        <div className="mt-5 mb-2 d-none d-lg-flex justify-content-end">
                                             <img src={report} alt="visa" className='img-fluid h-75' />
-                                        </div>
+                                        </div>   
                                     </div>
                                 )}
                             </>
@@ -161,9 +167,9 @@ const Report = () => {
                         {activeTab === "recent" && (
                             <>
                                 <div className="row px-1 position-relative">
-                                    <div className="col-12 col-md-8">
+                                    <div className="col-12">
                                         <div className="border border-[#D6D6D6] rounded py-1 px-3">
-                                            <div className="d-flex">
+                                            <div className="d-flex ">
                                                 <input
                                                     type="text"
                                                     className="form-control border-0 p-0"
@@ -181,7 +187,12 @@ const Report = () => {
 
                                 {searchTermRecent.trim() !== "" ? (
                                     filteredProperties.length > 0 ? (
-                                        <Clientmatch properties={filteredProperties} />
+                                        <div>
+                                            <Clientmatch properties={filteredProperties} />
+                                            <div className="w-100   py-2 bg-[#FFFFFFD6] d-flex justify-content-center" style={{ position: "sticky", bottom: "0" }}>
+                                                <button className="agent-btn-responsive1 text-white fw-bold h-25 shadow report-btn py-2 mt-3 rounded-pill">{t("send_btn")}</button>
+                                            </div>
+                                        </div>  
                                     ) : (
                                         <div className="text-center py-5">
                                             <p className="fs-17 fw-normal lh-1 text-muted">
@@ -197,7 +208,7 @@ const Report = () => {
                                                 <p className='fs-17 fw-normal lh-1'>{t("description_4")}</p>
                                                 <p className='fs-17 fw-normal lh-1'>{t("description_5")}</p>
                                             </div>
-                                            <div className="mt-5 mb-2 d-none d-md-flex justify-content-end">
+                                            <div className="mt-5 mb-2 d-none d-lg-flex justify-content-end">
                                                 <img src={visa} alt="visa" className='img-fluid h-75' />
                                             </div>
                                         </div>
@@ -212,13 +223,16 @@ const Report = () => {
             {activeTab === "recent" && (
                 searchTermRecent.trim() !== "" ? (
                     filteredProperties.length > 0 ? (
-                        <div className="d-block d-md-none">
+                        <div className="d-block d-lg-none">
                             <ClientmatchMobile properties={filteredProperties} />
+                            <div className="w-100   py-2 bg-[#FFFFFFD6] d-flex justify-content-center" style={{ position: "sticky", bottom: "0" }}>
+                                <button className="agent-btn-responsive1 text-white fw-bold h-25 shadow report-btn py-2 mt-3 rounded-pill">{t("send_btn")}</button>
+                            </div>
                         </div>
                     ) : (
                         null
                     )
-                ) : <div className={`mt-5 mb-2 d-block d-md-none justify-content-${justifyContent}`}>
+                ) : <div className={`mt-5 mb-2 d-block d-lg-none justify-content-${justifyContent}`}>
                     <img src={visa} alt="report" className="img-fluid h-75" />
                 </div>
             )}
@@ -226,21 +240,22 @@ const Report = () => {
             {activeTab === "all" && (
                 selectedSuggestion ? (
                     <>
-                        <div className=' d-block d-md-none'>
+                        <div className=' d-block d-lg-none'>
                             <PropertymatchMobile properties={selectedProperties} />
+                            <div className="w-100   py-2 bg-[#FFFFFFD6] d-flex justify-content-center" style={{ position: "sticky", bottom: "0" }}>
+                                <button className="agent-btn-responsive1 text-white fw-bold h-25 shadow report-btn py-2 mt-3 rounded-pill">{t("send_btn")}</button>
+                            </div>
                         </div>
                     </>
                 ) : (
                     <>
-                        <div className={`mt-5 mb-2 d-block d-md-none justify-content-${justifyContent}`}>
+                        <div className={`mt-5 mb-2 d-block d-lg-none justify-content-${justifyContent}`}>
                             <img src={report} alt="visa" className='img-fluid h-75' />
                         </div>
                     </>
                 )
             )}
-            <div className="w-100   py-2 bg-[#FFFFFFD6] d-flex justify-content-center" style={{ position: "sticky", bottom: "0" }}>
-                <button className="agent-btn-responsive1 text-white fw-bold h-25 shadow w-25 py-2 mt-3 rounded-pill">{t("send_btn")}</button>
-            </div>
+           
         </div>
     )
 }

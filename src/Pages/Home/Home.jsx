@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Row, Col, Card } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import "../Home/Home.css";
@@ -16,18 +16,28 @@ import CommonPieChart from "../../Componant/Common/PieChart/PieChart";
 import StackedBarChart from "../../Componant/Common/BarChart/BarChart";
 
 const Home = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { lang } = useParams();
   const fontSize = i18n.language === "he" ? "15px" : "14px";
 
-  const [homedatapage, sethomedatapage] = useState([]);
-  const [userdata, setUserdata] = useState([]);
-  const [agrreedata, setAgreedata] = useState([]);
-  const [agreecolor, setAgreecolor] = useState([]);
-    const { getHomes, getUserData, getAgreementData, getAgreementColors } =
-    useHomeService();
+  const {
+    getHomes,
+    getUserData,
+    barChartdata,
+    getAgreementData,
+    agreecolor,
+    setAgreecolor,
+    agrreedata,
+    setAgreedata,
+    getAgreementColors,
+    userdata,
+    setUserdata,
+    isOpen,
+    setIsOpen,
+    homedatapage,
+    sethomedatapage,
+  } = useHomeService();
 
   useEffect(() => {
     const Homedata = getHomes();
@@ -40,65 +50,6 @@ const Home = () => {
     setAgreecolor(AgreeColor);
   }, []);
 
-  const barChartdata = [
-    {
-      name: t("Haim"),
-      value: 37000,
-      green: 15000,
-      gray: 12000,
-      red: 7000,
-      orange: 3000,
-    },
-    {
-      name: t("Shiri"),
-      value: 37000,
-      green: 15000,
-      gray: 12000,
-      red: 7000,
-      orange: 3000,
-    },
-    {
-      name: t("Liran"),
-      value: 36000,
-      green: 14000,
-      gray: 11000,
-      red: 7000,
-      orange: 4000,
-    },
-    {
-      name: t("Israel"),
-      value: 35000,
-      green: 13000,
-      gray: 11000,
-      red: 7000,
-      orange: 4000,
-    },
-    {
-      name: t("Ori"),
-      value: 32000,
-      green: 12000,
-      gray: 10000,
-      red: 6000,
-      orange: 4000,
-    },
-    {
-      name: t("Rami"),
-      value: 15000,
-      green: 6000,
-      gray: 5000,
-      red: 3000,
-      orange: 2000,
-    },
-    {
-      name: t("Moshe"),
-      value: 15000,
-      green: 6000,
-      gray: 5000,
-      red: 3000,
-      orange: 2000,
-    },
-  ];
-
   return (
     <>
       <Col className="p-0 custom-col rounded-3  z-1">
@@ -109,24 +60,26 @@ const Home = () => {
         <div className="px-3">
           <div
             className={`custom-scrollbar overflow-y-auto overflow-x-hidden px-3 scroll-height`}
-            
           >
             <Row className=" align-items-center justify-content-between d-flex overflow-hidden">
               <Col xs={12} lg={6} className=" my-2">
                 <div className="rounded-1 p-md-4 p-3 shadow my-3 box1_color">
-                    <div className="d-none d-md-block"> <p className="screen-2 mb-0">{t("home_block2_title")}</p></div>
+                  <div className="d-none d-md-block">
+                    {" "}
+                    <p className="screen-2 mb-0">{t("home_block2_title")}</p>
+                  </div>
 
-                    <div className="d-flex d-md-none justify-content-between align-items-center">
-                      <div>
-                        <p className="screen-2 mb-0">{t("cust_name_1")}</p>
-                        <span className="fs-15 fw-bold lh-1 text-teal">
-                          {t("personalArea.role")}
-                        </span>
-                      </div>
-                      <button className="agent-btn-responsive1 text-white px-3 w-50 fw-semibold py-2 rounded-pill">
-                        {t("personalArea.upgradeSubscription")}
-                      </button>
+                  <div className="d-flex d-md-none justify-content-between align-items-center">
+                    <div>
+                      <p className="screen-2 mb-0">{t("cust_name_1")}</p>
+                      <span className="fs-15 fw-bold lh-1 text-teal">
+                        {t("personalArea.role")}
+                      </span>
                     </div>
+                    <button className="agent-btn-responsive1 text-white px-3 w-50 fw-semibold py-2 rounded-pill">
+                      {t("personalArea.upgradeSubscription")}
+                    </button>
+                  </div>
                   <div className="d-flex align-items-center gap-md-5 gap-3">
                     <div>
                       <div className="py-3 w-100 h-auto shadow-md-lg">
@@ -232,7 +185,7 @@ const Home = () => {
                   </button>
                 </div>
 
-                {isOpen ? 
+                {isOpen ? (
                   <div>
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
@@ -353,7 +306,7 @@ const Home = () => {
                       </div>
                     </motion.div>
                   </div>
-                 : null}
+                ) : null}
               </Col>
             </Row>
             <Row className="px-2">

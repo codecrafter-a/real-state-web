@@ -137,10 +137,10 @@ const AddCustomerDesktop = () => {
                 <div className="check_custom_icon">
                   <CustomInput
                     type="checkbox"
-                    id="usertype_2"
-                    name="userType"
+                    // id="usertype_2"
+                    // name="userType"
                     value={t("cust_type_2")}
-                    onChange={handleChange}
+                    // onChange={handleChange}
                     className="btn-check"
                   />
                   <label htmlFor="usertype_2">
@@ -158,10 +158,10 @@ const AddCustomerDesktop = () => {
                 <div className="check_custom_icon">
                   <CustomInput
                     type="checkbox"
-                    id="usertype_3"
-                    name="userType"
+                    // id="usertype_3"
+                    // name="userType"
                     value={t("cust_type_3")}
-                    onChange={handleChange}
+                    // onChange={handleChange}
                     className="btn-check"
                   />
                   <label htmlFor="usertype_3">
@@ -270,7 +270,7 @@ const AddCustomerDesktop = () => {
                     onChange={handleChange}
                     options={[
                       { value: "", label: "" },
-                      { value: t("option1"), label: t("option1") },
+                      { value: t("option1"), label: t("option1"), },
                       { value: t("option1"), label: t("option1") },
                     ]}
                     className="form-select"

@@ -6,14 +6,15 @@ import search from "../../assets/images/search.png";
 import "../Invocies/invocies.css";
 import { IoIosArrowDown } from "react-icons/io";
 import { useInvoiceServices } from "../../Services/InvoicesServices";
+import { TiDocumentText } from "react-icons/ti";
 import { Button, Accordion } from "react-bootstrap";
-import { FaEye, FaDownload } from "react-icons/fa";
 import { BsWhatsapp } from "react-icons/bs";
-import { MdEmail } from "react-icons/md";
 import Modal from "react-bootstrap/Modal";
 import AddinvoicesIcon from "../../assets/images/addinvoices.png";
+import eye from "../../assets/images/invoices_eye.png";
 import pdfinstall from "../../assets/images/pdf.png";
-
+import mail from "../../assets/images/outgoing_mail.png";
+import buch_box from "../../assets/images/Bounding box (1).png";
 const Invoices_mobile = () => {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState("all");
@@ -164,25 +165,26 @@ const Invoices_mobile = () => {
                   <strong>{t("amount")}:</strong> {row?.amount || "N/A"}
                 </p>
               </div>
-              <div className="border-top p-2 bg-light">
+              <div className="border-0 p-2 bg-light bg-white ">
                 <div className="d-flex justify-content-around  w-100">
-                  <Button className="btn btn-light d-flex align-items-center p-1" onClick={handleClick}>
-                    <FaEye size={16} />
+                  <Button className="btn btn-light d-flex gap-1 bg-transparent align-items-center p-1" onClick={handleClick}>   
+                    <img src={eye} alt="eye" className="w-50 h-auto"/>
                     <span className="fs-14 fw-normal lh-1">{t("view")}</span>
                   </Button>
-                  <Button className="btn btn-light d-flex align-items-center p-1">
-                    <MdEmail size={18} />
+                  <Button className="btn btn-light d-flex gap-1 bg-transparent align-items-center p-1">
+                  
+                    <img src={mail} alt="mail" className="w-aut h-auto"/>
                     <span className="fs-14 fw-normal lh-1">
                       {t("send_to_client")}
                     </span>
                   </Button>
-                  <Button className="btn btn-light d-flex align-items-center p-1">
-                    <FaDownload size={16} />
+                  <Button className="btn btn-light d-flex gap-1 bg-transparent align-items-center p-1">
+                     <TiDocumentText size={20}/>
                     <span className="fs-14 fw-normal lh-1">
                       {t("download")}
                     </span>
                   </Button>
-                  <Button className="btn btn-light d-flex align-items-center p-1">
+                  <Button className="btn btn-light d-flex gap-1 bg-transparent align-items-center p-1">
                     <BsWhatsapp size={16} />
                     <span className="fs-14 fw-normal lh-1">{t("share")}</span>
                   </Button>

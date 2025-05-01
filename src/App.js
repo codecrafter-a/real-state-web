@@ -34,6 +34,8 @@ function App() {
   const { i18n } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
+  const [show, setShow] = useState(false);
+  console.log("🚀 ~ App ~ show:", show)
   const [isPadding, setIsPadding] = useState(false)  
   const lastPath = location.pathname.split("/").filter(Boolean).pop();
   const isAuthenticated = () => {
@@ -64,7 +66,7 @@ function App() {
   return (
     <div className="App" key={i18n.language}>
       <LanguageHandler />
-      <Layout>
+      <Layout show={show}>
         <Routes>
           <Route path="/" element={<Navigate to={`/${i18n.language}/signin`} />} />
           <Route path="/:lang/*" element={
@@ -80,7 +82,7 @@ function App() {
               <Route path="agents/edit-agents" element={<ProtectedRoute><EditAgents /></ProtectedRoute>} />
               <Route path="setting" element={<ProtectedRoute><Setting /></ProtectedRoute>} />
               <Route path="invoices" element={<ProtectedRoute><Invoicesen/></ProtectedRoute>} />
-              <Route path="agreements" element={<ProtectedRoute><Agreementsen /></ProtectedRoute>} />
+              <Route path="agreements" element={<ProtectedRoute><Agreementsen show={show} setShow={setShow} /></ProtectedRoute>} />
               <Route path="data" element={<ProtectedRoute><DataEn /></ProtectedRoute>} />
               <Route path="personal-area" element={<ProtectedRoute><PersonalArea /></ProtectedRoute>} />
               <Route path="report" element={<ProtectedRoute><Report /></ProtectedRoute>} />

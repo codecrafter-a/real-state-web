@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { useTranslation } from "react-i18next";
 import table_arrrow from "../../assets/images/table_arrrow.svg";
 import CustomButton from "../../Componant/Common/Button/Button";
@@ -23,25 +23,34 @@ const Propertytable = ({filter}) => {
       );
     };
 
-  const handleSelectAllChange = () => {
-    const newSelectAll = !selectAll;
-    setSelectAll(newSelectAll);
-    // setSelectedRows(newSelectAll ? getpropertyservices().map((_, index) => index) : []);
-  };
+    const handleSelectAllChange = () => {
+      const newSelectAll = !selectAll;
+      setSelectAll(newSelectAll);
+      if (newSelectAll) {
+        setSelectedRows(filter.map((_, index) => index)); // Select all rows
+      } else {
+        setSelectedRows([]); // Deselect all rows
+      }
+    };
   
-  const handleCheckboxChange = (index) => {
-    setSelectedRows((prevSelectedRows) =>
-      prevSelectedRows.includes(index)
-        ? prevSelectedRows.filter((i) => i !== index)
-        : [...prevSelectedRows, index]
-    );
-  };
-  // useEffect(() => {
-  //   setSelectAll(selectedRows.length === getpropertyservices().length);
-  // }, [selectedRows,getpropertyservices().length]);
+    const handleCheckboxChange = (index) => {
+      setSelectedRows((prevSelectedRows) =>
+        prevSelectedRows.includes(index)
+          ? prevSelectedRows.filter((i) => i !== index) // Uncheck
+          : [...prevSelectedRows, index] // Check
+      );
+    };
+    useEffect(() => {
+      if (selectedRows.length === filter.length && filter.length > 0) {
+        setSelectAll(true);
+      } else {
+        setSelectAll(false);
+      }
+    }, [selectedRows, filter.length]);
 
 
   console.log("fillterss" , filter);
+  
 
   return (
     <>

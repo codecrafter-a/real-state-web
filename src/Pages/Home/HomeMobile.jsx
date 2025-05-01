@@ -13,15 +13,27 @@ import HomeTable from "./HomeTable";
 
 const HomeMobile = () => {
   const { t } = useTranslation();
+   const { i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
+  const isRTL = i18n.dir() === "rtl";
   const { lang } = useParams();
-  const [homedatapage, sethomedatapage] = useState([]);
-  const [userdata, setUserdata] = useState([]);
-  const [agrreedata, setAgreedata] = useState([]);
-  const [agreecolor, setAgreecolor] = useState([]);
-  const { getHomes, getUserData, getAgreementData, getAgreementColors } =
-    useHomeService();
+  const {
+    getHomes,
+    getUserData,
+    getAgreementData,
+    agreecolor,
+    barChartdata,
+    setAgreecolor,
+    agrreedata,
+    setAgreedata,
+    getAgreementColors,
+    homedatapage,
+    sethomedatapage,
+    userdata,
+    setUserdata,
+    tableData, setTableData
+  } = useHomeService();
 
   console.log("fdfdsfsfsfsdf", getAgreementColors);
 
@@ -36,70 +48,19 @@ const HomeMobile = () => {
     setAgreecolor(AgreeColor);
   }, []);
 
-  const [, setTableData] = useState([]);
 
   useEffect(() => {
     const data = getAgreementData();
     setTableData(data);
   }, []);
 
-  const barChartdata = [
-    {
-      name: t("Haim"),
-      value: 37000,
-      green: 15000,
-      gray: 12000,
-      red: 7000,
-      orange: 3000,
-    },
-    {
-      name: t("Shiri"),
-      value: 37000,
-      green: 15000,
-      gray: 12000,
-      red: 7000,
-      orange: 3000,
-    },
-    {
-      name: t("Liran"),
-      value: 36000,
-      green: 14000,
-      gray: 11000,
-      red: 7000,
-      orange: 4000,
-    },
-    {
-      name: t("Israel"),
-      value: 35000,
-      green: 13000,
-      gray: 11000,
-      red: 7000,
-      orange: 4000,
-    },
-    {
-      name: t("Ori"),
-      value: 32000,
-      green: 12000,
-      gray: 10000,
-      red: 6000,
-      orange: 4000,
-    },
-    {
-      name: t("Rami"),
-      value: 15000,
-      green: 6000,
-      gray: 5000,
-      red: 3000,
-      orange: 2000,
-    },
-    {
-      name: t("Moshe"),
-      value: 15000,
-      green: 6000,
-      gray: 5000,
-      red: 3000,
-      orange: 2000,
-    },
+  const borderColors = [
+    { Generated: "#555555" },
+    { sent: "#fef3c7" },
+    { viewed: "#f87171" },
+    { executed: "#10b981" },
+    { registered: "#10b981" },
+    { signin: "#10b981" },
   ];
 
   return (
@@ -282,6 +243,7 @@ const HomeMobile = () => {
                     <Homechart />
                   </div>
                 </motion.div>
+                
               </div>
             ) : null}
           </Col>
@@ -304,9 +266,10 @@ const HomeMobile = () => {
           </Col>
         </Row>
       </div>
-      <div className="px-4">
-        <HomeTable />
+      <div className="px-4 my-3">
+        <HomeTable/>
       </div>
+      
     </>
   );
 };

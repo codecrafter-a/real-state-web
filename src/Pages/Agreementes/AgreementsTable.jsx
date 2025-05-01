@@ -14,8 +14,16 @@ import { Dropdown } from "react-bootstrap";
 import cancel from "../../assets/images/cancel.png";
 
 const AgreementsTable = ({ handleOpen, selectedStatus, selectData }) => {
-  console.log(" ~ AgreementsTable ~ selectedStatus:", selectedStatus);
+  console.log("🚀 ~ AgreementsTable ~ handleOpen:", handleOpen)
   const { t } = useTranslation();
+  const borderColors = [
+    { Generated: "#555555" },
+    { sent: "#fef3c7" },
+    { viewed: "#f87171" },
+    { executed: "#10b981" },
+    { registered: "#10b981" },
+    { signin: "#10b981" },
+  ];
   return (
     <div className="mt-4 ps-3">
       <table className="table text-center d-none d-md-table">
@@ -66,269 +74,167 @@ const AgreementsTable = ({ handleOpen, selectedStatus, selectData }) => {
             <th
               style={{ color: "#686868", lineHeight: "20px" }}
               className="fw-semibold fs-15"
-            >
-              
-            </th>
-            
+            ></th>
           </tr>
         </thead>
-        <tbody className="border">
-          {selectData.map((row, index) => (
-            <tr key={index} className=" fw-normal fs-15 lh-1">
-              <td className="d-table-cell align-middle py-3">
-                <div className="d-flex align-items-center gap-1">
-                  <img
-                    src={iconHome}
-                    alt="home icon"
-                    className="text-teal h-auto"
-                    style={{ width: "18px" }}
-                  />
-                  {t(row.agreementName)}
-                </div>
-              </td>
-              <td className="d-table-cell align-middle py-3">{row.date}</td>
-              <td className="d-table-cell align-middle py-3">
-                {t(row.agreementType)}
-              </td>
-              <td className="d-table-cell align-middle py-3">
-                {t(row.clients)}
-              </td>
-              <td className="d-table-cell align-middle py-3">
-                {row.commission}
-              </td>
-              <td className="d-table-cell align-middle py-3">
-                <StatusBadge status={t(row.status)} />
-              </td>
+        <tbody className="border ">
+          {selectData.map((row, index) => {
+            const borderColor = borderColors[index]
+            ? Object.values(borderColors[index])[0]
+            : "#000000";
+            return (
+              <>
+                <tr key={index} className=" fw-normal fs-15 lh-1" style={{
+                    borderInlineStart: `6px solid ${borderColor}`,
+                  }} >
+                  <td className="d-table-cell align-middle py-3" >
+                    <div className="d-flex align-items-center gap-1 " >
+                      <img
+                        src={iconHome}
+                        alt="home icon"
+                        className="text-teal h-auto"
+                        style={{ width: "18px" }}
+                      />
+                      {t(row.agreementName)}
+                    </div>
+                  </td>
+                  <td className="d-table-cell align-middle py-3">{row.date}</td>
+                  <td className="d-table-cell align-middle py-3">
+                    {t(row.agreementType)}
+                  </td>
+                  <td className="d-table-cell align-middle py-3">
+                    {t(row.clients)}
+                  </td>
+                  <td className="d-table-cell align-middle py-3">
+                    {row.commission}
+                  </td>
+                  <td className="d-table-cell align-middle py-3">
+                    <StatusBadge status={t(row.status)} />
+                  </td>
 
-              {(row.status === "home_tab_r3_h2" ||
-                row.status === "home_tab_r2_h2" ||
-                row.status === "home_tab_r1_h2") && (
-                <td className="d-table-cell align-middle py-3">
-                  <div className="d-flex align-items-center gap-3 p-2 bg-white">
-                    <div className="d-flex align-items-center gap-1">
-                      <TbMailForward size={18} />
-                      <span>{t("home_tab_r1_h1_l4")}</span>
-                    </div>
-                    <div className="d-flex align-items-center gap-1">
-                      <FaWhatsapp />
-                      <span>{t("home_tab_r1_h1_l3")}</span>
-                    </div>
-                    <span className="d-flex align-items-center ">
-                      <IoMdAttach size={18} />
-                      {t("home_tab_r1_h1_l2")}
-                    </span>
-                    <Dropdown className="d-flex bg-white align-items-center">
-                      <Dropdown.Toggle
-                        as="div"
-                        variant="light"
-                        className="border-0  custom-dropdown-toggle d-flex align-items-center gap-1 cursor-pointer"
-                      >
-                        <HiOutlineDotsVertical size={18} />
-                        {t("home_tab_r1_h1_l1")}
-                      </Dropdown.Toggle>
-                      <Dropdown.Menu
-                        style={{ width: "100px" }}
-                        className=" z-3 shadow d-flex flex-column py-2 gap-1 more-menu"
-                      >
-                        <Dropdown.Item
-                          href="#/action-1"
-                          className="d-flex align-items-center gap-1 m-2 p-0"
+                  {(row.status === "home_tab_r3_h2" ||
+                    row.status === "home_tab_r2_h2" ||
+                    row.status === "home_tab_r1_h2") && (
+                    <td className="d-table-cell align-middle py-3">
+                      <div className="d-flex align-items-center gap-3 p-2 bg-white">
+                        <div className="d-flex align-items-center gap-1">
+                          <TbMailForward size={18} />
+                          <span>{t("home_tab_r1_h1_l4")}</span>
+                        </div>
+                        <div className="d-flex align-items-center gap-1">
+                          <FaWhatsapp />
+                          <span>{t("home_tab_r1_h1_l3")}</span>
+                        </div>
+                        <span className="d-flex align-items-center ">
+                          <IoMdAttach size={18} />
+                          {t("home_tab_r1_h1_l2")}
+                        </span>
+                        <Dropdown className="d-flex bg-white align-items-center justify-content-center px-3">
+                          <Dropdown.Toggle
+                            as="div"
+                            variant="light"
+                            className="border-0  custom-dropdown-toggle d-flex align-items-center gap-1 cursor-pointer"
+                          >
+                            <HiOutlineDotsVertical size={18} />
+                            {t("home_tab_r1_h1_l1")}
+                          </Dropdown.Toggle>
+                          <Dropdown.Menu
+                            style={{ width: "100px" }}
+                            className=" z-3 shadow d-flex flex-column py-2 gap-1 more-menu"
+                          >
+                            <Dropdown.Item
+                              href="#/action-1"
+                              className="d-flex align-items-center gap-1 m-2 p-0"
+                            >
+                              <img src={cancel} alt="cancel" />
+                              <span className="fs-12 lh-1 fw-normal">
+                                {t("cancel_signing_process")}
+                              </span>
+                            </Dropdown.Item>
+                            <Dropdown.Item
+                              href="#/action-2"
+                              className="d-flex align-items-center gap-2 m-2 p-0"
+                            >
+                              <RiDeleteBin2Line size={18} />
+                              <span className="fs-12 lh-1 fw-normal">
+                                {t("delete_agreement")}
+                              </span>
+                            </Dropdown.Item>
+                          </Dropdown.Menu>
+                        </Dropdown>
+                      </div>
+                    </td>
+                  )}
+                  {row.status === "home_tab_r4_h2" && (
+                    <td className="d-table-cell align-middle py-3">
+                      <div className="d-flex align-items-center gap-3 p-2 bg-white">
+                        <div className="d-flex align-items-center text-nowrap gap-1">
+                          <FaRegFile size={18} />
+                          <span>{t("open_agreement")}</span>
+                        </div>
+                        <div className="d-flex align-items-center text-nowrap gap-1">
+                          <TbMailForward size={18} />
+                          <span>{t("send_copy")}</span>
+                        </div>
+                        <button
+                          className="d-flex align-items-center border-0 bg-transparent  text-nowrap gap-1"
+                          onClick={handleOpen}
                         >
-                          <img src={cancel} alt="cancel" />
-                          <span className="fs-12 lh-1 fw-normal">
-                            {t("cancel_signing_process")}
-                          </span>
-                        </Dropdown.Item>
-                        <Dropdown.Item
-                          href="#/action-2"
-                          className="d-flex align-items-center gap-2 m-2 p-0"
-                        >
+                          <MdOutlineCheckCircleOutline size={18} />
+                          {t("close_deal")}
+                        </button>
+                        <button className="d-flex align-items-center border-0 bg-transparent  text-nowrap gap-1">
                           <RiDeleteBin2Line size={18} />
-                          <span className="fs-12 lh-1 fw-normal">
-                            {t("delete_agreement")}
-                          </span>
-                        </Dropdown.Item>
-                      </Dropdown.Menu>
-                    </Dropdown>
-                  </div>
-                </td>
-              )}
-              {row.status === "home_tab_r4_h2" && (
-                <td className="d-table-cell align-middle py-3">
-                  <div className="d-flex align-items-center gap-3 p-2 bg-white">
-                    <div className="d-flex align-items-center text-nowrap gap-1">
-                      <FaRegFile size={18} />
-                      <span>{t("open_agreement")}</span>
-                    </div>
-                    <div className="d-flex align-items-center text-nowrap gap-1">
-                      <TbMailForward size={18} />
-                      <span>{t("send_copy")}</span>
-                    </div>
-                    <button
-                      className="d-flex align-items-center border-0 bg-transparent  text-nowrap gap-1"
-                      onClick={handleOpen}
-                    >
-                      <MdOutlineCheckCircleOutline size={18} />
-                      {t("close_deal")}
-                    </button>
-                    <button className="d-flex align-items-center border-0 bg-transparent  text-nowrap gap-1">
-                      <RiDeleteBin2Line size={18} />
-                      {t("delete")}
-                    </button>
-                  </div>
-                </td>
-              )}
-              {row.status === "home_tab_r5_h2" && (
-                <td className="d-table-cell align-middle py-3">
-                  <div className="d-flex align-items-center gap-3 p-2 bg-white">
-                    <div className="d-flex align-items-center gap-1">
-                      <TbMailForward size={18} />
-                      <span>{t("send_copy")}</span>
-                    </div>
-                    <div className="d-flex align-items-center gap-1">
-                      <LuBookMinus size={18} />
-                      <span>{t("register_land")}</span>
-                    </div>
-                    <button className="d-flex border-0 bg-transparent align-items-center gap-1">
-                      <RiDeleteBin2Line size={18} />
-                      {t("delete")}
-                    </button>
-                  </div>
-                </td>
-              )}
-              {row.status === "home_tab_r6_h2" && (
-                <td className="d-table-cell align-middle py-3">
-                  <div className="d-flex align-items-center gap-3 p-2 bg-white">
-                    <div className="d-flex align-items-center gap-1">
-                      <TbMailForward size={18} />
-                      <span>{t("send_copy")}</span>
-                    </div>
-                    <button className="d-flex align-items-center border-0 bg-transparent gap-1">
-                      <RiDeleteBin2Line size={18} />
-                      {t("delete")}
-                    </button>
-                  </div>
-                </td>
-              )}
-              <td className="d-table-cell align-middle py-3">
-               
-              </td>
-            </tr>
-          ))}
+                          {t("delete")}
+                        </button>
+                      </div>
+                    </td>
+                  )}
+                  {row.status === "home_tab_r5_h2" && (
+                    <td className="d-table-cell align-middle py-3">
+                      <div className="d-flex align-items-center gap-3 p-2 bg-white">
+                        <div className="d-flex align-items-center gap-1">
+                          <TbMailForward size={18} />
+                          <span>{t("send_copy")}</span>
+                        </div>
+                        <div className="d-flex align-items-center gap-1">
+                          <LuBookMinus size={18} />
+                          <span>{t("register_land")}</span>
+                        </div>
+                        <button className="d-flex border-0 bg-transparent align-items-center gap-1">
+                          <RiDeleteBin2Line size={18} />
+                          {t("delete")}
+                        </button>
+                      </div>
+                    </td>
+                  )}
+                  {row.status === "home_tab_r6_h2" && (
+                    <td className="d-table-cell align-middle py-3">
+                      <div className="d-flex align-items-center gap-3 p-2 bg-white">
+                        <div className="d-flex align-items-center gap-1">
+                          <TbMailForward size={18} />
+                          <span>{t("send_copy")}</span>
+                        </div>
+                        <button className="d-flex align-items-center border-0 bg-transparent gap-1">
+                          <RiDeleteBin2Line size={18} />
+                          {t("delete")}
+                        </button>
+                      </div>
+                    </td>
+                  )}
+                  <td className="d-table-cell align-middle py-3"></td>
+                </tr>
+              </>
+            );
+          })}
         </tbody>
       </table>
-      {/* <Accordion className=" p-0 d-md-none d-flex flex-column gap-3 ">
-        {selectData.map((row, index) => (
-          <Accordion.Item
-            eventKey={index.toString()}
-            key={row.id}
-            style={{
-              borderInlineStart: `6px solid ${
-                borderColors[row.actionType] || "#f87171"
-              }`,
-            }}
-            className="border-2  border-top rounded-3 overflow-visible"
-          > 
-            <Accordion.Header id="accordionDropdown"></Accordion.Header>
-            <label aria-label="accordionDropdown"  as="div" className="d-flex align-items-center">
-              <div className="d-flex align-items-center gap-2">
-                <img
-                  src={key}
-                  alt="vertical key"
-                  className="img-fluid"
-                  style={{
-                    width: "40px",
-                    height: "40px",
-                    objectFit: "contain",
-                  }}
-                />
-                <div>
-                  <span className="fw-semibold fs-12 d-block">
-                    {row?.accountNumber} | {row?.date}
-                  </span>
-                  <p className="fw-bold fs-14 d-block mb-0">
-                    {t(row?.agreementName)} |{" "}
-                    <span className="fw-semibold lh-1 fs-12">
-                      {t(row?.agreementType)}
-                    </span>
-                  </p>
-                  <p className="fw-bold fs-12 d-block my-0">
-                    {t("home_tab_h4")} :{" "}
-                    <span className="fw-semibold lh-1 fs-12">
-                      {t(row?.clients)}
-                    </span>
-                  </p>
-                  <p className="fw-bold fs-12 d-block mb-0">
-                    {t("br_commission")}
-                    <span className="fw-semibold lh-1 fs-12">
-                      {row?.commission}
-                    </span>
-                  </p>
-                </div>
-              </div>
-              <div>
-                <StatusBadge status={t(row?.status)} />
-              </div>
-            </label>
-            <Accordion.Body className="p-0">
-              <div className="border-top p-2 ">
-                <div className="d-flex justify-content-around  w-100">
-                  <ActionButtons
-                    type={t(row?.actionType)}
-                    icon={row?.icon}
-                    onDelete={handleOpen}
-                  />
-                </div>
-              </div>
-            </Accordion.Body>
-          </Accordion.Item>
-        ))}
-      </Accordion> */}
     </div>
   );
 };
-// const ActionButtons = ({ type, icon, onDelete }) => {
-//   const { t } = useTranslation();
-//   return (
-//     <div className="d-flex align-items-center gap-2 p-1 bg-white ">
-//       {type === "default" && (
-//         <>
-//           <div className="d-md-flex align-items-center gap-1 cursor-pointer">
-//             <TbMailForward />
-//             <span className=" fs-12 fs-md-15 fw-normal lh-1">
-//               {t("home_tab_r1_h1_l4")}
-//             </span>
-//           </div>
-//           <div className="d-sm-flex align-items-center gap-1 cursor-pointer">
-//             {icon}
-//             <span className="fs-md-15 fs-12 fw-normal lh-1">
-//               {t("home_tab_r1_h1_l3")}
-//             </span>
-//           </div>
-//           <button
-//             className="d-sm-flex align-items-center border-0 bg-transparent gap-1 cursor-pointer"
-//             onClick={onDelete}
-//           >
-//             <MdOutlineDeleteForever />
-//             <span className="fs-12 fs-md-15 fw-normal lh-1">
-//               {t("age_delet")}
-//             </span>
-//           </button>
-//           <span className="fs-12 fs-md-15 fw-normal lh-1">
-//             {t("home_tab_r1_h1_l2")}
-//           </span>
-//           <span className="fs-12 fs-md-15 fw-normal lh-1">
-//           {t("home_tab_r1_h1_l1")}
-//           </span>
-//         </>
-//       )}
-//     </div>
-//   );
-// };
 
 const StatusBadge = ({ status }) => {
   const { t } = useTranslation();
-
   const statusMap = {
     Generated: "הופק",
     Sent: "נשלח",
@@ -337,13 +243,11 @@ const StatusBadge = ({ status }) => {
     "Signed and Executed": "נחתם ויצא לפועל",
     "Signed and Registered": "נחתם ונרשם",
   };
-
   const translatedStatus = t(status);
-
   const statusKey = statusMap[translatedStatus] || translatedStatus;
 
   const statusStyles = {
-    Genrated: { backgroundColor: "#f3f4f6", color: "#6b7280" },
+    הופק: { backgroundColor: "#f3f4f6", color: "#6b7280" },
     נשלח: { backgroundColor: "#fef3c7", color: "#d97706" },
     נצפה: { backgroundColor: "#fee2e2", color: "#dc2626" },
     נחתם: { backgroundColor: "#ecfdf5", color: "#10b981" },
@@ -354,7 +258,11 @@ const StatusBadge = ({ status }) => {
   return (
     <span
       className="px-4 my-auto text-center fw-semibold rounded-pill d-flex align-items-center justify-content-center"
-      style={{ ...statusStyles[statusKey], minHeight: "28px", width: "123px" }}
+      style={{
+        ...statusStyles[statusKey],
+        minHeight: "28px",
+        width: "123px",
+      }}
     >
       {translatedStatus}
     </span>

@@ -15,27 +15,53 @@ const DataTable = () => {
     setReportData(data);
   }, []);
 
+  const handleSelectAll = (e) => {
+    const checked = e.target.checked;
+    const newSelected = {};
+    reportData.forEach(row => {
+      newSelected[row.id] = checked;
+    });
+    setSelectedRows(newSelected);
+  };
+
   const handleSelect = (id) => {
-    setSelectedRows((prev) => ({
+    setSelectedRows(prev => ({
       ...prev,
       [id]: !prev[id],
     }));
   };
 
   const handleExpand = (id) => {
-    setExpandedRows((prev) => ({
+    setExpandedRows(prev => ({
       ...prev,
       [id]: !prev[id],
     }));
   };
 
+  const allChecked = reportData.length > 0 && reportData.every(row => selectedRows[row.id]);
+  const someChecked = reportData.some(row => selectedRows[row.id]);
+
+  useEffect(() => {
+    const checkbox = document.getElementById("selectAllCheckbox");
+    if (checkbox) {
+      checkbox.indeterminate = !allChecked && someChecked;
+    }
+  }, [allChecked, someChecked]);
+
   return (
     <div style={styles.tableContainer}>
-      <Table responsive hover style={styles.customTable} className='border  rounded-pill'>
+      <Table responsive  style={styles.customTable} className='border  rounded-pill'>
         <thead>
           <tr className=''>
             <th>
-              <Form.Check type="checkbox" />
+            <Form.Check
+                id="selectAllCheckbox"
+                type="checkbox"
+                checked={allChecked}
+                onChange={handleSelectAll}
+                className="form-check-input"
+                style={{ backgroundColor: 'transparent' }}
+              />
             </th>
             <th className='fw-semibold fs-6'>{t("customer_name")} </th>
             <th className='fw-semibold fs-6'>{t("customer_type")} </th>
@@ -50,7 +76,7 @@ const DataTable = () => {
             <>
               <tr key={row.id} >
                 <td style={{ paddingTop: "25px", paddingBottom: "25px" }}>
-                  <Form.Check
+                <Form.Check
                     type="checkbox"
                     checked={selectedRows[row.id] || false}
                     onChange={() => handleSelect(row.id)}

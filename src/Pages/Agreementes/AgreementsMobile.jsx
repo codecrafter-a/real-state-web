@@ -4,6 +4,9 @@ import { Nav } from "react-bootstrap";
 import Tab from "../../Componant/Common/Tab/Tab";
 import { motion } from "framer-motion";
 import search from "../../assets/images/search.png";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import pin from "../../assets/images/pin.png";
+import { Modal } from "react-bootstrap";
 import { Accordion } from "react-bootstrap";
 import Toggle from "../../Componant/Common/Toggle/Toggle";
 import { useNavigate, useParams } from "react-router-dom";
@@ -11,75 +14,61 @@ import key from "../../assets/images/key_vertical.svg";
 import { useAgreementServices } from "../../Services/AgreementServices";
 import { IoIosArrowDown } from "react-icons/io";
 import { TbMailForward } from "react-icons/tb";
-import { Dropdown } from "react-bootstrap";
 import cancel from "../../assets/images/cancel.png";
 import { HiOutlineDotsVertical } from "react-icons/hi";
-import { RiDeleteBin2Line } from "react-icons/ri";
+import { MdOutlineCheckCircleOutline } from "react-icons/md";
 import AddinvoicesIcon from "../../assets/images/addinvoices.png";
-import Modal from "react-bootstrap/Modal";
-const ActionButtons = ({ type, icon }) => {
+import successIcon from "../../assets/images/success_icon.svg";
+import sadicon from "../../assets/images/sad.png";
+import businessicon from "../../assets/images/book_2.png";
+import pdfinstall from "../../assets/images/pdf.png";
+
+const ActionButtons = ({ type, icon, onClick, setRemoveData }) => {
+  console.log("🚀 ~ ActionButtons ~ handleOpen:");
+  console.log("🚀 ~ ActionButtons ~ type:", type);
+  console.log("🚀 ~ ActionButtons ~ onClick:", onClick);
+
   const { t } = useTranslation();
   return (
-    <div className="d-flex align-items-center gap-2  p-2  bg-white">
-      {(type === "genrated" || "sent" || "viewd") && (
+    <div className="d-flex align-items-center justify-content-center justify-content-sm-start gap-3 p-2 bg-white">
+      {(type === "Genrated" || "Sent" || "Viewd") && (
         <>
-          <div className="d-flex align-items-center gap-1">
-            <TbMailForward />
-            <span className="text-nowrap fs-14">{t("home_tab_r1_h1_l4")}</span>
+          <div className="d-flex align-items-center gap-2">
+            <TbMailForward className="fs-5" />
+            <span className="text-wrap text-center fs-14 lh-1">
+              {t("home_tab_r1_h1_l4")}
+            </span>
           </div>
           {icon && (
-            <div className="d-flex align-items-center gap-1">
+            <div className="d-flex align-items-center gap-2">
               {icon}
-              <span className="text-nowrap fs-14">
+              <span className="text-wrap lh-1 fs-14">
                 {t("home_tab_r1_h1_l3")}
               </span>
             </div>
           )}
-
+          {/* <div className="d-flex align-items-center gap-2">
+            <TbNotes className="fs-5"/>
+              <span className="text-wrap text-center fs-14 lh-1" >
+                {t("Agree_mobile_btn")}
+              </span>
+          </div> */}
+          <button
+            className="d-flex align-items-center border-0 bg-transparent  text-nowrap gap-2"
+            onClick={() => setRemoveData(true)}
+          >
+            <MdOutlineCheckCircleOutline size={18} />
+            {t("close_deal")}
+          </button>
           <div className="position-relative">
-            <Dropdown className="d-flex align-items-center">
-              <Dropdown.Toggle
-                id="dropdown-button-dark-example1"
-                as="div"
-                variant="light"
-                className="border-0 bg-transparent custom-dropdown-toggle d-flex align-items-center gap-1 cursor-pointer"
-              >
-                <HiOutlineDotsVertical size={18} />
-                {t("home_tab_r1_h1_l1")}
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu className="w_max">
-                <Dropdown.Item
-                  href="#/action-1"
-                  className="d-flex align-items-center gap-1 m-2 p-0"
-                >
-                  <img
-                    src={cancel}
-                    alt="cancel"
-                    className="img-fluid"
-                    style={{
-                      width: "20px",
-                      height: "20px",
-                      objectFit: "contain",
-                    }}
-                  />
-                  <span className="fs-15 lh-1 fw-normal">
-                    {t("cancel_signing_process")}
-                  </span>
-                </Dropdown.Item>
-                <Dropdown.Item
-                  href="#/action-2"
-                  className="d-flex align-items-center gap-2 m-2 p-0"
-                >
-                  <RiDeleteBin2Line size={18} />
-                  <span className="fs-15 lh-1 fw-normal">
-                    {t("delete_agreement")}
-                  </span>
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+            <button
+              className="border-0 bg-white d-flex align-items-center gap-2"
+              onClick={onClick}
+            >
+              <HiOutlineDotsVertical size={18} />
+              {t("home_tab_r1_h1_l1")}
+            </button>
           </div>
-          <span className="text-nowrap fs-14">{t("home_tab_r1_h1_l2")}</span>
         </>
       )}
     </div>
@@ -88,7 +77,6 @@ const ActionButtons = ({ type, icon }) => {
 
 const StatusBadge = ({ status }) => {
   const { t } = useTranslation();
-
   const statusMap = {
     Generated: "הופק",
     Sent: "נשלח",
@@ -97,7 +85,6 @@ const StatusBadge = ({ status }) => {
     "Signed and Executed": "נחתם ויצא לפועל",
     "Signed and Registered": "נחתם ונרשם",
   };
-
   const translatedStatus = t(status);
   const statusKey = statusMap[translatedStatus] || translatedStatus;
 
@@ -124,32 +111,30 @@ const StatusBadge = ({ status }) => {
   );
 };
 
-const AgreementsMobile = () => {
-  const { t } = useTranslation();
-  const navigate = useNavigate();
-  const { lang } = useParams();
-  const [activeTab, setActiveTab] = useState("all");
+const AgreementsMobile = ({ handleOpen ,show, setShow }) => {
+  console.log("🚀 ~ AgreementsMobile ~ handleOpen:", handleOpen);
+
   const {
     tableData,
     searchQuery,
+    modalState,
+    setModalState,
+    updateModalState,
+    removeData,
+    setRemoveData,
     handleSearchChange,
     getAgreementData,
     setTableData,
   } = useAgreementServices();
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState("all");
   const [isOpen, setIsOpen] = useState(false);
   const [addInvoices, setAddInvoices] = useState(false);
-  const updateModalState = (value) => {
-    setAddInvoices(value);
-  };
-  const handleToggle = (e) => {
-    updateModalState(e.target.checked);
-  };
-
+  const { lang } = useParams();
+  const handleShow = () => setShow(true);
   const handleClick = () => navigate(`/${lang}/invoices`);
-  const handleInvoice = () => setAddInvoices(true);
-  const handleisopen = () => {
-    setIsOpen((prev) => !prev);
-  };
+  const handleRegistry = () => navigate(`/${lang}/landregistry`);
 
   useEffect(() => {
     const fetchAgreementData = async () => {
@@ -160,43 +145,54 @@ const AgreementsMobile = () => {
         console.error("Failed to fetch agreement data:", error);
       }
     };
-  
+
     fetchAgreementData();
   }, []);
-  const borderColors = {
-    default: "#f87171",
-    signed: "#10b981",
-    executed: "#fdba74",
-    registered: "#3b82f6",
-    viewed: "#f87171",
+
+  useEffect(() => {
+    console.log("Modal show state:", show);
+  }, [show]);
+  const borderColors = [
+    { Generated: "#555555" },
+    { sent: "#fef3c7" },
+    { viewed: "#f87171" },
+    { executed: "#10b981" },
+    { registered: "#10b981" },
+    { signin: "#10b981" },
+  ];
+
+  const handleCloseall = () => {
+    setModalState({
+      addInvoices: false,
+      isError: false,
+      restriction: false,
+      isInvoices: false,
+      isDocument: false,
+    });
   };
+  const handleModalClose = () => setAddInvoices(false);
+  const handleInvoiceViewClick = () => navigate(`/${lang}/invoices`);
 
   return (
     <>
-      <div className="d-block ">
+      <div className="d-block">
         <div className="bg-white border-2 rounded-2 mb-4 shadow">
           <div className="w-100 border-bottom">
-            <Nav variant="tabs" className="mx-md-3 fs-15 pt-2 ">
-              <div className="col-6 text-center">
-                <Tab
-                  className={`border-0 fs-6 text-nowrap fw-normal px-1 lh-1 w-100 ${
-                    activeTab === "recent" ? "active-tab fw-bold" : ""
-                  }`}
-                  onClick={() => setActiveTab("recent")}
-                  children={t("recent_agreements")}
-                  tab={true}
-                />
-              </div>
-              <div className="col-6 text-center">
-                <Tab
-                  className={`border-0 fs-6 text-nowrap fw-normal px-1 lh-1 w-100 ${
-                    activeTab === "all" ? "active-tab fw-bold" : ""
-                  }`}
-                  onClick={() => setActiveTab("all")}
-                  children={t("all_agreements")}
-                  tab={true}
-                />
-              </div>
+            <Nav variant="tabs" className="mx-md-3 fs-15 pt-2">
+              {["recent", "all"].map((tab) => (
+                <div className="col-6 text-center" key={tab}>
+                  <Tab
+                    className={`border-0 fs-6 text-nowrap fw-normal px-1 lh-1 w-100 ${
+                      activeTab === tab ? "active-tab fw-bold" : ""
+                    }`}
+                    onClick={() => setActiveTab(tab)}
+                    children={t(
+                      tab === "recent" ? "recent_agreements" : "all_agreements"
+                    )}
+                    tab={true}
+                  />
+                </div>
+              ))}
             </Nav>
           </div>
           <div className="row px-1">
@@ -217,7 +213,9 @@ const AgreementsMobile = () => {
               </div>
             </div>
           </div>
-          <div className=" d-block">
+
+          {/* Filters Section */}
+          <div className="d-block">
             <p className="fs-6 fw-semibold lh-1 my-2 text-center text-teal">
               {t("more_filters")}
             </p>
@@ -228,156 +226,268 @@ const AgreementsMobile = () => {
                   ? { height: "auto", opacity: 1 }
                   : { height: 0, opacity: 0 }
               }
-              exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
               style={{ overflow: "hidden" }}
             >
-              <div className="d-block">
-                <div className="row mx-1">
-                  <div className="col-4">
-                    <button className="agent-btn-responsive1 w-100 py-2 rounded-pill text-white">
-                      {t("previous_month")}
-                    </button>
-                  </div>
-                  <div className="col-4">
-                    <button className="agent-btn-responsive2 w-100 py-2 rounded-pill">
-                      {t("three_months")}
-                    </button>
-                  </div>
-                  <div className="col-4">
-                    <button className="agent-btn-responsive2 w-100 py-2 rounded-pill">
-                      {t("half_year")}
-                    </button>
-                  </div>
-                </div>
-                <div className="w-100 px-3 my-3">
+              <div className="row mx-1">
+                {["previous_month", "three_months", "half_year"].map(
+                  (key, idx) => (
+                    <div className="col-4" key={idx}>
+                      <button className="agent-btn-responsive2 w-100 py-2 rounded-pill">
+                        {t(key)}
+                      </button>
+                    </div>
+                  )
+                )}
+              </div>
+              <div className="w-100 px-3 my-3">
+                <label className="form-label fs-15 fw-semibold lh-1">
+                  {t("agreement1_status")}
+                </label>
+                <select className="form-select">
+                  <option>Genrated</option>
+                  <option>Fail</option>
+                  <option>Viewd</option>
+                </select>
+              </div>
+              <div className="row px-3">
+                <div className="col-6">
                   <label className="form-label fs-15 fw-semibold lh-1">
-                    {t("agreement1_status")}
+                    {t("to_date1")}
                   </label>
-                  <select className="form-select">
-                    <option>Genrated</option>
-                    <option>Fail</option>
-                    <option>Viewd</option>
-                  </select>
+                  <input type="date" className="form-control" />
                 </div>
-                <div className="row px-3">
-                  <div className="col-6">
-                    <label className="form-label fs-15 fw-semibold lh-1">
-                      {t("to_date1")}
-                    </label>
-                    <input type="date" className="form-control" />
-                  </div>
-                  <div className="col-6">
-                    <label className="form-label fs-15 fw-semibold lh-1">
-                      {t("from_date1")}
-                    </label>
-                    <input type="date" className="form-control" />
-                  </div>
+                <div className="col-6">
+                  <label className="form-label fs-15 fw-semibold lh-1">
+                    {t("from_date1")}
+                  </label>
+                  <input type="date" className="form-control" />
                 </div>
-                <div className="w-100 px-3">
-                  <div className="d-flex align-items-center">
-                    <Toggle
-                      defaultChecked
-                      checked={addInvoices}
-                      type="checkbox"
-                      id="toggleImages"
-                      onChange={handleToggle}
-                    />
-                    <label
-                      className="fs-6 fw-normal lh-1"
-                      htmlFor="toggleImages"
-                    >
-                      {t("invoice_issued")}
-                    </label>
-                  </div>
+              </div>
+              <div className="w-100 px-3">
+                <div className="d-flex align-items-center">
+                  <Toggle
+                    defaultChecked
+                    checked={addInvoices}
+                    type="checkbox"
+                    id="toggleImages"
+                    onChange={(e) => setAddInvoices(e.target.checked)}
+                  />
+                  <label className="fs-6 fw-normal lh-1" htmlFor="toggleImages">
+                    {t("invoice_issued")}
+                  </label>
                 </div>
               </div>
             </motion.div>
+
             <div className="justify-content-center d-flex">
-              <button className="border-0 bg-white" onClick={handleisopen}>
+              <button
+                className="border-0 bg-white"
+                onClick={() => setIsOpen((prev) => !prev)}
+              >
                 <IoIosArrowDown />
               </button>
             </div>
           </div>
         </div>
+        {show && (
+          <div
+            className="position-fixed top-0 start-0 w-100 h-100"
+            style={{ zIndex: 1040, backgroundColor: "rgba(0,0,0,0.3)" }}
+            onClick={() => setShow(false)}
+          />
+        )}
+        <motion.div
+          initial={{ y: "100%" }}
+          animate={show ? { y: "0%" } : { y: "100%" }}
+          exit={{ y: "100%" }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+          className="bottom-sheet position-fixed bg-white w-100 shadow"
+          style={{
+            zIndex: 1155,
+            left: 0,
+            bottom: 0,
+            borderTopLeftRadius: "1rem",
+            borderTopRightRadius: "1rem",
+          }}
+        >
+          {/* Drag Indicator */}
+          <div className="drag-indicator bg-teal mx-auto mt-2"></div>
+
+          {/* Options List */}
+          <ul className="list-unstyled p-3 my-3">
+            <li className="d-flex align-items-center  gap-2">
+              <img
+                src={pin}
+                alt="pin"
+                style={{ width: "17px", height: "17px" }}
+              />
+              <span className="fs-6 lh-1 fw-normal">{t("copy_signature")}</span>
+            </li>
+            <li className="d-flex align-items-center my-3 gap-2">
+              <img src={cancel} alt="cancel" className="" />
+              <span className="fs-6 lh-1 fw-normal">
+                {t("cancel_signature")}
+              </span>
+            </li>
+            <li className="d-flex align-items-center  gap-2">
+              <RiDeleteBin6Line className="" size={20} />
+              <span className="fs-6 lh-1 fw-normal">
+                {t("delet_signature")}
+              </span>
+            </li>
+          </ul>
+        </motion.div>
+
         {activeTab === "all" && (
-          <Accordion className=" p-0  d-flex flex-column gap-3 ">
-            {tableData.map((row, index) => (
-              <Accordion.Item
-                eventKey={index.toString()}
-                key={row.id}
-                style={{
-                  borderInlineStart: `6px solid ${
-                    borderColors[row.actionType] || "#f87171"
-                  }`,
-                }}
-                className=" card mb-2 border-top"
-              >
-                <Accordion.Header>
-                  <div className="d-flex align-items-center justify-content-between w-100 gap-2">
-                    <div className="d-flex align-items-center flex-grow-1 gap-2">
-                      <div className="p-1">
+          <Accordion className="p-0 d-flex flex-column gap-3">
+            {tableData.map((row, index) => {
+              console.log(row.userID, "aaaaaaaaaaaaaaaaa");
+
+              const borderColor = borderColors[index]
+                ? Object.values(borderColors[index])[0]
+                : "#000000";
+
+              console.log("🚀 ~ borderColor:", borderColor);
+              return (
+                <Accordion.Item
+                  eventKey={index.toString()}
+                  key={row.id}
+                  style={{
+                    borderInlineStart: `6px solid ${borderColor}`,
+                  }}
+                  className="card mb-2 border-top"
+                >
+                  {console.log(row, "rowrowrowrowrow")}
+                  <Accordion.Header>
+                    <div className="d-flex align-items-center justify-content-between w-100 gap-2">
+                      <div className="d-flex align-items-center flex-grow-1 gap-2">
                         <img
                           src={key}
                           alt="vertical key"
-                          className="img-fluid"
                           style={{
                             width: "30px",
                             height: "30px",
                             objectFit: "contain",
                           }}
                         />
+                        <div>
+                          <span className="fw-semibold fs-12 d-block">
+                            {row?.accountNumber} | {row?.date}
+                          </span>
+                          <p className="fw-bold fs-14 mb-0">
+                            {t(row?.agreementName)} |{" "}
+                            <span className="fw-semibold fs-12">
+                              {t(row?.agreementType)}
+                            </span>
+                          </p>
+                          <p className="fw-bold fs-12 my-0">
+                            {t("sitem3")} :{" "}
+                            <span className="fw-semibold fs-12">
+                              {t(row?.clients)}
+                            </span>
+                          </p>
+                          <p className="fw-bold fs-12 mb-0">
+                            {t("br_commission")} :{" "}
+                            <span className="fw-semibold fs-12">
+                              {row?.commission}
+                            </span>
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <span className="fw-semibold fs-12 d-block">
-                          {row?.accountNumber} | {row?.date}
-                        </span>
-                        <p className="fw-bold fs-14 d-block mb-0">
-                          {t(row?.agreementName)} |{" "}
-                          <span className="fw-semibold lh-1 fs-12">
-                            {t(row?.agreementType)}
-                          </span>
-                        </p>
-                        <p className="fw-bold fs-12 d-block my-0">
-                          {t("sitem3")} :{" "}
-                          <span className="fw-semibold lh-1 fs-12">
-                            {t(row?.clients)}
-                          </span>
-                        </p>
-                        <p className="fw-bold fs-12 d-block mb-0">
-                          {t("br_commission")} :{" "}
-                          <span className="fw-semibold lh-1 fs-12">
-                            {row?.commission}
-                          </span>
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex-shrink-0 my-2">
                       <StatusBadge status={row?.status} />
                     </div>
-                  </div>
-                </Accordion.Header>
-                <Accordion.Body className="p-0">
-                  <div className="border-top px-2 ">
-                    <div className="d-flex justify-content-center gap-1 w-100">
-                      <ActionButtons
-                        type={t(row?.actionType)}
-                        icon={row?.icon}
-                        onDelete={handleInvoice}
-                      />
+                  </Accordion.Header>
+                  <Accordion.Body className="p-0">
+                    <div className="border-top px-2">
+                      <div className="d-flex justify-content-center gap-1 w-100">
+                        <ActionButtons
+                          type={t(row?.actionType)}
+                          icon={row?.icon}
+                          onClick={handleShow}
+                          setRemoveData={setRemoveData}
+                        />
+                      </div>
                     </div>
-                  </div>
-                </Accordion.Body>
-              </Accordion.Item>
-            ))}
+                  </Accordion.Body>
+                </Accordion.Item>
+              );
+            })}
           </Accordion>
         )}
       </div>
+      {/* Add Invoices Modal */}
       <Modal
         show={addInvoices}
+        centered
+        className="modal-container"
+        onHide={handleModalClose}
+      >
+        <Modal.Header closeButton className="border-0 p-3 mt-4" />
+        <Modal.Body className="text-center p-4">
+          <div className="d-flex justify-content-center"><img src={AddinvoicesIcon} alt="success icon open" className="mb-3" /></div>
+          <h4 className="text-embed-500 fs-3 font-semibold pb-3">
+            {t("invoice_success")}
+          </h4>
+          <div className="d-flex justify-content-center gap-2 flex-wrap">
+            <button
+              className="fs-5 fw-semibold agent-btn-responsive1 text-white w-50 py-2 rounded-pill"
+              onClick={handleInvoiceViewClick}
+            >
+              {t("invoice_view")}
+            </button>
+            <button
+              className="fs-5 fw-semibold agent-btn-responsive2 w-50 py-2 rounded-pill"
+              onClick={handleModalClose}
+            >
+              {t("invoice_all")}
+            </button>
+          </div>
+        </Modal.Body>
+      </Modal>
+      <Modal
+        show={removeData}
+        onClick={() => setRemoveData(false)}
+        centered
+        className="modal-container"
+      >
+        <Modal.Header className="border-0 p-3 position-relative mt-4">
+          <button
+            type="button"
+            className="btn-close position-absolute close-btn"
+          ></button>
+        </Modal.Header>
+        <Modal.Body className="text-center p-4">
+          <div className="d-flex justify-content-center align-items-center mb-3">
+            <img src={successIcon} alt="success icon open" className="" />
+          </div>
+          <h4 className="text-embed-500 fs-3 font-semibold">
+            {t("modal_success")}
+          </h4>
+          <p className="fs-5 font-semibold pb-3">{t("modal_invoice")}</p>
+          <div className="d-flex justify-content-center flex-wrap flex-md-nowrap justify-content-md-between gap-3">
+            <button
+              className="agent-btn-responsive1 w-50  rounded-pill px-3 py-2 fw-bold shadow-sm text-white"
+              onClick={() =>
+                updateModalState({ addInvoices: false, isError: true })
+              }
+            >
+              {t("modal_yes")}
+            </button>
+            <button
+              className="agent-btn-responsive2 w-50  rounded-pill px-3 py-2 fw-bold shadow-sm"
+              onClick={() => setRemoveData(false)}
+            >
+              {t("modal_no")}
+            </button>
+          </div>
+        </Modal.Body>
+      </Modal>
+      <Modal
+        show={modalState.addInvoices}
         className="modal-container"
         centered
-        onClick={() => setAddInvoices(false)}
+        onClick={() => updateModalState({ addInvoices: false })}
       >
         <Modal.Header className="border-0 p-3 position-relative mt-4">
           <button
@@ -395,15 +505,177 @@ const AgreementsMobile = () => {
           <div className="d-flex justify-content-center justify-content-md-between flex-wrap flex-md-nowrap my-3">
             <button
               className="fs-5 lh-1 fw-semibold agent-btn-responsive1 text-white my-md-3 w-50 py-2 py-md-0 mx-1 rounded-pill"
+              // onClick={() =>
+              //   updateModalState({ addInvoices: false, isError: true })
+              // }
               onClick={handleClick}
             >
               {t("invoice_view")}
             </button>
             <button
               className="fs-5 lh-1 fw-semibold  py-2 my-3 agent-btn-responsive2 w-50  mx-1 rounded-pill "
-              onClick={() => setAddInvoices(false)}
+              onClick={() => updateModalState({ addInvoices: false })}
             >
               {t("invoice_all")}
+            </button>
+          </div>
+        </Modal.Body>
+      </Modal>
+      <Modal
+        show={modalState.isError}
+        centered
+        className="modal-container"
+        onClick={() => updateModalState({ isError: false })}
+      >
+        <Modal.Header className="border-0 p-3 position-relative mt-4">
+          <button
+            type="button"
+            className="btn-close position-absolute close-btn"
+          ></button>
+        </Modal.Header>
+        <Modal.Body className="text-center p-4">
+          <div className="d-flex justify-content-center align-items-center mb-3">
+            <img src={sadicon} alt="success icon open" className="" />
+          </div>
+          <p className="text-danger fs-4 fw-semibold">{t("error_title")}</p>
+          <p className="fs-4 fw-semibold py-3">{t("error_message")}</p>
+          <p className="fs-4 text-embed-500 fw-semibold pb-3">
+            {t("error_question")}
+          </p>
+          <div className="d-flex justify-content-center flex-wrap flex-md-nowrap justify-content-md-between my-3">
+            <button
+              className="fs-6 lh-1 fw-semibold  my-3 agent-btn-responsive1 text-white my-md-3 w-50 py-2 py-md-0 mx-1 rounded-pill"
+              onClick={() =>
+                updateModalState({ isError: false, restriction: true })
+              }
+            >
+              {t("yes_register")}
+            </button>
+            <button
+              className="fs-5 lh-1 fw-semibold  py-2 my-3 agent-btn-responsive2 w-50  mx-1 rounded-pill  "
+              onClick={() => updateModalState({ isError: false })}
+            >
+              {t("no_now")}
+            </button>
+          </div>
+        </Modal.Body>
+      </Modal>
+      <Modal
+        show={modalState.restriction}
+        centered
+        className="modal-container"
+        onClick={() => updateModalState({ restriction: false })}
+      >
+        <Modal.Header className="border-0 p-3 position-relative mt-4">
+          <button
+            type="button"
+            className="btn-close position-absolute close-btn"
+          ></button>
+        </Modal.Header>
+        <Modal.Body className="text-center p-4">
+          <div className="d-flex justify-content-center align-items-center mb-3">
+            <img src={businessicon} alt="success icon open" className="" />
+          </div>
+          <h4 className="text-embed-500 fs-3 font-semibold pb-3">
+            {t("registriction_title")}
+          </h4>
+          <div className="d-flex justify-content-center justify-content-md-between flex-wrap flex-md-nowrap my-3">
+            <button
+              className="fs-5 lh-1 fw-semibold  py-2 my-2 agent-btn-responsive1 text-white my-md-3 w-50  py-md-0  mx-1  rounded-pill"
+              onClick={() =>
+                updateModalState({ restriction: false, isInvoices: true })
+              }
+            >
+              {t("yes_register_transaction")}
+            </button>
+            <button
+              className="fs-5 lh-1 fw-semibold  py-2 my-3 agent-btn-responsive2 w-50  mx-1 rounded-pill "
+              onClick={() => updateModalState({ restriction: false })}
+            >
+              {t("no_now")}
+            </button>
+          </div>
+        </Modal.Body>
+      </Modal>
+      <Modal
+        show={modalState.isInvoices}
+        centered
+        className="modal-container"
+        onClick={() => updateModalState({ isInvoices: false })}
+      >
+        <Modal.Header className="border-0 p-3 position-relative mt-4">
+          <button
+            type="button"
+            className="btn-close position-absolute close-btn"
+          ></button>
+        </Modal.Header>
+        <Modal.Body className="text-center p-4">
+          <div className="d-flex justify-content-center align-items-center mb-3">
+            <img src={AddinvoicesIcon} alt="success icon open" className="" />
+          </div>
+          <p className="text-embed-500 fs-4 font-semibold">
+            {t("invoice1_success")}
+          </p>
+          <p className="py-2 fs-4 font-semibold">{t("next_charge")}</p>
+          <h4 className="text-embed-500 fs-3 font-semibold pb-3">
+            {t("invoice_generated")}
+          </h4>
+          <div className="d-flex justify-content-md-between justify-content-center flex-wrap flex-md-nowrap my-3">
+            <button
+              className="fs-5 lh-1 fw-semibold py-2  agent-btn-responsive1 text-white my-md-3 w-50  py-md-0 mx-1  rounded-pill"
+              onClick={() =>
+                updateModalState({ isInvoices: false, isDocument: true })
+              }
+            >
+              {t("view_invoice")}
+            </button>
+            <button
+              className="fs-5 lh-1 fw-semibold  py-2 my-3 agent-btn-responsive2 w-50  mx-1 rounded-pill"
+              onClick={() => updateModalState({ isInvoices: false })}
+            >
+              {t("all_invoices")}
+            </button>
+          </div>
+        </Modal.Body>
+      </Modal>
+      <Modal
+        show={modalState.isDocument}
+        center
+        className="modal-container "
+        onClick={() => updateModalState({ isDocument: false })}
+      >
+        <Modal.Header className="border-0 p-3 position-relative mt-4">
+          <button
+            type="button"
+            className="btn-close position-absolute close-btn"
+          ></button>
+        </Modal.Header>
+        <Modal.Body className="text-center p-4">
+          <div className="d-flex justify-content-center align-items-center mb-3">
+            <img src={AddinvoicesIcon} alt="success icon open" className="" />
+          </div>
+          <h4 className="fs-3 font-semibold pb-3">{t("invoice1_number")}</h4>
+          <div className="d-flex justify-content-center align-items-center mb-3">
+            <img src={pdfinstall} alt="install pdf" />
+          </div>
+          <div className="d-flex justify-content-center flex-wrap flex-md-nowrap gap-2 my-3">
+            <button
+              className="fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill"
+              onClick={handleClick}
+            >
+              {t("all1_invoices")}
+            </button>
+            <button
+              className="fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill"
+              onClick={handleCloseall}
+            >
+              {t("download_invoice")}
+            </button>
+            <button
+              className="fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive1 text-white w-50 py-2 mx-1 rounded-pill"
+              onClick={handleRegistry}
+            >
+              {t("register_transaction")}
             </button>
           </div>
         </Modal.Body>

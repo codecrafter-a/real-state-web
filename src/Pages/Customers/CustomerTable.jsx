@@ -5,6 +5,7 @@ import table_arrrow from "../../assets/images/table_arrrow.svg";
 import CustomButton from "../../Componant/Common/Button/Button";
 import edit from "../../assets/images/edit.svg";
 import deleteIcon from "../../assets/images/delete.svg";
+import { Link } from "react-router-dom";
 const CustomerTable = ({
   handleShowModal,
   filteredClients,
@@ -206,9 +207,10 @@ const CustomerTable = ({
                           </h5>
                           <ul className="list-unstyled mb-0 text-start">
                             <li className="mb-1">
-                              {t("recent_agreements_value_1")}
+                              <Link>{t("recent_agreements_value_1")} </Link>
+                              
                             </li>
-                            <li>{t("recent_agreements_value_2")}</li>
+                            <li><Link>{t("recent_agreements_value_2")}</Link></li>
                           </ul>
                         </div>
                       </div>

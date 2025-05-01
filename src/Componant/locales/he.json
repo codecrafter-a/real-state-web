@@ -115,7 +115,7 @@
   "cust_Property_Condition_value": " חדש, משופץ",
   "cust_no_rooms": "מספר חדרים:",
   "cust_no_rooms_value": "3, 4, 5",
-  "cust_apartment_size_value": "100 - 300 sqm",
+  "cust_apartment_size_value": "מ\"ר 100 - 300",
   "cust_floor": "קומה:",
   "cust_floor_value": "4, 5",
   "cust_apartment_size": "גודל דירה:",
@@ -258,6 +258,7 @@
   "age_cust_status": "המסמך נשלח בהצלחה",
   "age_cust_agreement_status": "מעולה!",
   "age_btn_description": "להחתמת הלקוח במכשיר שלי",
+  "Customert_btn_description": "לחתימת לקוח במכשיר שלי",
   "age_delet": "מחיקה",
   "home_title": "עמוד הבית",
   "home_block1_title": "מה תרצו לעשות?",
@@ -268,10 +269,14 @@
   "home2_btn1_title": "הסכמים שנשלחו החודש",
   "home2_btn2_title": "תאריך סיום",
   "home2_btn3_title": "סוג",
+   "Agree_mobile_btn": "שליחה  למכשיר זה",
   "home_accro_l_btn": "לכל ההסכמים",
   "home_accro_btn": "לכל הנתונים",
   "home_accro_title": "נתונים",
   "home_accro_te": "₪",
+  "copy_signature": "העתקת קישור לחתימה",
+  "cancel_signature": "ביטול תהליך החתימה",
+  "delet_signature": "מחיקת הסכם",
   "home_accro_r_btn": "5 הסכמים אחרונים",
   "home_accro_in1": "עמלות מעסקאות השכרה",
   "home_accro_in2": "עמלות מעסקאות קנייה",
@@ -723,6 +728,7 @@
   "customer_detail": "פרטי לקוחות להחתמה",
   "registry_title": "נכסים הרשומים בספר המקרקעין",
   "download1": "הורדה",
+  "all_age": "לכל ההסכמים (5) >>",
 
   "registry": {
     "propertyName": "פלורנטין 7 ת״א",
@@ -790,7 +796,11 @@
   "Addition_in": "מידע נוסף",
   "group": "בשיתוף דרך ה- WhatsApp",
   "sent": "המסמך הופק בהצלחה!",
-  "Price": "מחיר (₪)"
-
-   
+  "Price": "מחיר (₪)",
+  "action_view": "נצפה",
+  "action_sign": "נחתם",
+  "action_sign_executed": "נחתם ובוצע",
+  "action_sign_registred": "נחתם ונרשם",
+  "action_sent": "נשלח",
+  "action_detail": "אין פרטים נוספים"
 }

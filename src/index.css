@@ -10,6 +10,81 @@
 	box-sizing: border-box;
 }
 
+.btn-circle.slider-arrow {
+	border: none;
+	border-radius: 50%;
+	background-color: #e6faf2;
+	color: #009688;
+	min-width: 36px;
+	height: 36px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1rem;
+	cursor: pointer;
+  }
+  
+  .custom-badge {
+	border: 2px solid #009688;
+	border-radius: 25px;
+	background-color: #e6faf2;
+	color: #009688;
+	font-weight: 500;
+	text-align: center;
+  }
+
+  .slider-demo > .slick-initialized .slick-slide{
+	width: fit-content !important;
+  }
+  
+.w-85{width: 85% !important;}
+
+
+.btn-circle {
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	background-color: #eafaf6;
+	color: #1fbfa6;
+	border: 1px solid #1fbfa6;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1;
+  }
+  
+  .custom-badge {
+	border: 1px solid #1fbfa6;
+	border-radius: 20px;
+	background-color: #eafaf6;
+	color: #1fbfa6;
+	font-size: 14px;
+	white-space: nowrap;
+  }
+  
+  .scroll-container::-webkit-scrollbar {
+	display: none;
+  }
+  .scroll-container {
+	scrollbar-width: none;
+  }
+
+  .custom-badge {
+	background-color: #e9ecef;
+	border-radius: 20px;
+	font-weight: 500;
+  }
+
+
+
+  /* dadfdf */
+.drag-indicator {
+	width: 50px;
+	height: 5px;
+	background-color: #ccc;
+	border-radius: 5px;
+}
+
 .screen-1 {
 	font-size: 25px;
 	font-weight: 600;
@@ -17,6 +92,7 @@
 	color: #00A481;
 }
 
+.z-auto{z-index: auto !important; }
 .text-teal {
 	color: #00A481;
 }
@@ -143,6 +219,7 @@ a:hover {
 	.scroll-height {
 		height: 540px;
 	}
+
 }
 
 @media (max-width: 576px) {
@@ -163,7 +240,7 @@ a:hover {
 	.custom-text {
 		font-size: 14px;
 	}
-
+    .pro_btn{width: 25% !important;}
 }
 
 @media (max-width: 600px) {
@@ -201,13 +278,14 @@ a:hover {
 	}
 }
 
+.pro_btn{width: 40% !important;}
 .datacard {
 	display: flex;
 	align-items: center;
 	gap: 6px;
 }
 
-
+.primary-text{color: rgba(0, 26, 255, 1);}
 
 @media (max-width: 1024px) {
 	.datacard {
@@ -541,6 +619,10 @@ a:hover {
 	top: 60px;
 }
 
+.report-btn {
+	width: auto !important;
+	padding: 0px 10px !important;
+}
 @media (max-width: 576px) {
 	.custom-col {
 		background-color: transparent;
@@ -583,6 +665,10 @@ a:hover {
 		transform: translateY(-50%);
 		left: 50%;
 		transform: translateX(-50%);
+	}
+
+	.report-btn {
+		width: 100% !important;
 	}
 }
 
