@@ -19,17 +19,25 @@ const Data = () => {
   const largeFont = i18n.language === "he" ? "16px" : "13px";
   const [activeTab, setActiveTab] = useState("all");
 
-  const { getData, getAgreementData, getUserData, getAgreementColors } =
-    useDataService({
-      until_data: "",
-      form_data: "",
-    });
-
-  const COLORS = ["#166D64", "#3AC2A3"];
-  const [pieData, setPieData] = useState([]);
-  const [Agreement, setAgreement] = useState([]);
-  const [UserData, setUserData] = useState([]);
-  const [colorData, setColorData] = useState([]);
+  const {
+    getData,
+    UserData,
+    setUserData,
+    colorData,
+    setColorData,
+    COLORS,
+    handlegetData,
+    getAgreementData,
+    pieData,
+    setPieData,
+    Agreement,
+    setAgreement,
+    getUserData,
+    getAgreementColors,
+  } = useDataService({
+    until_data: "",
+    form_data: "",
+  });
 
   useEffect(() => {
     const data = getData();
@@ -41,6 +49,8 @@ const Data = () => {
     const colors = getAgreementColors();
     setColorData(colors);
   }, [getData]);
+
+
   return (
     <>
       <Col className="bg-white shadow-lg rounded-3 p-2 px-4">
@@ -120,7 +130,7 @@ const Data = () => {
                         </InputGroup>
                       </div>
                       <div className="d-none d-md-block ">
-                        <button className="text-center rounded-pill agent-button2 w-25 py-2">
+                        <button className="text-center rounded-pill agent-button2 w-25 py-2" onClick={handlegetData}>
                           {t("data_btn_4")}
                         </button>
                       </div>
@@ -128,13 +138,13 @@ const Data = () => {
                   </Col>
                   <Col className="col-12 col-md-6">
                     <div className="d-flex threebutton my-2 my-md-0 gap-2 align-items-center justify-content-center justify-content-md-end gap-md-3">
-                      <button className="agent-btn-responsive1 w-25  py-2 rounded-pill text-white">
+                      <button className="agent-btn-responsive1 w-25  py-2 rounded-pill text-white" onClick={handlegetData}>
                         {t("data_btn_3")}
                       </button>
-                      <button className="agent-btn-responsive2 w-25 py-2 rounded-pill">
+                      <button className="agent-btn-responsive2 w-25 py-2 rounded-pill" onClick={handlegetData}>
                         {t("data_btn_2")}
                       </button>
-                      <button className="agent-btn-responsive2 w-25  py-2 rounded-pill">
+                      <button className="agent-btn-responsive2 w-25  py-2 rounded-pill" onClick={handlegetData}>
                         {t("data_btn_1")}
                       </button>
                     </div>

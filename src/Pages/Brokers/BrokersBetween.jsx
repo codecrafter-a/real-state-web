@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import search from "../../assets/images/search.svg";
 import add_reaction from "../../assets/images/add_reaction.svg";
@@ -16,43 +16,29 @@ import celebration from "../../assets/images/celebration.gif";
 import key_vertical from "../../assets/images/key_vertical.svg";
 import garage_door from "../../assets/images/garage_door.svg";
 import close from "../../assets/images/close_small.png";
+import useBrokerbetweenServices from "../../Services/BrokerbetweenServices";
 const Brokers_between = () => {
   const { t } = useTranslation();
-  const [isView, setIsView] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
-  const [sentSuccess, setSentSuccess] = useState(false);
-  const [showDetails, setShowDetails] = useState(false);
-  const [propertySection, setPropertySection] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("");
-  const [genrateSuccess, setGenrateSuccess] = useState(false);
-
-  const handlePropertysection = () => {
-    setPropertySection(true);
-  };
-
-  const handlecloseProperty = () => {
-    setPropertySection(false);
-  };
-
-  const handleSearchClick = () => {
-    setShowDetails(true);
-  };
-
-  const handleSearchClose = () => {
-    setShowDetails(false);
-  };
-
-  const handleView = () => {
-    setIsView(true);
-  };
-  const handleSentSuccess = () => {
-    setShowSuccess(false);
-    setSentSuccess(true);
-  };
-  const handleIsShow = () => {
-    setIsView(false);
-    setShowSuccess(true);
-  };
+  const {  isView,
+    handlecloseProperty,
+    handleSearchClick,
+    handleSearchClose,
+    handleIsShow,
+    handleSentSuccess,
+    handlePropertysection,
+    handleView,
+    selectedOption,
+    setSelectedOption,
+    genrateSuccess,
+    setGenrateSuccess,
+    setIsView,
+    showSuccess,
+    setShowSuccess,
+    showDetails,
+    setShowDetails,
+    sentSuccess,
+    setSentSuccess,
+    propertySection} = useBrokerbetweenServices();
   return (
     <>
       <div className="bg-white shadow-lg d-none d-md-block">

@@ -7,16 +7,17 @@ import SignatureInvoiceServices from "../../Services/SignatureInvoiceServices";
 
 const SignatureInvoice = () => {
   const { t } = useTranslation();
-  // const [searchTerm, setSearchTerm] = useState("");
-  // const [fromDate, setFromDate] = useState(null);
-  // const [toDate, setToDate] = useState(null);
-  // const [isDateFilter, setIsDateFilter] = useState(false);
-
-  const {searchTerm, setSearchTerm, fromDate, setFromDate, toDate, setToDate, setIsDateFilter, filteredData} = SignatureInvoiceServices();
- 
-
-   const dateFilter = () => {setIsDateFilter(true)}
-   console.log("setIsDateFiltersetIsDateFilter", searchTerm, toDate, fromDate, dateFilter);
+  const {
+    searchTerm,
+    setSearchTerm,
+    fromDate,
+    setFromDate,
+    toDate,
+    setToDate,
+    setIsDateFilter,
+    filteredData,
+    dateFilter,
+  } = SignatureInvoiceServices();
   return (
     <div className="p-md-4 custom-col rounded-3">
       <p className="w-100 text-center screen-1 border-bottom pb-3 mb-4 d-none d-md-block">
@@ -42,25 +43,32 @@ const SignatureInvoice = () => {
           <div className="mb-4 align-items-end gap-3 d-md-flex d-none">
             <div className="w-25">
               <label className="form-label">{t("from_date")}</label>
-              <input type="date" className="form-control" 
-               value={fromDate}
-               onChange={(e) => setFromDate(e.target.value)}
+              <input
+                type="date"
+                className="form-control"
+                value={fromDate}
+                onChange={(e) => setFromDate(e.target.value)}
               />
             </div>
             <div className="w-25">
               <label className="form-label">{t("to_date")}</label>
-              <input type="date" className="form-control"
-               value={toDate}
-               onChange={(e) => setToDate(e.target.value)}
+              <input
+                type="date"
+                className="form-control"
+                value={toDate}
+                onChange={(e) => setToDate(e.target.value)}
               />
             </div>
             <div>
-              <button className="btn btn-outline-success rounded-pill px-4 py-2 w-103" onClick={dateFilter}>
+              <button
+                className="btn btn-outline-success rounded-pill px-4 py-2 w-103"
+                onClick={dateFilter}
+              >
                 {t("show_button")}
               </button>
             </div>
           </div>
-          <SignatureInvoiceTable filteredData={filteredData}/>
+          <SignatureInvoiceTable filteredData={filteredData} />
         </div>
       </div>
     </div>

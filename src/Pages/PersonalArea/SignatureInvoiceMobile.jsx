@@ -14,11 +14,10 @@ const SignatureInvoiceMobile = () => {
     setToDate,
     setIsDateFilter,
     filteredData,
+    dateFilter
   } = SignatureInvoiceServices();
 
-  const dateFilter = () => {
-    setIsDateFilter(true);
-  };
+ 
   return (
     <>
      <div className="px-3 ">

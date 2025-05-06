@@ -16,32 +16,42 @@ const SignatureInvoiceServices = () => {
     const [fromDate, setFromDate] = useState(null);
     const [toDate, setToDate] = useState(null);
     const [isDateFilter, setIsDateFilter] = useState(false);
-
-    const filteredData = tableData.filter((item) => {
-        const term = searchTerm?.toLowerCase() || "";
+    const [filteredData, setFilteredData] = useState(tableData);
+   
+    const dateFilter = () => {
+      const term = searchTerm.trim().toLowerCase();
+      const fromDateObj = fromDate ? new Date(fromDate) : null;
+      const toDateObj = toDate ? new Date(toDate) : null;
+  
+      const newFilteredData = tableData.filter((item) => {
         const name = item.clients?.toLowerCase?.() || "";
-        console.log("itemsdadd", item);
-        let matchesDate = true;
-        if (isDateFilter) {
-        const [day, month, shortYear] = item.date.split(".");
-        const fullYear = `20${shortYear}`;
-        const itemDate = new Date(`${fullYear}-${month}-${day}`); 
-        const fromDateObj = fromDate ? new Date(fromDate) : null;
-        const toDateObj = toDate ? new Date(toDate) : null;
-        if (fromDateObj && toDateObj) {
-          matchesDate = itemDate >= fromDateObj && itemDate <= toDateObj;
-        } else if (fromDateObj) {
-          matchesDate = itemDate >= fromDateObj;
-        } else if (toDateObj) {
-          matchesDate = itemDate <= toDateObj;
-        }
-    } 
+  
+        // Match client name
         const matchesSearch = name.includes(term);
-      
+  
+        // Match date range
+        let matchesDate = true;
+        if (item.date) {
+          const [day, month, shortYear] = item.date.split(".");
+          const fullYear = `20${shortYear}`;
+          const itemDate = new Date(`${fullYear}-${month}-${day}`);
+  
+          if (fromDateObj && toDateObj) {
+            matchesDate = itemDate >= fromDateObj && itemDate <= toDateObj;
+          } else if (fromDateObj) {
+            matchesDate = itemDate >= fromDateObj;
+          } else if (toDateObj) {
+            matchesDate = itemDate <= toDateObj;
+          }
+        }
+  
         return matchesSearch && matchesDate;
       });
+  
+      setFilteredData(newFilteredData);
+    };
 
-      return {searchTerm, setSearchTerm, fromDate, setFromDate, toDate, setToDate, isDateFilter, setIsDateFilter, filteredData, tableData}
+      return {searchTerm, setSearchTerm, dateFilter, fromDate, setFromDate, toDate, setToDate, isDateFilter, setIsDateFilter, filteredData, tableData}
 }
 
 export default SignatureInvoiceServices

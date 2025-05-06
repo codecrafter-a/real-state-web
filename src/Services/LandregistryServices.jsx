@@ -1,6 +1,10 @@
 import { useTranslation } from "react-i18next";
+import { useState } from "react";
 export const useLandregistryServices = () => {
     const { t } = useTranslation();
+    const [clientName, setClientName] = useState("");
+      const [fromDate, setFromDate] = useState("");
+      const [untilDate, setUntilDate] = useState("");
     const getRegistryData = () => [
         {
           propertyName: t("registry.propertyName"),        
@@ -59,6 +63,9 @@ export const useLandregistryServices = () => {
       return {
         getRegistryData,          
         getFilteredRegistryData,
+        clientName, setClientName,
+        fromDate, setFromDate,
+        untilDate, setUntilDate
       };
 }
 

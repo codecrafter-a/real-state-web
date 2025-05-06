@@ -38,7 +38,7 @@ const Home = () => {
     homedatapage,
     sethomedatapage,
   } = useHomeService();
-
+ 
   useEffect(() => {
     const Homedata = getHomes();
     sethomedatapage(Homedata);
@@ -49,6 +49,7 @@ const Home = () => {
     const AgreeColor = getAgreementColors();
     setAgreecolor(AgreeColor);
   }, []);
+
 
   return (
     <>

@@ -11,34 +11,41 @@ import { Nav } from "react-bootstrap";
 import { useDataService } from "../../Services/Data";
 import Tab from "../../Componant/Common/Tab/Tab";
 const Data_mobile = () => {
-    const { t } = useTranslation();
-    const [activeTab, setActiveTab] = useState("all");
-  
-    const { getData, getAgreementData, getUserData, getAgreementColors } =
-      useDataService({
-        until_data: "",
-        form_data: "",
-      });
-  
-    const COLORS = ["#166D64", "#3AC2A3"];
-    const [pieData, setPieData] = useState([]);
-    const [Agreement, setAgreement] = useState([]);
-    const [, setUserData] = useState([]);
-    const [colorData, setColorData] = useState([]);
-  
-    useEffect(() => {
-      const data = getData();
-      setPieData(data);
-      const Agreementdata = getAgreementData();
-      setAgreement(Agreementdata);
-      const cardUserdata = getUserData();
-      setUserData(cardUserdata);
-      const colors = getAgreementColors();
-      setColorData(colors);
-    }, []);
+  const { t } = useTranslation();
+  const [activeTab, setActiveTab] = useState("all");
+
+  const {
+    getData,
+    setUserData,
+    colorData,
+    setColorData,
+    COLORS,
+    getAgreementData,
+    pieData,
+    setPieData,
+    Agreement,
+    setAgreement,
+    getUserData,
+    getAgreementColors,
+    handlegetData
+  } = useDataService({
+    until_data: "",
+    form_data: "",
+  });
+
+  useEffect(() => {
+    const data = getData();
+    setPieData(data);
+    const Agreementdata = getAgreementData();
+    setAgreement(Agreementdata);
+    const cardUserdata = getUserData();
+    setUserData(cardUserdata);
+    const colors = getAgreementColors();
+    setColorData(colors);
+  }, []);
   return (
     <>
-        <div className="d-block">
+      <div className="d-block">
         <div className=" border-2 rounded-3 bg-light mb-4 shadow p-3">
           <div className="w-100 border-bottom">
             <Nav variant="tabs" className="mx-md-3 fs-15 pt-2 ">
@@ -69,13 +76,13 @@ const Data_mobile = () => {
               <div className="row py-3">
                 <div className="col-12 ">
                   <div className="d-flex threebutton my-3 gap-2 align-items-center justify-content-center">
-                    <button className="agent-btn-responsive1 w-33  py-1 rounded-pill text-white">
+                    <button className="agent-btn-responsive1 w-33  py-1 rounded-pill text-white" onClick={handlegetData}>
                       {t("data_btn_3")}
                     </button>
-                    <button className="agent-btn-responsive2 w-33 py-1 rounded-pill">
+                    <button className="agent-btn-responsive2 w-33 py-1 rounded-pill"  onClick={handlegetData}>
                       {t("data_btn_2")}
                     </button>
-                    <button className="agent-btn-responsive2 w-33  py-1 rounded-pill">
+                    <button className="agent-btn-responsive2 w-33  py-1 rounded-pill"  onClick={handlegetData}>
                       {t("data_btn_1")}
                     </button>
                   </div>
@@ -171,7 +178,9 @@ const Data_mobile = () => {
                         </p>
                       </div>
                     </div>
-                    <div className="col-2 d-flex justify-content-center"><div className="border-start border-2 h-100"></div></div>
+                    <div className="col-2 d-flex justify-content-center">
+                      <div className="border-start border-2 h-100"></div>
+                    </div>
                     <div className="col-5 d-flex align-items-center justify-content-center">
                       <div className="d-flex flex-column align-items-center text-center">
                         <img
@@ -200,43 +209,56 @@ const Data_mobile = () => {
           )}
         </div>
         <div className="border-2 rounded-3 bg-light mb-4 shadow p-3">
-            <p className="fs-5 fw-bold lh-1 text-center text-embed-500 pt-3">{t("data_main_title2")}</p>
-            <div className="d-flex justify-content-center align-items-center ">
-              <CommonPieChart data={Agreement} colors={colorData} />
-            </div>
+          <p className="fs-5 fw-bold lh-1 text-center text-embed-500 pt-3">
+            {t("data_main_title2")}
+          </p>
+          <div className="d-flex justify-content-center align-items-center ">
+            <CommonPieChart data={Agreement} colors={colorData} />
+          </div>
         </div>
         <div className="border-2 rounded-3 bg-light mb-4 shadow p-3">
-          <h5 className="fs-5 fw-bold lh-1 text-center text-embed-500">{t("Additional_data")}</h5>
+          <h5 className="fs-5 fw-bold lh-1 text-center text-embed-500">
+            {t("Additional_data")}
+          </h5>
           <div className="row">
             <div className="col-6">
               <div className="d-flex flex-column align-items-center gap-2">
                 <h3 className="text-teal fw-bold fs-1 mb-0">123</h3>
                 <p className="fs-17 fw-semibold lh-1">{t("data_homework")}</p>
               </div>
-            </div> 
+            </div>
             <div className="col-6">
-                <div className="d-flex gap-2 flex-column align-items-center justify-content-start">
-                   <div className="d-flex gap-2">
-                     <img src={garage_door}
-                        alt="garage_door"
-                        className="img-fluid mb-2" /> 
-                      <p className="fw-semibold fs-2 lh-1 mb-0">150</p> 
-                      <p className="fw-semibold fs-15 lh-1 mb-0"> {t("pro_add_del_buy")}</p>                               
-                   </div>
-                   <div className="d-flex gap-2">
-                      <img src={key_vertical}
-                        alt="garage_door"
-                        className="img-fluid mb-2" /> 
-                      <p className="fw-semibold fs-2 lh-1 mb-0">175</p> 
-                      <p className="fw-semibold fs-15 lh-1 mb-0">{t("pro_add_del_rent")}</p>
-                   </div>
+              <div className="d-flex gap-2 flex-column align-items-center justify-content-start">
+                <div className="d-flex gap-2">
+                  <img
+                    src={garage_door}
+                    alt="garage_door"
+                    className="img-fluid mb-2"
+                  />
+                  <p className="fw-semibold fs-2 lh-1 mb-0">150</p>
+                  <p className="fw-semibold fs-15 lh-1 mb-0">
+                    {" "}
+                    {t("pro_add_del_buy")}
+                  </p>
                 </div>
-             </div>
+                <div className="d-flex gap-2">
+                  <img
+                    src={key_vertical}
+                    alt="garage_door"
+                    className="img-fluid mb-2"
+                  />
+                  <p className="fw-semibold fs-2 lh-1 mb-0">175</p>
+                  <p className="fw-semibold fs-15 lh-1 mb-0">
+                    {t("pro_add_del_rent")}
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Data_mobile
+export default Data_mobile;

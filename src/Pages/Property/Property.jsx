@@ -10,17 +10,55 @@ import "./Prooerty.css";
 const Property = () => {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState(1);
+  const [propertyData, setPropertyData] = useState({
+    address: {},
+    details: {},
+    owner: {},
+    attachments: {},
+  });
 
   const renderTabContent = () => {
     switch (activeTab) {
       case 1:
-        return <Propertyaddress setActiveTab={setActiveTab} />;
+        return (
+          <Propertyaddress
+            setActiveTab={setActiveTab}
+            data={propertyData.address}
+            setData={(data) =>
+              setPropertyData((prev) => ({ ...prev, address: data }))
+            }
+          />
+        );
       case 2:
-        return <Propertydetails setActiveTab={setActiveTab} />;
+        return (
+          <Propertydetails
+            setActiveTab={setActiveTab}
+            data={propertyData.details}
+            setData={(data) =>
+              setPropertyData((prev) => ({ ...prev, details: data }))
+            }
+          />
+        );
       case 3:
-        return <Ownerdetails setActiveTab={setActiveTab} />;
-      case 4:
-        return <Attachments setActiveTab={setActiveTab} />;
+          return (
+            <Ownerdetails
+              setActiveTab={setActiveTab}
+              data={propertyData.owner}
+              setData={(data) =>
+                setPropertyData((prev) => ({ ...prev, owner: data }))
+              }
+            />
+          );
+          case 4:
+            return (
+              <Attachments
+                setActiveTab={setActiveTab}
+                data={propertyData.attachments}
+                setData={(data) =>
+                  setPropertyData((prev) => ({ ...prev, attachments: data }))
+                }
+              />
+            );
       default:
         return <Propertyaddress setActiveTab={setActiveTab} />;
     }

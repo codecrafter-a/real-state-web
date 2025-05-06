@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { useTranslation } from "react-i18next";
 import key_vertical from "../../assets/images/key_vertical.svg";
 import add_reaction from "../../assets/images/add_reaction.svg";
@@ -15,48 +15,38 @@ import gyiphy from "../../assets/images/celebration.gif";
 import Toggle from "../../Componant/Common/Toggle/Toggle";
 import close from "../../assets/images/close_small.png";
 import Next from "../../assets/images/Next.jpg";
-
+import { useBrokerServices } from '../../Services/BrokersServices';
 
 const Brokersmobile = () => {
     const { t } = useTranslation();
-     const [isOpen, setIsOpen] = useState(false);
-      const [isShow, setIsShow] = useState(false);
-      const [isView, setIsView] = useState(false);
-      const [showSuccess, setShowSuccess] = useState(false);
-      const [sentSuccess, setSentSuccess] = useState(false);
-      const [showDetails, setShowDetails] = useState(false);
-      const [propertySection, setPropertySection] = useState(false);
-      const [genrateSuccess, setGenrateSuccess] = useState(false);
+      const {
+        isOpen,
+        setIsOpen,
+        isShow,
+        setIsShow,
+        isView,
+        setIsView,
+        showSuccess,
+        setShowSuccess,
+        sentSuccess,
+        setSentSuccess,
+        showDetails,
+        setShowDetails,
+        propertySection,
+        setPropertySection,
+        genrateSuccess,
+        setGenrateSuccess,
+        handlePropertysection,
+        handlecloseProperty,
+        handleSearchClick,
+        handleSearchClose,
+        handleOpen,
+        handleShow,
+        handleView,
+        handleSentSuccess,
+        handleIsShow,
+      } = useBrokerServices();
     
-      const handlePropertysection = () => {
-        setPropertySection(true);
-      };
-    
-      const handlecloseProperty = () => {
-        setPropertySection(false);
-      };
-    
-      const handleSearchClick = () => {
-        setShowDetails(true); 
-      };
-    
-      const handleSearchClose = () => {
-        setShowDetails(false);
-      };
-      const handleShow = () => {
-        setIsShow(true);
-      };
-      const handleView = () => {
-        setIsView(true);
-      };
-      const handleSentSuccess = () => {
-        setShowSuccess(false);
-        setSentSuccess(true);
-      };
-      const handleIsShow = () => {
-        setIsView(false);
-        setShowSuccess(true);
-      };
   return (
     <>
      <div className="bg-transperant ">

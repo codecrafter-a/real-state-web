@@ -35,8 +35,6 @@ const HomeMobile = () => {
     tableData, setTableData
   } = useHomeService();
 
-  console.log("fdfdsfsfsfsdf", getAgreementColors);
-
   useEffect(() => {
     const Homedata = getHomes();
     sethomedatapage(Homedata);

@@ -49,6 +49,8 @@ export const useHomeService = () => {
     ];
   };
 
+
+
   const getUserData = () => {
     return [
         { title: "123", sub_title: t("data_homework"), name: home_work },
@@ -57,6 +59,15 @@ export const useHomeService = () => {
         { title: "175", sub_title: t("data_key"), name: key_vertical },
     ];
 };
+
+const borderColors = [
+  { Generated: "#555555" },
+  { sent: "#fef3c7" },
+  { viewed: "#f87171" },
+  { executed: "#10b981" },
+  { registered: "#10b981" },
+  { signin: "#10b981" },
+];
 
  const barChartdata = [
     {
@@ -132,5 +143,5 @@ const getAgreementColors = () => {
 };
 
 
-  return { getHomes,tableData, setTableData, getUserData, getAgreementColors, agreecolor, setAgreecolor, homedatapage, sethomedatapage, agrreedata, setAgreedata, userdata, setUserdata, getAgreementData, barChartdata, isOpen, setIsOpen };
+  return { getHomes,tableData, setTableData, borderColors, getUserData, getAgreementColors, agreecolor, setAgreecolor, homedatapage, sethomedatapage, agrreedata, setAgreedata, userdata, setUserdata, getAgreementData, barChartdata, isOpen, setIsOpen };
 };

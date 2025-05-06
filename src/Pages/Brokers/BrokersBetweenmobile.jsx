@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import search from "../../assets/images/search.svg";
 import add_reaction from "../../assets/images/add_reaction.svg";
@@ -15,42 +15,30 @@ import close from "../../assets/images/close_small.png";
 import sms from "../../assets/images/sms.svg";
 import email from "../../assets/images/email.svg";
 import group from "../../assets/images/Group 2538.png";
+import useBrokerbetweenServices from "../../Services/BrokerbetweenServices";
 const Brokers_betweenmobile = () => {
     const { t } = useTranslation();
-      const [isView, setIsView] = useState(false);
-      const [showSuccess, setShowSuccess] = useState(false);
-      const [sentSuccess, setSentSuccess] = useState(false);
-      const [showDetails, setShowDetails] = useState(false);
-      const [propertySection, setPropertySection] = useState(false);
-      const [genrateSuccess, setGenrateSuccess] = useState(false);
-    
-      const handlePropertysection = () => {
-        setPropertySection(true);
-      };
-    
-      const handlecloseProperty = () => {
-        setPropertySection(false);
-      };
-    
-      const handleSearchClick = () => {
-        setShowDetails(true);
-      };
-    
-      const handleSearchClose = () => {
-        setShowDetails(false);
-      };
-    
-      const handleView = () => {
-        setIsView(true);
-      };
-      const handleSentSuccess = () => {
-        setShowSuccess(false);
-        setSentSuccess(true);
-      };
-      const handleIsShow = () => {
-        setIsView(false);
-        setShowSuccess(true);
-      };
+
+    const {  isView,
+      handlecloseProperty,
+      handleSearchClick,
+      handleSearchClose,
+      handleIsShow,
+      handleSentSuccess,
+      handlePropertysection,
+      handleView,
+      selectedOption,
+      setSelectedOption,
+      genrateSuccess,
+      setGenrateSuccess,
+      setIsView,
+      showSuccess,
+      setShowSuccess,
+      showDetails,
+      setShowDetails,
+      sentSuccess,
+      setSentSuccess,
+      propertySection} = useBrokerbetweenServices();
   return (
     <>
          <div className="bg-transperant">
