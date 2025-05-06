@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Col, Row, Modal } from "react-bootstrap";
 import "../Setting/setting.css";
 import Toggle from "../../Componant/Common/Toggle/Toggle";
@@ -8,54 +8,18 @@ import whatsapp from "../../assets/images/wa, whatsapp, message, communication, 
 import { useTranslation } from "react-i18next";
 import Next from "../../assets/images/Next.jpg";
 import CustomInput from "../../Componant/Common/Input/Custominput";
+import { useSettingServices } from "../../Services/SettingServices";
 const Setting = () => {
   const { t } = useTranslation();
-  const [isView, setIsView] = useState(false);
-  const [ownerData, setOwnerData] = useState(false);
-
-  const handleOwnerData = () => {
-    setOwnerData(!ownerData);
-    setIsView(false);
-  };
-
-  const [settings, setSettings] = useState({
-    lable1: false,
-    lable2: false,
-    lable3: false,
-    showCommissionAmounts: false,
-    usertype_1: false,
-    usertype_2: true,
-    usertype_3: false,
-    receivePerformanceReports: true,
-    notifyOnPropertyMatch: true,
-    sendMessageToInterestedClients: true,
-    firstReminderOnceAMonth: true,
-    firstReminderEveryTwoWeeks: false,
-    secondReminderOnceAMonth: false,
-    secondReminderEveryTwoWeeks: false,
-    sendMessageToAllClients: true,
-    exclusivePropertyExpiry: true,
-    reminderOnceAMonth: false,
-    reminderEveryTwoWeeks: false,
-    interestedClientsNoAgreement: true,
-    agreementOnceAMonth: true,
-    agreementEveryTwoWeeks: true,
-    viaSMS: false,
-    viaEmail: false,
-    viaWhatsapp: false,
-  });
-
-  const handleToggleChange = (key) => (e) => {
-    setSettings((prev) => ({ ...prev, [key]: e.target.checked }));
-  };
-
-  const handleRadioChange = (groupKeys, selectedKey) => () => {
-    const updatedGroup = groupKeys.reduce((acc, key) => {
-      acc[key] = key === selectedKey;
-      return acc;
-    }, {});
-    setSettings((prev) => ({ ...prev, ...updatedGroup }));
-  };
+  const {
+    isView,
+    setIsView,
+    ownerData,
+    handleOwnerData,
+    settings,
+    handleToggleChange,
+    handleRadioChange,
+  } = useSettingServices();
 
   return (
     <Col className="py-2 px-4 bg-white shadow-lg rounded-3">
@@ -150,13 +114,13 @@ const Setting = () => {
               <div className="d-flex pt-3">
                 <div className="check_custom_icon">
                   <CustomInput
-                   type="checkbox"
-                   id="usertype_1"
-                   name="userType"
-                   value={t("email")}
-                   className="btn-check"
-                   checked={settings.usertype_1}
-                   onChange={handleToggleChange("email")}
+                    type="checkbox"
+                    id="usertype_1"
+                    name="userType"
+                    value={t("email")}
+                    className="btn-check"
+                    checked={settings.usertype_1}
+                    onChange={handleToggleChange("email")}
                   />
                   <label htmlFor="usertype_1">
                     <span className="user_type_icon">

@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React from "react";
 import { Nav } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import Tab from "../../Componant/Common/Tab/Tab";
@@ -14,189 +14,191 @@ import AddinvoicesIcon from "../../assets/images/addinvoices.png";
 import eye from "../../assets/images/invoices_eye.png";
 import pdfinstall from "../../assets/images/pdf.png";
 import mail from "../../assets/images/outgoing_mail.png";
-import buch_box from "../../assets/images/Bounding box (1).png";
+
 const Invoices_mobile = () => {
   const { t } = useTranslation();
-  const [activeTab, setActiveTab] = useState("all");
-  const { getInvoiceService } = useInvoiceServices();
-  const { getFilterInvoicesData } = useInvoiceServices();
-  const AgentData = getInvoiceService();
-  const [invoiceData, setInvoiceData] = useState(AgentData);
-  const [clientName, setClientName] = useState("");
-  const [fromDate, setFromDate] = useState("");
-  const [untilDate, setUntilDate] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
-  const handleSearch = () => {
-    const data = getFilterInvoicesData({ clientName, fromDate, untilDate });
-    setInvoiceData(data);
-  };
-  const handleClick = () => setIsOpen(true);
+  const {
+    handleSearch,
+    handleClick,
+    activeTab,
+    setActiveTab,
+    clientName,
+    setClientName,
+    fromDate,
+    setFromDate,
+    untilDate,
+    setUntilDate,
+    isOpen,
+    invoiceData,
+    setIsOpen,
+  } = useInvoiceServices();
   return (
     <>
-    <div className="px-3">
-      <div className="bg-white shadow-lg rounded-3 my-3">
-        <div className="w-100 border-bottom">
-          <Nav variant="tabs" className=" pt-2">
-            <Tab
-              className={`border-0 text-center fs-5 text-nowrap fw-normal px-1 lh-1 text-md-start ${
-                activeTab === "recent" ? "active-tab fw-bold" : ""
-              }`}
-              onClick={() => setActiveTab("recent")}
-              children={t("invoice_tab_title2")}
-              tab={true}
-            />
-            <Tab
-              className={` border-0 text-center fs-5 fw-normal lh-1 text-md-start ${
-                activeTab === "all" ? "active-tab fw-bold" : ""
-              }`}
-              onClick={() => setActiveTab("all")}
-              children={t("invoice_tab_title1")}
-              tab={true}
-            />
-          </Nav>
-        </div>
-        <div
-          className="custom-scrollbar overflow-y-auto overflow-x-hidden px-3 mt-4"
-          style={{ maxHeight: "594px" }}
-        >
-          {activeTab === "all" && (
-            <>
-              <div className=" d-flex justify-content-start ">
-                <div className="border rounded-1 input-group responsive-width p-0">
-                  <input
-                    type="text"
-                    className="form-control border-0 "
-                    id="searchInput"
-                    placeholder={t("invoice_placeholder")}
-                    value={clientName}
-                    onChange={(e) => setClientName(e.target.value)}
-                  />
-                  <span className="input-group-text bg-transparent  border-0">
-                    <img src={search} alt="search" />
-                  </span>
+      <div className="px-3">
+        <div className="bg-white shadow-lg rounded-3 my-3">
+          <div className="w-100 border-bottom">
+            <Nav variant="tabs" className=" pt-2">
+              <Tab
+                className={`border-0 text-center fs-5 text-nowrap fw-normal px-1 lh-1 text-md-start ${
+                  activeTab === "recent" ? "active-tab fw-bold" : ""
+                }`}
+                onClick={() => setActiveTab("recent")}
+                children={t("invoice_tab_title2")}
+                tab={true}
+              />
+              <Tab
+                className={` border-0 text-center fs-5 fw-normal lh-1 text-md-start ${
+                  activeTab === "all" ? "active-tab fw-bold" : ""
+                }`}
+                onClick={() => setActiveTab("all")}
+                children={t("invoice_tab_title1")}
+                tab={true}
+              />
+            </Nav>
+          </div>
+          <div
+            className="custom-scrollbar overflow-y-auto overflow-x-hidden px-3 mt-4"
+            style={{ maxHeight: "594px" }}
+          >
+            {activeTab === "all" && (
+              <>
+                <div className=" d-flex justify-content-start ">
+                  <div className="border rounded-1 input-group responsive-width p-0">
+                    <input
+                      type="text"
+                      className="form-control border-0 "
+                      id="searchInput"
+                      placeholder={t("invoice_placeholder")}
+                      value={clientName}
+                      onChange={(e) => setClientName(e.target.value)}
+                    />
+                    <span className="input-group-text bg-transparent  border-0">
+                      <img src={search} alt="search" />
+                    </span>
+                  </div>
                 </div>
-              </div>
-              <div className="w-100 my-3 d-block d-md-none">
+                <div className="w-100 my-3 d-block d-md-none">
                   <label className="form-label fs-15 fw-semibold lh-1">
                     {t("agreement1_status")}
                   </label>
                   <select className="form-select">
-                     <option>Genrated</option>
-                     <option>Fail</option>
-                     <option>Viewd</option>
+                    <option>Genrated</option>
+                    <option>Fail</option>
+                    <option>Viewd</option>
                   </select>
                 </div>
-              <div className="row g-3 align-items-end my-3">
-                <div className="col-6 col-md-3">
-                  <label className="form-label fs-15 fw-semibold lh-1">
-                    {t("from_date")}
-                  </label>
-                  <input
-                    type="date"
-                    className="form-control"
-                    value={fromDate}
-                    onChange={(e) => setFromDate(e.target.value)}
-                  />
+                <div className="row g-3 align-items-end my-3">
+                  <div className="col-6 col-md-3">
+                    <label className="form-label fs-15 fw-semibold lh-1">
+                      {t("from_date")}
+                    </label>
+                    <input
+                      type="date"
+                      className="form-control"
+                      value={fromDate}
+                      onChange={(e) => setFromDate(e.target.value)}
+                    />
+                  </div>
+
+                  <div className="col-6 col-md-3">
+                    <label className="form-label fs-15 fw-semibold lh-1">
+                      {t("until_date")}
+                    </label>
+                    <input
+                      type="date"
+                      className="form-control"
+                      value={untilDate}
+                      onChange={(e) => setUntilDate(e.target.value)}
+                    />
+                  </div>
+
+                  <div className="col-12 col-md-6 text-center text-md-end">
+                    <button
+                      className=" fs-17 lh-1 fw-semibold py-2 px-5 rounded-pill agent-btn-responsive2"
+                      onClick={handleSearch}
+                    >
+                      {t("show_button")}
+                    </button>
+                  </div>
                 </div>
 
-                <div className="col-6 col-md-3">
-                  <label className="form-label fs-15 fw-semibold lh-1">
-                    {t("until_date")}
-                  </label>
-                  <input
-                    type="date"
-                    className="form-control"
-                    value={untilDate}
-                    onChange={(e) => setUntilDate(e.target.value)}
-                  />
+                <div className="d-md-none d-block">
+                  <p className=" fs-16 fw-semibold lh-1 my-2 text-center text-teal">
+                    {t("additional_filters")}
+                  </p>
+                  <div className="justify-content-center d-flex">
+                    <IoIosArrowDown />
+                  </div>
                 </div>
-
-                <div className="col-12 col-md-6 text-center text-md-end">
-                  <button
-                    className=" fs-17 lh-1 fw-semibold py-2 px-5 rounded-pill agent-btn-responsive2"
-                    onClick={handleSearch}
-                  >
-                    {t("show_button")}
-                  </button>
-                </div>
+              </>
+            )}
+            {activeTab === "recent" && (
+              <div className="text-center py-4">
+                <p>{t("no_invoices_page_show")}</p>
               </div>
-
-              <div className="d-md-none d-block">
-                <p className=" fs-16 fw-semibold lh-1 my-2 text-center text-teal">
-                  {t('additional_filters')}
-                </p>
-                <div className="justify-content-center d-flex">
-                  <IoIosArrowDown />
-                </div>
-              </div>
-            </>
-          )}
-          {activeTab === "recent" && (
-            <div className="text-center py-4">
-              <p>{t("no_invoices_page_show")}</p>
-            </div>
-          )}
+            )}
+          </div>
         </div>
-      </div>
-      <Accordion className="p-0 d-flex  flex-column gap-3">
-        {invoiceData.map((row, index) => (
-          <Accordion.Item
-            eventKey={index.toString()}
-            key={row.id}
-            className="border-top-2 border-top rounded-3 border-start-4 "
-          >
-            <Accordion.Header>
-              <div>
-                <span className="fw-semibold fs-14 d-block">
-                  {row?.accountNumber} | {row?.date}
-                </span>
-                <p className="fw-semibold fs-14 mb-0">
-                  {t("client_names")}:{" "}
-                  <span className="fw-light">{t(row?.clientNames)}</span>
-                </p>
-              </div>
-            </Accordion.Header>
-            <Accordion.Body className="p-0">
-              <div className="px-3 border-bottom">
-                <p className="m-0">
-                  <strong>{t("for")}:</strong> {t(row?.subject || "N/A")}
-                </p>
-                <p className="m-0">
-                  <strong>{t("amount")}:</strong> {row?.amount || "N/A"}
-                </p>
-              </div>
-              <div className="border-0 p-2 bg-light bg-white ">
-                <div className="d-flex justify-content-around  w-100">
-                  <Button className="btn btn-light d-flex gap-1 bg-transparent align-items-center p-1" onClick={handleClick}>   
-                    <img src={eye} alt="eye" className="w-50 h-auto"/>
-                    <span className="fs-14 fw-normal lh-1">{t("view")}</span>
-                  </Button>
-                  <Button className="btn btn-light d-flex gap-1 bg-transparent align-items-center p-1">
-                  
-                    <img src={mail} alt="mail" className="w-aut h-auto"/>
-                    <span className="fs-14 fw-normal lh-1">
-                      {t("send_to_client")}
-                    </span>
-                  </Button>
-                  <Button className="btn btn-light d-flex gap-1 bg-transparent align-items-center p-1">
-                     <TiDocumentText size={20}/>
-                    <span className="fs-14 fw-normal lh-1">
-                      {t("download")}
-                    </span>
-                  </Button>
-                  <Button className="btn btn-light d-flex gap-1 bg-transparent align-items-center p-1">
-                    <BsWhatsapp size={16} />
-                    <span className="fs-14 fw-normal lh-1">{t("share")}</span>
-                  </Button>
+        <Accordion className="p-0 d-flex  flex-column gap-3">
+          {invoiceData.map((row, index) => (
+            <Accordion.Item
+              eventKey={index.toString()}
+              key={row.id}
+              className="border-top-2 border-top rounded-3 border-start-4 "
+            >
+              <Accordion.Header>
+                <div>
+                  <span className="fw-semibold fs-14 d-block">
+                    {row?.accountNumber} | {row?.date}
+                  </span>
+                  <p className="fw-semibold fs-14 mb-0">
+                    {t("client_names")}:{" "}
+                    <span className="fw-light">{t(row?.clientNames)}</span>
+                  </p>
                 </div>
-              </div>
-            </Accordion.Body>
-          </Accordion.Item>
-        ))}
-      </Accordion>
-    </div>
-     
-     
+              </Accordion.Header>
+              <Accordion.Body className="p-0">
+                <div className="px-3 border-bottom">
+                  <p className="m-0">
+                    <strong>{t("for")}:</strong> {t(row?.subject || "N/A")}
+                  </p>
+                  <p className="m-0">
+                    <strong>{t("amount")}:</strong> {row?.amount || "N/A"}
+                  </p>
+                </div>
+                <div className="border-0 p-2 bg-light bg-white ">
+                  <div className="d-flex justify-content-around  w-100">
+                    <Button
+                      className="btn btn-light d-flex gap-1 bg-transparent align-items-center p-1"
+                      onClick={handleClick}
+                    >
+                      <img src={eye} alt="eye" className="w-50 h-auto" />
+                      <span className="fs-14 fw-normal lh-1">{t("view")}</span>
+                    </Button>
+                    <Button className="btn btn-light d-flex gap-1 bg-transparent align-items-center p-1">
+                      <img src={mail} alt="mail" className="w-aut h-auto" />
+                      <span className="fs-14 fw-normal lh-1">
+                        {t("send_to_client")}
+                      </span>
+                    </Button>
+                    <Button className="btn btn-light d-flex gap-1 bg-transparent align-items-center p-1">
+                      <TiDocumentText size={20} />
+                      <span className="fs-14 fw-normal lh-1">
+                        {t("download")}
+                      </span>
+                    </Button>
+                    <Button className="btn btn-light d-flex gap-1 bg-transparent align-items-center p-1">
+                      <BsWhatsapp size={16} />
+                      <span className="fs-14 fw-normal lh-1">{t("share")}</span>
+                    </Button>
+                  </div>
+                </div>
+              </Accordion.Body>
+            </Accordion.Item>
+          ))}
+        </Accordion>
+      </div>
+
       <Modal
         show={isOpen}
         center
@@ -209,39 +211,29 @@ const Invoices_mobile = () => {
             className="btn-close position-absolute close-btn"
           ></button>
         </Modal.Header>
-              <Modal.Body className="text-center p-4">
-                <div className="d-flex justify-content-center align-items-center mb-3">
-                  <img
-                    src={AddinvoicesIcon}
-                    alt="success icon open"
-                    className=""
-                  />
-                </div>
-                <h4 className="fs-3 font-semibold pb-3">
-                  {t("invoice1_number")}
-                </h4>
-                <div className="d-flex justify-content-center align-items-center mb-3">
-                  <img src={pdfinstall} alt="install pdf" />
-                </div>
-                <div className="d-flex justify-content-center flex-wrap flex-md-nowrap gap-2 my-3">
-                  <button className="fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill">
-                    {t("all1_invoices")}
-                  </button>
-                  <button
-                    className="fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill"
-                  >
-                    {t("download_invoice")}
-                  </button>
-                  <button
-                    className="fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive1 text-white w-50 py-2 mx-1 rounded-pill"
-                  >
-                    {t("register_transaction")}
-                  </button>
-                </div>
-              </Modal.Body>
+        <Modal.Body className="text-center p-4">
+          <div className="d-flex justify-content-center align-items-center mb-3">
+            <img src={AddinvoicesIcon} alt="success icon open" className="" />
+          </div>
+          <h4 className="fs-3 font-semibold pb-3">{t("invoice1_number")}</h4>
+          <div className="d-flex justify-content-center align-items-center mb-3">
+            <img src={pdfinstall} alt="install pdf" />
+          </div>
+          <div className="d-flex justify-content-center flex-wrap flex-md-nowrap gap-2 my-3">
+            <button className="fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill">
+              {t("all1_invoices")}
+            </button>
+            <button className="fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill">
+              {t("download_invoice")}
+            </button>
+            <button className="fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive1 text-white w-50 py-2 mx-1 rounded-pill">
+              {t("register_transaction")}
+            </button>
+          </div>
+        </Modal.Body>
       </Modal>
     </>
-  )
-}
+  );
+};
 
-export default Invoices_mobile
+export default Invoices_mobile;

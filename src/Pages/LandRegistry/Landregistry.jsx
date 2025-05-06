@@ -6,13 +6,8 @@ import Landregistrytable from "../LandRegistry/Landregistrytable";
 import { useLandregistryServices } from "../../Services/LandregistryServices";
 const Landregistry = () => {
   const { t } = useTranslation();
-  const { getFilteredRegistryData } = useLandregistryServices();
-  const { getRegistryData } = useLandregistryServices();
+  const { getFilteredRegistryData, getRegistryData, clientName, setClientName, fromDate, setFromDate, untilDate, setUntilDate  } = useLandregistryServices();
   const registerData = getRegistryData();
-
-  const [clientName, setClientName] = useState("");
-  const [fromDate, setFromDate] = useState("");
-  const [untilDate, setUntilDate] = useState("");
   const [filteredData, setFilteredData] = useState(registerData);
   console.log(filteredData, "filteredData");
 

@@ -1,56 +1,46 @@
-import React, {useState, useEffect} from "react";
+import React, {  useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import table_arrrow from "../../assets/images/table_arrrow.svg";
 import CustomButton from "../../Componant/Common/Button/Button";
 import edit from "../../assets/images/edit.svg";
 import deleteIcon from "../../assets/images/delete.svg";
 import { usePropertyservices } from "../../Services/PropertyServices";
-import Carousel from 'react-bootstrap/Carousel';
+import Carousel from "react-bootstrap/Carousel";
 import { Image } from "react-bootstrap";
-import  imagedoc  from '../../assets/images/image-progress.png';
-const Propertytable = ({filter}) => {
+import imagedoc from "../../assets/images/image-progress.png";
+const Propertytable = ({ filter }) => {
   const { t } = useTranslation();
 
-  const [selectAll, setSelectAll] = useState(false); 
-  const [expandedRows, setExpandedRows] = useState([]);
-  const [selectedRows, setSelectedRows] = useState([]); 
-  const { slides} = usePropertyservices();
- 
-  
-    const toggleRow = (index) => {
-      setExpandedRows((prev) =>
-        prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
-      );
-    };
+  const {
+    selectAll,
+    setSelectAll,
+    expandedRows,
+    setExpandedRows,
+    toggleRow,
+    handleCheckboxChange,
+    selectedRows,
+    setSelectedRows,
+    slides,
+  } = usePropertyservices();
+  const handleSelectAllChange = () => {
+    const newSelectAll = !selectAll;
+    setSelectAll(newSelectAll);
+    if (newSelectAll) {
+      setSelectedRows(filter.map((_, index) => index)); // Select all rows
+    } else {
+      setSelectedRows([]); // Deselect all rows
+    }
+  };
 
-    const handleSelectAllChange = () => {
-      const newSelectAll = !selectAll;
-      setSelectAll(newSelectAll);
-      if (newSelectAll) {
-        setSelectedRows(filter.map((_, index) => index)); // Select all rows
-      } else {
-        setSelectedRows([]); // Deselect all rows
-      }
-    };
-  
-    const handleCheckboxChange = (index) => {
-      setSelectedRows((prevSelectedRows) =>
-        prevSelectedRows.includes(index)
-          ? prevSelectedRows.filter((i) => i !== index) // Uncheck
-          : [...prevSelectedRows, index] // Check
-      );
-    };
-    useEffect(() => {
-      if (selectedRows.length === filter.length && filter.length > 0) {
-        setSelectAll(true);
-      } else {
-        setSelectAll(false);
-      }
-    }, [selectedRows, filter.length]);
+  useEffect(() => {
+    if (selectedRows.length === filter.length && filter.length > 0) {
+      setSelectAll(true);
+    } else {
+      setSelectAll(false);
+    }
+  }, [selectedRows, filter.length]);
 
-
-  console.log("fillterss" , filter);
-  
+  console.log("fillterss", filter);
 
   return (
     <>
@@ -86,7 +76,7 @@ const Propertytable = ({filter}) => {
                   <div className="d-flex align-items-center gap-2">
                     <input
                       type="checkbox"
-                       checked={selectedRows.includes(index)}
+                      checked={selectedRows.includes(index)}
                       onChange={() => handleCheckboxChange(index)}
                       className="form-check-input "
                     />
@@ -106,23 +96,29 @@ const Propertytable = ({filter}) => {
                 </td>
                 <td className="text-center px-4 py-3">
                   <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        toggleRow(index);
-                      }}
-                      className="bg-transparent border-0"
-                      >
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleRow(index);
+                    }}
+                    className="bg-transparent border-0"
+                  >
                     <img
                       src={table_arrrow}
                       alt="toggle"
-                      className={`transition-transform ${expandedRows.includes(index) ? "rotate-180" : "rotate-0"}`}
-                      style={{ width: "1rem", height: "1rem", transition: "transform 0.3s" }}
+                      className={`transition-transform ${
+                        expandedRows.includes(index) ? "rotate-180" : "rotate-0"
+                      }`}
+                      style={{
+                        width: "1rem",
+                        height: "1rem",
+                        transition: "transform 0.3s",
+                      }}
                     />
                   </button>
                 </td>
               </tr>
-             
+
               {expandedRows.includes(index) && (
                 <tr>
                   <td colSpan={11} className="px-4 py-2">
@@ -132,9 +128,9 @@ const Propertytable = ({filter}) => {
                           {t("genral_prop")}
                         </h5>
                         <p className="text-wrap fw-normal  mb-0 text-start">
-                          {t("4-room")} 
+                          {t("4-room")}
                         </p>
-                        <p className="text-wrap fw-normal  mb-0 text-start"> 
+                        <p className="text-wrap fw-normal  mb-0 text-start">
                           {t("2-child")}
                         </p>
                       </div>
@@ -155,14 +151,25 @@ const Propertytable = ({filter}) => {
                     </div>
                     <Carousel data-bs-theme="dark" interval={null}>
                       {slides.map((slide, idx) => (
-                        <Carousel.Item key={idx} >
-                          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', padding: '1rem' }}>
+                        <Carousel.Item key={idx}>
+                          <div
+                            style={{
+                              display: "flex",
+                              justifyContent: "center",
+                              gap: "1rem",
+                              padding: "1rem",
+                            }}
+                          >
                             {slide.map((src, index) => (
                               <Image
                                 key={index}
                                 src={src}
                                 className="img-fluid"
-                                style={{ width: '210px', height: '119px', borderRadius: '8px' }}
+                                style={{
+                                  width: "210px",
+                                  height: "119px",
+                                  borderRadius: "8px",
+                                }}
                               />
                             ))}
                           </div>
@@ -175,9 +182,7 @@ const Propertytable = ({filter}) => {
                           {t("interested_clients")}
                         </h5>
                         <ul className="list-unstyled mb-0 text-start">
-                          <li className="mb-1">
-                            {t("client_3")}
-                          </li>
+                          <li className="mb-1">{t("client_3")}</li>
                           <li>{t("client_4")}</li>
                         </ul>
                       </div>
@@ -189,7 +194,7 @@ const Propertytable = ({filter}) => {
                         children={t("view_att")}
                       />
                       <div className="d-flex align-items-center">
-                      <img src={imagedoc} alt="imagedoc" />
+                        <img src={imagedoc} alt="imagedoc" />
                         <img src={edit} alt={"editbtn"} className="px-1" />
                         <img
                           src={deleteIcon}
@@ -197,7 +202,6 @@ const Propertytable = ({filter}) => {
                           className="px-1"
                           style={{ cursor: "pointer" }}
                         />
-                        
                       </div>
                     </div>
                   </td>

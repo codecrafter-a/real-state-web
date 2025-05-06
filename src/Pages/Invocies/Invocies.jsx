@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React from "react";
 import { Col, Nav } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import Tab from "../../Componant/Common/Tab/Tab";
@@ -11,20 +11,21 @@ import AddinvoicesIcon from "../../assets/images/addinvoices.png";
 import pdfinstall from "../../assets/images/pdf.png";
 const Invocies = () => {
   const { t } = useTranslation();
-  const [activeTab, setActiveTab] = useState("all");
-  const { getInvoiceService } = useInvoiceServices();
-  const { getFilterInvoicesData } = useInvoiceServices();
-  const AgentData = getInvoiceService();
-  const [invoiceData, setInvoiceData] = useState(AgentData);
-  const [clientName, setClientName] = useState("");
-  const [fromDate, setFromDate] = useState("");
-  const [untilDate, setUntilDate] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
-  const handleSearch = () => {
-    const data = getFilterInvoicesData({ clientName, fromDate, untilDate });
-    setInvoiceData(data);
-  };
-  const handleClick = () => setIsOpen(true);
+  const {
+    handleSearch,
+    handleClick,
+    activeTab,
+    setActiveTab,
+    clientName,
+    setClientName,
+    fromDate,
+    setFromDate,
+    untilDate,
+    setUntilDate,
+    isOpen,
+    invoiceData,
+    setIsOpen,
+  } = useInvoiceServices();
   return (
     <>
       <Col className="bg-white shadow-lg rounded-3 my-3">
@@ -73,15 +74,15 @@ const Invocies = () => {
                 </div>
               </div>
               <div className="w-100 my-3 d-block d-md-none">
-                  <label className="form-label fs-15 fw-semibold lh-1">
-                    {t("agreement1_status")}
-                  </label>
-                  <select className="form-select">
-                     <option>Genrated</option>
-                     <option>Fail</option>
-                     <option>Viewd</option>
-                  </select>
-                </div>
+                <label className="form-label fs-15 fw-semibold lh-1">
+                  {t("agreement1_status")}
+                </label>
+                <select className="form-select">
+                  <option>Genrated</option>
+                  <option>Fail</option>
+                  <option>Viewd</option>
+                </select>
+              </div>
               <div className="row g-3 align-items-end my-3">
                 <div className="col-6 col-md-3">
                   <label className="form-label fs-15 fw-semibold lh-1">
@@ -119,14 +120,14 @@ const Invocies = () => {
 
               <div className="d-md-none d-block">
                 <p className=" fs-16 fw-semibold lh-1 my-2 text-center text-teal">
-                  {t('additional_filters')}
+                  {t("additional_filters")}
                 </p>
                 <div className="justify-content-center d-flex">
                   <IoIosArrowDown />
                 </div>
               </div>
               <div className=" py-4">
-                <InvoicesTable data={invoiceData} handleClick={handleClick}/>
+                <InvoicesTable data={invoiceData} handleClick={handleClick} />
               </div>
             </>
           )}
@@ -149,36 +150,26 @@ const Invocies = () => {
             className="btn-close position-absolute close-btn"
           ></button>
         </Modal.Header>
-              <Modal.Body className="text-center p-4">
-                <div className="d-flex justify-content-center align-items-center mb-3">
-                  <img
-                    src={AddinvoicesIcon}
-                    alt="success icon open"
-                    className=""
-                  />
-                </div>
-                <h4 className="fs-3 font-semibold pb-3">
-                  {t("invoice1_number")}
-                </h4>
-                <div className="d-flex justify-content-center align-items-center mb-3">
-                  <img src={pdfinstall} alt="install pdf" />
-                </div>
-                <div className="d-flex justify-content-center flex-wrap flex-md-nowrap gap-2 my-3">
-                  <button className="fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill">
-                    {t("all1_invoices")}
-                  </button>
-                  <button
-                    className="fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill"
-                  >
-                    {t("download_invoice")}
-                  </button>
-                  <button
-                    className="fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive1 text-white w-50 py-2 mx-1 rounded-pill"
-                  >
-                    {t("register_transaction")}
-                  </button>
-                </div>
-              </Modal.Body>
+        <Modal.Body className="text-center p-4">
+          <div className="d-flex justify-content-center align-items-center mb-3">
+            <img src={AddinvoicesIcon} alt="success icon open" className="" />
+          </div>
+          <h4 className="fs-3 font-semibold pb-3">{t("invoice1_number")}</h4>
+          <div className="d-flex justify-content-center align-items-center mb-3">
+            <img src={pdfinstall} alt="install pdf" />
+          </div>
+          <div className="d-flex justify-content-center flex-wrap flex-md-nowrap gap-2 my-3">
+            <button className="fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill">
+              {t("all1_invoices")}
+            </button>
+            <button className="fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive2 w-50 py-2 mx-1 rounded-pill">
+              {t("download_invoice")}
+            </button>
+            <button className="fs-17 lh-1 fw-semibold mt-md-4  agent-btn-responsive1 text-white w-50 py-2 mx-1 rounded-pill">
+              {t("register_transaction")}
+            </button>
+          </div>
+        </Modal.Body>
       </Modal>
     </>
   );

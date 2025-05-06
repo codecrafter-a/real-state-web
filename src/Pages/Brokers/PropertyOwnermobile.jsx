@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import search from "../../assets/images/search.svg";
 import key_vertical from "../../assets/images/key_vertical.svg";
@@ -14,41 +14,35 @@ import Toggle from "../../Componant/Common/Toggle/Toggle";
 import sms from "../../assets/images/sms.svg";
  import email from "../../assets/images/email.svg";
  import group from "../../assets/images/Group 2538.png";
+ import { usePropertyOwnerSwervices } from "../../Services/PropertyOwnerServices";
 const Property_ownermobile = () => {
     const { t } = useTranslation();
-      const [isView, setIsView] = useState(false);
-      const [showSuccess, setShowSuccess] = useState(false);
-      const [sentSuccess, setSentSuccess] = useState(false);
-      const [showDetails, setShowDetails] = useState(false);
-      const [propertySection, setPropertySection] = useState(false);
-      const [genrateSuccess, setGenrateSuccess] = useState(false);
-    
-      const handlePropertysection = () => {
-        setPropertySection(true);
-      }
-    
-      const handlecloseProperty = () => {
-        setPropertySection(false);
-      }
-    
-      const handleSearchClick = () => {
-        setShowDetails(true); 
-      };
-    
-      const handleSearchClose = () => {
-        setShowDetails(false);
-      }
-      const handleView = () => {
-        setIsView(true);
-      };
-      const handleSentSuccess = () => {
-        setShowSuccess(false);
-        setSentSuccess(true);
-      };
-      const handleIsShow = () => {
-        setIsView(false);
-        setShowSuccess(true);
-      };
+    const {
+        isView,
+        setIsView,
+        showSuccess,
+        setShowSuccess,
+        sentSuccess,
+        setSentSuccess,
+        showDetails,
+        setShowDetails,
+        propertySection,
+        setPropertySection,
+        selectedOption,
+        setSelectedOption,
+        selectedDate,
+        setSelectedDate,
+        genrateSuccess,
+        setGenrateSuccess,
+        handlePropertysection,
+        handlecloseProperty,
+        handleSearchClick,
+        handleSearchClose,
+        handleView,
+        handleSentSuccess,
+        handleIsShow,
+      } = usePropertyOwnerSwervices();
+      
   return (
     <>
        <div className="bg-transperant">
@@ -250,7 +244,7 @@ const Property_ownermobile = () => {
           
         </div>
       </div>
-      <Modal
+        <Modal
         show={isView}
         onHide={() => {
           setIsView(false);
@@ -520,8 +514,8 @@ const Property_ownermobile = () => {
             </button>
           </div>
         </Modal.Body>
-      </Modal>
-      <Modal show={showSuccess} onHide={() => setShowSuccess(false)} centered className="modal-container">
+        </Modal>
+        <Modal show={showSuccess} onHide={() => setShowSuccess(false)} centered className="modal-container">
         <div
           className="position-absolute top-0 start-50 translate-middle-x mt-5 z-2"
           style={{ pointerEvents: "none" }}
@@ -567,8 +561,8 @@ const Property_ownermobile = () => {
             {t("age_cust_agreement")}
           </button>
         </Modal.Footer>
-      </Modal>
-      <Modal show={sentSuccess} onHide={() => setSentSuccess(false)} centered className="modal-container">
+        </Modal>
+        <Modal show={sentSuccess} onHide={() => setSentSuccess(false)} centered className="modal-container">
         <div className="position-absolute top-0 start-50  translate-middle-x mt-5 z-2">
           <img
             src={gyiphy}
@@ -606,8 +600,8 @@ const Property_ownermobile = () => {
             </button>
           </div>
         </Modal.Body>
-      </Modal>
-       <Modal
+        </Modal>
+        <Modal
               show={genrateSuccess}
               onHide={() => setGenrateSuccess(false)}
               centered
@@ -654,7 +648,7 @@ const Property_ownermobile = () => {
                   </button>
                 </div>
               </Modal.Body>
-            </Modal>
+        </Modal>
     </>
   )
 }

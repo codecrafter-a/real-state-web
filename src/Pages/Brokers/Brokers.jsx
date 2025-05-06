@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import "../Brokers/Brokers.css";
 import key_vertical from "../../assets/images/key_vertical.svg";
@@ -17,50 +17,37 @@ import Toggle from "../../Componant/Common/Toggle/Toggle";
 import close from "../../assets/images/close_small.png";
 import garage_door from "../../assets/images/garage_door.svg";
 import Next from "../../assets/images/Next.jpg";
+import { useBrokerServices } from "../../Services/BrokersServices";
 const Brokers = () => {
   const { t } = useTranslation();
-  const [isOpen, setIsOpen] = useState(false);
-  const [isShow, setIsShow] = useState(false);
-  const [isView, setIsView] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
-  const [sentSuccess, setSentSuccess] = useState(false);
-  const [showDetails, setShowDetails] = useState(false);
-  const [propertySection, setPropertySection] = useState(false);
-  const [genrateSuccess, setGenrateSuccess] = useState(false);
 
-  const handlePropertysection = () => {
-    setPropertySection(true);
-  };
-
-  const handlecloseProperty = () => {
-    setPropertySection(false);
-  };
-
-  const handleSearchClick = () => {
-    setShowDetails(true); 
-  };
-
-  const handleSearchClose = () => {
-    setShowDetails(false);
-  };
-
-  const handleOpen = () => {
-    setIsOpen(true);
-  };
-  const handleShow = () => {
-    setIsShow(true);
-  };
-  const handleView = () => {
-    setIsView(true);
-  };
-  const handleSentSuccess = () => {
-    setShowSuccess(false);
-    setSentSuccess(true);
-  };
-  const handleIsShow = () => {
-    setIsView(false);
-    setShowSuccess(true);
-  };
+  const {
+    isOpen,
+    setIsOpen,
+    isShow,
+    setIsShow,
+    isView,
+    setIsView,
+    showSuccess,
+    setShowSuccess,
+    sentSuccess,
+    setSentSuccess,
+    showDetails,
+    setShowDetails,
+    propertySection,
+    setPropertySection,
+    genrateSuccess,
+    setGenrateSuccess,
+    handlePropertysection,
+    handlecloseProperty,
+    handleSearchClick,
+    handleSearchClose,
+    handleOpen,
+    handleShow,
+    handleView,
+    handleSentSuccess,
+    handleIsShow,
+  } = useBrokerServices();
 
   return (
     <>
@@ -549,7 +536,7 @@ const Brokers = () => {
           </div>
         </div>
       </div> */}
-      
+
       <Modal show={isOpen} centered className="modal-container">
         <Modal.Header className="d-flex justify-content-between align-items-center border-0">
           <button className="border-0">
@@ -706,10 +693,13 @@ const Brokers = () => {
             <p className="fs_25 font-semibold">{t("age_report_question")}</p>
           </div>
           {/** Option View  */}
-          <div className="options-container m-auto" >
+          <div className="options-container m-auto">
             <div className="option-item rounded-3 my-3">
               <Accordion defaultActiveKey={null} className="custom-accordion">
-                <Accordion.Item eventKey="0 " className="custom-header border-teal-100">
+                <Accordion.Item
+                  eventKey="0 "
+                  className="custom-header border-teal-100"
+                >
                   <Accordion.Header className="bg-teal-100">
                     <div className="d-flex justify-content-between w-100">
                       <div className=" d-flex align-items-center">
@@ -725,8 +715,11 @@ const Brokers = () => {
                     </div>
                   </Accordion.Header>
                   <Accordion.Body className="bg-teal-100">
-                    <p className="mt-3 fw-bold">Helllo</p> 
-                    <ul className="fw-bold px-4" style={{ listStyleType: "disc" }}>
+                    <p className="mt-3 fw-bold">Helllo</p>
+                    <ul
+                      className="fw-bold px-4"
+                      style={{ listStyleType: "disc" }}
+                    >
                       <li>{t("age_send_whatsapp_point_1")}</li>
                       <li>{t("age_send_whatsapp_point_2")}</li>
                       <li>{t("age_send_whatsapp_point_3")}</li>
@@ -775,13 +768,15 @@ const Brokers = () => {
                       </div>
                     </div>
                   </Accordion.Body>
-                  
                 </Accordion.Item>
               </Accordion>
             </div>
             <div className="option-item rounded-3 my-3">
               <Accordion defaultActiveKey={null} className="custom-accordion">
-                <Accordion.Item eventKey="0 " className="custom-header border-teal-100">
+                <Accordion.Item
+                  eventKey="0 "
+                  className="custom-header border-teal-100"
+                >
                   <Accordion.Header className="bg-teal-100">
                     <div className="d-flex justify-content-between w-100">
                       <div className=" d-flex align-items-center">
@@ -797,8 +792,11 @@ const Brokers = () => {
                     </div>
                   </Accordion.Header>
                   <Accordion.Body className="bg-teal-100">
-                    <p className="mt-3 fw-bold">Helllo</p> 
-                    <ul className="fw-bold px-4" style={{ listStyleType: "disc" }}>
+                    <p className="mt-3 fw-bold">Helllo</p>
+                    <ul
+                      className="fw-bold px-4"
+                      style={{ listStyleType: "disc" }}
+                    >
                       <li>{t("age_send_whatsapp_point_1")}</li>
                       <li>{t("age_send_whatsapp_point_2")}</li>
                       <li>{t("age_send_whatsapp_point_3")}</li>
@@ -852,7 +850,10 @@ const Brokers = () => {
             </div>
             <div className="option-item rounded-3 my-3">
               <Accordion defaultActiveKey={null} className="custom-accordion">
-                <Accordion.Item eventKey="0 " className="custom-header border-teal-100">
+                <Accordion.Item
+                  eventKey="0 "
+                  className="custom-header border-teal-100"
+                >
                   <Accordion.Header className="bg-teal-100">
                     <div className="d-flex justify-content-between w-100">
                       <div className=" d-flex align-items-center">
@@ -872,7 +873,10 @@ const Brokers = () => {
             </div>
             <div className="option-item rounded-3 my-3">
               <Accordion defaultActiveKey={null} className="custom-accordion">
-                <Accordion.Item eventKey="0 " className="custom-header border-teal-100">
+                <Accordion.Item
+                  eventKey="0 "
+                  className="custom-header border-teal-100"
+                >
                   <Accordion.Header className="bg-teal-100">
                     <div className="d-flex justify-content-between w-100">
                       <div className=" d-flex align-items-center">
@@ -888,8 +892,11 @@ const Brokers = () => {
                     </div>
                   </Accordion.Header>
                   <Accordion.Body className="bg-teal-100">
-                    <p className="mt-3 fw-bold">Helllo</p> 
-                    <ul className="fw-bold px-4" style={{ listStyleType: "disc" }}>
+                    <p className="mt-3 fw-bold">Helllo</p>
+                    <ul
+                      className="fw-bold px-4"
+                      style={{ listStyleType: "disc" }}
+                    >
                       <li>{t("age_send_whatsapp_point_1")}</li>
                       <li>{t("age_send_whatsapp_point_2")}</li>
                       <li>{t("age_send_whatsapp_point_3")}</li>
@@ -946,12 +953,10 @@ const Brokers = () => {
           <div className="text-center mt-4 d-flex flex-wrap flex-md-nowrap">
             <button
               className="agent-button1 mx-auto rounded-pill px-3 py-2 fw-bold shadow-sm text-white"
-              onClick={
-                () => {
-                  setSentSuccess(true);
-                  setIsView(false);
-                }
-              }
+              onClick={() => {
+                setSentSuccess(true);
+                setIsView(false);
+              }}
             >
               {t("age_btn_send")}
             </button>
@@ -1108,7 +1113,7 @@ const Brokers = () => {
           <div className="text-center mt-4">
             <button
               className="btn bg-teal text-white rounded-pill px-4 py-2 fw-bold shadow-sm w-75"
-              onClick={() =>setGenrateSuccess(false)}
+              onClick={() => setGenrateSuccess(false)}
             >
               {t("Customert_btn_description")}
             </button>

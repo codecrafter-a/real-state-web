@@ -9,6 +9,9 @@ export const usePropertyservices = () => {
   const [propertytype, setPropertytype] = useState("");
   const [procondition, setProcondition] = useState("");
   const [filteredClients, setFilteredClients] = useState([]);
+  const [selectAll, setSelectAll] = useState(false); 
+    const [expandedRows, setExpandedRows] = useState([]);
+    const [selectedRows, setSelectedRows] = useState([]); 
   const getpropertyservices = () => [
     {
       property_type: t("all_property_type"),
@@ -123,6 +126,22 @@ export const usePropertyservices = () => {
     return data;
   };
 
+   const toggleRow = (index) => {
+        setExpandedRows((prev) =>
+          prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+        );
+      };
+  
+      
+    
+      const handleCheckboxChange = (index) => {
+        setSelectedRows((prevSelectedRows) =>
+          prevSelectedRows.includes(index)
+            ? prevSelectedRows.filter((i) => i !== index) // Uncheck
+            : [...prevSelectedRows, index] // Check
+        );
+      };
+
   return {
     dataPropertyServices,
     getpropertyservices,
@@ -133,12 +152,17 @@ export const usePropertyservices = () => {
     setClientNameInput,
     sel,
     setSel,
+    toggleRow,
+    handleCheckboxChange,
     clientNameInput,
     setFilteredClients,
     filteredClients,
     propertytype,
     setPropertytype,
     setProcondition,
-    procondition
+    procondition,
+    selectAll, setSelectAll, 
+    expandedRows, setExpandedRows, 
+    selectedRows, setSelectedRows,
   };
 };
