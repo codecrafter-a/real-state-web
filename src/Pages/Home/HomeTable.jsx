@@ -180,7 +180,7 @@ const HomeTable = () => {
 
                         <Dropdown.Menu
                           className=" shadow d-flex flex-column py-2 gap-1 more-menu"
-                          
+                          style={{ width: "170px" }}
                         >
                           <Dropdown.Item
                             href="#/action-1"

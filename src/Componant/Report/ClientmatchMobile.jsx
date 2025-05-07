@@ -16,15 +16,17 @@ import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { AiOutlineDown } from "react-icons/ai";
 import { Pagination, Navigation } from "swiper/modules";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { BsChevronDown } from "react-icons/bs";
+
 const Clientmatch_mobile = () => {
   const [reportData, setReportData] = useState([]);
 
-  const { getReportServices } = useReportServices();
+  const { getReportServices, open, setOpen, toggleAccordion } =
+    useReportServices();
   const { t } = useTranslation();
   useEffect(() => {
     const data = getReportServices();
@@ -39,9 +41,8 @@ const Clientmatch_mobile = () => {
     .map((feature) => feature.trim());
   const sampleImages = [house, house, house];
   console.log(scrollRef, "saafsfsfsdgsgdfgdfg");
-  
-  const sliderRefs = useRef([]);
 
+  const sliderRefs = useRef([]);
   const settings = {
     dots: false,
     infinite: true,
@@ -98,23 +99,30 @@ const Clientmatch_mobile = () => {
                 ))}
               </Swiper>
             </div>
-            <Accordion className="border-0 d-block d-lg-none">
+            <Accordion className="border-0 d-block d-lg-none" open={open}>
               <AccordionItem className="border-0">
-                <div className="d-flex justify-content-between py-2 px-3 gap-3 align-items-center">
-                  <h5 className="mb-1 fw-bold text-success fs-6">
-                    {t("address")}
-                  </h5>
-                  <h5 className="fw-bold fs-5 lh-1">{t("price1")}</h5>
-                </div>
-                <AccordionHeader className="border-0 d-flex align-items-center justify-content-between">
+                <AccordionHeader className="border-0 d-flex justify-content-between align-items-center px-3 py-2">
                   <div className="d-flex flex-column me-2">
                     <p className="mb-1 fs-6 fw-normal">{t("property_type")}</p>
                     <p className="mb-0 fs-6 fw-normal">{t("rooms")}</p>
                   </div>
-                  <div className="d-flex align-items-center">
-                    <AiOutlineDown size={18} />
-                  </div>
+                  <span
+                    onClick={toggleAccordion}
+                    style={{
+                      cursor: "pointer",
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
+                    <BsChevronDown
+                      className={`transition-transform ${
+                        open ? "rotate-180" : ""
+                      }`}
+                      style={{ transition: "transform 0.3s" }}
+                    />
+                  </span>
                 </AccordionHeader>
+
                 <AccordionBody>
                   <div className="mb-2">
                     <Badge bg="light" text="dark" className="me-2">
@@ -128,11 +136,6 @@ const Clientmatch_mobile = () => {
                     </Badge>
                   </div>
                   <p className="small text-muted">{t("description")}</p>
-                  <div className="justify-content-center d-flex">
-                    <button className=" agent-btn-responsive1 w-75 py-1 rounded-pill text-white">
-                      {t("send1_to_client")}
-                    </button>
-                  </div>
                 </AccordionBody>
               </AccordionItem>
             </Accordion>
@@ -175,12 +178,10 @@ const Clientmatch_mobile = () => {
             </Accordion.Header>
             <div className="position-relative my-3 px-2">
               <div className="d-flex align-items-center">
-                {/* Prev button — appears on the correct side based on language */}
                 <button className="btn-circle  me-2" onClick={goToPrev}>
                   {isRTL ? <FaChevronRight /> : <FaChevronLeft />}
                 </button>
 
-                {/* Slider */}
                 <div className="w-75 slider-demo">
                   <Slider ref={sliderRefs} {...settings}>
                     {features.map((feature, id) => (
@@ -193,7 +194,6 @@ const Clientmatch_mobile = () => {
                   </Slider>
                 </div>
 
-                {/* Next button */}
                 <button className="btn-circle  ms-2" onClick={goToNext}>
                   {isRTL ? <FaChevronLeft /> : <FaChevronRight />}
                 </button>

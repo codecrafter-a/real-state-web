@@ -4,6 +4,9 @@ import { useTranslation } from "react-i18next";
 export const useClientService = () => {
   const { t } = useTranslation();
    const [filteredClients, setFilteredClients] = useState([]);
+   const [isChecked, setIsChecked] = useState(false);
+   console.log(isChecked, "isChecked");
+ 
   const [formData, setFormData] = useState({
     fullName: "",
     phone: "",
@@ -31,7 +34,37 @@ export const useClientService = () => {
   const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
   const [currentScreen, setCurrentScreen] = useState(1);
   const [clientName, setClientName] = useState('');
-
+  const [expandedRows, setExpandedRows] = useState([]);
+    const [selectedRows, setSelectedRows] = useState({});
+    const [selectAll, setSelectAll] = useState(false);
+  
+    const toggleRow = (index) => {
+      setExpandedRows((prev) =>
+        prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+      );
+    };
+  
+    const toggleCheckbox = (index) => {
+      setSelectedRows((prev) => {
+        const updated = { ...prev, [index]: !prev[index] };
+        const allSelected =
+          filteredClients.length > 0 &&
+          filteredClients.every((_, idx) => updated[idx]);
+        setSelectAll(allSelected);
+        return updated;
+      });
+    };
+  
+    const toggleSelectAll = () => {
+      const newState = !selectAll;
+      setSelectAll(newState);
+      const updatedSelection = {};
+      filteredClients.forEach((_, index) => {
+        updatedSelection[index] = newState;
+      });
+      setSelectedRows(updatedSelection);
+    };
+  
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -47,8 +80,20 @@ export const useClientService = () => {
     }
   };
 
-  const nextScreen = () => setCurrentScreen(2);
+  const handleMainCheck = (e) => {
+    setIsChecked(e.target.checked);
+    if (e.target.checked) {
+      setCurrentScreen(2);
+    }
+  };
+
+  const nextScreen = () => {
+    setCurrentScreen(2);
+    
+  }
   const prevScreen = () => setCurrentScreen(1);
+
+
 
   const openSecondModal = () => {
     setIsFirstModalOpen(false);
@@ -151,6 +196,7 @@ export const useClientService = () => {
     isFirstModalOpen,
     setIsFirstModalOpen,
     isSecondModalOpen,
+    handleMainCheck,
     setIsSecondModalOpen,
     currentScreen,
     setCurrentScreen,
@@ -164,5 +210,8 @@ export const useClientService = () => {
     closeSecondModal,
     getClients,
     getClientData,
+    isChecked, setIsChecked,expandedRows, setExpandedRows,
+    selectedRows, setSelectedRows,selectAll, setSelectAll,
+    toggleSelectAll,toggleCheckbox, toggleRow
   };
 };

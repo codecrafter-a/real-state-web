@@ -439,7 +439,7 @@ const Brokersmobile = () => {
           {/** option group */}
           <div className="options-container m-auto" >
             <div className="option-item rounded-3 my-3">
-              <Accordion defaultActiveKey={null} className="custom-accordion">
+              {/* <Accordion defaultActiveKey={null} className="custom-accordion">
                 <Accordion.Item eventKey="0 " className="custom-header border-teal-100">
                   <Accordion.Header className="bg-teal-100">
                     <div className="d-flex justify-content-between w-100">
@@ -507,6 +507,51 @@ const Brokersmobile = () => {
                     </div>
                   </Accordion.Body>
                   
+                </Accordion.Item>
+              </Accordion> */}
+              <Accordion defaultActiveKey={null} className="custom-accordion my-1">
+                <Accordion.Item eventKey="0"  className="custom-header border-teal-100 border-1">
+                  <Accordion.Header>
+                    <div className="d-flex justify-content-between align-items-center w-100">
+                      <div className="d-flex align-items-center gap-3">
+                        <img src={whatsapp} alt="whatsapp" style={{ height: "24px", width: "24px" }} />
+                        <div className=" d-flex flex-column">
+                          <span className="ps-2 fs_15">{t("viaSMS")}</span>
+                          <span className="text-decoration-underline text-link-color fs-17 fw-semibold lh-1">למה זה כדאי לי?</span>
+                        </div>       
+                      </div>
+                      <input
+                        className="form-check-input ms-2 border border-dark bg-white"
+                        type="checkbox"
+                      />
+                    </div>
+                  </Accordion.Header> 
+                
+                  <Accordion.Body className="bg-teal-100 px-4 py-2">
+                    <ul className="fw-bold ps-4 mb-1" style={{ listStyleType: "disc" }}>
+                      <li>{t("age_send_whatsapp_point_1")}</li>
+                      <li>{t("age_send_whatsapp_point_2")}</li>
+                      <li>{t("age_send_whatsapp_point_3")}</li>
+                    </ul>
+
+                    <p className="fw-bold mb-2">{t("age_send_whatsapp_description")}</p>
+
+                    <div className="row gy-3 justify-content-center text-center">
+                      {[150, 100, 50].map((value, idx) => (
+                        <div className="col-md-4" key={idx}>
+                          <div className="rounded  custom-submenu  bg-white shadow-sm h-auto d-flex flex-column justify-content-center">
+                            <h3 className="text-embed-500 fs-2 fw-bold">{value}</h3>
+                            <p className="mb-1 text-embed-500">{t("age_send_whatsapp_message")}</p>
+                            <p className="text-embed-500">
+                              {t(
+                                `age_send_whatsapp_message_info${idx === 0 ? "" : idx + 1}`
+                              )}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </Accordion.Body>
                 </Accordion.Item>
               </Accordion>
             </div>
@@ -608,7 +653,7 @@ const Brokersmobile = () => {
                     <div className="d-flex justify-content-between w-100">
                       <div className=" d-flex align-items-center">
                         <img src={group} alt="whatsapp" />
-                        <span className="ps-2 text-start fs_15">
+                        <span className="ps-2  fs_15">
                           {t("group")}
                         </span>
                       </div>

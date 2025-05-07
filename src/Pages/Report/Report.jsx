@@ -145,9 +145,9 @@ const Report = () => {
                                 {selectedSuggestion ? (
                                     <div>
                                         <Propertymatch properties={selectedProperties} />
-                                        <div className="w-100   py-2 bg-[#FFFFFFD6] d-flex justify-content-center" style={{ position: "sticky", bottom: "0" }}>
+                                        {/* <div className="w-100   py-2 bg-[#FFFFFFD6] d-flex justify-content-center" style={{ position: "sticky", bottom: "0" }}>
                                             <button className="agent-btn-responsive1 text-white fw-bold h-25 shadow report-btn py-2 mt-3 rounded-pill">{t("send_btn")}</button>
-                                        </div>
+                                        </div> */}
                                     </div>                                  
                                 ) : (
                                     <div>

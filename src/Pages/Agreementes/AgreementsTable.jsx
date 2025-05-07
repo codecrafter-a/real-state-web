@@ -116,7 +116,7 @@ const AgreementsTable = ({ handleOpen, selectedStatus, selectData }) => {
                     row.status === "home_tab_r2_h2" ||
                     row.status === "home_tab_r1_h2") && (
                     <td className="d-table-cell align-middle py-3">
-                      <div className="d-flex align-items-center gap-3 p-2 bg-white">
+                      <div className="d-flex align-items-center gap-2 p-2 bg-white">
                         <div className="d-flex align-items-center gap-1">
                           <TbMailForward size={18} />
                           <span>{t("home_tab_r1_h1_l4")}</span>
@@ -129,18 +129,19 @@ const AgreementsTable = ({ handleOpen, selectedStatus, selectData }) => {
                           <IoMdAttach size={18} />
                           {t("home_tab_r1_h1_l2")}
                         </span>
-                        <Dropdown className="d-flex bg-white align-items-center justify-content-center px-3">
-                          <Dropdown.Toggle
+                        
+                        <Dropdown className="d-flex bg-white align-items-center justify-content-center ">
+                        <Dropdown.Toggle
                             as="div"
                             variant="light"
                             className="border-0  custom-dropdown-toggle d-flex align-items-center gap-1 cursor-pointer"
                           >
                             <HiOutlineDotsVertical size={18} />
                             {t("home_tab_r1_h1_l1")}
-                          </Dropdown.Toggle>
+                          </Dropdown.Toggle> 
                           <Dropdown.Menu
-                            style={{ width: "100px" }}
-                            className=" z-3 shadow d-flex flex-column py-2 gap-1 more-menu"
+                            style={{ width: "170px" }}
+                            className=" z-3 shadow d-flex  flex-column py-1 gap-1 more-menu"
                           >
                             <Dropdown.Item
                               href="#/action-1"
@@ -167,7 +168,7 @@ const AgreementsTable = ({ handleOpen, selectedStatus, selectData }) => {
                   )}
                   {row.status === "home_tab_r4_h2" && (
                     <td className="d-table-cell align-middle py-3">
-                      <div className="d-flex align-items-center gap-3 p-2 bg-white">
+                      <div className="d-flex align-items-center gap-2 p-2 bg-white">
                         <div className="d-flex align-items-center text-nowrap gap-1">
                           <FaRegFile size={18} />
                           <span>{t("open_agreement")}</span>
@@ -210,7 +211,7 @@ const AgreementsTable = ({ handleOpen, selectedStatus, selectData }) => {
                   )}
                   {row.status === "home_tab_r6_h2" && (
                     <td className="d-table-cell align-middle py-3">
-                      <div className="d-flex align-items-center gap-3 p-2 bg-white">
+                      <div className="d-flex align-items-center gap-2 p-2 bg-white">
                         <div className="d-flex align-items-center gap-1">
                           <TbMailForward size={18} />
                           <span>{t("send_copy")}</span>
@@ -222,7 +223,8 @@ const AgreementsTable = ({ handleOpen, selectedStatus, selectData }) => {
                       </div>
                     </td>
                   )}
-                  <td className="d-table-cell align-middle py-3"></td>
+                  <td className="d-table-cell align-middle py-3">  </td>
+                  
                 </tr>
               </>
             );

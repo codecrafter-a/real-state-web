@@ -7,8 +7,9 @@ import {Card} from "react-bootstrap";
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-
+import { BsChevronDown } from "react-icons/bs";
 import { Pagination, Navigation } from 'swiper/modules';
+import { useReportServices } from '../../Services/ReportServices';
 const Propertymatch_mobile = ({ properties }) => {
       const { t } = useTranslation();
       const sampleImages = [
@@ -16,6 +17,9 @@ const Propertymatch_mobile = ({ properties }) => {
         house,
         house
       ];
+
+      const {open, setOpen, toggleAccordion } = useReportServices();
+
     
   return (
     <div>
@@ -51,15 +55,21 @@ const Propertymatch_mobile = ({ properties }) => {
                     ))}
                   </Swiper>
                   </div>
-                  <Accordion className="border-0 d-block d-md-none">
+                  <Accordion className="border-0 d-block d-md-none" open={open}>
                     <AccordionItem className="border-0">
-                      <div className="d-flex justify-content-between py-2 px-3 gap-3 align-items-center">
+                      <div className="d-flex justify-content-between py-2 px-3 gap-3 align-items-center cursor-pointer" onClick={toggleAccordion} >
                         <h5 className="mb-1 fw-bold text-success fs-6">
                           {t("address")}
                         </h5>
                         <h5 className="fw-bold fs-5 lh-1">{t("price1")}</h5>
+                        
                       </div>
-                      <AccordionHeader className="border-0 ">
+                      <AccordionHeader className="border-0 " >
+                        <BsChevronDown
+                          className={`transition-transform ${open ? "rotate-180" : ""}`}
+                          style={{ transition: "transform 0.3s" }}
+                          onClick={toggleAccordion}
+                        />
                         <div className="d-flex flex-column">
                           <p className=" fs-15 fw-normal lh-1 mb-1">{t(property.address)}</p>
                           <p className="fs-15 fw-normal lh-1 mb-2">
@@ -67,7 +77,8 @@ const Propertymatch_mobile = ({ properties }) => {
                           </p>
                         </div>
                       </AccordionHeader>
-                      <AccordionBody>
+                   
+                    <AccordionBody>
                         <div className="mb-2">
                           <Badge bg="light" text="dark" className="me-2">
                             {t("garage")}
@@ -80,12 +91,9 @@ const Propertymatch_mobile = ({ properties }) => {
                           </Badge>
                         </div>
                         <p className="small text-muted">{t("description")}</p>
-                        <div className="justify-content-center d-flex">
-                          <button className=" agent-btn-responsive1 w-75 py-1 rounded-pill text-white">
-                            {t("send1_to_client")}
-                          </button>
-                        </div>
+                     
                       </AccordionBody>
+                      
                     </AccordionItem>
                   </Accordion>
                 </div>

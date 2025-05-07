@@ -158,7 +158,7 @@ const Layout = ({ children, show }) => {
             >
               <div className="d-flex flex-column align-items-center justify-content-center" onClick={() => navigate(`/${i18n.language}/home`)}>
                 <img src={iconHome} alt="home icon" className="text-teal" />
-                <div className=" fw-semibold lowerside">{t("mobile_home")}</div>
+                <div className=" fw-normal fs-15 lh-1 lowerside">{t("mobile_home")}</div>
               </div>
             </Col>
             <Col
@@ -166,7 +166,7 @@ const Layout = ({ children, show }) => {
             >
               <div className="d-flex flex-column align-items-center justify-content-center" onClick={() => navigate(`/${i18n.language}/broker`)}>
                 <img src={userkey} alt="home icon" className="text-teal" />
-                <div className=" fw-semibold lowerside">
+                <div className=" fw-normal fs-15 lh-1 lowerside">
                   {t("interested_signing")}
                 </div>
               </div>
@@ -176,7 +176,7 @@ const Layout = ({ children, show }) => {
             >
               <div className="d-flex flex-column align-items-center justify-content-center" onClick={() => navigate(`/${i18n.language}/property_owner`)}>
                 <img src={userhouse} alt="action icon " />
-                <div className=" fw-semibold lowerside">
+                <div className=" fw-normal fs-15 lh-1 lowerside">
                   {t("owner_signing")}
                 </div>
               </div>
@@ -186,7 +186,7 @@ const Layout = ({ children, show }) => {
             >
               <div className="d-flex flex-column align-items-center justify-content-center" onClick={() => navigate(`/${i18n.language}/broker_between`)}>
                 <img src={usercontact} alt="action icon " />
-                <div className=" fw-semibold lowerside">
+                <div className=" fw-normal fs-15 lh-1 lowerside">
                   {t("broker_collaboration")}
                 </div>
               </div>
@@ -197,7 +197,7 @@ const Layout = ({ children, show }) => {
             >
               <div className="d-flex flex-column align-items-center justify-content-center" onClick={() => navigate(`/${i18n.language}/agent-management`)}>
                 <img src={document} alt="action icon " />
-                <div className=" fw-semibold lowerside">
+                <div className=" fw-normal fs-15 lh-1 lowerside">
                   {t("mobile_agreements")}
                 </div>
               </div>

@@ -14,6 +14,10 @@ h5 {
   line-height: 26px;
   font-weight: 600;
 }
+
+.text-link-color{
+    color: blue;
+}
 .iconbox {
   width: 83px;
   height: 73px;
@@ -84,9 +88,10 @@ h5 {
   border: 1px solid transparent;
 }
 .custom-header:hover {
-  border: 2px solid #00a481 !important;
+  border: 1px solid #00a481 !important;
 }
-
+.custom-submenu{border: 1px solid transparent;}
+.custom-submenu:hover{border: 1px solid #00a481 !important;}
 .card-pay{
   border: 1px solid transparent;
   color: #00a481 !important;

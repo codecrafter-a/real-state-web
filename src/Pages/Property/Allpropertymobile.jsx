@@ -44,7 +44,7 @@ const Allpropertymobile = () => {
             className="border-teal my-2 d-flex align-items-center justify-content-center w-auto px-2  rounded-pill  py-1 gap-1 "
             onClick={() => navigate(`/${lang}/Property/add_property`)}
           >
-            <div className="flex items-center text-nowrap justify-center">
+            <div className="flex items-center text-nowrap text-teal justify-center">
               <img className="me-1" src={add_home} alt="Add Client" />
               {t("Add_Property")}{" "}
             </div>
@@ -53,7 +53,7 @@ const Allpropertymobile = () => {
             type="button"
             className="border-teal my-2 d-flex align-items-center justify-content-center w-auto px-3  rounded-pill gap-1 py-1"
           >
-            <div className="flex items-center justify-center">
+            <div className="flex items-center text-teal justify-center">
               <img className="me-1" src={delet} alt="Add Client" />
               {t("dletation")}{" "}
             </div>

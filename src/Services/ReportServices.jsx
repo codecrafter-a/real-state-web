@@ -1,7 +1,10 @@
 import { t } from "i18next";
 import { useTranslation } from "react-i18next";
+import { useState } from "react";
 export const useReportServices = () => {
   const { t } = useTranslation();
+  const [open, setOpen] = useState(false);
+  const toggleAccordion = () => setOpen(!open);
   const getReportServices = () => {
     return [
       {
@@ -53,7 +56,7 @@ export const useReportServices = () => {
     ];
   };
 
-  return { getReportServices };
+  return { getReportServices, open, setOpen, toggleAccordion };
 };
 
 

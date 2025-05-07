@@ -18,15 +18,11 @@ import { useTranslation } from "react-i18next";
 
 const AddCustomerMobile = () => {
   const { t } = useTranslation();
-  const [isChecked, setIsChecked] = useState(false);
-  console.log(isChecked, "isChecked");
-
-  const handleMainCheck = (e) => {
-    setIsChecked(e.target.checked);
-  };
-  console.log(handleMainCheck, "handlemainchck");
+ 
   const {
+    isChecked, 
     formData,
+    handleMainCheck,
     isFirstModalOpen,
     isSecondModalOpen,
     currentScreen,
@@ -112,12 +108,12 @@ const AddCustomerMobile = () => {
         <div className="col-auto">
           <div className="check_custom_icon">
             <input
-              className="form-check-input d-none"
+              className="form-check-input d-none btn-check"
               type="checkbox"
               value={t("cust_type_1")}
               name="userType"
               id="usertype_1"
-              checked={isChecked}
+              
               onChange={handleMainCheck}
             />
 
@@ -134,10 +130,11 @@ const AddCustomerMobile = () => {
           <div className="check_custom_icon">
             <CustomInput
               type="checkbox"
-              id="usertype_2"
-              name="userType"
+              // id="usertype_2"
+              // name="userType"
               value={t("cust_type_2")}
-              onChange={handleChange}
+              // onChange={handleMainCheck}
+              // checked={isChecked}
               className="btn-check"
             />
             <label htmlFor="usertype_2">
@@ -153,10 +150,10 @@ const AddCustomerMobile = () => {
           <div className="check_custom_icon">
             <CustomInput
               type="checkbox"
-              id="usertype_3"
-              name="userType"
+              // id="usertype_3"
+              // name="userType"
               value={t("cust_type_3")}
-              onChange={handleChange}
+              // onChange={handleMainCheck}
               className="btn-check"
             />
             <label htmlFor="usertype_3">
@@ -168,7 +165,7 @@ const AddCustomerMobile = () => {
           </div>
         </div>
 
-        <div className="d-flex justify-content-center gap-2 align-items-center my-3">
+        {/* <div className="d-flex justify-content-center gap-2 align-items-center my-3">
           <input
             className="form-check-input rounded-1 border-1 border-black mt-2"
             type="checkbox"
@@ -180,10 +177,10 @@ const AddCustomerMobile = () => {
           <label className="fs-15 fw-normal lh-1" htmlFor="customCheck1">
             {t("send_report_consent")}
           </label>
-        </div>
+        </div> */}
       </div>
       <div className="d-flex justify-content-center mt-3">
-        <button type="button" className="btn_cmn mt-3" onClick={nextScreen}>
+        <button type="button" className="btn_cmn mt-3" >
           {t("pro_next_step")}
         </button>
       </div>
