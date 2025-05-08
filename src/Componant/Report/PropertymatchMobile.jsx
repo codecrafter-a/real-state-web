@@ -18,7 +18,7 @@ const Propertymatch_mobile = ({ properties }) => {
         house
       ];
 
-      const {open, setOpen, toggleAccordion } = useReportServices();
+      const {open, toggleAccordion } = useReportServices();
 
     
   return (
@@ -65,20 +65,19 @@ const Propertymatch_mobile = ({ properties }) => {
                         
                       </div>
                       <AccordionHeader className="border-0 " >
-                        <BsChevronDown
-                          className={`transition-transform ${open ? "rotate-180" : ""}`}
-                          style={{ transition: "transform 0.3s" }}
-                          onClick={toggleAccordion}
-                        />
                         <div className="d-flex flex-column">
                           <p className=" fs-15 fw-normal lh-1 mb-1">{t(property.address)}</p>
                           <p className="fs-15 fw-normal lh-1 mb-2">
                             {t("rooms")}
                           </p>
                         </div>
+                        <BsChevronDown
+                          className={`transition-transform ${open ? "rotate-180" : ""}`}
+                          style={{ transition: "transform 0.3s" }}
+                          onClick={toggleAccordion}
+                        />
                       </AccordionHeader>
-                   
-                    <AccordionBody>
+                      <AccordionBody>
                         <div className="mb-2">
                           <Badge bg="light" text="dark" className="me-2">
                             {t("garage")}

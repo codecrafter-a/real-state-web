@@ -817,5 +817,8 @@
    "action_sign_executed": "signed and executed",
    "action_sign_registred": "signed and registered",
    "action_sent": "sent",
-   "action_detail": "No extra details"
+   "action_detail": "No extra details",
+    "send_change": "Sending and purchasing a package",
+    "Pleasmote_perchase_package": "Please note, you have chosen to purchase a WhatsApp package. By clicking Send, the package will also be purchased.",
+     "Signing_instred": "Interested parties signing"
   }

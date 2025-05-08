@@ -21,8 +21,7 @@ const Allpropertymobile = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { lang } = useParams();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const {dataPropertyServices,slides, filteredClients,setFilteredClients, setClientNameInput, clientNameInput, getClientData,} = usePropertyservices();
+  const {dataPropertyServices,slides, isModalOpen, setIsModalOpen, activeKey, setActiveKey, filteredClients,setFilteredClients, setClientNameInput, clientNameInput, getClientData,} = usePropertyservices();
   useEffect(() => {
       setFilteredClients(dataPropertyServices);
     }, []);
@@ -97,7 +96,8 @@ const Allpropertymobile = () => {
     </div>
      
       <div className="mt-4 bg-white px-3 rounded-3">
-        <Accordion className="d-flex flex-column gap-3 my-2">
+        <Accordion className="d-flex flex-column gap-3 my-2"  activeKey={activeKey}
+  onSelect={(key) => setActiveKey(key)}> 
           {filteredClients.map((client, index) => (
             <Accordion.Item
               eventKey={index.toString()}
@@ -148,7 +148,11 @@ const Allpropertymobile = () => {
                     </div>
                     <div className="me-2 d-flex align-items-center">
                       <span className="badge bg-warning">{client.status}</span>
-                      <IoIosArrowUp className="mx-3" />
+                      <IoIosArrowUp
+  className={`mx-3 transition-transform ${
+    activeKey === index.toString() ? "rotate-180" : ""
+  }`}
+/>
                     </div>
                   </div>
                   <div className="d-flex flex-wrap align-items-center my-2 gap-1">

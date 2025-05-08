@@ -27,6 +27,7 @@ const Clientmatch_mobile = () => {
 
   const { getReportServices, open, setOpen, toggleAccordion } =
     useReportServices();
+    const [activeKey, setActiveKey] = useState(null);
   const { t } = useTranslation();
   useEffect(() => {
     const data = getReportServices();
@@ -145,7 +146,7 @@ const Clientmatch_mobile = () => {
       <p className="py-1 my-4  fs-5 fw-semibold lh-1 text-teal">
         {t("potential_clients")}{" "}
       </p>
-      <Accordion className="d-block p-0 d-md-none bg-light d-flex flex-column gap-3">
+      <Accordion activeKey={activeKey} onSelect={(key) => setActiveKey(key)} className="d-block p-0 d-md-none bg-light d-flex flex-column gap-3">
         {reportData.map((row, index) => (
           <Accordion.Item
             eventKey={index.toString()}
@@ -153,7 +154,7 @@ const Clientmatch_mobile = () => {
             className="border-2  border-top rounded-3 overflow-visible"
           >
             <Accordion.Header>
-              <div className="d-flex justify-content-between w-100">
+             <div className="d-flex justify-content-between w-100">
                 <div className="d-flex gap-2">
                   <input
                     type="checkbox"
@@ -172,9 +173,12 @@ const Clientmatch_mobile = () => {
                   </div>
                 </div>
                 <div className="me-2 d-flex align-items-center justify-content-between">
-                  <IoIosArrowDown />
+                <IoIosArrowDown
+  className={`transition-arrow ${activeKey === index.toString() ? "rotate-arrow" : ""}`}
+/>
                 </div>
               </div>
+              
             </Accordion.Header>
             <div className="position-relative my-3 px-2">
               <div className="d-flex align-items-center">

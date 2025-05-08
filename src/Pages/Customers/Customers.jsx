@@ -14,7 +14,7 @@ import { useClientService } from "../../Services/ClientService";
 import close from "../../assets/images/ButtonClose.png";
 import CustomerTable from "./CustomerTable";
 const Customer = () => {
-  const { t } = useTranslation();
+  const {i18n, t } = useTranslation();
   const navigate = useNavigate();
   const { lang } = useParams();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,6 +25,15 @@ const Customer = () => {
   const [clientNameInput, setClientNameInput] = useState("");
   const [clientType, setClientType] = useState("");
   const [recent, setRecent] = useState("");
+  const [visibleItems, setVisibleItems] = useState(
+      Array.from({ length: 6 }, () => true)
+    );
+  
+    const handleRemoveClick = (index) => {
+      setVisibleItems((prev) =>
+        prev.map((item, i) => (i === index ? false : item))
+      );
+    };
   const { getClientData,  filteredClients, setFilteredClients, } = useClientService();
 
   console.log(filteredClients, "getClientsgetClients");
@@ -202,22 +211,25 @@ const Customer = () => {
                             {t("advance_search")}
                           </button>
                         </li>
-                        {Array.from({ length: 6 }, (_, i) => (
-                          <li
-                            key={i}
-                            className="bg-success w-max bg-opacity-10 rounded-pill d-flex px-3 py-2 align-items-center gap-2 text-center"
-                            style={{
-                              margin: "5px",
-                            }}
-                          >
-                            <div className="custom-text">
-                              {t(`cust_opt_${i + 1}`)}
-                            </div>
-                            <span>
-                              <img src={remove_icon} alt="Remove" />
-                            </span>
-                          </li>
-                        ))}
+                        {Array.from({ length: 6 }, (_, i) =>
+                          visibleItems[i] ? (
+                            <li
+                              key={i}
+                              className="bg-success w-max bg-opacity-10 rounded-pill d-flex px-3 py-2 align-items-center gap-2 text-center"
+                              style={{ margin: "5px" }}
+                            >
+                              <div className="custom-text">{t(`cust_opt_${i + 1}`)}</div>
+                              <span>
+                                <img
+                                  src={remove_icon}
+                                  alt="Remove"
+                                  onClick={() => handleRemoveClick(i)}
+                                  style={{ cursor: "pointer" }}
+                                />
+                              </span>
+                            </li>
+                          ) : null
+                        )}
                       </ul>
                     </div>
                     <div className="d-flex flex-wrap justify-content-end gap-2 mt-4">
@@ -230,6 +242,7 @@ const Customer = () => {
 
                       <button
                         type="button"
+                        onClick={() => navigate(`/${i18n.language}/broker`)}
                         className="fs-17 lh-1 gap-1 fw-bold mt-md-4 w-20 agent-btn-responsive1 text-white py-1 mx-1 rounded-pill d-flex align-items-center justify-content-center"
                       >
                         <img src={action_icon1} alt="Sign Client" />
@@ -241,6 +254,7 @@ const Customer = () => {
 
                       <button
                         type="button"
+                        onClick={() => navigate(`/${i18n.language}/property_owner`)}
                         className="fs-17 lh-1 gap-1 fw-bold mt-md-4 w-20 agent-btn-responsive1 text-white  py-1 mx-1 rounded-pill d-flex align-items-center justify-content-center"
                       >
                         <img src={action_icon2} alt="Sign Owner" />

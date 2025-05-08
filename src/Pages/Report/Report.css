@@ -4,3 +4,10 @@
     }
   }
   
+  .transition-arrow {
+    transition: transform 0.3s ease;
+  }
+  
+  .rotate-arrow {
+    transform: rotate(180deg);
+  }

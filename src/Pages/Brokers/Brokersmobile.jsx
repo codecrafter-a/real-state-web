@@ -44,7 +44,7 @@ const Brokersmobile = () => {
         handleShow,
         handleView,
         handleSentSuccess,
-        handleIsShow,
+        handleIsShow,handleClick,isChecked
       } = useBrokerServices();
     
   return (
@@ -65,7 +65,7 @@ const Brokersmobile = () => {
                   className="agent-btn-responsive2 w-50 bg-transperant h-50 py-2  d-flex align-items-center justify-content-center  rounded-pill"
                   onClick={handleShow}
                 >
-                  <div className="d-flex align-items-center justify-content-center">
+                  <div className="d-flex align-items-center justify-content-center gap-1">
                     <img className="me-1" src={add_reaction} alt="Add Client" />
                     <span className="fs-17 fw-semibold lh-1">
                       {t("add_cust")}{" "}
@@ -129,7 +129,7 @@ const Brokersmobile = () => {
                   type="button"
                   className="agent-btn-responsive2 w-50 bg-transperant h-50 py-2  d-flex align-items-center justify-content-center  rounded-pill "
                 >
-                  <div className="d-flex align-items-center justify-content-center">
+                  <div className="d-flex align-items-center justify-content-center gap-1">
                     <img className="me-1" src={add_home} alt="Add Client" />
                     {t("Add_Property")}{" "}
                   </div>
@@ -239,6 +239,16 @@ const Brokersmobile = () => {
           </div>
           <div className="col-12 my-2">
             <div className='d-flex flex-column  flex-wrap-reverse'>
+            <div className="d-flex align-items-center">
+                <Toggle
+                  defaultChecked={false}
+                  type={"checkbox"}
+                  id="toggleImages"
+                />
+                <label className="fs-6 fw-normal lh-1" htmlFor="">
+                  {t("send_images")}
+                </label>
+              </div>
               <div className="d-flex align-items-center ">
                 <Toggle
                   defaultChecked={true}
@@ -249,16 +259,7 @@ const Brokersmobile = () => {
                   {t("send_property_attachments")}
                 </label>
               </div>
-              <div className="d-flex align-items-center">
-                <Toggle
-                  defaultChecked={false}
-                  type={"checkbox"}
-                  id="toggleImages"
-                />
-                <label className="fs-6 fw-normal lh-1" htmlFor="">
-                  {t("send_images")}
-                </label>
-              </div>
+              
             </div>  
           </div>
           <div className="col-12">
@@ -382,15 +383,7 @@ const Brokersmobile = () => {
             </Form.Group>
 
             <Row className="g-3 align-items-center">
-              <Col md={6}>
-                <Form.Group controlId="apartmentNumber">
-                  <Form.Label className="fw-bold">
-                    {t("age_new_property_apartment_number")}
-                  </Form.Label>
-                  <Form.Control type="text" required />
-                </Form.Group>
-              </Col>
-              <Col md={6}>
+            <Col md={6}>
                 <Form.Group controlId="buildingNumber">
                   <Form.Label className="fw-bold">
                     {t("age_new_property_building_number")}
@@ -398,6 +391,14 @@ const Brokersmobile = () => {
                   <Form.Control type="text" required />
                 </Form.Group>
               </Col>
+              <Col md={6}>
+                <Form.Group controlId="apartmentNumber">
+                  <Form.Label className="fw-bold">
+                    {t("age_new_property_apartment_number")}
+                  </Form.Label>
+                  <Form.Control type="text" required />
+                </Form.Group>
+              </Col> 
             </Row>
           </Form>
           <div className=" d-flex justify-content-center">
@@ -509,7 +510,7 @@ const Brokersmobile = () => {
                   
                 </Accordion.Item>
               </Accordion> */}
-              <Accordion defaultActiveKey={null} className="custom-accordion my-1">
+             <Accordion defaultActiveKey={null} className="custom-accordion my-1">
                 <Accordion.Item eventKey="0"  className="custom-header border-teal-100 border-1">
                   <Accordion.Header>
                     <div className="d-flex justify-content-between align-items-center w-100">
@@ -523,6 +524,8 @@ const Brokersmobile = () => {
                       <input
                         className="form-check-input ms-2 border border-dark bg-white"
                         type="checkbox"
+                        onChange={handleClick}
+                        checked={isChecked}
                       />
                     </div>
                   </Accordion.Header> 
@@ -538,8 +541,8 @@ const Brokersmobile = () => {
 
                     <div className="row gy-3 justify-content-center text-center">
                       {[150, 100, 50].map((value, idx) => (
-                        <div className="col-md-4" key={idx}>
-                          <div className="rounded  custom-submenu  bg-white shadow-sm h-auto d-flex flex-column justify-content-center">
+                        <div className="col-4" key={idx}>
+                          <div className={`rounded   ${value === 100 ? (!isChecked ? "custom-submenu" : "custom-border") : ""} bg-white shadow-sm h-auto d-flex flex-column justify-content-center`}>
                             <h3 className="text-embed-500 fs-2 fw-bold">{value}</h3>
                             <p className="mb-1 text-embed-500">{t("age_send_whatsapp_message")}</p>
                             <p className="text-embed-500">
@@ -572,55 +575,29 @@ const Brokersmobile = () => {
                       />
                     </div>
                   </Accordion.Header>
-                  <Accordion.Body className="bg-teal-100">
-                    <p className="mt-3 fw-bold">Helllo</p>
-                    <ul className="fw-bold px-4" style={{ listStyleType: "disc" }}>
+                  <Accordion.Body className="bg-teal-100 px-4 py-2">
+                    <ul className="fw-bold ps-4 mb-1" style={{ listStyleType: "disc" }}>
                       <li>{t("age_send_whatsapp_point_1")}</li>
                       <li>{t("age_send_whatsapp_point_2")}</li>
                       <li>{t("age_send_whatsapp_point_3")}</li>
                     </ul>
-                    <p className="mt-3 fw-bold ">
-                      {t("age_send_whatsapp_description")}
-                    </p>
-                    <div className="row justify-content-center text-center mt-4 align-items-center">
-                      <div className="col-md-4 px-2">
-                        <div className="rounded p-2 bg-white  shadow-md">
-                          <h3 className="text-embed-500 fs-2 fw-bold">150</h3>
-                          <p className="mb-0 text-embed-500">
-                            {t("age_send_whatsapp_message")}
-                          </p>
-                          <p className="text-embed-500">
-                            {t("age_send_whatsapp_message_info")}
-                          </p>
-                        </div>
-                      </div>
 
-                      <div className="col-md-4 px-2">
-                        <div className="rounded shadow-md p-1 bg-white">
-                          <p className="mb-0 text-embed-500">
-                            {t("age_send_whatsapp_cost")}
-                          </p>
-                          <h3 className="text-embed-500 fs-2 fw-bold">100</h3>
-                          <p className="mb-0 text-embed-500">
-                            {t("age_send_whatsapp_message")}
-                          </p>
-                          <p className=" text-embed-500">
-                            {t("age_send_whatsapp_message_info2")}
-                          </p>
-                        </div>
-                      </div>
+                    <p className="fw-bold mb-2">{t("age_send_whatsapp_description")}</p>
 
-                      <div className="col-md-4 px-2">
-                        <div className="rounded p-2 bg-white shadow-sm">
-                          <h3 className="text-embed-500 fs-2 fw-bold">50</h3>
-                          <p className="mb-0 text-embed-500">
-                            {t("age_send_whatsapp_message")}
-                          </p>
-                          <p className="text-embed-500">
-                            {t("age_send_whatsapp_message_info3")}
-                          </p>
+                    <div className="row gy-3 justify-content-center text-center">
+                      {[150, 100, 50].map((value, idx) => (
+                        <div className="col-4" key={idx}>
+                          <div className="rounded  custom-submenu  bg-white shadow-sm h-auto d-flex flex-column justify-content-center">
+                            <h3 className="text-embed-500 fs-2 fw-bold">{value}</h3>
+                            <p className="mb-1 text-embed-500">{t("age_send_whatsapp_message")}</p>
+                            <p className="text-embed-500">
+                              {t(
+                                `age_send_whatsapp_message_info${idx === 0 ? "" : idx + 1}`
+                              )}
+                            </p>
+                          </div>
                         </div>
-                      </div>
+                      ))}
                     </div>
                   </Accordion.Body> 
                 </Accordion.Item>
@@ -663,62 +640,40 @@ const Brokersmobile = () => {
                       />
                     </div>
                   </Accordion.Header>
-                  <Accordion.Body className="bg-teal-100">
-                    <p className="mt-3 fw-bold">Helllo</p> 
-                    <ul className="fw-bold px-4" style={{ listStyleType: "disc" }}>
+                  <Accordion.Body className="bg-teal-100 px-4 py-2">
+                    <ul className="fw-bold ps-4 mb-1" style={{ listStyleType: "disc" }}>
                       <li>{t("age_send_whatsapp_point_1")}</li>
                       <li>{t("age_send_whatsapp_point_2")}</li>
                       <li>{t("age_send_whatsapp_point_3")}</li>
                     </ul>
-                    <p className="mt-3 fw-bold ">
-                      {t("age_send_whatsapp_description")}
-                    </p>
-                    <div className="row justify-content-center text-center mt-4 align-items-center">
-                      <div className="col-md-4 px-2">
-                        <div className="rounded p-2 bg-white  shadow-md">
-                          <h3 className="text-embed-500 fs-2 fw-bold">150</h3>
-                          <p className="mb-0 text-embed-500">
-                            {t("age_send_whatsapp_message")}
-                          </p>
-                          <p className="text-embed-500">
-                            {t("age_send_whatsapp_message_info")}
-                          </p>
-                        </div>
-                      </div>
 
-                      <div className="col-md-4 px-2">
-                        <div className="rounded shadow-md p-1 bg-white">
-                          <p className="mb-0 text-embed-500">
-                            {t("age_send_whatsapp_cost")}
-                          </p>
-                          <h3 className="text-embed-500 fs-2 fw-bold">100</h3>
-                          <p className="mb-0 text-embed-500">
-                            {t("age_send_whatsapp_message")}
-                          </p>
-                          <p className=" text-embed-500">
-                            {t("age_send_whatsapp_message_info2")}
-                          </p>
-                        </div>
-                      </div>
+                    <p className="fw-bold mb-2">{t("age_send_whatsapp_description")}</p>
 
-                      <div className="col-md-4 px-2">
-                        <div className="rounded p-2 bg-white shadow-sm">
-                          <h3 className="text-embed-500 fs-2 fw-bold">50</h3>
-                          <p className="mb-0 text-embed-500">
-                            {t("age_send_whatsapp_message")}
-                          </p>
-                          <p className="text-embed-500">
-                            {t("age_send_whatsapp_message_info3")}
-                          </p>
+                    <div className="row gy-3 justify-content-center text-center">
+                      {[150, 100, 50].map((value, idx) => (
+                        <div className="col-4" key={idx}>
+                          <div className="rounded  custom-submenu  bg-white shadow-sm h-auto d-flex flex-column justify-content-center">
+                            <h3 className="text-embed-500 fs-2 fw-bold">{value}</h3>
+                            <p className="mb-1 text-embed-500">{t("age_send_whatsapp_message")}</p>
+                            <p className="text-embed-500">
+                              {t(
+                                `age_send_whatsapp_message_info${idx === 0 ? "" : idx + 1}`
+                              )}
+                            </p>
+                          </div>
                         </div>
-                      </div>
+                      ))}
                     </div>
                   </Accordion.Body>
                 </Accordion.Item>
               </Accordion>
             </div>
           </div>
-
+          {isChecked && (
+            <div className="text-center">
+              <p className="fs-12 lh-1 fw-bold">{t("Pleasmote_perchase_package")}</p>
+            </div>
+          )}
           <div className="text-center mt-4 d-flex flex-wrap flex-md-nowrap">
             <button
               className="agent-button1 mx-auto rounded-pill px-3 py-2 fw-bold shadow-sm text-white"
@@ -727,7 +682,7 @@ const Brokersmobile = () => {
                 setIsView(false);
               }}
             >
-              {t("age_btn_send")}
+             {!isChecked ? t("age_btn_send") : t("send_change")} 
             </button>
             <button className="btn btn-link text-muted mx-auto mt-2">
               {t("age_btn_link")}

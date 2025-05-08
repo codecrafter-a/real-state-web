@@ -9,7 +9,11 @@ export const usePropertyOwnerSwervices = () => {
   const [selectedOption, setSelectedOption] = useState("");
   const [selectedDate, setSelectedDate] = useState("");
   const [genrateSuccess, setGenrateSuccess] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
 
+  const handleClick = (e) => {
+    setIsChecked(e.target.checked);
+  }
   const handlePropertysection = () => {
     setPropertySection(true);
   };
@@ -60,6 +64,6 @@ export const usePropertyOwnerSwervices = () => {
     handleSearchClose,
     handleView,
     handleSentSuccess,
-    handleIsShow,
+    handleIsShow,handleClick,isChecked
   };
 };

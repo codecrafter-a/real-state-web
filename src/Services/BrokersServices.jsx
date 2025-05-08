@@ -9,7 +9,11 @@ export const useBrokerServices = () => {
   const [showDetails, setShowDetails] = useState(false);
   const [propertySection, setPropertySection] = useState(false);
   const [genrateSuccess, setGenrateSuccess] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
 
+  const handleClick = (e) => {
+    setIsChecked(e.target.checked);
+  }
   const handlePropertysection = () => {
     setPropertySection(true);
   };
@@ -69,6 +73,6 @@ export const useBrokerServices = () => {
     handleShow,
     handleView,
     handleSentSuccess,
-    handleIsShow,
+    handleIsShow,handleClick,isChecked
   };
 };
