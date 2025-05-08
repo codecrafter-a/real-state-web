@@ -12,6 +12,13 @@ export const usePropertyservices = () => {
   const [selectAll, setSelectAll] = useState(false); 
     const [expandedRows, setExpandedRows] = useState([]);
     const [selectedRows, setSelectedRows] = useState([]); 
+    const [showImage, setShowImage] = useState(true);
+    const [isChecked, setIsChecked] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+     const [activeKey, setActiveKey] = useState(null);
+  const handleClick = (e) => {
+    setIsChecked(e.target.checked);
+  }
   const getpropertyservices = () => [
     {
       property_type: t("all_property_type"),
@@ -62,6 +69,10 @@ export const usePropertyservices = () => {
 
   let dataPropertyServices = getpropertyservices();
   
+  const handleRemoveClick = () => {
+    setShowImage(false);
+  };
+
   const images = [
     houseImg,
     houseImg,
@@ -164,5 +175,7 @@ export const usePropertyservices = () => {
     selectAll, setSelectAll, 
     expandedRows, setExpandedRows, 
     selectedRows, setSelectedRows,
+    handleRemoveClick, showImage, setShowImage, handleClick, isChecked,
+    isModalOpen, setIsModalOpen,activeKey, setActiveKey
   };
 };

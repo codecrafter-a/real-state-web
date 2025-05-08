@@ -5,6 +5,7 @@ export const useClientService = () => {
   const { t } = useTranslation();
    const [filteredClients, setFilteredClients] = useState([]);
    const [isChecked, setIsChecked] = useState(false);
+  
    console.log(isChecked, "isChecked");
  
   const [formData, setFormData] = useState({
@@ -37,13 +38,16 @@ export const useClientService = () => {
   const [expandedRows, setExpandedRows] = useState([]);
     const [selectedRows, setSelectedRows] = useState({});
     const [selectAll, setSelectAll] = useState(false);
-  
+    const [nextChecked, setNextChecked] = useState(false);
     const toggleRow = (index) => {
       setExpandedRows((prev) =>
         prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
       );
     };
-  
+   
+    const handleNextChecked = (e) => {
+      setNextChecked(e.target.checked);
+    }
     const toggleCheckbox = (index) => {
       setSelectedRows((prev) => {
         const updated = { ...prev, [index]: !prev[index] };
@@ -82,14 +86,15 @@ export const useClientService = () => {
 
   const handleMainCheck = (e) => {
     setIsChecked(e.target.checked);
-    if (e.target.checked) {
-      setCurrentScreen(2);
-    }
+    
   };
 
   const nextScreen = () => {
-    setCurrentScreen(2);
-    
+    if (nextChecked) {
+      setCurrentScreen(2);
+    } else {
+      alert("Please accept the terms before continuing.");
+    } 
   }
   const prevScreen = () => setCurrentScreen(1);
 
@@ -212,6 +217,6 @@ export const useClientService = () => {
     getClientData,
     isChecked, setIsChecked,expandedRows, setExpandedRows,
     selectedRows, setSelectedRows,selectAll, setSelectAll,
-    toggleSelectAll,toggleCheckbox, toggleRow
+    toggleSelectAll,toggleCheckbox, toggleRow, handleNextChecked,nextChecked, setNextChecked
   };
 };

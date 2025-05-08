@@ -31,7 +31,7 @@ const AddCustomerMobile = () => {
     openSecondModal,
     closeFirstModal,
     closeSecondModal,
-    setIsFirstModalOpen,
+    setIsFirstModalOpen, handleNextChecked,nextChecked, setNextChecked
   } = useClientService();
 
   const renderFirstScreen = () => (
@@ -164,23 +164,24 @@ const AddCustomerMobile = () => {
             </label>
           </div>
         </div>
-
-        {/* <div className="d-flex justify-content-center gap-2 align-items-center my-3">
+        {isChecked && (  <div className="d-flex justify-content-center gap-2 align-items-center my-3"> 
           <input
             className="form-check-input rounded-1 border-1 border-black mt-2"
             type="checkbox"
             value="select"
             name="userType"
             id="usertype_1_duplicate"
-            onChange={handleMainCheck}
+           onChange={handleNextChecked}
+           checked={nextChecked}
           />
           <label className="fs-15 fw-normal lh-1" htmlFor="customCheck1">
             {t("send_report_consent")}
           </label>
-        </div> */}
+        </div>)}
+      
       </div>
       <div className="d-flex justify-content-center mt-3">
-        <button type="button" className="btn_cmn mt-3" >
+        <button type="button" className="btn_cmn mt-3" onClick={nextScreen}>
           {t("pro_next_step")}
         </button>
       </div>

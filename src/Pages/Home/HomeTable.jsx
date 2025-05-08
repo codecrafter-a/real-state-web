@@ -19,7 +19,7 @@ import { Dropdown, Modal } from "react-bootstrap";
 import cancel from "../../assets/images/cancel.png";
 import successIcon from "../../assets/images/success_icon.svg";
 import { useNavigate } from "react-router-dom";
-
+import { IoIosArrowDown } from "react-icons/io";
 const StatusBadge = ({ status }) => {
   const { t } = useTranslation();
 
@@ -62,6 +62,7 @@ const HomeTable = () => {
   const isRTL = i18n.dir() === "rtl";
   const [tableData, setTableData] = useState([]);
   const { getAgreementData } = useAgreementServices();
+  const [openCollapse, setOpenCollapse] = useState(null);
   // const [dropdownOpen, setDropdownOpen] = useState(false);
   // const dropdownRef = useRef(null);
 
@@ -315,11 +316,21 @@ const HomeTable = () => {
                     data-bs-target={`#${collapseId}`}
                     style={{ cursor: "pointer" }}
                   >
-                    {isRTL ? (
-                      <GoChevronLeft style={{ width: "24px", height: "24px" }} />
-                    ) : (
-                      <GoChevronRight style={{ width: "24px", height: "24px" }} />
-                    )}
+                    <div
+                      onClick={() =>
+                        setOpenCollapse(openCollapse === index ? null : index)
+                      }
+                      style={{ cursor: "pointer" }}
+                    >
+                      <IoIosArrowDown
+                        style={{
+                          width: "24px",
+                          height: "24px",
+                          transform: openCollapse === index ? "rotate(180deg)" : "rotate(0deg)",
+                          transition: "transform 0.3s ease",
+                        }}
+                      />
+                    </div>
                   </div>
                 </div>
 

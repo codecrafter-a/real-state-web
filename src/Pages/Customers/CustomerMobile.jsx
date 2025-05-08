@@ -18,17 +18,22 @@ import close from "../../assets/images/ButtonClose.png";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import mask_1 from "../../assets/images/Mask2.png"
 const CustomerMobile = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const { lang } = useParams();
-  const { i18n } = useTranslation();
   const isRTL = i18n.dir() === "rtl";
   const { getClientData, getClients, filteredClients, setFilteredClients } =
     useClientService();
   const [clientNameInput, setClientNameInput] = useState("");
   const [showModal, setShowModal] = useState(false);
   const handleShowModal = () => setShowModal(true);
+  const [activeKey, setActiveKey] = useState(null);
+
+  const toggleAccordion = (key) => {
+    setActiveKey(prev => (prev === key ? null : key));
+  };
   const features = t("cust_additional_features_value")
     .split(",")
     .map((feature) => feature.trim());
@@ -129,7 +134,7 @@ const CustomerMobile = () => {
           </div>
         </div>
         <div className="mt-4 bg-transparent p-3 rounded-3">
-          <Accordion className="d-flex flex-column gap-3">
+          <Accordion className="d-flex flex-column gap-3" activeKey={activeKey}>
             {filteredClients.map((client, index) => (
               <Accordion.Item
                 eventKey={index.toString()}
@@ -137,7 +142,7 @@ const CustomerMobile = () => {
                 className="border-top-2 border-top rounded-3  "
                 style={{ borderInlineStart: "6px solid #2CAC74" }}
               >
-                <Accordion.Header>
+                <Accordion.Header onClick={() => toggleAccordion(index.toString())}>
                   <div className="d-flex justify-content-between w-100">
                     <div className="d-flex gap-2">
                       <input
@@ -158,7 +163,11 @@ const CustomerMobile = () => {
                     </div>
                     <div className="me-2 d-flex align-items-center justify-content-between">
                       <span className="badge bg-warning">{client.status}</span>
-                      <IoIosArrowUp className="mx-3" />
+                      <IoIosArrowUp
+                  className={`mx-3 transition-transform ${
+                    activeKey === index.toString() ? "rotate-180" : ""
+                  }`}
+                />
                     </div>
                   </div>
                 </Accordion.Header>
@@ -190,7 +199,7 @@ const CustomerMobile = () => {
                                    </button>
                   </div>
                 </div>
-
+                {}
                 <Accordion.Body>
                   <div>
                     <div className="d-flex align-items-center gap-2 mb-1">
@@ -439,6 +448,13 @@ const CustomerMobile = () => {
             </button>
           </Modal.Footer>
         </Modal>
+
+      </div>
+      <div className="w-100 h-25  bg-[#FFFFFFD6] d-flex justify-content-center align-items-center " style={{ position: "sticky", bottom: "0" }}>
+        <button onClick={() => navigate(`/${i18n.language}/broker`)} className="agent-button1  text-white fw-bold py-1 d-flex align-items-center gap-3 justify-content-center w-auto px-4 h-25 shadow report-btn  rounded-pill">
+          <img src={mask_1} alt="sfdfdfdsfd" className="w-auto h-auto" />
+          <span className="fs-17 fw-bold lh-1">{t("interested_signing")}</span>
+        </button>
       </div>
     </>
   );

@@ -91,7 +91,7 @@ h5 {
   border: 1px solid #00a481 !important;
 }
 .custom-submenu{border: 1px solid transparent;}
-.custom-submenu:hover{border: 1px solid #00a481 !important;}
+.custom-border{border: 3px solid #00a481 !important;}
 .card-pay{
   border: 1px solid transparent;
   color: #00a481 !important;

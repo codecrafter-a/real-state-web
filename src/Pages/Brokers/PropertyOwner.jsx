@@ -42,7 +42,7 @@ const Property_owner = () => {
     handleSearchClose,
     handleView,
     handleSentSuccess,
-    handleIsShow,
+    handleIsShow,handleClick, isChecked
   } = usePropertyOwnerSwervices();
 
   return (
@@ -118,7 +118,7 @@ const Property_owner = () => {
                     type="button"
                     className="border-teal mt-2 d-flex align-items-center justify-content-center rounded-pill py-1 px-4 search-button"
                   >
-                    <div className="flex items-center justify-center">
+                    <div className="d-flex align-items-center justify-content-center gap-1">
                       <img className="me-1" src={add_home} alt="Add Client" />
                       {t("Add_Property")}{" "}
                     </div>
@@ -270,182 +270,6 @@ const Property_owner = () => {
         </div>
       </div>
       {/** Mobile Screen avaible */}
-      {/* <div className="bg-transperant  d-block d-md-none">
-        <div className="row custom-scrollbar overflow-y-auto overflow-x-hidden">
-          <div className="col-12">
-            <div className="card  p-3 border  rounded-3 overflow-hidden  rounded-3 bg-light mb-4">
-              <div className="form_group mb-2 mb-xl-0 d-flex justify-content-between">
-                <h5 className=" text-embed-500 fs-5 fw-semibold lh-1 mb-4">{t("client_details")}</h5>
-                <button
-                  type="button"
-                  className="agent-btn-responsive2 w-50 bg-transperant h-50 py-2  d-flex align-items-center justify-content-center  rounded-pill"
-                >
-                  <div className="d-flex align-items-center justify-content-center">
-                    <img className="me-1" src={add_reaction} alt="Add Client" />
-                    <span className="fs-17 fw-semibold lh-1">
-                    {t("add_cust")}{" "}
-                    </span>
-                  </div>
-                </button>
-              </div>
-              <div className="mb-3">
-                <label for="searchInput" className="form-label fw-semibold">
-                  {t("age_details_title")}
-                </label>
-                <div className="border border-[#D6D6D6] bg-white rounded w-full px-3">
-                  <div className="d-flex">
-                    <input
-                      type="text"
-                      onChange={handleSearchClick}
-                      className="form-control border-0 p-0"
-                      placeholder={t("age_title_placeholder")}
-                    />
-                    <button className="btn" type="button">
-                      <img src={search} alt="Search" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-              {showDetails && (
-                <>
-                  <div className="border rounded w-full px-3">
-                    <div className="d-flex flex-row justify-content-between">
-                      <div className="d-flex flex-col">
-                        <label>{t('broker_name')}</label>
-                        <input
-                          type="text"
-                          className="form-control border-0 p-0"
-                          placeholder="Shirims@gmail.com | 054-4692650"
-                          values=""
-                        />
-                      </div>
-                      <div className="d-flex flex-row justify-content-end">
-                        <button className="btn " type="button" onClick={handleSearchClose}>
-                          <img src={close} alt="Search" />
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-
-                </>
-              )}
-            </div>
-
-          </div>
-          <div className="col-12">
-            <div className="card p-3 border bg-light rounded-3 mb-4">
-              <div className="form_group mb-2 mb-xl-0 d-flex justify-content-between">
-                <h5 className="text-embed-500 fw-semibold fs-5 lh-1 mb-4">
-                  {t("age_pro_section")}
-                </h5>
-                <button
-                  type="button"
-                  className="agent-btn-responsive2 w-50 bg-transperant h-50 py-2  d-flex align-items-center justify-content-center  rounded-pill "
-                >
-                  <div className="d-flex align-items-center justify-content-center">
-                    <img className="me-1" src={add_home} alt="Add Client" />
-                    {t("Add_Property")}{" "}
-                  </div>
-                </button>
-              </div>
-              <div className="mb-3">
-                <label for="searchInput" className="form-label fw-semibold">
-                  {t("age_pro_section_title")}
-                </label>
-                <div className="border border-[#D6D6D6] bg-white rounded w-full px-3">
-                  <div className="d-flex">
-                    <input
-                      onChange={handlePropertysection}
-                      type="text"
-                      className="form-control border-0 p-0"
-                      placeholder={t("age_pro_asset_address")}
-                    />
-                    <button className="btn" type="button">
-                      <img src={search} alt="Search" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-              {propertySection && (
-                <>
-                  <div className="border rounded w-full px-3">
-                    <div className="d-flex flex-row justify-content-between">
-
-                      <div className="d-flex flex-row align-item-center gap-2">
-                        <div className="my-2"><img src={key_vertical} alt="key vertical" /></div>
-                        <div>
-                          <label>{t('property_br_address')}</label>
-                          <input
-                            type="text"
-                            className="form-control border-0 p-0"
-                            placeholder="שכירות : 5000 לחודש"
-                            values=""
-                          />
-                        </div>
-
-                      </div>
-                      <div className="d-flex flex-row justify-content-end">
-                        <button className="btn " type="button" onClick={handlecloseProperty}>
-                          <img src={close} alt="Search" />
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="d-flex align-items-center gap-2 justify-content-start">
-                    <div className=" mt-4">
-                      <InputGroup className="w-auto">
-                        <Form.Select className="text-center">
-                          <option>%</option>
-                          <option>₪</option>
-                        </Form.Select>
-                      </InputGroup>
-                    </div>
-
-                    <div className="mx-0">
-                      <span className=" fw-semibold">{t("br_commission")}</span>
-                      <Form.Control type="number" className="w-100" value="30" />
-                    </div>
-                    <div>
-                      <span className="fw-semibold">{t("rental_months")}</span>
-                      <Form.Control type="number" className="w-100" value="12" />
-                    </div>
-                  </div>
-                </>
-              )}
-            </div>
-          </div>
-          <div className="col-12">
-            <div className="card p-3 border bg-light rounded-3 mb-4">
-              <h5 className=" text-embed-500 fw-semibold fs-5 lh-1  mb-4">{t("age_note")}</h5>
-              <div className=" px-2 pb-2">
-                <textarea
-                  className="form-control"
-                  placeholder={t("age_note_placeholder")}
-                  rows="4"
-                ></textarea>
-              </div>
-            </div>
-          </div>
-          <div className="col-12">
-            <div className="d-flex gap-2 pb-3 ">
-              <button
-                className="agent-btn-responsive1 text-white w-25 bg-transperant h-25 py-1 rounded-pill "
-                onClick={handleView}
-              >
-                {t("age_btn_send")}
-              </button>
-              <button className=" agent-btn-responsive2 w-50 bg-transperant h-25 py-1 shadow rounded-pill" onClick={() => setSentSuccess(true)}>
-                {t("age_btn_send_without")}
-              </button>
-              <button className="  agent-btn-responsive2 w-25 bg-transperant h-25 py-1 shadow rounded-pill">
-                {t("age_btn_view")}
-              </button>
-            </div>
-          </div>
-        </div>
-      </div> */}
-
-
       <Modal
         show={isView}
         onHide={() => {
@@ -472,82 +296,62 @@ const Property_owner = () => {
             <p className="fs_25 font-semibold">{t("age_report_question")}</p>
           </div>
           {/* Options Section */}
-          <div className="options-container m-auto" >
+          <div className="options-container m-auto">
             <div className="option-item rounded-3 my-3">
-              <Accordion defaultActiveKey={null} className="custom-accordion">
-                <Accordion.Item eventKey="0 " className="custom-header border-teal-100">
-                  <Accordion.Header className="bg-teal-100">
-                    <div className="d-flex justify-content-between w-100">
-                      <div className=" d-flex align-items-center">
-                        <img src={whatsapp} alt="whatsapp" />
-                        <span className="ps-2 text-start fs_15">
-                          {t("viaSMS")}
-                        </span>
+              <Accordion defaultActiveKey={null} className="custom-accordion my-1">
+                <Accordion.Item eventKey="0"  className="custom-header border-teal-100 border-1">
+                  <Accordion.Header>
+                    <div className="d-flex justify-content-between align-items-center w-100">
+                      <div className="d-flex align-items-center gap-3">
+                        <img src={whatsapp} alt="whatsapp" style={{ height: "24px", width: "24px" }} />
+                        <div className=" d-flex flex-column">
+                          <span className="ps-2 fs_15">{t("viaSMS")}</span>
+                          <span className="text-decoration-underline text-link-color fs-17 fw-semibold lh-1">למה זה כדאי לי?</span>
+                        </div>       
                       </div>
                       <input
-                        className="form-check-input border border-black bg-white"
+                        className="form-check-input ms-2 border border-dark bg-white"
                         type="checkbox"
+                        onChange={handleClick}
+                        checked={isChecked}
                       />
                     </div>
-                  </Accordion.Header>
-                  <Accordion.Body className="bg-teal-100">
-                    <p className="mt-3 fw-bold">Helllo</p>
-                    <ul className="fw-bold px-4" style={{ listStyleType: "disc" }}>
+                  </Accordion.Header> 
+                
+                  <Accordion.Body className="bg-teal-100 px-4 py-2">
+                    <ul className="fw-bold ps-4 mb-1" style={{ listStyleType: "disc" }}>
                       <li>{t("age_send_whatsapp_point_1")}</li>
                       <li>{t("age_send_whatsapp_point_2")}</li>
                       <li>{t("age_send_whatsapp_point_3")}</li>
                     </ul>
-                    <p className="mt-3 fw-bold ">
-                      {t("age_send_whatsapp_description")}
-                    </p>
-                    <div className="row justify-content-center text-center mt-4 align-items-center">
-                      <div className="col-md-4 px-2">
-                        <div className="rounded p-2 bg-white  shadow-md">
-                          <h3 className="text-embed-500 fs-2 fw-bold">150</h3>
-                          <p className="mb-0 text-embed-500">
-                            {t("age_send_whatsapp_message")}
-                          </p>
-                          <p className="text-embed-500">
-                            {t("age_send_whatsapp_message_info")}
-                          </p>
-                        </div>
-                      </div>
 
-                      <div className="col-md-4 px-2">
-                        <div className="rounded shadow-md p-1 bg-white">
-                          <p className="mb-0 text-embed-500">
-                            {t("age_send_whatsapp_cost")}
-                          </p>
-                          <h3 className="text-embed-500 fs-2 fw-bold">100</h3>
-                          <p className="mb-0 text-embed-500">
-                            {t("age_send_whatsapp_message")}
-                          </p>
-                          <p className=" text-embed-500">
-                            {t("age_send_whatsapp_message_info2")}
-                          </p>
-                        </div>
-                      </div>
+                    <p className="fw-bold mb-2">{t("age_send_whatsapp_description")}</p>
 
-                      <div className="col-md-4 px-2">
-                        <div className="rounded p-2 bg-white shadow-sm">
-                          <h3 className="text-embed-500 fs-2 fw-bold">50</h3>
-                          <p className="mb-0 text-embed-500">
-                            {t("age_send_whatsapp_message")}
-                          </p>
-                          <p className="text-embed-500">
-                            {t("age_send_whatsapp_message_info3")}
-                          </p>
+                    <div className="row gy-3 justify-content-center text-center">
+                      {[150, 100, 50].map((value, idx) => (
+                        <div className="col-md-4" key={idx}>
+                          <div className={`rounded   ${value === 100 ? (!isChecked ? "custom-submenu" : "custom-border") : ""} bg-white shadow-sm h-auto d-flex flex-column justify-content-center`}>
+                            <h3 className="text-embed-500 fs-2 fw-bold">{value}</h3>
+                            <p className="mb-1 text-embed-500">{t("age_send_whatsapp_message")}</p>
+                            <p className="text-embed-500">
+                              {t(
+                                `age_send_whatsapp_message_info${idx === 0 ? "" : idx + 1}`
+                              )}
+                            </p>
+                          </div>
                         </div>
-                      </div>
+                      ))}
                     </div>
                   </Accordion.Body>
-                  
                 </Accordion.Item>
               </Accordion>
             </div>
             <div className="option-item rounded-3 my-3">
               <Accordion defaultActiveKey={null} className="custom-accordion">
-                <Accordion.Item eventKey="0 " className="custom-header border-teal-100">
+                <Accordion.Item
+                  eventKey="0 "
+                  className="custom-header border-teal-100"
+                >
                   <Accordion.Header className="bg-teal-100">
                     <div className="d-flex justify-content-between w-100">
                       <div className=" d-flex align-items-center">
@@ -562,55 +366,29 @@ const Property_owner = () => {
                       />
                     </div>
                   </Accordion.Header>
-                  <Accordion.Body className="bg-teal-100">
-                    <p className="mt-3 fw-bold">Helllo</p>
-                    <ul className="fw-bold px-4" style={{ listStyleType: "disc" }}>
+                  <Accordion.Body className="bg-teal-100 px-4 py-2">
+                    <ul className="fw-bold ps-4 mb-1" style={{ listStyleType: "disc" }}>
                       <li>{t("age_send_whatsapp_point_1")}</li>
                       <li>{t("age_send_whatsapp_point_2")}</li>
                       <li>{t("age_send_whatsapp_point_3")}</li>
                     </ul>
-                    <p className="mt-3 fw-bold ">
-                      {t("age_send_whatsapp_description")}
-                    </p>
-                    <div className="row justify-content-center text-center mt-4 gap-2 align-items-center">
-                      <div className="col-md-4 px-2">
-                        <div className="rounded p-2 bg-white  shadow-md">
-                          <h3 className="text-embed-500 fs-2 fw-bold">150</h3>
-                          <p className="mb-0 text-embed-500">
-                            {t("age_send_whatsapp_message")}
-                          </p>
-                          <p className="text-embed-500">
-                            {t("age_send_whatsapp_message_info")}
-                          </p>
-                        </div>
-                      </div>
 
-                      <div className="col-md-4 px-2">
-                        <div className="rounded shadow-md p-1 bg-white">
-                          <p className="mb-0 text-embed-500">
-                            {t("age_send_whatsapp_cost")}
-                          </p>
-                          <h3 className="text-embed-500 fs-2 fw-bold">100</h3>
-                          <p className="mb-0 text-embed-500">
-                            {t("age_send_whatsapp_message")}
-                          </p>
-                          <p className=" text-embed-500">
-                            {t("age_send_whatsapp_message_info2")}
-                          </p>
-                        </div>
-                      </div>
+                    <p className="fw-bold mb-2">{t("age_send_whatsapp_description")}</p>
 
-                      <div className="col-md-4 px-2">
-                        <div className="rounded p-2 bg-white shadow-sm">
-                          <h3 className="text-embed-500 fs-2 fw-bold">50</h3>
-                          <p className="mb-0 text-embed-500">
-                            {t("age_send_whatsapp_message")}
-                          </p>
-                          <p className="text-embed-500">
-                            {t("age_send_whatsapp_message_info3")}
-                          </p>
+                    <div className="row gy-3 justify-content-center text-center">
+                      {[150, 100, 50].map((value, idx) => (
+                        <div className="col-4" key={idx}>
+                          <div className="rounded  custom-submenu  bg-white shadow-sm h-auto d-flex flex-column justify-content-center">
+                            <h3 className="text-embed-500 fs-2 fw-bold">{value}</h3>
+                            <p className="mb-1 text-embed-500">{t("age_send_whatsapp_message")}</p>
+                            <p className="text-embed-500">
+                              {t(
+                                `age_send_whatsapp_message_info${idx === 0 ? "" : idx + 1}`
+                              )}
+                            </p>
+                          </div>
                         </div>
-                      </div>
+                      ))}
                     </div>
                   </Accordion.Body>
                 </Accordion.Item>
@@ -618,7 +396,10 @@ const Property_owner = () => {
             </div>
             <div className="option-item rounded-3 my-3">
               <Accordion defaultActiveKey={null} className="custom-accordion">
-                <Accordion.Item eventKey="0 " className="custom-header border-teal-100">
+                <Accordion.Item
+                  eventKey="0 "
+                  className="custom-header border-teal-100"
+                >
                   <Accordion.Header className="bg-teal-100">
                     <div className="d-flex justify-content-between w-100">
                       <div className=" d-flex align-items-center">
@@ -638,7 +419,10 @@ const Property_owner = () => {
             </div>
             <div className="option-item rounded-3 my-3">
               <Accordion defaultActiveKey={null} className="custom-accordion">
-                <Accordion.Item eventKey="0 " className="custom-header border-teal-100">
+                <Accordion.Item
+                  eventKey="0 "
+                  className="custom-header border-teal-100"
+                >
                   <Accordion.Header className="bg-teal-100">
                     <div className="d-flex justify-content-between w-100">
                       <div className=" d-flex align-items-center">
@@ -653,61 +437,40 @@ const Property_owner = () => {
                       />
                     </div>
                   </Accordion.Header>
-                  <Accordion.Body className="bg-teal-100">
-                    <p className="mt-3 fw-bold">Helllo</p> 
-                    <ul className="fw-bold px-4" style={{ listStyleType: "disc" }}>
+                  <Accordion.Body className="bg-teal-100 px-4 py-2">
+                    <ul className="fw-bold ps-4 mb-1" style={{ listStyleType: "disc" }}>
                       <li>{t("age_send_whatsapp_point_1")}</li>
                       <li>{t("age_send_whatsapp_point_2")}</li>
                       <li>{t("age_send_whatsapp_point_3")}</li>
                     </ul>
-                    <p className="mt-3 fw-bold ">
-                      {t("age_send_whatsapp_description")}
-                    </p>
-                    <div className="row justify-content-center text-center mt-4 align-items-center">
-                      <div className="col-md-4 px-2">
-                        <div className="rounded p-2 bg-white  shadow-md">
-                          <h3 className="text-embed-500 fs-2 fw-bold">150</h3>
-                          <p className="mb-0 text-embed-500">
-                            {t("age_send_whatsapp_message")}
-                          </p>
-                          <p className="text-embed-500">
-                            {t("age_send_whatsapp_message_info")}
-                          </p>
-                        </div>
-                      </div>
 
-                      <div className="col-md-4 px-2">
-                        <div className="rounded shadow-md p-1 bg-white">
-                          <p className="mb-0 text-embed-500">
-                            {t("age_send_whatsapp_cost")}
-                          </p>
-                          <h3 className="text-embed-500 fs-2 fw-bold">100</h3>
-                          <p className="mb-0 text-embed-500">
-                            {t("age_send_whatsapp_message")}
-                          </p>
-                          <p className=" text-embed-500">
-                            {t("age_send_whatsapp_message_info2")}
-                          </p>
-                        </div>
-                      </div>
+                    <p className="fw-bold mb-2">{t("age_send_whatsapp_description")}</p>
 
-                      <div className="col-md-4 px-2">
-                        <div className="rounded p-2 bg-white shadow-sm">
-                          <h3 className="text-embed-500 fs-2 fw-bold">50</h3>
-                          <p className="mb-0 text-embed-500">
-                            {t("age_send_whatsapp_message")}
-                          </p>
-                          <p className="text-embed-500">
-                            {t("age_send_whatsapp_message_info3")}
-                          </p>
+                    <div className="row gy-3 justify-content-center text-center">
+                      {[150, 100, 50].map((value, idx) => (
+                        <div className="col-4" key={idx}>
+                          <div className="rounded  custom-submenu  bg-white shadow-sm h-auto d-flex flex-column justify-content-center">
+                            <h3 className="text-embed-500 fs-2 fw-bold">{value}</h3>
+                            <p className="mb-1 text-embed-500">{t("age_send_whatsapp_message")}</p>
+                            <p className="text-embed-500">
+                              {t(
+                                `age_send_whatsapp_message_info${idx === 0 ? "" : idx + 1}`
+                              )}
+                            </p>
+                          </div>
                         </div>
-                      </div>
+                      ))}
                     </div>
                   </Accordion.Body>
                 </Accordion.Item>
               </Accordion>
             </div>
           </div>
+          {isChecked && (
+            <div className="text-center">
+              <p className="fs-12 lh-1 fw-bold">{t("Pleasmote_perchase_package")}</p>
+            </div>
+          )}
           
           <div className="text-center mt-4 d-flex flex-wrap flex-md-nowrap justify-content-center">
             <button
@@ -718,7 +481,7 @@ const Property_owner = () => {
               }
               }
             >
-              {t("age_btn_send")}
+               {!isChecked ? t("age_btn_send") : t("send_change")} 
             </button>
             <button className="btn btn-link text-muted ">
               {t("age_btn_link")}

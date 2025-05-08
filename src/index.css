@@ -366,7 +366,7 @@ a:hover {
 
 .modal-container .modal-content,
 .agent-modal-container .modal-content {
-	border-radius: 24px;
+	border-radius: 12px;
 	box-shadow: 0px 8px 16px 0px #00A48154;
 }
 
@@ -701,9 +701,9 @@ a:hover {
 	letter-spacing: 0%;
 	text-align: center;
 	vertical-align: middle;
-	background: #E9FAF4;
+	background: #00A481;
 	border: 1px solid #00A481;
-	color: #00A481;
+	color: white;
 	padding: 7px 7px;
 	border-radius: 20px;
 }

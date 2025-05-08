@@ -8,7 +8,11 @@ const useBrokerbetweenServices = () => {
   const [propertySection, setPropertySection] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
   const [genrateSuccess, setGenrateSuccess] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
 
+  const handleClick = (e) => {
+    setIsChecked(e.target.checked);
+  }
   const handlePropertysection = () => {
     setPropertySection(true);
   };
@@ -58,7 +62,7 @@ const useBrokerbetweenServices = () => {
     sentSuccess,
     setSentSuccess,
     propertySection,
-    setPropertySection,
+    setPropertySection,handleClick,isChecked
   };
 };
 

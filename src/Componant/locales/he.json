@@ -802,5 +802,8 @@
   "action_sign_executed": "נחתם ובוצע",
   "action_sign_registred": "נחתם ונרשם",
   "action_sent": "נשלח",
-  "action_detail": "אין פרטים נוספים"
+  "action_detail": "אין פרטים נוספים",
+  "send_change": "שליחה ורכישת חבילה",
+  "Pleasmote_perchase_package": "שים לב, בחרת לרכוש חבילת WhatsApp בלחיצה על שליחה תתבצע גם רכישת החבילה",
+  "Signing_instred": "החתמת מתעניינים"
 }
